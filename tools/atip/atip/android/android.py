@@ -39,6 +39,7 @@ DEFAULT_PARAMETER_KEYS = ["text", "textContains", "textMatches", "textStartsWith
                 "resourceId", "resourceIdMatches", "className", "packageName", "index"]
 OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName",
                 "selected", "enabled", "className"]
+PRODUCTS_NAME = {"nexus7": "razor", "memo8": "CN_K011", "nexus4": "occam", "nexus5": "hammerhead", "zte": "V975"}
 
 class Android(common.APP):
 
@@ -65,6 +66,7 @@ class Android(common.APP):
         self.adb = "adb -s %s shell" % self.device_id
         self.d = Device(self.device_id)
         self.AutomatorDeviceObject = self.d(text="PaTaTotOmAtO")
+        self.productName = self.d.info["productName"]
         self.info_temp = {}
         self.process_args = {"func_name": None, "func_args": []}
 
@@ -104,166 +106,134 @@ class Android(common.APP):
                 print("Please check your cmd: %s" % stop_cmd)
 
 
-    def wifiOperate(self, turnon):
+    def openSettings(self):
         self.doCMD(self.adb + " am force-stop com.android.settings")
-        wifi_name_list = [u'Wi\u2011Fi', u'WLAN']
         settings_cmd = self.adb + \
                     " am start -n " + \
                     "com.android.settings/.Settings"
         try:
             (return_code, output) = self.doCMD(settings_cmd)
             if return_code == 0:
-                pass
-            else:
-                print("\n".join(output))
-                return False
+                if self.d.info["currentPackageName"] == "com.android.settings":
+                    return True
+            return False
         except Exception as e:
             return False
-        if self.d.info["currentPackageName"] == "com.android.settings":
-            object_exists = False
-            for wifi_name in wifi_name_list:
-                try:
-                    wifi = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                            .child_by_text(wifi_name, className="android.widget.LinearLayout") \
-                            .child(className="android.widget.Switch")
-                    if wifi.exists:
-                        object_exists = True
-                        break
-                except Exception as e:
-                    pass
-            if object_exists:
-                wifi_state = self.getObjectInfo(wifi, "checked")
-                if turnon:
-                    if wifi_state:
-                        pass
-                    else:
-                        self.clickObject(wifi)
-                else:
-                    if not wifi_state:
-                        pass
-                    else:
-                        self.clickObject(wifi)
+
+
+    def wifiOperate(self, turnon):
+        if self.productName == PRODUCTS_NAME["nexus7"] \
+            or self.productName == PRODUCTS_NAME["nexus5"]:
+            if self.openSettings():
+                return self.selectSwitchChild(u'Wi\u2011Fi', turnon)
+        elif self.productName == PRODUCTS_NAME["nexus4"]:
+            if self.openSettings():
+                return self.selectSwitchChild(u'Wi-Fi', turnon)
+        elif self.productName == PRODUCTS_NAME["memo8"]:
+            return self.selectQuickSetting("WLAN", turnon)
+        elif self.productName == PRODUCTS_NAME["zte"]:
+            if self.openSettings():
+                return self.selectSwitchChild(u'WLAN', turnon)
+        return False
+
+
+    def selectSwitchChild(self, child_name, turnon, default_cls="android.widget.Switch"):
+        try:
+            switch = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                    .child_by_text(child_name, className="android.widget.LinearLayout") \
+                    .child(className=default_cls)
+            if switch.exists:
+                switch_state = self.getObjectInfo(switch, "checked")
+                if (not turnon and switch_state) or (turnon and not switch_state):
+                    self.clickObject(switch)
+                self.pressKeyBy("back")
+                return True
+            return False
+        except Exception as e:
+            return False
+
+
+    def selectQuickSetting(self, child_name, turnon):
+        self.openQuickSettings()
+        label = self.selectObjectBy("text=%s"%child_name)
+        if label.exists:
+            icon = self.selectRelativeObjectBy(label, "up", "className=android.widget.CheckBox")
+            if icon.exists:
+                box_state = self.getObjectInfo(icon, "checked")
+                if (not turnon and box_state) or (turnon and not box_state):
+                    self.clickObject(icon)
+                self.pressKeyBy("back")
                 return True
         return False
 
 
     def airplaneModeOperate(self, turnon):
-        self.doCMD(self.adb + " am force-stop com.android.settings")
-        airplane_name_top = [u'Airplane mode',]
-        settings_cmd = self.adb + \
-                    " am start -n " + \
-                    "com.android.settings/.Settings"
-        try:
-            (return_code, output) = self.doCMD(settings_cmd)
-            if return_code == 0:
-                pass
-            else:
-                print("\n".join(output))
-                return False
-        except Exception as e:
-            return False
-        if self.d.info["currentPackageName"] == "com.android.settings":
-            object_exists = False
-            for airplane_name in airplane_name_top:
-                try:
-                    airplane = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                            .child_by_text(airplane_name, className="android.widget.LinearLayout") \
-                            .child(className="android.widget.Switch")
-                    if airplane.exists:
-                        object_exists = True
-                        break
-                except Exception as e:
-                    pass
-            if object_exists:
-                airplane_state = self.getObjectInfo(airplane, "checked")
-                if turnon:
-                    if airplane_state:
-                        pass
-                    else:
-                        self.clickObject(airplane)
-                else:
-                    if not airplane_state:
-                        pass
-                    else:
-                        self.clickObject(airplane)
-                return True
-            return self.airplaneModeMore(turnon)
-        return False
-
-
-    def airplaneModeMore(self, turnon):
-        airplane_name_more = [u'Airplane mode',]
-        object_exists = False
-        try:
-            more = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+        if self.productName == PRODUCTS_NAME["nexus7"] \
+            or self.productName == PRODUCTS_NAME["nexus4"] \
+            or self.productName == PRODUCTS_NAME["nexus5"]:
+            if self.openSettings():
+                more = self.d(className="android.widget.ListView", resourceId="android:id/list") \
                         .child_by_text(u'More\u2026', className="android.widget.LinearLayout")
-            if more.exists:
-                object_exists = True
-        except Exception as e:
-            pass
-        if object_exists:
-            self.clickObject(more)
-            object_exists = False
-            for airplane_name in airplane_name_more:
-                try:
-                    airplane = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                            .child_by_text(airplane_name, className="android.widget.LinearLayout") \
-                            .child(className="android.widget.CheckBox")
-                    if airplane.exists:
-                        object_exists = True
-                        break
-                except Exception as e:
-                    pass
-            if object_exists:
-                airplane_state = self.getObjectInfo(airplane, "checked")
-                if turnon:
-                    if airplane_state:
-                        pass
-                    else:
-                        self.clickObject(airplane)
-                else:
-                    if not airplane_state:
-                        pass
-                    else:
-                        self.clickObject(airplane)
-                return True
+                if more.exists:
+                    self.clickObject(more)
+                    rtn = self.selectSwitchChild(u'Airplane mode', turnon, "android.widget.CheckBox")
+                    if rtn:
+                        self.pressKeyBy("back")
+                        return True
+        elif self.productName == PRODUCTS_NAME["memo8"]:
+            return self.selectQuickSetting("Airplane mode", turnon)
+        elif self.productName == PRODUCTS_NAME["zte"]:
+            if self.openSettings():
+                return self.selectSwitchChild(u'Airplane mode', turnon)
         return False
 
 
     def gpsOperate(self, turnon):
-        self.doCMD(self.adb + " am force-stop com.android.settings")
-        gps_name_list = [u'Location',]
-        settings_cmd = self.adb + \
-                    " am start -n " + \
-                    "com.android.settings/.Settings"
-        try:
-            (return_code, output) = self.doCMD(settings_cmd)
-            if return_code == 0:
-                pass
-            else:
-                print("\n".join(output))
-                return False
-        except Exception as e:
-            return False
-        if self.d.info["currentPackageName"] == "com.android.settings":
-            for gps_name in gps_name_list:
-                gps = self.selectObjectBy("textContains=%s"%gps_name)
-                if gps.exists:
-                    self.clickObject(gps)
-                    self.registerWatcher("gps", "Location consent", "Agree")
-                    gps_switch = self.selectObjectBy("className=android.widget.Switch")
-                    if gps_switch.exists:
-                        for g in gps_switch:
-                            state = self.getObjectInfo(g, "checked")
-                            if (not state and turnon) or (state and not turnon):
-                                self.clickObject(g)
-                    gps_checkbox = self.selectObjectBy("className=android.widget.CheckBox")
-                    if gps_checkbox.exists:
-                        for g in gps_checkbox:
-                            state = self.getObjectInfo(g, "checked")
-                            if (not state and turnon) or (state and not turnon):
-                                self.clickObject(g)
-                        return True
+        if self.productName == PRODUCTS_NAME["nexus7"] \
+            or self.productName == PRODUCTS_NAME["nexus4"]:
+            if self.openSettings():
+                return self.modifyGPSSwitch("Location access", turnon)
+        elif self.productName == PRODUCTS_NAME["nexus5"]:
+            if self.openSettings():
+                return self.modifyGPSSwitch("Location", turnon)
+        elif self.productName == PRODUCTS_NAME["memo8"]:
+            gps = self.selectQuickSetting("GPS", turnon)
+            if not gps:
+                return self.selectQuickSetting("Location", turnon)
+            return gps
+        elif self.productName == PRODUCTS_NAME["zte"]:
+            if self.openSettings():
+                self.d(scrollable=True).scroll(steps=10)
+                return self.modifyGPSSwitch("Location services", turnon)
+        return False
+
+
+    def modifyGPSSwitch(self, child_name, turnon):
+        gps = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                .child_by_text(child_name, className="android.widget.LinearLayout")
+        if gps.exists:
+            self.clickObject(gps)
+            self.registerWatcher("gps", "Location consent", "Agree")
+            gps_switch = self.selectObjectBy("className=android.widget.Switch")
+            if gps_switch.exists:
+                for g in gps_switch:
+                    state = self.getObjectInfo(g, "checked")
+                    if (not state and turnon) or (state and not turnon):
+                        self.clickObject(g)
+                if self.productName == PRODUCTS_NAME["nexus5"]:
+                    self.runAllWatchers()
+                    self.pressKeyBy("back")
+                    self.pressKeyBy("back")
+                    return True
+            gps_checkbox = self.selectObjectBy("className=android.widget.CheckBox")
+            if gps_checkbox.exists:
+                for g in gps_checkbox:
+                    state = self.getObjectInfo(g, "checked")
+                    if (not state and turnon) or (state and not turnon):
+                        self.clickObject(g)
+                self.pressKeyBy("back")
+                self.pressKeyBy("back")
+                return True
         return False
 
 
@@ -472,17 +442,17 @@ class Android(common.APP):
         max_fling_num = 5
         self.d.orientation = "n"
         self.d.press.home()
-        all_apps = self.selectObjectBy("description=Apps^^^packageName=com.android.launcher")
+        all_apps = self.selectObjectBy("description=Apps")
         if all_apps.exists:
             self.clickObject(all_apps)
-            if self.d(scrollable=True).fling.horiz.toBeginning() \
-                    and self.d(scrollable=True).fling.horiz.toBeginning():
-                for i in range(max_fling_num):
-                    app = self.selectObjectBy(params_str)
-                    if app.exists:
-                        self.clickObject(app)
-                        return True
-                    self.d(scrollable=True).fling.horiz.forward()
+            if self.productName != PRODUCTS_NAME["memo8"]:
+                self.d(scrollable=True).fling.horiz.toBeginning()
+            for i in range(max_fling_num):
+                app = self.selectObjectBy(params_str)
+                if app.exists:
+                    self.clickObject(app)
+                    return True
+                self.d(scrollable=True).fling.horiz.forward()
         return False
 
 
