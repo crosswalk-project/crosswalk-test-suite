@@ -176,12 +176,62 @@ Authors:
 
         var oPass = $(oTestDoc).find(".pass");
         var oFail = $(oTestDoc).find(".fail");
-        // Qunit sub-cases
         var oUnitRes = $(oTestDoc).find("ol.qunit-assert-list");
-        $(oUnitRes).find('li').each(function() {
-          message += "[assert]" + $(this).attr("class");
-          message += "[message]*" + $(this).children("span").text() + "\n";
-        });
+
+        if (oUnitRes.length == 0) {
+          //testharness sub-cases
+          var oThResults = $(oTestDoc).find("table#results");
+          if (oThResults.length > 0) {
+            var oTrs = $(oThResults).find('tbody > tr');
+            if (oTrs.length >0) {
+              $(oTrs).each(function() {
+                message += "[assert]" + $(this).children("td:eq(0)").text();
+                message += "[id]" + $(this).children("td:eq(1)").text();
+                var sub_message = $(this).children("td:eq(2)").text();
+                if (sub_message !== ' ') {
+                  message += "[message]*" + sub_message + "\n";
+                } else {
+                  message += "[message]" + "\n";
+                }
+              });
+            }
+          }
+
+          //khronos sub-cases
+          oKhronosConsole = $(oTestDoc).find("div#console");
+          if (oKhronosConsole.length > 0) {
+            $(oKhronosConsole).find("span").each(function() {
+              oSpan = $(this).children("span").children("span");
+              if (oSpan.length > 0) {
+                message += "[assert]" + $(oSpan).attr("class");
+                message += "[message]*" + $(oSpan).parent().text() + "\n";
+              }
+            });
+          }
+          //khronos unit sub-cases
+          oKhronosUnitConsole = $(oTestDoc).find("div#test-log");
+          if (oKhronosUnitConsole.length > 0) {
+            $(oKhronosUnitConsole).find("div").each(function() {
+              $(this).find("div").each(function() {
+                oSpan = $(this).children("h3").children("span");
+                if (oSpan.length > 0) {
+                   message += "[assert]" + $(oSpan).text().split(":")[0]
+                   message += "[message]*" + $(oSpan).parent().text() + "\n";
+                }
+                $(this).find("p").each(function() {
+                  message += $(this).text() + "\n";
+                });
+              });
+            });
+          }
+        } else if (oUnitRes.length > 0) {
+          // Qunit sub-cases
+          $(oUnitRes).find('li').each(function() {
+            message += "[assert]" + $(this).attr("class");
+            message += "[message]*" + $(this).children("span").text() + "\n";
+          });
+        }
+
         // All tests pass
         if (oPass.length > 0 && oFail.length == 0) {
           this.report('PASS', message);
@@ -189,11 +239,6 @@ Authors:
         }
         // Handle failed tests
         if (oFail.length > 0) {
-          var oRes = $(oTestDoc).find("table#results");
-          $(oRes).find('tr.fail').each(function() {
-            message += " *" + $(this).children("td:eq(1)").text() + ": ";
-            message += $(this).children("td:eq(2)").text();
-          });
           this.report('FAIL', message);
           return true;
         }
