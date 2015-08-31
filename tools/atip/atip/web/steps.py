@@ -340,3 +340,7 @@ def compare_two_value_with_range(context, first, second, value):
 @step(u'"{value}" should be between "{first}" to "{second}"')
 def judge_value_with_range(context, value, first, second):
     assert context.web.judge_value_range(value, first, second)
+
+@step(u'"{value}" should be "{result}"')
+def judge_saved_value(context, value, result):
+    assert context.web.judge_saved_value(value, result)
