@@ -408,3 +408,21 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onVisibilityChanged method
+
+
+### 40. The [XWalkViewWithWindowFocusChanged](XWalkViewWithWindowFocusChanged.java) sample check whether onWindowFocusChanged method work as same as WebView, include:
+
+* onWindowFocusChanged can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onWindowFocusChanged method
+
+
+### 41. The [XWalkViewWithWindowsVisibilityChanged](XWalkViewWithWindowsVisibilityChanged.java) sample check whether onWindowVisibilityChanged method work as same as WebView, include:
+
+* onWindowVisibilityChanged can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onWindowVisibilityChanged method
