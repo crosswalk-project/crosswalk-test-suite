@@ -2,64 +2,67 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="tct-geodeny-w3c-tests">
-    <set name="Geolocation" type="js">
+    <set name="geodeny-bdd" type="js" ui-auto="bdd">
       <testcase component="W3C_HTML5 APIs/Location/Geolocation API Specification" execution_type="manual" id="Geolocation_getCurrentPosition_operation_failed" priority="P3" purpose="Check if getCurrentPosition() invokes onPositionErrorCallback() when the operation fails before the timeout expires" status="approved" type="compliance">
         <description>
           <pre_condition>disable GPS and network</pre_condition>
-          <post_condition />
+          <post_condition/>
           <steps>
             <step order="1">
               <step_desc>If prompts for permission to use geolocation, please decline</step_desc>
               <expected>PASS</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/tct-geodeny-w3c-tests/geodeny/Geolocation_getCurrentPosition_operation_failed-manual.html</test_script_entry>
+          <test_script_entry>/opt/tct-geodeny-w3c-tests/geodeny/bdd/Geolocation_getCurrentPosition_operation_failed-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-geodeny-w3c-tests/w3c-geodeny-app/testscripts/Geolocation_getCurrentPosition_operation_failed.feature</bdd_test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="Geolocation" section="Location" specification="Geolocation API Specification" usage="true" />
+            <spec_assertion category="Tizen W3C API Specifications" interface="Geolocation" section="Location" specification="Geolocation API Specification" usage="true"/>
             <spec_url>http://www.w3.org/TR/2012/PR-geolocation-API-20120510/#geolocation</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Location/Geolocation API Specification" execution_type="manual" id="Geolocation_watchPosition_operation_failed" priority="P3" purpose="Check if watchPosition() invokes onPositionErrorCallback() when the operation fails before the timeout expires" status="approved" type="compliance">
         <description>
           <pre_condition>disable GPS and network</pre_condition>
-          <post_condition />
+          <post_condition/>
           <steps>
             <step order="1">
               <step_desc>If prompts for permission to use geolocation, please decline</step_desc>
               <expected>PASS</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/tct-geodeny-w3c-tests/geodeny/Geolocation_watchPosition_operation_failed-manual.html</test_script_entry>
+          <test_script_entry>/opt/tct-geodeny-w3c-tests/geodeny/bdd/Geolocation_watchPosition_operation_failed-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-geodeny-w3c-tests/w3c-geodeny-app/testscripts/Geolocation_watchPosition_operation_failed.feature</bdd_test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="Geolocation" section="Location" specification="Geolocation API Specification" usage="true" />
+            <spec_assertion category="Tizen W3C API Specifications" interface="Geolocation" section="Location" specification="Geolocation API Specification" usage="true"/>
             <spec_url>http://www.w3.org/TR/2012/PR-geolocation-API-20120510/#geolocation</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Location/Geolocation API Specification" execution_type="manual" id="errorcallback_PERMISSION_DENIED" priority="P3" purpose="Check if error callback is called with correct code" status="approved" type="compliance">
         <description>
           <pre_condition>disable GPS and network</pre_condition>
-          <post_condition />
+          <post_condition/>
           <steps>
             <step order="1">
               <step_desc>If prompts for permission to use geolocation, please decline</step_desc>
               <expected>Pass</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/tct-geodeny-w3c-tests/geodeny/w3c/t-manual.html?00001</test_script_entry>
+          <test_script_entry>/opt/tct-geodeny-w3c-tests/geodeny/w3c/bdd/t-manual.html?00001</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-geodeny-w3c-tests/w3c-geodeny-app/testscripts/t.feature</bdd_test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="Geolocation" section="Location" specification="Geolocation API Specification" usage="true" />
+            <spec_assertion category="Tizen W3C API Specifications" interface="Geolocation" section="Location" specification="Geolocation API Specification" usage="true"/>
             <spec_url>http://www.w3.org/TR/2012/PR-geolocation-API-20120510/#security</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
