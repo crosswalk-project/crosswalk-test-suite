@@ -417,3 +417,13 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, clearFormData methods
+
+
+
+### 41. The [XWalkViewWithDisableLongClickAsync](XWalkViewWithDisableLongClickAsync.java) sample check whether setOnLongClickListener method work as same as WebView, include:
+
+* setOnLongClickListener can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setOnLongClickListener, setLongClickable methods
