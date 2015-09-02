@@ -44,7 +44,18 @@
             "blacklist": [],
             "copylist": {
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-geoallow-app/testscripts/environment.py",
+                "w3c-geoallow-app/testscripts": "HOST_RESOURCES/w3c-geoallow-app/testscripts"
+            },
+            "subapp-list": {
+                "w3c-geoallow-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../geoallow/w3c/bdd": "geoallow/w3c/bdd"
+                    }
+                }
             }
         },
         "wgt": {
