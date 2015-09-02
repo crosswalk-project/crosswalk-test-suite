@@ -68,6 +68,13 @@ public class ResourceAndUIClientsActivityAsync extends Activity implements XWalk
             Log.d(TAG, "ClientCert Request:" + handler);
             super.onReceivedClientCertRequest(view, handler);
         }
+
+        public void doUpdateVisitedHistory(XWalkView view, String url,
+                boolean isReload) {
+            // TODO Auto-generated method stub
+            Log.d(TAG, "doUpdateVisitedHistory url: " + url + "isReload: "+isReload);
+            super.doUpdateVisitedHistory(view, url, isReload);
+        }
     }
 
     class UIClient extends XWalkUIClient {
