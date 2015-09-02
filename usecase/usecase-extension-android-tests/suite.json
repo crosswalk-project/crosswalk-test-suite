@@ -1,0 +1,28 @@
+{
+    "pkg-blacklist": [
+        "pack.py",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "apk": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.apk.py": "inst.py",
+            },
+            "subapp-list": {
+                "xwalk-echo-app": {
+                    "app-name": "xwalk-echo-app",
+                    "app-type": "EMBEDDINGAPI",
+                    "embeddingapi-library-name": "crosswalk/template/libs/xwalk_app_runtime_java.jar"
+                }
+            }
+        },
+        "apk-aio": {
+            "blacklist": []
+        }
+    },
+    "pkg-name": "usecase-extension-android-tests"
+}
