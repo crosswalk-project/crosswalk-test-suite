@@ -17,6 +17,7 @@ arch="x86"
 pack_mode="embedded"
 sub_version="3.6"
 crosswalk_version=""
+crosswalk_branch=""
 while getopts a:t:m:d:v: o
 do
     case "$o" in
@@ -34,6 +35,12 @@ main_version=$(cat ../../VERSION | awk 'NR==2')
 for((i=1;i<=4;i++)) 
 do
     crosswalk_version=$(echo $main_version|cut -d "\"" -f$i)
+done
+
+crosswalk_branch_tmp=$(cat ../../VERSION | awk 'NR==3')
+for((i=1;i<=4;i++)) 
+do
+    crosswalk_branch=$(echo $crosswalk_branch_tmp|cut -d "\"" -f$i)
 done
 
 rm -rf $dest_dir/$name-$version-$sub_version.$pack_type.zip
@@ -96,7 +103,11 @@ elif [ $pack_type == "cordova" ];then
         for plugin in `ls $BUILD_ROOT/cordova_plugins`
         do
             if [ $plugin == "cordova-plugin-crosswalk-webview" ]; then
-                cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable XWALK_VERSION="$crosswalk_version" --variable XWALK_MODE="$pack_mode"
+                if [ $crosswalk_branch == "beta" ]; then
+                    cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable CROSSWALK_ANDROID_VERSION="org.xwalk:xwalk_core_library_beta:$crosswalk_version" --variable LIB_MODE="$pack_mode"
+                else
+                    cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable CROSSWALK_ANDROID_VERSION="$crosswalk_version" --variable LIB_MODE="$pack_mode"
+                fi
             else
                 cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
             fi
