@@ -3,16 +3,6 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="webapi-deviceadaptation-css3-tests">
     <set name="CSSDeviceAdaptation" type="js">
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Device Adaptation" execution_type="manual" id="orientation_landscape" purpose="Test checks that the document should be locked to landscape presentation">
-        <description>
-          <test_script_entry>/opt/webapi-deviceadaptation-css3-tests/deviceadaptation/orientation_landscape-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Device Adaptation" execution_type="manual" id="orientation_portrait" purpose="Test checks that the document should be locked to portrait presentation">
-        <description>
-          <test_script_entry>/opt/webapi-deviceadaptation-css3-tests/deviceadaptation/orientation_portrait-manual.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Device Adaptation" execution_type="manual" id="user-zoom_fixed" purpose="Test checks that the user cannot interactively change the zoom factor">
         <description>
           <test_script_entry>/opt/webapi-deviceadaptation-css3-tests/deviceadaptation/user-zoom_fixed-manual.html</test_script_entry>
@@ -97,6 +87,34 @@
         <description>
           <test_script_entry>/opt/webapi-deviceadaptation-css3-tests/deviceadaptation/width_one_value-manual.html</test_script_entry>
         </description>
+      </testcase>
+    </set>
+    <set name="deviceadaptation-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Device Adaptation" execution_type="manual" id="orientation_landscape" purpose="Test checks that the document should be locked to landscape presentation">
+        <description>
+          <test_script_entry>/opt/webapi-deviceadaptation-css3-tests/deviceadaptation/orientation_landscape-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/webapi-deviceadaptation-css3-tests/css3-deviceadaptation-app/testscripts/orientation_landscape.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="orientation" element_type="property" interface="CSS" section="Responsive Design" specification="CSS Device Adaptation" />
+            <spec_url>http://dev.w3.org/csswg/css-device-adapt/</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Device Adaptation" execution_type="manual" id="orientation_portrait" purpose="Test checks that the document should be locked to portrait presentation">
+        <description>
+          <test_script_entry>/opt/webapi-deviceadaptation-css3-tests/deviceadaptation/orientation_portrait-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/webapi-deviceadaptation-css3-tests/css3-deviceadaptation-app/testscripts/orientation_portrait.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="orientation" element_type="property" interface="CSS" section="Responsive Design" specification="CSS Device Adaptation" />
+            <spec_url>http://dev.w3.org/csswg/css-device-adapt/</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
       </testcase>
     </set>
   </suite>
