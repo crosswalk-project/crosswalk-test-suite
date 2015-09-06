@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Apptools_SampleApp_Gallery_Build_Arm</title>
+    <title>Crosswalk_Apptools_SampleApp_Gallery_Build_Windows</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -49,26 +49,19 @@ Authors:
     <ol>
       <li>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it</br>
         Then run below commands under apptools-sampleapp-tests/tools/ directory:</br>
-        On Android: <br/>
-        &nbsp; &nbsp; $ crosswalk-app create com.example.gallery</br>
-        &nbsp; &nbsp; $ cd com.example.gallery</br>
-        &nbsp; &nbsp; $ git clone https://github.com/blueimp/Gallery.git</br>
-        &nbsp; &nbsp; $ mv Gallery/* app/</br>
-        &nbsp; &nbsp; $ crosswalk-app build</br>
-        On Windows: <br/>
-        &nbsp; &nbsp; $ node %crosswalk-app% create com.example.gallery</br>
-        &nbsp; &nbsp; $ cd com.example.gallery</br>
-        &nbsp; &nbsp; $ git clone https://github.com/blueimp/Gallery.git</br>
-        &nbsp; &nbsp; $ xcopy /s /e /i /y Gallery\* app\</br>
-        &nbsp; &nbsp; $ node %crosswalk-app% build
+        $ node %crosswalk-app% create com.example.gallery --platforms=windows --windows-crosswalk=<path to xwalk win zip></br>
+        $ cd com.example.gallery</br>
+        $ git clone https://github.com/blueimp/Gallery.git</br>
+        $ xcopy /s /e /i /y Gallery\* app\</br>
+        $ node %crosswalk-app% build
       </li>
-      <li>Install arm gallery app on your android device which is "arm" architecture</li>
-      <li>Check icon of gallery app in your android device</li>
-      <li>Launch gallery app in your android device</li>
+      <li>Install gallery app on windows</li>
+      <li>Find gallery app on windows</li>
+      <li>Launch gallery app on windows</li>
       <li>Check the homepage of gallery app</li>
       <li>Uninstall the app when it is running</li>
-      <li>Install and launch the gallery app again. Close gallery app via clicking the home button, and kill gallery app from Task Manager</li>
-      <li>Long press the icon of gallery app to uninstall it</li>
+      <li>Install and launch the gallery app again. Close gallery app via clicking the close button, and kill gallery app from Task Manager</li>
+      <li>Uninstall gallery app on windows</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
