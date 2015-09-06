@@ -287,6 +287,81 @@
           <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Gallery_AppFunction_iOS.html </test_script_entry>
         </description>
       </testcase>
+      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_Build_Windows" priority="P1" purpose="Validate if sample app Gallery can be built on windows" status="approved" type="compliance" platform="windows">
+        <description>
+          <pre_condition>
+            1. Please refer to README file.
+          </pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it
+                Then run below commands under apptools-sampleapp-tests/tools/ directory:
+                $ node %crosswalk-app% create com.example.gallery --platforms=windows --windows-crosswalk=path to xwalk win zip
+                $ cd com.example.gallery
+                $ git clone https://github.com/blueimp/Gallery.git
+                $ xcopy /s /e /i /y Gallery\* app\
+                $ node %crosswalk-app% build
+              </step_desc>
+              <expected>Success to create/build com.example.gallery</expected>
+            </step>
+            <step order="2">
+              <step_desc>Install gallery app on windows</step_desc>
+              <expected>Install the gallery app successfully</expected>
+            </step>
+            <step order="3">
+              <step_desc>Find gallery app on windows</step_desc>
+              <expected>Find the gallery app successfully</expected>
+            </step>
+            <step order="4">
+              <step_desc>Launch gallery app on windows</step_desc>
+              <expected>Launch the gallery app successfully</expected>
+            </step>
+            <step order="5">
+              <step_desc>Check the homepage of gallery app</step_desc>
+              <expected>You can see Gallery UI on the device</expected>
+            </step>
+            <step order="6">
+              <step_desc>Uninstall the app when it is running</step_desc>
+              <expected>Unistall the gallery app successfully when the app running</expected>
+            </step>
+            <step order="7">
+              <step_desc>Install and launch the gallery app again. Close gallery app via clicking the close button, and kill gallery app from Task Manager</step_desc>
+              <expected>Stop the gallery app successfully</expected>
+            </step>
+            <step order="8">
+              <step_desc>Uninstall gallery app on windows</step_desc>
+              <expected>Unistall the gallery app successfully</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Gallery_Build_Windows.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_AppFunction_Windows" priority="P1" purpose="Validate if sample app Gallery function could work well on windows" status="approved" type="compliance" platform="ios">
+        <description>
+          <pre_condition>
+            1. Make sure the Gallery webapp is launched on windows, and need a good network that can access google server.
+          </pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Check the display of "Carousel image gallery" from Gallery UI</step_desc>
+              <expected>"Carousel image gallery" should display image with auto slides show in section 1 , click next/previous button to navigate to different image</expected>
+            </step>
+            <step order="2">
+              <step_desc>Check the display of "Carousel video gallery" from Gallery UI</step_desc>
+              <expected>"Carousel video gallery" should display video preview in slides show, could play video, could click next/previous button to navigation</expected>
+            </step>
+            <step order="3">
+              <step_desc>Check the display of "Lightbox image gallery" from Gallery UI</step_desc>
+              <expected>"Lightbox image gallery" should display image thumbnail in lightbox, could display orignial image when click 1 thumbnail</expected>
+            </step>
+            <step order="4">
+              <step_desc>Check every button from Gallery UI</step_desc>
+              <expected>All button and function works well</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Gallery_AppFunction_Windows.html </test_script_entry>
+        </description>
+      </testcase>
     </set>
   </suite>
 </test_definition>
