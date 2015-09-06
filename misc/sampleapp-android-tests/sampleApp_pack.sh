@@ -51,7 +51,6 @@ if [ -z $SDK_VERSION ];then
     exit 1
 fi
 
-#export https_proxy=https://proxy.cd.intel.com:911/
 
 update_code(){
 
@@ -133,9 +132,6 @@ build_apk(){
     
     #Simd:
     python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.simd --manifest=$ROOT_DIR/crosswalk-demos/simd-mandelbrot/manifest.json --app-versionCode=1 --mode=$1 --arch=$2  --enable-remote-debugging
-    
-    #Sysapps
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.sysapps --manifest=$ROOT_DIR/crosswalk-demos/SysApps_DeviceCapabilities/src/manifest.json --mode=$1 --arch=$2 --enable-remote-debugging
     
     #Webrtc
     python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.webrtc --manifest=$ROOT_DIR/crosswalk-demos/webrtc/client/manifest.json --mode=$1 --arch=$2 --enable-remote-debugging
