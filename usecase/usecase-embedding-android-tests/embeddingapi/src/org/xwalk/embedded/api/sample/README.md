@@ -454,3 +454,11 @@ This usecase covers following interface and methods:
 * XWalkView interface: load, setOnLongClickListener, setLongClickable methods
 
 
+
+### 44. The [XWalkWithOnReceivedLoadError](XWalkWithOnReceivedLoadError.java) sample check whether XWalkView change dialog of onReceivedLoadError to toast, include:
+
+* onReceivedLoadError can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, onReceivedLoadError methods

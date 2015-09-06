@@ -439,7 +439,21 @@
         </activity>
         <activity
             android:name=".BlankWindowForVisibilityTesting"
-            android:label="@string/title_activity_blank_window_for_visibility_testing" >
+            android:label="@string/title_activity_blank_window_for_visibility_testing"
+            android:parentActivityName=".XWalkEmbeddedAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity       
+            android:name=".XWalkWithOnReceivedLoadError"
+            android:label="XWalkWithOnReceivedLoadError"
+            android:parentActivityName=".XWalkEmbeddedAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
         </activity>
     </application>
 </manifest>
