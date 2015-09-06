@@ -624,9 +624,9 @@ def packCordova_cli(
                 os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
                 plugin_tool):
             return False
-    thirdparty_plugins = os.path.join(BUILD_ROOT, "thirdparty_plugins")
-    if os.path.exists(thirdparty_plugins):
-        if not doCopy(thirdparty_plugins, plugin_tool):
+    extra_plugins = os.path.join(BUILD_ROOT, "extra_plugins")
+    if os.path.exists(extra_plugins):
+        if not doCopy(extra_plugins, plugin_tool):
             return False
 
     orig_dir = os.getcwd()
@@ -743,9 +743,9 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
                 os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
                 plugin_tool):
             return False
-    thirdparty_plugins = os.path.join(BUILD_ROOT, "thirdparty_plugins")
-    if os.path.exists(thirdparty_plugins):
-        if not doCopy(thirdparty_plugins, plugin_tool):
+    extra_plugins = os.path.join(BUILD_ROOT, "extra_plugins")
+    if os.path.exists(extra_plugins):
+        if not doCopy(extra_plugins, plugin_tool):
             return False
 
     orig_dir = os.getcwd()

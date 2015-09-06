@@ -347,6 +347,7 @@ This usecase covers following interface and methods:
 * XWalkView interface: onOverScrolled method
 
 
+
 ### 33. The [AcceptFileSchemeCookiesActivity](AcceptFileSchemeCookiesActivity.java) sample check whether XWalkCookieManager can set AcceptFileSchemeCookies, include:
 
 * XWalkCookieManager apis can work
@@ -354,6 +355,7 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkCookieManager interface: setAcceptFileSchemeCookies, allowFileSchemeCookies methods
+
 
 
 ### 34. The [XWalkViewWithOnTouchEvent](XWalkViewWithOnTouchEvent.java) sample check whether onTouchEvent method work as same as WebView, include:
@@ -365,6 +367,7 @@ This usecase covers following interface and methods:
 * XWalkView interface: onTouchEvent method
 
 
+
 ### 35. The [XWalkViewWithOverScrollBy](XWalkViewWithOverScrollBy.java) sample check whether overScrollBy method work as same as WebView, include:
 
 * overScrollBy can be override
@@ -374,6 +377,7 @@ This usecase covers following interface and methods:
 * XWalkView interface: overScrollBy method
 
 
+
 ### 36. The [XWalkViewWithFocusChanged](XWalkViewWithFocusChanged.java) sample check whether onFocusChanged method work as same as WebView, include:
 
 * onFocusChanged can be override
@@ -381,6 +385,7 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onFocusChanged method
+
 
 
 ### 37. The [XWalkViewWithScrollChanged](XWalkViewWithScrollChanged.java) sample check whether onScrollChanged method work as same as WebView, include:
@@ -399,6 +404,7 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onSizeChanged method
+
 
 
 ### 39. The [XWalkViewWithVisibilityChanged](XWalkViewWithVisibilityChanged.java) sample check whether onVisibilityChanged method work as same as WebView, include:
@@ -426,3 +432,25 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onWindowVisibilityChanged method
+
+
+### 42. The [XWalkWithClearFormData](XWalkWithClearFormData.java) sample check whether clearFormData method work as same as WebView, include:
+
+* clearFormData can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, clearFormData methods
+
+
+
+
+### 43. The [XWalkViewWithDisableLongClick](XWalkViewWithDisableLongClick.java) sample check whether setOnLongClickListener method work as same as WebView, include:
+
+* setOnLongClickListener can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setOnLongClickListener, setLongClickable methods
+
+

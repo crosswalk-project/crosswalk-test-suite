@@ -46,7 +46,20 @@
             "blacklist": [],
             "copylist": {
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-geodeny-app/testscripts/environment.py",
+                "w3c-geodeny-app/testscripts": "HOST_RESOURCES/w3c-geodeny-app/testscripts"
+            },
+            "subapp-list": {
+                "w3c-geodeny-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../geodeny/w3c/bdd": "geodeny/w3c/bdd",
+                        "../geodeny/bdd": "geodeny/bdd",
+                        "PACK-TOOL-ROOT/resources/testharness": "resources"
+                    }
+                }
             }
         },
         "wgt": {

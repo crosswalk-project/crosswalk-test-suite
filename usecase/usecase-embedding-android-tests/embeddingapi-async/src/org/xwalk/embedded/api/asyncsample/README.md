@@ -317,6 +317,7 @@ This usecase covers following interface and methods:
 * XWalkView interface: dispatchDraw methods
 
 
+
 ### 30. The [CookieManagerTestActivityAsync](CookieManagerTestActivityAsync.java) sample check whether XWalkCookieManager apis can work, include:
 
 * XWalkCookieManager apis can work
@@ -325,6 +326,7 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load method
 * XWalkCookieManager interface: setAcceptCookie, acceptCookie, setCookie, getCookie, removeSessionCookie, removeAllCookie, hasCookies, removeExpiredCookie, flushCookieStore
+
 
 
 ### 31. The [XWalkViewWithOnDrawAsync](XWalkViewWithOnDrawAsync.java) sample check whether onDraw method work as same as WebView, include:
@@ -346,6 +348,7 @@ This usecase covers following interface and methods:
 * XWalkView interface: onOverScrolled methods
 
 
+
 ### 33. The [AcceptFileSchemeCookiesActivityAsync](AcceptFileSchemeCookiesActivityAsync.java) sample check whether XWalkCookieManager can set AcceptFileSchemeCookies, include:
 
 * XWalkCookieManager apis can work
@@ -354,6 +357,8 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: onDraw method
 * XWalkCookieManager interface: setAcceptFileSchemeCookies, allowFileSchemeCookies methods
+
+
 
 ### 34. The [XWalkViewWithOnTouchEventAsync](XWalkViewWithOnTouchEventAsyc.java) sample check whether onTouchEvent method work as same as WebView, include:
 
@@ -374,6 +379,7 @@ This usecase covers following interface and methods:
 * XWalkView interface: onFocusChanged method
 
 
+
 ### 37. The [XWalkViewWithScrollChangedAsync](XWalkViewWithScrollChangedAsync.java) sample check whether onScrollChanged method work as same as WebView, include:
 
 * onScrollChanged can be override
@@ -381,6 +387,7 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onScrollChanged method
+
 
 
 ### 38. The [XWalkViewWithSizeChangedAsync](XWalkViewWithSizeChangedAsync.java) sample check whether onSizeChanged method work as same as WebView, include:
@@ -392,6 +399,7 @@ This usecase covers following interface and methods:
 * XWalkView interface: onSizeChanged method
 
 
+
 ### 39. The [XWalkViewWithVisibilityChangedAsync](XWalkViewWithVisibilityChangedAsync.java) sample check whether onVisibilityChanged method work as same as WebView, include:
 
 * onVisibilityChanged can be override
@@ -399,7 +407,6 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onVisibilityChanged method
-
 
 
 ### 40. The [XWalkViewWithWindowFocusChangedAsync](XWalkViewWithWindowFocusChangedAsync.java) sample check whether onWindowFocusChanged method work as same as WebView, include:
@@ -418,3 +425,23 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onWindowVisibilityChanged method
+
+
+### 42. The [XWalkWithClearFormDataAsync](XWalkWithClearFormDataAsync.java) sample check whether clearFormData method work as same as WebView, include:
+
+* clearFormData can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, clearFormData methods
+
+
+
+### 43. The [XWalkViewWithDisableLongClickAsync](XWalkViewWithDisableLongClickAsync.java) sample check whether setOnLongClickListener method work as same as WebView, include:
+
+* setOnLongClickListener can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setOnLongClickListener, setLongClickable methods
+
