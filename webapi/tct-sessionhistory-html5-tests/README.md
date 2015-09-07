@@ -1,3 +1,5 @@
+# HTML5 Session History Test Suite
+
 ## Introduction
 
 This test suite is for checking compliance with HTML5 Session History specification:
@@ -10,6 +12,7 @@ Make sure the device under testing (DUT) is connected to network.
 ## Authors:
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
