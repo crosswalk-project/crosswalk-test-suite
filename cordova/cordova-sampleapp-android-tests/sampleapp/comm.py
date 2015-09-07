@@ -30,17 +30,25 @@
 #         Cici,Li<cici.x.li@intel.com>
 #         Lin, Wanming <wanming.lin@intel.com>
 
-import os, sys, commands, shutil, glob, fnmatch, re, json
+import os
+import sys
+import commands
+import shutil
+import glob
+import fnmatch
+import re
+import json
 reload(sys)
-sys.setdefaultencoding( "utf-8" )
+sys.setdefaultencoding("utf-8")
 script_path = os.path.realpath(__file__)
 const_path = os.path.dirname(script_path)
 tool_path = const_path + "/../tools/"
 plugin_tool = const_path + "/../tools/cordova-plugin-crosswalk-webview/"
 testapp_path = "/tmp/cordova-sampleapp/"
 
+
 def setUp():
-    global ARCH, MODE, CORDOVA_VERSION, device, CROSSWALK_VERSION
+    global ARCH, MODE, CORDOVA_VERSION, device, CROSSWALK_VERSION, CROSSWALK_BRANCH
 
     device = os.environ.get('DEVICE_ID')
 
@@ -55,7 +63,8 @@ def setUp():
     elif arch_tmp.strip("\n\t") == "x86":
         ARCH = "x86"
     else:
-        print (" get arch error, the content of arch.txt should be 'arm' or 'x86'\n")
+        print (
+            " get arch error, the content of arch.txt should be 'arm' or 'x86'\n")
         sys.exit(1)
     f_arch.close()
 
@@ -66,22 +75,26 @@ def setUp():
     elif mode_tmp.strip("\n\t") == "embedded":
         MODE = "embedded"
     else:
-        print (" get mode error, the content of mode.txt should be 'shared' or 'embedded'\n")
+        print (
+            " get mode error, the content of mode.txt should be 'shared' or 'embedded'\n")
         sys.exit(1)
     f_mode.close()
 
     f_version = open(const_path + "/../cordova-version", 'r')
     if f_version.read().strip("\n\t") != "3.6":
-        CORDOVA_VERSION = "4.0"
+        CORDOVA_VERSION = "4.x"
     else:
         CORDOVA_VERSION = "3.6"
     f_version.close()
 
-    with open(const_path + "/../VERSION", "rt") as pkg_version_file:
-        pkg_version_raw = pkg_version_file.read()
-        pkg_version_file.close()
-        pkg_version_json = json.loads(pkg_version_raw)
-        CROSSWALK_VERSION = pkg_version_json["main-version"]
+    if CORDOVA_VERSION == "4.x":
+        with open(const_path + "/../VERSION", "rt") as pkg_version_file:
+            pkg_version_raw = pkg_version_file.read()
+            pkg_version_file.close()
+            pkg_version_json = json.loads(pkg_version_raw)
+            CROSSWALK_VERSION = pkg_version_json["main-version"]
+            CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
+
 
 def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
     os.chdir(tool_path)
@@ -89,11 +102,12 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         print "Existing %s project, try to clean up..." % appname
         do_remove(glob.glob(os.path.join(tool_path, appname)))
     print "Create project %s ----------------> START" % appname
-    if CORDOVA_VERSION == "4.0":
+    if CORDOVA_VERSION == "4.x":
         cmd = "cordova create %s %s %s" % (appname, pkgname, appname)
     else:
         if mode == "shared":
-            cmd = "cordova/bin/create %s %s %s --xwalk-shared-library" % (appname, pkgname, appname)
+            cmd = "cordova/bin/create %s %s %s --xwalk-shared-library" % (
+                appname, pkgname, appname)
         else:
             cmd = "cordova/bin/create %s %s %s" % (appname, pkgname, appname)
     createstatus = commands.getstatusoutput(cmd)
@@ -102,16 +116,16 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
     result = commands.getstatusoutput("ls")
     self.assertIn(appname, result[1])
     project_root = os.path.join(tool_path, appname)
-    if CORDOVA_VERSION == "4.0":
+    if CORDOVA_VERSION == "4.x":
         os.chdir(project_root)
-        if not replace_key(os.path.join(project_root, 'config.xml'), 
-                '<widget android-activityName="%s"' % appname, '<widget'):
-           print "replace key '<widget' failed."
-           return False
-        if not replace_key(os.path.join(project_root, 'config.xml'), 
-                '    <allow-navigation href="*" />\n</widget>', '</widget>'):
-           print "replace key '</widget>' failed."
-           return False
+        if not replace_key(os.path.join(project_root, 'config.xml'),
+                           '<widget android-activityName="%s"' % appname, '<widget'):
+            print "replace key '<widget' failed."
+            return False
+        if not replace_key(os.path.join(project_root, 'config.xml'),
+                           '    <allow-navigation href="*" />\n</widget>', '</widget>'):
+            print "replace key '</widget>' failed."
+            return False
 
         print "Add android platforms to this project --------------> START"
         cordova_platform_cmd = "cordova platform add android"
@@ -119,11 +133,14 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         self.assertEquals(0, platformstatus[0])
 
         print "Install Crosswalk WebView Plugin --------------> START"
-        plugin_install_webview = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" % (plugin_tool, CROSSWALK_VERSION)
-        if mode == "shared":
-            plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"shared\""
+        version_cmd = ""
+        if CROSSWALK_BRANCH == "beta":
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
         else:
-            plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedd\""
+            version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
+
+        plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
+                % (plugin_tool, version_cmd, mode)
 
         pluginstatus = commands.getstatusoutput(plugin_install_cmd)
         self.assertEquals(0, pluginstatus[0])
@@ -140,7 +157,11 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
             do_copy(sourcecodepath, os.path.join(tool_path, appname, "www"))
     else:
         if replace_index_list is not None and len(replace_index_list) >= 2:
-            index_file_path = os.path.join(project_root, "assets", "www", "index.html")
+            index_file_path = os.path.join(
+                project_root,
+                "assets",
+                "www",
+                "index.html")
             key = replace_index_list[0]
             content = replace_index_list[1]
             if not replace_key(index_file_path, content, key):
@@ -148,13 +169,19 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
                 return False
         if sourcecodepath is not None:
             do_remove(glob.glob(os.path.join(project_root, "assets", "www")))
-            do_copy(sourcecodepath, os.path.join(tool_path, appname, "assets", "www"))
+            do_copy(
+                sourcecodepath,
+                os.path.join(
+                    tool_path,
+                    appname,
+                    "assets",
+                    "www"))
 
 
 def build(appname, isDebug, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Build project %s ----------------> START" % appname
-    if CORDOVA_VERSION == "4.0":
+    if CORDOVA_VERSION == "4.x":
         cmd = "cordova build android"
         if isDebug == True:
             print "build debug app"
@@ -168,8 +195,16 @@ def build(appname, isDebug, self):
     buildstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, buildstatus[0])
     print "\nBuild project %s ----------------> OK\n" % appname
-    if CORDOVA_VERSION == "4.0":
-        os.chdir(os.path.join(tool_path, appname, "platforms", "android", "build", "outputs", "apk"))
+    if CORDOVA_VERSION == "4.x":
+        os.chdir(
+            os.path.join(
+                tool_path,
+                appname,
+                "platforms",
+                "android",
+                "build",
+                "outputs",
+                "apk"))
     else:
         os.chdir(os.path.join(tool_path, appname, "bin"))
     result = commands.getstatusoutput("ls")
@@ -180,18 +215,20 @@ def build(appname, isDebug, self):
     else:
         self.assertIn(appname, result[1])
 
+
 def run(appname, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Run project %s ----------------> START" % appname
-    if CORDOVA_VERSION == "4.0":
-       cmd = "cordova run android"
+    if CORDOVA_VERSION == "4.x":
+        cmd = "cordova run android"
     else:
-       cmd = "./cordova/run"
+        cmd = "./cordova/run"
     print cmd
     runstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, runstatus[0])
     self.assertIn("LAUNCH SUCCESS", runstatus[1])
     print "\nRun project %s ----------------> OK\n" % appname
+
 
 def app_install(appname, pkgname, self):
     print "Install APK ----------------> START"
@@ -205,19 +242,17 @@ def app_install(appname, pkgname, self):
     print "Install APK ----------------> OK"
     self.assertTrue(check_app_installed(pkgname, self))
 
-def iterfindfiles(path, fnexp):
-    for root, dirs, files in os.walk(path):
-        for filename in fnmatch.filter(files, fnexp):
-            yield os.path.join(root, filename)
 
 def checkContains(origin_str=None, key_str=None):
     if origin_str.upper().find(key_str.upper()) >= 0:
         return True
     return False
 
+
 def check_app_installed(pkgname, self):
     print "Check if app is installed ----------------> START"
-    cmd_find = "adb -s " + device + " shell pm list packages |grep %s" % pkgname
+    cmd_find = "adb -s " + device + \
+        " shell pm list packages |grep %s" % pkgname
     pmstatus = commands.getstatusoutput(cmd_find)
     if pmstatus[0] == 0:
         print "App is installed."
@@ -226,14 +261,17 @@ def check_app_installed(pkgname, self):
         print "App is uninstalled."
         return False
 
+
 def app_launch(appname, pkgname, self):
-    print "Launch APK ----------------> START" 
+    print "Launch APK ----------------> START"
     cmd = "adb -s " + device + " shell am start -n %s/.%s" % (pkgname, appname)
     launchstatus = commands.getstatusoutput(cmd)
     self.assertNotIn("error", launchstatus[1].lower())
     print "Launch APK ----------------> OK"
 
 # Find whether the app have launched
+
+
 def check_app_launched(pkgname, self):
     cmd_acti = "adb -s " + device + " shell ps | grep %s" % pkgname
     launched = commands.getstatusoutput(cmd_acti)
@@ -244,6 +282,7 @@ def check_app_launched(pkgname, self):
         print "App is have launched."
         return True
 
+
 def app_stop(pkgname, self):
     print "Stop APK ----------------> START"
     cmd = "adb -s " + device + " shell am force-stop %s" % pkgname
@@ -251,12 +290,14 @@ def app_stop(pkgname, self):
     self.assertEquals(0, stopstatus[0])
     print "Stop APK ----------------> OK"
 
+
 def app_uninstall(pkgname, self):
     print "Uninstall APK ----------------> START"
     cmd_uninst = "adb -s " + device + " uninstall %s" % (pkgname)
     unistatus = commands.getstatusoutput(cmd_uninst)
     self.assertEquals(0, unistatus[0])
     print "Uninstall APK ----------------> OK"
+
 
 def replace_key(file_path, content, key):
     print "Replace value ----------------> START"
@@ -274,6 +315,7 @@ def replace_key(file_path, content, key):
         return False
     print "Replace value ----------------> OK"
     return True
+
 
 def do_remove(target_file_list=None):
     for i_file in target_file_list:
@@ -304,6 +346,7 @@ def do_copy(src_item=None, dest_item=None):
 
     return True
 
+
 def overwriteCopy(src, dest, symlinks=False, ignore=None):
     if not os.path.exists(dest):
         os.makedirs(dest)
@@ -329,4 +372,3 @@ def overwriteCopy(src, dest, symlinks=False, ignore=None):
             overwriteCopy(s_path, d_path, symlinks, ignore)
         else:
             shutil.copy2(s_path, d_path)
-

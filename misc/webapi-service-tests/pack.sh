@@ -4,7 +4,7 @@ SRC_ROOT=$(cd $(dirname $0);pwd)
 BUILD_ROOT=/tmp/${name}-${path_flag}_pack
 BUILD_DEST=/tmp/${name}-${path_flag}
 
-usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.0>]
+usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.x>]
 [-t apk] option was set as default.
 [-a x86] option was set as default.
 [-m embedded] option was set as default.
@@ -16,6 +16,8 @@ pack_type="apk"
 arch="x86"
 pack_mode="embedded"
 sub_version="3.6"
+crosswalk_version=""
+crosswalk_branch=""
 while getopts a:t:m:d:v: o
 do
     case "$o" in
@@ -27,6 +29,18 @@ do
     *) echo "$usage"
        exit 1;;
     esac
+done
+
+main_version=$(cat ../../VERSION | awk 'NR==2')
+for((i=1;i<=4;i++)) 
+do
+    crosswalk_version=$(echo $main_version|cut -d "\"" -f$i)
+done
+
+crosswalk_branch_tmp=$(cat ../../VERSION | awk 'NR==3')
+for((i=1;i<=4;i++)) 
+do
+    crosswalk_branch=$(echo $crosswalk_branch_tmp|cut -d "\"" -f$i)
 done
 
 rm -rf $dest_dir/$name-$version-$sub_version.$pack_type.zip
@@ -43,15 +57,15 @@ clean_workspace
 mkdir -p $BUILD_ROOT $BUILD_DEST
 
 if [ $pack_type == "cordova" ]; then
-    for list in $LIST; do
-        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST -s $SRC_ROOT/../../webapi/$list
+    for list in $LIST;do
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/$list
         if [ -d $BUILD_DEST/opt/$list/HOST_RESOURCES ]; then
             mkdir -p $BUILD_ROOT/opt/$name/opt/$list
             mv $BUILD_DEST/opt/$list/HOST_RESOURCES/* $BUILD_ROOT/opt/$name/opt/$list
         fi
     done
 else
-    for list in $LIST; do
+    for list in $LIST;do
         python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST -s $SRC_ROOT/../../webapi/$list
         if [ -d $BUILD_DEST/opt/$list/HOST_RESOURCES ]; then
             mkdir -p $BUILD_ROOT/opt/$name/opt/$list
@@ -78,7 +92,7 @@ if [ $pack_type == "apk" ];then
     cd $BUILD_ROOT/crosswalk
     python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_ROOT/icon.png --mode=$pack_mode --arch=$arch --enable-remote-debugging
 elif [ $pack_type == "cordova" ];then
-    if [ $sub_version == "4.0" ]; then
+    if [ $sub_version == "4.x" ]; then
         cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
         cd $BUILD_ROOT
         cordova create $appname org.xwalk.$appname $appname
@@ -88,7 +102,15 @@ elif [ $pack_type == "cordova" ];then
         cordova platform add android
         for plugin in `ls $BUILD_ROOT/cordova_plugins`
         do
-            cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
+            if [ $plugin == "cordova-plugin-crosswalk-webview" ]; then
+                if [ $crosswalk_branch == "beta" ]; then
+                    cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable CROSSWALK_ANDROID_VERSION="org.xwalk:xwalk_core_library_beta:$crosswalk_version" --variable LIB_MODE="$pack_mode"
+                else
+                    cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable CROSSWALK_ANDROID_VERSION="$crosswalk_version" --variable LIB_MODE="$pack_mode"
+                fi
+            else
+                cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
+            fi
         done
 
         cd $BUILD_ROOT/$appname/www
@@ -136,7 +158,7 @@ EOF
 
         ./cordova/build
     else
-        echo "package sub version can only be 3.6 or 4.0, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        echo "package sub version can only be 3.6 or 4.x, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         clean_workspace
         exit 1
     fi
@@ -154,9 +176,9 @@ cp $SRC_ROOT/inst.py $BUILD_ROOT/opt/$name/inst.py
 
 for list in $LIST;do
     suite=`basename $list`
-    cp $SRC_ROOT/../../webapi/$list/tests.xml  $BUILD_ROOT/opt/$name/$suite.tests.xml
+    cp $SRC_ROOT/../../../crosswalk-test-suite/webapi/$list/tests.xml  $BUILD_ROOT/opt/$name/$suite.tests.xml
     sed -i "s/<suite/<suite widget=\"$name\"/g" $BUILD_ROOT/opt/$name/$suite.tests.xml
-    cp $SRC_ROOT/../../webapi/$list/tests.full.xml  $BUILD_ROOT/opt/$name/$suite.tests.full.xml
+    cp $SRC_ROOT/../../../crosswalk-test-suite/webapi/$list/tests.full.xml  $BUILD_ROOT/opt/$name/$suite.tests.full.xml
     sed -i "s/<suite/<suite widget=\"$name\"/g" $BUILD_ROOT/opt/$name/$suite.tests.full.xml
 done
 
@@ -172,7 +194,7 @@ elif [ $pack_type == "cordova" ];then
         if [ -f $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk ];then
             mv $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk $BUILD_ROOT/opt/$name/$appname.apk
         fi
-    elif [ $sub_version == "4.0" ]; then
+    elif [ $sub_version == "4.x" ]; then
         if [ $arch == 'x86' ]; then
             if [ -f $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-x86-debug.apk ];then
                 mv $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-x86-debug.apk $BUILD_ROOT/opt/$name/$appname.apk
