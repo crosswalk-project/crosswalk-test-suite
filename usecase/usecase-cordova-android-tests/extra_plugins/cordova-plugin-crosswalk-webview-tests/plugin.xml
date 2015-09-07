@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-crosswalk-webview-tests" version="0.1.1" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <name>Crosswalk WebView Test</name>
+    <description>Crosswalk Webview test Plugin for Android</description>
+    <license>MIT</license>
+    <keywords>cordova,crosswalk,webview</keywords>
+    <repo></repo>
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    <js-module src="www/WebViewTest.js" name="webview">
+        <merges target="navigator.webview" />
+    </js-module>
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="WebViewTest">
+                <param name="android-package" value="org.crosswalk.webview.test.WebViewTest" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+        <source-file src="platforms/android/src/WebViewTest.java" target-dir="src/org/crosswalk/webview/test" />
+    </platform>
+</plugin>
