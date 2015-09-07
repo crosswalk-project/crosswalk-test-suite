@@ -3,6 +3,7 @@ package org.xwalk.embedded.api.sample;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +45,7 @@ public class XWalkViewWithWindowsVisibilityChanged extends XWalkActivity impleme
         mXWalkView.setMessageListener(this);
         mXWalkView.load("http://www.baidu.com", null);
         tv = (TextView)findViewById(R.id.windows_visibility_msg_label);
+        tv.setTextColor(Color.GREEN);
         thisActivity = this;
         hb = (Button)findViewById(R.id.new_win_button);
         hb.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +60,14 @@ public class XWalkViewWithWindowsVisibilityChanged extends XWalkActivity impleme
     @Override
     public void onMessageSent(String msg) {
         if(null != tv){
-            tv.setText(msg);
+            String combineMsg = tv.getText().toString();
+            if (0 == combineMsg.length()){
+                combineMsg = "onWindowVisibilityChanged is invoked, visibility:" + msg;
+            }else{
+                combineMsg += "->" + msg;
+            }
+
+            tv.setText(combineMsg);
         }
     }
 }

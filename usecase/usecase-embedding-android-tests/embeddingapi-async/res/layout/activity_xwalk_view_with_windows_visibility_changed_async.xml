@@ -16,14 +16,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/windows_visibility_msg_label"
-        android:layout_below="@+id/textView"/>
+        android:layout_below="@+id/new_win_button"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Open a new Window"
         android:id="@+id/new_win_button"
-        android:layout_below="@+id/windows_visibility_msg_label"
+        android:layout_below="@+id/textView"
         android:layout_alignParentStart="true" />
 
     <org.xwalk.embedded.api.asyncsample.WindowsVisibilityChangedXWalkView
@@ -31,7 +31,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/new_win_button">
+        android:layout_below="@+id/windows_visibility_msg_label">
     </org.xwalk.embedded.api.asyncsample.WindowsVisibilityChangedXWalkView>
 
 </RelativeLayout>

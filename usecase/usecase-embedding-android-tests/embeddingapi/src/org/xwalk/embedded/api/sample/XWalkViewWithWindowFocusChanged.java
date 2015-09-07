@@ -2,6 +2,7 @@ package org.xwalk.embedded.api.sample;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,7 @@ public class XWalkViewWithWindowFocusChanged extends XWalkActivity implements Me
         mXWalkView.setMessageListener(this);
         mXWalkView.load("http://www.baidu.com", null);
         tv = (TextView)findViewById(R.id.windows_focus_msg_label);
+        tv.setTextColor(Color.GREEN);
         thisActivity = this;
         hb = (Button)findViewById(R.id.popup_button);
         hb.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +47,8 @@ public class XWalkViewWithWindowFocusChanged extends XWalkActivity implements Me
             public void onClick(View v) {
                 new  AlertDialog.Builder(thisActivity)
                         .setTitle("New Window")
-                        .setMessage("New window is pop-up. \n\n" +
-                                "pls check if the invoking message is shown")
+                        .setMessage("New window is pop-up." +
+                                "Check if the invoking message is shown")
                         .setPositiveButton("confirm", null)
                         .show();
             }

@@ -42,7 +42,7 @@ public class WindowsVisibilityChangedXWalkView extends MessageInfoXWalkView {
                     visText = "GONE";
                     break;
             }
-            this.getMessageListener().onMessageSent("onWindowVisibilityChanged is invoked, visibility:" + visText);
+            this.getMessageListener().onMessageSent(visText);
         }
     }
 }
