@@ -13,6 +13,8 @@ It has these features:
 
 ## Pre-condition
 
+Install BeautifulSoup: sudo pip install BeautifulSoup
+
 There are third-party plugins needed for cordova usecase:
 * AdMob3.6: https://github.com/floatinghotpot/cordova-plugin-admob
 * AdMob4.x: https://github.com/floatinghotpot/cordova-admob-pro
