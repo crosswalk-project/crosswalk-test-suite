@@ -409,8 +409,25 @@ This usecase covers following interface and methods:
 * XWalkView interface: onVisibilityChanged method
 
 
+### 40. The [XWalkViewWithWindowFocusChangedAsync](XWalkViewWithWindowFocusChangedAsync.java) sample check whether onWindowFocusChanged method work as same as WebView, include:
 
-### 40. The [XWalkWithClearFormDataAsync](XWalkWithClearFormDataAsync.java) sample check whether clearFormData method work as same as WebView, include:
+* onWindowFocusChanged can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onWindowFocusChanged method
+
+
+### 41. The [XWalkViewWithWindowsVisibilityChangedAsync](XWalkViewWithWindowsVisibilityChangedAsync.java) sample check whether onWindowVisibilityChanged method work as same as WebView, include:
+
+* onWindowVisibilityChanged can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onWindowVisibilityChanged method
+
+
+### 42. The [XWalkWithClearFormDataAsync](XWalkWithClearFormDataAsync.java) sample check whether clearFormData method work as same as WebView, include:
 
 * clearFormData can work
 
@@ -420,10 +437,11 @@ This usecase covers following interface and methods:
 
 
 
-### 41. The [XWalkViewWithDisableLongClickAsync](XWalkViewWithDisableLongClickAsync.java) sample check whether setOnLongClickListener method work as same as WebView, include:
+### 43. The [XWalkViewWithDisableLongClickAsync](XWalkViewWithDisableLongClickAsync.java) sample check whether setOnLongClickListener method work as same as WebView, include:
 
 * setOnLongClickListener can work
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, setOnLongClickListener, setLongClickable methods
+

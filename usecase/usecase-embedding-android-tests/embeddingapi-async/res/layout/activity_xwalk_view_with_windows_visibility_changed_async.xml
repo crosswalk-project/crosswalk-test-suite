@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="org.xwalk.embedded.api.asyncsample.XWalkViewWithWindowsVisibilityChangedAsync">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="If onWindowVisibilityChanged is invoked, below will show the 'onWindowVisibilityChanged is invoked'
+        and the parameter list will be shown too once user clicking the button to open a new Window, and clicking 'Return' button back to this Activity.."
+        android:id="@+id/textView" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/windows_visibility_msg_label"
+        android:layout_below="@+id/new_win_button"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open a new Window"
+        android:id="@+id/new_win_button"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <org.xwalk.embedded.api.asyncsample.WindowsVisibilityChangedXWalkView
+        android:id="@+id/win_visibility_xwalk_view"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/windows_visibility_msg_label">
+    </org.xwalk.embedded.api.asyncsample.WindowsVisibilityChangedXWalkView>
+
+</RelativeLayout>
