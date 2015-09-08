@@ -29,11 +29,36 @@ Authors:
         Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
-
-<meta charset="utf-8">
-<title>Test</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<body style="background-color: red">
-  <div> This is a test simple</div>
-</body>
-
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        width: 100%;
+      }
+      #canvas {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        var CANVAS=document.getElementById("canvas");
+        var GL = CANVAS.getContext("webgl", {antialias: true});
+        GL.clearColor(1.0, 0.0, 0.0, 1.0);
+        GL.viewport(0.0, 0.0, CANVAS.width, CANVAS.height);
+        GL.clear(GL.COLOR_BUFFER_BIT);
+        GL.flush();
+      });
+    </script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+  </body>
+</html>
