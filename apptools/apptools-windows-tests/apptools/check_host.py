@@ -41,12 +41,12 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app check"
         (return_code, output) = comm.getstatusoutput(cmd)
         self.assertEquals(return_code, 0)
-        self.assertNotIn("ERROR:", output[0].split('target windows')[0])
+        self.assertNotIn("ERROR:", output[0].split('target windows')[1])
 
-    def test_check_host_android(self):
+    def test_check_host_windows(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app check android"
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app check windows"
         (return_code, output) = comm.getstatusoutput(cmd)
         self.assertEquals(return_code, 0)
         self.assertNotIn("ERROR:", output[0])
