@@ -43,7 +43,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         status = os.popen(cmd).readlines()
         self.assertEquals("ios", status[0].strip(" *\n"))
         self.assertEquals("android", status[1].strip(" *\n"))
-        self.assertEquals("windows", status[2].strip(" *\n"))
 
 if __name__ == '__main__':
     unittest.main()

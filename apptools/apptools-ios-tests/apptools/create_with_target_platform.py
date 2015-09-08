@@ -42,6 +42,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.XwalkPath)
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=ios"
         packstatus = commands.getstatusoutput(cmd)
+        os.chdir('org.xwalk.test')
+        buildcmd = comm.PackTools + "crosswalk-app build"
+        comm.build(self, buildcmd)
         comm.clear("org.xwalk.test")
         self.assertEquals(packstatus[0], 0)
 
@@ -50,14 +53,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.XwalkPath)
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=android"
         packstatus = commands.getstatusoutput(cmd)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(packstatus[0], 0)
-
-    def test_create_with_platform_windows(self):
-        comm.setUp()
-        os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=windows"
-        packstatus = commands.getstatusoutput(cmd)
+        os.chdir('org.xwalk.test')
+        buildcmd = comm.PackTools + "crosswalk-app build"
+        comm.build(self, buildcmd)
         comm.clear("org.xwalk.test")
         self.assertEquals(packstatus[0], 0)
 

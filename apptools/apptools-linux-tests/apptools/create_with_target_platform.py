@@ -42,6 +42,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.TEMP_DATA_PATH)
         cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=deb"
         packstatus = commands.getstatusoutput(cmd)
+        os.chdir(comm.TEST_PROJECT_COMM)
+        buildcmd = "crosswalk-app build"
+        comm.build(self, buildcmd)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(packstatus[0], 0)
 
@@ -50,14 +53,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.TEMP_DATA_PATH)
         cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=android"
         packstatus = commands.getstatusoutput(cmd)
-        comm.cleanTempData(comm.TEST_PROJECT_COMM)
-        self.assertEquals(packstatus[0], 0)
-
-    def test_create_with_platform_windows(self):
-        comm.setUp()
-        os.chdir(comm.TEMP_DATA_PATH)
-        cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=windows"
-        packstatus = commands.getstatusoutput(cmd)
+        os.chdir(comm.TEST_PROJECT_COMM)
+        buildcmd = "crosswalk-app build"
+        comm.build(self, buildcmd)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(packstatus[0], 0)
 
