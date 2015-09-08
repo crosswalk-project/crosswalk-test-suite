@@ -47,7 +47,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         appVersion = comm.build(self, buildcmd)
         comm.clear("org.xwalk.test")
         self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.1")
-        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), appVersion)
+        self.assertIn(data['xwalk_app_version'].strip(os.linesep), appVersion)
 
     def test_update_app_version(self):
         comm.setUp()
@@ -62,7 +62,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         appVersion = comm.build(self, buildcmd)
         comm.clear("org.xwalk.test")
-        self.assertEquals(appVersion, "0.0.1")
+        self.assertIn("0.0.1", appVersion)
 
 if __name__ == '__main__':
     unittest.main()
