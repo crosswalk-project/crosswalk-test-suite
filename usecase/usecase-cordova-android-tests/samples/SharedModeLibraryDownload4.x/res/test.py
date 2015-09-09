@@ -2,13 +2,18 @@ import os
 import commands
 import sys
 import json
+sys.path.append(os.getcwd())
+sys.path.append(os.path.realpath('..'))
+import comm
 from optparse import OptionParser
 global CROSSWALK_VERSION
+global CROSSWALK_BRANCH
 with open("../../tools/VERSION", "rt") as pkg_version_file:
     pkg_version_raw = pkg_version_file.read()
     pkg_version_file.close()
     pkg_version_json = json.loads(pkg_version_raw)
     CROSSWALK_VERSION = pkg_version_json["main-version"]
+    CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
 try:
     usage = "Usage: ./test.py -u [http://host/XWalkRuntimeLib.apk]"
@@ -32,38 +37,27 @@ version_parts = CROSSWALK_VERSION.split('.')
 if len(version_parts) < 4:
     print "The crosswalk version is not configured exactly!"
     sys.exit(1)
-versionType = version_parts[3]
-if versionType == '0':
-    username = commands.getoutput("echo $USER")
-    repository_aar_path = "/home/%s/.m2/repository/org/xwalk/xwalk_shared_library/%s/" \
-            "xwalk_shared_library-%s.aar" % \
-            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
-    repository_pom_path = "/home/%s/.m2/repository/org/xwalk/xwalk_shared_library/%s/" \
-            "xwalk_shared_library-%s.pom" % \
-            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
 
-    if not os.path.exists(repository_aar_path) or not os.path.exists(repository_pom_path):
-        wget_cmd = "wget https://download.01.org/crosswalk/releases/crosswalk/" \
-                "android/canary/%s/crosswalk-shared-%s.aar" % \
-                (CROSSWALK_VERSION, CROSSWALK_VERSION)
-        install_cmd = "mvn install:install-file -DgroupId=org.xwalk " \
-                "-DartifactId=xwalk_shared_library -Dversion=%s -Dpackaging=aar " \
-                "-Dfile=crosswalk-shared-%s.aar -DgeneratePom=true" % \
-                (CROSSWALK_VERSION, CROSSWALK_VERSION)
-        os.system(wget_cmd)
-        os.system(install_cmd)
+comm.installCrosswalk("shared")
 
 library_url = BUILD_PARAMETERS.url
 library_url = library_url.replace("/", "\\/")
-if os.path.exists("SharedModeLibraryDownload"):
-    os.system("rm -rf SharedModeLibraryDownload")
-os.system("cordova create SharedModeLibraryDownload com.example.sharedModeLibraryDownload SharedModeLibraryDownload")
-os.chdir("./SharedModeLibraryDownload")
-os.system('sed -i "s/<widget/<widget android-activityName=\\"SharedModeLibraryDownload\\"/g" config.xml')
-os.system('sed -i "s/<\/widget>/    <allow-navigation href=\\"*\\" \/>\\n<\/widget>/g" config.xml')
-os.system("cordova platform add android")
+
+app_name = "SharedModeLibraryDownload"
+pkg_name = "com.example.sharedModeLibraryDownload"
+comm.create(app_name, pkg_name, os.getcwd())
+
+version_cmd = ""
+if CROSSWALK_BRANCH == "beta":
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
+    else:
+        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+else:
+    version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
+
 add_plugin_cmd = "cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview" \
-    " --variable XWALK_VERSION=\"%s\" --variable XWALK_MODE=\"shared\"" % CROSSWALK_VERSION
+    " %s --variable XWALK_MODE=\"shared\"" % version_cmd
 print add_plugin_cmd
 os.system(add_plugin_cmd)
 os.system('sed -i "s/android:supportsRtl=\\"true\\">/android:supportsRtl=\\"true\\">\\n        <meta-data android:name=\\"xwalk_apk_url\\" android:value=\\"' + library_url + '\\" \\/>/g" platforms/android/AndroidManifest.xml')

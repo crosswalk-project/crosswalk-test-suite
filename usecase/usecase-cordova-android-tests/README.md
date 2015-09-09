@@ -13,8 +13,6 @@ It has these features:
 
 ## Pre-condition
 
-Install BeautifulSoup: sudo pip install BeautifulSoup
-
 There are third-party plugins needed for cordova usecase:
 * AdMob3.6: https://github.com/floatinghotpot/cordova-plugin-admob
 * AdMob4.x: https://github.com/floatinghotpot/cordova-admob-pro
@@ -28,6 +26,9 @@ For easy to be used in suite.json, need rename the plugins:
 * cordova-admob-pro -> cordova-admob-4.x
 * For Cordova 3.6: cordova-screenshot -> cordova-screenshot-3.6
 * For Cordova 4.x: cordova-screenshot -> cordova-screenshot-4.x
+
+## Test Steps
+* For Cordova 4.x: update usecase-cordova-android-tests/res/pack-type if your want to install cordova-plugin-crosswalk-webview from 'npm'
 
 ## LICENSE
 
