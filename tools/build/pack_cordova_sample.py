@@ -57,6 +57,7 @@ PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC", "
 CORDOVA_VERSIONS = ["3.6", "4.x"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
+CORDOVA_PACK_TYPES = ["npm", "local"]
 CROSSWALK_VERSION = ""
 CROSSWALK_BRANCH = ""
 BUILD_PARAMETERS = None
@@ -626,7 +627,10 @@ def packGoogleApp(app_name=None):
 
     version_cmd = ""
     if CROSSWALK_BRANCH == "beta":
-        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+        if BUILD_PARAMETERS.pkgmode == "shared":
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
+        else:
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
     else:
         version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
 
@@ -635,8 +639,12 @@ def packGoogleApp(app_name=None):
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
         if i_dir == "cordova-plugin-crosswalk-webview":
+            plugin_crosswalk_source = i_plugin_dir
+            if BUILD_PARAMETERS.packtype == "npm":
+                plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
+
             plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
-                % (i_plugin_dir, version_cmd, BUILD_PARAMETERS.pkgmode)
+                    % (plugin_crosswalk_source, version_cmd, BUILD_PARAMETERS.pkgmode)
         else:
             plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
@@ -810,7 +818,10 @@ def packMobileSpec_cli(app_name=None):
 
     version_cmd = ""
     if CROSSWALK_BRANCH == "beta":
-        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+        if BUILD_PARAMETERS.pkgmode == "shared":
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
+        else:
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
     else:
         version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
 
@@ -819,8 +830,12 @@ def packMobileSpec_cli(app_name=None):
         for i_dir in plugin_dirs:
             i_plugin_dir = os.path.join(plugin_tool, i_dir)
             if i_dir == "cordova-plugin-crosswalk-webview":
+                plugin_crosswalk_source = i_plugin_dir
+                if BUILD_PARAMETERS.packtype == "npm":
+                    plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
+
                 plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
-                    % (i_plugin_dir, version_cmd, BUILD_PARAMETERS.pkgmode)
+                        % (plugin_crosswalk_source, version_cmd, BUILD_PARAMETERS.pkgmode)
             else:
                 plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
             if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
@@ -978,7 +993,10 @@ def packSampleApp_cli(app_name=None):
 
     version_cmd = ""
     if CROSSWALK_BRANCH == "beta":
-        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+        if BUILD_PARAMETERS.pkgmode == "shared":
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
+        else:
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
     else:
         version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
 
@@ -986,8 +1004,12 @@ def packSampleApp_cli(app_name=None):
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
         if i_dir == "cordova-plugin-crosswalk-webview":
+            plugin_crosswalk_source = i_plugin_dir
+            if BUILD_PARAMETERS.packtype == "npm":
+                plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
+
             plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
-                % (i_plugin_dir, version_cmd, BUILD_PARAMETERS.pkgmode)
+                    % (plugin_crosswalk_source, version_cmd, BUILD_PARAMETERS.pkgmode)
             if checkContains(app_name, "xwalkCommandLine"):
                 plugin_install_cmd = plugin_install_cmd + " --variable XWALK_COMMANDLINE" \
                     "=\"--disable-pull-to-refresh-effect --disable-webrtc --disable-webgl\""
@@ -1168,6 +1190,10 @@ def main():
             "--password",
             dest="userpassword",
             help="specify the user password of PC")
+        opts_parser.add_option(
+            "--pack-type",
+            dest="packtype",
+            help="specify the pack type, e.g. npm, local")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
@@ -1231,6 +1257,16 @@ def main():
     if BUILD_PARAMETERS.pkgmode and not BUILD_PARAMETERS.pkgmode in PKG_MODES:
         LOG.error("Wrong pkg-mode, only support: %s, exit ..." %
                   PKG_MODES)
+        sys.exit(1)
+
+    if BUILD_PARAMETERS.cordovaversion == \
+            '4.x' and BUILD_PARAMETERS.packtype and not BUILD_PARAMETERS.packtype in CORDOVA_PACK_TYPES:
+        LOG.error("cordova packtype can only be npm, local")
+        sys.exit(1)
+
+    if (BUILD_PARAMETERS.cordovaversion ==
+            '3.6' or not BUILD_PARAMETERS.cordovaversion) and BUILD_PARAMETERS.packtype:
+        LOG.error("cordova packtype is only for cordova version 4.x")
         sys.exit(1)
 
     if BUILD_PARAMETERS.cordovaversion == '3.6' and BUILD_PARAMETERS.pkgarch:
