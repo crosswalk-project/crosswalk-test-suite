@@ -1,11 +1,14 @@
+# TCP and UDP Socket API Test Suite
+
 ## Introduction
 
-This test suite is for testing raw sockets specification:
-* http://www.w3.org/2012/sysapps/raw-sockets/
+This test suite is for checking compliance with Raw Sockets specification:
+* http://www.w3.org/TR/raw-sockets/
 
-## Authors:
+## Authors
 
 * Shentu,Jiazhen <jiazhenx.shentu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
