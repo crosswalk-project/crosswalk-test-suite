@@ -455,3 +455,23 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, onReceivedLoadError methods
+
+
+
+### 45. The [XWalkViewWithLongClickAsync](XWalkViewWithLongClickAsync.java) sample check whether performLongClick and setOnLongClickListener method work as same as WebView, include:
+
+* performLongClick and setOnLongClickListener can be override and invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: performLongClick, setOnLongClickListener methods
+
+
+
+### 46. The [XWalkViewWithRequestFocusAsync](XWalkViewWithRequestFocusAsync.java) sample check whether requestFocus method work as same as WebView, include:
+
+* requestFocus can be override and invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: requestFocus methods
