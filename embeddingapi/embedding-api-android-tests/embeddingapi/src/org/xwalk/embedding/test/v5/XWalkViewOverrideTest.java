@@ -11,6 +11,9 @@ import org.xwalk.embedding.base.OnDrawXWalkView;
 import org.xwalk.embedding.base.OnCreateInputConnectionXWalkView;
 import org.xwalk.embedding.base.RequestFocusXWalkView;
 import org.xwalk.embedding.base.RequestFocusXWalkView.FocusChangedListener;
+import org.xwalk.embedding.base.ScrollXWalkView;
+import org.xwalk.embedding.base.ScrollXWalkView.OnMeasureListener;
+import org.xwalk.embedding.base.ScrollXWalkView.OverScrollModeListener;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
 import android.test.suitebuilder.annotation.SmallTest;
@@ -86,5 +89,73 @@ public class XWalkViewOverrideTest extends XWalkViewTestBase {
             assertTrue(false);
         }
     }    
+    
+    @SmallTest
+    public void testComputeHorizontalScrollOffset() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable(){
+                @Override
+                public void run() {
+                    ScrollXWalkView mScrollXWalkView = new ScrollXWalkView(mainActivity, mainActivity);
+                    mScrollXWalkView.load("http://www.sina.com.cn", null);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+    
+    @SmallTest
+    public void testComputeVerticalScrollRange() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable(){
+                @Override
+                public void run() {
+                    ScrollXWalkView mScrollXWalkView = new ScrollXWalkView(mainActivity, mainActivity);
+                    mScrollXWalkView.load("http://www.sina.com.cn", null);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }    
+
+    @SmallTest
+    public void testOnMeasure() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable(){
+                @Override
+                public void run() {
+                    ScrollXWalkView mScrollXWalkView = new ScrollXWalkView(mainActivity, mainActivity);
+                    mScrollXWalkView.load("http://www.sina.com.cn", null);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }   
+    
+    @SmallTest
+    public void testSetOverScrollMode() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable(){
+                @Override
+                public void run() {
+                    ScrollXWalkView mScrollXWalkView = new ScrollXWalkView(mainActivity, mainActivity);
+                    mScrollXWalkView.load("http://www.sina.com.cn", null);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }        
 
 }
