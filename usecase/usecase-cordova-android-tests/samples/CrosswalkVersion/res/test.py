@@ -81,7 +81,7 @@ if comm.CROSSWALK_BRANCH == "beta":
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
     if BUILD_PARAMETERS.pkgmode == "shared":
-        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_core_library_beta:%s" % comm.CROSSWALK_VERSION)
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_shared_library_beta:%s" % comm.CROSSWALK_VERSION)
     else:
         comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_core_library_beta:%s" % comm.CROSSWALK_VERSION)
     if BUILD_PARAMETERS.pkgarch == "x86":
