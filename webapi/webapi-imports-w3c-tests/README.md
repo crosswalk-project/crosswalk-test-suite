@@ -1,11 +1,14 @@
+# HTML Imports Test Suite
+
 ## Introduction
 
-This test suite is for testing imports specification:
-* https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/imports/index.html
+This test suite is for checking the compliance with HTML Imports specification:
+* http://w3c.github.io/webcomponents/spec/imports/
 
-## Authors:
+## Authors
 
-* Wang,Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
