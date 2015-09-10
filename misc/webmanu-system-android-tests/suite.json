@@ -18,7 +18,12 @@
             "copylist": {
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+                "PACK-TOOL-ROOT/atip/tests/environment.py": "web-system-app/testscripts/environment.py",
+                "web-system-app/testscripts": "web-system-app/testscripts",
+                "web-system-app/data": "data"
             },
             "pkg-app": {
                 "apk-common-opts":"--enable-remote-debugging",
@@ -93,7 +98,8 @@
                     "apk-type":"MANIFEST",
                     "copylist": {
                         "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
-                    }
+                    },
+                    "apk-common-opts":"--enable-remote-debugging"
                 },
                 "testapp/indexdb": {
                     "app-name": "indexdb",
@@ -103,7 +109,8 @@
                     "apk-type":"MANIFEST",
                     "copylist": {
                         "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
-                    }
+                    },
+                    "apk-common-opts":"--enable-remote-debugging"
                 },
                 "testapp/cookie_upgrade": {
                     "app-name": "cookie_upgrade",
@@ -154,7 +161,8 @@
                     "apk-type":"MANIFEST",
                     "copylist": {
                         "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
-                    }
+                    },
+                    "apk-common-opts":"--enable-remote-debugging"
                 },
                 "testapp/webgl": {
                     "app-name": "webgl",

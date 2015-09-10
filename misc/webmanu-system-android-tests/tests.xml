@@ -96,29 +96,34 @@
       </testcase>
     </set>
     <set name="indexDB" type="js">
-      <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_IndexDB_kill" purpose="Validate the indexDB can work well after kill and relauch app">
-        <description>
-          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_IndexDB_kill.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_IndexDB_reboot" purpose="Validate the indexDB can work well after reboot system">
         <description>
           <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_IndexDB_reboot.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_IndexDB_upgrade" purpose="Validate the indexDB can work well after upgrade app">
+        <description>
+          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_IndexDB_upgrade.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="indexDB-bdd" type="js" ui-auto="bdd">
+      <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_IndexDB_kill" purpose="Validate the indexDB can work well after kill and relauch app">
+        <description>
+          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/bdd/Crosswalk_IndexDB_kill.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/webmanu-system-android-tests/web-system-app/testscripts/Crosswalk_IndexDB_kill.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_IndexDB_reopen" purpose="Validate the indexDB can work well after reopen app">
         <description>
-          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_IndexDB_reopen.html</test_script_entry>
+          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/bdd/Crosswalk_IndexDB_reopen.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/webmanu-system-android-tests/web-system-app/testscripts/Crosswalk_IndexDB_reopen.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_IndexDB_restart" purpose="Validate the indexDB can work well after restart app">
         <description>
-          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_IndexDB_restart.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_IndexDB_upgrade" purpose="Validate the indexDB can work well after upgrade app">
-        <description>
-          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_IndexDB_upgrade.html</test_script_entry>
+          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/bdd/Crosswalk_IndexDB_restart.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/webmanu-system-android-tests/web-system-app/testscripts/Crosswalk_IndexDB_restart.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
@@ -236,11 +241,6 @@
       </testcase>
     </set>
     <set name="canvas" type="js">
-      <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_Canvas_reopen" purpose="Validate the canvas can work well after reopen app">
-        <description>
-          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_Canvas_reopen.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_Canvas_rotation" purpose="Validate the canvas can work well after changing volum">
         <description>
           <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_Canvas_rotation.html</test_script_entry>
@@ -251,9 +251,18 @@
           <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_Canvas_sleep.html</test_script_entry>
         </description>
       </testcase>
+    </set>
+    <set name="canvas-bdd" type="js" ui-auto="bdd">
+      <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_Canvas_reopen" purpose="Validate the canvas can work well after reopen app">
+        <description>
+          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/bdd/Crosswalk_Canvas_reopen.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/webmanu-system-android-tests/web-system-app/testscripts/Crosswalk_Canvas_reopen.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Crosswalk System" execution_type="manual" id="Crosswalk_Canvas_lock" purpose="Validate the canvas can work well after lock and unlock app">
         <description>
-          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/Crosswalk_Canvas_lock.html</test_script_entry>
+          <test_script_entry>/opt/webmanu-system-android-tests/systemmanu/bdd/Crosswalk_Canvas_lock.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/webmanu-system-android-tests/web-system-app/testscripts/Crosswalk_Canvas_lock.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
