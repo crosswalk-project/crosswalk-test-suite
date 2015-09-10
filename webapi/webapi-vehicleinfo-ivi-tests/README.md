@@ -1,24 +1,38 @@
+# Vehicle Info and Vehicle Data API Test Suite
+
 ## Introduction
 
-This test suite is for testing  Vehicle info and Vehicle data API:
+This test suite is for checking compliance with the Vehicle Info and Vehicle
+Data API specifications:
 * http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html
 * http://rawgit.com/w3c/automotive-bg/master/data_spec.html
 
 ## Pre-Conditions
-* Install Bluemonkey plugin in IVI:
-  zypper in automotive-message-broker-plugins-bluemonkey
 
-* Update configuration /etc/ambd/config.tizen in IVI:
-  Copy 'mainloop' and 'sources' sections from /etc/ambd/examples/bluemonkeyconfig to /etc/ambd/config.tizen
+* Install bluemonkey plugin on Tizen IVI:
 
-* Restart ambd:
-  systemctl restart ambd
+```sh
+zypper in automotive-message-broker-plugins-bluemonkey
+```
 
- Details referring https://wiki.tizen.org/wiki/AMB_Bluemonkey_Plugin
+* Update configuration `/etc/ambd/config.tizen` on Tizen IVI: copying the
+`mainloop` and `sources` sections from `/etc/ambd/examples/bluemonkeyconfig`
+to `/etc/ambd/config.tizen`.
 
-## Authors:
+* Restart `ambd`:
+
+```sh
+systemctl restart ambd
+```
+
+For details, please refer to the
+[AMB Bluemonkey Plugin](https://wiki.tizen.org/wiki/AMB_Bluemonkey_Plugin)
+wiki page.
+
+## Authors
 
 * Xu, Kang <kangx.xu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
