@@ -44,14 +44,10 @@ elif BUILD_PARAMETERS.pkgarch and not BUILD_PARAMETERS.pkgarch in PKG_ARCHS:
     print "Wrong pkg-arch, only support: %s, exit ..." % PKG_ARCHS
     sys.exit(1)
 
-if os.path.exists("CrosswalkVersion"):
-    os.system("rm -rf CrosswalkVersion")
-os.system("cordova create CrosswalkVersion com.example.crosswalkVersion1 CrosswalkVersion")
-os.chdir("./CrosswalkVersion")
+app_name = "CrosswalkVersion"
+pkg_name = "com.example.crosswalkVersion1"
+comm.create(app_name, pkg_name, os.getcwd())
 
-os.system('sed -i "s/<widget/<widget android-activityName=\\"CrosswalkVersion\\"/g" config.xml')
-os.system('sed -i "s/<\/widget>/    <allow-navigation href=\\"*\\" \/>\\n<\/widget>/g" config.xml')
-os.system("cordova platform add android")
 os.system('cp ../index.html www/index.html')
 main_version = comm.CROSSWALK_VERSION.split('.')[0]
 
@@ -61,15 +57,19 @@ if comm.CROSSWALK_BRANCH == "stable" or comm.CROSSWALK_BRANCH == "beta":
 
 if comm.CROSSWALK_BRANCH == "beta":
     os.system('sed -i "s/{expectedVersion}/%s/g" www/index.html' % latestVersion)
-
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s+\"" % (BUILD_PARAMETERS.pkgmode, main_version))
-    os.system("cordova build android")
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_shared_library_beta:%s+" % main_version)
+    else:
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_core_library_beta:%s+" % main_version)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_beta_1.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_beta_1.apk')
 
-    os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library_beta:%s+\\" \/>/g" config.xml' % main_version)
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_shared_library_beta:%s+\\" \/>/g" config.xml' % main_version)
+    else:
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library_beta:%s+\\" \/>/g" config.xml' % main_version)
     os.system("cordova build android")
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_beta_2.apk')
@@ -80,14 +80,19 @@ if comm.CROSSWALK_BRANCH == "beta":
     os.system('sed -i "s/{expectedVersion}/%s/g" www/index.html' % comm.CROSSWALK_VERSION)
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % (BUILD_PARAMETERS.pkgmode, comm.CROSSWALK_VERSION))
-    os.system("cordova build android")
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_core_library_beta:%s" % comm.CROSSWALK_VERSION)
+    else:
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_core_library_beta:%s" % comm.CROSSWALK_VERSION)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_beta_3.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_beta_3.apk')
 
-    os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library_beta:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_shared_library_beta:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    else:
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library_beta:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
     os.system("cordova build android")
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_beta_4.apk')
@@ -118,32 +123,34 @@ if comm.CROSSWALK_BRANCH == "beta":
 elif comm.CROSSWALK_BRANCH == "stable":
     os.system('sed -i "s/{expectedVersion}/%s/g" www/index.html' % latestVersion)
 
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"%s+\"" % (BUILD_PARAMETERS.pkgmode, main_version))
-    os.system("cordova build android")
+    comm.build(BUILD_PARAMETERS.pkgmode, "%s+" % main_version)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_1.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_stable_1.apk')
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"%s\"" % (BUILD_PARAMETERS.pkgmode, main_version))
-    os.system("cordova build android")
+    comm.build(BUILD_PARAMETERS.pkgmode, "%s" % main_version)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_2.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_stable_2.apk')
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"xwalk_core_library:%s+\"" % (BUILD_PARAMETERS.pkgmode, main_version))
-    os.system("cordova build android")
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        comm.build(BUILD_PARAMETERS.pkgmode, "xwalk_shared_library:%s+" % main_version)
+    else:
+        comm.build(BUILD_PARAMETERS.pkgmode, "xwalk_core_library:%s+" % main_version)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_3.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_stable_3.apk')
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"org.xwalk:xwalk_core_library:%s+\"" % (BUILD_PARAMETERS.pkgmode, main_version))
-    os.system("cordova build android")
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_shared_library:%s+" % main_version)
+    else:
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_core_library:%s+" % main_version)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_4.apk')
     else:
@@ -164,14 +171,20 @@ elif comm.CROSSWALK_BRANCH == "stable":
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_stable_6.apk')
 
-    os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"xwalk_core_library:%s+\\" \/>/g" config.xml' % main_version)
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"xwalk_shared_library:%s+\\" \/>/g" config.xml' % main_version)
+    else:
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"xwalk_core_library:%s+\\" \/>/g" config.xml' % main_version)
     os.system("cordova build android")
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_7.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_stable_7.apk')
 
-    os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library:%s+\\" \/>/g" config.xml' % main_version)
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_shared_library:%s+\\" \/>/g" config.xml' % main_version)
+    else:
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library:%s+\\" \/>/g" config.xml' % main_version)
     os.system("cordova build android")
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_8.apk')
@@ -182,24 +195,27 @@ elif comm.CROSSWALK_BRANCH == "stable":
     os.system('sed -i "s/{expectedVersion}/%s/g" www/index.html' % comm.CROSSWALK_VERSION)
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"%s\"" % (BUILD_PARAMETERS.pkgmode, comm.CROSSWALK_VERSION))
-    os.system("cordova build android")
+    comm.build(BUILD_PARAMETERS.pkgmode, "%s" % comm.CROSSWALK_VERSION)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_9.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_stable_9.apk')
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"xwalk_core_library:%s\"" % (BUILD_PARAMETERS.pkgmode, comm.CROSSWALK_VERSION))
-    os.system("cordova build android")
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        comm.build(BUILD_PARAMETERS.pkgmode, "xwalk_shared_library:%s" % comm.CROSSWALK_VERSION)
+    else:
+        comm.build(BUILD_PARAMETERS.pkgmode, "xwalk_core_library:%s" % comm.CROSSWALK_VERSION)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_10.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_stable_10.apk')
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"org.xwalk:xwalk_core_library:%s\"" % (BUILD_PARAMETERS.pkgmode, comm.CROSSWALK_VERSION))
-    os.system("cordova build android")
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_shared_library:%s" % comm.CROSSWALK_VERSION)
+    else:
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_core_library:%s" % comm.CROSSWALK_VERSION)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_11.apk')
     else:
@@ -212,14 +228,20 @@ elif comm.CROSSWALK_BRANCH == "stable":
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_stable_12.apk')
 
-    os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"xwalk_core_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"xwalk_shared_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    else:
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"xwalk_core_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
     os.system("cordova build android")
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_13.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_stable_13.apk')
 
-    os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_shared_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    else:
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
     os.system("cordova build android")
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_stable_14.apk')
@@ -301,24 +323,27 @@ elif comm.CROSSWALK_BRANCH == "canary":
     os.system('sed -i "s/{expectedVersion}/%s/g" www/index.html' % comm.CROSSWALK_VERSION)
 
     comm.installCrosswalk(BUILD_PARAMETERS.pkgmode)
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"%s\"" % (BUILD_PARAMETERS.pkgmode, comm.CROSSWALK_VERSION))
-    os.system("cordova build android")
+    comm.build(BUILD_PARAMETERS.pkgmode, "%s" % comm.CROSSWALK_VERSION)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_canary_1.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_canary_1.apk')
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"xwalk_core_library:%s\"" % (BUILD_PARAMETERS.pkgmode, comm.CROSSWALK_VERSION))
-    os.system("cordova build android")
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        comm.build(BUILD_PARAMETERS.pkgmode, "xwalk_shared_library:%s" % comm.CROSSWALK_VERSION)
+    else:
+        comm.build(BUILD_PARAMETERS.pkgmode, "xwalk_core_library:%s" % comm.CROSSWALK_VERSION)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_canary_2.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_canary_2.apk')
 
     os.system("cordova plugin remove cordova-plugin-crosswalk-webview")
-    os.system("cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview --variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"org.xwalk:xwalk_core_library:%s\"" % (BUILD_PARAMETERS.pkgmode, comm.CROSSWALK_VERSION))
-    os.system("cordova build android")
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_shared_library:%s" % comm.CROSSWALK_VERSION)
+    else:
+        comm.build(BUILD_PARAMETERS.pkgmode, "org.xwalk:xwalk_core_library:%s" % comm.CROSSWALK_VERSION)
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_canary_3.apk')
     else:
@@ -331,14 +356,20 @@ elif comm.CROSSWALK_BRANCH == "canary":
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_canary_4.apk')
 
-    os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"xwalk_core_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"xwalk_shared_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    else:
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"xwalk_core_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
     os.system("cordova build android")
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_canary_5.apk')
     else:
         os.system('cp platforms/android/build/outputs/apk/android-armv7-debug.apk ../CrosswalkVersion_canary_5.apk')
 
-    os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_shared_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
+    else:
+        os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\" value=\\"org.xwalk:xwalk_core_library:%s\\" \/>/g" config.xml' % comm.CROSSWALK_VERSION)
     os.system("cordova build android")
     if BUILD_PARAMETERS.pkgarch == "x86":
         os.system('cp platforms/android/build/outputs/apk/android-x86-debug.apk ../CrosswalkVersion_canary_6.apk')
@@ -377,6 +408,7 @@ elif comm.CROSSWALK_BRANCH == "canary":
         print "Build Package Error"
 else:
     print "CROSSWALK_BRANCH in VERSION file is unavailable"
+
 
 
 
