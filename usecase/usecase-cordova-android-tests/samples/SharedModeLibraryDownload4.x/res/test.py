@@ -15,6 +15,7 @@ with open("../../tools/VERSION", "rt") as pkg_version_file:
     CROSSWALK_VERSION = pkg_version_json["main-version"]
     CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
+comm.setUp()
 try:
     usage = "Usage: ./test.py -u [http://host/XWalkRuntimeLib.apk]"
     opts_parser = OptionParser(usage=usage)
@@ -33,10 +34,6 @@ if not BUILD_PARAMETERS.url:
     print "Please add the -u parameter for the url of XWalkRuntimeLib.apk"
     sys.exit(1)
 
-version_parts = CROSSWALK_VERSION.split('.')
-if len(version_parts) < 4:
-    print "The crosswalk version is not configured exactly!"
-    sys.exit(1)
 
 comm.installCrosswalk("shared")
 
