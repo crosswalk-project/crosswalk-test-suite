@@ -31,7 +31,8 @@ https://crosswalk-project.org/#wiki/Create-Sample-App-With-Crosswalk-Cordova-And
 2. cd [testprefix-path]/opt/wrt-apptools-android-tests/
 3. update arch.txt if your run with 'x86' device
 4. update mode.txt if your run with 'shared' mode pkg
-5. run test case  
+5. for cordova 4.x, update pack-type if your want to install cordova-plugin-crosswalk-webview from 'npm'
+6. run test case  
    ```testkit-lite -f [testprefix-path]/opt/cordova-webapp-android-tests/tests.xml -A -o [testprefix-path]/opt/cordova-webapp-android-tests/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E;CONNECT_TYPE=adb" --testprefix=[testprefix-path]```     
    DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00".  
    Query device id by command "adb devices -l" in host.

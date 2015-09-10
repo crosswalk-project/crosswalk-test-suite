@@ -48,7 +48,7 @@ testapp_path = "/tmp/cordova-sampleapp/"
 
 
 def setUp():
-    global ARCH, MODE, CORDOVA_VERSION, device, CROSSWALK_VERSION, CROSSWALK_BRANCH
+    global ARCH, MODE, CORDOVA_VERSION, device, CROSSWALK_VERSION, CROSSWALK_BRANCH, PACK_TYPE
 
     device = os.environ.get('DEVICE_ID')
 
@@ -88,6 +88,18 @@ def setUp():
     f_version.close()
 
     if CORDOVA_VERSION == "4.x":
+        f_pack_type = open(const_path + "/../pack-type", 'r')
+        pack_type_tmp = f_pack_type.read()
+        if pack_type_tmp.strip("\n\t") == "local":
+            PACK_TYPE = "local"
+        elif pack_type_tmp.strip("\n\t") == "npm":
+            PACK_TYPE = "npm"
+        else:
+            print (
+                " get pack type error, the content of pack-type should be 'local' or 'npm'\n")
+            sys.exit(1)
+        f_pack_type.close()
+
         with open(const_path + "/../VERSION", "rt") as pkg_version_file:
             pkg_version_raw = pkg_version_file.read()
             pkg_version_file.close()
@@ -135,12 +147,19 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         print "Install Crosswalk WebView Plugin --------------> START"
         version_cmd = ""
         if CROSSWALK_BRANCH == "beta":
-            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+            if MODE == "shared":
+                version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
+            else:
+                version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
         else:
             version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
 
+        plugin_crosswalk_source = plugin_tool
+        if PACK_TYPE == "npm":
+            plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
+
         plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
-                % (plugin_tool, version_cmd, mode)
+                    % (plugin_crosswalk_source, version_cmd, mode)
 
         pluginstatus = commands.getstatusoutput(plugin_install_cmd)
         self.assertEquals(0, pluginstatus[0])
@@ -217,12 +236,19 @@ def buildGoogleApp(appname, sourcecodepath, self):
     print "Install Crosswalk WebView Plugin --------------> START"
     version_cmd = ""
     if CROSSWALK_BRANCH == "beta":
-        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+        if MODE == "shared":
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
+        else:
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
     else:
         version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
 
+    plugin_crosswalk_source = plugin_tool
+    if PACK_TYPE == "npm":
+        plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
+
     plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
-            % (plugin_tool, version_cmd, mode)
+                % (plugin_crosswalk_source, version_cmd, mode)
 
     pluginstatus = commands.getstatusoutput(plugin_install_cmd)
     self.assertEquals(0, pluginstatus[0])
