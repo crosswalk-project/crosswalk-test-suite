@@ -50,7 +50,10 @@ Authors:
       <li>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it</br>
         Then run below commands under apptools-sampleapp-tests/tools/ directory:</br>
         On Android: <br/>
-        &nbsp; &nbsp; $ crosswalk-app create com.example.gallery</br>
+        &nbsp; &nbsp; Shared Mode: <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ crosswalk-app create com.example.gallery --android-shared</br>
+        &nbsp; &nbsp; Embedded Mode: <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ crosswalk-app create com.example.gallery</br>
         &nbsp; &nbsp; $ cd com.example.gallery</br>
         &nbsp; &nbsp; $ git clone https://github.com/blueimp/Gallery.git</br>
         &nbsp; &nbsp; $ mv Gallery/* app/</br>
@@ -62,7 +65,7 @@ Authors:
         &nbsp; &nbsp; $ xcopy /s /e /i /y Gallery\* app\</br>
         &nbsp; &nbsp; $ node %crosswalk-app% build
       </li>
-      <li>Install arm gallery app on your android device which is "arm" architecture</li>
+      <li>Install gallery app on your android device which is "arm" architecture</li>
       <li>Check icon of gallery app in your android device</li>
       <li>Launch gallery app in your android device</li>
       <li>Check the homepage of gallery app</li>

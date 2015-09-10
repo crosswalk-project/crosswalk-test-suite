@@ -60,11 +60,14 @@ Authors:
   <ol>
     <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</br>
       Then run below commands under usecase-apptools-tests/tools/ directory:</br>
-      $ crosswalk-app create org.test.foo</br>
+      Shared Mode: <br/>
+      &nbsp; &nbsp; $ crosswalk-app create org.test.foo --android-shared</br>
+      Embedded Mode: <br/>
+      &nbsp; &nbsp; $ crosswalk-app create org.test.foo</br>
       $ cd org.test.foo</br>
       $ crosswalk-app build
     </li>
-    <li>Install arm foo app on your android device which is "arm" architecture</li>
+    <li>Install foo app on your android device which is "arm" architecture</li>
     <li>Check icon of foo app in your android device</li>
     <li>Launch foo app in your android device</li>
     <li>Check the homepage of foo app</li>

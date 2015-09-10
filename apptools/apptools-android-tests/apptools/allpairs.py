@@ -145,7 +145,7 @@ def tryRunApp(item, cmd):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         package = cmd[cmd.index("create") + 6:cmd.index("--android-crosswalk")].strip()
-        exec_cmd = comm.HOST_PREFIX + comm.PackTools + cmd + comm.crosswalkVersion
+        exec_cmd = comm.HOST_PREFIX + comm.PackTools + cmd + comm.crosswalkVersion + comm.MODE
         # print exec_cmd
         if 'negative' in item:
             comm.clear(package)
