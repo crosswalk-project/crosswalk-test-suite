@@ -1,21 +1,19 @@
+# Native Client Test Suite
+
 ## Introduction
 
-This test suite is for testing webapi-nacl-xwalk-tests specification:
-* https://crosswalk-project.org/jira/browse/XWALK-331
+This test suite is for checking the Native Client (NaCl) support in
+Crosswalk Project:
+* https://crosswalk-project.org/jira/browse/XWALK-1214
 
 ## Pre-conditions
 
-Make sure there is a nacl server in network
+Make sure there is a NaCl server connected.
 
-## Note
-
-* Nacl_api_Var_Dictionary.html:
-  [XWALK-1893] "Function Delete returned undefined" error occurred when deleting key value in the Nacl module's dictionary,
-  the issue has tracked by  https://code.google.com/p/nativeclient/issues/detail?id=3919
-
-## Authors:
+## Authors
 
 * Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
