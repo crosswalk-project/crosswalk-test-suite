@@ -1,0 +1,13 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verify variable crosswalk version configuration</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>The command run successfully, no error</li>'
+            +'<li>There are 4 apk files named CrosswalkVersion-1, CrosswalkVersion-2, CrosswalkVersion-3, CrosswalkVersion-4 in the directory</li>'
+            +'<li>Every apk can be installed successfully</li>'
+            +'<li>Every apk can launch successfully</li>'
+            +'<li>Every apk can run successfully</li>'
+            +'<li>"Expected Crosswalk Version" is the same with "Actual Crosswalk Version" on each app homepage</li>'
+            +'</ol>'
+          +'</font>';

@@ -5,11 +5,13 @@ import json
 from optparse import OptionParser
 PKG_MODES = ["shared", "embedded"]
 global CROSSWALK_VERSION
+global CROSSWALK_BRANCH
 with open("../../tools/VERSION", "rt") as pkg_version_file:
     pkg_version_raw = pkg_version_file.read()
     pkg_version_file.close()
     pkg_version_json = json.loads(pkg_version_raw)
     CROSSWALK_VERSION = pkg_version_json["main-version"]
+    CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
 try:
     usage = "Usage: ./test.py -m shared"
@@ -81,9 +83,18 @@ if os.path.exists("cordovaPackage"):
 os.system("cordova-android/bin/create cordovaPackage com.example.cordovaPackage2 CordovaPackage")
 os.chdir("./cordovaPackage")
 os.system("plugman install --platform android --plugin ../../../tools/cordova-plugin-crosswalk-webview/ --project .")
-os.system('sed -i "s/<preference default=\\".*\\" name=\\"XWALK_VERSION\\"/<preference default=\\"%s\\" name=\\"XWALK_VERSION\\"/g" res/xml/config.xml' % CROSSWALK_VERSION)
+
+if CROSSWALK_BRANCH == "beta":
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        os.system('sed -i "s/<preference default=\\".*\\" name=\\"XWALK_VERSION\\"/<preference default=\\"org.xwalk:xwalk_shared_library_beta:%s\\" name=\\"XWALK_VERSION\\"/g" res/xml/config.xml' % CROSSWALK_VERSION)
+    else:
+        os.system('sed -i "s/<preference default=\\".*\\" name=\\"XWALK_VERSION\\"/<preference default=\\"org.xwalk:xwalk_core_library_beta:%s\\" name=\\"XWALK_VERSION\\"/g" res/xml/config.xml' % CROSSWALK_VERSION)
+else:
+    os.system('sed -i "s/<preference default=\\".*\\" name=\\"XWALK_VERSION\\"/<preference default=\\"%s\\" name=\\"XWALK_VERSION\\"/g" res/xml/config.xml' % CROSSWALK_VERSION)
+
 if BUILD_PARAMETERS.pkgmode == "shared":
     os.system('sed -i "s/<preference default=\\"embedded\\" name=\\"XWALK_MODE\\"/<preference default=\\"shared\\" name=\\"XWALK_MODE\\"/g" res/xml/config.xml')
+ 
 os.system("./cordova/build")
 os.system("./cordova/run")
 lsstatus = commands.getstatusoutput("ls ./build/outputs/apk/*.apk")
