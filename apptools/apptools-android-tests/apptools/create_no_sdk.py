@@ -52,7 +52,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.environ['PATH'] = new_path
         os.chdir(comm.XwalkPath)
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
+            "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + \
             comm.crosswalkVersion
         (return_create_code, packstatus) = comm.getstatusoutput(cmd)
         os.environ['ANDROID_HOME'] = android_home

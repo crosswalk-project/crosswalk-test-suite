@@ -41,7 +41,10 @@ Authors:
     <li>If org.xwalk.test exists in apptools-android-tests/tools/ directory, remove it <br/>
         Then run below commands under apptools-android-tests/tools/ directory: <br/>
         On Android: <br/>
-        &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
+        &nbsp; &nbsp; Shared Mode: <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-shared <br/>
+        &nbsp; &nbsp; Embedded Mode: <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
         &nbsp; &nbsp; $ cd org.xwalk.test <br/>
         &nbsp; &nbsp; Set "display" to "fullscreen" in app/manifest.json file <br/>
         &nbsp; &nbsp; $ ../crosswalk-app-tools/src/crosswalk-app build <br/>

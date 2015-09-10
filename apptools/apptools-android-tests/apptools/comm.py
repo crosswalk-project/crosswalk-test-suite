@@ -45,7 +45,7 @@ DEFAULT_CMD_TIMEOUT = 600
 
 
 def setUp():
-    global device, XwalkPath, crosswalkVersion, PackTools, ARCH, cachedir, HOST_PREFIX, SHELL_FLAG
+    global device, XwalkPath, crosswalkVersion, PackTools, ARCH, cachedir, HOST_PREFIX, SHELL_FLAG, MODE
 
     #device = "MedfieldC35A9F49"
     device = os.environ.get('DEVICE_ID')
@@ -60,6 +60,13 @@ def setUp():
     else:
         ARCH = "x86"
     fp.close()
+
+    mode = open(ConstPath + "/../mode.txt", 'r')
+    if mode.read().strip("\n\t") != "shared":
+        MODE = ""
+    else:
+        MODE = " --android-shared"
+    mode.close()
 
     host = open(ConstPath + "/../host.txt", 'r')
     if host.read().strip("\n\t") != "Android":
@@ -118,7 +125,7 @@ def create(self):
     setUp()
     os.chdir(XwalkPath)
     cmd = HOST_PREFIX + PackTools + \
-        "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
+        "crosswalk-app create org.xwalk.test" + MODE + " --android-crosswalk=" + \
         crosswalkVersion
     return_code = os.system(cmd)
     self.assertEquals(return_code, 0)
@@ -130,14 +137,21 @@ def build(self, cmd):
     self.assertEquals(return_code, 0)
     apks = os.listdir(os.getcwd())
     apkLength = 0
-    for i in range(len(apks)):
-        if apks[i].endswith(".apk") and "x86" in apks[i]:
-            apkLength = apkLength + 1
-            appVersion = apks[i].split('-')[1]
-        if apks[i].endswith(".apk") and "arm" in apks[i]:
-            apkLength = apkLength + 1
-            appVersion = apks[i].split('-')[1]
-    self.assertEquals(apkLength, 2)
+    if MODE == "":
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+                appVersion = apks[i].split('-')[1]
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+                appVersion = apks[i].split('-')[1]
+        self.assertEquals(apkLength, 2)
+    else:
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "shared" in apks[i]:
+                apkLength = apkLength + 1
+                appVersion = apks[i].split('-')[1]
+        self.assertEquals(apkLength, 1)
     return appVersion
 
 
@@ -162,7 +176,7 @@ def run(self):
     setUp()
     apks = os.listdir(os.getcwd())
     for apk in apks:
-        if ARCH in apk:
+        if ARCH in apk or "shared" in apk:
             return_inst_code = os.system('adb -s ' + device + ' install -r ' + apk)
             (return_pm_code, pmstatus) = getstatusoutput(
                 'adb -s ' +
@@ -188,7 +202,7 @@ def run(self):
 
 def channel(self, channel):
     createcmd = HOST_PREFIX + PackTools + \
-        "crosswalk-app create org.xwalk.test --android-crosswalk=" + channel
+        "crosswalk-app create org.xwalk.test" + MODE + " --android-crosswalk=" + channel
     (return_create_code, output) = getstatusoutput(createcmd)
     htmlDoc = urllib2.urlopen(
         'https://download.01.org/crosswalk/releases/crosswalk/android/' +

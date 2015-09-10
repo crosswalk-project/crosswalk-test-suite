@@ -58,7 +58,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
     def test_build_missing_so_file(self):
         comm.setUp()
-        comm.create(self)
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
+            comm.crosswalkVersion
+        os.system(cmd)
         os.chdir('org.xwalk.test')
         if comm.ARCH == "x86":
             os.remove(
@@ -92,7 +95,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
     def test_build_missing_both_so_file(self):
         comm.setUp()
-        comm.create(self)
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
+            comm.crosswalkVersion
+        os.system(cmd)
         os.chdir('org.xwalk.test')
         os.remove(
             os.getcwd() +

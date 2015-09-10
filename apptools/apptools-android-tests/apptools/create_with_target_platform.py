@@ -38,7 +38,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_android(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=android"
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=android"
         packstatus = os.system(cmd)
         os.chdir('org.xwalk.test')
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
@@ -49,7 +49,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_ios(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=ios"
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=ios"
         packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(packstatus, 0)
@@ -57,7 +57,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_deb(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=deb"
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=deb"
         packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(packstatus, 0)
@@ -65,7 +65,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_invalid_platform(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=target"
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=target"
         packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(packstatus, 0)

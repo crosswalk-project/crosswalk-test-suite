@@ -44,7 +44,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
-        createcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test"
+        createcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE
         return_code = os.system(createcmd)
         htmlDoc = urllib2.urlopen(
             'https://download.01.org/crosswalk/releases/crosswalk/android/stable/').read()
