@@ -1,15 +1,15 @@
+# Server-Sent Event Test Suite
+
 ## Introduction
 
-These tests are for checking compliance with W3C Server-Sent Events (SSE) specification:
+This test suite is for checking compliance with W3C Server-Sent Events (SSE)
+specification:
 * http://www.w3.org/TR/2011/WD-eventsource-20111020
 
-## Pre-conditions
-
-Make sure the DUT is able to access http://googlecodesamples.com/html5/sse/sse.html.
-
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
