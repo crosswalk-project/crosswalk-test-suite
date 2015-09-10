@@ -4,11 +4,12 @@ SRC_ROOT=$(cd $(dirname $0);pwd)
 BUILD_ROOT=/tmp/${name}-${path_flag}_pack
 BUILD_DEST=/tmp/${name}-${path_flag}
 
-usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.x>]
+usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.x>] [-p <local | npm>]
 [-t apk] option was set as default.
 [-a x86] option was set as default.
 [-m embedded] option was set as default.
 [-v 3.6] option was set as default.
+[-p local] option was set as default.
 "
 
 dest_dir=$SRC_ROOT
@@ -18,7 +19,8 @@ pack_mode="embedded"
 sub_version="3.6"
 crosswalk_version=""
 crosswalk_branch=""
-while getopts a:t:m:d:v: o
+plugin_location="local"
+while getopts a:t:m:d:v:p: o
 do
     case "$o" in
     a) arch=$OPTARG;;
@@ -26,6 +28,7 @@ do
     m) pack_mode=$OPTARG;;
     d) dest_dir=$OPTARG;;
     v) sub_version=$OPTARG;;
+    p) plugin_location=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
@@ -58,7 +61,7 @@ mkdir -p $BUILD_ROOT $BUILD_DEST
 
 if [ $pack_type == "cordova" ]; then
     for list in $LIST;do
-        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/$list
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version --pack-type $plugin_location -s $SRC_ROOT/../../webapi/$list
         if [ -d $BUILD_DEST/opt/$list/HOST_RESOURCES ]; then
             mkdir -p $BUILD_ROOT/opt/$name/opt/$list
             mv $BUILD_DEST/opt/$list/HOST_RESOURCES/* $BUILD_ROOT/opt/$name/opt/$list
@@ -103,11 +106,23 @@ elif [ $pack_type == "cordova" ];then
         for plugin in `ls $BUILD_ROOT/cordova_plugins`
         do
             if [ $plugin == "cordova-plugin-crosswalk-webview" ]; then
+                version_cmd=""
+                plugin_crosswalk_source=$BUILD_ROOT/cordova_plugins/$plugin
                 if [ $crosswalk_branch == "beta" ]; then
-                    cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable CROSSWALK_ANDROID_VERSION="org.xwalk:xwalk_core_library_beta:$crosswalk_version" --variable LIB_MODE="$pack_mode"
+                    if [ $pack_mode == "shared" ]; then
+                        version_cmd="--variable XWALK_VERSION="org.xwalk:xwalk_shared_library_beta:$crosswalk_version""
+                    else
+                        version_cmd="--variable XWALK_VERSION="org.xwalk:xwalk_core_library_beta:$crosswalk_version""
+                    fi
                 else
-                    cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable CROSSWALK_ANDROID_VERSION="$crosswalk_version" --variable LIB_MODE="$pack_mode"
+                    version_cmd="--variable XWALK_VERSION="$crosswalk_version""
                 fi
+                if [ $plugin_location == 'npm' ]; then
+                   plugin_crosswalk_source="cordova-plugin-crosswalk-webview"
+                fi
+                echo $version_cmd
+                echo $plugin_crosswalk_source
+                cordova plugin add $plugin_crosswalk_source $version_cmd --variable XWALK_MODE="$pack_mode"
             else
                 cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
             fi
