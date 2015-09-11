@@ -34,7 +34,7 @@ def uninstPKGs():
         for file in files:
             if file.endswith(".deb"):
                 debName = os.path.basename(os.path.splitext(file)[0])
-                pkg_id = debName.split(".")[-1]
+                pkg_id = debName.split("_")[0]
                 (return_code, output) = doCMD(
                     "sudo dpkg -P %s" % pkg_id)
                 if return_code != 0:
