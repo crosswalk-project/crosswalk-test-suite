@@ -213,27 +213,28 @@ class Android(common.APP):
                 .child_by_text(child_name, className="android.widget.LinearLayout")
         if gps.exists:
             self.clickObject(gps)
-            self.registerWatcher("gps", "Location consent", "Agree")
-            gps_switch = self.selectObjectBy("className=android.widget.Switch")
-            if gps_switch.exists:
-                for g in gps_switch:
-                    state = self.getObjectInfo(g, "checked")
-                    if (not state and turnon) or (state and not turnon):
-                        self.clickObject(g)
-                if self.productName == PRODUCTS_NAME["nexus5"]:
-                    self.runAllWatchers()
+            if self.productName == PRODUCTS_NAME["zte"]:
+                gps_checkbox = self.selectObjectBy("className=android.widget.CheckBox")
+                if gps_checkbox.exists:
+                    for g in gps_checkbox:
+                        state = self.getObjectInfo(g, "checked")
+                        if (not state and turnon) or (state and not turnon):
+                            self.clickObject(g)
                     self.pressKeyBy("back")
                     self.pressKeyBy("back")
                     return True
-            gps_checkbox = self.selectObjectBy("className=android.widget.CheckBox")
-            if gps_checkbox.exists:
-                for g in gps_checkbox:
-                    state = self.getObjectInfo(g, "checked")
-                    if (not state and turnon) or (state and not turnon):
-                        self.clickObject(g)
-                self.pressKeyBy("back")
-                self.pressKeyBy("back")
-                return True
+            else:
+                self.registerWatcher("gps", "Location consent", "Agree")
+                gps_switch = self.selectObjectBy("className=android.widget.Switch")
+                if gps_switch.exists:
+                    for g in gps_switch:
+                        state = self.getObjectInfo(g, "checked")
+                        if (not state and turnon) or (state and not turnon):
+                            self.clickObject(g)
+                            self.runAllWatchers()
+                    self.pressKeyBy("back")
+                    self.pressKeyBy("back")
+                    return True
         return False
 
 
