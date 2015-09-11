@@ -1,11 +1,15 @@
+# Animation Timing Test Suite
+
 ## Introduction
 
-This test suite is for W3C Animation Timing Control specification testing:
+This test suite is for checking compliance with Timing control for script-based
+animations specification:
 * http://www.w3.org/TR/2013/CR-animation-timing-20131031/
 
-## Authors:
+## Authors
 
-* Han Ruijing <ruijingx.a.han@intel.com>
+* Han, Ruijing <ruijingx.a.han@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
