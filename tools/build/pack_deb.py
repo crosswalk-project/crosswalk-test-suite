@@ -408,9 +408,7 @@ def packDEB(build_json=None, app_src=None, app_dest=None, app_name=None):
         return False
 
     # After build successfully, copy the .deb from app_src+"pkg" to app_dest
-    if not doCopy(
-            os.path.join(app_src, "pkg"),
-            app_dest):
+    if not doCMD("cp -rf %s/*deb %s" % (app_src, app_dest)):
         return False
     return True
 
