@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,26 +24,25 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Xu, Jianfeng <jianfengx.xu@intel.com>
-
 -->
 
-<html>
-  <head>
-    <title>CSP Test: csp_referrer_always</title>
-    <link rel="author" title="Intel" href="http://www.intel.com"/>
-    <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer"/>
-    <meta name="flags" content=""/>
-    <meta name="assert" content="referrer always"/>
-    <meta charset="utf-8"/>
-    <meta http-equiv="content-security-policy" content="referrer always">
-  </head>
-  <body>
-    <p>Test passes if show result is referrer of this page.</p>
-    <script>
-      document.write(document.referrer);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>CSP Test: referrer set "no-referrer-when-downgrade"/"default"</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer">
+<meta http-equiv="content-security-policy" content="referrer no-referrer-when-downgrade">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<iframe id="ifr" src="support/referrer.html" onload="init()"></iframe>
+
+<script>
+  function init() {
+    test(function() {
+      var iframe = document.getElementById("ifr").contentWindow;
+      assert_equals(iframe.document.referrer, window.location.href);
+    }, "when referrer is set to 'no-referrer-when-downgrade'/'default',it returns no referrer when downgrade(ie. https to http).");
+  }
+</script>
+
