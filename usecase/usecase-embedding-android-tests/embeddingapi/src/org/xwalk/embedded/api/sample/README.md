@@ -482,4 +482,19 @@ This usecase covers following interface and methods:
 * XWalkView interface: requestFocus methods
 
 
+### 47. The [XWalkViewWithSetLayerType](XWalkViewWithSetLayerType.java) sample check whether setLayerType method work as same as WebView, include:
 
+* setLayerType can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: setLayerType methods
+
+
+### 48. The [XWalkViewWithNetworkAvailable](XWalkViewWithNetworkAvailable.java) sample check whether setNetworkAvailable method work as same as WebView, include:
+
+* setNetworkAvailable can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: setNetworkAvailable methods

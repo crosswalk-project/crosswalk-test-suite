@@ -1,0 +1,29 @@
+<html>
+<head>
+    <script type="text/javascript">
+        function OnLoad () {
+            if ('onLine' in navigator) {
+                if (navigator.onLine) {
+                    alert ("Your browser is working online.");
+                }
+                else {
+                    alert ("Your browser is working offline.");
+                }
+            }
+            else {
+                alert ("Your browser does not support the onLine property.");
+            }
+        }
+
+        function OnOnline () {
+            alert ("Your browser starts to work online.");
+        }
+        function OnOffline () {
+            alert ("Your browser starts to work offline.");
+        }
+    </script>
+</head>
+<body onload="OnLoad ()" ononline="OnOnline ();" onoffline="OnOffline ();" >
+Please click above button to switch between working online and offline.
+</body>
+</html>
