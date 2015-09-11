@@ -399,6 +399,28 @@
         </description>
       </testcase>
     </set>
+    <set name="referrer" type="js">
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_always" purpose="When referrer is set to value 'unsafe-url'/'always',it returns referrerURL.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_always.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_default" purpose="When referrer is set to 'no-referrer-when-downgrade'/'default', it returns no referrer when downgrade(ie. https to http).">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_default.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_never" purpose="When referrer is set to 'no-referrer'/'never', it returns no referrer.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_never.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_origin" purpose="When referrer is set to 'origin', it returns referrerOrigin.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_origin.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
     <set name="csp-ref" type="ref" ui-auto="wd">
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_default-src-inline-blocked" purpose="Check if default-src is 'self' but without unsafe-inline, that inline script will be blocked.">
         <description>
