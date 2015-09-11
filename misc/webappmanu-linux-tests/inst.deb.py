@@ -40,9 +40,8 @@ def getUSERID():
 
 def getPKGID(pkg_name=None):
     pkg_id = None
-    pkg_name = pkg_name.split('.')
-    num = len(pkg_name)
-    pkg_id = pkg_name[num - 1]
+    pkg_name = pkg_name.split('_')
+    pkg_id = pkg_name[0]
     return pkg_id
 
 
