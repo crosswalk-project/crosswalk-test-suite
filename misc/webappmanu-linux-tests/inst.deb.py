@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import os.path
 import shutil
 import glob
 import time
@@ -78,6 +79,23 @@ def instPKGs():
     return action_status
 
 
+def initEnv():
+    action_status = True
+    xwalk_dir = "/usr/bin"
+    cmd = "which xwalk"
+    (return_code, xwalk_path) = doCMD(cmd)
+    if return_code == 0:
+        xwalk_dir = os.path.dirname(xwalk_path[0])
+    cmdList = ["sudo rm -rf %s/xwalk", "sudo cp -rf xwalk.sh %s/", "sudo ln /usr/bin/xwalk.sh %s/xwalk"]
+    for cmdstr in cmdList:
+        cmd = cmdstr % xwalk_dir
+        (return_code, xwalk_path) = doCMD(cmd)
+        if return_code != 0:
+            action_status = False
+            break
+    return action_status
+
+
 def main():
     try:
         usage = "usage: inst.py -i"
@@ -107,6 +125,8 @@ def main():
         if not uninstPKGs():
             sys.exit(1)
     else:
+        if not initEnv():
+            sys.exit(1)
         if not instPKGs():
             sys.exit(1)
 
