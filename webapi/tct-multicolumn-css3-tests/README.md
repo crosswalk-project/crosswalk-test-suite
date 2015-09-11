@@ -1,11 +1,14 @@
+# CSS Multi-column Test Suite
+
 ## Introduction
 
-This test suite is for testing CSS3 Multicolumn Layout specification:
+This test suite is for checking compliance with CSS3 Multicolumn Layout specification:
 * http://www.w3.org/TR/2011/CR-css3-multicol-20110412
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

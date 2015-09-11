@@ -1,11 +1,14 @@
+# Resource Timing Test Suite
+
 ## Introduction
 
-This test suite is for testing imports specification:
+This test suite is for checking compliance with Resource Timing specification:
 * http://www.w3.org/TR/2014/CR-resource-timing-20140624/
 
-## Authors:
+## Authors
 
 * Liu, Xin <xinx.liu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

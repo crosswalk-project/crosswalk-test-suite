@@ -1,11 +1,15 @@
+# DOM/JS related HTML5 Enhancements Test Suite
+
 ## Introduction
 
-This test suite is for testing DOM/JS related to HTML5 Enhancements specification:
+This test suite is for checking support of DOM/JS related HTML5 Enhancements
+in Crosswalk Project:
 * http://www.w3.org/TR/2011/WD-html5-20110525/common-dom-interfaces.html
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

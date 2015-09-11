@@ -1,9 +1,11 @@
+# Tizen Audio System API Test Suite
+
 ## Introduction
 
-This test suite is for testing Audio System API specification:
+This test suite is for checking compliance with Audio System API specification:
 * http://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API
 
-## Authors:
+## Authors
 
 * Xu,Jianfeng <jianfengx.xu@intel.com>
 

@@ -1,11 +1,14 @@
+# CSS Backgrounds and Borders Test Suite
+
 ## Introduction
 
 This test suite is for testing CSS3 Backgrounds and Borders specification:
 * http://www.w3.org/TR/2014/CR-css3-background-20140909/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

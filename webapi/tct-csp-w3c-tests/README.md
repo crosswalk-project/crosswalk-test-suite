@@ -1,11 +1,15 @@
+# Content Security Policy Test Suite
+
 ## Introduction
 
-This test suite is for W3C Content Security Policy module testing, which covers the following specifications:
+This test suite is for checking compliance with W3C Content Security Policy
+specification:
 * http://www.w3.org/TR/2012/CR-CSP-20121115/
 
-## Authors:
+## Authors
 
 * Hao, Yunfei <yunfeix.hao@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

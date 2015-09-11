@@ -1,11 +1,14 @@
+# HTML5 Drag and Drop Test Suite
+
 ## Introduction
 
 This test suite is for testing HTML5 Drag and Drop specification:
 * http://www.w3.org/TR/2012/WD-html5-20120329/dnd.html
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

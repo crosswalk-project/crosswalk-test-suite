@@ -1,11 +1,15 @@
+# HTML Media Capture Test Suite
+
 ## Introduction
 
-These tests are for checking compliance with HTML5 MediaCapture specification:
+This test suite is for checking compliance with HTML Media Capture
+specification:
 * http://www.w3.org/TR/2012/WD-html-media-capture-20120712/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

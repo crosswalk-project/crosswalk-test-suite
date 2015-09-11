@@ -1,15 +1,19 @@
+# Tizen Download API Test Suite
+
 ## Introduction
 
-This test suite is for testing Tizen Download API, which covers the following specifications:
+This test suite is for checking compliance with Tizen Download API
+specification:
 * https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/download.html
 
 ## Pre-conditions
 
 A network connection capable of accessing the Internet MUST be established
 
-## Authors:
+## Authors
 
-* leizhan<zhanx.lei@intel.com>
+* Lei, Zhan <zhanx.lei@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

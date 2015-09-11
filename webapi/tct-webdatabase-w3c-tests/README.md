@@ -1,11 +1,15 @@
+# Web SQL Database Test Suite
+
 ## Introduction
 
-This test suite is for testing W3C Storage WebSQLDatabase specification:
+This test suite is for checking compliance with W3C Web SQL Database
+specification:
 * http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

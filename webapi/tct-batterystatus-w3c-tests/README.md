@@ -1,11 +1,14 @@
+# Battery Status API Test Suite
+
 ## Introduction
 
-These tests are for checking compliance with HTML5 Battery specification:
+This test suite is for checking compliance with Battery Status API:
 * https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

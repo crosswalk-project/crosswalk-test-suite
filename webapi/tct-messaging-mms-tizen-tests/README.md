@@ -1,29 +1,33 @@
+# Tize Messaging API Test Suite
+
 ## Introduction
 
-This test suite is for testing Tizen Messaging API, which covers the following specifications (only MMS part):
+This test suite is for checking compliance with Tizen Messaging API
+specification (MMS part):
 * https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html
 
 ## Pre-conditions
 
 * A SIM card MUST be inserted for sending MMS messages.
 
-* Mobile Data should be enabled
-    Launch 'Settings' application -> Select 'Network'
-    -> Turn on 'Mobile data' ('Use packet data')
+* Mobile Data should be enabled:
+  * Launch 'Settings' application.
+  * Select 'Network'.
+  * Turn on 'Mobile data' ('Use packet data').
 
 * Before testing, you MUST change some variables defined in
-   messaging/support/messaging_common.js
-   for message recipients. Here's the variables to modify:
+`messaging/support/messaging_common.js` for message recipients.
+Here's the variables to be modified:
+  * `TEST_SMS_RECIPIENT` MUST be set to phone number, different from the device
+    under test and without country calling code.
+  * `TEST_SMS_RECIPIENT_2` MUST be set to phone number, different from the
+    device under test, different from `TEST_SMS_RECIPIENT` and without country
+    calling code.
 
-   TEST_SMS_RECIPIENT     MUST be set to phone number
-                          (different from the device under test and without country calling code)
-   TEST_SMS_RECIPIENT_2   MUST be set to phone number
-                          (different from the device under test,
-                           different from TEST_SMS_RECIPIENT and without country calling code)
-
-## Authors:
+## Authors
 
 * Zou, Zoe <yananx.xu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

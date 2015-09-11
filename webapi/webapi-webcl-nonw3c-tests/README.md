@@ -1,11 +1,14 @@
+# WebCL Test Suite
+
 ## Introduction
 
-This test suite is for checking compliance with WebCL (Khronos Spec):
+This test suite is for checking compliance with WebCL (Khronos) specification:
 * https://www.khronos.org/registry/webcl/specs/latest/1.0/
 
-## Authors:
+## Authors
 
 * Xu, Jianfeng <jianfengx.xu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

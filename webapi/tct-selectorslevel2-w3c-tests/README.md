@@ -1,11 +1,14 @@
+# Selectors API Level 2 Test Suite
+
 ## Introduction
 
 This test suite is for checking compliance with W3C Selectors API Level 2 specification:
 * http://www.w3.org/TR/2013/NOTE-selectors-api2-20131017/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

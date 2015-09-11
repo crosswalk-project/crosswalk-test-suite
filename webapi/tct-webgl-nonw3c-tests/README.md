@@ -1,11 +1,14 @@
+# WebGL Test Suite
+
 ## Introduction
 
-This test suite is for checking compliance with WebGL (Khronos Spec):
+This test suite is for checking compliance with WebGL (Khronos) specification:
 * https://www.khronos.org/registry/webgl/specs/1.0/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

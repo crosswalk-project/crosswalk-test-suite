@@ -1,11 +1,14 @@
+# Indexed Database API Test Suite
+
 ## Introduction
 
-This test suite is for testing a W3C IndexDB module, which covers the following specification:
+This test suite is for checking compliance with Indexed Database API:
 * https://dvcs.w3.org/hg/IndexedDB/raw-file/tip/Overview.html
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

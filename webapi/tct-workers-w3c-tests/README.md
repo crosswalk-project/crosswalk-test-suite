@@ -1,11 +1,14 @@
+# Web Wokers Test Suite
+
 ## Introduction
 
-This test suite is for W3C Web Workers specification testing:
+This test suite is for checking compliance with W3C Web Workers specification:
 * http://www.w3.org/TR/2012/CR-workers-20120501
 
-## Authors:
+## Authors
 
 * Zhang, Ge <gex.zhang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

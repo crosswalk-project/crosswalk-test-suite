@@ -1,3 +1,5 @@
+# Tizen Call History API Test Suite
+
 ## Introduction
 
 This test suite is for testing Tizen Callhistory API, which covers the following specifications:
@@ -49,9 +51,9 @@ This test suite is for testing Tizen Callhistory API, which covers the following
 * 1 case below need DIALED call:
     CallHistoryEntry_direction_DIALED.html
 
-## Authors:
+## Authors
 
-* Guan,JingX <jingx.guan@intel.com>
+* Guan, Jing <jingx.guan@intel.com>
 
 ## LICENSE
 

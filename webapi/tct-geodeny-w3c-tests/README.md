@@ -1,12 +1,15 @@
+# Geolocation API Test Suite
+
 ## Introduction
 
-This test suite is for testing W3C Geolocation API specification
-with device's location access permission denied:
+This test suite is for checking compliance with W3C Geolocation API
+specification with device's location access permission denied:
 * http://www.w3.org/TR/2013/REC-geolocation-API-20131024/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

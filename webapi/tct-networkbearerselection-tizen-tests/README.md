@@ -1,3 +1,5 @@
+# Tizen Network Bearer Selection API Test Suite
+
 ## Introduction
 
 This test suite is for testing Tizen NetworkBearerSelection API, which covers the following specifications:
@@ -7,7 +9,7 @@ This test suite is for testing Tizen NetworkBearerSelection API, which covers th
 
 NetworkBearerSelection tests requires cellular data service enabled.
 
-## Authors:
+## Authors
 
 * Krzysztof Lachacz <k.lachacz@samsung.com>
 

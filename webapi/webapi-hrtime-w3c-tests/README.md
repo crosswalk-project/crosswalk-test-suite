@@ -1,11 +1,15 @@
+# High Resolution Time Test Suite
+
 ## Introduction
 
-This test suite is for testing High Resolution Time specification:
+This test suite is for checking compliance with High Resolution Time
+specification:
 * http://www.w3.org/TR/2012/REC-hr-time-20121217/
 
-## Authors:
+## Authors
 
-* Wang,Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

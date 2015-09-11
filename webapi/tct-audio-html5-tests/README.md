@@ -1,11 +1,14 @@
+# HTML5 Audio Test Suite
+
 ## Introduction
 
-This test suite is for checking compliance with HTML5 Audio Element specification:
+This test suite is for checking compliance with HTML5 Audio element:
 * http://www.w3.org/TR/2014/REC-html5-20141028/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

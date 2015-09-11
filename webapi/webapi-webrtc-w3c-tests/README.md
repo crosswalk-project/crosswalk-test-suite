@@ -1,11 +1,14 @@
+# WebRTC Test Suite
+
 ## Introduction
 
-This test suite is for testing WebRTC specification:
+This test suite is for checking compliance with WebRTC specification:
 * http://www.w3.org/TR/2013/WD-webrtc-20130910/
 
-## Authors:
+## Authors
 
-* Wang,Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

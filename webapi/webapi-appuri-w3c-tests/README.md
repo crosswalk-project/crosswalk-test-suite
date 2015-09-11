@@ -1,11 +1,14 @@
+# App URI Test Suite
+
 ## Introduction
 
-This test suite is for testing App URI specification:
+This test suite is for checking compliance with App URI specification:
 * https://dvcs.w3.org/2012/sysapps/app-uri/
 
-## Authors:
+## Authors
 
 * Shentu, Jiazhen <jiazhenx.shentu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

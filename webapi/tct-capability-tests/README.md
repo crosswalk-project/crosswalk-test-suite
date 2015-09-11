@@ -1,10 +1,13 @@
+# Tizen Device Capabitily Test Suite
+
 ## Introduction
 
-This test suite is for device capability testing.
+This test suite is for checking the device capability on Tizen platforms.
 
-## Authors:
+## Authors
 
 * Zhang, Ge <gex.zhang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

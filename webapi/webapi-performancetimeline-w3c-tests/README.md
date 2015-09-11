@@ -1,11 +1,15 @@
+# Performance Timeline Test Suite
+
 ## Introduction
 
-This test suite is for testing Performance Timeline specification:
+This test suite is for checking compliance with Performance Timeline
+specification:
 * http://www.w3.org/TR/2013/REC-performance-timeline-20131212/
 
-## Authors:
+## Authors
 
-* Liu,Yun <yunx.liu@intel.com>
+* Liu, Yun <yunx.liu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

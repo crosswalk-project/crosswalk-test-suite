@@ -1,11 +1,14 @@
+# File API Test Suite
+
 ## Introduction
 
-These tests are for checkeing compliance with File API specification:
+This test suite for checkeing compliance with File API specification:
 * http://dev.w3.org/2006/webapi/FileAPI/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

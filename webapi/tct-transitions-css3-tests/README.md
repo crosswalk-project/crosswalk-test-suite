@@ -1,11 +1,14 @@
+# CSS Transitions Test Suite
+
 ## Introduction
 
 This test suite is for testing CSS3 Transitions specification:
 * http://www.w3.org/TR/2012/WD-css3-transitions-20120403/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

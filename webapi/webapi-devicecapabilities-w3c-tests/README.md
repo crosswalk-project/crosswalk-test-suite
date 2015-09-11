@@ -1,11 +1,15 @@
+# Device Capability Test Suite
+
 ## Introduction
 
-This test suite is for testing Device Capabilities specifications:
+This test suite is for checking compliance with Device Capabilities
+specification:
 * http://www.w3.org/2012/sysapps/device-capabilities/
 
-## Authors:
+## Authors
 
 * Xu, Kang <kangx.xu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

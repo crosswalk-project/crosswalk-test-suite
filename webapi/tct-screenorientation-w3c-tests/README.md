@@ -1,11 +1,16 @@
+# Screen Orientation API Test Suite
+
 ## Introduction
 
-This test suite is for testing W3C The Screen Orientation API specification:
+This test suite is for checking compliance with W3C Screen Orientation API
+specification:
 * https://w3c.github.io/screen-orientation/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Li, Hao <haox.li@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

@@ -1,3 +1,5 @@
+# Tizen NFC API Test Suite
+
 ## Introduction
 
 This test suite is for testing Tizen NFC API, which covers the following specifications:
@@ -15,7 +17,7 @@ During manual tests You are expected to either:
 - touch the device with different NFC enabled device (NFCAdapter_setPeerListener*, NFCPeer* tests)
 - touch the device with different NFC enabled device and send NFC data from it
 
-## Authors:
+## Authors
 
 * Han, GuangX <guangx.han@intel.com>
 

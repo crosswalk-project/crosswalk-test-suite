@@ -1,11 +1,15 @@
+# Network Information API Test Suite
+
 ## Introduction
 
-These tests are for checking compliance with HTML5 NetworkInfo specification:
+This test suite for checking compliance with HTML5 Network Information API
+specification:
 * http://w3c.github.io/netinfo/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

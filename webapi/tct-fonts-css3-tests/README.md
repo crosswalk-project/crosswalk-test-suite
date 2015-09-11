@@ -1,11 +1,15 @@
+# CSS Fonts Test Suite
+
 ## Introduction
 
-This test suite is for testing CSS3 Downloadable Fonts (CSS @font-face) specification:
+This test suite is for checking compliance with CSS Fonts Module Level 3
+specification:
 * http://www.w3.org/TR/2013/CR-css-fonts-3-20131003/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

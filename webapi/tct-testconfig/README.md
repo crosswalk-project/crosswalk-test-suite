@@ -1,12 +1,14 @@
+# Tizen TCT Test Configure
+
 ## Introduction
 
-This test suite is used for Tizen tct tests configurations, included:
-* Three steps for user config tests manually.
-* One config script file for user config other tests which can set the configs automatically.
+This suite is used for TCT Manager to set up testing environment/configure
+before running the Tizen TCT test suites.
 
-## Authors:
+## Authors
 
 * Fan, Yugang <yugang.fan@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

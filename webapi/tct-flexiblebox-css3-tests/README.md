@@ -1,11 +1,15 @@
+# CSS Flexible Box Test Suite
+
 ## Introduction
 
-This test suite is for testing CSS3 Flexible Box Layout specification:
+This test suite is for checking compliance with CSS Flexible Box Layout
+Level 3 specification:
 * http://www.w3.org/TR/2014/WD-css-flexbox-1-20140925/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

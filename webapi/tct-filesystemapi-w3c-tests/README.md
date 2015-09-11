@@ -1,11 +1,15 @@
+# File API Directories and System Test Suite
+
 ## Introduction
 
-These tests are for checking compliance with File API Directories and System specification:
+This test suite is for checking compliance with File API Directories and System
+specification:
 * http://dev.w3.org/2009/dap/file-system/file-dir-sys.html
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

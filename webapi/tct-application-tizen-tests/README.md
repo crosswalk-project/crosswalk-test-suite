@@ -1,3 +1,5 @@
+# Tizen Application API Test Suite
+
 ## Introduction
 
 This test suite is for testing Tizen Application API, which covers the following specifications:
@@ -30,7 +32,7 @@ Click Run and uninstall TCTAppInfoEventTest1 application.
 Make sure that TCTAppInfoEventTest1 application is installed (you can install it from My files app (Phone/Others directory)).
 Click Run and install TCTAppInfoEventTest2.wgt application from My files app (Phone/Others directory).
 
-## Authors:
+## Authors
 
 * Cao, Jenny <jenny.q.cao@intel.com>
 * Mariusz Polasinski <m.polasinski@samsung.com>

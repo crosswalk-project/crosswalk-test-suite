@@ -1,11 +1,14 @@
+# Gamepad Test Suite
+
 ## Introduction
 
-This test suite is for testing Gamepad API specification:
+This test suite is for checking compliance with Gamepad specification:
 * http://www.w3.org/TR/gamepad/
 
-## Authors:
+## Authors
 
 * Xu,Jianfeng <jianfengx.xu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

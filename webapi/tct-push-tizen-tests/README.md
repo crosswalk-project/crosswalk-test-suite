@@ -1,3 +1,5 @@
+# Tizen Push API Test Suite
+
 ## Introduction
 
 This test suite is for testing Tizen Push API, which covers the following specifications:
@@ -7,7 +9,7 @@ This test suite is for testing Tizen Push API, which covers the following specif
 
 A network connection capable of accessing the Internet MUST be established
 
-## Authors:
+## Authors
 
 * Piotr Szydelko <p.szydelko@samsung.com>
 * Tomasz Paciorek <t.paciorek@samsung.com>

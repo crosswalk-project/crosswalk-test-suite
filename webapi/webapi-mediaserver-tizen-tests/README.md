@@ -1,14 +1,23 @@
+# Media Server API Test Suite
+
 ## Introduction
 
-This test suite is for testing CSS3 User Interface specification:
-* http://www.w3.org/TR/2012/WD-css3-ui-20120117/
+This test suite is for checking Media Server API support on Tizen platform:
+* http://01org.github.io/cloud-dleyna/mediaserver.html
 
 ## Pre-conditions
 
-* Set up dlna media server follow the steps:
-1. Modify rygel.conf on IVI device.
-$ cp /etc/rygel.conf TESTER-HOME-DIR/apps_rw/
+Set up DLNS media server by the steps below:
 
+* Modify `rygel.conf` on Tizen IVI device.
+
+```sh
+cp /etc/rygel.conf TESTER-HOME-DIR/apps_rw/
+```
+
+The diff looks like this:
+
+```sh
 - video-upload-folder=@VIDEOS@
 + video-upload-folder=TESTER-HOME-DIR/Videos
 
@@ -46,19 +55,25 @@ enabled=true
 enabled=true
 - title=Audio/Video playback on @HOSTNAME@
 + title=iPlaybin
+```
 
-2. Create Videos, Sounds and Images directories in TESTER-HOME-DIR/ on IVI device.
+* Create `Videos`, `Sounds` and `Images` directories in `TESTER-HOME-DIR/` on
+the Tizen IVI device.
 
-3. Add some media content to IVI device.
-* Copy media files to TESTER-HOME-DIR/Videos, TESTER-HOME-DIR/Sounds and TESTER-HOME-DIR/Images.
+* Add some media clips to Tizen IVI device, for example, to
+`TESTER-HOME-DIR/Videos`, `TESTER-HOME-DIR/Sounds` and `TESTER-HOME-DIR/Images`.
 
-4. Launch of services on IVI device.
-$ su - app
-$ rygel
+* Launch of services on Tizen IVI device.
 
-## Authors:
+```sh
+su - app
+rygel
+```
+
+## Authors
 
 * Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

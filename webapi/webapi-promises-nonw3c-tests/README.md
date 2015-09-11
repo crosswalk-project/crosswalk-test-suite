@@ -1,11 +1,14 @@
+# Promises Test Suite
+
 ## Introduction
 
-This test suite is for testing promises specification:
+This test suite is for checking Promises support in Crosswalk Project:
 * http://promises-aplus.github.io/promises-spec/
 
-## Authors:
+## Authors
 
-* Wang,Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

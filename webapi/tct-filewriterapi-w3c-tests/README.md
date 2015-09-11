@@ -1,11 +1,14 @@
+# File API Writer Test Suite
+
 ## Introduction
 
-These tests are for checking compliance with File API Writer specification:
+This test suite is for checking compliance with File API Writer specification:
 * http://dev.w3.org/2009/dap/file-system/file-writer.html
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

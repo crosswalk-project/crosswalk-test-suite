@@ -1,11 +1,14 @@
+# Vibration API Test Suite
+
 ## Introduction
 
 This test suite is for testing W3C Vibration API specification:
 * http://www.w3.org/TR/2012/WD-vibration-20120202/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

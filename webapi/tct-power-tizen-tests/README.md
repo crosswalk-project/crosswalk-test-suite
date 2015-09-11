@@ -1,11 +1,14 @@
+# Tizen Power API Test Suite
+
 ## Introduction
 
-This test suite is for testing Tizen Power API, which covers the following specifications:
+This test suite is for checking compliance with Tizen Power API specification:
 * https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/power.html
 
-## Authors:
+## Authors
 
-* leizhan<zhanx.lei@intel.com>
+* Lei, Zhan <zhanx.lei@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

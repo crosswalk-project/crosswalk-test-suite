@@ -1,11 +1,14 @@
+# Media Capture and Streams Test Suite
+
 ## Introduction
 
-This test suite is for testing Media Capture and Streams:
+This test suite is for checking compliance with Media Capture and Streams:
 * http://www.w3.org/TR/mediacapture-streams/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

@@ -1,11 +1,15 @@
+# Fullscreen API Test Suite
+
 ## Introduction
 
-This test suite is for testing Fullscreen API (Mozilla Spec) specification:
+This test suite is for checking Fullscreen API support in Crosswalk Project:
 * https://fullscreen.spec.whatwg.org/
+* https://crosswalk-project.org/jira/browse/XWALK-773
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

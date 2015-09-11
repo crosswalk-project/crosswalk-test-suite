@@ -1,11 +1,14 @@
+# User Timing Test Suite
+
 ## Introduction
 
-This test suite is for testing User Timing specification:
+This test suite is for checking compliance with User Timing specification:
 * http://www.w3.org/TR/2013/REC-user-timing-20131212/
 
-## Authors:
+## Authors
 
-* Wang,Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

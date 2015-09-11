@@ -1,11 +1,15 @@
+# Page Visibility API Test Suite
+
 ## Introduction
 
-This test suite is for W3C Page Visibility API specification testing:
+This test suite is for checking compliance with W3C Page Visibility API
+specification:
 * http://www.w3.org/TR/2012/CR-page-visibility-20120726/
 
-## Authors:
+## Authors
 
 * Zhang, Ge <gex.zhang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

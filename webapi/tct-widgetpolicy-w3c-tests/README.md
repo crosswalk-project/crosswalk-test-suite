@@ -1,15 +1,19 @@
+# Widget Access Request Policy Test Suite
+
 ## Introduction
 
-This test suite is for W3C Widget Access Request Policy specification testing:
+This test suite is for checking compliance with W3C Widget Access Request Policy
+specification:
 * http://www.w3.org/TR/2012/REC-widgets-access-20120207/
 
 ## Pre-conditions
 
-Connect to Wi-Fi.
+Make sure the device under test (DUT) connect to network.
 
-## Authors:
+## Authors
 
-* Zhang, GeX <gex.zhang@intel.com>
+* Zhang, Ge <gex.zhang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

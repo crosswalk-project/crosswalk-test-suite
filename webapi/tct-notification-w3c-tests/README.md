@@ -1,9 +1,11 @@
+# Web Notifications Test Suite
+
 ## Introduction
 
-These tests verify comformance to the W3C Web Notifications specification:
+This test suite is for checking comformance with Web Notifications specification:
 * http://www.w3.org/TR/2012/WD-notifications-20120614/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanming.lin@intel.com>
 * Wang, Chunyan <chunyanx.wang@inte.com>

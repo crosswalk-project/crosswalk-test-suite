@@ -1,17 +1,23 @@
+# Web Speech Test Suite
+
 ## Introduction
 
-This test suite is for testing web speech specification:
+This test suite is for checking compliance with Web Speech API specification:
 * https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
 
-## Authors:
-
-* Shentu,Jiazhen <jiazhenx.shentu@intel.com>
 
 ## Pre-condition
 
-* Following XWALK-4232 comments, the google voice search service is needed for Web Speech API.
-  Install [google-app-4-5-12-16-x86-android-apk](http://www.apkmirror.com/apk/google-inc/google-search/google-app-4-5-12-16-x86-android-apk-download/) to support google voice search service.
+Please make sure voice search service is installed on the device under test.
+One can download the
+[google-app-4-5-12-16-x86-android-apk](http://www.apkmirror.com/apk/google-inc/google-search/google-app-4-5-12-16-x86-android-apk-download/)
+for the support of the voice search service. See
+[XWALK-4232](https://crosswalk-project.org/jira/browse/XWALK-4232) for details.
 
+## Authors
+
+* Shentu,Jiazhen <jiazhenx.shentu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

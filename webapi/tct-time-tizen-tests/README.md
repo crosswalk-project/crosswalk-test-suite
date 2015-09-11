@@ -1,11 +1,14 @@
+# Tizen Time API Test Suite
+
 ## Introduction
 
-This test suite is for testing Tizen Time API, which covers the following specifications:
+This test suite is for checking compliance with Tizen Time API specification:
 * https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/time.html
 
-## Authors:
+## Authors
 
 * Li, Cici <cici.x.li@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

@@ -1,11 +1,14 @@
+# Navigation Timing Test Suite
+
 ## Introduction
 
-This test suite is for W3C Navigation Timing specification testing:
+This test suite is for checking compliance with Navigation Timing specification:
 * http://www.w3.org/TR/2012/REC-navigation-timing-20121217/
 
-## Authors:
+## Authors
 
-* Han Ruijing <ruijingx.a.han@intel.com>
+* Han, Ruijing <ruijingx.a.han@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

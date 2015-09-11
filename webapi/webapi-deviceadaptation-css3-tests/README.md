@@ -1,11 +1,15 @@
+# CSS Device Adaptation Test Suite
+
 ## Introduction
 
-This test suite is for testing CSS Device Adaptation specification:
+This test suite is for checking compliance with CSS Device Adaptation
+specification:
 * https://drafts.csswg.org/css-device-adapt/
 
-## Authors:
+## Authors
 
-* Wang,Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

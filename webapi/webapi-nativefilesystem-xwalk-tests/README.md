@@ -1,17 +1,22 @@
+# Native File System API Test Suite
+
 ## Introduction
 
-These tests are for checking compliance with Native File System API:
+This test suite is for checking Native File System API support in Crosswalk
+Project:
 * https://crosswalk-project.org/jira/browse/XWALK-672
 
-These directories below can be accessed on IVI:
-* CAMERA, DOCUMENTS, IMAGES, SOUNDS, VIDEOS
+These directories can be accessed on Tizen IVI:
+`CAMERA`, `DOCUMENTS`, `IMAGES`, `SOUNDS`, `VIDEOS`.
 
-These directories below can be accessed on Android:
-* ALARMS, DCIM, DOWNLOADS, MOVIES, MUSIC, NOTIFICATIONS, PICTURES, PODCASTS, RINGTONES, CACHEDIR, EXTERNAL_CACHEDIR
+These directories can be accessed on Android:
+`ALARMS`, `DCIM`, `DOWNLOADS`, `MOVIES`, `MUSIC`, `NOTIFICATIONS`, `PICTURES`,
+`PODCASTS`, `RINGTONES`, `CACHEDIR`, `EXTERNAL_CACHEDIR`.
 
-## Authors:
+## Authors
 
-* Liu,Yun <yunx.liu@intel.com>
+* Liu, Yun <yunx.liu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

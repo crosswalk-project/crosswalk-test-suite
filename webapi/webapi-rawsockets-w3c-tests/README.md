@@ -7,7 +7,7 @@ This test suite is for checking compliance with Raw Sockets specification:
 
 ## Authors
 
-* Shentu,Jiazhen <jiazhenx.shentu@intel.com>
+* Shentu, Jiazhen <jiazhenx.shentu@intel.com>
 * Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE

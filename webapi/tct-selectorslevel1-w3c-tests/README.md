@@ -1,11 +1,15 @@
+# Selectors API Level 1 Test Suite
+
 ## Introduction
 
-This test suite is for checking compliance with W3C Selectors API Level 1 specification:
+This test suite is for checking compliance with W3C Selectors API Level 1
+specification:
 * http://www.w3.org/TR/2013/REC-selectors-api-20130221/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

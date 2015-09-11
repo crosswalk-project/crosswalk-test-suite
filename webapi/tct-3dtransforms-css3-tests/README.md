@@ -1,11 +1,14 @@
+# CSS 3D Transforms Test Suite
+
 ## Introduction
 
-This test suite is for testing CSS3 3D Transforms specification:
+This test suite is for checking compliance with CSS 3D Transforms specification:
 * http://www.w3.org/TR/2013/WD-css-transforms-1-20131126/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

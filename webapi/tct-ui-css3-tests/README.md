@@ -1,11 +1,15 @@
+# CSS UI Test Suite
+
 ## Introduction
 
-This test suite is for testing CSS3 User Interface specification:
+This test suite is for checking compliance with CSS3 User Interface
+specification:
 * http://www.w3.org/TR/2012/WD-css3-ui-20120117/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

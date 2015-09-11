@@ -1,11 +1,14 @@
+# HTML5 Forms Test Suite
+
 ## Introduction
 
-This test suite is for testing HTML5 Forms specification:
+This test suite is for checking compliance with HTML5 Forms element:
 * http://www.w3.org/TR/2012/WD-html5-20121025/the-form-element.html#the-form-element
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

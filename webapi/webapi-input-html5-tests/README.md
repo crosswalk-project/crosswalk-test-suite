@@ -1,11 +1,14 @@
+# HTML5 Input Test Suite
+
 ## Introduction
 
 This test suite is for testing HTML5 Input Element specification:
 * http://www.w3.org/TR/html5/forms.html
 
-## Authors:
+## Authors
 
 * Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

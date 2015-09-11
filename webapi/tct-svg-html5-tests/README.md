@@ -1,11 +1,14 @@
+# HTML5 SVG Test Suite
+
 ## Introduction
 
 This test suite is for testing Html5 Inline SVG specification:
 * http://www.w3.org/TR/2011/REC-SVG11-20110816/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

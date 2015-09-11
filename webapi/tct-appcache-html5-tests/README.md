@@ -1,11 +1,14 @@
+# HTML5 AppCache Test Suite
+
 ## Introduction
 
 These tests are for checking compliance with HTML5 Application caches specification:
 * http://www.w3.org/TR/2012/WD-html5-20120329/offline.html#appcache
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

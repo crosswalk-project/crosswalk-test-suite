@@ -1,11 +1,15 @@
+# HTML Canvas 2D Context Test Suite
+
 ## Introduction
 
-This test suite is for testing HTML5 2D Canvas specification:
+This test suite is for checking compliance with HTML Canvas 2D Context
+specification:
 * http://www.w3.org/TR/2014/CR-2dcontext-20140821/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

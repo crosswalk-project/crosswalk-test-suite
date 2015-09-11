@@ -1,11 +1,15 @@
+# Widget Interface Test Suite
+
 ## Introduction
 
-This test suite is for W3C Widget Interface specification testing:
+This test suite is for checking compliance with W3C Widget Interface
+specification:
 * http://www.w3.org/TR/2011/WD-widgets-apis-20110607/
 
-## Authors:
+## Authors
 
-* Zhang, GeX <gex.zhang@intel.com>
+* Zhang, Ge <gex.zhang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

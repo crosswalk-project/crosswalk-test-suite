@@ -1,11 +1,14 @@
+# CSS Text Test Suite
+
 ## Introduction
 
-This test suite is for testing CSS3 Text Effects specification:
+This test suite is for checking compliance with CSS Text Module Level 3:
 * http://www.w3.org/TR/2012/WD-css3-text-20121113
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

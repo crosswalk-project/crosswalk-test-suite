@@ -1,11 +1,14 @@
+# WebAudio Test Suite
+
 ## Introduction
 
-These tests are for checking compliance with WebAudio element specification:
+This test suite is for checking compliance with WebAudio specification:
 * http://www.w3.org/TR/2012/WD-webaudio-20121213/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

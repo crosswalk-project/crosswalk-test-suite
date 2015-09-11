@@ -1,11 +1,15 @@
+# Widget Packing and XML Configuration Test Suite
+
 ## Introduction
 
-This test suite is for W3C Widget Packing and XML Configuration specification testing:
+This test suite is for checking compliance with W3C Widget Packing and
+XML Configuration specification:
 * http://www.w3.org/TR/2011/REC-widgets-20110927/
 
-## Authors:
+## Authors
 
-* Zhang, GeX <gex.zhang@intel.com>
+* Zhang, Ge <gex.zhang@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

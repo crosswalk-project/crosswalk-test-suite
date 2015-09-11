@@ -1,11 +1,14 @@
+# CSS Animations Test Suite
+
 ## Introduction
 
-This test suite is for testing CSS3 Animations specification:
+This test suite is for checking compliance with CSS Animations specification:
 * http://www.w3.org/TR/2013/WD-css3-animations-20130219/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 

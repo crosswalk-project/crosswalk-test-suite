@@ -1,11 +1,15 @@
+# HTML5 Browser State Test Suite
+
 ## Introduction
 
-This test suite is for testing HTML5 Browser State specification:
+This test suite is for checking compliance with HTML5 Browser State
+specification:
 * http://www.w3.org/html/wg/drafts/html/CR/browsers.html#browser-state
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
