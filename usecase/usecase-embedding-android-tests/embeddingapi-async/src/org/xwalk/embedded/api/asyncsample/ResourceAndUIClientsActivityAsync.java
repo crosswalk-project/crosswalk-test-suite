@@ -22,7 +22,7 @@ import android.widget.EditText;
 
 public class ResourceAndUIClientsActivityAsync extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
-    private EditText mText;    
+    private EditText mText;
     private XWalkInitializer mXWalkInitializer;
     private static final String TAG = ResourceAndUIClientsActivityAsync.class.getName();
 
@@ -51,7 +51,7 @@ public class ResourceAndUIClientsActivityAsync extends Activity implements XWalk
         }
 
         public WebResourceResponse shouldInterceptLoadRequest(XWalkView view, String url) {
-            Log.d(TAG, "Intercept load request");           
+            Log.d(TAG, "Intercept load request");
             return super.shouldInterceptLoadRequest(view, url);
         }
 
@@ -116,6 +116,23 @@ public class ResourceAndUIClientsActivityAsync extends Activity implements XWalk
             Log.d(TAG, "Scale changed.");
             mText.append("Scale changed from " + oldScale + " to " + newScale + "\n");
         }
+
+        @Override
+        public void onPageLoadStarted(XWalkView view, String url) {
+            // TODO Auto-generated method stub
+            super.onPageLoadStarted(view, url);
+            Log.d(TAG, "Page Load Started. url: " + url);
+            mText.append("Page Load Started. url: " + url + "\n");
+        }
+
+        @Override
+        public void onPageLoadStopped(XWalkView view, String url,
+                LoadStatus status) {
+            // TODO Auto-generated method stub
+            super.onPageLoadStopped(view, url, status);
+            Log.d(TAG, "Page Load Stopped. url: " + url + " status: " + status);
+            mText.append("Page Load Stopped. url: " + url + " status: " + status + "\n");
+        }
     }
 
     @Override
@@ -159,5 +176,5 @@ public class ResourceAndUIClientsActivityAsync extends Activity implements XWalk
         mXWalkView.setResourceClient(new ResourceClient(mXWalkView));
         mXWalkView.setUIClient(new UIClient(mXWalkView));
         mXWalkView.load("http://www.baidu.com/", null);
-    }  
+    }
 }
