@@ -44,6 +44,7 @@ from selenium.common.exceptions import (
 from atip.tizen import tizen
 from atip.common import common
 from atip.android import android
+
 try:
     from urlparse import urljoin, urlparse
 except ImportError:
@@ -96,12 +97,15 @@ class WebAPP(common.APP):
                         self.app_name = self.app_name.replace("-", "_")
                         apk_activity_name = ".%s" % self.app_name
                         apk_pkg_name = "org.xwalk.%s" % self.app_name
-        app_config_str = json.dumps(app_config).replace(
-            "TEST_APP_NAME", self.app_name).replace(
-            "TEST_APP_ID", self.app_id).replace(
-            "TEST_PKG_NAME", apk_pkg_name).replace(
-            "TEST_ACTIVITY_NAME", apk_activity_name)
-        self.app_config = json.loads(app_config_str)
+                self.app_config_str = json.dumps(app_config).replace(
+                    "TEST_APP_NAME", self.app_name).replace(
+                    "TEST_APP_ID", self.app_id).replace(
+                    "TEST_PKG_NAME", apk_pkg_name).replace(
+                    "TEST_ACTIVITY_NAME", apk_activity_name)
+            if app_config["platform"]["name"].upper().find('DEEPIN') >= 0:
+                app_config.update({"desired-capabilities": {"loggingPrefs":{},"xwalkOptions": {"binary": "/usr/bin/TEST_BINARY", "debugPort": "12450"}}})
+                self.app_config_str = json.dumps(app_config).replace("TEST_BINARY", self.app_name)
+            self.app_config = json.loads(self.app_config_str)
         if "url-prefix" in app_config:
             self.url_prefix = app_config["url-prefix"]
         else:
@@ -352,8 +356,12 @@ class WebAPP(common.APP):
     def launch_app(self):
         try:
             desired_capabilities = self.app_config["desired-capabilities"]
-            self.driver = WebDriver(
-                str(self.app_config["driver-url"]), desired_capabilities)
+            if self.app_config["platform"]["name"] == "android":
+                self.driver = WebDriver(
+                    str(self.app_config["driver-url"]), desired_capabilities)
+            elif self.app_config["platform"]["name"] == "deepin":
+                self.driver = WebDriver(
+                    str(self.app_config["driver-url"]), desired_capabilities, keep_alive=True)              
         except Exception as e:
             print "Failed to launch %s: %s" % (self.app_name, e)
             return False
@@ -783,6 +791,7 @@ class WebAPP(common.APP):
 
 def launch_webapp_by_name(
         context, app_name, apk_pkg_name=None, apk_activity_name=None):
+    test_platform = context.bdd_config["platform"]["name"]
     if not context.bdd_config:
         assert False
 
@@ -790,13 +799,14 @@ def launch_webapp_by_name(
         context.apps[app_name].quit()
     context.apps.update(
         {app_name: WebAPP(context.bdd_config, app_name, apk_pkg_name, apk_activity_name)})
-    context.apps.update(
-        {"android": android.Android(context.bdd_config, app_name, apk_pkg_name, apk_activity_name)})
     context.web = context.apps[app_name]
-    context.android = context.apps["android"]
-    context.android.turnOnScreen()
-    context.android.pressKeyBy("home")
-    context.android.setDeviceOrientation("n")
+    if test_platform == "android":
+        context.apps.update(
+            {"android": android.Android(context.bdd_config, app_name, apk_pkg_name, apk_activity_name)})
+        context.android = context.apps["android"]
+        context.android.turnOnScreen()
+        context.android.pressKeyBy("home")
+        context.android.setDeviceOrientation("n")
     if not context.web.launch_app():
         assert False
     assert True
