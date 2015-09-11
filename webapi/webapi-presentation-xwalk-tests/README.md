@@ -1,11 +1,14 @@
+# Presentation API Test Suite
+
 ## Introduction
 
-This test suite is for testing screen presentation specification:
+This test suite is for checking compliance with Presentation API specification:
 * http://webscreens.github.io/presentation-api/
 
-## Authors:
+## Authors
 
-* Liu,Xin <xinx.liu@intel.com>
+* Liu, Xin <xinx.liu@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
