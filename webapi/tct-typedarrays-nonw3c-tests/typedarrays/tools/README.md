@@ -1,24 +1,31 @@
+# Test Auto Generator
+
 ## Introduction
 
-This is a tool to automatically generate test cases for Typed Array attributes existence checking.
+This is a tool to automatically generate test cases for checking existence of
+Typed Array attributes existence.
 
-* template.html: tests template.
-* data.yaml: tests data.
-* gentest.py: create tests using template and data.
+## Source Code
 
-## How to use
+* `data.yaml`: test cases data.
+* `gentest.py`: script to create test cases using template and data.
+* `template.html`: test case template.
+* `template-dataview.html`: alternative test case template for DataView
+interface.
 
-$ python gentest.py
+## How to Generate Tests
 
+```sh
+python gentest.py
+```
 
-## Authors:
+## Authors
 
-* Xie,Yunxiao <yunxiaox.xie@intel.com>
-
+* Xie, Yunxiao <yunxiaox.xie@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
 Copyright (c) 2014 Intel Corporation.
 Except as noted, this software is licensed under BSD-3-Clause License.
 Please see the COPYING file for the BSD-3-Clause License.
-

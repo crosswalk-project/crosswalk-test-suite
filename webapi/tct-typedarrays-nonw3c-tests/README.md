@@ -1,11 +1,15 @@
+# Typed Arrays Test Suite
+
 ## Introduction
 
-This test suite is for testing Typed Arrays (Khronos Spec) specification:
+This test suite is for checking compliance with Typed Arrays (Khronos)
+specification:
 * https://www.khronos.org/registry/typedarray/specs/latest/
 
-## Authors:
+## Authors
 
 * Lin, Wanming <wanmingx.lin@intel.com>
+* Wang, Chunyan <chunyanx.wang@intel.com>
 
 ## LICENSE
 
