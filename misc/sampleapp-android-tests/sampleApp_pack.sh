@@ -71,7 +71,6 @@ clean_dir(){
 clean_dir
 
 update_code $ROOT_DIR/crosswalk-demos-original
-update_code $ROOT_DIR/Gallery
 update_code $ROOT_DIR/webapps-hangonman
 update_code $ROOT_DIR/webapps-hangonman/app/lib/smokesignals.js
 
@@ -84,7 +83,6 @@ fi
 rm -rf $ROOT_DIR/crosswalk-demos
 cp -a $ROOT_DIR/crosswalk-demos-original $ROOT_DIR/crosswalk-demos
 
-cp -r $ROOT_DIR/Gallery/* $ROOT_DIR/crosswalk-demos/Gallery/
 cp -r $ROOT_DIR/webapps-hangonman/* $ROOT_DIR/crosswalk-demos/HangOnMan/src/
 cp -a $ROOT_DIR/MemoryGame $ROOT_DIR/crosswalk-demos/
 cp -a $ROOT_DIR/HexGL $ROOT_DIR/crosswalk-demos/
@@ -120,9 +118,6 @@ build_apk(){
     set -e
     
     cp $ROOT_DIR/inst.py $BINARY_DIR/
-    
-    #Gallery:
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.gallery --manifest=$ROOT_DIR/crosswalk-demos/Gallery/manifest.json --mode=$1 --arch=$2 --enable-remote-debugging
     
     # Hexgl:
     python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.hexgl --name=Hexgl --app-root=$ROOT_DIR/crosswalk-demos/HexGL/assets/www --app-local-path=index.html --mode=$1 --arch=$2 --enable-remote-debugging
