@@ -502,6 +502,32 @@ class WebAPP(common.APP):
         except Exception as e:
             print "Failed to get element text: %s" % e
 
+    def should_see_text_startswith(self, text=None, key=None):
+        try:
+            js_script = 'var text=document.getElementById(\"' + \
+                key + '\").innerText; return text'
+            content = self.driver.execute_script(js_script)
+            if content.strip().startswith(text):
+                return True
+            else:
+                return False
+        except Exception as e:
+            print "Failed to find text startswith %s" % text
+            return False
+
+    def should_see_text_endswith(self, text=None, key=None):
+        try:
+            js_script = 'var text=document.getElementById(\"' + \
+                key + '\").innerText; return text'
+            content = self.driver.execute_script(js_script)
+            if content.strip().endswith(text):
+                return True
+            else:
+                return False
+        except Exception as e:
+            print "Failed to find text endswith %s" % text
+            return False
+
     def press_element_by_key(self, key, display=True):
         element = self.__get_element_by_key(key, display)
         print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
