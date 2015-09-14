@@ -493,3 +493,16 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: setNetworkAvailable methods
+
+
+
+
+
+### 49. The [XWalkViewWithClientOnRequestFocusAsync](XWalkViewWithClientOnRequestFocusAsync.java) sample check whether XWalkUIClient.onRequestFocus method work as same as WebView, include:
+
+* XWalkUIClient.onRequestFocus can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: XWalkUIClient.onRequestFocus methods
+
