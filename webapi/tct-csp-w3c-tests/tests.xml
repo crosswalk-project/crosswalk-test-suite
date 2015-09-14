@@ -399,6 +399,28 @@
         </description>
       </testcase>
     </set>
+    <set name="referrer" type="js">
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_always" purpose="When referrer is set to value 'unsafe-url'/'always',it returns referrerURL.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_always.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_default" purpose="When referrer is set to 'no-referrer-when-downgrade'/'default', it returns no referrer when downgrade(ie. https to http).">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_default.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_never" purpose="When referrer is set to 'no-referrer'/'never', it returns no referrer.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_never.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_origin" purpose="When referrer is set to 'origin', it returns referrerOrigin.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_origin.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
     <set name="csp-ref" type="ref" ui-auto="wd">
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_default-src-inline-blocked" purpose="Check if default-src is 'self' but without unsafe-inline, that inline script will be blocked.">
         <description>
@@ -812,7 +834,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-src_cross-origin_blocked-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-src_cross-origin_multi_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_frame-src_cross-origin_blocked_int" purpose="Check if user agent is unable to use internal frame resource when frame-src is cross-origin.">
@@ -825,7 +847,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-src_cross-origin_blocked_int-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-src_cross-origin_multi_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_frame-src_cross-origin_multi_allowed_one" purpose="Check if user agent is able to use the first external frame resource when frame-src is multi cross-origin.">
@@ -864,7 +886,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-src_cross-origin_multi_blocked-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-src_cross-origin_multi_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_frame-src_cross-origin_multi_blocked_int" purpose="Check if user agent is unable to use the internal frame resource when frame-src is multi cross-origin.">
@@ -877,7 +899,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-src_cross-origin_multi_blocked_int-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-src_cross-origin_multi_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_frame-src_none_blocked_ext" purpose="Check if user agent is unable to use external frame resource when frame-src is none.">
@@ -890,7 +912,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-src_none_blocked_ext-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-src_cross-origin_multi_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_frame-src_none_blocked_int" purpose="Check if user agent is unable to use internal frame resource when frame-src is none.">
@@ -903,7 +925,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-src_none_blocked_int-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-src_cross-origin_multi_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_frame-src_self_allowed" purpose="Check if user agent is able to use internal frame resource when frame-src is self.">
@@ -929,7 +951,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-src_self_blocked-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-src_cross-origin_multi_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_img-src_asterisk_allowed_ext" purpose="Check if user agent is able to use external image resource when img-src is *.">
@@ -1267,7 +1289,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_script-src_unsafe-inline_allowed-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_script-src_unsafe-inline_allowed_event-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_script-src_cross-origin-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_script-src_cross-origin_block_inline" purpose="Check if user agent is unable to use the inline script resource when there is no 'unsafe-inline' in script-src.">
@@ -1293,7 +1315,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_script-src_unsafe-inline_allowed_event-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_script-src_unsafe-inline_allowed_event-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_script-src_cross-origin-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_script-src_unsafe-inline_allowed_iframe" purpose="Check if user agent is able to use the inline script in iframe resource when script-src is only unsafe-inline.">
@@ -1319,7 +1341,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_script-src_unsafe-inline_blocked_ext-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_script-src_unsafe-inline_allowed_event-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_script-src_cross-origin-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_script-src_unsafe-inline_blocked_int" purpose="Check if user agent is unable to use the internal script resource when script-src is only unsafe-inline.">
@@ -1332,7 +1354,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_script-src_unsafe-inline_blocked_int-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_script-src_unsafe-inline_allowed_event-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_script-src_cross-origin-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_base-uri_asterisk" purpose="Check if base-uri is '*', that img will show normal.">
@@ -1397,7 +1419,7 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_child-src_cross-origin_allowed-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_cross-origin_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_child-src_cross-origin_blocked" purpose="Check if child-src is origin, that red image from other address should not display.">
@@ -1424,58 +1446,6 @@
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_child-src_self-manual.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_asterisk-ref.html</refer_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_referrer_never" purpose="Check if referrer is never, the referrer shoul return null.">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: csp_referrer_never.html</step_desc>
-              <expected>To pass, if show result is 'null'</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_never-manual.html</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_referrer_never-ref.html</refer_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_referrer_default" purpose="Check if referrer is default, shoul return referrer.">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: csp_referrer_default.html</step_desc>
-              <expected>To pass, if show result is referrer</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_default-manual.html</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_referrer_always-ref.html</refer_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_referrer_origin" purpose="Check if referrer is origin, shoul return the ASCII serialization of referrer.">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: csp_referrer_origin.html</step_desc>
-              <expected>To pass, if show result is the ASCII serialization of referrer</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_origin-manual.html</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_referrer_origin-ref.html</refer_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_referrer_always" purpose="Check if referrer is always, shoul return referrer.">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: csp_referrer_always.html</step_desc>
-              <expected>To pass, if show result is the ASCII serialization of referrer</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_always-manual.html</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_referrer_always-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_plugin-types_allowed" purpose="Check if plugin-types is origin, the image with right format will display.">
