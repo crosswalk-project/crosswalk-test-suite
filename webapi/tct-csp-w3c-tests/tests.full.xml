@@ -747,6 +747,52 @@
         </specs>
       </testcase>
     </set>
+    <set name="referrer" type="js">
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_always" priority="P2" purpose="When referrer is set to value 'unsafe-url'/'always',it returns referrerURL." status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_always.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="referrer" element_type="attribute" interface="Content-Security-Policy" section="TBD" specification="Referrer Policy"/>
+            <spec_url>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_default" priority="P2" purpose="When referrer is set to 'no-referrer-when-downgrade'/'default', it returns no referrer when downgrade(ie. https to http)." status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_default.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="referrer" element_type="attribute" interface="Content-Security-Policy" section="TBD" specification="Referrer Policy"/>
+            <spec_url>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_never" priority="P2" purpose="When referrer is set to 'no-referrer'/'never', it returns no referrer." status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_never.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="referrer" element_type="attribute" interface="Content-Security-Policy" section="TBD" specification="Referrer Policy"/>
+            <spec_url>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_referrer_origin" priority="P2" purpose="When referrer is set to 'origin', it returns referrerOrigin." status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_origin.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="referrer" element_type="attribute" interface="Content-Security-Policy" section="TBD" specification="Referrer Policy"/>
+            <spec_url>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+    </set>    
     <set name="csp-ref" type="ref" ui-auto="wd">
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_default-src-inline-blocked" priority="P2" purpose="Check if default-src is 'self' but without unsafe-inline, that inline script will be blocked." status="ready" type="compliance">
         <description>
@@ -2329,86 +2375,6 @@
           <spec>
             <spec_assertion category="Tizen W3C API Specifications" element_name="child-src" element_type="attribute" interface="Content-Security-Policy" section="TBD" specification="Content Security Policy"/>
             <spec_url>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#child-src</spec_url>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_referrer_never" priority="P2" purpose="Check if referrer is never, the referrer shoul return null." status="ready" type="compliance">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: csp_referrer_never.html</step_desc>
-              <expected>To pass, if show result is 'null'</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_never-manual.html</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_referrer_never-ref.html</refer_test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="referrer" element_type="attribute" interface="Content-Security-Policy" section="TBD" specification="Content Security Policy"/>
-            <spec_url>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer</spec_url>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_referrer_default" priority="P2" purpose="Check if referrer is default, shoul return referrer." status="ready" type="compliance">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: csp_referrer_default.html</step_desc>
-              <expected>To pass, if show result is referrer</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_default-manual.html</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_referrer_always-ref.html</refer_test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="referrer" element_type="attribute" interface="Content-Security-Policy" section="TBD" specification="Content Security Policy"/>
-            <spec_url>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer</spec_url>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_referrer_origin" priority="P2" purpose="Check if referrer is origin, shoul return the ASCII serialization of referrer." status="ready" type="compliance">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: csp_referrer_origin.html</step_desc>
-              <expected>To pass, if show result is the ASCII serialization of referrer</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_origin-manual.html</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_referrer_origin-ref.html</refer_test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="referrer" element_type="attribute" interface="Content-Security-Policy" section="TBD" specification="Content Security Policy"/>
-            <spec_url>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer</spec_url>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_referrer_always" priority="P2" purpose="Check if referrer is always, shoul return referrer." status="ready" type="compliance">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: csp_referrer_always.html</step_desc>
-              <expected>To pass, if show result is the ASCII serialization of referrer</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_always-manual.html</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_referrer_always-ref.html</refer_test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="referrer" element_type="attribute" interface="Content-Security-Policy" section="TBD" specification="Content Security Policy"/>
-            <spec_url>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#referrer</spec_url>
           </spec>
         </specs>
       </testcase>
