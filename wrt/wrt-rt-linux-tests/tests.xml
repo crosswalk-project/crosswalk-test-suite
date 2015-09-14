@@ -17,7 +17,7 @@
       </testcase>
     </set>
     <set name="connectsrccrossoriginmultixmlhttprequestblockedint" type="wrt">
-      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrccrossoriginmultixmlhttprequestblockedint" priority="P1" purpose="Check if user agent is unable to open not-allowed external resource by xhr when connect-src is multi cross-origin.">
+      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrccrossoriginmultixmlhttprequestblockedint" priority="P1" purpose="Check if user agent is unable to open not-allowed local script resource by xhr when connect-src is multi cross-origin.">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
         </description>
@@ -52,14 +52,14 @@
       </testcase>
     </set>
     <set name="connectsrcselfxmlhttprequestallowed" type="wrt">
-      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrcselfxmlhttprequestallowed" priority="P1" purpose="Check if user agent is able to open internal resource by xhr when connect-src is 'self'.">
+      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrcselfxmlhttprequestallowed" priority="P1" purpose="Check if user agent is able to open local resource by xhr when connect-src is 'self'.">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
         </description>
       </testcase>
     </set>
     <set name="connectsrcselfxmlhttprequestblocked" type="wrt">
-      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrcselfxmlhttprequestblocked" priority="P1" purpose="Check if user agent is able to open internal resource by xhr when connect-src is 'self'.">
+      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrcselfxmlhttprequestblocked" priority="P1" purpose="Check if user agent is not able to open external resource by xhr when connect-src is 'self'.">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
         </description>
