@@ -1,141 +1,141 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "tests.*.xml",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*",
-                ".git"
-            ],
-            "copylist": {
-                "samples/CSP/res/resources": "csp/resources",
-                "inst.apk.py": "inst.py",
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "testscripts/environment.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.android.xml": "tests.xml",
-                "tests.auto.xml": "tests.auto.xml",
-                "testscripts": "testscripts",
-                "data": "data"
-            },
-            "subapp-list": {
-                "samples/InAppPayment/iap":{
-                    "apk-icon-opt": "",
-                    "apk-ext-opt": "samples/InAppPayment/iap",
-                    "apk-common-opts": "--permissions=iap"
-                },
-                ".": {
-                    "app-name": "usecase-webapi-xwalk-tests",
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "blacklist": [
-                        "*",
-                        ".git"
-                    ],
-                    "copylist": {
-                        "icon.png": "icon.png",
-                        "res": "res",
-                        "steps": "steps",
-                        "samples": "samples",
-                        "manifest.json": "manifest.json",
-                        "tests.android.xml": "tests.xml",
-                        "PACK-TOOL-ROOT/bootstrap-fw": "."
-                    },
-                    "install-path": "."
-                },
-                "samples/Advertising/res": {
-                    "apk-ext-opt": "samples/Advertising/res/ad",
-                    "app-name": "extensions_ad",
-                    "app_dir": "samples/Advertising/res",
-                    "copylist": {
-                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "js/jquery.js"
-                    },
-                    "install-path": "."
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "tests.*.xml",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*",
+        ".git"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "data": "data",
+        "inst.apk.py": "inst.py",
+        "samples/CSP/res/resources": "csp/resources",
+        "tests.android.xml": "tests.xml",
+        "tests.auto.xml": "tests.auto.xml",
+        "tests.full.xml": "tests.full.xml",
+        "testscripts": "testscripts"
+      },
+      "subapp-list": {
+        ".": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "app-name": "usecase-webapi-xwalk-tests",
+          "blacklist": [
+            "*",
+            ".git"
+          ],
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "icon.png": "icon.png",
+            "manifest.json": "manifest.json",
+            "res": "res",
+            "samples": "samples",
+            "steps": "steps",
+            "tests.android.xml": "tests.xml"
+          },
+          "install-path": "."
         },
-        "wgt": {
-            "blacklist": [
-                "*",
-                ".git"
-            ],
-            "copylist": {
-                "LICENSE.BSD-3": "LICENSE.BSD-3",
-                "inst.wgt.py": "inst.py",
-                "res/": "res/"
-            },
-            "subapp-list": {
-                ".": {
-                    "app-name": "usecase-webapi-xwalk-tests",
-                    "blacklist": [
-                        "*",
-                        ".git"
-                    ],
-                    "copylist": {
-                        "config.xml": "config.xml",
-                        "icon.png": "icon.png",
-                        "res": "res",
-                        "steps": "steps",
-                        "samples": "samples",
-                        "tests.tizen.xml": "tests.xml",
-                        "PACK-TOOL-ROOT/bootstrap-fw": "."
-                    },
-                    "install-path": ".",
-                    "sign-flag": "true"
-                },
-                "samples/Viewport/ViewportTest": {
-                    "app-name": "ViewportTest",
-                    "blacklist": [],
-                    "install-path": ".",
-                    "sign-flag": "true"
-                }
-            }
+        "samples/Advertising/res": {
+          "apk-ext-opt": "samples/Advertising/res/ad",
+          "app-name": "extensions_ad",
+          "app_dir": "samples/Advertising/res",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "js/jquery.js"
+          },
+          "install-path": "."
         },
-        "xpk": {
-            "blacklist": [
-                "*",
-                ".git"
-            ],
-            "copylist": {
-                "LICENSE.BSD-3": "LICENSE.BSD-3",
-                "inst.xpk.py": "inst.py",
-                "res/css": "res/css",
-                "res/font": "res/font",
-                "res/images": "res/images"
-            },
-            "subapp-list": {
-                ".": {
-                    "app-name": "usecase-webapi-xwalk-tests",
-                    "blacklist": [
-                        "*",
-                        ".git"
-                    ],
-                    "copylist": {
-                        "config.xml": "config.xml",
-                        "icon.png": "icon.png",
-                        "res": "res",
-                        "steps": "steps",
-                        "samples": "samples",
-                        "tests.tizen.xml": "tests.xml",
-                        "PACK-TOOL-ROOT/bootstrap-fw": "."
-                    },
-                    "install-path": ".",
-                    "sign-flag": "true"
-                },
-                "samples/Viewport/ViewportTest": {
-                    "app-name": "ViewportTest",
-                    "blacklist": [],
-                    "install-path": "."
-                }
-            }
+        "samples/InAppPayment/iap": {
+          "apk-common-opts": "--permissions=iap",
+          "apk-ext-opt": "samples/InAppPayment/iap",
+          "apk-icon-opt": ""
         }
+      }
     },
-    "pkg-name": "usecase-webapi-xwalk-tests"
+    "wgt": {
+      "blacklist": [
+        "*",
+        ".git"
+      ],
+      "copylist": {
+        "LICENSE.BSD-3": "LICENSE.BSD-3",
+        "inst.wgt.py": "inst.py",
+        "res/": "res/"
+      },
+      "subapp-list": {
+        ".": {
+          "app-name": "usecase-webapi-xwalk-tests",
+          "blacklist": [
+            "*",
+            ".git"
+          ],
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "config.xml": "config.xml",
+            "icon.png": "icon.png",
+            "res": "res",
+            "samples": "samples",
+            "steps": "steps",
+            "tests.tizen.xml": "tests.xml"
+          },
+          "install-path": ".",
+          "sign-flag": "true"
+        },
+        "samples/Viewport/ViewportTest": {
+          "app-name": "ViewportTest",
+          "blacklist": [],
+          "install-path": ".",
+          "sign-flag": "true"
+        }
+      }
+    },
+    "xpk": {
+      "blacklist": [
+        "*",
+        ".git"
+      ],
+      "copylist": {
+        "LICENSE.BSD-3": "LICENSE.BSD-3",
+        "inst.xpk.py": "inst.py",
+        "res/css": "res/css",
+        "res/font": "res/font",
+        "res/images": "res/images"
+      },
+      "subapp-list": {
+        ".": {
+          "app-name": "usecase-webapi-xwalk-tests",
+          "blacklist": [
+            "*",
+            ".git"
+          ],
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "config.xml": "config.xml",
+            "icon.png": "icon.png",
+            "res": "res",
+            "samples": "samples",
+            "steps": "steps",
+            "tests.tizen.xml": "tests.xml"
+          },
+          "install-path": ".",
+          "sign-flag": "true"
+        },
+        "samples/Viewport/ViewportTest": {
+          "app-name": "ViewportTest",
+          "blacklist": [],
+          "install-path": "."
+        }
+      }
+    }
+  },
+  "pkg-name": "usecase-webapi-xwalk-tests"
 }

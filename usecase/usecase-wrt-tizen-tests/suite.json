@@ -1,48 +1,48 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "*-py",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "res/testapp": "res/testapp",
-                "tests.full.xml": "tests.full.xml",
-                "tests.tizen.xml": "tests.xml"
-            },
-            "subapp-list": {
-                ".": {
-                    "app-name": "usecase-wrt-tizen-tests",
-                    "install-path": ".",
-                    "sign-flag": "true",
-                    "copylist": {
-                        "tests.tizen.xml": "tests.xml",
-                        "steps": "steps",
-                        "PACK-TOOL-ROOT/bootstrap-fw": "."
-                    }
-                }
-            }
-        },
-        "xpk": {
-            "blacklist": [],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.tizen.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": []
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "*-py",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py",
+        "res/testapp": "res/testapp",
+        "tests.full.xml": "tests.full.xml",
+        "tests.tizen.xml": "tests.xml"
+      },
+      "subapp-list": {
+        ".": {
+          "app-name": "usecase-wrt-tizen-tests",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "steps": "steps",
+            "tests.tizen.xml": "tests.xml"
+          },
+          "install-path": ".",
+          "sign-flag": "true"
         }
+      }
     },
-    "pkg-name": "usecase-wrt-tizen-tests"
+    "xpk": {
+      "blacklist": [],
+      "copylist": {
+        "inst.xpk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.tizen.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": []
+      }
+    }
+  },
+  "pkg-name": "usecase-wrt-tizen-tests"
 }

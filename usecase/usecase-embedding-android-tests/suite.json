@@ -1,46 +1,46 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "COPYING",
-        "suite.json",
-        "inst.*.py"
-    ],
-    "pkg-list": {
+  "pkg-blacklist": [
+    "pack.py",
+    "COPYING",
+    "suite.json",
+    "inst.*.py"
+  ],
+  "pkg-list": {
+    "embeddingapi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.android.py": "testscripts/environment.py",
+        "inst.apk.py": "inst.py",
+        "tests.android.xml": "tests.xml",
+        "tests.auto.xml": "tests.auto.xml",
+        "tests.full.xml": "tests.full.xml",
+        "testscripts": "testscripts"
+      },
+      "subapp-list": {
         "embeddingapi": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "PACK-TOOL-ROOT/atip/tests/environment.android.py": "testscripts/environment.py",
-                "testscripts": "testscripts",
-                "inst.apk.py": "inst.py",
-                "tests.android.xml": "tests.xml",
-                "tests.full.xml": "tests.full.xml",
-                "tests.auto.xml": "tests.auto.xml"
-            },
-            "subapp-list": {
-                "embeddingapi": {
-                    "app-name": "embeddingapi",
-                    "app-type": "EMBEDDINGAPI",
-                    "embeddingapi-library-name": "crosswalk-webview",
-                    "copylist": {
-                        "../pom.xml": "pom.xml",
-                        "../build.gradle": "build.gradle",
-                        "../libraries.gradle": "libraries.gradle"
-                    }
-                },
-                "embeddingapi-async": {
-                    "app-name": "embeddingapi-async",
-                    "app-type": "EMBEDDINGAPI",
-                    "embeddingapi-library-name": "crosswalk-webview",
-                    "copylist": {
-                        "../pom.xml": "pom.xml",
-                        "../build.gradle": "build.gradle",
-                        "../libraries.gradle": "libraries.gradle"
-                    }
-                }
-            }
+          "app-name": "embeddingapi",
+          "app-type": "EMBEDDINGAPI",
+          "copylist": {
+            "../build.gradle": "build.gradle",
+            "../libraries.gradle": "libraries.gradle",
+            "../pom.xml": "pom.xml"
+          },
+          "embeddingapi-library-name": "crosswalk-webview"
+        },
+        "embeddingapi-async": {
+          "app-name": "embeddingapi-async",
+          "app-type": "EMBEDDINGAPI",
+          "copylist": {
+            "../build.gradle": "build.gradle",
+            "../libraries.gradle": "libraries.gradle",
+            "../pom.xml": "pom.xml"
+          },
+          "embeddingapi-library-name": "crosswalk-webview"
         }
-    },
-    "pkg-name": "usecase-embedding-android-tests"
+      }
+    }
+  },
+  "pkg-name": "usecase-embedding-android-tests"
 }

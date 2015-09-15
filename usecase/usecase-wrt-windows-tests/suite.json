@@ -1,60 +1,60 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "*-py",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "msi": {
-            "blacklist": [
-                "*",
-                ".git"
-            ],
-            "copylist": {
-                "tests.xml": "tests.xml",
-                "tests.full.xml": "tests.full.xml"
-            },
-            "subapp-list": {
-                ".": {
-                    "app-name": "usecase-wrt-windows-tests",
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "copylist": {
-                        "tests.xml": "tests.xml",
-                        "steps": "steps",
-                        "PACK-TOOL-ROOT/bootstrap-fw": "."
-                    },
-                    "install-path": "."
-                },
-                "samples/VideoPlay/res": {
-                    "copylist": {
-                        "../../../icon.ico": "icon.ico"
-                    },
-                    "app-name": "videoplay",
-                    "apk-type":"MANIFEST",
-                    "install-path": "."
-                },
-                "samples/ManifestCSP/res": {
-                    "copylist": {
-                        "../../../icon.ico": "icon.ico"
-                    },
-                    "app-name": "manifestCSP",
-                    "apk-type":"MANIFEST",
-                    "install-path": "."
-                },
-                "samples/Fullscreen/res": {
-                    "copylist": {
-                        "../../../icon.ico": "icon.ico"
-                    },
-                    "app-name": "fullscreentest",
-                    "apk-fullscreen-opt": "fullscreen",
-                    "apk-type":"MANIFEST",
-                    "install-path": "."
-                }
-            }
+  "pkg-blacklist": [
+    "pack.py",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "*-py",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "msi": {
+      "blacklist": [
+        "*",
+        ".git"
+      ],
+      "copylist": {
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "subapp-list": {
+        ".": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "app-name": "usecase-wrt-windows-tests",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "steps": "steps",
+            "tests.xml": "tests.xml"
+          },
+          "install-path": "."
+        },
+        "samples/Fullscreen/res": {
+          "apk-fullscreen-opt": "fullscreen",
+          "apk-type": "MANIFEST",
+          "app-name": "fullscreentest",
+          "copylist": {
+            "../../../icon.ico": "icon.ico"
+          },
+          "install-path": "."
+        },
+        "samples/ManifestCSP/res": {
+          "apk-type": "MANIFEST",
+          "app-name": "manifestCSP",
+          "copylist": {
+            "../../../icon.ico": "icon.ico"
+          },
+          "install-path": "."
+        },
+        "samples/VideoPlay/res": {
+          "apk-type": "MANIFEST",
+          "app-name": "videoplay",
+          "copylist": {
+            "../../../icon.ico": "icon.ico"
+          },
+          "install-path": "."
         }
-    },
-    "pkg-name": "usecase-wrt-windows-tests"
+      }
+    }
+  },
+  "pkg-name": "usecase-wrt-windows-tests"
 }
