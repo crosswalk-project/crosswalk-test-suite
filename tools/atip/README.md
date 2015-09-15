@@ -117,6 +117,14 @@ def i_visit_url(context, url):
                 <td>Find element(s) by partial link text</td>
         </tr>
         <tr>
+                <td></td>
+                <td>Find text in element by startswith</td>
+        </tr>
+        <tr>
+                <td></td>
+                <td>Find text in element by endswith</td>
+        </tr>
+        <tr>
                 <td>Window Management</td>
                 <td>get current window handle</td>
         </tr>
@@ -369,6 +377,8 @@ def i_visit_url(context, url):
 @step(u'I should see "{text}" in {timeout:d} seconds')
 @step(u'I should not see "{text}" in {timeout:d} seconds')
 @step(u'I should see "{text}" in "{key}" area')
+@step(u'I should see text in "{key}" area startswith "{text}"')
+@step(u'I should see text in "{key}" area endswith "{text}"')
 @step(u'I press "{key}"')
 @step(u'press "{key_c}" in "{key_p}"')
 @step(u'I click "{key}"')

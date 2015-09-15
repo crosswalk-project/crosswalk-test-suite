@@ -159,6 +159,16 @@ def should_not_see_text_element(context, text, key):
         text, key, display=True), u'Text was found!'
 
 
+@step(u'I should see text in "{key}" area startswith "{text}"')
+def should_see_text_startswith(context, text, key):
+    assert context.web.should_see_text_startswith(text, key)
+
+
+@step(u'I should see text in "{key}" area endswith "{text}"')
+def should_see_text_endswith(context, text, key):
+    assert context.web.should_see_text_endswith(text, key)
+
+
 @step(u'I press "{key}"')
 def i_press(context, key):
     assert context.web.press_element_by_key(key)
