@@ -1,37 +1,37 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*",
-        "sampleApp_pack.sh"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "PACK-TOOL-ROOT/crosswalk": "tools/crosswalk",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "testscripts/environment.py",
-                "tests.full.xml": "tests.full.xml",
-                "arch.txt": "arch.txt",
-                "mode.txt": "mode.txt",
-                "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*",
+    "sampleApp_pack.sh"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "testscripts/environment.py",
+        "PACK-TOOL-ROOT/crosswalk": "tools/crosswalk",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "arch.txt": "arch.txt",
+        "inst.apk.py": "inst.py",
+        "mode.txt": "mode.txt",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      }
     },
-    "pkg-name": "sampleapp-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "sampleapp-android-tests"
 }

@@ -1,63 +1,63 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "suite.json",
-        "inst.apk.py"
-    ],
-    "pkg-list": {
-        "cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "PACK-TOOL-ROOT/cordova": "tools/cordova",
-                "webapp": "webapp",
-                "arch.txt": "arch.txt",
-                "mode.txt": "mode.txt",
-                "cordova-3.6": "cordova-version",
-                "tests.xml": "tests.xml",
-                "README":"README",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "cordova4.x": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "PACK-TOOL-ROOT/cordova_plugins/cordova-plugin-crosswalk-webview": "tools/cordova-plugin-crosswalk-webview",
-                "PACK-TOOL-ROOT/../VERSION": "VERSION",
-                "webapp": "webapp",
-                "arch.txt": "arch.txt",
-                "mode.txt": "mode.txt",
-                "pack-type": "pack-type",
-                "cordova-4.x": "cordova-version",
-                "tests.xml": "tests.xml",
-                "README":"README",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "cordova-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "suite.json",
+    "inst.apk.py"
+  ],
+  "pkg-list": {
+    "cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/cordova": "tools/cordova",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "README": "README",
+        "arch.txt": "arch.txt",
+        "cordova-3.6": "cordova-version",
+        "inst.apk.py": "inst.py",
+        "mode.txt": "mode.txt",
+        "tests.xml": "tests.xml",
+        "webapp": "webapp"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      }
     },
-    "pkg-name": "cordova-webapp-android-tests"
+    "cordova-aio": {
+      "blacklist": []
+    },
+    "cordova4.x": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/../VERSION": "VERSION",
+        "PACK-TOOL-ROOT/cordova_plugins/cordova-plugin-crosswalk-webview": "tools/cordova-plugin-crosswalk-webview",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "README": "README",
+        "arch.txt": "arch.txt",
+        "cordova-4.x": "cordova-version",
+        "inst.apk.py": "inst.py",
+        "mode.txt": "mode.txt",
+        "pack-type": "pack-type",
+        "tests.xml": "tests.xml",
+        "webapp": "webapp"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    }
+  },
+  "pkg-name": "cordova-webapp-android-tests"
 }

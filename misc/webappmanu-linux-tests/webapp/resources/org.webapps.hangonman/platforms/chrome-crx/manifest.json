@@ -1,23 +1,23 @@
 {
-  "manifest_version": 2,
-  "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'none';",
   "app": {
     "launch": {
       "container": "panel",
-	    "width":1024,
-	    "height":600,
-      "local_path": "index.html"
+      "height": 600,
+      "local_path": "index.html",
+      "width": 1024
     }
   },
+  "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'none';",
   "default_locale": "en",
   "description": "<%= packageInfo.description %>",
+  "homepage_url": "https://01.org/html5webapps/webapps/<%= packageInfo.name.toLowerCase() %>",
   "icons": {
     "128": "icon_128.png",
-    "48": "icon_48.png",
-    "16": "icon_16.png"
+    "16": "icon_16.png",
+    "48": "icon_48.png"
   },
+  "manifest_version": 2,
   "name": "<%= packageInfo.name %>",
-  "permissions": [  ],
-  "version": "<%= packageInfo.version %>",
-  "homepage_url" : "https://01.org/html5webapps/webapps/<%= packageInfo.name.toLowerCase() %>"
+  "permissions": [],
+  "version": "<%= packageInfo.version %>"
 }

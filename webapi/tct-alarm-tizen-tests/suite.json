@@ -1,68 +1,68 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                },
-                "sign-flag": "true"
-            },
-            "subapp-list": {
-                "alarm/support/UnitTest-AlarmTest1": {
-                    "app-name": "UnitTest-AlarmTest1",
-                    "blacklist": [
-                        "manifest.json"
-                    ],
-                    "install-path": "apps",
-                    "sign-flag": "true"
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "alarm/support/UnitTest-AlarmTest1": {
-                    "app-name": "UnitTest-AlarmTest1",
-                    "blacklist": [
-                        "config.xml"
-                    ],
-                    "install-path": "apps"
-                }
-            }
+        "sign-flag": "true"
+      },
+      "subapp-list": {
+        "alarm/support/UnitTest-AlarmTest1": {
+          "app-name": "UnitTest-AlarmTest1",
+          "blacklist": [
+            "manifest.json"
+          ],
+          "install-path": "apps",
+          "sign-flag": "true"
         }
+      }
     },
-    "pkg-name": "tct-alarm-tizen-tests"
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.xpk.py": "inst.py",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      },
+      "subapp-list": {
+        "alarm/support/UnitTest-AlarmTest1": {
+          "app-name": "UnitTest-AlarmTest1",
+          "blacklist": [
+            "config.xml"
+          ],
+          "install-path": "apps"
+        }
+      }
+    }
+  },
+  "pkg-name": "tct-alarm-tizen-tests"
 }

@@ -1,75 +1,73 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.xml.apk": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "apk-type": "HOSTEDAPP",
-                "apk-url-opt": "http://127.0.0.1:8080/index.html"
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
-        },
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "abat/common": "abat",
-                "abat/tizen": "abat",
-                "inst.wgt.py": "inst.py",
-                "tests.xml.xpk": "tests.xml",
-                "PACK-TOOL-ROOT/resources/testharness": "abat/resources",
-                "PACK-TOOL-ROOT/resources/testharness": "abat/application/support/TCTAppControl/resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "webrunner": "webrunner",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "copylist": {
-                    "abat/common": "abat",
-                    "abat/tizen": "abat",
-                    "inst.wgt.py": "inst.py",
-                    "tests.xml.xpk": "tests.xml",
-                    "PACK-TOOL-ROOT/resources/testharness": "abat/resources",
-                    "PACK-TOOL-ROOT/resources/testharness": "abat/application/support/TCTAppControl/resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                    "webrunner": "webrunner"
-                }
-            }
-        },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.xml.xpk": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "hosted-app": "true"
-            }
-        }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "tests.xml.apk": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-type": "HOSTEDAPP",
+        "apk-url-opt": "http://127.0.0.1:8080/index.html"
+      }
     },
-    "pkg-name": "web-abat-xwalk-tests"
+    "apk-aio": {
+      "blacklist": []
+    },
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/testharness": "abat/application/support/TCTAppControl/resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "abat/common": "abat",
+        "abat/tizen": "abat",
+        "inst.wgt.py": "inst.py",
+        "tests.xml.xpk": "tests.xml",
+        "webrunner": "webrunner"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "abat/application/support/TCTAppControl/resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "abat/common": "abat",
+          "abat/tizen": "abat",
+          "inst.wgt.py": "inst.py",
+          "tests.xml.xpk": "tests.xml",
+          "webrunner": "webrunner"
+        }
+      }
+    },
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.xpk.py": "inst.py",
+        "tests.xml.xpk": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "hosted-app": "true"
+      }
+    }
+  },
+  "pkg-name": "web-abat-xwalk-tests"
 }

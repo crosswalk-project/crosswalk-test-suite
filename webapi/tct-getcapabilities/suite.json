@@ -1,45 +1,45 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "wgt": {
-            "blacklist": [
-                "index.html",
-                "js"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py"
-            },
-            "subapp-list": {
-                ".": {
-                    "blacklist": [
-                        "suite.json",
-                        "manifest.json",
-                        "inst.*"
-                    ],
-                    "app-dir": ".",
-                    "sign-flag": "true",
-                    "app-name": "tct-getcapabilities"
-                }
-            }
-        },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py"
-            },
-            "pkg-app": {
-                "blacklist": []
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "wgt": {
+      "blacklist": [
+        "index.html",
+        "js"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py"
+      },
+      "subapp-list": {
+        ".": {
+          "app-dir": ".",
+          "app-name": "tct-getcapabilities",
+          "blacklist": [
+            "suite.json",
+            "manifest.json",
+            "inst.*"
+          ],
+          "sign-flag": "true"
         }
+      }
     },
-    "pkg-name": "tct-getcapabilities"
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.xpk.py": "inst.py"
+      },
+      "pkg-app": {
+        "blacklist": []
+      }
+    }
+  },
+  "pkg-name": "tct-getcapabilities"
 }

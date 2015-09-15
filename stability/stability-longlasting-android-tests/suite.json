@@ -1,49 +1,49 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.xml": "tests.xml",
-                "longlasting/sysmon.sh": "longlasting/sysmon.sh",
-                "longlasting/sysmon-chrome.sh": "longlasting/sysmon-chrome.sh",
-                "longlasting/RunGame3DGraphicsLongTimeTest.sh": "longlasting/RunGame3DGraphicsLongTimeTest.sh",
-                "longlasting/RunPlayVideoLongTime.sh": "longlasting/RunPlayVideoLongTime.sh",
-                "longlasting/RunPlayMusicLongTime.sh": "longlasting/RunPlayMusicLongTime.sh",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "subapp-list": {
-                "dynamicddd": {
-                    "app-name": "dynamicddd",
-                    "install-path": "longlasting",
-                    "apk-icon-opt": "",
-                    "apk-type": "HOSTEDAPP",
-                    "apk-url-opt": "http://rscohn2.herokuapp.com/sbp/"
-                },
-                "play_test_video": {
-                    "apk-icon-opt": "",
-                    "app-name": "playvideo",
-                    "install-path": "."
-                },
-                "play_test_music": {
-                    "apk-icon-opt": "",
-                    "app-name": "playmusic",
-                    "install-path": "."
-                }
-            }
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "longlasting/RunGame3DGraphicsLongTimeTest.sh": "longlasting/RunGame3DGraphicsLongTimeTest.sh",
+        "longlasting/RunPlayMusicLongTime.sh": "longlasting/RunPlayMusicLongTime.sh",
+        "longlasting/RunPlayVideoLongTime.sh": "longlasting/RunPlayVideoLongTime.sh",
+        "longlasting/sysmon-chrome.sh": "longlasting/sysmon-chrome.sh",
+        "longlasting/sysmon.sh": "longlasting/sysmon.sh",
+        "tests.xml": "tests.xml"
+      },
+      "subapp-list": {
+        "dynamicddd": {
+          "apk-icon-opt": "",
+          "apk-type": "HOSTEDAPP",
+          "apk-url-opt": "http://rscohn2.herokuapp.com/sbp/",
+          "app-name": "dynamicddd",
+          "install-path": "longlasting"
+        },
+        "play_test_music": {
+          "apk-icon-opt": "",
+          "app-name": "playmusic",
+          "install-path": "."
+        },
+        "play_test_video": {
+          "apk-icon-opt": "",
+          "app-name": "playvideo",
+          "install-path": "."
         }
-    },
-    "pkg-name": "stability-longlasting-android-tests"
+      }
+    }
+  },
+  "pkg-name": "stability-longlasting-android-tests"
 }

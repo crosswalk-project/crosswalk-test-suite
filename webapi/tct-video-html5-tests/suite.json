@@ -1,89 +1,91 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "apk-aio, cordova-aio": {
-            "blacklist": [],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-            }
-        },
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "deb": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.deb.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": ["crosswalk-app-tools-deb"],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                    "PACK-TOOL-ROOT/resources/testharness": "resources"
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.apk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      }
     },
-    "pkg-name": "tct-video-html5-tests"
+    "apk-aio, cordova-aio": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+      }
+    },
+    "deb": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.deb.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [
+          "crosswalk-app-tools-deb"
+        ],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    },
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    },
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.xpk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    }
+  },
+  "pkg-name": "tct-video-html5-tests"
 }

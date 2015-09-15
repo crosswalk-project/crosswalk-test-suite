@@ -141,7 +141,7 @@ def main():
             dest="indent",
             action="store",
             type="int",
-            help="json indent, default value is 4")
+            help="json indent, default value is 2")
         opts_parser.add_option(
             "-u",
             "--unsort-keys",
@@ -185,7 +185,7 @@ def main():
     else:
         follow_recursive = False
 
-    json_indent = 4
+    json_indent = 2
     if options.indent:
         json_indent = options.indent
 

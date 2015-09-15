@@ -1,109 +1,109 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "css3-backgrounds-app/testscripts/environment.py",
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "css3-backgrounds-app/testscripts": "css3-backgrounds-app/testscripts",
-                "css3-backgrounds-app/data": "data"
-            },
-            "pkg-app": {
-                "apk-common-opts":"--enable-remote-debugging",
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                    "backgrounds/csswg/support": "backgrounds/csswg/bdd/support",
-                    "backgrounds/webkit/resources": "backgrounds/bdd/webkit/resources"
-                }
-            },
-            "subapp-list": {
-                "css3-backgrounds-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../backgrounds/bdd": "backgrounds",
-                        "../backgrounds/csswg/bdd": "backgrounds/csswg",
-                        "../backgrounds/webkit/resources": "backgrounds/webkit/resources",
-                        "../backgrounds/csswg/support": "backgrounds/csswg/support"
-                    }
-                }
-            }
-        },
-        "apk-aio, cordova-aio": {
-            "blacklist": [],
-            "copylist": {
-                "backgrounds/csswg/support": "backgrounds/csswg/bdd/support",
-                "backgrounds/webkit/resources": "backgrounds/bdd/webkit/resources",
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/css3-backgrounds-app/testscripts/environment.py",
-                "css3-backgrounds-app/testscripts": "HOST_RESOURCES/css3-backgrounds-app/testscripts",
-                "css3-backgrounds-app/data": "HOST_RESOURCES/data"
-            },
-            "subapp-list": {
-                "css3-backgrounds-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../backgrounds/bdd": "backgrounds",
-                        "../backgrounds/csswg/bdd": "backgrounds/csswg",
-                        "../backgrounds/webkit/resources": "backgrounds/webkit/resources",
-                        "../backgrounds/csswg/support": "backgrounds/csswg/support"
-                    }
-                }
-            }
-        },
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "css3-backgrounds-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "css3-backgrounds-app/data": "data",
+        "css3-backgrounds-app/testscripts": "css3-backgrounds-app/testscripts",
+        "inst.apk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "backgrounds/csswg/support": "backgrounds/csswg/bdd/support",
+          "backgrounds/webkit/resources": "backgrounds/bdd/webkit/resources"
         }
+      },
+      "subapp-list": {
+        "css3-backgrounds-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../backgrounds/bdd": "backgrounds",
+            "../backgrounds/csswg/bdd": "backgrounds/csswg",
+            "../backgrounds/csswg/support": "backgrounds/csswg/support",
+            "../backgrounds/webkit/resources": "backgrounds/webkit/resources"
+          }
+        }
+      }
     },
-    "pkg-name": "tct-backgrounds-css3-tests"
+    "apk-aio, cordova-aio": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/css3-backgrounds-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "backgrounds/csswg/support": "backgrounds/csswg/bdd/support",
+        "backgrounds/webkit/resources": "backgrounds/bdd/webkit/resources",
+        "css3-backgrounds-app/data": "HOST_RESOURCES/data",
+        "css3-backgrounds-app/testscripts": "HOST_RESOURCES/css3-backgrounds-app/testscripts"
+      },
+      "subapp-list": {
+        "css3-backgrounds-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../backgrounds/bdd": "backgrounds",
+            "../backgrounds/csswg/bdd": "backgrounds/csswg",
+            "../backgrounds/csswg/support": "backgrounds/csswg/support",
+            "../backgrounds/webkit/resources": "backgrounds/webkit/resources"
+          }
+        }
+      }
+    },
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    },
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.xpk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    }
+  },
+  "pkg-name": "tct-backgrounds-css3-tests"
 }

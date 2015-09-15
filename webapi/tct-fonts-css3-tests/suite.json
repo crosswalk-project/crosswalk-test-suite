@@ -1,103 +1,103 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "css3-fonts-app/testscripts/environment.py",
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "css3-fonts-app/testscripts": "css3-fonts-app/testscripts",
-                "css3-fonts-app/data": "data"
-            },
-            "pkg-app": {
-                "apk-common-opts":"--enable-remote-debugging",
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                    "fonts/csswg/support": "fonts/csswg/bdd/support"
-                }
-            },
-            "subapp-list": {
-                "css3-fonts-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../fonts/csswg/bdd": "fonts/csswg",
-                        "../fonts/csswg/support": "fonts/csswg/support"
-                    }
-                }
-            }
-        },
-        "apk-aio, cordova-aio": {
-            "blacklist": [],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "fonts/csswg/support": "fonts/csswg/bdd/support",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/css3-fonts-app/testscripts/environment.py",
-                "css3-fonts-app/testscripts": "HOST_RESOURCES/css3-fonts-app/testscripts",
-                "css3-fonts-app/data": "HOST_RESOURCES/data"
-            },
-            "subapp-list": {
-                "css3-fonts-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../fonts/csswg/bdd": "fonts/csswg",
-                        "../fonts/csswg/support": "fonts/csswg/support"
-                    }
-                }
-            }
-        },
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "css3-fonts-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "css3-fonts-app/data": "data",
+        "css3-fonts-app/testscripts": "css3-fonts-app/testscripts",
+        "inst.apk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "fonts/csswg/support": "fonts/csswg/bdd/support"
         }
+      },
+      "subapp-list": {
+        "css3-fonts-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../fonts/csswg/bdd": "fonts/csswg",
+            "../fonts/csswg/support": "fonts/csswg/support"
+          }
+        }
+      }
     },
-    "pkg-name": "tct-fonts-css3-tests"
+    "apk-aio, cordova-aio": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/css3-fonts-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "css3-fonts-app/data": "HOST_RESOURCES/data",
+        "css3-fonts-app/testscripts": "HOST_RESOURCES/css3-fonts-app/testscripts",
+        "fonts/csswg/support": "fonts/csswg/bdd/support"
+      },
+      "subapp-list": {
+        "css3-fonts-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../fonts/csswg/bdd": "fonts/csswg",
+            "../fonts/csswg/support": "fonts/csswg/support"
+          }
+        }
+      }
+    },
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    },
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.xpk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    }
+  },
+  "pkg-name": "tct-fonts-css3-tests"
 }

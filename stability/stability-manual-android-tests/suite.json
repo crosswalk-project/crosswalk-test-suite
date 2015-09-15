@@ -1,64 +1,64 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "sysmon-chrome.sh": "sysmon-chrome.sh",
-                "testapp/cross_arm.apk": "testapp/cross_arm.apk",
-                "testapp/cross_intel.apk": "testapp/cross_intel.apk",
-                "testapp/README": "testapp/README",
-                "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "subapp-list": {
-                "testapp/play_music_test": {
-                    "install-path": "testapp"
-                },
-                "loadimagelist": {
-                    "app-name": "loadimagelist",
-                    "install-path": "testapp",
-                    "apk-icon-opt": "",
-                    "apk-type": "HOSTEDAPP",
-                    "apk-url-opt": "http://www2.beareyes.com.cn/bbs/pc005.htm"
-                },
-                "scrolllargehightpage": {
-                    "app-name": "scrolllargehightpage",
-                    "install-path": "testapp",
-                    "apk-icon-opt": "",
-                    "apk-type": "HOSTEDAPP",
-                    "apk-url-opt": "http://nontroppo.org/timer/"
-                },
-                "downloadtest": {
-                    "app-name": "downloadtest",
-                    "install-path": "testapp",
-                    "apk-icon-opt": "",
-                    "apk-type": "HOSTEDAPP",
-                    "apk-url-opt": "https://download.tizen.org/releases/daily/tizen/ivi/latest/images/atom64/ivi-efi-x86_64/"
-                }
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "sysmon-chrome.sh": "sysmon-chrome.sh",
+        "testapp/README": "testapp/README",
+        "testapp/cross_arm.apk": "testapp/cross_arm.apk",
+        "testapp/cross_intel.apk": "testapp/cross_intel.apk",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      },
+      "subapp-list": {
+        "downloadtest": {
+          "apk-icon-opt": "",
+          "apk-type": "HOSTEDAPP",
+          "apk-url-opt": "https://download.tizen.org/releases/daily/tizen/ivi/latest/images/atom64/ivi-efi-x86_64/",
+          "app-name": "downloadtest",
+          "install-path": "testapp"
+        },
+        "loadimagelist": {
+          "apk-icon-opt": "",
+          "apk-type": "HOSTEDAPP",
+          "apk-url-opt": "http://www2.beareyes.com.cn/bbs/pc005.htm",
+          "app-name": "loadimagelist",
+          "install-path": "testapp"
+        },
+        "scrolllargehightpage": {
+          "apk-icon-opt": "",
+          "apk-type": "HOSTEDAPP",
+          "apk-url-opt": "http://nontroppo.org/timer/",
+          "app-name": "scrolllargehightpage",
+          "install-path": "testapp"
+        },
+        "testapp/play_music_test": {
+          "install-path": "testapp"
+        }
+      }
     },
-    "pkg-name": "stability-manual-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "stability-manual-android-tests"
 }

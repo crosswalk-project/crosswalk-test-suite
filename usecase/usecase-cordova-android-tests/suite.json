@@ -1,97 +1,97 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "icon.png",
-        "suite.json",
-        "inst.apk.py",
-        "manifest.json"
-    ],
-    "pkg-list": {
-        "cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.xml": "tests.xml",
-                "res/cordova-3.6": "res/cordova-version",
-                "samples/CordovaPackage3.6/res/test.py": "res/CordovaPackage/test.py",
-                "samples/Database/upstream/database_upstream_3.6.apk": "database_upstream.apk",
-                "samples/SharedModeLibraryDownload3.6/res/test.py": "res/SharedModeLibraryDownload/test.py"
-            },
-            "subapp-list": {
-                ".": {
-                    "app-name": "usecase-cordova-android-tests",
-                    "install-path": "./",
-                    "copylist": {
-                        "samples/cordova-incl.js": "cordova-incl.js",
-                        "steps": "steps",
-                        "samples/AdMob3.6": "samples/AdMob",
-                        "extra_plugins/cordova-admob-3.6": "PACK-TOOL-ROOT/extra_plugins/cordova-admob-3.6",
-                        "extra_plugins/cordova-screenshot-3.6": "PACK-TOOL-ROOT/extra_plugins/cordova-screenshot",
-                        "extra_plugins/cordova-plugin-crosswalk-webview-tests": "PACK-TOOL-ROOT/extra_plugins/cordova-plugin-crosswalk-webview-tests",
-                        "PACK-TOOL-ROOT/bootstrap-fw": ".",
-                        "samples/CordovaPackage3.6": "samples/CordovaPackage",
-                        "samples/StatusBar3.6": "samples/StatusBar",
-                        "samples/Database/index.3.6.html": "samples/Database/index.html",
-                        "samples/SharedModeLibraryDownload3.6": "samples/SharedModeLibraryDownload"
-                    }
-                },
-                "samples/Database/res/database_source": {
-                    "app-name": "database",
-                    "install-path": "./",
-                    "copylist": {
-                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "./js/jquery.js"
-                    }
-                }
-            }
+  "pkg-blacklist": [
+    "pack.py",
+    "icon.png",
+    "suite.json",
+    "inst.apk.py",
+    "manifest.json"
+  ],
+  "pkg-list": {
+    "cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.apk.py": "inst.py",
+        "res/cordova-3.6": "res/cordova-version",
+        "samples/CordovaPackage3.6/res/test.py": "res/CordovaPackage/test.py",
+        "samples/Database/upstream/database_upstream_3.6.apk": "database_upstream.apk",
+        "samples/SharedModeLibraryDownload3.6/res/test.py": "res/SharedModeLibraryDownload/test.py",
+        "tests.xml": "tests.xml"
+      },
+      "subapp-list": {
+        ".": {
+          "app-name": "usecase-cordova-android-tests",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "extra_plugins/cordova-admob-3.6": "PACK-TOOL-ROOT/extra_plugins/cordova-admob-3.6",
+            "extra_plugins/cordova-plugin-crosswalk-webview-tests": "PACK-TOOL-ROOT/extra_plugins/cordova-plugin-crosswalk-webview-tests",
+            "extra_plugins/cordova-screenshot-3.6": "PACK-TOOL-ROOT/extra_plugins/cordova-screenshot",
+            "samples/AdMob3.6": "samples/AdMob",
+            "samples/CordovaPackage3.6": "samples/CordovaPackage",
+            "samples/Database/index.3.6.html": "samples/Database/index.html",
+            "samples/SharedModeLibraryDownload3.6": "samples/SharedModeLibraryDownload",
+            "samples/StatusBar3.6": "samples/StatusBar",
+            "samples/cordova-incl.js": "cordova-incl.js",
+            "steps": "steps"
+          },
+          "install-path": "./"
         },
-        "cordova4.x": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "README.md": "README.md",
-                "inst.apk.py": "inst.py",
-                "tests.xml": "tests.xml",
-                "samples/Database/res": "res/Database",
-                "samples/CrosswalkVersion/res": "res/CrosswalkVersion",
-                "res/comm.py": "res/comm.py",
-                "res/cordova-4.x": "res/cordova-version",
-                "res/pack-type": "res/pack-type",
-                "samples/CordovaPackage4.x/res/test.py": "res/CordovaPackage/test.py",
-                "samples/SharedModeLibraryDownload4.x/res/test.py": "res/SharedModeLibraryDownload/test.py",
-                "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "res/Database/database_source/js/jquery.js",
-                "PACK-TOOL-ROOT/cordova_plugins/cordova-plugin-crosswalk-webview": "tools/cordova-plugin-crosswalk-webview",
-                "PACK-TOOL-ROOT/../VERSION": "tools/VERSION"
-            },
-            "subapp-list": {
-                ".": {
-                    "app-name": "usecase-cordova-android-tests",
-                    "install-path": "./",
-                    "copylist": {
-                        "samples/cordova-incl.js": "cordova-incl.js",
-                        "steps": "steps",
-                        "samples/AdMob4.x": "samples/AdMob",
-                        "extra_plugins/cordova-admob-4.x": "PACK-TOOL-ROOT/extra_plugins/cordova-admob-4.x",
-                        "extra_plugins/cordova-screenshot-4.x": "PACK-TOOL-ROOT/extra_plugins/cordova-screenshot",
-                        "extra_plugins/cordova-plugin-crosswalk-webview-tests": "PACK-TOOL-ROOT/extra_plugins/cordova-plugin-crosswalk-webview-tests",
-                        "PACK-TOOL-ROOT/bootstrap-fw": ".",
-                        "samples/CordovaPackage4.x": "samples/CordovaPackage",
-                        "samples/StatusBar4.x": "samples/StatusBar",
-                        "samples/Database/index.4.x.html": "samples/Database/index.html",
-                        "samples/SharedModeLibraryDownload4.x": "samples/SharedModeLibraryDownload"
-                    }
-                },
-                "samples/Database/res/database_source": {
-                    "app-name": "database",
-                    "install-path": "./",
-                    "copylist": {
-                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "./js/jquery.js"
-                    }
-                }
-            }
+        "samples/Database/res/database_source": {
+          "app-name": "database",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "./js/jquery.js"
+          },
+          "install-path": "./"
         }
+      }
     },
-    "pkg-name": "usecase-cordova-android-tests"
+    "cordova4.x": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/../VERSION": "tools/VERSION",
+        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "res/Database/database_source/js/jquery.js",
+        "PACK-TOOL-ROOT/cordova_plugins/cordova-plugin-crosswalk-webview": "tools/cordova-plugin-crosswalk-webview",
+        "README.md": "README.md",
+        "inst.apk.py": "inst.py",
+        "res/comm.py": "res/comm.py",
+        "res/cordova-4.x": "res/cordova-version",
+        "res/pack-type": "res/pack-type",
+        "samples/CordovaPackage4.x/res/test.py": "res/CordovaPackage/test.py",
+        "samples/CrosswalkVersion/res": "res/CrosswalkVersion",
+        "samples/Database/res": "res/Database",
+        "samples/SharedModeLibraryDownload4.x/res/test.py": "res/SharedModeLibraryDownload/test.py",
+        "tests.xml": "tests.xml"
+      },
+      "subapp-list": {
+        ".": {
+          "app-name": "usecase-cordova-android-tests",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "extra_plugins/cordova-admob-4.x": "PACK-TOOL-ROOT/extra_plugins/cordova-admob-4.x",
+            "extra_plugins/cordova-plugin-crosswalk-webview-tests": "PACK-TOOL-ROOT/extra_plugins/cordova-plugin-crosswalk-webview-tests",
+            "extra_plugins/cordova-screenshot-4.x": "PACK-TOOL-ROOT/extra_plugins/cordova-screenshot",
+            "samples/AdMob4.x": "samples/AdMob",
+            "samples/CordovaPackage4.x": "samples/CordovaPackage",
+            "samples/Database/index.4.x.html": "samples/Database/index.html",
+            "samples/SharedModeLibraryDownload4.x": "samples/SharedModeLibraryDownload",
+            "samples/StatusBar4.x": "samples/StatusBar",
+            "samples/cordova-incl.js": "cordova-incl.js",
+            "steps": "steps"
+          },
+          "install-path": "./"
+        },
+        "samples/Database/res/database_source": {
+          "app-name": "database",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "./js/jquery.js"
+          },
+          "install-path": "./"
+        }
+      }
+    }
+  },
+  "pkg-name": "usecase-cordova-android-tests"
 }

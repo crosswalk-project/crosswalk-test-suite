@@ -1,45 +1,45 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "*-py",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.android.xml": "tests.xml",
-                "tests.full.xml": "tests.full.xml"
-            },
-            "subapp-list": {
-                ".": {
-                    "app-name": "usecase-litewrt-android-tests",
-                    "blacklist": [
-                        "manifest.json"
-                    ],
-                    "copylist": {
-                        "tests.android.xml": "tests.xml"
-                    },
-                    "install-path": "."
-                },
-                "": {
-                    "apk-type": "HOSTEDAPP",
-                    "apk-url-opt": "https://crosswalk-project.org/",
-                    "app-name": "remotedebugging-no",
-                    "install-path": "."
-                }
-            }
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "*-py",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [],
+      "copylist": {
+        "inst.apk.py": "inst.py",
+        "tests.android.xml": "tests.xml",
+        "tests.full.xml": "tests.full.xml"
+      },
+      "subapp-list": {
+        "": {
+          "apk-type": "HOSTEDAPP",
+          "apk-url-opt": "https://crosswalk-project.org/",
+          "app-name": "remotedebugging-no",
+          "install-path": "."
         },
-        "apk-aio": {
-            "blacklist": []
+        ".": {
+          "app-name": "usecase-litewrt-android-tests",
+          "blacklist": [
+            "manifest.json"
+          ],
+          "copylist": {
+            "tests.android.xml": "tests.xml"
+          },
+          "install-path": "."
         }
+      }
     },
-    "pkg-name": "usecase-litewrt-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "usecase-litewrt-android-tests"
 }

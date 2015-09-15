@@ -1,100 +1,100 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-geodeny-app/testscripts/environment.py",
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "w3c-geodeny-app/testscripts": "w3c-geodeny-app/testscripts"
-            },
-            "pkg-app": {
-                "apk-common-opts":"--enable-remote-debugging",
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "w3c-geodeny-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../geodeny/w3c/bdd": "geodeny/w3c/bdd",
-                        "../geodeny/bdd": "geodeny/bdd",
-                        "PACK-TOOL-ROOT/resources/testharness": "resources"
-                    }
-                }
-            }
-        },
-        "apk-aio, cordova-aio": {
-            "blacklist": [],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-geodeny-app/testscripts/environment.py",
-                "w3c-geodeny-app/testscripts": "HOST_RESOURCES/w3c-geodeny-app/testscripts"
-            },
-            "subapp-list": {
-                "w3c-geodeny-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../geodeny/w3c/bdd": "geodeny/w3c/bdd",
-                        "../geodeny/bdd": "geodeny/bdd",
-                        "PACK-TOOL-ROOT/resources/testharness": "resources"
-                    }
-                }
-            }
-        },
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-geodeny-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "inst.apk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml",
+        "w3c-geodeny-app/testscripts": "w3c-geodeny-app/testscripts"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      },
+      "subapp-list": {
+        "w3c-geodeny-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../geodeny/bdd": "geodeny/bdd",
+            "../geodeny/w3c/bdd": "geodeny/w3c/bdd",
+            "PACK-TOOL-ROOT/resources/testharness": "resources"
+          }
+        }
+      }
     },
-    "pkg-name": "tct-geodeny-w3c-tests"
+    "apk-aio, cordova-aio": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-geodeny-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "w3c-geodeny-app/testscripts": "HOST_RESOURCES/w3c-geodeny-app/testscripts"
+      },
+      "subapp-list": {
+        "w3c-geodeny-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../geodeny/bdd": "geodeny/bdd",
+            "../geodeny/w3c/bdd": "geodeny/w3c/bdd",
+            "PACK-TOOL-ROOT/resources/testharness": "resources"
+          }
+        }
+      }
+    },
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    },
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.xpk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    }
+  },
+  "pkg-name": "tct-geodeny-w3c-tests"
 }
