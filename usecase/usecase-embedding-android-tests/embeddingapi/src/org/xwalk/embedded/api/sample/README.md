@@ -518,3 +518,12 @@ This usecase covers following interface and methods:
 * XWalkView XWalkUIClient interface: onReceivedTitle methods
 
 
+
+### 51. The [XWalkViewWithClientOnRequestFocus](XWalkViewWithClientOnRequestFocus.java) sample check whether XWalkUIClient.onRequestFocus method work as same as WebView, include:
+
+* XWalkUIClient.onRequestFocus can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: XWalkUIClient.onRequestFocus methods
+
