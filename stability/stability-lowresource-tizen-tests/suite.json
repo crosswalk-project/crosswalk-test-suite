@@ -1,43 +1,43 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "lowresource":"lowresource",
-                "resources/wgt_sample_one.wgt": "resources/wgt_sample_one.wgt",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            }
-        },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "blacklist": []
-            }
-        }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.wgt.py": "inst.py",
+        "lowresource": "lowresource",
+        "resources/wgt_sample_one.wgt": "resources/wgt_sample_one.wgt",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      }
     },
-    "pkg-name": "stability-lowresource-tizen-tests"
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.xpk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": []
+      }
+    }
+  },
+  "pkg-name": "stability-lowresource-tizen-tests"
 }

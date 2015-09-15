@@ -1,40 +1,40 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "README":"README",
-                "iterative": "iterative",
-                "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "subapp-list": {
-                "testapp/iterative": {
-                    "app-name": "iterative",
-                    "apk-icon-opt": ""
-                },
-                "testapp/switchapp": {
-                    "app-name": "switchapp",
-                    "apk-icon-opt": ""
-                }
-            }
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "README": "README",
+        "inst.apk.py": "inst.py",
+        "iterative": "iterative",
+        "tests.xml": "tests.xml"
+      },
+      "subapp-list": {
+        "testapp/iterative": {
+          "apk-icon-opt": "",
+          "app-name": "iterative"
         },
-        "apk-aio": {
-            "blacklist": []
+        "testapp/switchapp": {
+          "apk-icon-opt": "",
+          "app-name": "switchapp"
         }
+      }
     },
-    "pkg-name": "stability-iterative-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "stability-iterative-android-tests"
 }

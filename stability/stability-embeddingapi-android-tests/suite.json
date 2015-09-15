@@ -1,41 +1,41 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "testapp": {
-                    "app-name": "XWalkView-Stability-Test",
-                    "app-type": "EMBEDDINGAPI",
-                    "embeddingapi-library-name": "crosswalk-webview"
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      },
+      "subapp-list": {
+        "testapp": {
+          "app-name": "XWalkView-Stability-Test",
+          "app-type": "EMBEDDINGAPI",
+          "embeddingapi-library-name": "crosswalk-webview"
+        }
+      }
     },
-    "pkg-name": "stability-embeddingapi-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "stability-embeddingapi-android-tests"
 }
