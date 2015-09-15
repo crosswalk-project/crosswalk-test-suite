@@ -1,118 +1,120 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-notification-app/testscripts/environment.py",
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "w3c-notification-app/testscripts": "w3c-notification-app/testscripts"
-            },
-            "pkg-app": {
-                "apk-common-opts":"--enable-remote-debugging",
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                    "notification/support": "notification/bdd/support"
-                }
-            },
-            "subapp-list": {
-                "w3c-notification-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../notification/bdd": "notification",
-                        "../notification/support": "notification/support"
-                    }
-                }
-            }
-        },
-        "apk-aio, cordova-aio": {
-            "blacklist": [],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "notification/support": "notification/bdd/support",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-notification-app/testscripts/environment.py",
-                "w3c-notification-app/testscripts": "HOST_RESOURCES/w3c-notification-app/testscripts"
-            },
-            "subapp-list": {
-                "w3c-notification-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../notification/bdd": "notification",
-                        "../notification/support": "notification/support"
-                    }
-                }
-            }
-        },
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        },
-        "deb": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.deb.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.linux.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": ["crosswalk-app-tools-deb"],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "notification/support": "notification/bdd/support"
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-notification-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "inst.apk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml",
+        "w3c-notification-app/testscripts": "w3c-notification-app/testscripts"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "notification/support": "notification/bdd/support"
         }
+      },
+      "subapp-list": {
+        "w3c-notification-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../notification/bdd": "notification",
+            "../notification/support": "notification/support"
+          }
+        }
+      }
     },
-    "pkg-name": "tct-notification-w3c-tests"
+    "apk-aio, cordova-aio": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-notification-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "notification/support": "notification/bdd/support",
+        "w3c-notification-app/testscripts": "HOST_RESOURCES/w3c-notification-app/testscripts"
+      },
+      "subapp-list": {
+        "w3c-notification-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../notification/bdd": "notification",
+            "../notification/support": "notification/support"
+          }
+        }
+      }
+    },
+    "deb": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.deb.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.linux.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [
+          "crosswalk-app-tools-deb"
+        ],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "notification/support": "notification/bdd/support"
+        }
+      }
+    },
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    },
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.xpk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    }
+  },
+  "pkg-name": "tct-notification-w3c-tests"
 }

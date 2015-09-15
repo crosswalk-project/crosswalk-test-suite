@@ -1,99 +1,99 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "config.xml.*",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "*-py",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "html5-sessionhistory-app/testscripts/environment.py",
-                "inst.apk.py": "inst.py",
-                "sessionhistory/w3c/cgi": "sessionhistory/w3c",
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "html5-sessionhistory-app/testscripts": "html5-sessionhistory-app/testscripts"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "hosted-app": "true",
-                "copylist": {
-                    "sessionhistory/support": "sessionhistory/bdd/support"
-                }
-            },
-            "subapp-list": {
-                "html5-sessionhistory-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../sessionhistory/bdd": "sessionhistory",
-                        "../sessionhistory/support": "sessionhistory/support"
-                    }
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "config.xml.*",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "*-py",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "html5-sessionhistory-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "html5-sessionhistory-app/testscripts": "html5-sessionhistory-app/testscripts",
+        "inst.apk.py": "inst.py",
+        "sessionhistory/w3c/cgi": "sessionhistory/w3c",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "sessionhistory/support": "sessionhistory/bdd/support"
         },
-        "apk-aio, cordova-aio": {
-            "blacklist": [],
-            "copylist": {
-                "sessionhistory/support": "sessionhistory/bdd/support",
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/html5-sessionhistory-app/testscripts/environment.py",
-                "html5-sessionhistory-app/testscripts": "HOST_RESOURCES/html5-sessionhistory-app/testscripts"
-            },
-            "subapp-list": {
-                "html5-sessionhistory-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../sessionhistory/bdd": "sessionhistory",
-                        "../sessionhistory/support": "sessionhistory/support"
-                    }
-                }
-            }
-        },
-        "wgt": {
-            "blacklist": [],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "sessionhistory/w3c/cgi": "sessionhistory/w3c",
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "hosted-app": "true"
-            }
-        },
-        "xpk": {
-            "blacklist": [],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "sessionhistory/w3c/cgi": "sessionhistory/w3c",
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "hosted-app": "true"
-            }
+        "hosted-app": "true"
+      },
+      "subapp-list": {
+        "html5-sessionhistory-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../sessionhistory/bdd": "sessionhistory",
+            "../sessionhistory/support": "sessionhistory/support"
+          }
         }
+      }
     },
-    "pkg-name": "tct-sessionhistory-html5-tests"
+    "apk-aio, cordova-aio": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/html5-sessionhistory-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "html5-sessionhistory-app/testscripts": "HOST_RESOURCES/html5-sessionhistory-app/testscripts",
+        "sessionhistory/support": "sessionhistory/bdd/support"
+      },
+      "subapp-list": {
+        "html5-sessionhistory-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../sessionhistory/bdd": "sessionhistory",
+            "../sessionhistory/support": "sessionhistory/support"
+          }
+        }
+      }
+    },
+    "wgt": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "inst.wgt.py": "inst.py",
+        "sessionhistory/w3c/cgi": "sessionhistory/w3c",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "hosted-app": "true"
+      }
+    },
+    "xpk": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "inst.xpk.py": "inst.py",
+        "sessionhistory/w3c/cgi": "sessionhistory/w3c",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "hosted-app": "true"
+      }
+    }
+  },
+  "pkg-name": "tct-sessionhistory-html5-tests"
 }

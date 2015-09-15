@@ -1,138 +1,138 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "html5-extra-app/testscripts/environment.py",
-                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
-                "html5-extra-app/testscripts": "html5-extra-app/testscripts",
-                "html5-extra-app/data": "data",
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "apk-common-opts": "--enable-remote-debugging",
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "html5-extra-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "copylist": {
-                        "../browsers/bdd": "browsers",
-                        "../dom/bdd": "dom",
-                        "../xhtml5/w3c/bdd": "xhtml5",
-                        "../semantics/grouping-content/the-figure-element/bdd": "semantics/grouping-content/the-figure-element",
-                        "../semantics/grouping-content/the-figcaption-element/bdd": "semantics/grouping-content/the-figcaption-element",
-                        "../semantics/text-level-semantics/the-mark-element/bdd": "semantics/text-level-semantics/the-mark-element",
-                        "../w3c/semantics/forms/the-textarea-element/bdd": "w3c/semantics/forms/the-textarea-element"
-                    }
-                }
-            }
-        },
-        "apk-aio, cordova-aio": {
-            "blacklist": [],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/html5-extra-app/testscripts/environment.py",
-                "html5-extra-app/testscripts": "HOST_RESOURCES/html5-extra-app/testscripts",
-                "html5-extra-app/data": "HOST_RESOURCES/data"
-            },
-            "subapp-list": {
-                "html5-extra-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "install-path": "app",
-                    "copylist": {
-                        "../browsers/bdd": "browsers",
-                        "../dom/bdd": "dom",
-                        "../xhtml5/w3c/bdd": "xhtml5",
-                        "../semantics/grouping-content/the-figure-element/bdd": "semantics/grouping-content/the-figure-element",
-                        "../semantics/grouping-content/the-figcaption-element/bdd": "semantics/grouping-content/the-figcaption-element",
-                        "../semantics/text-level-semantics/the-mark-element/bdd": "semantics/text-level-semantics/the-mark-element",
-                        "../w3c/semantics/forms/the-textarea-element/bdd": "w3c/semantics/forms/the-textarea-element"
-                    }
-                }
-            }
-        },
-        "wgt": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "html5-extra-app": {
-                    "apk-icon-opt": "",
-                    "blacklist": [
-                        "manifest.json"
-                    ],
-                    "copylist": {
-                        "bdd.config.xml": "config.xml",
-                        "../browsers/bdd": "browsers",
-                        "../dom/bdd": "dom",
-                        "../xhtml5/w3c/bdd": "xhtml5"
-                    }
-                }
-            }
-        },
-        "xpk": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "html5-extra-app": {
-                    "apk-icon-opt": "",
-                    "blacklist": [
-                        "manifest.json"
-                    ],
-                    "copylist": {
-                        "bdd.config.xml": "config.xml",
-                        "../browsers/bdd": "browsers",
-                        "../dom/bdd": "dom",
-                        "../xhtml5/w3c/bdd": "xhtml5"
-                    }
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "html5-extra-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "html5-extra-app/data": "data",
+        "html5-extra-app/testscripts": "html5-extra-app/testscripts",
+        "inst.apk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      },
+      "subapp-list": {
+        "html5-extra-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "copylist": {
+            "../browsers/bdd": "browsers",
+            "../dom/bdd": "dom",
+            "../semantics/grouping-content/the-figcaption-element/bdd": "semantics/grouping-content/the-figcaption-element",
+            "../semantics/grouping-content/the-figure-element/bdd": "semantics/grouping-content/the-figure-element",
+            "../semantics/text-level-semantics/the-mark-element/bdd": "semantics/text-level-semantics/the-mark-element",
+            "../w3c/semantics/forms/the-textarea-element/bdd": "w3c/semantics/forms/the-textarea-element",
+            "../xhtml5/w3c/bdd": "xhtml5"
+          }
+        }
+      }
     },
-    "pkg-name": "tct-extra-html5-tests"
+    "apk-aio, cordova-aio": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/html5-extra-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "html5-extra-app/data": "HOST_RESOURCES/data",
+        "html5-extra-app/testscripts": "HOST_RESOURCES/html5-extra-app/testscripts"
+      },
+      "subapp-list": {
+        "html5-extra-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "copylist": {
+            "../browsers/bdd": "browsers",
+            "../dom/bdd": "dom",
+            "../semantics/grouping-content/the-figcaption-element/bdd": "semantics/grouping-content/the-figcaption-element",
+            "../semantics/grouping-content/the-figure-element/bdd": "semantics/grouping-content/the-figure-element",
+            "../semantics/text-level-semantics/the-mark-element/bdd": "semantics/text-level-semantics/the-mark-element",
+            "../w3c/semantics/forms/the-textarea-element/bdd": "w3c/semantics/forms/the-textarea-element",
+            "../xhtml5/w3c/bdd": "xhtml5"
+          },
+          "install-path": "app"
+        }
+      }
+    },
+    "wgt": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      },
+      "subapp-list": {
+        "html5-extra-app": {
+          "apk-icon-opt": "",
+          "blacklist": [
+            "manifest.json"
+          ],
+          "copylist": {
+            "../browsers/bdd": "browsers",
+            "../dom/bdd": "dom",
+            "../xhtml5/w3c/bdd": "xhtml5",
+            "bdd.config.xml": "config.xml"
+          }
+        }
+      }
+    },
+    "xpk": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.xpk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      },
+      "subapp-list": {
+        "html5-extra-app": {
+          "apk-icon-opt": "",
+          "blacklist": [
+            "manifest.json"
+          ],
+          "copylist": {
+            "../browsers/bdd": "browsers",
+            "../dom/bdd": "dom",
+            "../xhtml5/w3c/bdd": "xhtml5",
+            "bdd.config.xml": "config.xml"
+          }
+        }
+      }
+    }
+  },
+  "pkg-name": "tct-extra-html5-tests"
 }

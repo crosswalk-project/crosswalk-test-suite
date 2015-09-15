@@ -1,60 +1,60 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "config.xml.*",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "wgt": {
-            "blacklist": [
-                "COPYING",
-                "LICENSE.*",
-                "NOTICE",
-                "notification",
-                "resources",
-                "tests.full.xml",
-                "webrunner"
-            ],
-            "copylist": {
-                "inst.wgt.py": "inst.py"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                },
-                "sign-flag": "true"
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "config.xml.*",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "wgt": {
+      "blacklist": [
+        "COPYING",
+        "LICENSE.*",
+        "NOTICE",
+        "notification",
+        "resources",
+        "tests.full.xml",
+        "webrunner"
+      ],
+      "copylist": {
+        "inst.wgt.py": "inst.py"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         },
-        "xpk": {
-            "blacklist": [
-                "COPYING",
-                "LICENSE.*",
-                "NOTICE",
-                "notification",
-                "resources",
-                "tests.full.xml",
-                "webrunner"
-            ],
-            "copylist": {
-                "inst.xpk.py": "inst.py"
-            },
-            "pkg-app": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
-        }
+        "sign-flag": "true"
+      }
     },
-    "pkg-name": "tct-notification-tizen-tests"
+    "xpk": {
+      "blacklist": [
+        "COPYING",
+        "LICENSE.*",
+        "NOTICE",
+        "notification",
+        "resources",
+        "tests.full.xml",
+        "webrunner"
+      ],
+      "copylist": {
+        "inst.xpk.py": "inst.py"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    }
+  },
+  "pkg-name": "tct-notification-tizen-tests"
 }
