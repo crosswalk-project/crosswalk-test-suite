@@ -520,4 +520,20 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: XWalkUIClient.onRequestFocus methods
 
+### 52. The [XWalkViewWithClientKeyEventAsync](XWalkViewWithClientKeyEventAsync.java) sample check whether XWalkUIClient.shouldOverrideKeyEvent method work as same as WebView, include:
+
+* XWalkUIClient.shouldOverrideKeyEvent can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: XWalkUIClient.shouldOverrideKeyEvent methods
+
+### 53. The [XWalkViewWithClientReceivedSSLErrorAsync](XWalkViewWithClientReceivedSSLErrorAsync.java) sample check whether XWalkResourceClient.onReceivedSslError method work as same as WebView, include:
+
+* XWalkResourceClient.onReceivedSslError can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: XWalkResourceClient.onReceivedSslError methods
+
 
