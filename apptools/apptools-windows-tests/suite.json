@@ -1,33 +1,33 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "msi": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "apptools": "apptools",
-                "tools": "tools",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "apptools": "apptools",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml",
+        "tools": "tools"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
-    },
-    "pkg-name": "apptools-windows-tests"
+      }
+    }
+  },
+  "pkg-name": "apptools-windows-tests"
 }
