@@ -46,10 +46,7 @@ comm.create(app_name, pkg_name, os.getcwd())
 
 version_cmd = ""
 if CROSSWALK_BRANCH == "beta":
-    if BUILD_PARAMETERS.pkgmode == "shared":
-        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
-    else:
-        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+    version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
 else:
     version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
 
