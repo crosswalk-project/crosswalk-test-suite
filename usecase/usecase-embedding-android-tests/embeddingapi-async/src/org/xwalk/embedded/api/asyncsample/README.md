@@ -495,14 +495,29 @@ This usecase covers following interface and methods:
 * XWalkView interface: setNetworkAvailable methods
 
 
+### 49. The [XWalkViewWithConsoleLogAsync](XWalkViewWithConsoleLogAsync.java) sample check whether onConsoleMessage method work as same as WebView, include:
+
+* onConsoleMessage can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView XWalkUIClient interface: onConsoleMessage methods
 
 
+### 50. The [XWalkViewWithReceivedTitleAsync](XWalkViewWithReceivedTitleAsync.java) sample check whether onReceivedTitle method work as same as WebView, include:
 
-### 49. The [XWalkViewWithClientOnRequestFocusAsync](XWalkViewWithClientOnRequestFocusAsync.java) sample check whether XWalkUIClient.onRequestFocus method work as same as WebView, include:
+* onReceivedTitle can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView XWalkUIClient interface: onReceivedTitle methods
+
+### 51. The [XWalkViewWithClientOnRequestFocusAsync](XWalkViewWithClientOnRequestFocusAsync.java) sample check whether XWalkUIClient.onRequestFocus method work as same as WebView, include:
 
 * XWalkUIClient.onRequestFocus can be invoked
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: XWalkUIClient.onRequestFocus methods
+
 
