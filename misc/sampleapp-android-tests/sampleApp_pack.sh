@@ -89,7 +89,7 @@ cp -r $ROOT_DIR/webapps-hangonman/* $ROOT_DIR/crosswalk-demos/HangOnMan/src/
 cp -a $ROOT_DIR/MemoryGame $ROOT_DIR/crosswalk-demos/
 cp -a $ROOT_DIR/HexGL $ROOT_DIR/crosswalk-demos/
 
-cp -a $ROOT_DIR/crosswalk-samples/hello_world $ROOT_DIR/crosswalk-demos/
+cp -a $ROOT_DIR/crosswalk-samples/hello-world $ROOT_DIR/crosswalk-demos/
 cp -a $ROOT_DIR/crosswalk-samples/simd-mandelbrot $ROOT_DIR/crosswalk-demos/
 cp -a $ROOT_DIR/crosswalk-samples/space-dodge-game $ROOT_DIR/crosswalk-demos/
 cp -a $ROOT_DIR/crosswalk-samples/tizen_apis $ROOT_DIR/crosswalk-demos/
@@ -139,8 +139,8 @@ build_apk(){
     #Hangoman
     python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.hangonman --name=hangonman --app-root=$ROOT_DIR/crosswalk-demos/HangOnMan/src/app --app-local-path=index.html --mode=$1 --arch=$2 --enable-remote-debugging
     
-    # hello_world
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.helloworld --manifest=$ROOT_DIR/crosswalk-demos/hello_world/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
+    # hello-world
+    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.helloworld --manifest=$ROOT_DIR/crosswalk-demos/hello-world/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
     
     # space-dodge-game
     python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.spacedodgegame --manifest=$ROOT_DIR/crosswalk-demos/space-dodge-game/master/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
