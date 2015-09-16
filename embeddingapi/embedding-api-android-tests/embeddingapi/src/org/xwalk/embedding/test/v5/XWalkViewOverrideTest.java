@@ -14,6 +14,10 @@ import org.xwalk.embedding.base.RequestFocusXWalkView.FocusChangedListener;
 import org.xwalk.embedding.base.ScrollXWalkView;
 import org.xwalk.embedding.base.ScrollXWalkView.OnMeasureListener;
 import org.xwalk.embedding.base.ScrollXWalkView.OverScrollModeListener;
+import org.xwalk.embedding.base.DispatchDrawXWalkView;
+import org.xwalk.embedding.base.WindowsVisibilityChangedXWalkView;
+import org.xwalk.embedding.base.WindowsVisibilityChangedXWalkView.MessageListener;
+import org.xwalk.embedding.base.SetLayerTypeXWalkView;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
 import android.test.suitebuilder.annotation.SmallTest;
@@ -41,7 +45,7 @@ public class XWalkViewOverrideTest extends XWalkViewTestBase {
 
     @SmallTest
     public void testRequestFocus() {
-        focusChanged = false; 
+        focusChanged = false;
         try {
             getInstrumentation().runOnMainSync(new Runnable(){
                 @Override
@@ -53,15 +57,15 @@ public class XWalkViewOverrideTest extends XWalkViewTestBase {
                         @Override
                         public void informFocuseChanged(String msg) {
                             // TODO Auto-generated method stub
-                            focusChanged = true; 
+                            focusChanged = true;
                         }
-                        
+
                     });
                     mRequestFocusXWalkView.load("http://www.baidu.com", null);
                     mRequestFocusXWalkView.setFocusable(true);
                     mRequestFocusXWalkView.setFocusableInTouchMode(true);
                     mRequestFocusXWalkView.requestFocus();
-                    mRequestFocusXWalkView.requestFocusFromTouch();                    
+                    mRequestFocusXWalkView.requestFocusFromTouch();
                 }
             });
             assertTrue(true);
@@ -72,14 +76,14 @@ public class XWalkViewOverrideTest extends XWalkViewTestBase {
         }
     }
 
-    
+
     @SmallTest
     public void testOnCreateInputConnectionXWalkView() {
         try {
             getInstrumentation().runOnMainSync(new Runnable(){
                 @Override
                 public void run() {
-                    OnCreateInputConnectionXWalkView mOnCreateInputConnectionXWalkView = new OnCreateInputConnectionXWalkView(mainActivity, mainActivity);                
+                    OnCreateInputConnectionXWalkView mOnCreateInputConnectionXWalkView = new OnCreateInputConnectionXWalkView(mainActivity, mainActivity);
                     mOnCreateInputConnectionXWalkView.load("http://www.baidu.com", null);
                 }
             });
@@ -88,8 +92,8 @@ public class XWalkViewOverrideTest extends XWalkViewTestBase {
             e.printStackTrace();
             assertTrue(false);
         }
-    }    
-    
+    }
+
     @SmallTest
     public void testComputeHorizontalScrollOffset() {
         try {
@@ -106,7 +110,7 @@ public class XWalkViewOverrideTest extends XWalkViewTestBase {
             assertTrue(false);
         }
     }
-    
+
     @SmallTest
     public void testComputeVerticalScrollRange() {
         try {
@@ -122,7 +126,7 @@ public class XWalkViewOverrideTest extends XWalkViewTestBase {
             e.printStackTrace();
             assertTrue(false);
         }
-    }    
+    }
 
     @SmallTest
     public void testOnMeasure() {
@@ -139,8 +143,8 @@ public class XWalkViewOverrideTest extends XWalkViewTestBase {
             e.printStackTrace();
             assertTrue(false);
         }
-    }   
-    
+    }
+
     @SmallTest
     public void testSetOverScrollMode() {
         try {
@@ -156,6 +160,58 @@ public class XWalkViewOverrideTest extends XWalkViewTestBase {
             e.printStackTrace();
             assertTrue(false);
         }
-    }        
+    }
+
+    @SmallTest
+    public void testDispatchDraw() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable(){
+                @Override
+                public void run() {
+                    DispatchDrawXWalkView mDispatchDrawXWalkView = new DispatchDrawXWalkView(mainActivity, mainActivity);
+                    mDispatchDrawXWalkView.load("http://www.baidu.com", null);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnWindowVisibilityChanged() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable(){
+                @Override
+                public void run() {
+                    WindowsVisibilityChangedXWalkView mWindowsVisibilityChangedXWalkView = new WindowsVisibilityChangedXWalkView(mainActivity, mainActivity);
+                    mWindowsVisibilityChangedXWalkView.load("http://www.baidu.com", null);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+
+    @SmallTest
+    public void testSetLayerType() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable(){
+                @Override
+                public void run() {
+                    SetLayerTypeXWalkView mSetLayerTypeXWalkView = new SetLayerTypeXWalkView(mainActivity, mainActivity);
+                    mSetLayerTypeXWalkView.load("http://www.baidu.com", null);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
 
 }
