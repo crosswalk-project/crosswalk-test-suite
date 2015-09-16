@@ -129,13 +129,28 @@ def make_csv(xml_path, csv_path):
             onload_delay = case_node.attrib['onload_delay'] if 'onload_delay' in case_node.attrib else ""
             spec_assertion = case_node.find('specs/spec/spec_assertion')
             element_type = ''
-            if 'element_type' in spec_assertion.attrib:
-                element_type = spec_assertion.attrib['element_type']
-            else:
-                element_type = 'true'
             element_name = ''
-            if 'element_name' in spec_assertion.attrib:
-                element_name = spec_assertion.attrib['element_name']
+            spec_interface = ''
+            spec_specification = ''
+            spec_section = ''
+            spec_category = ''
+            spec_url = case_node.find('specs/spec/spec_url').text if case_node.find('specs/spec/spec_url') is not None  else ""
+            if spec_assertion is not None:
+                if 'element_type' in spec_assertion.attrib:
+                    element_type = spec_assertion.attrib['element_type']
+                else:
+                    element_type = 'true'
+                if 'element_name' in spec_assertion.attrib:
+                    element_name = spec_assertion.attrib['element_name']
+                if 'interface' in spec_assertion.attrib:
+                    spec_interface = spec_assertion.attrib['interface']
+                if 'specification' in spec_assertion.attrib:
+                    spec_specification = spec_assertion.attrib['specification']
+                if 'section' in spec_assertion.attrib:
+                    spec_section = spec_assertion.attrib['section']
+                if 'category' in spec_assertion.attrib:
+                    spec_category = spec_assertion.attrib['category']
+
             refer_test_script_entry = case_node.find('description/refer_test_script_entry').text if \
                                       case_node.find('description/refer_test_script_entry') is not None else ""
             bdd_test_script_entry = case_node.find('description/bdd_test_script_entry').text if \
@@ -153,15 +168,15 @@ def make_csv(xml_path, csv_path):
                              case_node.attrib['priority'],
                              element_type,
                              element_name,
-                             spec_assertion.attrib['interface'],
-                             spec_assertion.attrib['specification'],
-                             spec_assertion.attrib['section'],
-                             spec_assertion.attrib['category'],
-                             case_node.find('specs/spec/spec_url').text,
+                             spec_interface,
+                             spec_specification,
+                             spec_section,
+                             spec_category,
+                             spec_url,
                              '',
                              case_node.attrib['status'],
                              case_node.find('description/test_script_entry').text,
-                              refer_test_script_entry,
+                             refer_test_script_entry,
                              bdd_test_script_entry,
                              subcase,
                              case_node.attrib['type'],
