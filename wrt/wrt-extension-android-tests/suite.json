@@ -1,35 +1,35 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": ".",
-                "PACK-TOOL-ROOT/XWalkRuntimeLib.apk": "resources/XWalkRuntimeLib.apk"
-            },
-            "subapp-list": {
-                "testapp/extension_permission_contacts_tests": {
-                    "apk-ext-opt": "testapp/extension_permission_contacts_tests/contactextension",
-                    "install-path": "source"
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/XWalkRuntimeLib.apk": "resources/XWalkRuntimeLib.apk",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "subapp-list": {
+        "testapp/extension_permission_contacts_tests": {
+          "apk-ext-opt": "testapp/extension_permission_contacts_tests/contactextension",
+          "install-path": "source"
         }
+      }
     },
-    "pkg-name": "wrt-extension-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "wrt-extension-android-tests"
 }

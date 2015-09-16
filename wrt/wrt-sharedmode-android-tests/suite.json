@@ -1,37 +1,37 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": ".",
-                "PACK-TOOL-ROOT/XWalkRuntimeLib.apk": "resources/installer/XWalkRuntimeLib.apk"
-            },
-            "subapp-list": {
-                "resources/apk": {
-                    "apk-type": "HOSTEDAPP",
-                    "apk-url-opt": "www.hao123.com",
-                    "app-name": "webappintel",
-                    "install-path": "resources/apk"
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/XWalkRuntimeLib.apk": "resources/installer/XWalkRuntimeLib.apk",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "subapp-list": {
+        "resources/apk": {
+          "apk-type": "HOSTEDAPP",
+          "apk-url-opt": "www.hao123.com",
+          "app-name": "webappintel",
+          "install-path": "resources/apk"
         }
+      }
     },
-    "pkg-name": "wrt-sharedmode-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "wrt-sharedmode-android-tests"
 }

@@ -1,49 +1,49 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "testapp": "testapp",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "": {
-                    "apk-type": "HOSTEDAPP",
-                    "apk-url-opt": "http://www.html-kit.com/tools/cookietester/",
-                    "app-name": "cookietest",
-                    "install-path": "."
-                },
-                "testapp/web_scheme": {
-                    "install-path": "."
-                },
-                "testapp/web_scheme_content": {
-                    "install-path": "."
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "testapp": "testapp",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      },
+      "subapp-list": {
+        "": {
+          "apk-type": "HOSTEDAPP",
+          "apk-url-opt": "http://www.html-kit.com/tools/cookietester/",
+          "app-name": "cookietest",
+          "install-path": "."
+        },
+        "testapp/web_scheme": {
+          "install-path": "."
+        },
+        "testapp/web_scheme_content": {
+          "install-path": "."
+        }
+      }
     },
-    "pkg-name": "wrt-internetstdmanu-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "wrt-internetstdmanu-android-tests"
 }
