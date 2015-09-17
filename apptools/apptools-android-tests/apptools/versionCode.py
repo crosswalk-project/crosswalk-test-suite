@@ -55,6 +55,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             if x.find("versionCode") != -1:
                 versionCode_xml = attributes[x]
                 break
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(versionCode, versionCode_xml)
 
@@ -84,6 +85,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             if x.find("versionCode") != -1:
                 versionCode_xml = attributes[x]
                 break
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "1")
         self.assertEquals(versionCode, versionCode_xml)
@@ -114,6 +116,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             if x.find("versionCode") != -1:
                 versionCode_xml = attributes[x]
                 break
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.0.1")
         self.assertEquals(versionCode, versionCode_xml)

@@ -49,6 +49,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -64,6 +65,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -79,6 +81,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -94,6 +97,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -109,6 +113,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -124,6 +129,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -139,6 +145,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
