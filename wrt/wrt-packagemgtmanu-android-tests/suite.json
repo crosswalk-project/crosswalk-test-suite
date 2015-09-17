@@ -1,53 +1,53 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "testapp": "testapp",
-                "PACK-TOOL-ROOT/resources/xsl": ".",
-                "wrt-packagemgt-app/testscripts": "wrt-packagemgt-app/testscripts",
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-packagemgt-app/testscripts/environment.py"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                },
-                "apk-common-opts": "--enable-remote-debugging"
-            },
-            "subapp-list": {
-                "testapp": {
-                    "all-apps": "true",
-                    "apk-icon-opt": "",
-                    "install-path": "."
-                },
-                "wrt-packagemgt-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": "",
-                    "copylist": {
-                        "../packagemgtmanu/bdd": "packagemgt"
-                    }
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-packagemgt-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "testapp": "testapp",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml",
+        "wrt-packagemgt-app/testscripts": "wrt-packagemgt-app/testscripts"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      },
+      "subapp-list": {
+        "testapp": {
+          "all-apps": "true",
+          "apk-icon-opt": "",
+          "install-path": "."
+        },
+        "wrt-packagemgt-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../packagemgtmanu/bdd": "packagemgt"
+          }
+        }
+      }
     },
-    "pkg-name": "wrt-packagemgtmanu-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "wrt-packagemgtmanu-android-tests"
 }

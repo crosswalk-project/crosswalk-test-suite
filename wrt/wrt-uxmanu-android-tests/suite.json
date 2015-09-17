@@ -1,60 +1,60 @@
 {
-    "pkg-blacklist": [
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "testapp": "testapp",
-                "PACK-TOOL-ROOT/resources/xsl": ".",
-                "wrt-ux-app/testscripts": "wrt-ux-app/testscripts",
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-ux-app/testscripts/environment.py"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "testapp": {
-                    "all-apps": "true",
-                    "apk-icon-opt": "",
-                    "apk-common-opts": "--enable-remote-debugging"
-                },
-                "wrt-ux-app": {
-                "apk-common-opts": "--enable-remote-debugging",
-                "apk-icon-opt": "",
-                "copylist": {
-                    "../uxmanu/bdd": "ux"
-                }
-                },
-                "": {
-                    "apk-type": "HOSTEDAPP",
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-url-opt": "http://www.w3.org",
-                    "app-name": "touch_gesture_click",
-                    "install-path": "."
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-ux-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "testapp": "testapp",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml",
+        "wrt-ux-app/testscripts": "wrt-ux-app/testscripts"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      },
+      "subapp-list": {
+        "": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "HOSTEDAPP",
+          "apk-url-opt": "http://www.w3.org",
+          "app-name": "touch_gesture_click",
+          "install-path": "."
+        },
+        "testapp": {
+          "all-apps": "true",
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "wrt-ux-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../uxmanu/bdd": "ux"
+          }
+        }
+      }
     },
-    "pkg-name": "wrt-uxmanu-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "wrt-uxmanu-android-tests"
 }

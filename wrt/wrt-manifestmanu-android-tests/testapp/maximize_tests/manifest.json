@@ -1,24 +1,34 @@
 {
-  "name": "maximize_tests",
-  "xwalk_version": "1.0.0",
-  "start_url": "index.html",
-  "xwalk_description": "Test description",
+  "csp": "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+  "display": [
+    "fullscreen"
+  ],
   "icons": [
     {
-      "src": "icon.png",
-      "sizes": "128x128"
+      "sizes": "128x128",
+      "src": "icon.png"
     },
     {
-      "src": "crosswalk.jpg",
-      "sizes": "64x64"
+      "sizes": "64x64",
+      "src": "crosswalk.jpg"
     }
   ],
+  "name": "maximize_tests",
+  "orientation": "landscape",
+  "start_url": "index.html",
+  "xwalk_description": "Test description",
+  "xwalk_hosts": "http://crosswalk-project.org/",
   "xwalk_launch_screen": {
-    "ready_when": "first-paint",
     "default": {
       "background_color": "#000000",
       "background_image": "bg.png",
       "image": "loading.gif",
+      "image_border": "30px repeat stretch"
+    },
+    "landscape": {
+      "background_color": "#000002",
+      "background_image": "bg.png",
+      "image": "loading.png",
       "image_border": "30px repeat stretch"
     },
     "portrait": {
@@ -27,20 +37,13 @@
       "image": "loading.jpg",
       "image_border": "30px repeat stretch"
     },
-    "landscape": {
-      "background_color": "#000002",
-      "background_image": "bg.png",
-      "image": "loading.png",
-      "image_border": "30px repeat stretch"
-    }
+    "ready_when": "first-paint"
   },
   "xwalk_permissions": [
     "Contacts",
     "Geolocation",
     "Messaging",
-    "Vibration"],
-  "orientation": "landscape",
-  "display": ["fullscreen"],
-  "xwalk_hosts": "http://crosswalk-project.org/",
-  "csp": "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+    "Vibration"
+  ],
+  "xwalk_version": "1.0.0"
 }

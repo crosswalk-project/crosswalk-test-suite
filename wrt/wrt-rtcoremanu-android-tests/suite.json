@@ -1,77 +1,77 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "testapp": "testapp",
-                "PACK-TOOL-ROOT/resources/xsl": "."
-            },
-            "pkg-app": {
-                "blacklist": [
-                    "*"
-                ],
-                "copylist": {
-                    "rtcoremanu": "rtcoremanu",
-                    "tests.full.xml": "tests.full.xml",
-                    "tests.xml": "tests.xml",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "testapp/manifest_icon_117pixel_tests": {
-                    "apk-icon-opt": ""
-                },
-                "testapp/manifest_icon_69pixel_tests": {
-                    "apk-icon-opt": ""
-                },
-                "testapp/manifest_icon_null_tests": {
-                    "apk-icon-opt": ""
-                },
-                "testapp/manifest_icon_valuenull_tests": {
-                    "apk-icon-opt": ""
-                },
-                "testapp/manifest_minimal_manifest_tests": {
-                    "apk-icon-opt": ""
-                },
-                "testapp/manifest_negative_nullvalue_csp": {
-                    "apk-icon-opt": ""
-                },
-                "testapp/manifest_negative_nullvalue_version": {
-                    "apk-icon-opt": ""
-                },
-                "": {
-                    "apk-type": "HOSTEDAPP",
-                    "apk-url-opt": "https://crosswalk-project.org/",
-                    "app-name": "diskcachesize",
-                    "apk-cmd-opt": "--disk-cache-size=1",
-                    "install-path": "."
-                },
-                "testapp/disk-cache-size-tests": {
-                    "apk-type": "MANIFEST",
-                    "app-name": "diskcachesize_no",
-                    "install-path": "."
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "testapp": "testapp",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [
+          "*"
+        ],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "rtcoremanu": "rtcoremanu",
+          "tests.full.xml": "tests.full.xml",
+          "tests.xml": "tests.xml"
         }
+      },
+      "subapp-list": {
+        "": {
+          "apk-cmd-opt": "--disk-cache-size=1",
+          "apk-type": "HOSTEDAPP",
+          "apk-url-opt": "https://crosswalk-project.org/",
+          "app-name": "diskcachesize",
+          "install-path": "."
+        },
+        "testapp/disk-cache-size-tests": {
+          "apk-type": "MANIFEST",
+          "app-name": "diskcachesize_no",
+          "install-path": "."
+        },
+        "testapp/manifest_icon_117pixel_tests": {
+          "apk-icon-opt": ""
+        },
+        "testapp/manifest_icon_69pixel_tests": {
+          "apk-icon-opt": ""
+        },
+        "testapp/manifest_icon_null_tests": {
+          "apk-icon-opt": ""
+        },
+        "testapp/manifest_icon_valuenull_tests": {
+          "apk-icon-opt": ""
+        },
+        "testapp/manifest_minimal_manifest_tests": {
+          "apk-icon-opt": ""
+        },
+        "testapp/manifest_negative_nullvalue_csp": {
+          "apk-icon-opt": ""
+        },
+        "testapp/manifest_negative_nullvalue_version": {
+          "apk-icon-opt": ""
+        }
+      }
     },
-    "pkg-name": "wrt-rtcoremanu-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "wrt-rtcoremanu-android-tests"
 }

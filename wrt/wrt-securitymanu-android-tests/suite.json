@@ -1,98 +1,98 @@
 {
-    "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "apk,cordova": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "inst.apk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "testapp": "testapp",
-                "PACK-TOOL-ROOT/resources/xsl": ".",
-                "wrt-security-app/testscripts": "wrt-security-app/testscripts",
-                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
-                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
-                "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-security-app/testscripts/environment.py"
-            },
-            "pkg-app": {
-                "apk-common-opts":"--enable-remote-debugging",
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            },
-            "subapp-list": {
-                "wrt-security-app": {
-                "apk-common-opts": "--enable-remote-debugging",
-                "apk-icon-opt": "",
-                "copylist": {
-                    "../securitymanu/bdd": "security"
-                }
-                },
-                "testapp/csp_directive_list_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/csp_directive_none_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/csp_script_none_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/csp_script_self_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/csp_script_unsafe_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/permission_field_contacts_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/permission_field_geolocation_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/permission_field_messaging_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/permission_undefined_contacts_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/permission_undefined_geolocation_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/permission_undefined_messaging_tests": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                },
-                "testapp/security_url_certificate_tests": {
-                    "apk-common-opts":"--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                }
-            }
-        },
-        "apk-aio": {
-            "blacklist": []
+  "pkg-blacklist": [
+    "config.xml",
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "apk,cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-security-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "inst.apk.py": "inst.py",
+        "testapp": "testapp",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml",
+        "wrt-security-app/testscripts": "wrt-security-app/testscripts"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
+      },
+      "subapp-list": {
+        "testapp/csp_directive_list_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/csp_directive_none_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/csp_script_none_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/csp_script_self_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/csp_script_unsafe_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/permission_field_contacts_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/permission_field_geolocation_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/permission_field_messaging_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/permission_undefined_contacts_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/permission_undefined_geolocation_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/permission_undefined_messaging_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "testapp/security_url_certificate_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": ""
+        },
+        "wrt-security-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../securitymanu/bdd": "security"
+          }
+        }
+      }
     },
-    "pkg-name": "wrt-securitymanu-android-tests"
+    "apk-aio": {
+      "blacklist": []
+    }
+  },
+  "pkg-name": "wrt-securitymanu-android-tests"
 }
