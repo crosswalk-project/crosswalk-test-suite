@@ -9,7 +9,7 @@ the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
 PURPOSE.
 See W3C License http://www.w3.org/Consortium/Legal/ for more details.
 */
-  
+
 //
 // Log to console wrapper, use this so one doesn't create script errors on
 // user agents that don't support console.log

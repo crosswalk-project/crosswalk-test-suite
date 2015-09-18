@@ -8,7 +8,7 @@ function isResolvedURI(absolute, relative)
     // contains the current host, and ends with 'relative'
     var regex = new RegExp('^' + location.protocol + '\/\/' + '.*' +
         location.hostname + '.*' + relative + '$', 'i');
-    
+
     return absolute.match(regex);
 }
 
@@ -68,7 +68,7 @@ function getVideoType(codecs)
     var codecs_param = 'avc1.42E01E, mp4a.40.2';
 
     var videotag = document.createElement("video");
-    
+
     if ( videotag.canPlayType  &&
          videotag.canPlayType('video/ogg; codecs="theora, vorbis"') )
     {
@@ -151,7 +151,7 @@ function setPassTimeout(milliseconds)
 function findUnbufferedTime(media)
 {
     var max = 0;
-        
+
     for (var i=0; i < media.buffered.length; i++)
     {
         if (media.buffered.end(i) > max)
@@ -193,8 +193,8 @@ function checkPlaybackRate_check()
 
     checkPlaybackRate_callback(
         isApprox(
-            rate, 
-            checkPlaybackRate_playbackRate, 
+            rate,
+            checkPlaybackRate_playbackRate,
             checkPlaybackRate_tolerance
             )
         );
