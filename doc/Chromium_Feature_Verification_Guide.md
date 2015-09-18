@@ -36,7 +36,7 @@ features' implementation status:
   not be supported by Crosswalk Project either. Thus no need to check such kind
   of features.
 
-After that, push the .html file to a GitHub repository `gh-pages` brach, one
+After that, push the .html file to a GitHub repository `gh-pages` branch, one
 can access to the page as GitHub pages, for example,
 https://zqzhang.github.io/demo/chromestatus/m45.html
 
@@ -58,7 +58,7 @@ https://zqzhang.github.io/demo/chromestatus/m45.html
 - Compare the output with that of Chrome Beta browser. If they are the same,
   corresponding feature is verified; otherwise report an issue.
 
-### Run the samples on Crosswalk Project for Linux (optinal)
+### Run the samples on Crosswalk Project for Linux (optional)
 
 - Build and install a web application for the samples in the GitHub page for
   Crosswalk Project for Linux, e.g. following the instructions at
