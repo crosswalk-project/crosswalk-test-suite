@@ -10,12 +10,12 @@ This guide provides a mean to verify the new features brought into Crosswalk
 Project by the code re-base, by comparing the samples that Chromium features
 used running on Crosswalk Project and Chrome Beta with same Chromium version.
 
-## How to do the feature varification?
+## How to do the feature verification?
 
 ### List samples referenced by Chromium features
 
 Google Chrome has an [implementation status](https://www.chromestatus.com/)
-which lists all new new features with samples attached to each milestone.
+which lists all new features with samples attached to each milestone.
 
 Searching the milestone, for example `=45`, in the implementation status page,
 one can get all features listed for the milestone. Or one can directly
