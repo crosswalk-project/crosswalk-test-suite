@@ -533,12 +533,109 @@ def packSampleApp(app_name=None):
     os.chdir(orig_dir)
     return True
 
+def installPlugins(plugin_tool, app_name):
+    project_root = os.path.join(BUILD_ROOT, app_name)
+    pkg_mode_tmp = "shared"
+    if BUILD_PARAMETERS.pkgmode == "embedded":
+        pkg_mode_tmp = "core"
+
+    xwalk_version = "%s" % CROSSWALK_VERSION
+    if CROSSWALK_BRANCH == "beta":
+        xwalk_version = "org.xwalk:xwalk_%s_library_beta:%s" % (pkg_mode_tmp, CROSSWALK_VERSION)
+
+    webview_plugin_name = "cordova-plugin-crosswalk-webview"
+    install_variable_cmd = ""
+    if os.path.exists(plugin_tool): 
+        plugin_dirs = os.listdir(plugin_tool)
+        for i_dir in plugin_dirs:
+            i_plugin_dir = os.path.join(plugin_tool, i_dir)
+            plugin_crosswalk_source = i_plugin_dir
+            if i_dir == webview_plugin_name:
+                if BUILD_PARAMETERS.packtype == "npm":
+                    plugin_crosswalk_source = webview_plugin_name
+                install_variable_cmd = "--variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"%s\"" \
+                        % (BUILD_PARAMETERS.pkgmode, xwalk_version)
+
+                if checkContains(app_name, "xwalkCommandLine"):
+                    install_variable_cmd = install_variable_cmd + " --variable XWALK_COMMANDLINE" \
+                            "=\"--disable-pull-to-refresh-effect --disable-webrtc --disable-webgl\""
+                    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools,
+                            "..", "usecase", "usecase-cordova-android-tests",
+                            "samples", "XwalkCommandLine", "res", "index.html"),
+                            os.path.join(project_root, "www", "index.html")):
+                        os.chdir(orig_dir)
+                        return False
+
+            plugin_install_cmd = "cordova plugin add %s %s" % (plugin_crosswalk_source, install_variable_cmd)
+            if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
+                os.chdir(orig_dir)
+                return False
+    return True
+
+def copyCordovaCliApk(app_name, orig_dir):
+    project_root = os.path.join(BUILD_ROOT, app_name)
+    outputs_dir = os.path.join(
+        project_root,
+        "platforms",
+        "android",
+        "build",
+        "outputs",
+        "apk")
+
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-x86-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-x86-debug.apk")
+    else:
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-armv7-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-armv7-debug.apk")
+
+    if os.path.exists(cordova_tmp_path):
+        if not doCopy(
+                cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    elif os.path.exists(cordova_tmp_path_spare):
+        if not doCopy(
+                cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    else:
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-debug.apk")
+        if os.path.exists(cordova_tmp_path):
+            if not doCopy(
+                    cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
+                os.chdir(orig_dir)
+                return False
+        elif os.path.exists(cordova_tmp_path_spare):
+            if not doCopy(
+                    cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
+                os.chdir(orig_dir)
+                return False
+    return True
+
 def packGoogleApp(app_name=None):
     project_root = os.path.join(BUILD_ROOT, app_name)
-    output = commands.getoutput("cca -v")
-    if output != "0.7.0":
+    orig_dir = os.getcwd()
+    buildstatus = commands.getstatusoutput("cca -v")
+    if buildstatus[0] != 0:
         LOG.error(
-            "App build requires cca, install with command: '$ sudo npm install cca@0.7.0 -g'")
+            "App build requires cca, install with command: '$ sudo npm install cca -g'")
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
@@ -586,7 +683,6 @@ def packGoogleApp(app_name=None):
             os.chdir(orig_dir)
             return False
 
-    orig_dir = os.getcwd()
     os.chdir(cordova_app)
     pull_cmd = "git pull"
     if not doCMD(pull_cmd, DEFAULT_CMD_TIMEOUT):
@@ -625,73 +721,19 @@ def packGoogleApp(app_name=None):
         os.chdir(orig_dir)
         return False
 
-    version_cmd = ""
-    if CROSSWALK_BRANCH == "beta":
-        if BUILD_PARAMETERS.pkgmode == "shared":
-            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
-        else:
-            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
-    else:
-        version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
-
-    plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
-    plugin_dirs = os.listdir(plugin_tool)
-    for i_dir in plugin_dirs:
-        i_plugin_dir = os.path.join(plugin_tool, i_dir)
-        if i_dir == "cordova-plugin-crosswalk-webview":
-            plugin_crosswalk_source = i_plugin_dir
-            if BUILD_PARAMETERS.packtype == "npm":
-                plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
-
-            plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
-                    % (plugin_crosswalk_source, version_cmd, BUILD_PARAMETERS.pkgmode)
-        else:
-            plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
-        if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
-            os.chdir(orig_dir)
-            return False
+    if not installPlugins(plugin_tool, app_name):
+        os.chdir(orig_dir)
+        return False
 
     build_cmd = "cca build android"
     if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT * 2):
         os.chdir(orig_dir)
         return False
 
-    outputs_dir = os.path.join(
-        project_root,
-        "platforms",
-        "android",
-        "build",
-        "outputs",
-        "apk")
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-x86-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-x86-debug.apk")
-    else:
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-armv7-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-armv7-debug.apk")
-    if os.path.exists(cordova_tmp_path):
-        if not doCopy(
-                cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
-    elif os.path.exists(cordova_tmp_path_spare):
-        if not doCopy(
-                cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
-    else:
+    if not copyCordovaCliApk(app_name, orig_dir):
         os.chdir(orig_dir)
         return False
+
     os.chdir(orig_dir)
     return True
 
@@ -733,114 +775,95 @@ def packMobileSpec_cli(app_name=None):
         if not doCopy(mobilespec_path, project_root):
             return False
     else:
-        cordova_mobilespec = os.path.join(BUILD_ROOT, "cordova-mobile-spec")
-        if not doCopy(cordova_mobilespec_origin, cordova_mobilespec):
-            return False
+        try:
+            cordova_mobilespec = os.path.join(BUILD_ROOT, "cordova-mobile-spec")
+            if not doCopy(cordova_mobilespec_origin, cordova_mobilespec):
+                return False
 
-        # Set activity name as app_name
-        replaceUserString(
-            cordova_mobilespec,
-            'config.xml',
-            '<widget',
-            '<widget android-activityName="%s"' %
-            app_name)
-        os.chdir(os.path.join(cordova_mobilespec, "createmobilespec"))
-        install_cmd = "sudo npm install"
-        LOG.info("Doing CMD: [ %s ]" % install_cmd)
-        run = pexpect.spawn(install_cmd)
+            # Set activity name as app_name
+            replaceUserString(
+                cordova_mobilespec,
+                'config.xml',
+                '<widget',
+                '<widget android-activityName="%s"' %
+                app_name)
+            os.chdir(os.path.join(cordova_mobilespec, "createmobilespec"))
+            install_cmd = "sudo npm install"
+            LOG.info("Doing CMD: [ %s ]" % install_cmd)
+            run = pexpect.spawn(install_cmd)
 
-        index = run.expect(
-            ['password', 'node_modules', pexpect.EOF, pexpect.TIMEOUT])
-        if index == 0:
-            run.sendline(BUILD_PARAMETERS.userpassword)
             index = run.expect(
-                ['node_modules', 'password', pexpect.EOF, pexpect.TIMEOUT], timeout=DEFAULT_CMD_TIMEOUT)
-            if index == 0:
-                print 'The user password is Correctly'
-            else:
-                print 'The user password is wrong'
-                run.close(force=True)
-                return False
-        elif index != 1:
-            print 'The user password is wrong'
-            run.close(force=True)
-            return False
-
-        os.chdir(BUILD_ROOT)
-        createmobilespec_cmd = "cordova-mobile-spec/createmobilespec/createmobilespec.js --android --global"
-        if not doCMD(createmobilespec_cmd, DEFAULT_CMD_TIMEOUT * 5):
-            os.chdir(orig_dir)
-            return False
-
-        os.chdir(project_root)
-        add_nativePage_cmd = "cordova plugin add https://github.com/Telerik-Verified-Plugins/NativePageTransitions.git#r0.4.1"
-        if not doCMD(add_nativePage_cmd, DEFAULT_CMD_TIMEOUT):
-            os.chdir(orig_dir)
-            return False
-        add_thirdparty_cmd = "cordova plugin add ../cordova-mobile-spec/cordova-plugin-thirdparty-tests"
-        if not doCMD(add_thirdparty_cmd, DEFAULT_CMD_TIMEOUT):
-            os.chdir(orig_dir)
-            return False
-
-        if os.path.exists(mobilespec_path):
-            if not doRemove([mobilespec_path]):
-                os.chdir(orig_dir)
-                return False
-        if not doCopy(project_root, mobilespec_path):
-            return False
-        www_path_origin = os.path.join(cordova_mobilespec, "www")
-        www_path_target = os.path.join(mobilespec_path, "www")
-        if os.path.exists(www_path_target):
-            os.chdir(mobilespec_path)
-            if not doRemove([www_path_target]):
-                os.chdir(orig_dir)
-                return False
-        if not doCopy(www_path_origin, www_path_target):
-            os.chdir(orig_dir)
-            return False
-
-        os.chdir(os.path.join(cordova_mobilespec, "createmobilespec"))
-        node_modules = os.path.join(cordova_mobilespec, "createmobilespec", "node_modules")
-        if not BUILD_PARAMETERS.bnotclean and os.path.exists(node_modules):
-            rm_node_modules_cmd = "sudo rm -rf node_modules"
-            run = pexpect.spawn(rm_node_modules_cmd)
-            LOG.info("Removing node_modules file in %s" % (os.path.join(cordova_mobilespec, "createmobilespec")))
-            index = run.expect(['password', pexpect.EOF, pexpect.TIMEOUT])
+                ['password', 'node_modules', pexpect.EOF, pexpect.TIMEOUT])
             if index == 0:
                 run.sendline(BUILD_PARAMETERS.userpassword)
-                index = run.expect(['password', pexpect.EOF, pexpect.TIMEOUT])
+                index = run.expect(
+                    ['node_modules', 'password', pexpect.EOF, pexpect.TIMEOUT], timeout=DEFAULT_CMD_TIMEOUT)
                 if index == 0:
+                    print 'The user password is Correctly'
+                else:
                     print 'The user password is wrong'
                     run.close(force=True)
                     return False
+            elif index != 1:
+                print 'The user password is wrong'
+                run.close(force=True)
+                return False
+
+            os.chdir(BUILD_ROOT)
+            createmobilespec_cmd = "cordova-mobile-spec/createmobilespec/createmobilespec.js --android --global"
+            if not doCMD(createmobilespec_cmd, DEFAULT_CMD_TIMEOUT * 5):
+                os.chdir(orig_dir)
+                return False
+
+            os.chdir(project_root)
+            add_nativePage_cmd = "cordova plugin add https://github.com/Telerik-Verified-Plugins" \
+                    "/NativePageTransitions.git#0.4.1"
+            if not doCMD(add_nativePage_cmd, DEFAULT_CMD_TIMEOUT):
+                os.chdir(orig_dir)
+                return False
+            add_thirdparty_cmd = "cordova plugin add ../cordova-mobile-spec/cordova-plugin-thirdparty-tests"
+            if not doCMD(add_thirdparty_cmd, DEFAULT_CMD_TIMEOUT):
+                os.chdir(orig_dir)
+                return False
+
+            if os.path.exists(mobilespec_path):
+                if not doRemove([mobilespec_path]):
+                    os.chdir(orig_dir)
+                    return False
+            if not doCopy(project_root, mobilespec_path):
+                return False
+            www_path_origin = os.path.join(cordova_mobilespec, "www")
+            www_path_target = os.path.join(mobilespec_path, "www")
+            if os.path.exists(www_path_target):
+                os.chdir(mobilespec_path)
+                if not doRemove([www_path_target]):
+                    os.chdir(orig_dir)
+                    return False
+            if not doCopy(www_path_origin, www_path_target):
+                os.chdir(orig_dir)
+                return False
+
+        finally:
+            os.chdir(os.path.join(cordova_mobilespec, "createmobilespec"))
+            node_modules = os.path.join(cordova_mobilespec, "createmobilespec", "node_modules")
+            if not BUILD_PARAMETERS.bnotclean and os.path.exists(node_modules):
+                rm_node_modules_cmd = "sudo rm -rf node_modules"
+                run = pexpect.spawn(rm_node_modules_cmd)
+                LOG.info("Removing node_modules file in %s" % (os.path.join(cordova_mobilespec, "createmobilespec")))
+                index = run.expect(['password', pexpect.EOF, pexpect.TIMEOUT])
+                if index == 0:
+                    run.sendline(BUILD_PARAMETERS.userpassword)
+                    index = run.expect(['password', pexpect.EOF, pexpect.TIMEOUT])
+                    if index == 0:
+                        print 'The user password is wrong'
+                        run.close(force=True)
+                        return False
 
     os.chdir(project_root)
 
-    version_cmd = ""
-    if CROSSWALK_BRANCH == "beta":
-        if BUILD_PARAMETERS.pkgmode == "shared":
-            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
-        else:
-            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
-    else:
-        version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
-
-    if os.path.exists(plugin_tool): 
-        plugin_dirs = os.listdir(plugin_tool)
-        for i_dir in plugin_dirs:
-            i_plugin_dir = os.path.join(plugin_tool, i_dir)
-            if i_dir == "cordova-plugin-crosswalk-webview":
-                plugin_crosswalk_source = i_plugin_dir
-                if BUILD_PARAMETERS.packtype == "npm":
-                    plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
-
-                plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
-                        % (plugin_crosswalk_source, version_cmd, BUILD_PARAMETERS.pkgmode)
-            else:
-                plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
-            if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
-                os.chdir(orig_dir)
-                return False
+    if not installPlugins(plugin_tool, app_name):
+        os.chdir(orig_dir)
+        return False
 
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
@@ -849,57 +872,10 @@ def packMobileSpec_cli(app_name=None):
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
-    outputs_dir = os.path.join(
-        project_root,
-        "platforms",
-        "android",
-        "build",
-        "outputs",
-        "apk")
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-x86-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-x86-debug.apk")
-    else:
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-armv7-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-armv7-debug.apk")
-    if os.path.exists(cordova_tmp_path):
-        if not doCopy(
-                cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
-    elif os.path.exists(cordova_tmp_path_spare):
-        if not doCopy(
-                cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
-    else:
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-debug.apk")
-        if os.path.exists(cordova_tmp_path):
-            if not doCopy(
-                    cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
-                os.chdir(orig_dir)
-                return False
-        elif os.path.exists(cordova_tmp_path_spare):
-            if not doCopy(
-                    cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
-                os.chdir(orig_dir)
-                return False
+
+    if not copyCordovaCliApk(app_name, orig_dir):
+        os.chdir(orig_dir)
+        return False
 
     os.chdir(orig_dir)
     return True
@@ -991,39 +967,9 @@ def packSampleApp_cli(app_name=None):
             os.chdir(orig_dir)
             return False
 
-    version_cmd = ""
-    if CROSSWALK_BRANCH == "beta":
-        if BUILD_PARAMETERS.pkgmode == "shared":
-            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
-        else:
-            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
-    else:
-        version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
-
-    plugin_dirs = os.listdir(plugin_tool)
-    for i_dir in plugin_dirs:
-        i_plugin_dir = os.path.join(plugin_tool, i_dir)
-        if i_dir == "cordova-plugin-crosswalk-webview":
-            plugin_crosswalk_source = i_plugin_dir
-            if BUILD_PARAMETERS.packtype == "npm":
-                plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
-
-            plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
-                    % (plugin_crosswalk_source, version_cmd, BUILD_PARAMETERS.pkgmode)
-            if checkContains(app_name, "xwalkCommandLine"):
-                plugin_install_cmd = plugin_install_cmd + " --variable XWALK_COMMANDLINE" \
-                    "=\"--disable-pull-to-refresh-effect --disable-webrtc --disable-webgl\""
-                if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools,
-                        "..", "usecase", "usecase-cordova-android-tests",
-                        "samples", "XwalkCommandLine", "res", "index.html"),
-                        os.path.join(project_root, "www", "index.html")):
-                    os.chdir(orig_dir)
-                    return False
-        else:
-            plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
-        if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
-            os.chdir(orig_dir)
-            return False
+    if not installPlugins(plugin_tool, app_name):
+        os.chdir(orig_dir)
+        return False
 
     if checkContains(app_name, "renamePkg"):
         if not replaceKey(os.path.join(project_root, "config.xml"),
@@ -1043,59 +989,9 @@ def packSampleApp_cli(app_name=None):
         os.chdir(orig_dir)
         return False
 
-    outputs_dir = os.path.join(
-        project_root,
-        "platforms",
-        "android",
-        "build",
-        "outputs",
-        "apk")
-
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-x86-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-x86-debug.apk")
-    else:
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-armv7-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-armv7-debug.apk")
-
-    if os.path.exists(cordova_tmp_path):
-        if not doCopy(
-                cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
-    elif os.path.exists(cordova_tmp_path_spare):
-        if not doCopy(
-                cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
-    else:
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-debug.apk")
-        if os.path.exists(cordova_tmp_path):
-            if not doCopy(
-                    cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
-                os.chdir(orig_dir)
-                return False
-        elif os.path.exists(cordova_tmp_path_spare):
-            if not doCopy(
-                    cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
-                os.chdir(orig_dir)
-                return False
+    if not copyCordovaCliApk(app_name, orig_dir):
+        os.chdir(orig_dir)
+        return False
 
     os.chdir(orig_dir)
     return True
