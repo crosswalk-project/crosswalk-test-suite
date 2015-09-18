@@ -1,5 +1,5 @@
 Feature: wrt-ux-app
- Scenario: Crosswalk WebApp BackKey Exit 
+ Scenario: Crosswalk WebApp BackKey Exit
   When launch "touch_gesture_click"
     And I wait 15 seconds
     And I click view "description=mobile"

@@ -13,4 +13,3 @@ Feature: wrt-ux-app
    Then I should see title "Standards - W3C"
     And I click view "description=Participate"
    Then I should see title "Participate - W3C" in 60 seconds
-   
