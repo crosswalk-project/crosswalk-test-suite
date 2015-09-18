@@ -51,7 +51,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       var excepted = xwalk.experimental.native_file_system.getRealPath("DOWNLOADS");
       assert_equals(realPath, excepted);
     }, "Insensitive to virtual root character that Downloads has same full path with DOWNLOADS");
-    
+
     test(function() {
       var realPath = xwalk.experimental.native_file_system.getRealPath("MUSIC");
       assert_regexp_match(realPath, /^(\/storage)(\/\w+)+(\/Music)$/);
