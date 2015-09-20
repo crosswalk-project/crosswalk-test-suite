@@ -3,369 +3,337 @@
 <test_definition>
   <suite category="Apptools Sample Apps" name="apptools-sampleapp-tests">
     <set name="SampleApp_manual" type="script">
-      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_Build_Arm" priority="P1" purpose="Validate if sample app Gallery can be built on android device which is 'arm' architecture" status="approved" type="compliance" platform="android">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_Arm" priority="P1" purpose="Validate if sample app spacedodge can be built on android device which is 'arm' architecture" status="approved" type="compliance" platform="android">
         <description>
           <pre_condition>
             1. Please refer to README file.
           </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it 
+              <step_desc>If com.example.spacedodge exists in apptools-sampleapp-tests/tools/ directory, remove it 
                 Then run below commands under apptools-sampleapp-tests/tools/ directory: 
                 On Android:
                   Shared Mode:
-                    $ crosswalk-app create com.example.gallery --android-shared
+                    $ crosswalk-app create com.example.spacedodge --android-shared
                   Embedded Mode:
-                    $ crosswalk-app create com.example.gallery
-                  $ cd com.example.gallery
-                  $ git clone https://github.com/blueimp/Gallery.git
-                  $ mv Gallery/* app/
+                    $ crosswalk-app create com.example.spacedodge
+                  $ cd com.example.spacedodge
+                  $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
+                  $ mv crosswalk-samples/space-dodge-game/base/* app/
                   $ crosswalk-app build
                 On Windows:
-                  $ node %crosswalk-app% create com.example.gallery
-                  $ cd com.example.gallery
-                  $ git clone https://github.com/blueimp/Gallery.git
-                  $ xcopy /s /e /i /y Gallery\* app\
+                  Shared Mode:
+                    $ node %crosswalk-app% create com.example.spacedodge --android-shared
+                  Embedded Mode:
+                    $ node %crosswalk-app% create com.example.spacedodge
+                  $ cd com.example.spacedodge
+                  $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
+                  $ xcopy /s /e /i /y crosswalk-samples\space-dodge-game\base\* app\
                   $ node %crosswalk-app% build
               </step_desc>
-              <expected>Success to create/build com.example.gallery</expected>
+              <expected>Success to create/build com.example.spacedodge</expected>
             </step>
             <step order="2">
-              <step_desc>Install gallery app on your android device which is "arm" architecture</step_desc>
-              <expected>Install the gallery app successfully</expected>
+              <step_desc>
+                Shared Mode:
+                  Install shared mode spacedodge app on your android device which is "arm" architecture
+                Embedded Mode:
+                  Install arm spacedodge app on your android device which is "arm" architecture
+              </step_desc>
+              <expected>Install the spacedodge app successfully</expected>
             </step>
             <step order="3">
-              <step_desc>Check icon of gallery app in your android device</step_desc>
-              <expected>Find the gallery app successfully</expected>
+              <step_desc>Check icon of spacedodge app in your android device</step_desc>
+              <expected>Find the spacedodge app successfully</expected>
             </step>
             <step order="4">
-              <step_desc>Launch gallery app in your android device</step_desc>
-              <expected>Launch the gallery app successfully</expected>
+              <step_desc>Launch spacedodge app in your android device</step_desc>
+              <expected>Launch the spacedodge app successfully</expected>
             </step>
             <step order="5">
-              <step_desc>Check the homepage of gallery app</step_desc>
-              <expected>You can see Gallery UI on the device</expected>
+              <step_desc>Check the homepage of spacedodge app</step_desc>
+              <expected>You can see spacedodge UI on the device</expected>
             </step>
             <step order="6">
               <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Unistall the gallery app successfully</expected>
+              <expected>Unistall the spacedodge app successfully</expected>
             </step>
             <step order="7">
-              <step_desc>Install and launch the gallery app again. Close gallery app via clicking the home button, and kill gallery app from Task Manager</step_desc>
-              <expected>Stop the gallery app successfully</expected>
+              <step_desc>Install and launch the spacedodge app again. Close spacedodge app via clicking the home button, and kill spacedodge app from Task Manager</step_desc>
+              <expected>Stop the spacedodge app successfully</expected>
             </step>
             <step order="8">
-              <step_desc>Long press the icon of gallery app to uninstall it</step_desc>
-              <expected>Unistall the gallery app successfully</expected>
+              <step_desc>Long press the icon of spacedodge app to uninstall it</step_desc>
+              <expected>Unistall the spacedodge app successfully</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-android/Crosswalk_Apptools_SampleApp_Gallery_Build_Arm.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-android/Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_Arm.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_Build_X86" priority="P1" purpose="Validate if sample app Gallery can be built on android device which is 'x86' architecture" status="approved" type="compliance" platform="android">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_X86" priority="P1" purpose="Validate if sample app spacedodge can be built on android device which is 'x86' architecture" status="approved" type="compliance" platform="android">
         <description>
           <pre_condition>
             1. Please refer to README file.
           </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it
+              <step_desc>If com.example.spacedodge exists in apptools-sampleapp-tests/tools/ directory, remove it
                 Then run below commands under apptools-sampleapp-tests/tools/ directory: 
                 On Android:
                   Shared Mode:
-                    $ crosswalk-app create com.example.gallery --android-shared
+                    $ crosswalk-app create com.example.spacedodge --android-shared
                   Embedded Mode:
-                    $ crosswalk-app create com.example.gallery
-                  $ cd com.example.gallery
-                  $ git clone https://github.com/blueimp/Gallery.git
-                  $ mv Gallery/* app/
+                    $ crosswalk-app create com.example.spacedodge
+                  $ cd com.example.spacedodge
+                  $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
+                  $ mv crosswalk-samples/space-dodge-game/base/* app/
                   $ crosswalk-app build
                 On Windows:
-                  $ node %crosswalk-app% create com.example.gallery
-                  $ cd com.example.gallery
-                  $ git clone https://github.com/blueimp/Gallery.git
-                  $ xcopy /s /e /i /y Gallery\* app\
+                  Shared Mode:
+                    $ node %crosswalk-app% create com.example.spacedodge --android-shared
+                  Embedded Mode:
+                    $ node %crosswalk-app% create com.example.spacedodge
+                  $ cd com.example.spacedodge
+                  $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
+                  $ xcopy /s /e /i /y crosswalk-samples\space-dodge-game\base\* app\
                   $ node %crosswalk-app% build
               </step_desc>
-              <expected>Success to create/build com.example.gallery</expected>
+              <expected>Success to create/build com.example.spacedodge</expected>
             </step>
             <step order="2">
-              <step_desc>Install gallery app on your android device which is "x86" architecture</step_desc>
-              <expected>Install the gallery app successfully</expected>
+              <step_desc>
+                Shared Mode:
+                  Install shared mode spacedodge app on your android device which is "x86" architecture
+                Embedded Mode:
+                  Install x86 spacedodge app on your android device which is "x86" architecture
+              </step_desc>
+              <expected>Install the spacedodge app successfully</expected>
             </step>
             <step order="3">
-              <step_desc>Check icon of gallery app in your android device</step_desc>
-              <expected>Find the gallery app successfully</expected>
+              <step_desc>Check icon of spacedodge app in your android device</step_desc>
+              <expected>Find the spacedodge app successfully</expected>
             </step>
             <step order="4">
-              <step_desc>Launch gallery app in your android device</step_desc>
-              <expected>Launch the gallery app successfully</expected>
+              <step_desc>Launch spacedodge app in your android device</step_desc>
+              <expected>Launch the spacedodge app successfully</expected>
             </step>
             <step order="5">
-              <step_desc>Check the homepage of gallery app</step_desc>
-              <expected>You can see Gallery UI on the device</expected>
+              <step_desc>Check the homepage of spacedodge app</step_desc>
+              <expected>You can see spacedodge UI on the device</expected>
             </step>
             <step order="6">
               <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Unistall the gallery app successfully</expected>
+              <expected>Unistall the spacedodge app successfully</expected>
             </step>
             <step order="7">
-              <step_desc>Install and launch the gallery app again. Close gallery app via clicking the home button, and kill gallery app from Task Manager</step_desc>
-              <expected>Stop the gallery app successfully</expected>
+              <step_desc>Install and launch the spacedodge app again. Close spacedodge app via clicking the home button, and kill spacedodge app from Task Manager</step_desc>
+              <expected>Stop the spacedodge app successfully</expected>
             </step>
             <step order="8">
-              <step_desc>Long press the icon of gallery app to uninstall it</step_desc>
-              <expected>Unistall the gallery app successfully</expected>
+              <step_desc>Long press the icon of spacedodge app to uninstall it</step_desc>
+              <expected>Unistall the spacedodge app successfully</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-android/Crosswalk_Apptools_SampleApp_Gallery_Build_X86.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-android/Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_X86.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_AppFunction_Android" priority="P1" purpose="Validate if sample app Gallery function could work well on android device" status="approved" type="compliance" platform="android">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_Android" priority="P1" purpose="Validate if sample app spacedodge function could work well on android device" status="approved" type="compliance" platform="android">
         <description>
           <pre_condition>
-            1. Make sure the Gallery webapp is launched on your android device, and need a good network that can access google server.
+            1. Make sure the spacedodge webapp is launched on your android device.
           </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>Check the display of "Carousel image gallery" from Gallery UI</step_desc>
-              <expected>"Carousel image gallery" should display image with auto slides show in section 1 , click next/previous button to navigate to different image</expected>
-            </step>
-            <step order="2">
-              <step_desc>Check the display of "Carousel video gallery" from Gallery UI</step_desc>
-              <expected>"Carousel video gallery" should display video preview in slides show, could play video, could click next/previous button to navigation</expected>
-            </step>
-            <step order="3">
-              <step_desc>Check the display of "Lightbox image gallery" from Gallery UI</step_desc>
-              <expected>"Lightbox image gallery" should display image thumbnail in lightbox, could display orignial image when click 1 thumbnail</expected>
-            </step>
-            <step order="4">
-              <step_desc>Check every button from Gallery UI</step_desc>
-              <expected>All button and function works well</expected>
+              <step_desc>Check every button from spacedodge UI</step_desc>
+              <expected>All button and function work well</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-android/Crosswalk_Apptools_SampleApp_Gallery_AppFunction_Android.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-android/Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_Android.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_Build_Deb" priority="P1" purpose="Validate if sample app Gallery can be built on deepin" status="approved" type="compliance" platform="linux">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_Deb" priority="P1" purpose="Validate if sample app spacedodge can be built on deepin" status="approved" type="compliance" platform="linux">
         <description>
           <pre_condition>
             1. Please refer to README file.
           </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it
+              <step_desc>If com.example.spacedodge exists in apptools-sampleapp-tests/tools/ directory, remove it
                 Then run below commands under apptools-sampleapp-tests/tools/ directory:
-                $ crosswalk-app create com.example.gallery
-                $ cd com.example.gallery
-                $ git clone https://github.com/blueimp/Gallery.git
-                $ mv Gallery/* app/
+                $ crosswalk-app create com.example.spacedodge
+                $ cd com.example.spacedodge
+                $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
+                $ mv crosswalk-samples/space-dodge-game/base/* app/
                 $ crosswalk-app build
               </step_desc>
-              <expected>Success to create/build com.example.gallery</expected>
+              <expected>Success to create/build com.example.spacedodge</expected>
             </step>
             <step order="2">
-              <step_desc>Install gallery app on depin</step_desc>
-              <expected>Install the gallery app successfully</expected>
+              <step_desc>Install spacedodge app on depin</step_desc>
+              <expected>Install the spacedodge app successfully</expected>
             </step>
             <step order="3">
-              <step_desc>Find gallery app in depin</step_desc>
-              <expected>Find the gallery app successfully</expected>
+              <step_desc>Find spacedodge app in depin</step_desc>
+              <expected>Find the spacedodge app successfully</expected>
             </step>
             <step order="4">
-              <step_desc>Launch gallery app in depin</step_desc>
-              <expected>Launch the gallery app successfully</expected>
+              <step_desc>Launch spacedodge app in depin</step_desc>
+              <expected>Launch the spacedodge app successfully</expected>
             </step>
             <step order="5">
-              <step_desc>Check the homepage of gallery app</step_desc>
-              <expected>You can see Gallery UI on the device</expected>
+              <step_desc>Check the homepage of spacedodge app</step_desc>
+              <expected>You can see spacedodge UI on the device</expected>
             </step>
             <step order="6">
               <step_desc>Uninstall the app by typing "dpkg -P $pkgName" on the command line when the app running</step_desc>
-              <expected>Unistall the gallery app successfully</expected>
+              <expected>Unistall the spacedodge app successfully</expected>
             </step>
             <step order="7">
-              <step_desc>Install and launch the gallery app again. Close gallery app via clicking the close button, and run command: $ ps -ef | grep gallery |awk '{print $2}' |xargs -I% kill -9 %</step_desc>
-              <expected>Stop the gallery app successfully</expected>
+              <step_desc>Install and launch the spacedodge app again. Close spacedodge app via clicking the close button, and run command: $ ps -ef | grep spacedodge |awk '{print $2}' |xargs -I% kill -9 %</step_desc>
+              <expected>Stop the spacedodge app successfully</expected>
             </step>
             <step order="8">
-              <step_desc>Uninstall gallery app in depin</step_desc>
-              <expected>Unistall the gallery app successfully</expected>
+              <step_desc>Uninstall spacedodge app in depin</step_desc>
+              <expected>Unistall the spacedodge app successfully</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-deb/Crosswalk_Apptools_SampleApp_Gallery_Build_Deb.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-deb/Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_Deb.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_AppFunction_Deb" priority="P1" purpose="Validate if sample app Gallery function could work well on deepin" status="approved" type="compliance" platform="linux">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_Deb" priority="P1" purpose="Validate if sample app spacedodge function could work well on deepin" status="approved" type="compliance" platform="linux">
         <description>
           <pre_condition>
-            1. Make sure the Gallery webapp is launched on deepin, and need a good network that can access google server.
+            1. Make sure the spacedodge webapp is launched on deepin.
           </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>Check the display of "Carousel image gallery" from Gallery UI</step_desc>
-              <expected>"Carousel image gallery" should display image with auto slides show in section 1 , click next/previous button to navigate to different image</expected>
-            </step>
-            <step order="2">
-              <step_desc>Check the display of "Carousel video gallery" from Gallery UI</step_desc>
-              <expected>"Carousel video gallery" should display video preview in slides show, could play video, could click next/previous button to navigation</expected>
-            </step>
-            <step order="3">
-              <step_desc>Check the display of "Lightbox image gallery" from Gallery UI</step_desc>
-              <expected>"Lightbox image gallery" should display image thumbnail in lightbox, could display orignial image when click 1 thumbnail</expected>
-            </step>
-            <step order="4">
-              <step_desc>Check every button from Gallery UI</step_desc>
-              <expected>All button and function works well</expected>
+              <step_desc>Check every button from spacedodge UI</step_desc>
+              <expected>All button and function work well</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-deb/Crosswalk_Apptools_SampleApp_Gallery_AppFunction_Deb.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-deb/Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_Deb.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_Build_iOS" priority="P1" purpose="Validate if sample app Gallery can be built on iOS device" status="approved" type="compliance" platform="ios">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_iOS" priority="P1" purpose="Validate if sample app spacedodge can be built on iOS device" status="approved" type="compliance" platform="ios">
         <description>
           <pre_condition>
             1. Please refer to README file.
           </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it
+              <step_desc>If com.example.spacedodge exists in apptools-sampleapp-tests/tools/ directory, remove it
                 Then run below commands under apptools-sampleapp-tests/tools/ directory:
-                $ crosswalk-app create com.example.gallery
-                $ cd com.example.gallery
-                $ git clone https://github.com/blueimp/Gallery.git
-                $ mv Gallery/* app/
+                $ crosswalk-app create com.example.spacedodge
+                $ cd com.example.spacedodge
+                $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
+                $ mv crosswalk-samples/space-dodge-game/base/* app/
                 $ crosswalk-app build
               </step_desc>
-              <expected>Success to create/build com.example.gallery</expected>
+              <expected>Success to create/build com.example.spacedodge</expected>
             </step>
             <step order="2">
-              <step_desc>Connect your iOS device to your iMac. Open iTunes->"Your Device"->Apps. Double click gallery app. Click "Install" button of gallery app on iTunes</step_desc>
-              <expected>Install the gallery app successfully</expected>
+              <step_desc>Connect your iOS device to your iMac. Open iTunes->"Your Device"->Apps. Double click spacedodge app. Click "Install" button of spacedodge app on iTunes</step_desc>
+              <expected>Install the spacedodge app successfully</expected>
             </step>
             <step order="3">
-              <step_desc>Click "Apply" button at the lower right corner of iTunes. Check icon of gallery app in your iOS device</step_desc>
-              <expected>Find the gallery app successfully</expected>
+              <step_desc>Click "Apply" button at the lower right corner of iTunes. Check icon of spacedodge app in your iOS device</step_desc>
+              <expected>Find the spacedodge app successfully</expected>
             </step>
             <step order="4">
-              <step_desc>Launch gallery app in your iOS device</step_desc>
-              <expected>Launch the gallery app successfully</expected>
+              <step_desc>Launch spacedodge app in your iOS device</step_desc>
+              <expected>Launch the spacedodge app successfully</expected>
             </step>
             <step order="5">
-              <step_desc>Check the homepage of gallery app</step_desc>
-              <expected>You can see Gallery UI on the device</expected>
+              <step_desc>Check the homepage of spacedodge app</step_desc>
+              <expected>You can see spacedodge UI on the device</expected>
             </step>
             <step order="6">
-              <step_desc>Close gallery app via clicking the home button, and kill gallery app from Task Manager</step_desc>
-              <expected>Stop the gallery app successfully</expected>
+              <step_desc>Close spacedodge app via clicking the home button, and kill spacedodge app from Task Manager</step_desc>
+              <expected>Stop the spacedodge app successfully</expected>
             </step>
             <step order="7">
-              <step_desc>Long press the icon of gallery app to uninstall it</step_desc>
-              <expected>Unistall the gallery app successfully</expected>
+              <step_desc>Long press the icon of spacedodge app to uninstall it</step_desc>
+              <expected>Unistall the spacedodge app successfully</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Gallery_Build_iOS.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_iOS.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_AppFunction_iOS" priority="P1" purpose="Validate if sample app Gallery function could work well on iOS device" status="approved" type="compliance" platform="ios">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_iOS" priority="P1" purpose="Validate if sample app spacedodge function could work well on iOS device" status="approved" type="compliance" platform="ios">
         <description>
           <pre_condition>
-            1. Make sure the Gallery webapp is launched on your iOS device, and need a good network that can access google server.
+            1. Make sure the spacedodge webapp is launched on your iOS device.
           </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>Check the display of "Carousel image gallery" from Gallery UI</step_desc>
-              <expected>"Carousel image gallery" should display image with auto slides show in section 1 , click next/previous button to navigate to different image</expected>
-            </step>
-            <step order="2">
-              <step_desc>Check the display of "Carousel video gallery" from Gallery UI</step_desc>
-              <expected>"Carousel video gallery" should display video preview in slides show, could play video, could click next/previous button to navigation</expected>
-            </step>
-            <step order="3">
-              <step_desc>Check the display of "Lightbox image gallery" from Gallery UI</step_desc>
-              <expected>"Lightbox image gallery" should display image thumbnail in lightbox, could display orignial image when click 1 thumbnail</expected>
-            </step>
-            <step order="4">
-              <step_desc>Check every button from Gallery UI</step_desc>
-              <expected>All button and function works well</expected>
+              <step_desc>Check every button from spacedodge UI</step_desc>
+              <expected>All button and function work well</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Gallery_AppFunction_iOS.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_iOS.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_Build_Windows" priority="P1" purpose="Validate if sample app Gallery can be built on windows" status="approved" type="compliance" platform="windows">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_Windows" priority="P1" purpose="Validate if sample app spacedodge can be built on windows" status="approved" type="compliance" platform="windows">
         <description>
           <pre_condition>
             1. Please refer to README file.
           </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it
+              <step_desc>If com.example.spacedodge exists in apptools-sampleapp-tests/tools/ directory, remove it
                 Then run below commands under apptools-sampleapp-tests/tools/ directory:
-                $ node %crosswalk-app% create com.example.gallery --platforms=windows --windows-crosswalk=path to xwalk win zip
-                $ cd com.example.gallery
-                $ git clone https://github.com/blueimp/Gallery.git
-                $ xcopy /s /e /i /y Gallery\* app\
+                $ node %crosswalk-app% create com.example.spacedodge --platforms=windows --windows-crosswalk=path to xwalk win zip
+                $ cd com.example.spacedodge
+                $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
+                $ xcopy /s /e /i /y crosswalk-samples\space-dodge-game\base\* app\
                 $ node %crosswalk-app% build
               </step_desc>
-              <expected>Success to create/build com.example.gallery</expected>
+              <expected>Success to create/build com.example.spacedodge</expected>
             </step>
             <step order="2">
-              <step_desc>Install gallery app on windows</step_desc>
-              <expected>Install the gallery app successfully</expected>
+              <step_desc>Install spacedodge app on windows</step_desc>
+              <expected>Install the spacedodge app successfully</expected>
             </step>
             <step order="3">
-              <step_desc>Find gallery app on windows</step_desc>
-              <expected>Find the gallery app successfully</expected>
+              <step_desc>Find spacedodge app on windows</step_desc>
+              <expected>Find the spacedodge app successfully</expected>
             </step>
             <step order="4">
-              <step_desc>Launch gallery app on windows</step_desc>
-              <expected>Launch the gallery app successfully</expected>
+              <step_desc>Launch spacedodge app on windows</step_desc>
+              <expected>Launch the spacedodge app successfully</expected>
             </step>
             <step order="5">
-              <step_desc>Check the homepage of gallery app</step_desc>
-              <expected>You can see Gallery UI on the device</expected>
+              <step_desc>Check the homepage of spacedodge app</step_desc>
+              <expected>You can see spacedodge UI on the device</expected>
             </step>
             <step order="6">
               <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Unistall the gallery app successfully when the app running</expected>
+              <expected>Unistall the spacedodge app successfully when the app running</expected>
             </step>
             <step order="7">
-              <step_desc>Install and launch the gallery app again. Close gallery app via clicking the close button, and kill gallery app from Task Manager</step_desc>
-              <expected>Stop the gallery app successfully</expected>
+              <step_desc>Install and launch the spacedodge app again. Close spacedodge app via clicking the close button, and kill spacedodge app from Task Manager</step_desc>
+              <expected>Stop the spacedodge app successfully</expected>
             </step>
             <step order="8">
-              <step_desc>Uninstall gallery app on windows</step_desc>
-              <expected>Unistall the gallery app successfully</expected>
+              <step_desc>Uninstall spacedodge app on windows</step_desc>
+              <expected>Unistall the spacedodge app successfully</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Gallery_Build_Windows.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_Windows.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Gallery" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Gallery_AppFunction_Windows" priority="P1" purpose="Validate if sample app Gallery function could work well on windows" status="approved" type="compliance" platform="ios">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_Windows" priority="P1" purpose="Validate if sample app spacedodge function could work well on windows" status="approved" type="compliance" platform="ios">
         <description>
           <pre_condition>
-            1. Make sure the Gallery webapp is launched on windows, and need a good network that can access google server.
+            1. Make sure the spacedodge webapp is launched on windows.
           </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>Check the display of "Carousel image gallery" from Gallery UI</step_desc>
-              <expected>"Carousel image gallery" should display image with auto slides show in section 1 , click next/previous button to navigate to different image</expected>
-            </step>
-            <step order="2">
-              <step_desc>Check the display of "Carousel video gallery" from Gallery UI</step_desc>
-              <expected>"Carousel video gallery" should display video preview in slides show, could play video, could click next/previous button to navigation</expected>
-            </step>
-            <step order="3">
-              <step_desc>Check the display of "Lightbox image gallery" from Gallery UI</step_desc>
-              <expected>"Lightbox image gallery" should display image thumbnail in lightbox, could display orignial image when click 1 thumbnail</expected>
-            </step>
-            <step order="4">
-              <step_desc>Check every button from Gallery UI</step_desc>
-              <expected>All button and function works well</expected>
+              <step_desc>Check every button from spacedodge UI</step_desc>
+              <expected>All button and function work well</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Gallery_AppFunction_Windows.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-ios/Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_Windows.html </test_script_entry>
         </description>
       </testcase>
     </set>

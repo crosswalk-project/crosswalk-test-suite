@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Apptools_SampleApp_Gallery_Build_Deb</title>
+    <title>Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_Windows</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,40 +41,19 @@ Authors:
       <strong>Preconditions:</strong>
     </p>
     <ol>
-      <li>Please refer to README file</li>
+      <li>Make sure the spacedodge webapp is launched on windows</li>
     </ol>
     <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it</br>
-        Then run below commands under apptools-sampleapp-tests/tools/ directory:</br>
-        $ crosswalk-app create com.example.gallery</br>
-        $ cd com.example.gallery</br>
-        $ git clone https://github.com/blueimp/Gallery.git</br>
-        $ mv Gallery/* app/</br>
-        $ crosswalk-app build
-      </li>
-      <li>Install gallery app on depin</li>
-      <li>Find gallery app in depin</li>
-      <li>Launch gallery app in depin</li>
-      <li>Check the homepage of gallery app</li>
-      <li>Uninstall the app by typing "dpkg -P $pkgName" on the command line when the app running</li>
-      <li>Install and launch the gallery app again. Close gallery app via clicking the close button, and run command: $ ps -ef | grep gallery |awk '{print $2}' |xargs -I% kill -9 %</li>
-      <li>Uninstall gallery app in depin</li>
+      <li>Check every button from spacedodge UI.</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Create/Build com.example.gallery successfully</li>
-      <li>Install the gallery app successfully</li>
-      <li>Find the gallery app successfully</li>
-      <li>Launch the gallery app successfully</li>
-      <li>You can see Gallery UI on the device</li>
-      <li>Uninstall the gallery app successfully when the app running</li>
-      <li>Stop the gallery app successfully</li>
-      <li>Uninstall the gallery app successfully</li>
+      <li>All button and function work well</li>
     </ol>
   </body>
 </html>
