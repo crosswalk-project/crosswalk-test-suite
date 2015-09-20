@@ -13,4 +13,3 @@ Feature: wrt-ux-app
     And I wait 5 seconds
     And I click view "description=Standards"
    Then I should see view "description=STANDARDS" in 30 seconds
-   

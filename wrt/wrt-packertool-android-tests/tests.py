@@ -1,10 +1,10 @@
-#!/usr/bin/env python 
-# coding=utf-8 
-import random,os,sys,unittest,run_app,codecs 
-reload(sys) 
-sys.setdefaultencoding( "utf-8" ) 
-class TestCaseUnit(unittest.TestCase): 
- 
+#!/usr/bin/env python
+# coding=utf-8
+import random,os,sys,unittest,run_app,codecs
+reload(sys)
+sys.setdefaultencoding( "utf-8" )
+class TestCaseUnit(unittest.TestCase):
+
   def test_positive_cmd1(self):
      self.assertEqual("PASS", run_app.tryRunApp("cmd1-positive", "/opt/wrt-packertool-android-tests/apks/arm/cmd1-positive"))
 

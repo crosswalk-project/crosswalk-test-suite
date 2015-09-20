@@ -35,7 +35,7 @@ Please see the COPYING file for the BSD-3-Clause License.
      3)Self combination add 'null' to each self field:
        name--2:000,a000b,000b,b000,null
      4)The space character please use 000 to replace:
-       000a-> a,a000b->a b,b000->b 
+       000a-> a,a000b->a b,b000->b
      5)The icon value include ",", so the separator is "comma",please refer to seed file:
        icon--1:{"src": "icon/lowres"comma"sizes": "64x64"comma"type": "image/webp"}
 
@@ -61,7 +61,7 @@ Test Step:
 3. ./inst.py -i
 4. ./ge_package.py
 5. run test case
-   testkit-lite -f [testprefix-path]/opt/wrt-packertool-android-tests/tests.xml -A -o [testprefix-path]/opt/wrt-packertool-android-tests/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E  CONNECT_TYPE=adb;APK_DIR=[apk-folder-path]", DEVICE_ID can also be multiple ids like "Medfield3C6DFF2E,Medfield3C6DFF00".
+   testkit-lite -f [testprefix-path]/opt/wrt-packertool-android-tests/tests.xml -A -o [testprefix-path]/opt/wrt-packertool-android-tests/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E CONNECT_TYPE=adb;APK_DIR=[apk-folder-path]", DEVICE_ID can also be multiple ids like "Medfield3C6DFF2E,Medfield3C6DFF00".
 Query device id by commmand "adb devices -l" in host
 
 Base on the seed file, the total case number is 190.

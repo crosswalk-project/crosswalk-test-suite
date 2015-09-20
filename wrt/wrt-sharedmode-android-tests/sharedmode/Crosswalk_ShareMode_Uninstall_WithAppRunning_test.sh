@@ -40,7 +40,7 @@ if [ "${command}""x" == "x" ];then
 fi
 
 echo "WebApp Install"
-$command install -r $local_path/../resources/apk/web*.apk 
+$command install -r $local_path/../resources/apk/web*.apk
 $command shell pm list packages |grep $PACKAGE &>/dev/null
 if [ $? -eq 0 ];then
     echo "Web App Install successflly"
