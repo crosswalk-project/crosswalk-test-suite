@@ -33,7 +33,7 @@ Authors:
 <meta charset="utf-8">
 <title>WebAudio Test: oscillatornode_type_invalid_value</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://www.w3.org/TR/2012/WD-webaudio-20121213/">
+<link rel="help" href="http://webaudio.github.io/web-audio-api/#the-oscillatornode-interface">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="./support/webaudio.js"></script>
@@ -43,7 +43,8 @@ test(function () {
   var context = new AudioContext();
   assert_true("createOscillator" in context, "The context.createOscillator exists");
   var oscillatornode = context.createOscillator();
-  oscillatornode.type = "custom";
-  assert_not_equals(oscillatornode.type, "custom", "OscillatorNode.type attribute value");
+  assert_throws("InvalidStateError", function() {
+    oscillatornode.type = "custom";
+  });
 }, "Check if OscillatorNode.type attribute can't be set to 'custom' value");
 </script>
