@@ -46,13 +46,26 @@ public abstract class XWalkBaseNavigationActivity extends XWalkActivity {
     protected EditText views_num_text;
 
     //CheckBox for URL
-    protected CheckBox cb_yahoo;
-    protected CheckBox cb_sina;
-    protected CheckBox cb_qq;
-    protected CheckBox cb_sohu;
-    protected CheckBox cb_bing;
-    protected CheckBox cb_w3;
-    protected CheckBox cb_163;
+    protected CheckBox home_sina;
+    protected CheckBox news_sina;
+    protected CheckBox finance_sina;
+    protected CheckBox tech_sina;
+    protected CheckBox sports_sina;
+    protected CheckBox ent_sina;
+    protected CheckBox auto_sina;
+    protected CheckBox blog_sina;
+    protected CheckBox games_sina;
+    protected CheckBox video_sina;
+    protected CheckBox home_jd;
+    protected CheckBox fashion_jd;
+    protected CheckBox beautysale_jd;
+    protected CheckBox chaoshi_jd;
+    protected CheckBox sports_jd;
+    protected CheckBox hk_jd;
+    protected CheckBox red_jd;
+    protected CheckBox jr_jd;
+    protected CheckBox baby_jd;
+    protected CheckBox book_jd;   
     protected ImageButton mPrevButton;
     protected ImageButton mNextButton;
 
@@ -90,8 +103,46 @@ public abstract class XWalkBaseNavigationActivity extends XWalkActivity {
 
         views_num_text = (EditText) findViewById(R.id.views_num);
 
-        cb_qq = (CheckBox) findViewById(R.id.cb_qq);
-        checkBoxList.add(cb_qq);
+        home_sina = (CheckBox) findViewById(R.id.home_sina);
+        checkBoxList.add(home_sina);
+        news_sina = (CheckBox) findViewById(R.id.news_sina);
+        checkBoxList.add(news_sina);
+        finance_sina = (CheckBox) findViewById(R.id.finance_sina);
+        checkBoxList.add(finance_sina);
+        tech_sina = (CheckBox) findViewById(R.id.tech_sina);
+        checkBoxList.add(tech_sina);
+        sports_sina = (CheckBox) findViewById(R.id.sports_sina);
+        checkBoxList.add(sports_sina);
+        ent_sina = (CheckBox) findViewById(R.id.ent_sina);
+        checkBoxList.add(ent_sina);
+        auto_sina = (CheckBox) findViewById(R.id.auto_sina);
+        checkBoxList.add(auto_sina);
+        blog_sina = (CheckBox) findViewById(R.id.blog_sina);
+        checkBoxList.add(blog_sina);
+        games_sina = (CheckBox) findViewById(R.id.games_sina);
+        checkBoxList.add(games_sina);
+        video_sina = (CheckBox) findViewById(R.id.video_sina);
+        checkBoxList.add(video_sina);
+        home_jd = (CheckBox) findViewById(R.id.home_jd);
+        checkBoxList.add(home_jd);
+        fashion_jd = (CheckBox) findViewById(R.id.fashion_jd);
+        checkBoxList.add(fashion_jd);
+        beautysale_jd = (CheckBox) findViewById(R.id.beautysale_jd);
+        checkBoxList.add(beautysale_jd);
+        chaoshi_jd = (CheckBox) findViewById(R.id.chaoshi_jd);
+        checkBoxList.add(chaoshi_jd);
+        sports_jd = (CheckBox) findViewById(R.id.sports_jd);
+        checkBoxList.add(sports_jd);
+        hk_jd = (CheckBox) findViewById(R.id.hk_jd);
+        checkBoxList.add(hk_jd);
+        red_jd = (CheckBox) findViewById(R.id.red_jd);
+        checkBoxList.add(red_jd);
+        jr_jd = (CheckBox) findViewById(R.id.jr_jd);
+        checkBoxList.add(jr_jd);
+        baby_jd = (CheckBox) findViewById(R.id.baby_jd);
+        checkBoxList.add(baby_jd);
+        book_jd = (CheckBox) findViewById(R.id.book_jd);
+        checkBoxList.add(book_jd);         
 
         for(CheckBox checkBox : checkBoxList) {
             checkBox.setOnCheckedChangeListener(listener);

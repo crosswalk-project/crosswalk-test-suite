@@ -4,11 +4,14 @@
      Use of this source code is governed by a BSD-style license that can be
      found in the LICENSE file.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/view_navigation"
+ <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent" >
+    <LinearLayout
+        android:id="@+id/view_navigation"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical" >
     <TextView
         android:id="@+id/xwalk_des"  
         android:layout_width="match_parent"  
@@ -35,12 +38,10 @@
             android:layout_height="wrap_content"
             android:text="0"/>
     </LinearLayout>
-    <CheckBox 
-        android:id="@+id/cb_qq"
-        android:layout_width="match_parent" 
+    <include
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="http://www.qq.com"/>
+        layout="@layout/view_checkbox" />
     <TextView
         android:id="@+id/views_num_des"  
         android:layout_width="match_parent"  
@@ -60,7 +61,7 @@
             android:layout_height="match_parent"
             android:singleLine="true"
             android:lines="1"
-            android:text="1"/>
+            android:text="20"/>
         <Button android:id="@+id/run_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,7 +87,7 @@
     <FrameLayout
         android:id="@+id/view_root"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
-    </FrameLayout>
-</LinearLayout>
+        android:layout_height="wrap_content">
+    </FrameLayout> 
+    </LinearLayout>
+</ScrollView>
