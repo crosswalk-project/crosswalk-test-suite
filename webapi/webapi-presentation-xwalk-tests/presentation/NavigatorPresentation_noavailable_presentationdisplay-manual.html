@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,21 +24,35 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Liu.Xin <xinx.liu@intel.com>
-
 -->
 
-<html>
-  <body>
-    <video controls="controls"></video>
-    <script>
-      var v = document.querySelector('video');
-      window.addEventListener("message", function(event) {
-        v.src = event.data;
-        v.play();
-      }, false);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Throw NotFoundError exception</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#starting-a-presentation-session">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="precondition">
+  <p>Turn off 'Simulate Secondary Display' by 'Setting' app.</p>
+</div>
+<div id="log"></div>
+<script>
+  var presUrl = location.protocol + "//" + location.host
+              + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation.html";
+
+  async_test(function(t) {
+    navigator.presentation.startSession(presUrl).then(function(newSession) {
+      t.step(function() {
+        assert_unreached("unreached here");
+      });
+      t.done();
+    }, function(error) {
+      t.step(function() {
+        assert_equals(error.name, "NotFoundError");
+      });
+      t.done();
+    });
+  }, "No available presentation displays will throw a DOMException named 'NotFoundError'");
+</script>
+

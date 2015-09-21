@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,32 +24,27 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Liu.Xin <xinx.liu@intel.com>
-
 -->
 
-<html>
-<head>
-<style type="text/css">
-</style>
-<title></title>
+<meta charset="utf-8">
+<title>defaultsessionstart event</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#ondefaultsessionstart">
+<link href="http://example.com/presentation.html" rel="default-presentation">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="precondition">
+  <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
+  <p>Make sure connect to an available network.</p>
+</div>
+<div id="log"></div>
 <script>
-window.onload = function() {
-  window.onmessage = function(evt) {
-    var e = document.getElementById("message");
-    e.innerHTML = "Received message: " + evt.data;
-    evt.source.postMessage("I am from presentation window", "*");
-  };
-}
+  setup({ explicit_timeout: true })
+  
+  navigator.presentation.ondefaultsessionstart = t.step_func(function (evt) {
+    assert_true(evt.session instanceof PresentationSession);
+    t.done();
+  }, "Event defaultsessionstart is fired when the UA initiates a presentation on behalf of the page");
 </script>
 
-</head>
-<body bgcolor="green">
-  <h1> Presentation Window Showed on Wireless Display</h1>
-  <div>
-    <h2 id="message">Received message: N/A</h2>
-  </div>
-</body>
-</html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,46 +24,42 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Liu.Xin <xinx.liu@intel.com>
-
 -->
 
-<html>
-<head>
-<meta charset='utf-8'>
-<title>Presentation Test: Presentation lifecycle with simulate close</title>
+<meta charset="utf-8">
+<title>Availability basic attribute</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://webscreens.github.io/presentation-api/">
-<meta name="assert" content="Test checks that the presentation lifecycle, when simulate secondary display close.">
-<script src="support/support.js"></script>
-</head>
-<body>
-  <p class="precondition">
-    <strong>Turn off 'Simulate Secondary Display' by 'Setting' app.</strong>
-  </p>
-  <ol class="instructions">
-    <li>Click 'Request Show Presentation' button and then check if the 'Display Available' should be 'false'.</li>
-    <li>Press Home button on the device; Go to Settings, turn on 'Simulate Secondary Display'</li>
-    <li>Re-open the page and check if the 'Display Available' should be 'true'.</li>
-    <li>If the above steps are all true the test case pass, otherwise it fail</li>
-  </ol>
-  <div>
-    <h3 id="available">Display Availability: N/A</h3>
-  </div>
-  <div>
-    <h2 id="result">Result: N/A</h2>
-  </div>
-  <div>
-    <h3 id="message">Received message: N/A</h3>
-  </div>
-  <div >
-    <input class="button" type="button" value="Request Show Presentation" onclick="requestShow();"></input>
-  </div>
-  
-  <script>
-    window.onload = init;
-  </script>
-</body>
-</html>
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-availability">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="precondition">
+  <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
+</div>
+<div id="log"></div>
+<script>
+
+setup({ explicit_timeout: true })
+
+var presUrl = location.protocol + "//" + location.host
+            + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation.html";
+
+async_test(function(t) {
+  navigator.presentation.getAvailability(presUrl)
+  .then(function(availability) {
+    t.step(function() {
+      assert_true("value" in availability, "availability should implement value attribute");
+      assert_true("onchange" in availability, "availability should implement onchange event");
+    });
+    t.done();
+  }, function(error) {
+    t.step(function() {
+      assert_unreached(error.name);
+    });
+    t.done();
+  });
+
+});
+
+</script>
+

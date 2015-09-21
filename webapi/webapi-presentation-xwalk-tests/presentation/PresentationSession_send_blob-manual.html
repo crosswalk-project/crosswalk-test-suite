@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Send blob to the presentation display</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession">
+<link rel="help" href="http://www.w3.org/TR/presentation-api/#interface-navigatorpresentation">
+<meta name="assert" content="Test checks that when send message with type blob, then initialise
+                             event's data attribute to a new Blob object that represents presentation
+                             message data as its raw data.">
+<body>
+  <div id="precondition">
+    <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
+    <p>Make sure connect to an available network.</p>
+  </div>
+  <p>Test passes if the presentation displays a cat picture
+     after clicking the below button.
+  </p>
+  <input type="button" onclick="startNewSession()" value="Send">
+  <script>
+    var presUrl = location.protocol + "//" + location.host
+                + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation_blob.html";
+
+    function startNewSession() {
+      navigator.presentation.startSession(presUrl).then(function(newSession) {
+        session.binaryType = "blob";
+        var blob = imageRequest();
+        session.send(blob);
+      });
+    }
+
+    function imageRequest() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "http://test.csswg.org/source/support/cat.png", true);
+      xhr.responseType = "blob";
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == xhr.DONE) {
+          var blob = xhr.response;
+          return blob;
+        }
+      }
+      xhr.send();
+    }
+
+  </script>
+</body>
+

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,20 +24,28 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Liu.Xin <xinx.liu@intel.com>
-
 -->
 
-<html>
-  <body>
-    <div id="openerMessage"></div>
-    <script>
-      window.addEventListener("message", function(event) {
-        var msg = event.data;
-        document.getElementById('openerMessage').innerHTML= "<font color='green'>Receive message for its opener: " + msg + "</font>";
-      }, false);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<video controls="controls"></video>
+<script>
+  var video = document.querySelector("video");
+
+  navigator.presentation.getSession().then(function(session) {
+    session.onmessage = function(evt) {
+      video.src = evt.data;
+      video.play();
+    }
+  });
+
+  //Crosswalk implement handler
+  /*
+  window.addEventListener("messagetoremote", function(evt) {
+      video.src = evt.data;
+      video.play();
+  }, false);
+  */
+</script>
+

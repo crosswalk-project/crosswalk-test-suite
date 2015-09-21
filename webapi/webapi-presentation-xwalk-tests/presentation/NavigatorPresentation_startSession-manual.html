@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,35 +24,41 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Liu.Xin <xinx.liu@intel.com>
-
 -->
 
 <meta charset="utf-8">
-<title>Presentation test: attributes basic</title>
+<title>startSession</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://webscreens.github.io/presentation-api/">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<div id="precondition">
+  <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
+</div>
 <div id="log"></div>
 <script>
-  test(function() {
-    assert_true("presentation" in navigator, "navigator.presentation interface exists");
-    assert_true("requestShow" in navigator.presentation, "navigator.presentation.requestShow method exists");
-    assert_equals(typeof navigator.presentation.requestShow, "function", "navigator.presentation.requestShow type of");
-  }, "Test checks that navigator.presentation.requestShow method basic");
 
-  test(function() {
-    assert_true("presentation" in navigator, "navigator.presentation interface exists");
-    assert_true("displayAvailable" in navigator.presentation, "navigator.presentation.displayAvailable attribute exists");
-    assert_equals(typeof navigator.presentation.displayAvailable, "boolean", "navigator.presentation.displayAvailable type of");
-  }, "Test checks that navigator.presentation.displayAvailable attribute basic");
+setup({ explicit_timeout: true })
 
-  test(function() {
-    assert_true("presentation" in navigator, "navigator.presentation interface exists");
-    assert_true("ondisplayavailablechange" in navigator.presentation, "navigator.presentation.ondisplayavailablechange attribute exists");
-  }, "Test checks that navigator.presentation.ondisplayavailablechange attribute basic");
+var presUrl = location.protocol + "//" + location.host
+            + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation.html";
+
+async_test(function(t) {
+  navigator.presentation.startSession(presUrl)
+  .then(function(newSession) {
+    t.step(function() {
+      assert_true(newSession instanceof PresentationSession);
+    });
+    t.done();
+  }, function(error) {
+    t.step(function() {
+      assert_unreached(error.name);
+    });
+    t.done();
+  });
+
+}, "navigator.presentation.startSession should return PresentationSession Object")
+
 </script>
 

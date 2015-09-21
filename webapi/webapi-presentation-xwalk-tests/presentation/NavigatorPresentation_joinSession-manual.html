@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Join a presentation session</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation">
+<meta name="assert" content="Test checks that we can call joinSession method for known session
+                             in the set of presentation.">
+<body>
+  <div id="precondition">
+    <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
+  </div>
+  <ol class="instructions">
+    <li>
+      Click 'Start session' button and then check if the presentation display displays:
+      "Recieved message from controller: hello from startSession".
+    </li>
+    <li>
+      Click 'Close session' button and then check if the presentation display mirror screen.
+    </li>
+    <li>
+      Click 'Join session' button and then check if the presentation display displays:
+      "Recieved message from controller: hello from joinSession".
+    </li>
+  </ol>
+  <input type="button" value="Start session" onclick="startNewSession()"></input>
+  <input type="button" value="Close session" onclick="endSession()"></input>
+  <input type="button" value="Join session" onclick="joinSession()"></input>
+  <div id="log"></div>
+  <script>
+    var presId = null;
+    var presUrl = location.protocol + "//" + location.host
+                + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation.html";
+    var session = null;
+    var log = document.getElementById("log");
+
+    function startNewSession() {
+      navigator.presentation.startSession(presUrl)
+        .then(function(newSession) {
+          setSession(newSession, "hello from startSession");
+        })
+        .catch(endSession);
+    }
+
+    function joinSession() {
+      navigator.presentation.joinSession(presUrl, presId)
+        .then(function(newSession) {
+          setSession(newSession, "hello from joinSession");
+        })
+        .catch(endSession);
+    }
+
+    function setSession(theSession, data) {
+      this.session = theSession;
+      presId = this.session.id;
+      session.onstatechange = function() {
+        if(session.state =="disconnected") {
+          log.innerHTML = "<font color='red'>session is disconnected.</font>";
+        }
+      }
+
+      this.session.send(data);
+    }
+
+    function endSession() {
+      if(this.session) {
+        this.session.close();
+      }
+    }
+
+  </script>
+</body>
+

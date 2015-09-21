@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,29 +24,36 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Liu.Xin <xinx.liu@intel.com>
-
 -->
 
-<html>
-<head>
-<meta charset='utf-8'>
-<title>Presentation Test: displayAvailable - true</title>
+<meta charset="utf-8">
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://webscreens.github.io/presentation-api/">
-<meta name="assert" content="Test checks that the attribute displayAvailable of presentation value can be true.">
-<script src="support/support.js"></script>
-</head>
-<body>
-  <p>Test passes if the value of 'Display Availability' should be 'true'.</p>
-  <div>
-    <h3 id="available">Display Availability: N/A</h3>
-  </div>
-  
-  <script>
-    window.onload = init;
-  </script>
-</body>
-</html>
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<div id="msg"></div>
+<script>
+
+  var msg = document.getElementById("msg");
+
+  navigator.presentation.getSession().then(function(session) {
+    session.onstatechange = function() {
+    }
+    
+    session.onmessage = function(evt) {
+      msg.innerHTML = "<font color='green'>Recieved message from controller: "
+                    + evt.data
+                    + "</font>";
+    }
+  });
+
+  //Crosswalk implement handler
+  /*
+  window.addEventListener("messagetoremote", function(evt) {
+    msg.innerHTML = "coming";
+    msg.innerHTML = "<font color='green'>Recieved message from controller:"
+                  + evt.data
+                  + "</font>";
+  }, false);
+  */
+
+</script>
+
