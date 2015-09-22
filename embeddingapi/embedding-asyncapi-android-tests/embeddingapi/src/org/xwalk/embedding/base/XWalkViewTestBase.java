@@ -915,6 +915,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 	    });
 	}    
 	
+	protected String getUserAgent() throws Exception {
+	    return runTestOnUiThreadAndGetResult(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return mXWalkView.getUserAgentString();
+            }
+        });
+    }	    
+	
     protected void setCookie(final String name, final String value) throws Exception {
         String jsCommand = "javascript:void((function(){" +
                 "var expirationDate = new Date();" +
