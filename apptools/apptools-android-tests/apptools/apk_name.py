@@ -45,6 +45,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             data = json.load(json_file)
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         appVersion = comm.build(self, buildcmd)
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.1")
         self.assertEquals(data['xwalk_app_version'].strip(os.linesep), appVersion)
@@ -61,6 +62,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         appVersion = comm.build(self, buildcmd)
+        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(appVersion, "0.0.1")
 

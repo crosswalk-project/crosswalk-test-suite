@@ -3,7 +3,7 @@
 <test_definition>
   <suite category="Apptools Sample Apps" name="apptools-sampleapp-tests">
     <set name="SampleApp_manual" type="script">
-      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_Arm" priority="P1" purpose="Validate if sample app spacedodge can be built on android device which is 'arm' architecture" status="approved" type="compliance" platform="android">
+      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_Build" priority="P1" purpose="Validate if sample app spacedodge can be built on android device which is 'arm/x86' architecture" status="approved" type="compliance" platform="android">
         <description>
           <pre_condition>
             1. Please refer to README file.
@@ -37,74 +37,9 @@
               <step_desc>
                 Shared Mode:
                   Install shared mode spacedodge app on your android device which is "arm" architecture
-                Embedded Mode:
-                  Install arm spacedodge app on your android device which is "arm" architecture
-              </step_desc>
-              <expected>Install the spacedodge app successfully</expected>
-            </step>
-            <step order="3">
-              <step_desc>Check icon of spacedodge app in your android device</step_desc>
-              <expected>Find the spacedodge app successfully</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch spacedodge app in your android device</step_desc>
-              <expected>Launch the spacedodge app successfully</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of spacedodge app</step_desc>
-              <expected>You can see spacedodge UI on the device</expected>
-            </step>
-            <step order="6">
-              <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Unistall the spacedodge app successfully</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install and launch the spacedodge app again. Close spacedodge app via clicking the home button, and kill spacedodge app from Task Manager</step_desc>
-              <expected>Stop the spacedodge app successfully</expected>
-            </step>
-            <step order="8">
-              <step_desc>Long press the icon of spacedodge app to uninstall it</step_desc>
-              <expected>Unistall the spacedodge app successfully</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-android/Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_Arm.html </test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_X86" priority="P1" purpose="Validate if sample app spacedodge can be built on android device which is 'x86' architecture" status="approved" type="compliance" platform="android">
-        <description>
-          <pre_condition>
-            1. Please refer to README file.
-          </pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If com.example.spacedodge exists in apptools-sampleapp-tests/tools/ directory, remove it
-                Then run below commands under apptools-sampleapp-tests/tools/ directory: 
-                On Android:
-                  Shared Mode:
-                    $ crosswalk-app create com.example.spacedodge --android-shared
-                  Embedded Mode:
-                    $ crosswalk-app create com.example.spacedodge
-                  $ cd com.example.spacedodge
-                  $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
-                  $ mv crosswalk-samples/space-dodge-game/base/* app/
-                  $ crosswalk-app build
-                On Windows:
-                  Shared Mode:
-                    $ node %crosswalk-app% create com.example.spacedodge --android-shared
-                  Embedded Mode:
-                    $ node %crosswalk-app% create com.example.spacedodge
-                  $ cd com.example.spacedodge
-                  $ git clone https://github.com/crosswalk-project/crosswalk-samples.git
-                  $ xcopy /s /e /i /y crosswalk-samples\space-dodge-game\base\* app\
-                  $ node %crosswalk-app% build
-              </step_desc>
-              <expected>Success to create/build com.example.spacedodge</expected>
-            </step>
-            <step order="2">
-              <step_desc>
-                Shared Mode:
                   Install shared mode spacedodge app on your android device which is "x86" architecture
                 Embedded Mode:
+                  Install arm spacedodge app on your android device which is "arm" architecture
                   Install x86 spacedodge app on your android device which is "x86" architecture
               </step_desc>
               <expected>Install the spacedodge app successfully</expected>
@@ -134,7 +69,7 @@
               <expected>Unistall the spacedodge app successfully</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-android/Crosswalk_Apptools_SampleApp_Spacedodgegame_Build_X86.html </test_script_entry>
+          <test_script_entry>/opt/apptools-sampleapp-tests/sampleapp-android/Crosswalk_Apptools_SampleApp_Spacedodgegame_Build.html </test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk App Tools/Spacedodgegame" execution_type="manual" id="Crosswalk_Apptools_SampleApp_Spacedodgegame_AppFunction_Android" priority="P1" purpose="Validate if sample app spacedodge function could work well on android device" status="approved" type="compliance" platform="android">

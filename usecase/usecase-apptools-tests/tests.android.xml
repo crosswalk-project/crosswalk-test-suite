@@ -3,7 +3,7 @@
 <test_definition>
   <suite name="Usecase AppTools">
     <set name="Build Project" background="brand-primary" icon="glyphicon-asterisk" type="script">
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_x86" purpose="AppTools_x86 Test" type="compliance">
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppToolsOptions" purpose="AppToolsOptions Test" type="compliance">
         <description>
           <pre_condition>Please refer to README file.</pre_condition>
           <steps>
@@ -18,14 +18,24 @@
                   $ cd org.test.foo
                   $ crosswalk-app build
                 On Windows:
-                  $ node %crosswalk-app% create org.test.foo
+                  Shared Mode:
+                    $ node %crosswalk-app% create org.test.foo --android-shared
+                  Embedded Mode:
+                    $ node %crosswalk-app% create org.test.foo
                   $ cd org.test.foo
                   $ node %crosswalk-app% build
               </step_desc>
               <expected>Success to create/build org.test.foo</expected>
             </step>
             <step order="2">
-              <step_desc>Install foo app on your android device which is "x86" architecture</step_desc>
+              <step_desc>
+                Shared Mode:
+                  Install shared mode foo app on your android device which is "arm" architecture
+                  Install shared mode foo app on your android device which is "x86" architecture
+                Embedded Mode:
+                  Install arm foo app on your android device which is "arm" architecture
+                  Install x86 foo app on your android device which is "x86" architecture
+              </step_desc>
               <expected>Success to install foo app</expected>
             </step>
             <step order="3">
@@ -53,63 +63,10 @@
               <expected>Success to uninstall foo app</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_x86/index.html</test_script_entry>
+          <test_script_entry>/opt/usecase-apptools-tests/samples/AppToolsOptions/index.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_arm" purpose="AppTools_arm Test" type="compliance">
-        <description>
-          <pre_condition>Please refer to README file.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
-                Then run below commands under usecase-apptools-tests/tools/ directory: 
-                On Android:
-                  Shared Mode:
-                    $ crosswalk-app create org.test.foo --android-shared
-                  Embedded Mode:
-                    $ crosswalk-app create org.test.foo
-                  $ cd org.test.foo
-                  $ crosswalk-app build
-                On Windows:
-                  $ node %crosswalk-app% create org.test.foo
-                  $ cd org.test.foo
-                  $ node %crosswalk-app% build
-              </step_desc>
-              <expected>Success to create/build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>Install foo app on your android device which is "arm" architecture</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Check icon of foo app in your android device</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app in your android device</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
-            </step>
-            <step order="6">
-              <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="8">
-              <step_desc>Long press the icon of foo app to uninstall it</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_arm/index.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_install_crosswalk_app_x86" purpose="AppTools_install_crosswalk_app_x86 Test" type="compliance">
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_install_crosswalk_app" purpose="AppTools_install_crosswalk_app Test" type="compliance">
         <description>
           <pre_condition>On Android:
               Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'.
@@ -134,7 +91,14 @@
               <expected>Success to create/build org.test.foo</expected>
             </step>
             <step order="2">
-              <step_desc>Install foo app on your android device which is "x86" architecture</step_desc>
+              <step_desc>
+                Shared Mode:
+                  Install shared mode foo app on your android device which is "arm" architecture
+                  Install shared mode foo app on your android device which is "x86" architecture
+                Embedded Mode:
+                  Install arm foo app on your android device which is "arm" architecture
+                  Install x86 foo app on your android device which is "x86" architecture
+              </step_desc>
               <expected>Success to install foo app</expected>
             </step>
             <step order="3">
@@ -171,72 +135,7 @@
               <expected>Success to uninstall crosswalk-app and set the env</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_install_crosswalk_app_x86/index.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_install_crosswalk_app_arm" purpose="AppTools_install_crosswalk_app_arm Test" type="compliance">
-        <description>
-          <pre_condition>On Android:
-              Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'.
-              Install crosswalk-app by run command:
-              $ sudo npm install -g crosswalk-app-tools
-            On Windows:
-              Remove crosswalk-app environment.
-              Install crosswalk-app by run command:
-              $ npm install -g crosswalk-app-tools
-          </pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
-                Then run below commands under usecase-apptools-tests/tools/crosswalk-app-tools/ directory:
-                Shared Mode:
-                  $ crosswalk-app create org.test.foo --android-shared
-                Embedded Mode:
-                  $ crosswalk-app create org.test.foo
-                $ cd org.test.foo
-                $ crosswalk-app build
-              </step_desc>
-              <expected>Success to create/build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>Install foo app on your android device which is "arm" architecture</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Check icon of foo app in your android device</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app in your android device</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
-            </step>
-            <step order="6">
-              <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="8">
-              <step_desc>Long press the icon of foo app to uninstall it</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="9">
-              <step_desc>On Android:
-                  Uninstall crosswalk-app by run command: $ sudo npm uninstall -g crosswalk-app-tools
-                  Set environment PATH or invoke with "crosswalk-app-tools/src/crosswalk-app" directory
-                On Windows:
-                  Uninstall crosswalk-app by run command: $ npm uninstall -g crosswalk-app-tools
-                  Create 'crosswalk-app' env, invoke with 'crosswalk-app-tools/src/crosswalk-app' directory</step_desc>
-              <expected>Success to uninstall crosswalk-app and set the env</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_install_crosswalk_app_arm/index.html</test_script_entry>
+          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_install_crosswalk_app/index.html</test_script_entry>
         </description>
       </testcase>
     </set>

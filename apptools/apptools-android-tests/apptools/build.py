@@ -109,7 +109,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 1)
+        self.assertNotEquals(buildstatus, 0)
 
 if __name__ == '__main__':
     unittest.main()
