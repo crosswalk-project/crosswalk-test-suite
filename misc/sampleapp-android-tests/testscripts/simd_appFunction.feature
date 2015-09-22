@@ -8,9 +8,8 @@ Feature: simd
    Then I should see "Turn On SIMD"
    Then I should see "SIMD:Off WW:1"
    And I should see "FPS: 0.0"
-   
    And I press "Start"
-   And I wait 5 seconds
+   And I wait 10 seconds
    Then I check "fps" is 1.5 times after click "simd" for 10 seconds
    And I press "Stop"
 
