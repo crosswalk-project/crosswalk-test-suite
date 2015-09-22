@@ -247,13 +247,13 @@ This usecase covers following interface and methods:
 
 
 
-### 23. The [XWalkViewWithDownloadListenerAsync](XWalkViewWithDownloadListenerActivityAsync.java) sample check whether xwalkview can setDownloadListener & override onDownloadStart, include:
+### 23. The [XWalkViewWithDownloadListenerAsync](XWalkViewWithDownloadListenerActivityAsync.java) sample check whether xwalkview can setUserAgentString & getUserAgentString & setDownloadListener & override onDownloadStart, include:
 
-* XWalkView can setDownloadListener & override onDownloadStart
+* XWalkView can setUserAgentString & getUserAgentString & setDownloadListener & override onDownloadStart
 
 This usecase covers following interface and methods:
 
-* XWalkView interface: load, setDownloadListener, onDownloadStart methods
+* XWalkView interface: load, setUserAgentString, getUserAgentString, setDownloadListener, onDownloadStart methods
 
 
 

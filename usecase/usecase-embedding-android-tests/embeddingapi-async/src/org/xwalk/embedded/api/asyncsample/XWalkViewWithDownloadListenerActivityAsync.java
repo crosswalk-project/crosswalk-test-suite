@@ -46,11 +46,12 @@ public class XWalkViewWithDownloadListenerActivityAsync extends Activity impleme
         setContentView(R.layout.version_layout);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-        .append("Verifies XWalkView can set DownloadListener & override onDownloadStart.\n\n")
+        .append("Verifies XWalkView can set & get UserAgentString, meaningwhile set DownloadListener & override onDownloadStart.\n\n")
         .append("Test  Step:\n\n")
-        .append("1. Click baidu website bottom ShouJiBaidu link or any other download link.\n\n") 
+        .append("1. Load the Baidu page and show the set UserAgentString.\n\n") 
+        .append("2. Click baidu website bottom ShouJiBaidu link or any other download link.\n\n") 
         .append("Expected Result:\n\n")
-        .append("Test passes if download link info shows.");        
+        .append("Test passes if UserAgentString & download link info shows.");        
         new  AlertDialog.Builder(this)
         .setTitle("Info" )
         .setMessage(mess.toString())
@@ -60,6 +61,7 @@ public class XWalkViewWithDownloadListenerActivityAsync extends Activity impleme
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         downloadText = (TextView) findViewById(R.id.text1);
         mXWalkView.setUserAgentString("Chrome/44.0.2403.81 Crosswalk/15.44.376.0 Mobile Safari/537.36");
+        downloadText.setText("getUserAgentString: " + mXWalkView.getUserAgentString() + "\n");
         mXWalkView.setDownloadListener(new XWalkDownloadListener(getApplicationContext()) {
 			
 			@Override
@@ -67,7 +69,8 @@ public class XWalkViewWithDownloadListenerActivityAsync extends Activity impleme
 			                String contentDisposition, String mimetype, long contentLength) {
 				// TODO Auto-generated method stub
 				// You can realize your down here.
-				downloadText.setText("url: " + url + "\n" + 
+				downloadText.setText(downloadText.getText() + 
+				                    "url: " + url + "\n" + 
 				                    "userAgent: " + userAgent + "\n" + 
 				                    "contentDisposition: " + contentDisposition + "\n" + 
 				                    "mimeType: " + mimetype + "\n" + 
