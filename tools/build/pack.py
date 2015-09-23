@@ -923,13 +923,32 @@ def packEmbeddingAPI_ant(
         os.chdir(orig_dir)
         return False
 
-    os.chdir(app_src)
-    if not doCMD("ant debug"):
-        os.chdir(orig_dir)
-        return False
+    release_mode_tmp = "release"
+    if BUILD_PARAMETERS.bnotdebug:
+        LOG.info("Package release mode pkg start ...")
+        ant_cmd = ["ant", "release", '-f', os.path.join(app_src, 'build.xml')]
+        key_store = os.path.join(BUILD_PARAMETERS.pkgpacktools, 'crosswalk', 'xwalk-debug.keystore')
+        if not os.path.exists(key_store):
+            LOG.error("Need to copy xwalk-debug.keystore file from Crosswalk-<version> to crosswalk-test-suite/tools/crosswalk")
+            return False
+        ant_cmd.extend(['-Dkey.store=%s' % os.path.abspath(key_store)])
+        ant_cmd.extend(['-Dkey.alias=xwalkdebugkey'])
+        ant_cmd.extend(['-Dkey.store.password=xwalkdebug'])
+        ant_cmd.extend(['-Dkey.alias.password=xwalkdebug'])
+        ant_result = subprocess.call(ant_cmd)
+        if ant_result != 0:
+            os.chdir(orig_dir)
+            return False
+    else:
+        LOG.info("Package debug mode pkg start ...")
+        os.chdir(app_src)
+        if not doCMD("ant debug"):
+           os.chdir(orig_dir)
+           return False
+        release_mode_tmp = "debug"
 
     if not doCopy(
-            os.path.join(app_src, "bin", "%s-debug.apk" % app_name),
+            os.path.join(app_src, "bin", "%s-%s.apk" % (app_name, release_mode_tmp)),
             os.path.join(app_dest, "%s.apk" % app_name)):
         os.chdir(orig_dir)
         return False
@@ -1438,6 +1457,11 @@ def main():
             "--pack-type",
             dest="packtype",
             help="specify the pack type, e.g. gradle, maven")
+        opts_parser.add_option(
+            "--notdebug",
+            dest="bnotdebug",
+            action="store_true",
+            help="specify the packed pkg is not debug mode")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
