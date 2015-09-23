@@ -6,10 +6,9 @@ import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 
 import android.app.AlertDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 
-public class XWalkViewWithTransparentAsync extends Activity implements XWalkInitializer.XWalkInitListener {
+public class XWalkViewWithSetZOrderOnTopAsync extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
     private XWalkInitializer mXWalkInitializer;
 
@@ -17,7 +16,6 @@ public class XWalkViewWithTransparentAsync extends Activity implements XWalkInit
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
         mXWalkInitializer = new XWalkInitializer(this, this);
         mXWalkInitializer.initAsync();
     }
@@ -40,20 +38,20 @@ public class XWalkViewWithTransparentAsync extends Activity implements XWalkInit
     @Override
     public final void onXWalkInitCompleted() {
         
-        setContentView(R.layout.xwview_layout);
+        setContentView(R.layout.xwview_transparent_layout);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-        .append("Check XWalkView's transparent feature.\n\n")
+        .append("Check XWalkView's transparent feature whether display the view under the webview.\n\n")
         .append("Expected Result:\n\n")
-        .append("Test passes if you can see transparent webpage BAIDU");
+        .append("Test passes if you can see button view & blue imageview");
         new  AlertDialog.Builder(this)
         .setTitle("Info" )
         .setMessage(mess.toString())
         .setPositiveButton("confirm" ,  null )
         .show();
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
-        
-        mXWalkView.setBackgroundColor(Color.TRANSPARENT);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_transparent);
+        mXWalkView.setZOrderOnTop(true);
+        mXWalkView.setBackgroundColor(0);
         mXWalkView.load("http://www.baidu.com/", null);
     }
 

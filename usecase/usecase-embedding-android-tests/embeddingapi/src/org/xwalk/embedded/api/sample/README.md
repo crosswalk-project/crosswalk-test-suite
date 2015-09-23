@@ -183,7 +183,7 @@ This usecase covers following interface and methods:
 
 
 
-### 17. The [XWalkViewWithTransparent](XWalkViewWithTransparent.java) sample check XWalkView's transparent feature whether display the view under the webview, include:
+### 17. The [XWalkViewWithSetZOrderOnTop](XWalkViewWithSetZOrderOnTop.java) sample check XWalkView's transparent feature whether display the view under the webview, include:
 
 * XWalkView's transparent can display the view under the webview
 
@@ -544,4 +544,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: XWalkResourceClient.onReceivedSslError methods
 
+
+
+### 54. The [XWalkViewWithTransparent](XWalkViewWithTransparent.java) sample check XWalkView's transparent feature, include:
+
+* XWalkView's transparent can display
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: setBackgroundColor methods
 
