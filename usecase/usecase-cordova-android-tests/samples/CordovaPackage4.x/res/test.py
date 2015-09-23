@@ -2,17 +2,13 @@ import os
 import commands
 import sys
 import json
+sys.path.append(os.getcwd())
+sys.path.append(os.path.realpath('..'))
+import comm
 from optparse import OptionParser
 PKG_MODES = ["shared", "embedded"]
-global CROSSWALK_VERSION
-global CROSSWALK_BRANCH
-with open("../../tools/VERSION", "rt") as pkg_version_file:
-    pkg_version_raw = pkg_version_file.read()
-    pkg_version_file.close()
-    pkg_version_json = json.loads(pkg_version_raw)
-    CROSSWALK_VERSION = pkg_version_json["main-version"]
-    CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
+comm.setUp()
 try:
     usage = "Usage: ./test.py -m shared"
     opts_parser = OptionParser(usage=usage)
@@ -33,77 +29,40 @@ elif BUILD_PARAMETERS.pkgmode and not BUILD_PARAMETERS.pkgmode in PKG_MODES:
     print "Wrong pkg-mode, only support: %s, exit ..." % PKG_MODES
     sys.exit(1)
 
-version_parts = CROSSWALK_VERSION.split('.')
-if len(version_parts) < 4:
-    print "The crosswalk version is not configured exactly!"
-    sys.exit(1)
-versionType = version_parts[3]
-if versionType == '0':
-    username = commands.getoutput("echo $USER")
-    if BUILD_PARAMETERS.pkgmode == "shared":
-        repository_aar_path = "/home/%s/.m2/repository/org/xwalk/xwalk_shared_library/%s/" \
-            "xwalk_shared_library-%s.aar" % \
-            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
-        repository_pom_path = "/home/%s/.m2/repository/org/xwalk/xwalk_shared_library/%s/" \
-            "xwalk_shared_library-%s.pom" % \
-            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
-    else:
-        repository_aar_path = "/home/%s/.m2/repository/org/xwalk/xwalk_core_library/%s/" \
-            "xwalk_core_library-%s.aar" % \
-            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
-        repository_pom_path = "/home/%s/.m2/repository/org/xwalk/xwalk_core_library/%s/" \
-            "xwalk_core_library-%s.pom" % \
-            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
+comm.installCrosswalk(BUILD_PARAMETERS.pkgmode)
+app_name = "CordovaPackage"
+pkg_name = "com.example.cordovaPackage2"
 
-    if not os.path.exists(repository_aar_path) or not os.path.exists(repository_pom_path):
-        if BUILD_PARAMETERS.pkgmode == "shared":
-            wget_cmd = "wget https://download.01.org/crosswalk/releases/crosswalk/" \
-                "android/canary/%s/crosswalk-shared-%s.aar" % \
-                (CROSSWALK_VERSION, CROSSWALK_VERSION)
-            install_cmd = "mvn install:install-file -DgroupId=org.xwalk " \
-                "-DartifactId=xwalk_shared_library -Dversion=%s -Dpackaging=aar " \
-                "-Dfile=crosswalk-shared-%s.aar -DgeneratePom=true" % \
-                (CROSSWALK_VERSION, CROSSWALK_VERSION)
-        else:
-            wget_cmd = "wget https://download.01.org/crosswalk/releases/crosswalk/" \
-                "android/canary/%s/crosswalk-%s.aar" % \
-                (CROSSWALK_VERSION, CROSSWALK_VERSION)
-            install_cmd = "mvn install:install-file -DgroupId=org.xwalk " \
-                "-DartifactId=xwalk_core_library -Dversion=%s -Dpackaging=aar " \
-                "-Dfile=crosswalk-%s.aar -DgeneratePom=true" % \
-                (CROSSWALK_VERSION, CROSSWALK_VERSION)
-        os.system(wget_cmd)
-        os.system(install_cmd)
-
-if os.path.exists("cordova-android"):
-    os.system("rm -rf cordova-android")
+current_path_tmp = os.getcwd()
+cordova_android_path = os.path.join(current_path_tmp, "cordova-android")
+if os.path.exists(cordova_android_path):
+    comm.doRemove([cordova_android_path])
 os.system("git clone https://github.com/apache/cordova-android.git")
-if os.path.exists("cordovaPackage"):
-    os.system("rm -rf cordovaPackage")
-os.system("cordova-android/bin/create cordovaPackage com.example.cordovaPackage2 CordovaPackage")
-os.chdir("./cordovaPackage")
+
+project_path = os.path.join(current_path_tmp, app_name)
+if os.path.exists(project_path):
+    comm.doRemove([project_path])
+
+os.system("cordova-android/bin/create %s %s %s" % (app_name, pkg_name, app_name))
+os.chdir(project_path)
 os.system("plugman install --platform android --plugin ../../../tools/cordova-plugin-crosswalk-webview/ --project .")
 
-if CROSSWALK_BRANCH == "beta":
-    if BUILD_PARAMETERS.pkgmode == "shared":
-        os.system('sed -i "s/<preference default=\\".*\\" name=\\"XWALK_VERSION\\"/<preference default=\\"org.xwalk:xwalk_shared_library_beta:%s\\" name=\\"XWALK_VERSION\\"/g" res/xml/config.xml' % CROSSWALK_VERSION)
-    else:
-        os.system('sed -i "s/<preference default=\\".*\\" name=\\"XWALK_VERSION\\"/<preference default=\\"org.xwalk:xwalk_core_library_beta:%s\\" name=\\"XWALK_VERSION\\"/g" res/xml/config.xml' % CROSSWALK_VERSION)
-else:
-    os.system('sed -i "s/<preference default=\\".*\\" name=\\"XWALK_VERSION\\"/<preference default=\\"%s\\" name=\\"XWALK_VERSION\\"/g" res/xml/config.xml' % CROSSWALK_VERSION)
+pkg_mode_tmp = "shared"
+if BUILD_PARAMETERS.pkgmode == "embedded":
+    pkg_mode_tmp = "core"
+
+xwalk_version = "%s" % comm.CROSSWALK_VERSION
+if comm.CROSSWALK_BRANCH == "beta":
+    xwalk_version = "org.xwalk:xwalk_%s_library_beta:%s" % (pkg_mode_tmp, comm.CROSSWALK_VERSION)
+
+os.system('sed -i "s/<preference default=\\".*\\" name=\\"xwalkVersion\\"/<preference default=\\"%s\\" name=\\"xwalkVersion\\"/g" res/xml/config.xml' % xwalk_version)
 
 if BUILD_PARAMETERS.pkgmode == "shared":
-    os.system('sed -i "s/<preference default=\\"embedded\\" name=\\"XWALK_MODE\\"/<preference default=\\"shared\\" name=\\"XWALK_MODE\\"/g" res/xml/config.xml')
+    os.system('sed -i "s/<preference default=\\"embedded\\" name=\\"xwalkMode\\"/<preference default=\\"shared\\" name=\\"xwalkMode\\"/g" res/xml/config.xml')
  
 os.system("./cordova/build")
 os.system("./cordova/run")
-lsstatus = commands.getstatusoutput("ls ./build/outputs/apk/*.apk")
-if lsstatus[0] == 0:
-    print "Build Package Successfully"
-else:
-    print "Build Package Error"
-pmstatus = commands.getstatusoutput("adb shell pm list packages |grep com.example.cordovaPackage2")
-if pmstatus[0] == 0:
-    print "Package Name Consistent"
-else:
-    print "Package Name Inconsistent"
+
+comm.checkApkExist("./build/outputs/apk/*.apk")
+comm.checkApkRun(pkg_name)
+

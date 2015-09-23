@@ -625,9 +625,9 @@ def packCordova_cli(
                 os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
                 plugin_tool):
             return False
-    thirdparty_plugins = os.path.join(BUILD_ROOT, "thirdparty_plugins")
-    if os.path.exists(thirdparty_plugins):
-        if not doCopy(thirdparty_plugins, plugin_tool):
+    extra_plugins = os.path.join(BUILD_ROOT, "extra_plugins")
+    if os.path.exists(extra_plugins):
+        if not doCopy(extra_plugins, plugin_tool):
             return False
 
     orig_dir = os.getcwd()
@@ -664,27 +664,27 @@ def packCordova_cli(
         os.chdir(orig_dir)
         return False
 
-    version_cmd = ""
-    if CROSSWALK_BRANCH == "beta":
-        if BUILD_PARAMETERS.pkgmode == "shared":
-            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_shared_library_beta:%s\"" % CROSSWALK_VERSION
-        else:
-            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
-    else:
-        version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
+    pkg_mode_tmp = "shared"
+    if BUILD_PARAMETERS.pkgmode == "embedded":
+        pkg_mode_tmp = "core"
 
+    xwalk_version = "%s" % CROSSWALK_VERSION
+    if CROSSWALK_BRANCH == "beta":
+        xwalk_version = "org.xwalk:xwalk_%s_library_beta:%s" % (pkg_mode_tmp, CROSSWALK_VERSION)
+
+    webview_plugin_name = "cordova-plugin-crosswalk-webview"
+    install_variable_cmd = ""
     plugin_dirs = os.listdir(plugin_tool)
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
-        if i_dir == "cordova-plugin-crosswalk-webview":
-            plugin_crosswalk_source = i_plugin_dir
+        plugin_crosswalk_source = i_plugin_dir
+        if i_dir == webview_plugin_name:
             if BUILD_PARAMETERS.packtype == "npm":
-                plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
+                plugin_crosswalk_source = webview_plugin_name
+            install_variable_cmd = "--variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"%s\"" \
+                    % (BUILD_PARAMETERS.pkgmode, xwalk_version)
 
-            plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
-                    % (plugin_crosswalk_source, version_cmd, BUILD_PARAMETERS.pkgmode)
-        else:
-            plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
+        plugin_install_cmd = "cordova plugin add %s %s" % (plugin_crosswalk_source, install_variable_cmd)
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
             os.chdir(orig_dir)
             return False
@@ -751,9 +751,9 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
                 os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
                 plugin_tool):
             return False
-    thirdparty_plugins = os.path.join(BUILD_ROOT, "thirdparty_plugins")
-    if os.path.exists(thirdparty_plugins):
-        if not doCopy(thirdparty_plugins, plugin_tool):
+    extra_plugins = os.path.join(BUILD_ROOT, "extra_plugins")
+    if os.path.exists(extra_plugins):
+        if not doCopy(extra_plugins, plugin_tool):
             return False
 
     orig_dir = os.getcwd()
