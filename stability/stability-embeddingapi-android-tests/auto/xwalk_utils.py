@@ -32,25 +32,29 @@
 
 import commands
 import time
+import os
 
 
 def checkStorageFlag(device, timeout):
-    storagefile = '/storage/sdcard1/onPageLoadStoppedFlag'
+    storagefile = '/mnt/sdcard/onPageLoadStoppedFlag'
     not_exist_flag = 'No such file or directory'
     exist_flag = ''
     pre_time = time.time()
     while True:
         existstatus = commands.getstatusoutput(
             'adb -s ' +
-            device + 
+            device +
             ' shell cat ' + storagefile)
         elapsed_time = time.time() - pre_time
         if existstatus[0] == 0:
             if exist_flag == existstatus[1]:
+                rmstoragefile = 'adb -s ' + device + \
+                                ' shell rm ' + storagefile
+                os.system(rmstoragefile)
                 break
             elif elapsed_time >= timeout:
                 print 'Timeout to exec CMD!'
-                return False                
+                return False
             elif not_exist_flag in existstatus[1]:
                 pass
             else:

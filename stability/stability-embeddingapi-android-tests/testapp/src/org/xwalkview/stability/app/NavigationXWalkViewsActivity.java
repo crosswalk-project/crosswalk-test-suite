@@ -6,10 +6,10 @@ package org.xwalkview.stability.app;
 
 
 import org.xwalk.core.XWalkNavigationHistory;
-import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 import org.xwalkview.stability.base.XWalkBaseNavigationActivity;
+import org.xwalkview.stability.base.XWalkBaseUtil;
 
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -17,41 +17,31 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 
+
 public class NavigationXWalkViewsActivity extends XWalkBaseNavigationActivity {
     private XWalkView mXWalkView;
 
     @Override
     protected void onXWalkReady() {
+        XWalkBaseUtil.createStorageFile(false);
         textDes.setText("This sample demonstrates long time navigation with different web pages in XWalkView.");
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, false);
+
+        mXWalkView = new XWalkView(NavigationXWalkViewsActivity.this, NavigationXWalkViewsActivity.this);
+        mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));  
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(view_root.getWidth(), 1000);
+        params.gravity = Gravity.CENTER;
+        mXWalkView.setLayoutParams(params);        
+        view_root.addView(mXWalkView);
+        
+        if(!TextUtils.isEmpty(views_num_text.getText())){
+            view_num = Integer.valueOf(views_num_text.getText().toString());
+        }
+        
         mAddViewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int add_num = 0;
-                int max_num = view_num;
-                if(!TextUtils.isEmpty(views_num_text.getText())){
-                    add_num = Integer.valueOf(views_num_text.getText().toString());
-                    max_num = max_num + add_num;
-                    int len = checkBoxList.size();
-                    for(int i = view_num; i < max_num; i++) {
-                        if (url_index >= len) {
-                            url_index = 0;
-                        }
-                        mXWalkView = new XWalkView(NavigationXWalkViewsActivity.this, NavigationXWalkViewsActivity.this);
-                        mXWalkView.setId(i);
-                        mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
-                        mXWalkView.load(checkBoxList.get(url_index).getText().toString(), null);
-                        url_index++;
-                        mAddViewsButton.setClickable(false);
-                        
-                        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(view_root.getWidth() - i * 10, view_root.getHeight() - i * 10);
-                        params.gravity = Gravity.CENTER;
-                        mXWalkView.setLayoutParams(params);
-                        view_root.addView(mXWalkView);
-
-                    }
-                    view_num = view_num + add_num;
-                }
+                mXWalkView.load(checkBoxList.get(url_index).getText().toString(), null);
+                url_index++;
             }
         });
         mExitViewsButton.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +72,7 @@ public class NavigationXWalkViewsActivity extends XWalkBaseNavigationActivity {
                 }
             }
         });
-        setContentView(root);
+
         if(hasPerform == false && isWindowReady == true) {
             mAddViewsButton.performClick();
             hasPerform = true;
@@ -108,14 +98,13 @@ public class NavigationXWalkViewsActivity extends XWalkBaseNavigationActivity {
 
         @Override
         public void onPageLoadStopped(XWalkView view, String url, LoadStatus status) {
-            String idStr = String.valueOf(view.getId());
-            if(!idList.contains(idStr)){
-                idList.add(idStr);
-                count_num++;
-                if(count_num == view_num) {
-                    mAddViewsButton.setClickable(true);
-                }
-                textResultTextView.setText(String.valueOf(count_num));
+            count_num++;
+            textResultTextView.setText(String.valueOf(count_num));
+            if (count_num < view_num) {
+            	mAddViewsButton.performClick();
+            }
+            if (count_num == view_num) {
+            	XWalkBaseUtil.createStorageFile(true);
             }
             super.onPageLoadStopped(view, url, status);
         }
