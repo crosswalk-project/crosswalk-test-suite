@@ -27,10 +27,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>WebAudio Test: AudioContext createAnalyser return value</title>
+<title>WebAudio Test: default value of AnalyserNode's members</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://webaudio.github.io/web-audio-api/#widl-AudioContext-createAnalyser-AnalyserNode">
+<link rel="help" href="http://webaudio.github.io/web-audio-api/#idl-def-AnalyserNode">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
@@ -40,8 +40,19 @@ test(function() {
   var context = new AudioContext();
   var analyser = context.createAnalyser();
 
-  assert_true(analyser instanceof AnalyserNode);
+  assert_equals(analyser.numberOfInputs, 1, "analyser.numberOfInputs");
+  assert_equals(analyser.numberOfOutputs, 1, "analyser.numberOfOutputs");
+  assert_equals(analyser.channelCount, 1, "analyser.channelCount");
+  assert_equals(analyser.channelCountMode, "max", "analyser.channelCountMode");
+  assert_equals(analyser.channelInterpretation, "speakers", "analyser.channelInterpretation");
 
-}, "Check that AudioContext.createAnalyser() returns an instance of AnalyserNode.");
+  assert_equals(analyser.fftSize, 2048, "fftSize default value");
+  analyser.frequencyBinCount = 64;
+  assert_equals(analyser.frequencyBinCount, 1024, "frequencyBinCount is readonly, and the value is half of fftSize");
+  assert_equals(analyser.maxDecibels, -30, "maxDecibels's default value");
+  assert_equals(analyser.minDecibels, -100, "minDecibels's default value");
+  assert_equals(analyser.smoothingTimeConstant, 0.8, "smoothingTimeConstant's default value");
+
+}, "Check that the default values of AnalyserNode's members as specified.");
 </script>
 
