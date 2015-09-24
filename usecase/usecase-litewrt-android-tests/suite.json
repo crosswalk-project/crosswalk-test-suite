@@ -1,18 +1,19 @@
 {
   "pkg-blacklist": [
+    "config.xml",
     "pack.py",
-    "testcase.xsl",
-    "testresult.xsl",
-    "tests.css",
+    "tests.*.xml",
     "icon.png",
     "manifest.json",
     "suite.json",
-    "*-py",
     "inst.*"
   ],
   "pkg-list": {
     "apk,cordova": {
-      "blacklist": [],
+      "blacklist": [
+        "*",
+        ".git"
+      ],
       "copylist": {
         "inst.apk.py": "inst.py",
         "tests.android.xml": "tests.xml",
@@ -28,17 +29,20 @@
         ".": {
           "app-name": "usecase-litewrt-android-tests",
           "blacklist": [
-            "manifest.json"
+            "*",
+            ".git"
           ],
           "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "icon.png": "icon.png",
+            "manifest.json": "manifest.json",
+            "tests": "samples",
+            "steps": "steps",
             "tests.android.xml": "tests.xml"
           },
           "install-path": "."
         }
       }
-    },
-    "apk-aio": {
-      "blacklist": []
     }
   },
   "pkg-name": "usecase-litewrt-android-tests"
