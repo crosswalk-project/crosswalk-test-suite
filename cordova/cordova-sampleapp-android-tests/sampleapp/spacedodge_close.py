@@ -32,17 +32,22 @@ import unittest
 import os
 import commands
 import comm
+import time
 
 
-class TestGalleryAppUninstall(unittest.TestCase):
+class TestSpacedodgeAppClose(unittest.TestCase):
 
-    def test_uninstall(self):
+    def test_close(self):
         comm.setUp()
-        app_name = "gallery"
+        app_name = "spacedodge"
         pkg_name = "com.example." + app_name.lower()
         if not comm.check_app_installed(pkg_name, self):
             comm.app_install(app_name, pkg_name, self)
-        comm.app_uninstall(pkg_name, self)
+        if not comm.check_app_launched(pkg_name, self):
+            print "Close app ---------------->%s App haven't launched, need to launch it!" % app_name
+            comm.app_launch(app_name, pkg_name, self)
+            time.sleep(1)
+        comm.app_stop(pkg_name, self)
 
 if __name__ == '__main__':
     unittest.main()

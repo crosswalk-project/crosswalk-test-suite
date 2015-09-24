@@ -34,15 +34,13 @@ import commands
 import comm
 
 
-class TestGalleryAppLaunch(unittest.TestCase):
+class TestSpacedodgeAppInstall(unittest.TestCase):
 
-    def test_launch(self):
+    def test_install(self):
         comm.setUp()
-        app_name = "gallery"
+        app_name = "spacedodge"
         pkg_name = "com.example." + app_name.lower()
-        if not comm.check_app_installed(pkg_name, self):
-            comm.app_install(app_name, pkg_name, self)
-        comm.app_launch(app_name, pkg_name, self)
+        comm.app_install(app_name, pkg_name, self)
 
 if __name__ == '__main__':
     unittest.main()
