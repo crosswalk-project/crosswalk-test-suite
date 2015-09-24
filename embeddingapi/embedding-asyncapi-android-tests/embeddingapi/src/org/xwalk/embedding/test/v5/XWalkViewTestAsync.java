@@ -4,15 +4,20 @@
 
 package org.xwalk.embedding.test.v5;
 
+import java.util.Locale;
 import java.util.concurrent.Callable;
 
 import android.graphics.Color;
+import android.graphics.Point;
+
 import org.apache.http.Header;
 import org.apache.http.HttpRequest;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.test.suitebuilder.annotation.MediumTest;
+import android.view.WindowManager;
 
 @SuppressLint("NewApi")
 public class XWalkViewTestAsync extends XWalkViewTestBase {
@@ -76,7 +81,7 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             assertEquals(customUserAgentString, getUserAgent());
         } finally {
         }
-    }
+    }    
 
     @SmallTest
     public void testSetZOrderOnTop_True() {
@@ -191,7 +196,7 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
                 public Boolean call() throws Exception {
-                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
             assertTrue("Should be able to zoom in", canZoomInOnUiThread());
@@ -218,7 +223,7 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
                 public Boolean call() throws Exception {
-                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
             
@@ -226,7 +231,7 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
                 public Boolean call() throws Exception {
-                    return MAXIMUM_SCALE == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                    return MAXIMUM_SCALE == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
             
@@ -234,7 +239,7 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
                 public Boolean call() throws Exception {
-                    return MAXIMUM_SCALE * 0.5f == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                    return MAXIMUM_SCALE * 0.5f == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
 
@@ -242,7 +247,7 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
                 public Boolean call() throws Exception {
-                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
         } catch (Exception e) {
@@ -265,7 +270,7 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
                 public Boolean call() throws Exception {
-                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
 
@@ -305,4 +310,75 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             assertEquals(expectedLanguages[i], result);
         }
     }
+    
+    @SmallTest
+    public void testSetInitialScale1() throws Throwable {
+
+        final String pageTemplate = "<html><head>"
+                + "<meta name='viewport' content='initial-scale=%d' />"
+                + "</head><body>"
+                + "<div style='width:10000px;height:200px'>A big div</div>"
+                + "</body></html>";
+        final int initialScale4 = 4;
+        final int initialScale1 = 1;
+        final String pageScale4 = String.format((Locale) null, pageTemplate, initialScale4);
+        final String page = String.format((Locale) null, pageTemplate, initialScale1);
+        final double dipScale = getDipScale();
+
+        // Page scale updates are asynchronous. There is an issue that we can't
+        // reliably check, whether the scale as NOT changed (i.e. remains to be 1.0).
+        // So we first change the scale to some non-default value, and then wait
+        // until it gets back to 1.0.
+        int onScaleChangedCallCount = mTestHelperBridge.getOnScaleChangedHelper().getCallCount();
+        loadDataSync(null, pageScale4, "text/html", false);
+        mTestHelperBridge.getOnScaleChangedHelper().waitForCallback(onScaleChangedCallCount);
+        assertEquals(4.0f, getScaleFactor());
+
+        // The following call to set initial scale will be ignored. However, a temporary
+        // page scale change may occur, and this makes the usual onScaleChanged-based workflow
+        // flaky. So instead, we are just polling the scale until it becomes 1.0.
+        setInitialScale(50);
+        loadDataSync(null, page, "text/html", false);
+        ensureScaleBecomes(1.0f);
+    }
+
+    @SmallTest
+    public void testSetInitialScale2() throws Throwable {
+
+        WindowManager wm = (WindowManager) getInstrumentation().getTargetContext()
+                .getSystemService(Context.WINDOW_SERVICE);
+        Point screenSize = new Point();
+        wm.getDefaultDisplay().getSize(screenSize);
+        // Make sure after 50% scale, page width still larger than screen.
+        int height = screenSize.y * 2 + 1;
+        int width = screenSize.x * 2 + 1;
+        final String page = "<html><body>"
+                + "<p style='height:" + height + "px;width:" + width + "px'>"
+                + "testSetInitialScale</p></body></html>";
+        final float defaultScaleFactor = 0;
+        final float defaultScale = 0.5f;
+
+        assertEquals(defaultScaleFactor, getScaleFactor(), .01f);
+        loadDataSync(null, page, "text/html", false);
+        assertEquals(defaultScaleFactor, getScaleFactor(), .01f);
+
+        int onScaleChangedCallCount = mTestHelperBridge.getOnScaleChangedHelper().getCallCount();
+        setInitialScale(50);
+        loadDataSync(null, page, "text/html", false);
+        mTestHelperBridge.getOnScaleChangedHelper().waitForCallback(onScaleChangedCallCount);
+        assertEquals(0.5f, getPixelScale(), .01f);
+
+        onScaleChangedCallCount = mTestHelperBridge.getOnScaleChangedHelper().getCallCount();
+        setInitialScale(500);
+        loadDataSync(null, page, "text/html", false);
+        mTestHelperBridge.getOnScaleChangedHelper().waitForCallback(onScaleChangedCallCount);
+        assertEquals(5.0f, getPixelScale(), .01f);
+
+        onScaleChangedCallCount = mTestHelperBridge.getOnScaleChangedHelper().getCallCount();
+        // default min-scale will be used.
+        setInitialScale(0);
+        loadDataSync(null, page, "text/html", false);
+        mTestHelperBridge.getOnScaleChangedHelper().waitForCallback(onScaleChangedCallCount);
+        assertEquals(defaultScale, getPixelScale(), .01f);
+    }    
 }

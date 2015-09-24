@@ -845,7 +845,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     
     protected void zoomInOnUiThreadAndWait() throws Throwable {
     	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
-        final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+        final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
         assertTrue(runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
@@ -856,14 +856,14 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         pollOnUiThread(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return previousScale != mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+                return previousScale != mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
             }
         });
     }
 
     protected void zoomOutOnUiThreadAndWait() throws Throwable {
     	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
-        final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+        final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
         assertTrue(runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
@@ -874,14 +874,14 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         pollOnUiThread(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return previousScale != mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+                return previousScale != mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
             }
         });
     }
     
     protected void zoomByOnUiThreadAndWait(final float delta) throws Throwable {
     	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
-        final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+        final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
@@ -892,7 +892,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         pollOnUiThread(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return previousScale != mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+                return previousScale != mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
             }
         });
     }
@@ -994,4 +994,33 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         loadUrlAsync(url);
     }
 
+    protected void setInitialScale(final int scaleInPercent) {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.setInitialScale(scaleInPercent);
+            }
+        });
+    }
+
+    protected double getDipScale() {
+        return DeviceDisplayInfo.create(mXWalkView.getContext()).getDIPScale();
+    }
+
+    protected float getScaleFactor() {
+        return getPixelScale() / (float) getDipScale();
+    }
+
+    public float getPixelScale() {
+        return mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
+    }
+
+    protected void ensureScaleBecomes(final float targetScale) throws Throwable {
+        pollOnUiThread(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return targetScale == getScaleFactor();
+            }
+        });
+    }
 }

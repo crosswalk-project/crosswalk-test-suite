@@ -154,8 +154,8 @@ public class TestHelperBridge {
         return mOnScaleChangedHelper;
     }
 
-    public void onScaleChanged(float scale) {
-        mOnScaleChangedHelper.notifyCalled(scale);
+    public void onScaleChanged(float oldScale, float newScale) {
+    	mOnScaleChangedHelper.notifyCalled(oldScale, newScale);
     }
 
     public OnRequestFocusHelper getOnRequestFocusHelper() {

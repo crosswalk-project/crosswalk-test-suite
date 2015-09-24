@@ -7,15 +7,25 @@ package org.xwalk.embedding.base;
 import org.chromium.content.browser.test.util.CallbackHelper;
 
 public class OnScaleChangedHelper extends CallbackHelper {
-    private float mScale;
+    private float mPreviousScale;
+    private float mCurrentScale;
 
-    public float getScale() {
-        assert getCallCount() > 0;
-        return mScale;
+    public void notifyCalled(float oldScale, float newScale) {
+        mPreviousScale = oldScale;
+        mCurrentScale = newScale;
+        super.notifyCalled();
     }
 
-    public void notifyCalled(float scale) {
-        mScale = scale;
-        notifyCalled();
+    public float getOldScale() {
+        return mPreviousScale;
+    }
+
+    public float getNewScale() {
+        return mCurrentScale;
+    }
+
+    public float getLastScaleRatio() {
+        assert getCallCount() > 0;
+        return mCurrentScale / mPreviousScale;
     }
 }
