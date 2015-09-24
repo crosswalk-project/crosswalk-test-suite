@@ -32,15 +32,25 @@ import unittest
 import os
 import commands
 import comm
+import time
 
 
-class TestGalleryAppInstall(unittest.TestCase):
+class TestSpacedodgeAppUninstallWithAppRunning(unittest.TestCase):
 
-    def test_install(self):
+    def test_uninstall_withAppRunning(self):
         comm.setUp()
-        app_name = "gallery"
+        app_name = "spacedodge"
         pkg_name = "com.example." + app_name.lower()
-        comm.app_install(app_name, pkg_name, self)
+
+        if not comm.check_app_installed(pkg_name, self):
+            comm.app_install(app_name, pkg_name, self)
+
+        # Make sure the app is running
+        comm.app_launch(app_name, pkg_name, self)
+        time.sleep(2)
+
+        # Uninstall the app
+        comm.app_uninstall(pkg_name, self)
 
 if __name__ == '__main__':
     unittest.main()
