@@ -31,19 +31,18 @@
 import unittest
 import os
 import commands
-import glob
 import comm
 
 
-class TestGalleryAppBuild(unittest.TestCase):
+class TestSpacedodgeAppLaunch(unittest.TestCase):
 
-    def test_build(self):
+    def test_launch(self):
         comm.setUp()
-        app_name = "gallery"
-        pkg_name = " com.example." + app_name.lower()
-        sample_src_pref = "/tmp/crosswalk-demos/Gallery"
-        comm.create(app_name, pkg_name, comm.MODE, sample_src_pref, None, self)
-        comm.build(app_name, False, self)
+        app_name = "spacedodge"
+        pkg_name = "com.example." + app_name.lower()
+        if not comm.check_app_installed(pkg_name, self):
+            comm.app_install(app_name, pkg_name, self)
+        comm.app_launch(app_name, pkg_name, self)
 
 if __name__ == '__main__':
     unittest.main()
