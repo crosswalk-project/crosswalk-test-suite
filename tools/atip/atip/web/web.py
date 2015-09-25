@@ -513,7 +513,7 @@ class WebAPP(common.APP):
     def should_see_text_startswith(self, text=None, key=None):
         try:
             js_script = 'var text=document.getElementById(\"' + \
-                key + '\").innerText; return text'
+                key + '\").innerHTML; return text'
             content = self.driver.execute_script(js_script)
             if content.strip().startswith(text):
                 return True
@@ -526,7 +526,7 @@ class WebAPP(common.APP):
     def should_see_text_endswith(self, text=None, key=None):
         try:
             js_script = 'var text=document.getElementById(\"' + \
-                key + '\").innerText; return text'
+                key + '\").innerHTML; return text'
             content = self.driver.execute_script(js_script)
             if content.strip().endswith(text):
                 return True
