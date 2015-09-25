@@ -2,6 +2,17 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="Crosswalk WRT" name="wrt-internetstdmanu-android-tests">
+    <set name="Webfeatures-bdd" type="js" ui-auto="bdd">
+      <testcase component="Crosswalk WRT/Internet Standard/Scheme" execution_type="manual" id="Crosswalk_WebApp_Scheme_App" priority="P1" purpose="Validate the scheme 'app://' is implemented in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/bdd/Crosswalk_WebApp_Scheme_App.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-internetstdmanu-android-tests/wrt-internetstd-app/testscripts/Crosswalk_WebApp_Scheme_App.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+    </set>
     <set name="Webfeatures" type="js">
       <testcase component="Crosswalk WRT/Internet Standard/Scheme" execution_type="manual" id="Crosswalk_WebApp_HttpAuth_Success" priority="P1" purpose="Validate the http authentication if input correct username/password (via http://httpbin.org/basic-auth/user/passwd)" status="approved" type="Functional">
         <description>
@@ -19,14 +30,6 @@
             2.Make sure nerwork can be used
           </pre_condition>
           <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_HttpAuth_Failure.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Internet Standard/Scheme" execution_type="manual" id="Crosswalk_WebApp_Scheme_App" priority="P1" purpose="Validate the scheme 'app://' is implemented in Crosswalk" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed;
-          </pre_condition>
-          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_App.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/Internet Standard/Scheme" execution_type="manual" id="Crosswalk_WebApp_Scheme_Content" priority="P1" purpose="Validate the scheme 'content://' is implemented in Crosswalk" status="approved" type="Functional">

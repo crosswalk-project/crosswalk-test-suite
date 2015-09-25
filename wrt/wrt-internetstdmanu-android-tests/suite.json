@@ -15,18 +15,29 @@
         "*"
       ],
       "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-internetstd-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
         "PACK-TOOL-ROOT/resources/xsl": ".",
         "inst.apk.py": "inst.py",
         "testapp": "testapp",
         "tests.full.xml": "tests.full.xml",
-        "tests.xml": "tests.xml"
+        "tests.xml": "tests.xml",
+        "wrt-internetstd-app/testscripts": "wrt-internetstd-app/testscripts"
       },
       "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
         "copylist": {
           "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
       },
       "subapp-list": {
+        "wrt-internetstd-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../internetstdmanu/bdd": "internetstd"
+          }
+        },
         "": {
           "apk-type": "HOSTEDAPP",
           "apk-url-opt": "http://www.html-kit.com/tools/cookietester/",
@@ -37,6 +48,10 @@
           "install-path": "."
         },
         "testapp/web_scheme_content": {
+          "install-path": "."
+        },
+        "testapp/web_scheme_app": {
+          "apk-common-opts": "--enable-remote-debugging",
           "install-path": "."
         }
       }
