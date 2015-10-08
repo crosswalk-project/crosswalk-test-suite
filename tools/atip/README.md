@@ -448,6 +448,7 @@ def i_visit_url(context, url):
 @step(u'I execute command "{command_line}"')
 @step(u'I save command "{command_line}" result "{result_key}"')
 @step(u'The value "{expected_value}" should be in result "{result_key}"')
+@step(u'upgrade "{app_path}"')
 ```
 
 ## Run Tests 
