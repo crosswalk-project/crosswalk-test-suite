@@ -209,6 +209,35 @@ def click_element_by_link(context, text):
     return False
 
 
+@step(u'repeat to download resources from link "{linktext}" for {timeout:d} seconds')
+def repeat_click_element_by_link(context, linktext, timeout):
+    element = context.web.driver.find_element_by_link_text(linktext)
+    if element:
+        startTime = time.time()
+        element.click()
+        context.android.openNotification()
+        time.sleep(10)
+        while True:
+            endTime = time.time()
+            duration = endTime - startTime
+            elecount = context.android.d(text=linktext).count
+            if duration < timeout:
+                if elecount != 1:
+                    context.android.pressKeyBy("back")
+                    element = context.web.driver.find_element_by_link_text(linktext)
+                    element.click()
+                    context.android.openNotification()
+                    time.sleep(10)
+                    continue
+                else:
+                    time.sleep(10)
+                    continue
+            else:
+                break
+        return True
+    return False
+
+
 @step(u'I check "{key}"')
 def check_checkbox(context, key):
     assert context.web.check_checkbox_by_key(key)
