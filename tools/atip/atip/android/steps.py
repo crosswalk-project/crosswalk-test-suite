@@ -299,3 +299,14 @@ def wait_object_gone(context, key, time_out):
 def open_notification(context, element_text, key):
     elecount = context.android.d(text=element_text).count
     assert context.android.save2InfoTemp(elecount, key)
+
+
+#get the dumped content(unicode) from return
+#check the expected content in the dump
+@step(u'I expect the content "{text}" in the dumped xml')
+def open_notification(context, text):
+    content = context.android.getDumpedXml()
+    if text in content:
+        assert True
+    else:
+        assert False

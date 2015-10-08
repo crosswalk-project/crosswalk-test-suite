@@ -457,6 +457,10 @@ class Android(common.APP):
         return False
 
 
+    def getDumpedXml(self):
+        return self.d.dump()
+
+
 def launch_app_by_name(
         context, app_name, apk_pkg_name=None, apk_activity_name=None):
     if not context.bdd_config:
