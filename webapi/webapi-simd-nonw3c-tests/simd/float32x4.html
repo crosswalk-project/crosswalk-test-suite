@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>SIMD Test: float32x4</title>
+<title>SIMD Test: Float32x4</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md">
 <link rel="stylesheet" href="ecmascript_simd/src/external/qunit.css">
@@ -40,79 +40,79 @@ Authors:
 <div id="qunit-fixture"></div>
 <script>
 
-test("Check if the zero function of float32x4 can change the parameter to 0.0", function() {
-  var z1 = SIMD.float32x4.zero();
+test("Check if the zero function of Float32x4 can change the parameter to 0.0", function() {
+  var z1 = SIMD.Float32x4.zero();
   equal(0.0, z1.x, "the value of z1.x should be 0.0");
   equal(0.0, z1.y, "the value of z1.y should be 0.0");
   equal(0.0, z1.z, "the value of z1.z should be 0.0");
   equal(0.0, z1.w, "the value of z1.w should be 0.0");
 });
 
-test("Check if the splat function of float32x4 can change the parameter to specified value", function () {
-  var z2 = SIMD.float32x4.splat(5.0);
+test("Check if the splat function of Float32x4 can change the parameter to specified value", function () {
+  var z2 = SIMD.Float32x4.splat(5.0);
   equal(5.0, z2.x, "the value of z2.x should be 5.0");
   equal(5.0, z2.y, "the value of z2.y should be 5.0");
   equal(5.0, z2.z, "the value of z2.z should be 5.0");
   equal(5.0, z2.w, "the value of z2.w should be 5.0");
 });
 
-test("Check if the fromFloat64x2 method of float32x4 is valid", function () {
-  var m = SIMD.float32x4(9.0, 10.0, 11.0, 12.0);
-  var nMask = SIMD.float64x2.fromFloat32x4(m);
-  var n = SIMD.float32x4.fromFloat64x2(nMask);
+test("Check if the fromFloat64x2 method of Float32x4 is valid", function () {
+  var m = SIMD.Float32x4(9.0, 10.0, 11.0, 12.0);
+  var nMask = SIMD.Float64x2.fromFloat32x4(m);
+  var n = SIMD.Float32x4.fromFloat64x2(nMask);
   equal(9.0, n.x, "the value of n.x should be 9.0");
   equal(10.0, n.y, "the value of n.y should be 10.0");
   equal(0, n.z, "the value of n.z should be 0");
   equal(0, n.w, "the value of n.w should be 0");
 });
 
-test("Check if the fromFloat64x2Bits method of float32x4 is valid", function () {
-  var m = SIMD.float32x4(9.0, 10.0, 11.0, 12.0);
-  var nMask = SIMD.float64x2.fromFloat32x4Bits(m);
-  var n = SIMD.float32x4.fromFloat64x2Bits(nMask);
+test("Check if the fromFloat64x2Bits method of Float32x4 is valid", function () {
+  var m = SIMD.Float32x4(9.0, 10.0, 11.0, 12.0);
+  var nMask = SIMD.Float64x2.fromFloat32x4Bits(m);
+  var n = SIMD.Float32x4.fromFloat64x2Bits(nMask);
   equal(9.0, n.x, "the value of n.x should be 9.0");
   equal(10.0, n.y, "the value of n.y should be 10.0");
   equal(11.0, n.z, "the value of n.z should be 11.0");
   equal(12.0, n.w, "the value of n.w should be 12.0");
 });
 
-test("Check if the fromInt32x4 method of float32x4 is valid", function () {
-  var m = SIMD.float32x4(9.0, 10.0, 11.0, 12.0);
-  var nMask = SIMD.int32x4.fromFloat32x4(m);
-  var n = SIMD.float32x4.fromInt32x4(nMask);
+test("Check if the fromInt32x4 method of Float32x4 is valid", function () {
+  var m = SIMD.Float32x4(9.0, 10.0, 11.0, 12.0);
+  var nMask = SIMD.Int32x4.fromFloat32x4(m);
+  var n = SIMD.Float32x4.fromInt32x4(nMask);
   equal(9.0, n.x, "the value of n.x should be 9.0");
   equal(10.0, n.y, "the value of n.y should be 10.0");
   equal(11.0, n.z, "the value of n.z should be 11.0");
   equal(12.0, n.w, "the value of n.w should be 12.0");
 });
 
-test("Check if the fromInt32x4Bits method of float32x4 is valid", function () {
-  var m = SIMD.int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
-  var nMask = SIMD.float32x4.fromInt32x4Bits(m);
-  var n = SIMD.int32x4.fromFloat32x4Bits(nMask);
+test("Check if the fromInt32x4Bits method of Float32x4 is valid", function () {
+  var m = SIMD.Int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
+  var nMask = SIMD.Float32x4.fromInt32x4Bits(m);
+  var n = SIMD.Int32x4.fromFloat32x4Bits(nMask);
   equal(0x3F800000, n.x, "the value of n.x should be 0x3F800000");
   equal(0x40000000, n.y, "the value of n.y should be 0x40000000");
   equal(0x40400000, n.z, "the value of n.z should be 0x40400000");
   equal(0x40800000, n.w, "the value of n.w should be 0x40800000");
 });
 
-test("Check if the select method of float32x4 is valid", function () {
-  var m = SIMD.int32x4.bool(true, true, false, false);
-  var t = SIMD.float32x4(1.0, 2.0, 3.0, 4.0);
-  var f = SIMD.float32x4(5.0, 6.0, 7.0, 8.0);
-  var s = SIMD.float32x4.select(m, t, f);
+test("Check if the select method of Float32x4 is valid", function () {
+  var m = SIMD.Int32x4.bool(true, true, false, false);
+  var t = SIMD.Float32x4(1.0, 2.0, 3.0, 4.0);
+  var f = SIMD.Float32x4(5.0, 6.0, 7.0, 8.0);
+  var s = SIMD.Float32x4.select(m, t, f);
   equal(1.0, s.x, "the value of s.x should be 1.0");
   equal(2.0, s.y, "the value of s.y should be 2.0");
   equal(7.0, s.z, "the value of s.z should be 7.0");
   equal(8.0, s.w, "the value of s.w should be 8.0");
 });
 
-test('float32x4 store smi check', function() {
+test('Float32x4 store smi check', function() {
   var a = new Float32Array(12);
   for(var j = 0; j < 1000; j++) {
-    SIMD.float32x4.store(a, 0, SIMD.float32x4(0, 1, 2, 3));
-    SIMD.float32x4.store(a, 4, SIMD.float32x4(4, 5, 6, 7));
-    SIMD.float32x4.store(a, 8, SIMD.float32x4(8, 9, 10, 11));
+    SIMD.Float32x4.store(a, 0, SIMD.Float32x4(0, 1, 2, 3));
+    SIMD.Float32x4.store(a, 4, SIMD.Float32x4(4, 5, 6, 7));
+    SIMD.Float32x4.store(a, 8, SIMD.Float32x4(8, 9, 10, 11));
   }
   for (var i = 0; i < a.length; i++) {
     equal(i, a[i]);
