@@ -211,15 +211,17 @@ def click_element_by_link(context, text):
 @step(u'repeat to download resources from link "{linktext}" for {timeout:d} seconds')
 def repeat_click_element_by_link(context, linktext, timeout):
     element = context.web.driver.find_element_by_link_text(linktext)
+    linktextlist = linktext.split(".")[0:2]
+    notificationtext = ".".join(linktextlist)
     if element:
         startTime = time.time()
         element.click()
         context.android.openNotification()
-        time.sleep(10)
+        time.sleep(20)
         while True:
             endTime = time.time()
             duration = endTime - startTime
-            elecount = context.android.d(text=linktext).count
+            elecount = context.android.d(textContains=notificationtext).count
             if duration < timeout:
                 if elecount != 1:
                     context.android.pressKeyBy("back")
@@ -233,8 +235,8 @@ def repeat_click_element_by_link(context, linktext, timeout):
                     continue
             else:
                 break
+        context.android.pressKeyBy("back")
         return True
-    return False
 
 
 @step(u'I check "{key}"')
@@ -252,7 +254,7 @@ def should_see_alert(context):
     assert context.web.check_alert_existing()
 
 
-@step(u'I should see a popuped dialog')
+@step(u'I should see a pop-up dialog')
 def should_see_alert(context):
     assert context.web.driver.switch_to_alert()
 
