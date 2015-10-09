@@ -425,6 +425,7 @@ def i_visit_url(context, url):
 @step(u'I save process of finding view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
 @step(u'I reload above process and save result to object "{key}"')
 @step(u'I wait saved object "{key}" gone in {time_out:d} seconds')
+@step(u'I expect the content "{text}" in the dumped xml')
 ```
 
 * "common" steps - done
