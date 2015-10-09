@@ -392,7 +392,7 @@ def i_visit_url(context, url):
 @step(u'I accept the alert')
 @step(u'I should see an alert with text "{text}"')
 @step(u'repeat to download resources from link "{linktext}" for {timeout:d} seconds')
-@step(u'I should see a popuped dialog')
+@step(u'I should see a pop-up dialog')
 ```
 
 * "android" steps - done
