@@ -202,7 +202,6 @@ def fill_with_text(context, key, text):
 @step(u'I click the link "{text}"')
 def click_element_by_link(context, text):
     element = context.web.driver.find_element_by_link_text(text)
-    hyperl = element.get_attribute('href')
     if element:
         element.click()
         return True
@@ -251,6 +250,11 @@ def uncheck_checkbox(context, key):
 @step(u'I should see an alert')
 def should_see_alert(context):
     assert context.web.check_alert_existing()
+
+
+@step(u'I should see a popuped dialog')
+def should_see_alert(context):
+    assert context.web.driver.switch_to_alert()
 
 
 @step(u'I should not see an alert')
