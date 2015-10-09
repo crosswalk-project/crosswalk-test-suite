@@ -128,6 +128,11 @@
           <test_script_entry>/opt/apptools-android-tests/apptools/check_target_version.py</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_orientation" purpose="Android - Validate if project can not be built with invalid orientation value">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/manifest_orientation.py</test_script_entry>
+        </description>
+      </testcase>
     </set>
     <set name="common_module" type="nodeunit">
       <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_platform" purpose="Android - Validate if Crosswalk version is valid or invalid" subcase="4">
@@ -311,6 +316,46 @@ reduce the APK size">
       <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Command_Line_DisableWebGL" purpose="Android - Validate if WebGL support is disabled experimental">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Command_Line_DisableWebGL.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Landscape" purpose="Android - Validate if web app could be launched with landscape-primary and landscape-secondary orientation">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_Landscape.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Any" purpose="Android - Validate if web app could be launched with portrait-primary, portrait-secondary, landscape-primary and landscape-secondary orientation">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_Any.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Natural" purpose="Android - Validate if web app could be launched with portrait-primary and landscape-primary orientation">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_Natural.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Portrait" purpose="Android - Validate if web app could be launched with portrait-primary and portrait-secondary orientation">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_Portrait.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_PortraitPrimary" purpose="Android - Validate if web app could be launched with portrait-primary orientation">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_PortraitPrimary.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_PortraitSecondary" purpose="Android - Validate if web app could be launched with portrait-secondary orientation">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_PortraitSecondary.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_LandscapePrimary" purpose="Android - Validate if web app could be launched with landscape-primary orientation">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_LandscapePrimary.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_LandscapeSecondary" purpose="Android - Validate if web app could be launched with landscape-secondary orientation">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_LandscapeSecondary.html</test_script_entry>
         </description>
       </testcase>
     </set>
