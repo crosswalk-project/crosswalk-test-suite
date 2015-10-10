@@ -17,6 +17,7 @@ public class TabVideoWebViewsActivity extends XWalkBaseTabVideoActivity {
     @Override
     protected void onXWalkReady() {
         textDes.setText("This sample demonstrates the feasibility to create and destroy WebViews in many tabs (1 webview per tab) at same time to load webpages with playing video.");
+        mAddViewsButton.setVisibility(View.VISIBLE);
         mAddViewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
