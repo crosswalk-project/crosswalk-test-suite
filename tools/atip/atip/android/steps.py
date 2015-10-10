@@ -246,7 +246,7 @@ def fling_by(context, orientation, direction):
 # swipe from the center of the ui object to its edge
 # orientation should be in 'left', 'right', 'up' or 'down'
 @step(u'I swipe view "{params_kw}" to "{orientation}"')
-def swipe_to(context, key, orientation):
+def swipe_to(context, params_kw, orientation):
     ob = context.android.selectObjectBy(params_kw)
     assert ob.exists
     assert context.android.swipeTo(ob, orientation)
