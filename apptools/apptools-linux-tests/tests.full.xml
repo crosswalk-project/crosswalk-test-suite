@@ -43,6 +43,11 @@
           <test_script_entry>/opt/apptools-linux-tests/apptools/manifest_package_id.py</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_display" priority="P1" purpose="Linux - Validate if project can be built with valid display value" status="approved" type="Functional" subcase="5">
+        <description>
+          <test_script_entry>/opt/apptools-linux-tests/apptools/manifest_display.py</test_script_entry>
+        </description>
+      </testcase>
     </set>
     <set name="common_module" type="nodeunit">
       <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_application" priority="P1" purpose="Linux - Validate if the config and log message are correct when create a new project" status="approved" type="Functional" subcase="10">
@@ -105,6 +110,26 @@
       <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Help" priority="P1" purpose="Linux - Validate if help command can display usage information" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-linux-tests/apptools/AppTools_Help.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Display_Fullscreen" priority="P1" purpose="Linux - Validate if web app can be launched with fullscreen" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/apptools-linux-tests/apptools/Manifest_Display_Fullscreen.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Display_Standalone" priority="P1" purpose="Linux - Validate if web app can be launched with standalone" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/apptools-linux-tests/apptools/Manifest_Display_Standalone.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Display_MinimalUi" priority="P1" purpose="Linux - Validate if web app can be launched with fullscreen and a minimal set of UI elements for controlling navigation" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/apptools-linux-tests/apptools/Manifest_Display_MinimalUi.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Display_Browser" priority="P1" purpose="Linux - Validate if web app can be launched with using the platform-specific convention for opening hyperlinks" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/apptools-linux-tests/apptools/Manifest_Display_Browser.html</test_script_entry>
         </description>
       </testcase>
     </set>
