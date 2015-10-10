@@ -53,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "xwalkCommandLine"]
+PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "xwalkCommandLine", "privateNotes"]
 CORDOVA_VERSIONS = ["3.6", "4.x"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
@@ -402,17 +402,22 @@ def packMobileSpec(app_name=None):
     os.chdir(orig_dir)
     return True
 
-def copySpacedodgeSource(app_name, target_path):
+def copySampleSource(app_name, target_path):
+    source_path = ""
     if checkContains(app_name, "SPACEDODGE"):
-        spacedodge_source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk-samples", "space-dodge-game", "base")
+        source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk-samples", "space-dodge-game", "base")
+    if checkContains(app_name, "PRIVATENOTES"):
+        source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "sample-my-private-notes", "www")
+
+    if source_path:
         if not doRemove(
                 glob.glob(target_path)):
             os.chdir(orig_dir)
             return False
-        if not doCopy(spacedodge_source_path,
-                      target_path):
+        if not doCopy(source_path,
+                target_path):
             os.chdir(orig_dir)
-            return False
+        return False
 
 def packSampleApp(app_name=None):
     pack_tool = os.path.join(BUILD_ROOT, "cordova")
@@ -434,7 +439,7 @@ def packSampleApp(app_name=None):
         os.chdir(orig_dir)
         return False
 
-    copySpacedodgeSource(app_name, os.path.join(pack_tool, app_name, "assets", "www"))
+    copySampleSource(app_name, os.path.join(pack_tool, app_name, "assets", "www"))
 
     if checkContains(app_name, "HELLOWORLD"):
         if not replaceKey(os.path.join(pack_tool, app_name, "assets", "www", "index.html"),
@@ -921,7 +926,7 @@ def packSampleApp_cli(app_name=None):
         '</widget>',
         '    <allow-navigation href="*" />\n</widget>')
 
-    copySpacedodgeSource(app_name, os.path.join(project_root, "www"))
+    copySampleSource(app_name, os.path.join(project_root, "www"))
 
     if checkContains(app_name, "HELLOWORLD"):
         if not replaceKey(os.path.join(project_root, "www", "index.html"),
