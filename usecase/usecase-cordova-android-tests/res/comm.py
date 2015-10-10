@@ -82,7 +82,7 @@ def installCrosswalk(pkgmode):
             os.system(wget_cmd)
             os.system(install_cmd)
 
-def getLatestCrosswalkVersion(channel=None):
+def getLatestCrosswalkVersion(channel=None, main_version=None):
     version = ""
     crosswalk_url_tmp = "https://download.01.org/crosswalk/releases/crosswalk/android/maven2/org/xwalk/" \
                 "xwalk_core_library"
@@ -100,8 +100,9 @@ def getLatestCrosswalkVersion(channel=None):
     for index in range(-1, -len(alist)-1, -1):
         aEle = alist[index]
         version = aEle['href'].strip('/')
-        if re.search('[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*', version):
+        if re.search('%s\.[0-9]*\.[0-9]*\.[0-9]*' % main_version, version):
             break
+    print "version----------------------------------------------------------:" + version
     return version
 
 def create(app_name, pkg_name, tmp_path):
