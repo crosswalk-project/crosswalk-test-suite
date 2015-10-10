@@ -54,7 +54,7 @@ main_version = comm.CROSSWALK_VERSION.split('.')[0]
 
 latestVersion = ''
 if comm.CROSSWALK_BRANCH == "stable" or comm.CROSSWALK_BRANCH == "beta":
-    latestVersion = comm.getLatestCrosswalkVersion(comm.CROSSWALK_BRANCH)
+    latestVersion = comm.getLatestCrosswalkVersion(comm.CROSSWALK_BRANCH, main_version)
 
 pkg_mode_tmp = "shared"
 pkg_arch_tmp = "x86"
