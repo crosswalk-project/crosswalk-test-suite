@@ -195,6 +195,16 @@ def install_app_by_cmd(context, app_path):
             device_id = context.bdd_config["platform"]["device"]
         assert context.web.install_app_by_cmd(device_id, app_path)
 
+# upgrade android app by commend line
+@step(u'upgrade "{app_path}"')
+def upgrade_app(context, app_path):
+    app_path = context.bdd_config["test-url"] + "/" + app_path
+    if app_path.endswith(".apk") and os.path.exists(app_path):
+        device_id = ""
+        if "platform" in context.bdd_config and "device" in context.bdd_config["platform"]:
+            device_id = context.bdd_config["platform"]["device"]
+        assert context.web.upgrade_app_by_cmd(device_id, app_path)
+
 # uninstall android app by commend line
 @step(u'uninstall "{package_name}"')
 def uninstall_app_by_cmd(context, package_name):

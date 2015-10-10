@@ -150,6 +150,21 @@ class APP():
             print("Failed to install %s: %s" % (app_path, e))
         return action_status
 
+    def upgrade_app_by_cmd(self, device_id, app_path):
+        action_status = False
+        try:
+            if not device_id:
+                device_id = list(self.devices().keys())[0]
+            cmd = "adb -s %s install -r %s" % (device_id, app_path)
+            (return_code, output) = self.doCMD(cmd)
+            if "Success" in output:
+                action_status = True
+            else:
+                print("-->> Invalid apk path: %s " % app_path)
+        except Exception as e:
+            print("Failed to install %s: %s" % (app_path, e))
+        return action_status
+
     def uninstall_app_by_cmd(self, device_id, package_name):
         action_status = False
         try:
