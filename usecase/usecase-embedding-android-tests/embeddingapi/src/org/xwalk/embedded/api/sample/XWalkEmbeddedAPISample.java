@@ -33,7 +33,9 @@ public class XWalkEmbeddedAPISample extends ListActivity {
 
     private int order = 0;
 
-    private String[][] TITLES = {{"Usecase EmbeddingAPI"}, {"Usecase Internal EmbeddingAPI", "Usecase External EmbeddingAPI"}};
+    private String[][] TITLES = {{"Usecase EmbeddingAPI"}, {"XWalkView", "XWalkview-Extended", "XwalkUICilent & XwalkResourceClient", "Misc"}};
+
+    private String[] CATEGORIES = {Intent.CATEGORY_SAMPLE_CODE, "XWalkview.Extended", "XWalkview.UIClient.ResourceClient", "XWalkview.Misc"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -116,11 +118,7 @@ public class XWalkEmbeddedAPISample extends ListActivity {
             }else{
                 Intent intent = new Intent(Intent.ACTION_MAIN, null);
                 intent.setPackage(getPackageName());
-                if(1 == order) {
-                    intent.addCategory(Intent.CATEGORY_TEST);
-                }else{
-                    intent.addCategory(Intent.CATEGORY_SAMPLE_CODE);
-                }
+                intent.addCategory(CATEGORIES[order]);
 
                 Log.i(TAG, "___________________Create new Adapter__________");
 
