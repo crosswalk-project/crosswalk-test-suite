@@ -202,11 +202,41 @@ def fill_with_text(context, key, text):
 @step(u'I click the link "{text}"')
 def click_element_by_link(context, text):
     element = context.web.driver.find_element_by_link_text(text)
-    hyperl = element.get_attribute('href')
     if element:
         element.click()
         return True
     return False
+
+
+@step(u'repeat to download resources from link "{linktext}" for {timeout:d} seconds')
+def repeat_click_element_by_link(context, linktext, timeout):
+    element = context.web.driver.find_element_by_link_text(linktext)
+    linktextlist = linktext.split(".")[0:2]
+    notificationtext = ".".join(linktextlist)
+    if element:
+        startTime = time.time()
+        element.click()
+        context.android.openNotification()
+        time.sleep(20)
+        while True:
+            endTime = time.time()
+            duration = endTime - startTime
+            elecount = context.android.d(textContains=notificationtext).count
+            if duration < timeout:
+                if elecount != 1:
+                    context.android.pressKeyBy("back")
+                    element = context.web.driver.find_element_by_link_text(linktext)
+                    element.click()
+                    context.android.openNotification()
+                    time.sleep(10)
+                    continue
+                else:
+                    time.sleep(10)
+                    continue
+            else:
+                break
+        context.android.pressKeyBy("back")
+        return True
 
 
 @step(u'I check "{key}"')
@@ -222,6 +252,11 @@ def uncheck_checkbox(context, key):
 @step(u'I should see an alert')
 def should_see_alert(context):
     assert context.web.check_alert_existing()
+
+
+@step(u'I should see a pop-up dialog')
+def should_see_alert(context):
+    assert context.web.driver.switch_to_alert()
 
 
 @step(u'I should not see an alert')

@@ -39,7 +39,7 @@ sys.setdefaultencoding("utf-8")
 
 script_path = os.path.realpath(__file__)
 const_path = os.path.dirname(script_path)
-sample_src_pref = "/tmp/crosswalk-demos/"
+sample_src_pref = "/tmp/crosswalk-samples/"
 pack_tools = const_path + "/../tools/crosswalk/"
 index_path = "index.html"
 

@@ -391,6 +391,8 @@ def i_visit_url(context, url):
 @step(u'I should not see an alert')
 @step(u'I accept the alert')
 @step(u'I should see an alert with text "{text}"')
+@step(u'repeat to download resources from link "{linktext}" for {timeout:d} seconds')
+@step(u'I should see a pop-up dialog')
 ```
 
 * "android" steps - done
@@ -424,6 +426,7 @@ def i_visit_url(context, url):
 @step(u'I save process of finding view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
 @step(u'I reload above process and save result to object "{key}"')
 @step(u'I wait saved object "{key}" gone in {time_out:d} seconds')
+@step(u'I expect the content "{text}" in the dumped xml')
 ```
 
 * "common" steps - done
@@ -448,6 +451,7 @@ def i_visit_url(context, url):
 @step(u'I execute command "{command_line}"')
 @step(u'I save command "{command_line}" result "{result_key}"')
 @step(u'The value "{expected_value}" should be in result "{result_key}"')
+@step(u'upgrade "{app_path}"')
 ```
 
 ## Run Tests 

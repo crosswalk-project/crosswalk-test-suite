@@ -97,13 +97,13 @@ _SIMD_PRIVATE.frombool = function(x) {
 // Save/Restore utilities for implementing bitwise conversions.
 
 _SIMD_PRIVATE.saveFloat64x2 = function(x) {
-  x = SIMD.float64x2.check(x);
+  x = SIMD.Float64x2.check(x);
   _SIMD_PRIVATE._f64x2[0] = x.x;
   _SIMD_PRIVATE._f64x2[1] = x.y;
 }
 
 _SIMD_PRIVATE.saveFloat32x4 = function(x) {
-  x = SIMD.float32x4.check(x);
+  x = SIMD.Float32x4.check(x);
   _SIMD_PRIVATE._f32x4[0] = x.x;
   _SIMD_PRIVATE._f32x4[1] = x.y;
   _SIMD_PRIVATE._f32x4[2] = x.z;
@@ -111,7 +111,7 @@ _SIMD_PRIVATE.saveFloat32x4 = function(x) {
 }
 
 _SIMD_PRIVATE.saveInt32x4 = function(x) {
-  x = SIMD.int32x4.check(x);
+  x = SIMD.Int32x4.check(x);
   _SIMD_PRIVATE._i32x4[0] = x.x;
   _SIMD_PRIVATE._i32x4[1] = x.y;
   _SIMD_PRIVATE._i32x4[2] = x.z;
@@ -152,17 +152,17 @@ _SIMD_PRIVATE.saveInt8x16 = function(x) {
 
 _SIMD_PRIVATE.restoreFloat64x2 = function() {
   var alias = _SIMD_PRIVATE._f64x2;
-  return SIMD.float64x2(alias[0], alias[1]);
+  return SIMD.Float64x2(alias[0], alias[1]);
 }
 
 _SIMD_PRIVATE.restoreFloat32x4 = function() {
   var alias = _SIMD_PRIVATE._f32x4;
-  return SIMD.float32x4(alias[0], alias[1], alias[2], alias[3]);
+  return SIMD.Float32x4(alias[0], alias[1], alias[2], alias[3]);
 }
 
 _SIMD_PRIVATE.restoreInt32x4 = function() {
   var alias = _SIMD_PRIVATE._i32x4;
-  return SIMD.int32x4(alias[0], alias[1], alias[2], alias[3]);
+  return SIMD.Int32x4(alias[0], alias[1], alias[2], alias[3]);
 }
 
 _SIMD_PRIVATE.restoreInt16x8 = function() {
@@ -179,18 +179,18 @@ _SIMD_PRIVATE.restoreInt8x16 = function() {
                       alias[12], alias[13], alias[14], alias[15]);
 }
 
-if (typeof SIMD.float32x4 === "undefined") {
+if (typeof SIMD.Float32x4 === "undefined") {
   /**
-    * Construct a new instance of float32x4 number.
+    * Construct a new instance of Float32x4 number.
     * @param {double} value used for x lane.
     * @param {double} value used for y lane.
     * @param {double} value used for z lane.
     * @param {double} value used for w lane.
     * @constructor
     */
-  SIMD.float32x4 = function(x, y, z, w) {
-    if (!(this instanceof SIMD.float32x4)) {
-      return new SIMD.float32x4(x, y, z, w);
+  SIMD.Float32x4 = function(x, y, z, w) {
+    if (!(this instanceof SIMD.Float32x4)) {
+      return new SIMD.Float32x4(x, y, z, w);
     }
 
     this.x_ = _SIMD_PRIVATE.truncatef32(x);
@@ -199,26 +199,26 @@ if (typeof SIMD.float32x4 === "undefined") {
     this.w_ = _SIMD_PRIVATE.truncatef32(w);
   }
 
-  Object.defineProperty(SIMD.float32x4.prototype, 'x', {
+  Object.defineProperty(SIMD.Float32x4.prototype, 'x', {
     get: function() { return this.x_; }
   });
 
-  Object.defineProperty(SIMD.float32x4.prototype, 'y', {
+  Object.defineProperty(SIMD.Float32x4.prototype, 'y', {
     get: function() { return this.y_; }
   });
 
-  Object.defineProperty(SIMD.float32x4.prototype, 'z', {
+  Object.defineProperty(SIMD.Float32x4.prototype, 'z', {
     get: function() { return this.z_; }
   });
 
-  Object.defineProperty(SIMD.float32x4.prototype, 'w', {
+  Object.defineProperty(SIMD.Float32x4.prototype, 'w', {
     get: function() { return this.w_; }
   });
 
   /**
     * Extract the sign bit from each lane return them in the first 4 bits.
     */
-  Object.defineProperty(SIMD.float32x4.prototype, 'signMask', {
+  Object.defineProperty(SIMD.Float32x4.prototype, 'signMask', {
     get: function() {
       var mx = (this.x < 0.0 || 1/this.x === -Infinity);
       var my = (this.y < 0.0 || 1/this.y === -Infinity);
@@ -229,108 +229,108 @@ if (typeof SIMD.float32x4 === "undefined") {
   });
 }
 
-if (typeof SIMD.float32x4.check === "undefined") {
+if (typeof SIMD.Float32x4.check === "undefined") {
   /**
-    * Check whether the argument is a float32x4.
-    * @param {float32x4} v An instance of float32x4.
-    * @return {float32x4} The float32x4 instance.
+    * Check whether the argument is a Float32x4.
+    * @param {Float32x4} v An instance of Float32x4.
+    * @return {Float32x4} The Float32x4 instance.
     */
-  SIMD.float32x4.check = function(v) {
-    if (!(v instanceof SIMD.float32x4)) {
-      throw new TypeError("argument is not a float32x4.");
+  SIMD.Float32x4.check = function(v) {
+    if (!(v instanceof SIMD.Float32x4)) {
+      throw new TypeError("argument is not a Float32x4.");
     }
     return v;
   }
 }
 
-if (typeof SIMD.float32x4.splat === "undefined") {
+if (typeof SIMD.Float32x4.splat === "undefined") {
   /**
-    * Construct a new instance of float32x4 number with the same value
+    * Construct a new instance of Float32x4 number with the same value
     * in all lanes.
     * @param {double} value used for all lanes.
     * @constructor
     */
-  SIMD.float32x4.splat = function(s) {
-    return SIMD.float32x4(s, s, s, s);
+  SIMD.Float32x4.splat = function(s) {
+    return SIMD.Float32x4(s, s, s, s);
   }
 }
 
-if (typeof SIMD.float32x4.fromFloat64x2 === "undefined") {
+if (typeof SIMD.Float32x4.fromFloat64x2 === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @return {float32x4} A float32x4 with .x and .y from t
+    * @param {Float64x2} t An instance of Float64x2.
+    * @return {Float32x4} A Float32x4 with .x and .y from t
     */
-  SIMD.float32x4.fromFloat64x2 = function(t) {
-    t = SIMD.float64x2.check(t);
-    return SIMD.float32x4(t.x, t.y, 0, 0);
+  SIMD.Float32x4.fromFloat64x2 = function(t) {
+    t = SIMD.Float64x2.check(t);
+    return SIMD.Float32x4(t.x, t.y, 0, 0);
   }
 }
 
-if (typeof SIMD.float32x4.fromInt32x4 === "undefined") {
+if (typeof SIMD.Float32x4.fromInt32x4 === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @return {float32x4} An integer to float conversion copy of t.
+    * @param {Int32x4} t An instance of Int32x4.
+    * @return {Float32x4} An integer to float conversion copy of t.
     */
-  SIMD.float32x4.fromInt32x4 = function(t) {
-    t = SIMD.int32x4.check(t);
-    return SIMD.float32x4(t.x, t.y, t.z, t.w);
+  SIMD.Float32x4.fromInt32x4 = function(t) {
+    t = SIMD.Int32x4.check(t);
+    return SIMD.Float32x4(t.x, t.y, t.z, t.w);
   }
 }
 
-if (typeof SIMD.float32x4.fromFloat64x2Bits === "undefined") {
+if (typeof SIMD.Float32x4.fromFloat64x2Bits === "undefined") {
   /**
-   * @param {float64x2} t An instance of float64x2.
-   * @return {float32x4} a bit-wise copy of t as a float32x4.
+   * @param {Float64x2} t An instance of Float64x2.
+   * @return {Float32x4} a bit-wise copy of t as a Float32x4.
    */
-  SIMD.float32x4.fromFloat64x2Bits = function(t) {
+  SIMD.Float32x4.fromFloat64x2Bits = function(t) {
     _SIMD_PRIVATE.saveFloat64x2(t);
     return _SIMD_PRIVATE.restoreFloat32x4();
   }
 }
 
-if (typeof SIMD.float32x4.fromInt32x4Bits === "undefined") {
+if (typeof SIMD.Float32x4.fromInt32x4Bits === "undefined") {
   /**
-   * @param {int32x4} t An instance of int32x4.
-   * @return {float32x4} a bit-wise copy of t as a float32x4.
+   * @param {Int32x4} t An instance of Int32x4.
+   * @return {Float32x4} a bit-wise copy of t as a Float32x4.
    */
-  SIMD.float32x4.fromInt32x4Bits = function(t) {
+  SIMD.Float32x4.fromInt32x4Bits = function(t) {
     _SIMD_PRIVATE.saveInt32x4(t);
     return _SIMD_PRIVATE.restoreFloat32x4();
   }
 }
 
-if (typeof SIMD.float32x4.fromInt16x8Bits === "undefined") {
+if (typeof SIMD.Float32x4.fromInt16x8Bits === "undefined") {
   /**
    * @param {int16x8} t An instance of int16x8.
-   * @return {float32x4} a bit-wise copy of t as a float32x4.
+   * @return {Float32x4} a bit-wise copy of t as a Float32x4.
    */
-  SIMD.float32x4.fromInt16x8Bits = function(t) {
+  SIMD.Float32x4.fromInt16x8Bits = function(t) {
     _SIMD_PRIVATE.saveInt16x8(t);
     return _SIMD_PRIVATE.restoreFloat32x4();
   }
 }
 
-if (typeof SIMD.float32x4.fromInt8x16Bits === "undefined") {
+if (typeof SIMD.Float32x4.fromInt8x16Bits === "undefined") {
   /**
    * @param {int8x16} t An instance of int8x16.
-   * @return {float32x4} a bit-wise copy of t as a float32x4.
+   * @return {Float32x4} a bit-wise copy of t as a Float32x4.
    */
-  SIMD.float32x4.fromInt8x16Bits = function(t) {
+  SIMD.Float32x4.fromInt8x16Bits = function(t) {
     _SIMD_PRIVATE.saveInt8x16(t);
     return _SIMD_PRIVATE.restoreFloat32x4();
   }
 }
 
-if (typeof SIMD.float64x2 === "undefined") {
+if (typeof SIMD.Float64x2 === "undefined") {
   /**
-    * Construct a new instance of float64x2 number.
+    * Construct a new instance of Float64x2 number.
     * @param {double} value used for x lane.
     * @param {double} value used for y lane.
     * @constructor
     */
-  SIMD.float64x2 = function(x, y) {
-    if (!(this instanceof SIMD.float64x2)) {
-      return new SIMD.float64x2(x, y);
+  SIMD.Float64x2 = function(x, y) {
+    if (!(this instanceof SIMD.Float64x2)) {
+      return new SIMD.Float64x2(x, y);
     }
 
     // Use unary + to force coercion to Number.
@@ -338,18 +338,18 @@ if (typeof SIMD.float64x2 === "undefined") {
     this.y_ = +y;
   }
 
-  Object.defineProperty(SIMD.float64x2.prototype, 'x', {
+  Object.defineProperty(SIMD.Float64x2.prototype, 'x', {
     get: function() { return this.x_; }
   });
 
-  Object.defineProperty(SIMD.float64x2.prototype, 'y', {
+  Object.defineProperty(SIMD.Float64x2.prototype, 'y', {
     get: function() { return this.y_; }
   });
 
   /**
     * Extract the sign bit from each lane return them in the first 2 bits.
     */
-  Object.defineProperty(SIMD.float64x2.prototype, 'signMask', {
+  Object.defineProperty(SIMD.Float64x2.prototype, 'signMask', {
     get: function() {
       var mx = (this.x < 0.0 || 1/this.x === -Infinity);
       var my = (this.y < 0.0 || 1/this.y === -Infinity);
@@ -358,110 +358,110 @@ if (typeof SIMD.float64x2 === "undefined") {
   });
 }
 
-if (typeof SIMD.float64x2.check === "undefined") {
+if (typeof SIMD.Float64x2.check === "undefined") {
   /**
-    * Check whether the argument is a float64x2.
-    * @param {float64x2} v An instance of float64x2.
-    * @return {float64x2} The float64x2 instance.
+    * Check whether the argument is a Float64x2.
+    * @param {Float64x2} v An instance of Float64x2.
+    * @return {Float64x2} The Float64x2 instance.
     */
-  SIMD.float64x2.check = function(v) {
-    if (!(v instanceof SIMD.float64x2)) {
-      throw new TypeError("argument is not a float64x2.");
+  SIMD.Float64x2.check = function(v) {
+    if (!(v instanceof SIMD.Float64x2)) {
+      throw new TypeError("argument is not a Float64x2.");
     }
     return v;
   }
 }
 
-if (typeof SIMD.float64x2.splat === "undefined") {
+if (typeof SIMD.Float64x2.splat === "undefined") {
   /**
-    * Construct a new instance of float64x2 number with the same value
+    * Construct a new instance of Float64x2 number with the same value
     * in all lanes.
     * @param {double} value used for all lanes.
     * @constructor
     */
-  SIMD.float64x2.splat = function(s) {
-    return SIMD.float64x2(s, s);
+  SIMD.Float64x2.splat = function(s) {
+    return SIMD.Float64x2(s, s);
   }
 }
 
-if (typeof SIMD.float64x2.fromFloat32x4 === "undefined") {
+if (typeof SIMD.Float64x2.fromFloat32x4 === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @return {float64x2} A float64x2 with .x and .y from t
+    * @param {Float32x4} t An instance of Float32x4.
+    * @return {Float64x2} A Float64x2 with .x and .y from t
     */
-  SIMD.float64x2.fromFloat32x4 = function(t) {
-    t = SIMD.float32x4.check(t);
-    return SIMD.float64x2(t.x, t.y);
+  SIMD.Float64x2.fromFloat32x4 = function(t) {
+    t = SIMD.Float32x4.check(t);
+    return SIMD.Float64x2(t.x, t.y);
   }
 }
 
-if (typeof SIMD.float64x2.fromInt32x4 === "undefined") {
+if (typeof SIMD.Float64x2.fromInt32x4 === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @return {float64x2} A float64x2 with .x and .y from t
+    * @param {Int32x4} t An instance of Int32x4.
+    * @return {Float64x2} A Float64x2 with .x and .y from t
     */
-  SIMD.float64x2.fromInt32x4 = function(t) {
-    t = SIMD.int32x4.check(t);
-    return SIMD.float64x2(t.x, t.y);
+  SIMD.Float64x2.fromInt32x4 = function(t) {
+    t = SIMD.Int32x4.check(t);
+    return SIMD.Float64x2(t.x, t.y);
   }
 }
 
-if (typeof SIMD.float64x2.fromFloat32x4Bits === "undefined") {
+if (typeof SIMD.Float64x2.fromFloat32x4Bits === "undefined") {
   /**
-   * @param {float32x4} t An instance of float32x4.
-   * @return {float64x2} a bit-wise copy of t as a float64x2.
+   * @param {Float32x4} t An instance of Float32x4.
+   * @return {Float64x2} a bit-wise copy of t as a Float64x2.
    */
-  SIMD.float64x2.fromFloat32x4Bits = function(t) {
+  SIMD.Float64x2.fromFloat32x4Bits = function(t) {
     _SIMD_PRIVATE.saveFloat32x4(t);
     return _SIMD_PRIVATE.restoreFloat64x2();
   }
 }
 
-if (typeof SIMD.float64x2.fromInt32x4Bits === "undefined") {
+if (typeof SIMD.Float64x2.fromInt32x4Bits === "undefined") {
   /**
-   * @param {int32x4} t An instance of int32x4.
-   * @return {float64x2} a bit-wise copy of t as a float64x2.
+   * @param {Int32x4} t An instance of Int32x4.
+   * @return {Float64x2} a bit-wise copy of t as a Float64x2.
    */
-  SIMD.float64x2.fromInt32x4Bits = function(t) {
+  SIMD.Float64x2.fromInt32x4Bits = function(t) {
     _SIMD_PRIVATE.saveInt32x4(t);
     return _SIMD_PRIVATE.restoreFloat64x2();
   }
 }
 
-if (typeof SIMD.float64x2.fromInt16x8Bits === "undefined") {
+if (typeof SIMD.Float64x2.fromInt16x8Bits === "undefined") {
   /**
    * @param {int16x8} t An instance of int16x8.
-   * @return {float64x2} a bit-wise copy of t as a float64x2.
+   * @return {Float64x2} a bit-wise copy of t as a Float64x2.
    */
-  SIMD.float64x2.fromInt16x8Bits = function(t) {
+  SIMD.Float64x2.fromInt16x8Bits = function(t) {
     _SIMD_PRIVATE.saveInt16x8(t);
     return _SIMD_PRIVATE.restoreFloat64x2();
   }
 }
 
-if (typeof SIMD.float64x2.fromInt8x16Bits === "undefined") {
+if (typeof SIMD.Float64x2.fromInt8x16Bits === "undefined") {
   /**
    * @param {int8x16} t An instance of int8x16.
-   * @return {float64x2} a bit-wise copy of t as a float64x2.
+   * @return {Float64x2} a bit-wise copy of t as a Float64x2.
    */
-  SIMD.float64x2.fromInt8x16Bits = function(t) {
+  SIMD.Float64x2.fromInt8x16Bits = function(t) {
     _SIMD_PRIVATE.saveInt8x16(t);
     return _SIMD_PRIVATE.restoreFloat64x2();
   }
 }
 
-if (typeof SIMD.int32x4 === "undefined") {
+if (typeof SIMD.Int32x4 === "undefined") {
   /**
-    * Construct a new instance of int32x4 number.
+    * Construct a new instance of Int32x4 number.
     * @param {integer} 32-bit value used for x lane.
     * @param {integer} 32-bit value used for y lane.
     * @param {integer} 32-bit value used for z lane.
     * @param {integer} 32-bit value used for w lane.
     * @constructor
     */
-  SIMD.int32x4 = function(x, y, z, w) {
-    if (!(this instanceof SIMD.int32x4)) {
-      return new SIMD.int32x4(x, y, z, w);
+  SIMD.Int32x4 = function(x, y, z, w) {
+    if (!(this instanceof SIMD.Int32x4)) {
+      return new SIMD.Int32x4(x, y, z, w);
     }
 
     this.x_ = x|0;
@@ -470,42 +470,42 @@ if (typeof SIMD.int32x4 === "undefined") {
     this.w_ = w|0;
   }
 
-  Object.defineProperty(SIMD.int32x4.prototype, 'x', {
+  Object.defineProperty(SIMD.Int32x4.prototype, 'x', {
     get: function() { return this.x_; }
   });
 
-  Object.defineProperty(SIMD.int32x4.prototype, 'y', {
+  Object.defineProperty(SIMD.Int32x4.prototype, 'y', {
     get: function() { return this.y_; }
   });
 
-  Object.defineProperty(SIMD.int32x4.prototype, 'z', {
+  Object.defineProperty(SIMD.Int32x4.prototype, 'z', {
     get: function() { return this.z_; }
   });
 
-  Object.defineProperty(SIMD.int32x4.prototype, 'w', {
+  Object.defineProperty(SIMD.Int32x4.prototype, 'w', {
     get: function() { return this.w_; }
   });
 
-  Object.defineProperty(SIMD.int32x4.prototype, 'flagX', {
+  Object.defineProperty(SIMD.Int32x4.prototype, 'flagX', {
     get: function() { return _SIMD_PRIVATE.tobool(this.x); }
   });
 
-  Object.defineProperty(SIMD.int32x4.prototype, 'flagY', {
+  Object.defineProperty(SIMD.Int32x4.prototype, 'flagY', {
     get: function() { return _SIMD_PRIVATE.tobool(this.y); }
   });
 
-  Object.defineProperty(SIMD.int32x4.prototype, 'flagZ', {
+  Object.defineProperty(SIMD.Int32x4.prototype, 'flagZ', {
     get: function() { return _SIMD_PRIVATE.tobool(this.z); }
   });
 
-  Object.defineProperty(SIMD.int32x4.prototype, 'flagW', {
+  Object.defineProperty(SIMD.Int32x4.prototype, 'flagW', {
     get: function() { return _SIMD_PRIVATE.tobool(this.w); }
   });
 
   /**
     * Extract the sign bit from each lane return them in the first 4 bits.
     */
-  Object.defineProperty(SIMD.int32x4.prototype, 'signMask', {
+  Object.defineProperty(SIMD.Int32x4.prototype, 'signMask', {
     get: function() {
       var mx = _SIMD_PRIVATE.tobool(this.x);
       var my = _SIMD_PRIVATE.tobool(this.y);
@@ -516,23 +516,23 @@ if (typeof SIMD.int32x4 === "undefined") {
   });
 }
 
-if (typeof SIMD.int32x4.check === "undefined") {
+if (typeof SIMD.Int32x4.check === "undefined") {
   /**
-    * Check whether the argument is a int32x4.
-    * @param {int32x4} v An instance of int32x4.
-    * @return {int32x4} The int32x4 instance.
+    * Check whether the argument is a Int32x4.
+    * @param {Int32x4} v An instance of Int32x4.
+    * @return {Int32x4} The Int32x4 instance.
     */
-  SIMD.int32x4.check = function(v) {
-    if (!(v instanceof SIMD.int32x4)) {
-      throw new TypeError("argument is not a int32x4.");
+  SIMD.Int32x4.check = function(v) {
+    if (!(v instanceof SIMD.Int32x4)) {
+      throw new TypeError("argument is not a Int32x4.");
     }
     return v;
   }
 }
 
-if (typeof SIMD.int32x4.bool === "undefined") {
+if (typeof SIMD.Int32x4.bool === "undefined") {
   /**
-    * Construct a new instance of int32x4 number with either true or false in each
+    * Construct a new instance of Int32x4 number with either true or false in each
     * lane, depending on the truth values in x, y, z, and w.
     * @param {boolean} flag used for x lane.
     * @param {boolean} flag used for y lane.
@@ -540,87 +540,87 @@ if (typeof SIMD.int32x4.bool === "undefined") {
     * @param {boolean} flag used for w lane.
     * @constructor
     */
-  SIMD.int32x4.bool = function(x, y, z, w) {
-    return SIMD.int32x4(_SIMD_PRIVATE.frombool(x),
+  SIMD.Int32x4.bool = function(x, y, z, w) {
+    return SIMD.Int32x4(_SIMD_PRIVATE.frombool(x),
                         _SIMD_PRIVATE.frombool(y),
                         _SIMD_PRIVATE.frombool(z),
                         _SIMD_PRIVATE.frombool(w));
   }
 }
 
-if (typeof SIMD.int32x4.splat === "undefined") {
+if (typeof SIMD.Int32x4.splat === "undefined") {
   /**
-    * Construct a new instance of int32x4 number with the same value
+    * Construct a new instance of Int32x4 number with the same value
     * in all lanes.
     * @param {integer} value used for all lanes.
     * @constructor
     */
-  SIMD.int32x4.splat = function(s) {
-    return SIMD.int32x4(s, s, s, s);
+  SIMD.Int32x4.splat = function(s) {
+    return SIMD.Int32x4(s, s, s, s);
   }
 }
 
-if (typeof SIMD.int32x4.fromFloat32x4 === "undefined") {
+if (typeof SIMD.Int32x4.fromFloat32x4 === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @return {int32x4} with a integer to float conversion of t.
+    * @param {Float32x4} t An instance of Float32x4.
+    * @return {Int32x4} with a integer to float conversion of t.
     */
-  SIMD.int32x4.fromFloat32x4 = function(t) {
-    t = SIMD.float32x4.check(t);
-    return SIMD.int32x4(t.x, t.y, t.z, t.w);
+  SIMD.Int32x4.fromFloat32x4 = function(t) {
+    t = SIMD.Float32x4.check(t);
+    return SIMD.Int32x4(t.x, t.y, t.z, t.w);
   }
 }
 
-if (typeof SIMD.int32x4.fromFloat64x2 === "undefined") {
+if (typeof SIMD.Int32x4.fromFloat64x2 === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @return {int32x4}  An int32x4 with .x and .y from t
+    * @param {Float64x2} t An instance of Float64x2.
+    * @return {Int32x4}  An Int32x4 with .x and .y from t
     */
-  SIMD.int32x4.fromFloat64x2 = function(t) {
-    t = SIMD.float64x2.check(t);
-    return SIMD.int32x4(t.x, t.y, 0, 0);
+  SIMD.Int32x4.fromFloat64x2 = function(t) {
+    t = SIMD.Float64x2.check(t);
+    return SIMD.Int32x4(t.x, t.y, 0, 0);
   }
 }
 
-if (typeof SIMD.int32x4.fromFloat32x4Bits === "undefined") {
+if (typeof SIMD.Int32x4.fromFloat32x4Bits === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @return {int32x4} a bit-wise copy of t as a int32x4.
+    * @param {Float32x4} t An instance of Float32x4.
+    * @return {Int32x4} a bit-wise copy of t as a Int32x4.
     */
-  SIMD.int32x4.fromFloat32x4Bits = function(t) {
+  SIMD.Int32x4.fromFloat32x4Bits = function(t) {
     _SIMD_PRIVATE.saveFloat32x4(t);
     return _SIMD_PRIVATE.restoreInt32x4();
   }
 }
 
-if (typeof SIMD.int32x4.fromFloat64x2Bits === "undefined") {
+if (typeof SIMD.Int32x4.fromFloat64x2Bits === "undefined") {
   /**
-   * @param {float64x2} t An instance of float64x2.
-   * @return {int32x4} a bit-wise copy of t as an int32x4.
+   * @param {Float64x2} t An instance of Float64x2.
+   * @return {Int32x4} a bit-wise copy of t as an Int32x4.
    */
-  SIMD.int32x4.fromFloat64x2Bits = function(t) {
+  SIMD.Int32x4.fromFloat64x2Bits = function(t) {
     _SIMD_PRIVATE.saveFloat64x2(t);
     return _SIMD_PRIVATE.restoreInt32x4();
   }
 }
 
-if (typeof SIMD.int32x4.fromInt16x8Bits === "undefined") {
+if (typeof SIMD.Int32x4.fromInt16x8Bits === "undefined") {
   /**
     * @param {int16x8} t An instance of int16x8.
-    * @return {int32x4} a bit-wise copy of t as a int32x4.
+    * @return {Int32x4} a bit-wise copy of t as a Int32x4.
     */
-  SIMD.int32x4.fromInt16x8Bits = function(t) {
+  SIMD.Int32x4.fromInt16x8Bits = function(t) {
     _SIMD_PRIVATE.saveInt16x8(t);
     return _SIMD_PRIVATE.restoreInt32x4();
   }
 }
 
-if (typeof SIMD.int32x4.fromInt8x16Bits === "undefined") {
+if (typeof SIMD.Int32x4.fromInt8x16Bits === "undefined") {
   /**
     * @param {int8x16} t An instance of int8x16.
-    * @return {int32x4} a bit-wise copy of t as a int32x4.
+    * @return {Int32x4} a bit-wise copy of t as a Int32x4.
     */
-  SIMD.int32x4.fromInt8x16Bits = function(t) {
+  SIMD.Int32x4.fromInt8x16Bits = function(t) {
     _SIMD_PRIVATE.saveInt8x16(t);
     return _SIMD_PRIVATE.restoreInt32x4();
   }
@@ -759,7 +759,7 @@ if (typeof SIMD.int16x8.splat === "undefined") {
 
 if (typeof SIMD.int16x8.fromFloat32x4Bits === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
+    * @param {Float32x4} t An instance of Float32x4.
     * @return {int16x8} a bit-wise copy of t as a int16x8.
     */
   SIMD.int16x8.fromFloat32x4Bits = function(t) {
@@ -770,7 +770,7 @@ if (typeof SIMD.int16x8.fromFloat32x4Bits === "undefined") {
 
 if (typeof SIMD.int16x8.fromFloat64x2Bits === "undefined") {
   /**
-   * @param {float64x2} t An instance of float64x2.
+   * @param {Float64x2} t An instance of Float64x2.
    * @return {int16x8} a bit-wise copy of t as an int16x8.
    */
   SIMD.int16x8.fromFloat64x2Bits = function(t) {
@@ -781,7 +781,7 @@ if (typeof SIMD.int16x8.fromFloat64x2Bits === "undefined") {
 
 if (typeof SIMD.int16x8.fromInt32x4Bits === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
+    * @param {Int32x4} t An instance of Int32x4.
     * @return {int16x8} a bit-wise copy of t as a int16x8.
     */
   SIMD.int16x8.fromInt32x4Bits = function(t) {
@@ -1013,7 +1013,7 @@ if (typeof SIMD.int8x16.splat === "undefined") {
 
 if (typeof SIMD.int8x16.fromFloat32x4Bits === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
+    * @param {Float32x4} t An instance of Float32x4.
     * @return {int8x16} a bit-wise copy of t as a int8x16.
     */
   SIMD.int8x16.fromFloat32x4Bits = function(t) {
@@ -1024,7 +1024,7 @@ if (typeof SIMD.int8x16.fromFloat32x4Bits === "undefined") {
 
 if (typeof SIMD.int8x16.fromFloat64x2Bits === "undefined") {
   /**
-   * @param {float64x2} t An instance of float64x2.
+   * @param {Float64x2} t An instance of Float64x2.
    * @return {int8x16} a bit-wise copy of t as an int8x16.
    */
   SIMD.int8x16.fromFloat64x2Bits = function(t) {
@@ -1035,7 +1035,7 @@ if (typeof SIMD.int8x16.fromFloat64x2Bits === "undefined") {
 
 if (typeof SIMD.int8x16.fromInt32x4Bits === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
+    * @param {Int32x4} t An instance of Int32x4.
     * @return {int8x16} a bit-wise copy of t as a int8x16.
     */
   SIMD.int8x16.fromInt32x4Bits = function(t) {
@@ -1055,95 +1055,95 @@ if (typeof SIMD.int8x16.fromInt16x8Bits === "undefined") {
   }
 }
 
-if (typeof SIMD.float32x4.abs === "undefined") {
+if (typeof SIMD.Float32x4.abs === "undefined") {
   /**
-   * @param {float32x4} t An instance of float32x4.
-   * @return {float32x4} New instance of float32x4 with absolute values of
+   * @param {Float32x4} t An instance of Float32x4.
+   * @return {Float32x4} New instance of Float32x4 with absolute values of
    * t.
    */
-  SIMD.float32x4.abs = function(t) {
-    t = SIMD.float32x4.check(t);
-    return SIMD.float32x4(Math.abs(t.x), Math.abs(t.y), Math.abs(t.z),
+  SIMD.Float32x4.abs = function(t) {
+    t = SIMD.Float32x4.check(t);
+    return SIMD.Float32x4(Math.abs(t.x), Math.abs(t.y), Math.abs(t.z),
                           Math.abs(t.w));
   }
 }
 
-if (typeof SIMD.float32x4.neg === "undefined") {
+if (typeof SIMD.Float32x4.neg === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with negated values of
+    * @param {Float32x4} t An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with negated values of
     * t.
     */
-  SIMD.float32x4.neg = function(t) {
-    t = SIMD.float32x4.check(t);
-    return SIMD.float32x4(-t.x, -t.y, -t.z, -t.w);
+  SIMD.Float32x4.neg = function(t) {
+    t = SIMD.Float32x4.check(t);
+    return SIMD.Float32x4(-t.x, -t.y, -t.z, -t.w);
   }
 }
 
-if (typeof SIMD.float32x4.add === "undefined") {
+if (typeof SIMD.Float32x4.add === "undefined") {
   /**
-    * @param {float32x4} a An instance of float32x4.
-    * @param {float32x4} b An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with a + b.
+    * @param {Float32x4} a An instance of Float32x4.
+    * @param {Float32x4} b An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with a + b.
     */
-  SIMD.float32x4.add = function(a, b) {
-    a = SIMD.float32x4.check(a);
-    b = SIMD.float32x4.check(b);
-    return SIMD.float32x4(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
+  SIMD.Float32x4.add = function(a, b) {
+    a = SIMD.Float32x4.check(a);
+    b = SIMD.Float32x4.check(b);
+    return SIMD.Float32x4(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
   }
 }
 
-if (typeof SIMD.float32x4.sub === "undefined") {
+if (typeof SIMD.Float32x4.sub === "undefined") {
   /**
-    * @param {float32x4} a An instance of float32x4.
-    * @param {float32x4} b An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with a - b.
+    * @param {Float32x4} a An instance of Float32x4.
+    * @param {Float32x4} b An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with a - b.
     */
-  SIMD.float32x4.sub = function(a, b) {
-    a = SIMD.float32x4.check(a);
-    b = SIMD.float32x4.check(b);
-    return SIMD.float32x4(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
+  SIMD.Float32x4.sub = function(a, b) {
+    a = SIMD.Float32x4.check(a);
+    b = SIMD.Float32x4.check(b);
+    return SIMD.Float32x4(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
   }
 }
 
-if (typeof SIMD.float32x4.mul === "undefined") {
+if (typeof SIMD.Float32x4.mul === "undefined") {
   /**
-    * @param {float32x4} a An instance of float32x4.
-    * @param {float32x4} b An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with a * b.
+    * @param {Float32x4} a An instance of Float32x4.
+    * @param {Float32x4} b An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with a * b.
     */
-  SIMD.float32x4.mul = function(a, b) {
-    a = SIMD.float32x4.check(a);
-    b = SIMD.float32x4.check(b);
-    return SIMD.float32x4(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
+  SIMD.Float32x4.mul = function(a, b) {
+    a = SIMD.Float32x4.check(a);
+    b = SIMD.Float32x4.check(b);
+    return SIMD.Float32x4(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
   }
 }
 
-if (typeof SIMD.float32x4.div === "undefined") {
+if (typeof SIMD.Float32x4.div === "undefined") {
   /**
-    * @param {float32x4} a An instance of float32x4.
-    * @param {float32x4} b An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with a / b.
+    * @param {Float32x4} a An instance of Float32x4.
+    * @param {Float32x4} b An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with a / b.
     */
-  SIMD.float32x4.div = function(a, b) {
-    a = SIMD.float32x4.check(a);
-    b = SIMD.float32x4.check(b);
-    return SIMD.float32x4(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w);
+  SIMD.Float32x4.div = function(a, b) {
+    a = SIMD.Float32x4.check(a);
+    b = SIMD.Float32x4.check(b);
+    return SIMD.Float32x4(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w);
   }
 }
 
-if (typeof SIMD.float32x4.clamp === "undefined") {
+if (typeof SIMD.Float32x4.clamp === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} lowerLimit An instance of float32x4.
-    * @param {float32x4} upperLimit An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with t's values clamped
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} lowerLimit An instance of Float32x4.
+    * @param {Float32x4} upperLimit An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with t's values clamped
     * between lowerLimit and upperLimit.
     */
-  SIMD.float32x4.clamp = function(t, lowerLimit, upperLimit) {
-    t = SIMD.float32x4.check(t);
-    lowerLimit = SIMD.float32x4.check(lowerLimit);
-    upperLimit = SIMD.float32x4.check(upperLimit);
+  SIMD.Float32x4.clamp = function(t, lowerLimit, upperLimit) {
+    t = SIMD.Float32x4.check(t);
+    lowerLimit = SIMD.Float32x4.check(lowerLimit);
+    upperLimit = SIMD.Float32x4.check(upperLimit);
     var cx = t.x < lowerLimit.x ? lowerLimit.x : t.x;
     var cy = t.y < lowerLimit.y ? lowerLimit.y : t.y;
     var cz = t.z < lowerLimit.z ? lowerLimit.z : t.z;
@@ -1152,153 +1152,153 @@ if (typeof SIMD.float32x4.clamp === "undefined") {
     cy = cy > upperLimit.y ? upperLimit.y : cy;
     cz = cz > upperLimit.z ? upperLimit.z : cz;
     cw = cw > upperLimit.w ? upperLimit.w : cw;
-    return SIMD.float32x4(cx, cy, cz, cw);
+    return SIMD.Float32x4(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.min === "undefined") {
+if (typeof SIMD.Float32x4.min === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with the minimum value of
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with the minimum value of
     * t and other.
     */
-  SIMD.float32x4.min = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.min = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = Math.min(t.x, other.x);
     var cy = Math.min(t.y, other.y);
     var cz = Math.min(t.z, other.z);
     var cw = Math.min(t.w, other.w);
-    return SIMD.float32x4(cx, cy, cz, cw);
+    return SIMD.Float32x4(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.max === "undefined") {
+if (typeof SIMD.Float32x4.max === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with the maximum value of
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with the maximum value of
     * t and other.
     */
-  SIMD.float32x4.max = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.max = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = Math.max(t.x, other.x);
     var cy = Math.max(t.y, other.y);
     var cz = Math.max(t.z, other.z);
     var cw = Math.max(t.w, other.w);
-    return SIMD.float32x4(cx, cy, cz, cw);
+    return SIMD.Float32x4(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.minNum === "undefined") {
+if (typeof SIMD.Float32x4.minNum === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with the minimum value of
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with the minimum value of
     * t and other, preferring numbers over NaNs.
     */
-  SIMD.float32x4.minNum = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.minNum = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = _SIMD_PRIVATE.minNum(t.x, other.x);
     var cy = _SIMD_PRIVATE.minNum(t.y, other.y);
     var cz = _SIMD_PRIVATE.minNum(t.z, other.z);
     var cw = _SIMD_PRIVATE.minNum(t.w, other.w);
-    return SIMD.float32x4(cx, cy, cz, cw);
+    return SIMD.Float32x4(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.maxNum === "undefined") {
+if (typeof SIMD.Float32x4.maxNum === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with the maximum value of
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with the maximum value of
     * t and other, preferring numbers over NaNs.
     */
-  SIMD.float32x4.maxNum = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.maxNum = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = _SIMD_PRIVATE.maxNum(t.x, other.x);
     var cy = _SIMD_PRIVATE.maxNum(t.y, other.y);
     var cz = _SIMD_PRIVATE.maxNum(t.z, other.z);
     var cw = _SIMD_PRIVATE.maxNum(t.w, other.w);
-    return SIMD.float32x4(cx, cy, cz, cw);
+    return SIMD.Float32x4(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.reciprocal === "undefined") {
+if (typeof SIMD.Float32x4.reciprocal === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with reciprocal value of
+    * @param {Float32x4} t An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with reciprocal value of
     * t.
     */
-  SIMD.float32x4.reciprocal = function(t) {
-    t = SIMD.float32x4.check(t);
-    return SIMD.float32x4(1.0 / t.x, 1.0 / t.y, 1.0 / t.z, 1.0 / t.w);
+  SIMD.Float32x4.reciprocal = function(t) {
+    t = SIMD.Float32x4.check(t);
+    return SIMD.Float32x4(1.0 / t.x, 1.0 / t.y, 1.0 / t.z, 1.0 / t.w);
   }
 }
 
-if (typeof SIMD.float32x4.reciprocalSqrt === "undefined") {
+if (typeof SIMD.Float32x4.reciprocalSqrt === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with square root of the
+    * @param {Float32x4} t An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with square root of the
     * reciprocal value of t.
     */
-  SIMD.float32x4.reciprocalSqrt = function(t) {
-    t = SIMD.float32x4.check(t);
-    return SIMD.float32x4(Math.sqrt(1.0 / t.x), Math.sqrt(1.0 / t.y),
+  SIMD.Float32x4.reciprocalSqrt = function(t) {
+    t = SIMD.Float32x4.check(t);
+    return SIMD.Float32x4(Math.sqrt(1.0 / t.x), Math.sqrt(1.0 / t.y),
                           Math.sqrt(1.0 / t.z), Math.sqrt(1.0 / t.w));
   }
 }
 
-if (typeof SIMD.float32x4.sqrt === "undefined") {
+if (typeof SIMD.Float32x4.sqrt === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with square root of
+    * @param {Float32x4} t An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with square root of
     * values of t.
     */
-  SIMD.float32x4.sqrt = function(t) {
-    t = SIMD.float32x4.check(t);
-    return SIMD.float32x4(Math.sqrt(t.x), Math.sqrt(t.y),
+  SIMD.Float32x4.sqrt = function(t) {
+    t = SIMD.Float32x4.check(t);
+    return SIMD.Float32x4(Math.sqrt(t.x), Math.sqrt(t.y),
                           Math.sqrt(t.z), Math.sqrt(t.w));
   }
 }
 
-if (typeof SIMD.float32x4.swizzle === "undefined") {
+if (typeof SIMD.Float32x4.swizzle === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4 to be swizzled.
+    * @param {Float32x4} t An instance of Float32x4 to be swizzled.
     * @param {integer} x - Index in t for lane x
     * @param {integer} y - Index in t for lane y
     * @param {integer} z - Index in t for lane z
     * @param {integer} w - Index in t for lane w
-    * @return {float32x4} New instance of float32x4 with lanes swizzled.
+    * @return {Float32x4} New instance of Float32x4 with lanes swizzled.
     */
-  SIMD.float32x4.swizzle = function(t, x, y, z, w) {
-    t = SIMD.float32x4.check(t);
+  SIMD.Float32x4.swizzle = function(t, x, y, z, w) {
+    t = SIMD.Float32x4.check(t);
     _SIMD_PRIVATE._f32x4[0] = t.x;
     _SIMD_PRIVATE._f32x4[1] = t.y;
     _SIMD_PRIVATE._f32x4[2] = t.z;
     _SIMD_PRIVATE._f32x4[3] = t.w;
     var storage = _SIMD_PRIVATE._f32x4;
-    return SIMD.float32x4(storage[x], storage[y], storage[z], storage[w]);
+    return SIMD.Float32x4(storage[x], storage[y], storage[z], storage[w]);
   }
 }
 
-if (typeof SIMD.float32x4.shuffle === "undefined") {
+if (typeof SIMD.Float32x4.shuffle === "undefined") {
   /**
-    * @param {float32x4} t1 An instance of float32x4 to be shuffled.
-    * @param {float32x4} t2 An instance of float32x4 to be shuffled.
+    * @param {Float32x4} t1 An instance of Float32x4 to be shuffled.
+    * @param {Float32x4} t2 An instance of Float32x4 to be shuffled.
     * @param {integer} x - Index in concatenation of t1 and t2 for lane x
     * @param {integer} y - Index in concatenation of t1 and t2 for lane y
     * @param {integer} z - Index in concatenation of t1 and t2 for lane z
     * @param {integer} w - Index in concatenation of t1 and t2 for lane w
-    * @return {float32x4} New instance of float32x4 with lanes shuffled.
+    * @return {Float32x4} New instance of Float32x4 with lanes shuffled.
     */
-  SIMD.float32x4.shuffle = function(t1, t2, x, y, z, w) {
-    t1 = SIMD.float32x4.check(t1);
-    t2 = SIMD.float32x4.check(t2);
+  SIMD.Float32x4.shuffle = function(t1, t2, x, y, z, w) {
+    t1 = SIMD.Float32x4.check(t1);
+    t2 = SIMD.Float32x4.check(t2);
     var storage = _SIMD_PRIVATE._f32x8;
     storage[0] = t1.x;
     storage[1] = t1.y;
@@ -1308,277 +1308,277 @@ if (typeof SIMD.float32x4.shuffle === "undefined") {
     storage[5] = t2.y;
     storage[6] = t2.z;
     storage[7] = t2.w;
-    return SIMD.float32x4(storage[x], storage[y], storage[z], storage[w]);
+    return SIMD.Float32x4(storage[x], storage[y], storage[z], storage[w]);
   }
 }
 
-if (typeof SIMD.float32x4.withX === "undefined") {
+if (typeof SIMD.Float32x4.withX === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
+    * @param {Float32x4} t An instance of Float32x4.
     * @param {double} value used for x lane.
-    * @return {float32x4} New instance of float32x4 with the values in t and
+    * @return {Float32x4} New instance of Float32x4 with the values in t and
     * x replaced with {x}.
     */
-  SIMD.float32x4.withX = function(t, x) {
-    t = SIMD.float32x4(t);
-    return SIMD.float32x4(x, t.y, t.z, t.w);
+  SIMD.Float32x4.withX = function(t, x) {
+    t = SIMD.Float32x4(t);
+    return SIMD.Float32x4(x, t.y, t.z, t.w);
   }
 }
 
-if (typeof SIMD.float32x4.withY === "undefined") {
+if (typeof SIMD.Float32x4.withY === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
+    * @param {Float32x4} t An instance of Float32x4.
     * @param {double} value used for y lane.
-    * @return {float32x4} New instance of float32x4 with the values in t and
+    * @return {Float32x4} New instance of Float32x4 with the values in t and
     * y replaced with {y}.
     */
-  SIMD.float32x4.withY = function(t, y) {
-    t = SIMD.float32x4(t);
-    return SIMD.float32x4(t.x, y, t.z, t.w);
+  SIMD.Float32x4.withY = function(t, y) {
+    t = SIMD.Float32x4(t);
+    return SIMD.Float32x4(t.x, y, t.z, t.w);
   }
 }
 
-if (typeof SIMD.float32x4.withZ === "undefined") {
+if (typeof SIMD.Float32x4.withZ === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
+    * @param {Float32x4} t An instance of Float32x4.
     * @param {double} value used for z lane.
-    * @return {float32x4} New instance of float32x4 with the values in t and
+    * @return {Float32x4} New instance of Float32x4 with the values in t and
     * z replaced with {z}.
     */
-  SIMD.float32x4.withZ = function(t, z) {
-    t = SIMD.float32x4(t);
-    return SIMD.float32x4(t.x, t.y, z, t.w);
+  SIMD.Float32x4.withZ = function(t, z) {
+    t = SIMD.Float32x4(t);
+    return SIMD.Float32x4(t.x, t.y, z, t.w);
   }
 }
 
-if (typeof SIMD.float32x4.withW === "undefined") {
+if (typeof SIMD.Float32x4.withW === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
+    * @param {Float32x4} t An instance of Float32x4.
     * @param {double} value used for w lane.
-    * @return {float32x4} New instance of float32x4 with the values in t and
+    * @return {Float32x4} New instance of Float32x4 with the values in t and
     * w replaced with {w}.
     */
-  SIMD.float32x4.withW = function(t, w) {
-    t = SIMD.float32x4(t);
-    return SIMD.float32x4(t.x, t.y, t.z, w);
+  SIMD.Float32x4.withW = function(t, w) {
+    t = SIMD.Float32x4(t);
+    return SIMD.Float32x4(t.x, t.y, t.z, w);
   }
 }
 
-if (typeof SIMD.float32x4.lessThan === "undefined") {
+if (typeof SIMD.Float32x4.lessThan === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t < other.
     */
-  SIMD.float32x4.lessThan = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.lessThan = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = t.x < other.x;
     var cy = t.y < other.y;
     var cz = t.z < other.z;
     var cw = t.w < other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.lessThanOrEqual === "undefined") {
+if (typeof SIMD.Float32x4.lessThanOrEqual === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t <= other.
     */
-  SIMD.float32x4.lessThanOrEqual = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.lessThanOrEqual = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = t.x <= other.x;
     var cy = t.y <= other.y;
     var cz = t.z <= other.z;
     var cw = t.w <= other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.equal === "undefined") {
+if (typeof SIMD.Float32x4.equal === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t == other.
     */
-  SIMD.float32x4.equal = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.equal = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = t.x == other.x;
     var cy = t.y == other.y;
     var cz = t.z == other.z;
     var cw = t.w == other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.notEqual === "undefined") {
+if (typeof SIMD.Float32x4.notEqual === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t != other.
     */
-  SIMD.float32x4.notEqual = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.notEqual = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = t.x != other.x;
     var cy = t.y != other.y;
     var cz = t.z != other.z;
     var cw = t.w != other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.greaterThanOrEqual === "undefined") {
+if (typeof SIMD.Float32x4.greaterThanOrEqual === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t >= other.
     */
-  SIMD.float32x4.greaterThanOrEqual = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.greaterThanOrEqual = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = t.x >= other.x;
     var cy = t.y >= other.y;
     var cz = t.z >= other.z;
     var cw = t.w >= other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.greaterThan === "undefined") {
+if (typeof SIMD.Float32x4.greaterThan === "undefined") {
   /**
-    * @param {float32x4} t An instance of float32x4.
-    * @param {float32x4} other An instance of float32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float32x4} t An instance of Float32x4.
+    * @param {Float32x4} other An instance of Float32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t > other.
     */
-  SIMD.float32x4.greaterThan = function(t, other) {
-    t = SIMD.float32x4.check(t);
-    other = SIMD.float32x4.check(other);
+  SIMD.Float32x4.greaterThan = function(t, other) {
+    t = SIMD.Float32x4.check(t);
+    other = SIMD.Float32x4.check(other);
     var cx = t.x > other.x;
     var cy = t.y > other.y;
     var cz = t.z > other.z;
     var cw = t.w > other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.float32x4.select === "undefined") {
+if (typeof SIMD.Float32x4.select === "undefined") {
   /**
-    * @param {int32x4} t Selector mask. An instance of int32x4
-    * @param {float32x4} trueValue Pick lane from here if corresponding
+    * @param {Int32x4} t Selector mask. An instance of Int32x4
+    * @param {Float32x4} trueValue Pick lane from here if corresponding
     * selector lane is true
-    * @param {float32x4} falseValue Pick lane from here if corresponding
+    * @param {Float32x4} falseValue Pick lane from here if corresponding
     * selector lane is false
-    * @return {float32x4} Mix of lanes from trueValue or falseValue as
+    * @return {Float32x4} Mix of lanes from trueValue or falseValue as
     * indicated
     */
-  SIMD.float32x4.select = function(t, trueValue, falseValue) {
-    t = SIMD.int32x4.check(t);
-    trueValue = SIMD.float32x4.check(trueValue);
-    falseValue = SIMD.float32x4.check(falseValue);
-    return SIMD.float32x4(_SIMD_PRIVATE.tobool(t.x) ? trueValue.x : falseValue.x,
+  SIMD.Float32x4.select = function(t, trueValue, falseValue) {
+    t = SIMD.Int32x4.check(t);
+    trueValue = SIMD.Float32x4.check(trueValue);
+    falseValue = SIMD.Float32x4.check(falseValue);
+    return SIMD.Float32x4(_SIMD_PRIVATE.tobool(t.x) ? trueValue.x : falseValue.x,
                           _SIMD_PRIVATE.tobool(t.y) ? trueValue.y : falseValue.y,
                           _SIMD_PRIVATE.tobool(t.z) ? trueValue.z : falseValue.z,
                           _SIMD_PRIVATE.tobool(t.w) ? trueValue.w : falseValue.w);
   }
 }
 
-if (typeof SIMD.float32x4.bitselect === "undefined") {
+if (typeof SIMD.Float32x4.bitselect === "undefined") {
   /**
-    * @param {int32x4} t Selector mask. An instance of int32x4
-    * @param {float32x4} trueValue Pick bit from here if corresponding
+    * @param {Int32x4} t Selector mask. An instance of Int32x4
+    * @param {Float32x4} trueValue Pick bit from here if corresponding
     * selector bit is 1
-    * @param {float32x4} falseValue Pick bit from here if corresponding
+    * @param {Float32x4} falseValue Pick bit from here if corresponding
     * selector bit is 0
-    * @return {float32x4} Mix of bits from trueValue or falseValue as
+    * @return {Float32x4} Mix of bits from trueValue or falseValue as
     * indicated
     */
-  SIMD.float32x4.bitselect = function(t, trueValue, falseValue) {
-    t = SIMD.int32x4.check(t);
-    trueValue = SIMD.float32x4.check(trueValue);
-    falseValue = SIMD.float32x4.check(falseValue);
-    var tv = SIMD.int32x4.fromFloat32x4Bits(trueValue);
-    var fv = SIMD.int32x4.fromFloat32x4Bits(falseValue);
-    var tr = SIMD.int32x4.and(t, tv);
-    var fr = SIMD.int32x4.and(SIMD.int32x4.not(t), fv);
-    return SIMD.float32x4.fromInt32x4Bits(SIMD.int32x4.or(tr, fr));
+  SIMD.Float32x4.bitselect = function(t, trueValue, falseValue) {
+    t = SIMD.Int32x4.check(t);
+    trueValue = SIMD.Float32x4.check(trueValue);
+    falseValue = SIMD.Float32x4.check(falseValue);
+    var tv = SIMD.Int32x4.fromFloat32x4Bits(trueValue);
+    var fv = SIMD.Int32x4.fromFloat32x4Bits(falseValue);
+    var tr = SIMD.Int32x4.and(t, tv);
+    var fr = SIMD.Int32x4.and(SIMD.Int32x4.not(t), fv);
+    return SIMD.Float32x4.fromInt32x4Bits(SIMD.Int32x4.or(tr, fr));
   }
 }
 
-if (typeof SIMD.float32x4.and === "undefined") {
+if (typeof SIMD.Float32x4.and === "undefined") {
   /**
-    * @param {float32x4} a An instance of float32x4.
-    * @param {float32x4} b An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with values of a & b.
+    * @param {Float32x4} a An instance of Float32x4.
+    * @param {Float32x4} b An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with values of a & b.
     */
-  SIMD.float32x4.and = function(a, b) {
-    a = SIMD.float32x4.check(a);
-    b = SIMD.float32x4.check(b);
-    var aInt = SIMD.int32x4.fromFloat32x4Bits(a);
-    var bInt = SIMD.int32x4.fromFloat32x4Bits(b);
-    return SIMD.float32x4.fromInt32x4Bits(SIMD.int32x4.and(aInt, bInt));
+  SIMD.Float32x4.and = function(a, b) {
+    a = SIMD.Float32x4.check(a);
+    b = SIMD.Float32x4.check(b);
+    var aInt = SIMD.Int32x4.fromFloat32x4Bits(a);
+    var bInt = SIMD.Int32x4.fromFloat32x4Bits(b);
+    return SIMD.Float32x4.fromInt32x4Bits(SIMD.Int32x4.and(aInt, bInt));
   }
 }
 
-if (typeof SIMD.float32x4.or === "undefined") {
+if (typeof SIMD.Float32x4.or === "undefined") {
   /**
-    * @param {float32x4} a An instance of float32x4.
-    * @param {float32x4} b An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with values of a | b.
+    * @param {Float32x4} a An instance of Float32x4.
+    * @param {Float32x4} b An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with values of a | b.
     */
-  SIMD.float32x4.or = function(a, b) {
-    a = SIMD.float32x4.check(a);
-    b = SIMD.float32x4.check(b);
-    var aInt = SIMD.int32x4.fromFloat32x4Bits(a);
-    var bInt = SIMD.int32x4.fromFloat32x4Bits(b);
-    return SIMD.float32x4.fromInt32x4Bits(SIMD.int32x4.or(aInt, bInt));
+  SIMD.Float32x4.or = function(a, b) {
+    a = SIMD.Float32x4.check(a);
+    b = SIMD.Float32x4.check(b);
+    var aInt = SIMD.Int32x4.fromFloat32x4Bits(a);
+    var bInt = SIMD.Int32x4.fromFloat32x4Bits(b);
+    return SIMD.Float32x4.fromInt32x4Bits(SIMD.Int32x4.or(aInt, bInt));
   }
 }
 
-if (typeof SIMD.float32x4.xor === "undefined") {
+if (typeof SIMD.Float32x4.xor === "undefined") {
   /**
-    * @param {float32x4} a An instance of float32x4.
-    * @param {float32x4} b An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with values of a ^ b.
+    * @param {Float32x4} a An instance of Float32x4.
+    * @param {Float32x4} b An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with values of a ^ b.
     */
-  SIMD.float32x4.xor = function(a, b) {
-    a = SIMD.float32x4.check(a);
-    b = SIMD.float32x4.check(b);
-    var aInt = SIMD.int32x4.fromFloat32x4Bits(a);
-    var bInt = SIMD.int32x4.fromFloat32x4Bits(b);
-    return SIMD.float32x4.fromInt32x4Bits(SIMD.int32x4.xor(aInt, bInt));
+  SIMD.Float32x4.xor = function(a, b) {
+    a = SIMD.Float32x4.check(a);
+    b = SIMD.Float32x4.check(b);
+    var aInt = SIMD.Int32x4.fromFloat32x4Bits(a);
+    var bInt = SIMD.Int32x4.fromFloat32x4Bits(b);
+    return SIMD.Float32x4.fromInt32x4Bits(SIMD.Int32x4.xor(aInt, bInt));
   }
 }
 
-if (typeof SIMD.float32x4.not === "undefined") {
+if (typeof SIMD.Float32x4.not === "undefined") {
   /**
-    * @param {float32x4} a An instance of float32x4.
-    * @return {float32x4} New instance of float32x4 with values of ~a.
+    * @param {Float32x4} a An instance of Float32x4.
+    * @return {Float32x4} New instance of Float32x4 with values of ~a.
     */
-  SIMD.float32x4.not = function(a) {
-    a = SIMD.float32x4.check(a);
-    var aInt = SIMD.int32x4.fromFloat32x4Bits(a);
-    return SIMD.float32x4.fromInt32x4Bits(SIMD.int32x4.not(aInt));
+  SIMD.Float32x4.not = function(a) {
+    a = SIMD.Float32x4.check(a);
+    var aInt = SIMD.Int32x4.fromFloat32x4Bits(a);
+    return SIMD.Float32x4.fromInt32x4Bits(SIMD.Int32x4.not(aInt));
   }
 }
 
-if (typeof SIMD.float32x4.load === "undefined") {
+if (typeof SIMD.Float32x4.load === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {float32x4} New instance of float32x4.
+    * @return {Float32x4} New instance of Float32x4.
     */
-  SIMD.float32x4.load = function(tarray, index) {
+  SIMD.Float32x4.load = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -1594,17 +1594,17 @@ if (typeof SIMD.float32x4.load === "undefined") {
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
     var f32temp = _SIMD_PRIVATE._f32x4;
-    return SIMD.float32x4(f32temp[0], f32temp[1], f32temp[2], f32temp[3]);
+    return SIMD.Float32x4(f32temp[0], f32temp[1], f32temp[2], f32temp[3]);
   }
 }
 
-if (typeof SIMD.float32x4.loadX === "undefined") {
+if (typeof SIMD.Float32x4.loadX === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {float32x4} New instance of float32x4.
+    * @return {Float32x4} New instance of Float32x4.
     */
-  SIMD.float32x4.loadX = function(tarray, index) {
+  SIMD.Float32x4.loadX = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -1620,17 +1620,17 @@ if (typeof SIMD.float32x4.loadX === "undefined") {
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
     var f32temp = _SIMD_PRIVATE._f32x4;
-    return SIMD.float32x4(f32temp[0], 0.0, 0.0, 0.0);
+    return SIMD.Float32x4(f32temp[0], 0.0, 0.0, 0.0);
   }
 }
 
-if (typeof SIMD.float32x4.loadXY === "undefined") {
+if (typeof SIMD.Float32x4.loadXY === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {float32x4} New instance of float32x4.
+    * @return {Float32x4} New instance of Float32x4.
     */
-  SIMD.float32x4.loadXY = function(tarray, index) {
+  SIMD.Float32x4.loadXY = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -1646,17 +1646,17 @@ if (typeof SIMD.float32x4.loadXY === "undefined") {
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
     var f32temp = _SIMD_PRIVATE._f32x4;
-    return SIMD.float32x4(f32temp[0], f32temp[1], 0.0, 0.0);
+    return SIMD.Float32x4(f32temp[0], f32temp[1], 0.0, 0.0);
   }
 }
 
-if (typeof SIMD.float32x4.loadXYZ === "undefined") {
+if (typeof SIMD.Float32x4.loadXYZ === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {float32x4} New instance of float32x4.
+    * @return {Float32x4} New instance of Float32x4.
     */
-  SIMD.float32x4.loadXYZ = function(tarray, index) {
+  SIMD.Float32x4.loadXYZ = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -1672,18 +1672,18 @@ if (typeof SIMD.float32x4.loadXYZ === "undefined") {
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
     var f32temp = _SIMD_PRIVATE._f32x4;
-    return SIMD.float32x4(f32temp[0], f32temp[1], f32temp[2], 0.0);
+    return SIMD.Float32x4(f32temp[0], f32temp[1], f32temp[2], 0.0);
   }
 }
 
-if (typeof SIMD.float32x4.store === "undefined") {
+if (typeof SIMD.Float32x4.store === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {float32x4} value An instance of float32x4.
+    * @param {Float32x4} value An instance of Float32x4.
     * @return {void}
     */
-  SIMD.float32x4.store = function(tarray, index, value) {
+  SIMD.Float32x4.store = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -1691,7 +1691,7 @@ if (typeof SIMD.float32x4.store === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 16) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.float32x4.check(value);
+    value = SIMD.Float32x4.check(value);
     _SIMD_PRIVATE._f32x4[0] = value.x;
     _SIMD_PRIVATE._f32x4[1] = value.y;
     _SIMD_PRIVATE._f32x4[2] = value.z;
@@ -1706,14 +1706,14 @@ if (typeof SIMD.float32x4.store === "undefined") {
   }
 }
 
-if (typeof SIMD.float32x4.storeX === "undefined") {
+if (typeof SIMD.Float32x4.storeX === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {float32x4} value An instance of float32x4.
+    * @param {Float32x4} value An instance of Float32x4.
     * @return {void}
     */
-  SIMD.float32x4.storeX = function(tarray, index, value) {
+  SIMD.Float32x4.storeX = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -1721,7 +1721,7 @@ if (typeof SIMD.float32x4.storeX === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 4) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.float32x4.check(value);
+    value = SIMD.Float32x4.check(value);
     if (bpe == 8) {
       // tarray's elements are too wide. Just create a new view; this is rare.
       var view = new Float32Array(tarray.buffer, tarray.byteOffset + index * 8, 1);
@@ -1738,14 +1738,14 @@ if (typeof SIMD.float32x4.storeX === "undefined") {
   }
 }
 
-if (typeof SIMD.float32x4.storeXY === "undefined") {
+if (typeof SIMD.Float32x4.storeXY === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {float32x4} value An instance of float32x4.
+    * @param {Float32x4} value An instance of Float32x4.
     * @return {void}
     */
-  SIMD.float32x4.storeXY = function(tarray, index, value) {
+  SIMD.Float32x4.storeXY = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -1753,7 +1753,7 @@ if (typeof SIMD.float32x4.storeXY === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 8) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.float32x4.check(value);
+    value = SIMD.Float32x4.check(value);
     _SIMD_PRIVATE._f32x4[0] = value.x;
     _SIMD_PRIVATE._f32x4[1] = value.y;
     var array = bpe == 1 ? _SIMD_PRIVATE._i8x16 :
@@ -1766,14 +1766,14 @@ if (typeof SIMD.float32x4.storeXY === "undefined") {
   }
 }
 
-if (typeof SIMD.float32x4.storeXYZ === "undefined") {
+if (typeof SIMD.Float32x4.storeXYZ === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {float32x4} value An instance of float32x4.
+    * @param {Float32x4} value An instance of Float32x4.
     * @return {void}
     */
-  SIMD.float32x4.storeXYZ = function(tarray, index, value) {
+  SIMD.Float32x4.storeXYZ = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -1781,7 +1781,7 @@ if (typeof SIMD.float32x4.storeXYZ === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 12) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.float32x4.check(value);
+    value = SIMD.Float32x4.check(value);
     if (bpe == 8) {
       // tarray's elements are too wide. Just create a new view; this is rare.
       var view = new Float32Array(tarray.buffer, tarray.byteOffset + index * 8, 3);
@@ -1802,408 +1802,408 @@ if (typeof SIMD.float32x4.storeXYZ === "undefined") {
   }
 }
 
-if (typeof SIMD.float64x2.abs === "undefined") {
+if (typeof SIMD.Float64x2.abs === "undefined") {
   /**
-   * @param {float64x2} t An instance of float64x2.
-   * @return {float64x2} New instance of float64x2 with absolute values of
+   * @param {Float64x2} t An instance of Float64x2.
+   * @return {Float64x2} New instance of Float64x2 with absolute values of
    * t.
    */
-  SIMD.float64x2.abs = function(t) {
-    t = SIMD.float64x2.check(t);
-    return SIMD.float64x2(Math.abs(t.x), Math.abs(t.y));
+  SIMD.Float64x2.abs = function(t) {
+    t = SIMD.Float64x2.check(t);
+    return SIMD.Float64x2(Math.abs(t.x), Math.abs(t.y));
   }
 }
 
-if (typeof SIMD.float64x2.neg === "undefined") {
+if (typeof SIMD.Float64x2.neg === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with negated values of
+    * @param {Float64x2} t An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with negated values of
     * t.
     */
-  SIMD.float64x2.neg = function(t) {
-    t = SIMD.float64x2.check(t);
-    return SIMD.float64x2(-t.x, -t.y);
+  SIMD.Float64x2.neg = function(t) {
+    t = SIMD.Float64x2.check(t);
+    return SIMD.Float64x2(-t.x, -t.y);
   }
 }
 
-if (typeof SIMD.float64x2.add === "undefined") {
+if (typeof SIMD.Float64x2.add === "undefined") {
   /**
-    * @param {float64x2} a An instance of float64x2.
-    * @param {float64x2} b An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with a + b.
+    * @param {Float64x2} a An instance of Float64x2.
+    * @param {Float64x2} b An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with a + b.
     */
-  SIMD.float64x2.add = function(a, b) {
-    a = SIMD.float64x2.check(a);
-    b = SIMD.float64x2.check(b);
-    return SIMD.float64x2(a.x + b.x, a.y + b.y);
+  SIMD.Float64x2.add = function(a, b) {
+    a = SIMD.Float64x2.check(a);
+    b = SIMD.Float64x2.check(b);
+    return SIMD.Float64x2(a.x + b.x, a.y + b.y);
   }
 }
 
-if (typeof SIMD.float64x2.sub === "undefined") {
+if (typeof SIMD.Float64x2.sub === "undefined") {
   /**
-    * @param {float64x2} a An instance of float64x2.
-    * @param {float64x2} b An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with a - b.
+    * @param {Float64x2} a An instance of Float64x2.
+    * @param {Float64x2} b An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with a - b.
     */
-  SIMD.float64x2.sub = function(a, b) {
-    a = SIMD.float64x2.check(a);
-    b = SIMD.float64x2.check(b);
-    return SIMD.float64x2(a.x - b.x, a.y - b.y);
+  SIMD.Float64x2.sub = function(a, b) {
+    a = SIMD.Float64x2.check(a);
+    b = SIMD.Float64x2.check(b);
+    return SIMD.Float64x2(a.x - b.x, a.y - b.y);
   }
 }
 
-if (typeof SIMD.float64x2.mul === "undefined") {
+if (typeof SIMD.Float64x2.mul === "undefined") {
   /**
-    * @param {float64x2} a An instance of float64x2.
-    * @param {float64x2} b An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with a * b.
+    * @param {Float64x2} a An instance of Float64x2.
+    * @param {Float64x2} b An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with a * b.
     */
-  SIMD.float64x2.mul = function(a, b) {
-    a = SIMD.float64x2.check(a);
-    b = SIMD.float64x2.check(b);
-    return SIMD.float64x2(a.x * b.x, a.y * b.y);
+  SIMD.Float64x2.mul = function(a, b) {
+    a = SIMD.Float64x2.check(a);
+    b = SIMD.Float64x2.check(b);
+    return SIMD.Float64x2(a.x * b.x, a.y * b.y);
   }
 }
 
-if (typeof SIMD.float64x2.div === "undefined") {
+if (typeof SIMD.Float64x2.div === "undefined") {
   /**
-    * @param {float64x2} a An instance of float64x2.
-    * @param {float64x2} b An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with a / b.
+    * @param {Float64x2} a An instance of Float64x2.
+    * @param {Float64x2} b An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with a / b.
     */
-  SIMD.float64x2.div = function(a, b) {
-    a = SIMD.float64x2.check(a);
-    b = SIMD.float64x2.check(b);
-    return SIMD.float64x2(a.x / b.x, a.y / b.y);
+  SIMD.Float64x2.div = function(a, b) {
+    a = SIMD.Float64x2.check(a);
+    b = SIMD.Float64x2.check(b);
+    return SIMD.Float64x2(a.x / b.x, a.y / b.y);
   }
 }
 
-if (typeof SIMD.float64x2.clamp === "undefined") {
+if (typeof SIMD.Float64x2.clamp === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} lowerLimit An instance of float64x2.
-    * @param {float64x2} upperLimit An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with t's values clamped
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} lowerLimit An instance of Float64x2.
+    * @param {Float64x2} upperLimit An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with t's values clamped
     * between lowerLimit and upperLimit.
     */
-  SIMD.float64x2.clamp = function(t, lowerLimit, upperLimit) {
-    t = SIMD.float64x2.check(t);
-    lowerLimit = SIMD.float64x2.check(lowerLimit);
-    upperLimit = SIMD.float64x2.check(upperLimit);
+  SIMD.Float64x2.clamp = function(t, lowerLimit, upperLimit) {
+    t = SIMD.Float64x2.check(t);
+    lowerLimit = SIMD.Float64x2.check(lowerLimit);
+    upperLimit = SIMD.Float64x2.check(upperLimit);
     var cx = t.x < lowerLimit.x ? lowerLimit.x : t.x;
     var cy = t.y < lowerLimit.y ? lowerLimit.y : t.y;
     cx = cx > upperLimit.x ? upperLimit.x : cx;
     cy = cy > upperLimit.y ? upperLimit.y : cy;
-    return SIMD.float64x2(cx, cy);
+    return SIMD.Float64x2(cx, cy);
   }
 }
 
-if (typeof SIMD.float64x2.min === "undefined") {
+if (typeof SIMD.Float64x2.min === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with the minimum value of
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with the minimum value of
     * t and other.
     */
-  SIMD.float64x2.min = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.min = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = Math.min(t.x, other.x);
     var cy = Math.min(t.y, other.y);
-    return SIMD.float64x2(cx, cy);
+    return SIMD.Float64x2(cx, cy);
   }
 }
 
-if (typeof SIMD.float64x2.max === "undefined") {
+if (typeof SIMD.Float64x2.max === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with the maximum value of
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with the maximum value of
     * t and other.
     */
-  SIMD.float64x2.max = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.max = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = Math.max(t.x, other.x);
     var cy = Math.max(t.y, other.y);
-    return SIMD.float64x2(cx, cy);
+    return SIMD.Float64x2(cx, cy);
   }
 }
 
-if (typeof SIMD.float64x2.minNum === "undefined") {
+if (typeof SIMD.Float64x2.minNum === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with the minimum value of
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with the minimum value of
     * t and other, preferring numbers over NaNs.
     */
-  SIMD.float64x2.minNum = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.minNum = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = _SIMD_PRIVATE.minNum(t.x, other.x);
     var cy = _SIMD_PRIVATE.minNum(t.y, other.y);
-    return SIMD.float64x2(cx, cy);
+    return SIMD.Float64x2(cx, cy);
   }
 }
 
-if (typeof SIMD.float64x2.maxNum === "undefined") {
+if (typeof SIMD.Float64x2.maxNum === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with the maximum value of
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with the maximum value of
     * t and other, preferring numbers over NaNs.
     */
-  SIMD.float64x2.maxNum = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.maxNum = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = _SIMD_PRIVATE.maxNum(t.x, other.x);
     var cy = _SIMD_PRIVATE.maxNum(t.y, other.y);
-    return SIMD.float64x2(cx, cy);
+    return SIMD.Float64x2(cx, cy);
   }
 }
 
-if (typeof SIMD.float64x2.reciprocal === "undefined") {
+if (typeof SIMD.Float64x2.reciprocal === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with reciprocal value of
+    * @param {Float64x2} t An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with reciprocal value of
     * t.
     */
-  SIMD.float64x2.reciprocal = function(t) {
-    t = SIMD.float64x2.check(t);
-    return SIMD.float64x2(1.0 / t.x, 1.0 / t.y);
+  SIMD.Float64x2.reciprocal = function(t) {
+    t = SIMD.Float64x2.check(t);
+    return SIMD.Float64x2(1.0 / t.x, 1.0 / t.y);
   }
 }
 
-if (typeof SIMD.float64x2.reciprocalSqrt === "undefined") {
+if (typeof SIMD.Float64x2.reciprocalSqrt === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with square root of the
+    * @param {Float64x2} t An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with square root of the
     * reciprocal value of t.
     */
-  SIMD.float64x2.reciprocalSqrt = function(t) {
-    t = SIMD.float64x2.check(t);
-    return SIMD.float64x2(Math.sqrt(1.0 / t.x), Math.sqrt(1.0 / t.y));
+  SIMD.Float64x2.reciprocalSqrt = function(t) {
+    t = SIMD.Float64x2.check(t);
+    return SIMD.Float64x2(Math.sqrt(1.0 / t.x), Math.sqrt(1.0 / t.y));
   }
 }
 
-if (typeof SIMD.float64x2.sqrt === "undefined") {
+if (typeof SIMD.Float64x2.sqrt === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @return {float64x2} New instance of float64x2 with square root of
+    * @param {Float64x2} t An instance of Float64x2.
+    * @return {Float64x2} New instance of Float64x2 with square root of
     * values of t.
     */
-  SIMD.float64x2.sqrt = function(t) {
-    t = SIMD.float64x2.check(t);
-    return SIMD.float64x2(Math.sqrt(t.x), Math.sqrt(t.y));
+  SIMD.Float64x2.sqrt = function(t) {
+    t = SIMD.Float64x2.check(t);
+    return SIMD.Float64x2(Math.sqrt(t.x), Math.sqrt(t.y));
   }
 }
 
-if (typeof SIMD.float64x2.swizzle === "undefined") {
+if (typeof SIMD.Float64x2.swizzle === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2 to be swizzled.
+    * @param {Float64x2} t An instance of Float64x2 to be swizzled.
     * @param {integer} x - Index in t for lane x
     * @param {integer} y - Index in t for lane y
-    * @return {float64x2} New instance of float64x2 with lanes swizzled.
+    * @return {Float64x2} New instance of Float64x2 with lanes swizzled.
     */
-  SIMD.float64x2.swizzle = function(t, x, y) {
-    t = SIMD.float64x2.check(t);
+  SIMD.Float64x2.swizzle = function(t, x, y) {
+    t = SIMD.Float64x2.check(t);
     var storage = _SIMD_PRIVATE._f64x2;
     storage[0] = t.x;
     storage[1] = t.y;
-    return SIMD.float64x2(storage[x], storage[y]);
+    return SIMD.Float64x2(storage[x], storage[y]);
   }
 }
 
-if (typeof SIMD.float64x2.shuffle === "undefined") {
+if (typeof SIMD.Float64x2.shuffle === "undefined") {
   /**
-    * @param {float64x2} t1 An instance of float64x2 to be shuffled.
-    * @param {float64x2} t2 An instance of float64x2 to be shuffled.
+    * @param {Float64x2} t1 An instance of Float64x2 to be shuffled.
+    * @param {Float64x2} t2 An instance of Float64x2 to be shuffled.
     * @param {integer} x - Index in concatenation of t1 and t2 for lane x
     * @param {integer} y - Index in concatenation of t1 and t2 for lane y
-    * @return {float64x2} New instance of float64x2 with lanes shuffled.
+    * @return {Float64x2} New instance of Float64x2 with lanes shuffled.
     */
-  SIMD.float64x2.shuffle = function(t1, t2, x, y) {
-    t1 = SIMD.float64x2.check(t1);
-    t2 = SIMD.float64x2.check(t2);
+  SIMD.Float64x2.shuffle = function(t1, t2, x, y) {
+    t1 = SIMD.Float64x2.check(t1);
+    t2 = SIMD.Float64x2.check(t2);
     var storage = _SIMD_PRIVATE._f64x4;
     storage[0] = t1.x;
     storage[1] = t1.y;
     storage[2] = t2.x;
     storage[3] = t2.y;
-    return SIMD.float64x2(storage[x], storage[y]);
+    return SIMD.Float64x2(storage[x], storage[y]);
   }
 }
 
-if (typeof SIMD.float64x2.withX === "undefined") {
+if (typeof SIMD.Float64x2.withX === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
+    * @param {Float64x2} t An instance of Float64x2.
     * @param {double} value used for x lane.
-    * @return {float64x2} New instance of float64x2 with the values in t and
+    * @return {Float64x2} New instance of Float64x2 with the values in t and
     * x replaced with {x}.
     */
-  SIMD.float64x2.withX = function(t, x) {
-    t = SIMD.float64x2(t);
-    return SIMD.float64x2(x, t.y);
+  SIMD.Float64x2.withX = function(t, x) {
+    t = SIMD.Float64x2(t);
+    return SIMD.Float64x2(x, t.y);
   }
 }
 
-if (typeof SIMD.float64x2.withY === "undefined") {
+if (typeof SIMD.Float64x2.withY === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
+    * @param {Float64x2} t An instance of Float64x2.
     * @param {double} value used for y lane.
-    * @return {float64x2} New instance of float64x2 with the values in t and
+    * @return {Float64x2} New instance of Float64x2 with the values in t and
     * y replaced with {y}.
     */
-  SIMD.float64x2.withY = function(t, y) {
-    t = SIMD.float64x2(t);
-    return SIMD.float64x2(t.x, y);
+  SIMD.Float64x2.withY = function(t, y) {
+    t = SIMD.Float64x2(t);
+    return SIMD.Float64x2(t.x, y);
   }
 }
 
-if (typeof SIMD.float64x2.lessThan === "undefined") {
+if (typeof SIMD.Float64x2.lessThan === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t < other.
     */
-  SIMD.float64x2.lessThan = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.lessThan = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = t.x < other.x;
     var cy = t.y < other.y;
-    return SIMD.int32x4.bool(cx, cx, cy, cy);
+    return SIMD.Int32x4.bool(cx, cx, cy, cy);
   }
 }
 
-if (typeof SIMD.float64x2.lessThanOrEqual === "undefined") {
+if (typeof SIMD.Float64x2.lessThanOrEqual === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t <= other.
     */
-  SIMD.float64x2.lessThanOrEqual = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.lessThanOrEqual = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = t.x <= other.x;
     var cy = t.y <= other.y;
-    return SIMD.int32x4.bool(cx, cx, cy, cy);
+    return SIMD.Int32x4.bool(cx, cx, cy, cy);
   }
 }
 
-if (typeof SIMD.float64x2.equal === "undefined") {
+if (typeof SIMD.Float64x2.equal === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t == other.
     */
-  SIMD.float64x2.equal = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.equal = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = t.x == other.x;
     var cy = t.y == other.y;
-    return SIMD.int32x4.bool(cx, cx, cy, cy);
+    return SIMD.Int32x4.bool(cx, cx, cy, cy);
   }
 }
 
-if (typeof SIMD.float64x2.notEqual === "undefined") {
+if (typeof SIMD.Float64x2.notEqual === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t != other.
     */
-  SIMD.float64x2.notEqual = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.notEqual = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = t.x != other.x;
     var cy = t.y != other.y;
-    return SIMD.int32x4.bool(cx, cx, cy, cy);
+    return SIMD.Int32x4.bool(cx, cx, cy, cy);
   }
 }
 
-if (typeof SIMD.float64x2.greaterThanOrEqual === "undefined") {
+if (typeof SIMD.Float64x2.greaterThanOrEqual === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t >= other.
     */
-  SIMD.float64x2.greaterThanOrEqual = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.greaterThanOrEqual = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = t.x >= other.x;
     var cy = t.y >= other.y;
-    return SIMD.int32x4.bool(cx, cx, cy, cy);
+    return SIMD.Int32x4.bool(cx, cx, cy, cy);
   }
 }
 
-if (typeof SIMD.float64x2.greaterThan === "undefined") {
+if (typeof SIMD.Float64x2.greaterThan === "undefined") {
   /**
-    * @param {float64x2} t An instance of float64x2.
-    * @param {float64x2} other An instance of float64x2.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Float64x2} t An instance of Float64x2.
+    * @param {Float64x2} other An instance of Float64x2.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t > other.
     */
-  SIMD.float64x2.greaterThan = function(t, other) {
-    t = SIMD.float64x2.check(t);
-    other = SIMD.float64x2.check(other);
+  SIMD.Float64x2.greaterThan = function(t, other) {
+    t = SIMD.Float64x2.check(t);
+    other = SIMD.Float64x2.check(other);
     var cx = t.x > other.x;
     var cy = t.y > other.y;
-    return SIMD.int32x4.bool(cx, cx, cy, cy);
+    return SIMD.Int32x4.bool(cx, cx, cy, cy);
   }
 }
 
-if (typeof SIMD.float64x2.select === "undefined") {
+if (typeof SIMD.Float64x2.select === "undefined") {
   /**
-    * @param {int32x4} t Selector mask. An instance of int32x4
-    * @param {float64x2} trueValue Pick lane from here if corresponding
+    * @param {Int32x4} t Selector mask. An instance of Int32x4
+    * @param {Float64x2} trueValue Pick lane from here if corresponding
     * selector lane is true
-    * @param {float64x2} falseValue Pick lane from here if corresponding
+    * @param {Float64x2} falseValue Pick lane from here if corresponding
     * selector lane is false
-    * @return {float64x2} Mix of lanes from trueValue or falseValue as
+    * @return {Float64x2} Mix of lanes from trueValue or falseValue as
     * indicated
     */
-  SIMD.float64x2.select = function(t, trueValue, falseValue) {
-    t = SIMD.int32x4.check(t);
-    trueValue = SIMD.float64x2.check(trueValue);
-    falseValue = SIMD.float64x2.check(falseValue);
-    return SIMD.float64x2(_SIMD_PRIVATE.tobool(t.x) ? trueValue.x : falseValue.x,
+  SIMD.Float64x2.select = function(t, trueValue, falseValue) {
+    t = SIMD.Int32x4.check(t);
+    trueValue = SIMD.Float64x2.check(trueValue);
+    falseValue = SIMD.Float64x2.check(falseValue);
+    return SIMD.Float64x2(_SIMD_PRIVATE.tobool(t.x) ? trueValue.x : falseValue.x,
                           _SIMD_PRIVATE.tobool(t.y) ? trueValue.y : falseValue.y);
   }
 }
 
-if (typeof SIMD.float64x2.bitselect === "undefined") {
+if (typeof SIMD.Float64x2.bitselect === "undefined") {
   /**
-    * @param {int32x4} t Selector mask. An instance of int32x4
-    * @param {float64x2} trueValue Pick bit from here if corresponding
+    * @param {Int32x4} t Selector mask. An instance of Int32x4
+    * @param {Float64x2} trueValue Pick bit from here if corresponding
     * selector bit is 1
-    * @param {float64x2} falseValue Pick bit from here if corresponding
+    * @param {Float64x2} falseValue Pick bit from here if corresponding
     * selector bit is 0
-    * @return {float64x2} Mix of bits from trueValue or falseValue as
+    * @return {Float64x2} Mix of bits from trueValue or falseValue as
     * indicated
     */
-  SIMD.float64x2.bitselect = function(t, trueValue, falseValue) {
-    t = SIMD.int32x4.check(t);
-    trueValue = SIMD.float64x2.check(trueValue);
-    falseValue = SIMD.float64x2.check(falseValue);
-    var tv = SIMD.int32x4.fromFloat64x2Bits(trueValue);
-    var fv = SIMD.int32x4.fromFloat64x2Bits(falseValue);
-    var tr = SIMD.int32x4.and(t, tv);
-    var fr = SIMD.int32x4.and(SIMD.int32x4.not(t), fv);
-    return SIMD.float64x2.fromInt32x4Bits(SIMD.int32x4.or(tr, fr));
+  SIMD.Float64x2.bitselect = function(t, trueValue, falseValue) {
+    t = SIMD.Int32x4.check(t);
+    trueValue = SIMD.Float64x2.check(trueValue);
+    falseValue = SIMD.Float64x2.check(falseValue);
+    var tv = SIMD.Int32x4.fromFloat64x2Bits(trueValue);
+    var fv = SIMD.Int32x4.fromFloat64x2Bits(falseValue);
+    var tr = SIMD.Int32x4.and(t, tv);
+    var fr = SIMD.Int32x4.and(SIMD.Int32x4.not(t), fv);
+    return SIMD.Float64x2.fromInt32x4Bits(SIMD.Int32x4.or(tr, fr));
   }
 }
 
-if (typeof SIMD.float64x2.load === "undefined") {
+if (typeof SIMD.Float64x2.load === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {float64x2} New instance of float64x2.
+    * @return {Float64x2} New instance of Float64x2.
     */
-  SIMD.float64x2.load = function(tarray, index) {
+  SIMD.Float64x2.load = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2219,17 +2219,17 @@ if (typeof SIMD.float64x2.load === "undefined") {
     var n = 16 / bpe;
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
-    return SIMD.float64x2(f64temp[0], f64temp[1]);
+    return SIMD.Float64x2(f64temp[0], f64temp[1]);
   }
 }
 
-if (typeof SIMD.float64x2.loadX === "undefined") {
+if (typeof SIMD.Float64x2.loadX === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {float64x2} New instance of float64x2.
+    * @return {Float64x2} New instance of Float64x2.
     */
-  SIMD.float64x2.loadX = function(tarray, index) {
+  SIMD.Float64x2.loadX = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2245,18 +2245,18 @@ if (typeof SIMD.float64x2.loadX === "undefined") {
     var n = 8 / bpe;
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
-    return SIMD.float64x2(f64temp[0], 0.0);
+    return SIMD.Float64x2(f64temp[0], 0.0);
   }
 }
 
-if (typeof SIMD.float64x2.store === "undefined") {
+if (typeof SIMD.Float64x2.store === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {float64x2} value An instance of float64x2.
+    * @param {Float64x2} value An instance of Float64x2.
     * @return {void}
     */
-  SIMD.float64x2.store = function(tarray, index, value) {
+  SIMD.Float64x2.store = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2264,7 +2264,7 @@ if (typeof SIMD.float64x2.store === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 16) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.float64x2.check(value);
+    value = SIMD.Float64x2.check(value);
     _SIMD_PRIVATE._f64x2[0] = value.x;
     _SIMD_PRIVATE._f64x2[1] = value.y;
     var array = bpe == 1 ? _SIMD_PRIVATE._i8x16 :
@@ -2277,14 +2277,14 @@ if (typeof SIMD.float64x2.store === "undefined") {
   }
 }
 
-if (typeof SIMD.float64x2.storeX === "undefined") {
+if (typeof SIMD.Float64x2.storeX === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {float64x2} value An instance of float64x2.
+    * @param {Float64x2} value An instance of Float64x2.
     * @return {void}
     */
-  SIMD.float64x2.storeX = function(tarray, index, value) {
+  SIMD.Float64x2.storeX = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2292,7 +2292,7 @@ if (typeof SIMD.float64x2.storeX === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 8) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.float64x2.check(value);
+    value = SIMD.Float64x2.check(value);
     _SIMD_PRIVATE._f64x2[0] = value.x;
     var array = bpe == 1 ? _SIMD_PRIVATE._i8x16 :
                 bpe == 2 ? _SIMD_PRIVATE._i16x8 :
@@ -2304,140 +2304,140 @@ if (typeof SIMD.float64x2.storeX === "undefined") {
   }
 }
 
-if (typeof SIMD.int32x4.and === "undefined") {
+if (typeof SIMD.Int32x4.and === "undefined") {
   /**
-    * @param {int32x4} a An instance of int32x4.
-    * @param {int32x4} b An instance of int32x4.
-    * @return {int32x4} New instance of int32x4 with values of a & b.
+    * @param {Int32x4} a An instance of Int32x4.
+    * @param {Int32x4} b An instance of Int32x4.
+    * @return {Int32x4} New instance of Int32x4 with values of a & b.
     */
-  SIMD.int32x4.and = function(a, b) {
-    a = SIMD.int32x4.check(a);
-    b = SIMD.int32x4.check(b);
-    return SIMD.int32x4(a.x & b.x, a.y & b.y, a.z & b.z, a.w & b.w);
+  SIMD.Int32x4.and = function(a, b) {
+    a = SIMD.Int32x4.check(a);
+    b = SIMD.Int32x4.check(b);
+    return SIMD.Int32x4(a.x & b.x, a.y & b.y, a.z & b.z, a.w & b.w);
   }
 }
 
-if (typeof SIMD.int32x4.or === "undefined") {
+if (typeof SIMD.Int32x4.or === "undefined") {
   /**
-    * @param {int32x4} a An instance of int32x4.
-    * @param {int32x4} b An instance of int32x4.
-    * @return {int32x4} New instance of int32x4 with values of a | b.
+    * @param {Int32x4} a An instance of Int32x4.
+    * @param {Int32x4} b An instance of Int32x4.
+    * @return {Int32x4} New instance of Int32x4 with values of a | b.
     */
-  SIMD.int32x4.or = function(a, b) {
-    a = SIMD.int32x4.check(a);
-    b = SIMD.int32x4.check(b);
-    return SIMD.int32x4(a.x | b.x, a.y | b.y, a.z | b.z, a.w | b.w);
+  SIMD.Int32x4.or = function(a, b) {
+    a = SIMD.Int32x4.check(a);
+    b = SIMD.Int32x4.check(b);
+    return SIMD.Int32x4(a.x | b.x, a.y | b.y, a.z | b.z, a.w | b.w);
   }
 }
 
-if (typeof SIMD.int32x4.xor === "undefined") {
+if (typeof SIMD.Int32x4.xor === "undefined") {
   /**
-    * @param {int32x4} a An instance of int32x4.
-    * @param {int32x4} b An instance of int32x4.
-    * @return {int32x4} New instance of int32x4 with values of a ^ b.
+    * @param {Int32x4} a An instance of Int32x4.
+    * @param {Int32x4} b An instance of Int32x4.
+    * @return {Int32x4} New instance of Int32x4 with values of a ^ b.
     */
-  SIMD.int32x4.xor = function(a, b) {
-    a = SIMD.int32x4.check(a);
-    b = SIMD.int32x4.check(b);
-    return SIMD.int32x4(a.x ^ b.x, a.y ^ b.y, a.z ^ b.z, a.w ^ b.w);
+  SIMD.Int32x4.xor = function(a, b) {
+    a = SIMD.Int32x4.check(a);
+    b = SIMD.Int32x4.check(b);
+    return SIMD.Int32x4(a.x ^ b.x, a.y ^ b.y, a.z ^ b.z, a.w ^ b.w);
   }
 }
 
-if (typeof SIMD.int32x4.not === "undefined") {
+if (typeof SIMD.Int32x4.not === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @return {int32x4} New instance of int32x4 with values of ~t
+    * @param {Int32x4} t An instance of Int32x4.
+    * @return {Int32x4} New instance of Int32x4 with values of ~t
     */
-  SIMD.int32x4.not = function(t) {
-    t = SIMD.int32x4.check(t);
-    return SIMD.int32x4(~t.x, ~t.y, ~t.z, ~t.w);
+  SIMD.Int32x4.not = function(t) {
+    t = SIMD.Int32x4.check(t);
+    return SIMD.Int32x4(~t.x, ~t.y, ~t.z, ~t.w);
   }
 }
 
-if (typeof SIMD.int32x4.neg === "undefined") {
+if (typeof SIMD.Int32x4.neg === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @return {int32x4} New instance of int32x4 with values of -t
+    * @param {Int32x4} t An instance of Int32x4.
+    * @return {Int32x4} New instance of Int32x4 with values of -t
     */
-  SIMD.int32x4.neg = function(t) {
-    t = SIMD.int32x4.check(t);
-    return SIMD.int32x4(-t.x, -t.y, -t.z, -t.w);
+  SIMD.Int32x4.neg = function(t) {
+    t = SIMD.Int32x4.check(t);
+    return SIMD.Int32x4(-t.x, -t.y, -t.z, -t.w);
   }
 }
 
-if (typeof SIMD.int32x4.add === "undefined") {
+if (typeof SIMD.Int32x4.add === "undefined") {
   /**
-    * @param {int32x4} a An instance of int32x4.
-    * @param {int32x4} b An instance of int32x4.
-    * @return {int32x4} New instance of int32x4 with values of a + b.
+    * @param {Int32x4} a An instance of Int32x4.
+    * @param {Int32x4} b An instance of Int32x4.
+    * @return {Int32x4} New instance of Int32x4 with values of a + b.
     */
-  SIMD.int32x4.add = function(a, b) {
-    a = SIMD.int32x4.check(a);
-    b = SIMD.int32x4.check(b);
-    return SIMD.int32x4(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
+  SIMD.Int32x4.add = function(a, b) {
+    a = SIMD.Int32x4.check(a);
+    b = SIMD.Int32x4.check(b);
+    return SIMD.Int32x4(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
   }
 }
 
-if (typeof SIMD.int32x4.sub === "undefined") {
+if (typeof SIMD.Int32x4.sub === "undefined") {
   /**
-    * @param {int32x4} a An instance of int32x4.
-    * @param {int32x4} b An instance of int32x4.
-    * @return {int32x4} New instance of int32x4 with values of a - b.
+    * @param {Int32x4} a An instance of Int32x4.
+    * @param {Int32x4} b An instance of Int32x4.
+    * @return {Int32x4} New instance of Int32x4 with values of a - b.
     */
-  SIMD.int32x4.sub = function(a, b) {
-    a = SIMD.int32x4.check(a);
-    b = SIMD.int32x4.check(b);
-    return SIMD.int32x4(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
+  SIMD.Int32x4.sub = function(a, b) {
+    a = SIMD.Int32x4.check(a);
+    b = SIMD.Int32x4.check(b);
+    return SIMD.Int32x4(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
   }
 }
 
-if (typeof SIMD.int32x4.mul === "undefined") {
+if (typeof SIMD.Int32x4.mul === "undefined") {
   /**
-    * @param {int32x4} a An instance of int32x4.
-    * @param {int32x4} b An instance of int32x4.
-    * @return {int32x4} New instance of int32x4 with values of a * b.
+    * @param {Int32x4} a An instance of Int32x4.
+    * @param {Int32x4} b An instance of Int32x4.
+    * @return {Int32x4} New instance of Int32x4 with values of a * b.
     */
-  SIMD.int32x4.mul = function(a, b) {
-    a = SIMD.int32x4.check(a);
-    b = SIMD.int32x4.check(b);
-    return SIMD.int32x4(Math.imul(a.x, b.x), Math.imul(a.y, b.y),
+  SIMD.Int32x4.mul = function(a, b) {
+    a = SIMD.Int32x4.check(a);
+    b = SIMD.Int32x4.check(b);
+    return SIMD.Int32x4(Math.imul(a.x, b.x), Math.imul(a.y, b.y),
                         Math.imul(a.z, b.z), Math.imul(a.w, b.w));
   }
 }
 
-if (typeof SIMD.int32x4.swizzle === "undefined") {
+if (typeof SIMD.Int32x4.swizzle === "undefined") {
   /**
-    * @param {int32x4} t An instance of float32x4 to be swizzled.
+    * @param {Int32x4} t An instance of Float32x4 to be swizzled.
     * @param {integer} x - Index in t for lane x
     * @param {integer} y - Index in t for lane y
     * @param {integer} z - Index in t for lane z
     * @param {integer} w - Index in t for lane w
-    * @return {int32x4} New instance of float32x4 with lanes swizzled.
+    * @return {Int32x4} New instance of Float32x4 with lanes swizzled.
     */
-  SIMD.int32x4.swizzle = function(t, x, y, z, w) {
-    t = SIMD.int32x4.check(t);
+  SIMD.Int32x4.swizzle = function(t, x, y, z, w) {
+    t = SIMD.Int32x4.check(t);
     var storage = _SIMD_PRIVATE._i32x4;
     storage[0] = t.x;
     storage[1] = t.y;
     storage[2] = t.z;
     storage[3] = t.w;
-    return SIMD.int32x4(storage[x], storage[y], storage[z], storage[w]);
+    return SIMD.Int32x4(storage[x], storage[y], storage[z], storage[w]);
   }
 }
 
-if (typeof SIMD.int32x4.shuffle === "undefined") {
+if (typeof SIMD.Int32x4.shuffle === "undefined") {
   /**
-    * @param {int32x4} t1 An instance of float32x4 to be shuffled.
-    * @param {int32x4} t2 An instance of float32x4 to be shuffled.
+    * @param {Int32x4} t1 An instance of Float32x4 to be shuffled.
+    * @param {Int32x4} t2 An instance of Float32x4 to be shuffled.
     * @param {integer} x - Index in concatenation of t1 and t2 for lane x
     * @param {integer} y - Index in concatenation of t1 and t2 for lane y
     * @param {integer} z - Index in concatenation of t1 and t2 for lane z
     * @param {integer} w - Index in concatenation of t1 and t2 for lane w
-    * @return {int32x4} New instance of float32x4 with lanes shuffled.
+    * @return {Int32x4} New instance of Float32x4 with lanes shuffled.
     */
-  SIMD.int32x4.shuffle = function(t1, t2, x, y, z, w) {
-    t1 = SIMD.int32x4.check(t1);
-    t2 = SIMD.int32x4.check(t2);
+  SIMD.Int32x4.shuffle = function(t1, t2, x, y, z, w) {
+    t1 = SIMD.Int32x4.check(t1);
+    t2 = SIMD.Int32x4.check(t2);
     var storage = _SIMD_PRIVATE._i32x8;
     storage[0] = t1.x;
     storage[1] = t1.y;
@@ -2447,266 +2447,266 @@ if (typeof SIMD.int32x4.shuffle === "undefined") {
     storage[5] = t2.y;
     storage[6] = t2.z;
     storage[7] = t2.w;
-    return SIMD.float32x4(storage[x], storage[y], storage[z], storage[w]);
+    return SIMD.Float32x4(storage[x], storage[y], storage[z], storage[w]);
   }
 }
 
-if (typeof SIMD.int32x4.select === "undefined") {
+if (typeof SIMD.Int32x4.select === "undefined") {
   /**
-    * @param {int32x4} t Selector mask. An instance of int32x4
-    * @param {int32x4} trueValue Pick lane from here if corresponding
+    * @param {Int32x4} t Selector mask. An instance of Int32x4
+    * @param {Int32x4} trueValue Pick lane from here if corresponding
     * selector lane is true
-    * @param {int32x4} falseValue Pick lane from here if corresponding
+    * @param {Int32x4} falseValue Pick lane from here if corresponding
     * selector lane is false
-    * @return {int32x4} Mix of lanes from trueValue or falseValue as
+    * @return {Int32x4} Mix of lanes from trueValue or falseValue as
     * indicated
     */
-  SIMD.int32x4.select = function(t, trueValue, falseValue) {
-    t = SIMD.int32x4.check(t);
-    trueValue = SIMD.int32x4.check(trueValue);
-    falseValue = SIMD.int32x4.check(falseValue);
-    return SIMD.int32x4(_SIMD_PRIVATE.tobool(t.x) ? trueValue.x : falseValue.x,
+  SIMD.Int32x4.select = function(t, trueValue, falseValue) {
+    t = SIMD.Int32x4.check(t);
+    trueValue = SIMD.Int32x4.check(trueValue);
+    falseValue = SIMD.Int32x4.check(falseValue);
+    return SIMD.Int32x4(_SIMD_PRIVATE.tobool(t.x) ? trueValue.x : falseValue.x,
                         _SIMD_PRIVATE.tobool(t.y) ? trueValue.y : falseValue.y,
                         _SIMD_PRIVATE.tobool(t.z) ? trueValue.z : falseValue.z,
                         _SIMD_PRIVATE.tobool(t.w) ? trueValue.w : falseValue.w);
   }
 }
 
-if (typeof SIMD.int32x4.bitselect === "undefined") {
+if (typeof SIMD.Int32x4.bitselect === "undefined") {
   /**
-    * @param {int32x4} t Selector mask. An instance of int32x4
-    * @param {int32x4} trueValue Pick bit from here if corresponding
+    * @param {Int32x4} t Selector mask. An instance of Int32x4
+    * @param {Int32x4} trueValue Pick bit from here if corresponding
     * selector bit is 1
-    * @param {int32x4} falseValue Pick bit from here if corresponding
+    * @param {Int32x4} falseValue Pick bit from here if corresponding
     * selector bit is 0
-    * @return {int32x4} Mix of bits from trueValue or falseValue as
+    * @return {Int32x4} Mix of bits from trueValue or falseValue as
     * indicated
     */
-  SIMD.int32x4.bitselect = function(t, trueValue, falseValue) {
-    t = SIMD.int32x4.check(t);
-    trueValue = SIMD.int32x4.check(trueValue);
-    falseValue = SIMD.int32x4.check(falseValue);
-    var tr = SIMD.int32x4.and(t, trueValue);
-    var fr = SIMD.int32x4.and(SIMD.int32x4.not(t), falseValue);
-    return SIMD.int32x4.or(tr, fr);
+  SIMD.Int32x4.bitselect = function(t, trueValue, falseValue) {
+    t = SIMD.Int32x4.check(t);
+    trueValue = SIMD.Int32x4.check(trueValue);
+    falseValue = SIMD.Int32x4.check(falseValue);
+    var tr = SIMD.Int32x4.and(t, trueValue);
+    var fr = SIMD.Int32x4.and(SIMD.Int32x4.not(t), falseValue);
+    return SIMD.Int32x4.or(tr, fr);
   }
 }
 
-if (typeof SIMD.int32x4.withX === "undefined") {
+if (typeof SIMD.Int32x4.withX === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
+    * @param {Int32x4} t An instance of Int32x4.
     * @param {integer} 32-bit value used for x lane.
-    * @return {int32x4} New instance of int32x4 with the values in t and
+    * @return {Int32x4} New instance of Int32x4 with the values in t and
     * x lane replaced with {x}.
     */
-  SIMD.int32x4.withX = function(t, x) {
-    t = SIMD.int32x4(t);
-    return SIMD.int32x4(x, t.y, t.z, t.w);
+  SIMD.Int32x4.withX = function(t, x) {
+    t = SIMD.Int32x4(t);
+    return SIMD.Int32x4(x, t.y, t.z, t.w);
   }
 }
 
-if (typeof SIMD.int32x4.withY === "undefined") {
+if (typeof SIMD.Int32x4.withY === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
+    * @param {Int32x4} t An instance of Int32x4.
     * @param {integer} 32-bit value used for y lane.
-    * @return {int32x4} New instance of int32x4 with the values in t and
+    * @return {Int32x4} New instance of Int32x4 with the values in t and
     * y lane replaced with {y}.
     */
-  SIMD.int32x4.withY = function(t, y) {
-    t = SIMD.int32x4(t);
-    return SIMD.int32x4(t.x, y, t.z, t.w);
+  SIMD.Int32x4.withY = function(t, y) {
+    t = SIMD.Int32x4(t);
+    return SIMD.Int32x4(t.x, y, t.z, t.w);
   }
 }
 
-if (typeof SIMD.int32x4.withZ === "undefined") {
+if (typeof SIMD.Int32x4.withZ === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
+    * @param {Int32x4} t An instance of Int32x4.
     * @param {integer} 32-bit value used for z lane.
-    * @return {int32x4} New instance of int32x4 with the values in t and
+    * @return {Int32x4} New instance of Int32x4 with the values in t and
     * z lane replaced with {z}.
     */
-  SIMD.int32x4.withZ = function(t, z) {
-    t = SIMD.int32x4(t);
-    return SIMD.int32x4(t.x, t.y, z, t.w);
+  SIMD.Int32x4.withZ = function(t, z) {
+    t = SIMD.Int32x4(t);
+    return SIMD.Int32x4(t.x, t.y, z, t.w);
   }
 }
 
-if (typeof SIMD.int32x4.withW === "undefined") {
+if (typeof SIMD.Int32x4.withW === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
+    * @param {Int32x4} t An instance of Int32x4.
     * @param {integer} 32-bit value used for w lane.
-    * @return {int32x4} New instance of int32x4 with the values in t and
+    * @return {Int32x4} New instance of Int32x4 with the values in t and
     * w lane replaced with {w}.
     */
-  SIMD.int32x4.withW = function(t, w) {
-    t = SIMD.int32x4(t);
-    return SIMD.int32x4(t.x, t.y, t.z, w);
+  SIMD.Int32x4.withW = function(t, w) {
+    t = SIMD.Int32x4(t);
+    return SIMD.Int32x4(t.x, t.y, t.z, w);
   }
 }
 
-if (typeof SIMD.int32x4.equal === "undefined") {
+if (typeof SIMD.Int32x4.equal === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @param {int32x4} other An instance of int32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Int32x4} t An instance of Int32x4.
+    * @param {Int32x4} other An instance of Int32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t == other.
     */
-  SIMD.int32x4.equal = function(t, other) {
-    t = SIMD.int32x4.check(t);
-    other = SIMD.int32x4.check(other);
+  SIMD.Int32x4.equal = function(t, other) {
+    t = SIMD.Int32x4.check(t);
+    other = SIMD.Int32x4.check(other);
     var cx = t.x == other.x;
     var cy = t.y == other.y;
     var cz = t.z == other.z;
     var cw = t.w == other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.int32x4.notEqual === "undefined") {
+if (typeof SIMD.Int32x4.notEqual === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @param {int32x4} other An instance of int32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Int32x4} t An instance of Int32x4.
+    * @param {Int32x4} other An instance of Int32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t != other.
     */
-  SIMD.int32x4.notEqual = function(t, other) {
-    t = SIMD.int32x4.check(t);
-    other = SIMD.int32x4.check(other);
+  SIMD.Int32x4.notEqual = function(t, other) {
+    t = SIMD.Int32x4.check(t);
+    other = SIMD.Int32x4.check(other);
     var cx = t.x != other.x;
     var cy = t.y != other.y;
     var cz = t.z != other.z;
     var cw = t.w != other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.int32x4.greaterThan === "undefined") {
+if (typeof SIMD.Int32x4.greaterThan === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @param {int32x4} other An instance of int32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Int32x4} t An instance of Int32x4.
+    * @param {Int32x4} other An instance of Int32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t > other.
     */
-  SIMD.int32x4.greaterThan = function(t, other) {
-    t = SIMD.int32x4.check(t);
-    other = SIMD.int32x4.check(other);
+  SIMD.Int32x4.greaterThan = function(t, other) {
+    t = SIMD.Int32x4.check(t);
+    other = SIMD.Int32x4.check(other);
     var cx = t.x > other.x;
     var cy = t.y > other.y;
     var cz = t.z > other.z;
     var cw = t.w > other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.int32x4.greaterThanOrEqual === "undefined") {
+if (typeof SIMD.Int32x4.greaterThanOrEqual === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @param {int32x4} other An instance of int32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Int32x4} t An instance of Int32x4.
+    * @param {Int32x4} other An instance of Int32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t >= other.
     */
-  SIMD.int32x4.greaterThanOrEqual = function(t, other) {
-    t = SIMD.int32x4.check(t);
-    other = SIMD.int32x4.check(other);
+  SIMD.Int32x4.greaterThanOrEqual = function(t, other) {
+    t = SIMD.Int32x4.check(t);
+    other = SIMD.Int32x4.check(other);
     var cx = t.x >= other.x;
     var cy = t.y >= other.y;
     var cz = t.z >= other.z;
     var cw = t.w >= other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.int32x4.lessThan === "undefined") {
+if (typeof SIMD.Int32x4.lessThan === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @param {int32x4} other An instance of int32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Int32x4} t An instance of Int32x4.
+    * @param {Int32x4} other An instance of Int32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t < other.
     */
-  SIMD.int32x4.lessThan = function(t, other) {
-    t = SIMD.int32x4.check(t);
-    other = SIMD.int32x4.check(other);
+  SIMD.Int32x4.lessThan = function(t, other) {
+    t = SIMD.Int32x4.check(t);
+    other = SIMD.Int32x4.check(other);
     var cx = t.x < other.x;
     var cy = t.y < other.y;
     var cz = t.z < other.z;
     var cw = t.w < other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.int32x4.lessThanOrEqual === "undefined") {
+if (typeof SIMD.Int32x4.lessThanOrEqual === "undefined") {
   /**
-    * @param {int32x4} t An instance of int32x4.
-    * @param {int32x4} other An instance of int32x4.
-    * @return {int32x4} true or false in each lane depending on
+    * @param {Int32x4} t An instance of Int32x4.
+    * @param {Int32x4} other An instance of Int32x4.
+    * @return {Int32x4} true or false in each lane depending on
     * the result of t <= other.
     */
-  SIMD.int32x4.lessThanOrEqual = function(t, other) {
-    t = SIMD.int32x4.check(t);
-    other = SIMD.int32x4.check(other);
+  SIMD.Int32x4.lessThanOrEqual = function(t, other) {
+    t = SIMD.Int32x4.check(t);
+    other = SIMD.Int32x4.check(other);
     var cx = t.x <= other.x;
     var cy = t.y <= other.y;
     var cz = t.z <= other.z;
     var cw = t.w <= other.w;
-    return SIMD.int32x4.bool(cx, cy, cz, cw);
+    return SIMD.Int32x4.bool(cx, cy, cz, cw);
   }
 }
 
-if (typeof SIMD.int32x4.shiftLeftByScalar === "undefined") {
+if (typeof SIMD.Int32x4.shiftLeftByScalar === "undefined") {
   /**
-    * @param {int32x4} a An instance of int32x4.
+    * @param {Int32x4} a An instance of Int32x4.
     * @param {integer} bits Bit count to shift by.
-    * @return {int32x4} lanes in a shifted by bits.
+    * @return {Int32x4} lanes in a shifted by bits.
     */
-  SIMD.int32x4.shiftLeftByScalar = function(a, bits) {
-    a = SIMD.int32x4.check(a);
+  SIMD.Int32x4.shiftLeftByScalar = function(a, bits) {
+    a = SIMD.Int32x4.check(a);
     var x = a.x << bits;
     var y = a.y << bits;
     var z = a.z << bits;
     var w = a.w << bits;
-    return SIMD.int32x4(x, y, z, w);
+    return SIMD.Int32x4(x, y, z, w);
   }
 }
 
-if (typeof SIMD.int32x4.shiftRightLogicalByScalar === "undefined") {
+if (typeof SIMD.Int32x4.shiftRightLogicalByScalar === "undefined") {
   /**
-    * @param {int32x4} a An instance of int32x4.
+    * @param {Int32x4} a An instance of Int32x4.
     * @param {integer} bits Bit count to shift by.
-    * @return {int32x4} lanes in a shifted by bits.
+    * @return {Int32x4} lanes in a shifted by bits.
     */
-  SIMD.int32x4.shiftRightLogicalByScalar = function(a, bits) {
-    a = SIMD.int32x4.check(a);
+  SIMD.Int32x4.shiftRightLogicalByScalar = function(a, bits) {
+    a = SIMD.Int32x4.check(a);
     var x = a.x >>> bits;
     var y = a.y >>> bits;
     var z = a.z >>> bits;
     var w = a.w >>> bits;
-    return SIMD.int32x4(x, y, z, w);
+    return SIMD.Int32x4(x, y, z, w);
   }
 }
 
-if (typeof SIMD.int32x4.shiftRightArithmeticByScalar === "undefined") {
+if (typeof SIMD.Int32x4.shiftRightArithmeticByScalar === "undefined") {
   /**
-    * @param {int32x4} a An instance of int32x4.
+    * @param {Int32x4} a An instance of Int32x4.
     * @param {integer} bits Bit count to shift by.
-    * @return {int32x4} lanes in a shifted by bits.
+    * @return {Int32x4} lanes in a shifted by bits.
     */
-  SIMD.int32x4.shiftRightArithmeticByScalar = function(a, bits) {
-    a = SIMD.int32x4.check(a);
+  SIMD.Int32x4.shiftRightArithmeticByScalar = function(a, bits) {
+    a = SIMD.Int32x4.check(a);
     var x = a.x >> bits;
     var y = a.y >> bits;
     var z = a.z >> bits;
     var w = a.w >> bits;
-    return SIMD.int32x4(x, y, z, w);
+    return SIMD.Int32x4(x, y, z, w);
   }
 }
 
-if (typeof SIMD.int32x4.load === "undefined") {
+if (typeof SIMD.Int32x4.load === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {int32x4} New instance of int32x4.
+    * @return {Int32x4} New instance of Int32x4.
     */
-  SIMD.int32x4.load = function(tarray, index) {
+  SIMD.Int32x4.load = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2722,17 +2722,17 @@ if (typeof SIMD.int32x4.load === "undefined") {
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
     var i32temp = _SIMD_PRIVATE._i32x4;
-    return SIMD.int32x4(i32temp[0], i32temp[1], i32temp[2], i32temp[3]);
+    return SIMD.Int32x4(i32temp[0], i32temp[1], i32temp[2], i32temp[3]);
   }
 }
 
-if (typeof SIMD.int32x4.loadX === "undefined") {
+if (typeof SIMD.Int32x4.loadX === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {int32x4} New instance of int32x4.
+    * @return {Int32x4} New instance of Int32x4.
     */
-  SIMD.int32x4.loadX = function(tarray, index) {
+  SIMD.Int32x4.loadX = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2748,17 +2748,17 @@ if (typeof SIMD.int32x4.loadX === "undefined") {
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
     var i32temp = _SIMD_PRIVATE._i32x4;
-    return SIMD.int32x4(i32temp[0], 0, 0, 0);
+    return SIMD.Int32x4(i32temp[0], 0, 0, 0);
   }
 }
 
-if (typeof SIMD.int32x4.loadXY === "undefined") {
+if (typeof SIMD.Int32x4.loadXY === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {int32x4} New instance of int32x4.
+    * @return {Int32x4} New instance of Int32x4.
     */
-  SIMD.int32x4.loadXY = function(tarray, index) {
+  SIMD.Int32x4.loadXY = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2774,17 +2774,17 @@ if (typeof SIMD.int32x4.loadXY === "undefined") {
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
     var i32temp = _SIMD_PRIVATE._i32x4;
-    return SIMD.int32x4(i32temp[0], i32temp[1], 0, 0);
+    return SIMD.Int32x4(i32temp[0], i32temp[1], 0, 0);
   }
 }
 
-if (typeof SIMD.int32x4.loadXYZ === "undefined") {
+if (typeof SIMD.Int32x4.loadXYZ === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @return {int32x4} New instance of int32x4.
+    * @return {Int32x4} New instance of Int32x4.
     */
-  SIMD.int32x4.loadXYZ = function(tarray, index) {
+  SIMD.Int32x4.loadXYZ = function(tarray, index) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2800,18 +2800,18 @@ if (typeof SIMD.int32x4.loadXYZ === "undefined") {
     for (var i = 0; i < n; ++i)
       array[i] = tarray[index + i];
     var i32temp = _SIMD_PRIVATE._i32x4;
-    return SIMD.int32x4(i32temp[0], i32temp[1], i32temp[2], 0);
+    return SIMD.Int32x4(i32temp[0], i32temp[1], i32temp[2], 0);
   }
 }
 
-if (typeof SIMD.int32x4.store === "undefined") {
+if (typeof SIMD.Int32x4.store === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {int32x4} value An instance of int32x4.
+    * @param {Int32x4} value An instance of Int32x4.
     * @return {void}
     */
-  SIMD.int32x4.store = function(tarray, index, value) {
+  SIMD.Int32x4.store = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2819,7 +2819,7 @@ if (typeof SIMD.int32x4.store === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 16) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.int32x4.check(value);
+    value = SIMD.Int32x4.check(value);
     _SIMD_PRIVATE._i32x4[0] = value.x;
     _SIMD_PRIVATE._i32x4[1] = value.y;
     _SIMD_PRIVATE._i32x4[2] = value.z;
@@ -2834,14 +2834,14 @@ if (typeof SIMD.int32x4.store === "undefined") {
   }
 }
 
-if (typeof SIMD.int32x4.storeX === "undefined") {
+if (typeof SIMD.Int32x4.storeX === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {int32x4} value An instance of int32x4.
+    * @param {Int32x4} value An instance of Int32x4.
     * @return {void}
     */
-  SIMD.int32x4.storeX = function(tarray, index, value) {
+  SIMD.Int32x4.storeX = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2849,7 +2849,7 @@ if (typeof SIMD.int32x4.storeX === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 4) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.int32x4.check(value);
+    value = SIMD.Int32x4.check(value);
     if (bpe == 8) {
       // tarray's elements are too wide. Just create a new view; this is rare.
       var view = new Int32Array(tarray.buffer, tarray.byteOffset + index * 8, 1);
@@ -2866,14 +2866,14 @@ if (typeof SIMD.int32x4.storeX === "undefined") {
   }
 }
 
-if (typeof SIMD.int32x4.storeXY === "undefined") {
+if (typeof SIMD.Int32x4.storeXY === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {int32x4} value An instance of int32x4.
+    * @param {Int32x4} value An instance of Int32x4.
     * @return {void}
     */
-  SIMD.int32x4.storeXY = function(tarray, index, value) {
+  SIMD.Int32x4.storeXY = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2881,7 +2881,7 @@ if (typeof SIMD.int32x4.storeXY === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 8) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.int32x4.check(value);
+    value = SIMD.Int32x4.check(value);
     _SIMD_PRIVATE._i32x4[0] = value.x;
     _SIMD_PRIVATE._i32x4[1] = value.y;
     var array = bpe == 1 ? _SIMD_PRIVATE._i8x16 :
@@ -2894,14 +2894,14 @@ if (typeof SIMD.int32x4.storeXY === "undefined") {
   }
 }
 
-if (typeof SIMD.int32x4.storeXYZ === "undefined") {
+if (typeof SIMD.Int32x4.storeXYZ === "undefined") {
   /**
     * @param {Typed array} tarray An instance of a typed array.
     * @param {Number} index An instance of Number.
-    * @param {int32x4} value An instance of int32x4.
+    * @param {Int32x4} value An instance of Int32x4.
     * @return {void}
     */
-  SIMD.int32x4.storeXYZ = function(tarray, index, value) {
+  SIMD.Int32x4.storeXYZ = function(tarray, index, value) {
     if (!_SIMD_PRIVATE.isTypedArray(tarray))
       throw new TypeError("The 1st argument must be a typed array.");
     if (!_SIMD_PRIVATE.isNumber(index))
@@ -2909,7 +2909,7 @@ if (typeof SIMD.int32x4.storeXYZ === "undefined") {
     var bpe = tarray.BYTES_PER_ELEMENT;
     if (index < 0 || (index * bpe + 12) > tarray.byteLength)
       throw new RangeError("The value of index is invalid.");
-    value = SIMD.int32x4.check(value);
+    value = SIMD.Int32x4.check(value);
     if (bpe == 8) {
       // tarray's elements are too wide. Just create a new view; this is rare.
       var view = new Int32Array(tarray.buffer, tarray.byteOffset + index * 8, 3);
@@ -3718,7 +3718,7 @@ if (typeof Float32x4Array === "undefined") {
     var y = this.storage_[i*4+1];
     var z = this.storage_[i*4+2];
     var w = this.storage_[i*4+3];
-    return SIMD.float32x4(x, y, z, w);
+    return SIMD.Float32x4(x, y, z, w);
   }
 
   Float32x4Array.prototype.setAt = function(i, v) {
@@ -3728,8 +3728,8 @@ if (typeof Float32x4Array === "undefined") {
     if (i >= this.length) {
       throw "Index out of bounds.";
     }
-    if (!(v instanceof SIMD.float32x4)) {
-      throw "Value is not a float32x4.";
+    if (!(v instanceof SIMD.Float32x4)) {
+      throw "Value is not a Float32x4.";
     }
     this.storage_[i*4+0] = v.x;
     this.storage_[i*4+1] = v.y;
@@ -3810,7 +3810,7 @@ if (typeof Int32x4Array === "undefined") {
     var y = this.storage_[i*4+1];
     var z = this.storage_[i*4+2];
     var w = this.storage_[i*4+3];
-    return SIMD.int32x4(x, y, z, w);
+    return SIMD.Int32x4(x, y, z, w);
   }
 
   Int32x4Array.prototype.setAt = function(i, v) {
@@ -3820,8 +3820,8 @@ if (typeof Int32x4Array === "undefined") {
     if (i >= this.length) {
       throw "Index out of bounds.";
     }
-    if (!(v instanceof SIMD.int32x4)) {
-      throw "Value is not a int32x4.";
+    if (!(v instanceof SIMD.Int32x4)) {
+      throw "Value is not a Int32x4.";
     }
     this.storage_[i*4+0] = v.x;
     this.storage_[i*4+1] = v.y;
@@ -3840,7 +3840,7 @@ if (typeof Int32x4Array === "undefined") {
       throw new RangeError("The value of byteOffset is invalid.");
     if (typeof littleEndian === 'undefined')
       littleEndian = false;
-    return SIMD.float32x4(this.getFloat32(byteOffset, littleEndian),
+    return SIMD.Float32x4(this.getFloat32(byteOffset, littleEndian),
                           this.getFloat32(byteOffset + 4, littleEndian),
                           this.getFloat32(byteOffset + 8, littleEndian),
                           this.getFloat32(byteOffset + 12, littleEndian));
@@ -3853,7 +3853,7 @@ if (typeof Int32x4Array === "undefined") {
       throw new RangeError("The value of byteOffset is invalid.");
     if (typeof littleEndian === 'undefined')
       littleEndian = false;
-    return SIMD.float64x2(this.getFloat64(byteOffset, littleEndian),
+    return SIMD.Float64x2(this.getFloat64(byteOffset, littleEndian),
                           this.getFloat64(byteOffset + 8, littleEndian));
   }
 
@@ -3864,7 +3864,7 @@ if (typeof Int32x4Array === "undefined") {
       throw new RangeError("The value of byteOffset is invalid.");
     if (typeof littleEndian === 'undefined')
       littleEndian = false;
-    return SIMD.int32x4(this.getInt32(byteOffset, littleEndian),
+    return SIMD.Int32x4(this.getInt32(byteOffset, littleEndian),
                         this.getInt32(byteOffset + 4, littleEndian),
                         this.getInt32(byteOffset + 8, littleEndian),
                         this.getInt32(byteOffset + 12, littleEndian));
@@ -3917,7 +3917,7 @@ if (typeof Int32x4Array === "undefined") {
       throw new TypeError("This is not a DataView.");
     if (byteOffset < 0 || (byteOffset + 16) > this.buffer.byteLength)
       throw new RangeError("The value of byteOffset is invalid.");
-    value = SIMD.float32x4.check(value);
+    value = SIMD.Float32x4.check(value);
     if (typeof littleEndian === 'undefined')
       littleEndian = false;
     this.setFloat32(byteOffset, value.x, littleEndian);
@@ -3931,7 +3931,7 @@ if (typeof Int32x4Array === "undefined") {
       throw new TypeError("This is not a DataView.");
     if (byteOffset < 0 || (byteOffset + 16) > this.buffer.byteLength)
       throw new RangeError("The value of byteOffset is invalid.");
-    value = SIMD.float64x2.check(value);
+    value = SIMD.Float64x2.check(value);
     if (typeof littleEndian === 'undefined')
       littleEndian = false;
     this.setFloat64(byteOffset, value.x, littleEndian);
@@ -3943,7 +3943,7 @@ if (typeof Int32x4Array === "undefined") {
       throw new TypeError("This is not a DataView.");
     if (byteOffset < 0 || (byteOffset + 16) > this.buffer.byteLength)
       throw new RangeError("The value of byteOffset is invalid.");
-    value = SIMD.int32x4.check(value);
+    value = SIMD.Int32x4.check(value);
     if (typeof littleEndian === 'undefined')
       littleEndian = false;
     this.setInt32(byteOffset, value.x, littleEndian);

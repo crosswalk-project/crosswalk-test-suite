@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>SIMD Test: int32x4</title>
+<title>SIMD Test: Int32x4</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md">
 <link rel="stylesheet" href="ecmascript_simd/src/external/qunit.css">
@@ -40,123 +40,123 @@ Authors:
 <div id="qunit-fixture"></div>
 <script>
 
-test("Check if int32x4 object can be creat successful", function () {
-  notEqual(undefined, SIMD.int32x4, "the type of int32x4 should not be undefined");
-  notEqual(undefined, SIMD.int32x4(1, 2, 3, 4), "the int32x4 object should not be undefined");
-  var f1 = SIMD.int32x4(1, 2, 3, 4);
-  var f2 = SIMD.int32x4.check(f1);
+test("Check if Int32x4 object can be creat successful", function () {
+  notEqual(undefined, SIMD.Int32x4, "the type of Int32x4 should not be undefined");
+  notEqual(undefined, SIMD.Int32x4(1, 2, 3, 4), "the Int32x4 object should not be undefined");
+  var f1 = SIMD.Int32x4(1, 2, 3, 4);
+  var f2 = SIMD.Int32x4.check(f1);
   equal(f1.x, f2.x, "the value of x should equal");
   equal(f1.y, f2.y, "the value of y should equal");
   equal(f1.z, f2.z, "the value of z should equal");
   equal(f1.w, f2.w, "the value of w should equal");
 });
 
-test("Check if the x value of int32x4 object can be got", function () {
-  var u11 = SIMD.int32x4(1, 2, 3, 4);
+test("Check if the x value of Int32x4 object can be got", function () {
+  var u11 = SIMD.Int32x4(1, 2, 3, 4);
   equal(1, u11.x, "the value of u11.x should be 1");
-  var u21 = new SIMD.int32x4(1, 2, 3, 4);
+  var u21 = new SIMD.Int32x4(1, 2, 3, 4);
   equal(1, u21.x, "the value of u21.x should be 1");
 });
 
-test("Check if the z value of int32x4 object can be got", function () {
-  var u12 = SIMD.int32x4(1, 2, 3, 4);
+test("Check if the z value of Int32x4 object can be got", function () {
+  var u12 = SIMD.Int32x4(1, 2, 3, 4);
   equal(2, u12.y, "the value of u12.y should be 2");
-  var u22 = new SIMD.int32x4(1, 2, 3, 4);
+  var u22 = new SIMD.Int32x4(1, 2, 3, 4);
   equal(2, u22.y, "the value of u22.y should be 2");
 });
 
-test("Check if the w value of int32x4 object can be got", function () {
-  var u13 = SIMD.int32x4(1, 2, 3, 4);
+test("Check if the w value of Int32x4 object can be got", function () {
+  var u13 = SIMD.Int32x4(1, 2, 3, 4);
   equal(3, u13.z, "the value of u13.z should be 3");
-  var u23 = new SIMD.int32x4(1, 2, 3, 4);
+  var u23 = new SIMD.Int32x4(1, 2, 3, 4);
   equal(3, u23.z, "the value of u23.z should be 3");
 });
 
-test("Check if the y value of int32x4 object can be got", function () {
-  var u14 = SIMD.int32x4(1, 2, 3, 4);
+test("Check if the y value of Int32x4 object can be got", function () {
+  var u14 = SIMD.Int32x4(1, 2, 3, 4);
   equal(4, u14.w, "the value of u14.w should be 4");
-  var u24 = new SIMD.int32x4(1, 2, 3, 4);
+  var u24 = new SIMD.Int32x4(1, 2, 3, 4);
   equal(4, u24.w, "the value of u24.w should be 4");
 });
 
-test("Check if the bool function of int32x4 can change the object to (-1, 0, -1, 0)", function () {
-  var u3 = SIMD.int32x4.bool(true, false, true, false);
+test("Check if the bool function of Int32x4 can change the object to (-1, 0, -1, 0)", function () {
+  var u3 = SIMD.Int32x4.bool(true, false, true, false);
   equal(-1, u3.x, "the value of u3.x should be -1");
   equal(0, u3.y, "the value of u3.y should be 0");
   equal(-1, u3.z, "the value of u3.z should be -1");
   equal(0, u3.w, "the value of u3.w should be 0");
 });
 
-test("Check if the splat function of int32x4can change the parameter to specified value", function () {
-  var u4 = SIMD.int32x4.splat(4);
+test("Check if the splat function of Int32x4can change the parameter to specified value", function () {
+  var u4 = SIMD.Int32x4.splat(4);
   equal(4, u4.x, "the value of u4.x should be 4");
   equal(4, u4.y, "the value of u4.y should be 4");
   equal(4, u4.z, "the value of u4.z should be 4");
   equal(4, u4.w, "the value of u4.w should be 4");
 });
 
-test("Check if the flagX of int32x4 object can be got and type of boolean", function () {
-  var u51 = SIMD.int32x4(1, 2, 3, 4);
+test("Check if the flagX of Int32x4 object can be got and type of boolean", function () {
+  var u51 = SIMD.Int32x4(1, 2, 3, 4);
   equal(true, u51.flagX, "the flagX of u51 should be true");
-  var u61 = new SIMD.int32x4(0, 1, 0, 1);
+  var u61 = new SIMD.Int32x4(0, 1, 0, 1);
   equal(false, u61.flagX, "the flagX of u61 should be false");
 });
 
-test("Check if the flagY of int32x4 object can be got and type of boolean", function () {
-  var u52 = SIMD.int32x4(1, 2, 3, 4);
+test("Check if the flagY of Int32x4 object can be got and type of boolean", function () {
+  var u52 = SIMD.Int32x4(1, 2, 3, 4);
   equal(true, u52.flagY, "the flagY of u52 should be true");
-  var u62 = new SIMD.int32x4(0, 1, 0, 1);
+  var u62 = new SIMD.Int32x4(0, 1, 0, 1);
   equal(true, u62.flagY, "the flagY of u62 should be true");
 });
 
-test("Check if the flagZ of int32x4 object can be got and type of boolean", function () {
-  var u53 = SIMD.int32x4(1, 2, 3, 4);
+test("Check if the flagZ of Int32x4 object can be got and type of boolean", function () {
+  var u53 = SIMD.Int32x4(1, 2, 3, 4);
   equal(true, u53.flagZ, "the flagZ of u53 should be true");
-  var u63 = new SIMD.int32x4(0, 1, 0, 1);
+  var u63 = new SIMD.Int32x4(0, 1, 0, 1);
   equal(false, u63.flagZ, "the flagZ of u63 should be false");
 });
 
-test("Check if the flagW of int32x4 object can be got and type of boolean", function () {
-  var u54 = SIMD.int32x4(1, 2, 3, 4);
+test("Check if the flagW of Int32x4 object can be got and type of boolean", function () {
+  var u54 = SIMD.Int32x4(1, 2, 3, 4);
   equal(true, u54.flagW, "the flagW of u54 should be true");
-  var u64 = new SIMD.int32x4(0, 1, 0, 1);
+  var u64 = new SIMD.Int32x4(0, 1, 0, 1);
   equal(true, u64.flagW, "the flagW of u64 should be true");
 });
 
-test("Check if the fromFloat64x2 method of int32x4 is valid", function () {
-  var m = SIMD.int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
-  var nMask = SIMD.float64x2.fromInt32x4(m);
-  var n = SIMD.int32x4.fromFloat64x2(nMask);
+test("Check if the fromFloat64x2 method of Int32x4 is valid", function () {
+  var m = SIMD.Int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
+  var nMask = SIMD.Float64x2.fromInt32x4(m);
+  var n = SIMD.Int32x4.fromFloat64x2(nMask);
   equal(0x3F800000, n.x, "the value of n.x should be 0x3F800000");
   equal(0x40000000, n.y, "the value of n.y should be 0x40000000");
   equal(0, n.z, "the value of n.z should be 0");
   equal(0, n.w, "the value of n.w should be 0");
 });
 
-test("Check if the fromFloat64x2Bits method of int32x4 is valid", function () {
-  var m = SIMD.int32x4(9, 10, 11, 12);
-  var nMask = SIMD.float64x2.fromInt32x4Bits(m);
-  var n = SIMD.int32x4.fromFloat64x2Bits(nMask);
+test("Check if the fromFloat64x2Bits method of Int32x4 is valid", function () {
+  var m = SIMD.Int32x4(9, 10, 11, 12);
+  var nMask = SIMD.Float64x2.fromInt32x4Bits(m);
+  var n = SIMD.Int32x4.fromFloat64x2Bits(nMask);
   equal(9, n.x, "the value of n.x should be 9");
   equal(10, n.y, "the value of n.y should be 10");
   equal(11, n.z, "the value of n.z should be 11");
   equal(12, n.w, "the value of n.w should be 12");
 });
 
-test("Check if the fromFloat32x4 method of int32x4 is valid", function () {
-  var m = SIMD.int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
-  var nMask = SIMD.float32x4.fromInt32x4(m);
-  var n = SIMD.int32x4.fromFloat32x4(nMask);
+test("Check if the fromFloat32x4 method of Int32x4 is valid", function () {
+  var m = SIMD.Int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
+  var nMask = SIMD.Float32x4.fromInt32x4(m);
+  var n = SIMD.Int32x4.fromFloat32x4(nMask);
   equal(0x3F800000, n.x, "the value of n.x should be 0x3F800000");
   equal(0x40000000, n.y, "the value of n.y should be 0x40000000");
   equal(0x40400000, n.z, "the value of n.z should be 0");
   equal(0x40800000, n.w, "the value of n.w should be 0");
 });
 
-test("Check if the fromFloat32x4Bits method of int32x4 is valid", function () {
-  var m = SIMD.int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
-  var nMask = SIMD.float32x4.fromInt32x4Bits(m);
-  var n = SIMD.int32x4.fromFloat32x4Bits(nMask);
+test("Check if the fromFloat32x4Bits method of Int32x4 is valid", function () {
+  var m = SIMD.Int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
+  var nMask = SIMD.Float32x4.fromInt32x4Bits(m);
+  var n = SIMD.Int32x4.fromFloat32x4Bits(nMask);
   equal(0x3F800000, n.x, "the value of n.x should be 0x3F800000");
   equal(0x40000000, n.y, "the value of n.y should be 0x40000000");
   equal(0x40400000, n.z, "the value of n.z should be 0");

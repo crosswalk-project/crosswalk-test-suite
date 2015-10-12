@@ -62,7 +62,7 @@ rm -rf $SRC_ROOT/*.zip
 cp -arf $SRC_ROOT/* $BUILD_ROOT/
 
 for list in $LIST;do
-    cp -ar $list $BUILD_ROOT/
+    cp -ar ./../../webapi/$list $BUILD_ROOT/
 done
 
 ## creat testlist.json ##
