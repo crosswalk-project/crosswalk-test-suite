@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,10 +20,39 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class XWalkEmbeddedAPISample extends ListActivity {
+
+    public final static String TAG = "XWalkEmbeddedAPISample";
+
+    public final static String LEVEL_BOUND = "LEVEL_BOUND";
+
+    public final static String ORDER_BOUND = "ORDER_BOUND";
+
+    private int level = 0;
+
+    private String title;
+
+    private int order = 0;
+
+    private String[][] TITLES = {{"Usecase EmbeddingAPI"}, {"XWalkView", "XWalkview-Extended", "XwalkUICilent & XwalkResourceClient", "Misc"}};
+
+    private String[] CATEGORIES = {Intent.CATEGORY_SAMPLE_CODE, "XWalkview.Extended", "XWalkview.UIClient.ResourceClient", "XWalkview.Misc"};
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setListAdapter(new SampleAdapter());
+        Bundle bundle = this.getIntent().getExtras();
+        if(null != bundle) {
+            int tmp_level = bundle.getInt(LEVEL_BOUND);
+            if (tmp_level > 0) {
+                level = tmp_level;
+            }
+            int tmp_order = bundle.getInt(ORDER_BOUND);
+            if (tmp_order > 0) {
+                order = tmp_order;
+            }
+        }
+        this.setTitle(TITLES[level][order]);
+        setListAdapter(new SampleAdapter(level, order));
     }
 
     @Override
@@ -59,27 +89,45 @@ public class XWalkEmbeddedAPISample extends ListActivity {
     class SampleAdapter extends BaseAdapter {
         private ArrayList<SampleInfo> mItems;
 
-        public SampleAdapter() {
-            Intent intent = new Intent(Intent.ACTION_MAIN, null);
-            intent.setPackage(getPackageName());
-            intent.addCategory(Intent.CATEGORY_SAMPLE_CODE);
+        private void addItems(ResolveInfo info, PackageManager pm){
+            final CharSequence labelSeq = info.loadLabel(pm);
+            String label = labelSeq != null ? labelSeq.toString() : info.activityInfo.name;
 
-            PackageManager pm = getPackageManager();
-            List<ResolveInfo> infos = pm.queryIntentActivities(intent, 0);
+            Intent target = new Intent();
+            target.setClassName(info.activityInfo.applicationInfo.packageName,
+                    info.activityInfo.name);
+            SampleInfo sample = new SampleInfo(label, target);
+            mItems.add(sample);
+        }
 
+        public SampleAdapter(int level, int order){
             mItems = new ArrayList<SampleInfo>();
+            if(level == 0){
+                for(int i = 0; i < TITLES[1].length; i++) {
+                    Intent target = new Intent();
+                    target.setClassName("org.xwalk.embedded.api.sample",
+                            "org.xwalk.embedded.api.sample.XWalkEmbeddedAPISample");
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(LEVEL_BOUND, 1);
+                    bundle.putInt(ORDER_BOUND, i);
 
-            final int count = infos.size();
-            for (int i = 0; i < count; i++) {
-                final ResolveInfo info = infos.get(i);
-                final CharSequence labelSeq = info.loadLabel(pm);
-                String label = labelSeq != null ? labelSeq.toString() : info.activityInfo.name;
+                    target.putExtras(bundle);
+                    SampleInfo sample = new SampleInfo(TITLES[1][i], target);
+                    mItems.add(sample);
+                }
+            }else{
+                Intent intent = new Intent(Intent.ACTION_MAIN, null);
+                intent.setPackage(getPackageName());
+                intent.addCategory(CATEGORIES[order]);
 
-                Intent target = new Intent();
-                target.setClassName(info.activityInfo.applicationInfo.packageName,
-                        info.activityInfo.name);
-                SampleInfo sample = new SampleInfo(label, target);
-                mItems.add(sample);
+                Log.i(TAG, "___________________Create new Adapter__________");
+
+                PackageManager pm = getPackageManager();
+                List<ResolveInfo> infos = pm.queryIntentActivities(intent, 0);
+                for (int i = 0; i < infos.size(); i++) {
+                    final ResolveInfo info = infos.get(i);
+                    addItems(info, pm);
+                }
             }
         }
 
