@@ -53,7 +53,7 @@ public class TestXWalkUIClientBase extends XWalkUIClient {
     @Override
     public void onScaleChanged(XWalkView view, float oldScale,
             float newScale) {
-        mInnerContentsClient.onScaleChanged(newScale);
+        mInnerContentsClient.onScaleChanged(oldScale, newScale);
     }
 
     @Override

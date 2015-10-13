@@ -179,7 +179,7 @@ public class XWalkUIClientTestAsync extends XWalkViewTestBase {
             int count = mOnScaleChangedHelper.getCallCount();
             loadDataAsync(null, fileContent, "text/html", false);
             mOnScaleChangedHelper.waitForCallback(count);
-            assertTrue(Float.compare(mOnScaleChangedHelper.getScale(), 0.0f) > 0);
+            assertTrue(Float.compare(mOnScaleChangedHelper.getNewScale(), 0.0f) > 0);
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
