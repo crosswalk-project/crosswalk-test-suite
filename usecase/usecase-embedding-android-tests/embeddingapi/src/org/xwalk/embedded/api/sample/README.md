@@ -566,7 +566,7 @@ This usecase covers following interface and methods:
 
 
 
-### 57. The [XWalkViewWithOnUnhandledKeyEvent](XWalkViewWithOnUnhandledKeyEvent.java) sample check XWalkUIClient.onUnhandledKeyEvent method work as same as WebView, include:
+### 56. The [XWalkViewWithOnUnhandledKeyEvent](XWalkViewWithOnUnhandledKeyEvent.java) sample check XWalkUIClient.onUnhandledKeyEvent method work as same as WebView, include:
 
 * XWalkUIClient.onUnhandledKeyEvent can be invoked
 
@@ -576,11 +576,21 @@ This usecase covers following interface and methods:
 
 
 
-### 58. The [XWalkViewWithClearCacheForSingleFile](XWalkViewWithClearCacheForSingleFile.java) sample check XWalkView can implement clearCacheForSingleFile API, include:
+### 57. The [XWalkViewWithClearCacheForSingleFile](XWalkViewWithClearCacheForSingleFile.java) sample check XWalkView can implement clearCacheForSingleFile API, include:
 
 * XWalkView can implement clearCacheForSingleFile API
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: clearCacheForSingleFile, load methods
+
+
+
+### 58. The [XWalkViewWithEncodingDisplay](XWalkViewWithEncodingDisplay.java) sample check XWalkView can display utf-8 charset html file, include:
+
+* XWalkView can display utf-8 charset
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load
 
