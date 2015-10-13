@@ -33,9 +33,9 @@ public class XWalkEmbeddedAPISample extends ListActivity {
 
     private int order = 0;
 
-    private String[][] TITLES = {{"Usecase EmbeddingAPI"}, {"XWalkView", "XWalkview-Extended", "XwalkUICilent & XwalkResourceClient", "Misc"}};
+    private String[][] TITLES = {{"Async Usecase EmbeddingAPI"}, {"XWalkView", "XWalkview-Extended", "XwalkUICilent & XwalkResourceClient", "Misc"}};
 
-    private String[] CATEGORIES = {Intent.CATEGORY_SAMPLE_CODE, "XWalkview.Extended", "XWalkview.UIClient.ResourceClient", "XWalkview.Misc"};
+    private String[] CATEGORIES = {"XWalkView.Basic", "XWalkview.Extended", "XWalkview.UIClient.ResourceClient", "XWalkview.Misc"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
