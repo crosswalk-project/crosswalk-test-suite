@@ -410,10 +410,6 @@ def copySampleSource(app_name, target_path):
         source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "sample-my-private-notes", "www")
 
     if source_path:
-        if not doRemove(
-                glob.glob(target_path)):
-            os.chdir(orig_dir)
-            return False
         if not doCopy(source_path,
                 target_path):
             os.chdir(orig_dir)
@@ -469,6 +465,11 @@ def packSampleApp(app_name=None):
             os.chdir(orig_dir)
             return False
 
+    if checkContains(app_name, "PRIVATENOTES"):
+        status_plugman_cmd = "plugman install --platform android --project . --plugin https://github.com/01org/AppSecurityApi"
+        if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT * 5):
+            os.chdir(orig_dir)
+            return False
 
     if BUILD_PARAMETERS.cordovaversion == "4.x":
         if BUILD_PARAMETERS.pkgarch == "x86":

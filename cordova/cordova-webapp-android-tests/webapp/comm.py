@@ -127,7 +127,7 @@ def installWebviewPlugin(pkg_mode, self):
     pluginstatus = commands.getstatusoutput(plugin_install_cmd)
     self.assertEquals(0, pluginstatus[0])
 
-def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
+def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, actual_plugin = None):
     os.chdir(tool_path)
     if os.path.exists(os.path.join(tool_path, appname)):
         print "Existing %s project, try to clean up..." % appname
@@ -147,8 +147,9 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
     result = commands.getstatusoutput("ls")
     self.assertIn(appname, result[1])
     project_root = os.path.join(tool_path, appname)
+    os.chdir(project_root)
     if CORDOVA_VERSION == "4.x":
-        os.chdir(project_root)
+
         if not replace_key(os.path.join(project_root, 'config.xml'),
                            '<widget android-activityName="%s"' % appname, '<widget'):
             print "replace key '<widget' failed."
@@ -187,8 +188,8 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
             if not replace_key(index_file_path, content, key):
                 print "replace key: " + key + " failed."
                 return False
+
         if sourcecodepath is not None:
-            do_remove(glob.glob(os.path.join(project_root, "assets", "www")))
             do_copy(
                 sourcecodepath,
                 os.path.join(
@@ -196,6 +197,12 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
                     appname,
                     "assets",
                     "www"))
+        if actual_plugin:
+            status_plugman_cmd = "plugman install --platform android --project . --plugin %s" % actual_plugin
+            installstatus = commands.getstatusoutput(status_plugman_cmd)
+            print "status_plugman_cmd=" + status_plugman_cmd
+            self.assertEquals(0, installstatus[0])
+
 
 def buildGoogleApp(appname, sourcecodepath, self):
     os.chdir(tool_path)

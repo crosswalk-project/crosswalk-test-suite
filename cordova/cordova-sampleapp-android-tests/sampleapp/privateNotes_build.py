@@ -42,7 +42,8 @@ class TestPrivateNotesAppBuild(unittest.TestCase):
         app_name = "privateNotes"
         pkg_name = " com.example." + app_name
         sample_src_pref = "/tmp/crosswalk-demos/sample-my-private-notes/www"
-        comm.create(app_name, pkg_name, comm.MODE, sample_src_pref, None, self)
+        actual_plugin = "https://github.com/01org/AppSecurityApi"
+        comm.create(app_name, pkg_name, comm.MODE, sample_src_pref, None, self, actual_plugin)
         comm.build(app_name, False, self)
 
 if __name__ == '__main__':
