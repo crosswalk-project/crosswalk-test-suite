@@ -28,6 +28,7 @@
 #
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Li, Hao<haox.li@intel.com>
 
 import unittest
 import os
@@ -66,16 +67,15 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
         i = 0
         while True:
             i = i + 1
-            apps_list = {'tct_fileapi_w3c_tests': 'TctFileapiW3cTests',
-                         'tct_fullscreen_nonw3c_tests': 'TctFullscreenNonw3cTests',
-                         'tct_mediacapture_w3c_tests': 'TctMediacaptureW3cTests',
-                         'tct_websocket_w3c_tests': 'TctWebsocketW3cTests',
-                         'gallery': 'Gallery',
-                         'hangonman': 'Hangonman',
+            apps_list = {'hangonman': 'Hangonman',
+                         'helloworld': 'Helloworld',
                          'hexgl': 'Hexgl',
-                         'sysapps': 'Sysapps',
-                         'memorygame': 'Memorygame'
-                         }
+                         'memorygame': 'Memorygame',
+                         'simd': 'Simd',
+                         'spacedodgegame': 'Spacedodgegame',
+                         'webgl': 'Webgl',
+                         'webrtc': 'Webrtc'
+                        }
             elapsed_time = time.time() - pre_time
             if elapsed_time >= runtime:
                 print i, elapsed_time, 'Process finished'
@@ -99,11 +99,13 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
                             pkg +
                             'Activity')
                         self.assertNotIn('Error', launchstatus[1])
+                        time.sleep(1)
                         commands.getstatusoutput(
                             'adb -s ' +
                             device +
                             ' shell am force-stop org.xwalk.' +
                             name)
+                        time.sleep(1)
                         stopresult = commands.getstatusoutput(
                             'adb -s ' +
                             device +
