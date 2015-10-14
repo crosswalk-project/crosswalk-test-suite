@@ -1054,4 +1054,13 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
+    
+    protected void clearSingleCacheOnUiThread(final String url) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.clearCacheForSingleFile(url);
+            }
+        });
+    }    
 }

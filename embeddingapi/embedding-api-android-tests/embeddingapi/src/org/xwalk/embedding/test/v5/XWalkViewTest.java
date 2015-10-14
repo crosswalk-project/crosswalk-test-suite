@@ -4,6 +4,8 @@
 
 package org.xwalk.embedding.test.v5;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 
@@ -17,6 +19,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.test.suitebuilder.annotation.MediumTest;
+import android.util.Pair;
 import android.view.WindowManager;
 
 @SuppressLint("NewApi")
@@ -380,5 +383,55 @@ public class XWalkViewTest extends XWalkViewTestBase {
         loadDataSync(null, page, "text/html", false);
         mTestHelperBridge.getOnScaleChangedHelper().waitForCallback(onScaleChangedCallCount);
         assertEquals(defaultScale, getPixelScale(), .01f);
-    }    
+    }
+    
+    @SmallTest
+    public void testClearCacheForSingleFile() throws Throwable {
+        final String pagePath = "/clear_cache_test.html";
+        final String otherPagePath = "/clear_other_cache_test.html";
+        List<Pair<String, String>> headers = new ArrayList<Pair<String, String>>();
+        // Set Cache-Control headers to cache this request. One century should be long enough.
+        headers.add(Pair.create("Cache-Control", "max-age=3153600000"));
+        headers.add(Pair.create("Last-Modified", "Mon, 12 May 2014 00:00:00 GMT"));
+        final String pageUrl = mWebServer.setResponse(
+                pagePath, "<html><body>foo</body></html>", headers);
+        final String otherPageUrl = mWebServer.setResponse(
+                otherPagePath, "<html><body>foo</body></html>", headers);
+
+        // First load to populate cache.
+        clearSingleCacheOnUiThread(pageUrl);
+        loadUrlSync(pageUrl);
+        assertEquals(1, mWebServer.getRequestCount(pagePath));
+
+        // Load about:blank so next load is not treated as reload by XWalkView and force
+        // revalidate with the server.
+        loadUrlSync("about:blank");
+
+        // No clearCache call, so should be loaded from cache.
+        loadUrlSync(pageUrl);
+        assertEquals(1, mWebServer.getRequestCount(pagePath));
+
+        loadUrlSync(otherPageUrl);
+        assertEquals(1, mWebServer.getRequestCount(otherPagePath));
+
+        // Same as above.
+        loadUrlSync("about:blank");
+
+        // Clear cache, so should hit server again.
+        clearSingleCacheOnUiThread(pageUrl);
+        loadUrlSync(pageUrl);
+        assertEquals(2, mWebServer.getRequestCount(pagePath));
+
+        // otherPageUrl was not cleared, so should be loaded from cache.
+        loadUrlSync(otherPageUrl);
+        assertEquals(1, mWebServer.getRequestCount(otherPagePath));
+
+        // Same as above.
+        loadUrlSync("about:blank");
+
+        // Do not clear cache, so should be loaded from cache.
+        clearCacheOnUiThread(false);
+        loadUrlSync(pageUrl);
+        assertEquals(2, mWebServer.getRequestCount(pagePath));
+    }        
 }
