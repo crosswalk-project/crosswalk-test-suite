@@ -1,5 +1,5 @@
 Feature: web-system-app
- Scenario: Crosswalk Canvas sleep 
+ Scenario: Crosswalk Canvas sleep
   When launch "canvas"
     And I wait for 3 seconds
     And I click view "className=android.widget.Button^^^description=Rotate 90deg"
