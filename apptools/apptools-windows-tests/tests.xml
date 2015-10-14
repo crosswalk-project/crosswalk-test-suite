@@ -23,9 +23,14 @@
           <test_script_entry>/opt/apptools-windows-tests/apptools/update.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_version" purpose="Windows - Validate if version command can display version information">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_app_version" purpose="Windows - Validate if crosswalk-app version command can display version information">
         <description>
-          <test_script_entry>/opt/apptools-windows-tests/apptools/version.py</test_script_entry>
+          <test_script_entry>/opt/apptools-windows-tests/apptools/crosswalk_app_version.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_pkg_version" purpose="Windows - Validate if crosswalk-pkg version command can display version information">
+        <description>
+          <test_script_entry>/opt/apptools-windows-tests/apptools/crosswalk_pkg_version.py</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_target_platforms" purpose="Windows - Validate if platforms command can list available target platforms">
@@ -132,9 +137,14 @@
       </testcase>
     </set>
     <set name="CLI_manual" type="js">
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Help" purpose="Windows - Validate if all usages work well as description">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Crosswalk_App_Help" purpose="Windows - Validate if all usages of crosswalk-app work well as description">
         <description>
-          <test_script_entry>/opt/apptools-windows-tests/apptools/AppTools_Help.html</test_script_entry>
+          <test_script_entry>/opt/apptools-windows-tests/apptools/AppTools_Crosswalk_App_Help.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Crosswalk_Pkg_Help" purpose="Windows - Validate if all usages of crosswalk-pkg work well as description">
+        <description>
+          <test_script_entry>/opt/apptools-windows-tests/apptools/AppTools_Crosswalk_Pkg_Help.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Check_VersionName" purpose="Windows - Validate if versionName is from manifest version code">

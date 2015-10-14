@@ -42,7 +42,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-package " + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android " + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
@@ -63,7 +63,139 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-package " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+            "crosswalk-pkg --platforms=android " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+        self.assertEquals(apkLength, 2)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
+    def test_create_package_stable(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --crosswalk=stable " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+        self.assertEquals(apkLength, 2)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
+    def test_create_package_beta(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --crosswalk=beta " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+        self.assertEquals(apkLength, 2)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
+    def test_create_package_canary(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --crosswalk=canary " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+        self.assertEquals(apkLength, 2)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
+    def test_create_package_version(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --crosswalk=" + comm.crosswalkVersion + " " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+        self.assertEquals(apkLength, 2)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
+    def test_create_package_pathToRelease(self):
+        comm.setUp()
+        for i in range(len(os.listdir(comm.XwalkPath))):
+                if os.listdir(comm.XwalkPath)[i].endswith(".zip"):
+                    androidCrosswalk = os.listdir(comm.XwalkPath)[i]
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --crosswalk=" + comm.XwalkPath + androidCrosswalk + " " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+        self.assertEquals(apkLength, 2)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
+    def test_build_package_release(self):
+        comm.setUp()
+        for i in range(len(os.listdir(comm.XwalkPath))):
+                if os.listdir(comm.XwalkPath)[i].endswith(".zip"):
+                    androidCrosswalk = os.listdir(comm.XwalkPath)[i]
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --release=true " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0

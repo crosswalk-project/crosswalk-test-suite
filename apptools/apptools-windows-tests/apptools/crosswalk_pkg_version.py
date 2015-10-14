@@ -31,45 +31,22 @@
 import unittest
 import os
 import comm
+import urllib2
+import json
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_create_package_basic(self):
+    def test_version_normal(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        comm.clear("org.xwalk.test")
-        os.mkdir("org.xwalk.test")
-        os.chdir('org.xwalk.test')
-        cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " " + comm.ConstPath + "/../testapp/create_package_basic/"
-        return_code = os.system(cmd)
-        apks = os.listdir(os.getcwd())
-        apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".msi"):
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 1)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(return_code, 0)
-
-    def test_create_package_missing_icon_startUrl(self):
-        comm.setUp()
-        os.chdir(comm.XwalkPath)
-        comm.clear("org.xwalk.test")
-        os.mkdir("org.xwalk.test")
-        os.chdir('org.xwalk.test')
-        cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
-        return_code = os.system(cmd)
-        apks = os.listdir(os.getcwd())
-        apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".msi"):
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 1)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(return_code, 0)
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-pkg --version"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        with open(comm.ConstPath + "/../tools/crosswalk-app-tools/package.json") as json_file:
+            data = json.load(json_file)
+        self.assertEquals(
+            data['version'].strip(os.linesep),
+            output[0].strip(os.linesep))
 
 if __name__ == '__main__':
     unittest.main()
