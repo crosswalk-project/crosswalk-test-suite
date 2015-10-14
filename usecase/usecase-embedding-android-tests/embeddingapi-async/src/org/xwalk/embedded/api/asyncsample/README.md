@@ -556,3 +556,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, setInitialScale methods
 
+
+
+### 57. The [XWalkViewWithOnUnhandledKeyEventAsync](XWalkViewWithOnUnhandledKeyEventAsync.java) sample check XWalkUIClient.onUnhandledKeyEvent method work as same as WebView, include:
+
+* XWalkUIClient.onUnhandledKeyEvent can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: XWalkUIClient.onUnhandledKeyEvent methods
+
