@@ -43,9 +43,14 @@
           <test_script_entry>/opt/apptools-android-tests/apptools/update.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_version" priority="P1" purpose="Android - Validate if version command can display version information" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_app_version" priority="P1" purpose="Android - Validate if crosswalk-app version command can display version information" status="approved" type="Functional">
         <description>
-          <test_script_entry>/opt/apptools-android-tests/apptools/version.py</test_script_entry>
+          <test_script_entry>/opt/apptools-android-tests/apptools/crosswalk_app_version.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_pkg_version" priority="P1" purpose="Android - Validate if crosswalk-pkg version command can display version information" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/crosswalk_pkg_version.py</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_setup_cache_dir" priority="P1" purpose="Android - Validate if download file under CROSSWALK_APP_TOOLS_CACHE_DIR dir" status="approved" type="Functional">
@@ -118,7 +123,7 @@
           <test_script_entry>/opt/apptools-android-tests/apptools/create_offline.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_package" priority="P1" purpose="Android - Validate if package can be created without a project" status="approved" type="Functional" subcase="2">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_package" priority="P1" purpose="Android - Validate if package can be created without a project" status="approved" type="Functional" subcase="8">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_package.py</test_script_entry>
         </description>
@@ -252,9 +257,14 @@
           <test_script_entry>/opt/apptools-android-tests/apptools/Update_Download.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Help" priority="P1" purpose="Android - Validate if all usages work well as description" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Crosswalk_App_Help" priority="P1" purpose="Android - Validate if all usages of crosswalk-app work well as description" status="approved" type="Functional">
         <description>
-          <test_script_entry>/opt/apptools-android-tests/apptools/AppTools_Help.html</test_script_entry>
+          <test_script_entry>/opt/apptools-android-tests/apptools/AppTools_Crosswalk_App_Help.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Crosswalk_Pkg_Help" priority="P1" purpose="Android - Validate if all usages of crosswalk-pkg work well as description" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/AppTools_Crosswalk_Pkg_Help.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Check_VersionName" priority="P1" purpose="Android - Validate if versionName is from manifest version code" status="approved" type="Functional">
