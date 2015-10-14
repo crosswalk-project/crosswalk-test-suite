@@ -1,12 +1,15 @@
 ## Introduction
 
-pack_cordova_sample.py is used for auto build Cordova sample apps, including mobilespec, helloworld, remotedebugging, spacedodge, renamePkg, xwalkCommandLine, and except renamePkg and xwalkCommandLine only support Cordova 4.x, others support both Cordova 3.6 and Cordova 4.x build.  
+pack_cordova_sample.py is used for auto build Cordova sample apps, including mobilespec, helloworld, remotedebugging, spacedodge, renamePkg, xwalkCommandLine, and except renamePkg and xwalkCommandLine only support Cordova 4.x, privateNotes only support Cordova 3.6, others support both Cordova 3.6 and Cordova 4.x build.  
 **Note**: For cordova 4.x pkg, need to configure crosswalk version in crosswalk-test-suite/VERSION file
 
 ## Pre-conditions
 
 ###spacedodge build based on Cordova 4.x and Cordova 3.6
 * Clone https://github.com/crosswalk-project/crosswalk-samples.git to crosswalk-test-suite/tools/
+
+###privateNotes build based on Cordova Cordova 3.6
+* Clone https://github.com/gomobile/sample-my-private-notes.git to crosswalk-test-suite/tools/
 
 ###mobilespec build based on Cordova 4.x
 * Require Android API level 22
@@ -33,7 +36,7 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 ## Usage
 
 * ```./pack_cordova_sample.py -n <pkg-name> --cordova-version <cordova-version> [-m <pkg-mode>] [-a <pkg-arch>] [--tools=<tools-path>]```  
-**pkg-name**: mobilespec, helloworld, remotedebugging, spacedodge, CIRC, statusbar, renamePkg, xwalkCommandLine  
+**pkg-name**: mobilespec, helloworld, remotedebugging, spacedodge, CIRC, statusbar, renamePkg, xwalkCommandLine, privateNotes  
 **cordova-version**: 3.6, 4.x  
 **pkg-mode**: embedded(default), shared  
 **pkg-arch**: arm(default), x86  

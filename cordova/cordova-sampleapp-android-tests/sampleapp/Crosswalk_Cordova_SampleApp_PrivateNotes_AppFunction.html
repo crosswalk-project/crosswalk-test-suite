@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,29 +26,43 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Shen,Lin <linx.a.shen@intel.com>
+    Zhu,Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Cordova_SampleApp_Gallery_Close</title>
+    <title>Crosswalk_Cordova_SampleApp_PrivateNotes_AppFunction</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
-    <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Long press home button to open task manager</li>
-      <li>Slide to the right or left the application</li>
+      <li>Input "test1" then click the "Sign-in" button</li>
+      <li>Click the "+" button to add a secure item</li>
+      <li>Input the content in the "ID", "Data", "Tags" InputBox</li>
+      <li>Change the "Secure Item" to "Yes", then click the "Create" button</li>
+      <li>Click the added item to view the detail</li>
+      <li>Sign in the app using "test2"</li>
+      <li>Click the added item to view the detail</li>
+      <li>Sign in the app using "test1"</li>
+      <li>Swip the added item left or right to remove the added item</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Task manager is able to open</li>
-      <li>Gallery should be closed</li>
+      <li>Sign in the app using "test1" successfully</li>
+      <li>Add the secure item data successfully</li>
+      <li>There is a green lock icon at the right bottom of the added item</li>
+      <li>The data is shown in the added item detail</li>
+      <li>Sign in the app using "test2" successfully</li>
+      <li>There is a red lock icon at the right bottom of the added item</li>
+      <li>"Wrong PIN number" is shown in the added item detail, the data content is not shown</li>
+      <li>Sign in the app using "test1" successfully</li>
+      <li>The added item is removed successfully and not shown in the list page</li>
+    </ol>
   </body>
 </html>
