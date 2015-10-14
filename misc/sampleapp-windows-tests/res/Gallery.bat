@@ -1,1 +1,0 @@
-xwalk.exe http://otcqa.sh.intel.com/qa-auto/live/Xwalk-testsuites/Sampleapp_SourceCode_And_Binary/tmp/crosswalk-demos/Gallery/

@@ -40,7 +40,7 @@ class TestSampleAppFunctions(unittest.TestCase):
     def test_pack(self):
         comm.setUp()
         app_name = "Helloworld"
-        sample_src = "/hello_world/"
+        sample_src = "/hello-world/"
         app_root = comm.sample_src_pref + sample_src
         cmd = "python %smake_apk.py --package=org.xwalk.%s --name=%s "\
         "--app-root=%s --app-local-path=%s --arch=%s --mode=%s "\
