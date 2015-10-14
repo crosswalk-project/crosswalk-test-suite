@@ -554,3 +554,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: setBackgroundColor methods
 
+
+
+### 55. The [XWalkViewWithSetInitialScale](XWalkViewWithSetInitialScale.java) sample check XWalkView's setInitialScale feature, include:
+
+* XWalkView can setInitialScale
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setInitialScale methods
+
