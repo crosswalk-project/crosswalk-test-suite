@@ -407,7 +407,7 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     if not doRemove([os.path.join(project_root, "app")]):
         return False
-    if not doCopy(os.path.join(app_src, "app"), os.path.join(project_root, "app")):
+    if not doCopy(os.path.join(app_src), os.path.join(project_root, "app")):
         os.chdir(orig_dir)
         return False
 
@@ -475,9 +475,7 @@ def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
         app_name = os.path.basename(app_dir)
 
     app_src = os.path.join(BUILD_ROOT_SRC_SUB_APP, app_name)
-
-    # copy source to  BUILD_ROOT_SRC_SUB_APP/pkg_name/app
-    if buildSRC(app_dir, os.path.join(app_src, "app"), build_json):
+    if buildSRC(app_dir, app_src, build_json):
         app_dest = safelyGetValue(build_json, "install-path")
         if app_dest:
             app_dest = os.path.join(app_dest_default, app_dest)
@@ -489,9 +487,7 @@ def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
             apps_num = 0
             for i_app_dir in app_dirs:
                 if os.path.isdir(os.path.join(app_src, i_app_dir)):
-                    print "i_app_dir:" + i_app_dir
                     i_app_name = os.path.basename(i_app_dir)
-                    print "i_app_name:" + i_app_name
                     if not packAPP(
                             build_json, os.path.join(app_src, i_app_name),
                             app_dest, i_app_name):
@@ -507,42 +503,29 @@ def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
 
 
 def buildPKGAPP(build_json=None):
-    try:
-        LOG.info("+Building package APP ...")
+    LOG.info("+Building package APP ...")
+    if not doCopy(os.path.join(BUILD_ROOT_SRC, "icon.ico"),
+                  os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.ico")):
+        return False
 
-        if not doCopy(os.path.join(BUILD_ROOT_SRC, "icon.ico"),
-                      os.path.join(BUILD_ROOT_SRC_PKG_APP, pkg_name, "app", "icon.ico")):
-            return False
+    if not doCopy(
+            os.path.join(BUILD_ROOT_SRC, "manifest.json"),
+            os.path.join(BUILD_ROOT_SRC_PKG_APP, "manifest.json")):
+        return False
 
-        if not doCopy(os.path.join(BUILD_ROOT_SRC, "manifest.json"),
-                      os.path.join(BUILD_ROOT_SRC_PKG_APP, pkg_name, "app", "manifest.json")):
-            return False
+    hosted_app = False
+    if safelyGetValue(build_json, "hosted-app") == "true":
+        hosted_app = True
+    if not createIndexFile(
+            os.path.join(BUILD_ROOT_SRC_PKG_APP, "index.html"), hosted_app):
+        return False
 
-        if not createIndexFile(
-                os.path.join(BUILD_ROOT_SRC_PKG_APP, pkg_name, "app", "index.html")):
-            return False
-
+    if not hosted_app:
         if "blacklist" not in build_json:
             build_json.update({"blacklist": []})
         build_json["blacklist"].extend(PKG_BLACK_LIST)
-
-        BUILD_ROOT_PKG_APP = os.path.join(
-            BUILD_ROOT_SRC_PKG_APP,
-            pkg_name,
-            "app",
-            "opt",
-            PKG_NAME)
-
         if not buildSRC(BUILD_ROOT_SRC, BUILD_ROOT_PKG_APP, build_json):
             return False
-
-        comXML = os.path.join(BUILD_ROOT_PKG_APP, "tests.xml")
-        windowsXML = os.path.join(BUILD_ROOT_PKG_APP, "tests.windows.xml")
-        if os.path.exists(windowsXML):
-            if not doCMD("rm -rf %s" % comXML):
-                return False
-            if not doCMD("mv %s %s" % (windowsXML, comXML)):
-                return False
 
         if "subapp-list" in build_json:
             for i_sub_app in build_json["subapp-list"].keys():
@@ -551,14 +534,11 @@ def buildPKGAPP(build_json=None):
                         BUILD_ROOT_PKG_APP):
                     return False
 
-        if not packAPP(
-                build_json, os.path.join(BUILD_ROOT_SRC_PKG_APP, pkg_name), BUILD_ROOT_PKG, PKG_NAME):
-            return False
+    if not packAPP(
+            build_json, BUILD_ROOT_SRC_PKG_APP, BUILD_ROOT_PKG, PKG_NAME):
+        return False
 
-        return True
-    except Exception as e:
-        LOG.error("Got wrong options: %s, exit ..." % e)
-        sys.exit(1)
+    return True
 
 
 def buildPKG(build_json=None):
