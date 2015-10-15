@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (c) 2014 Intel Corporation. All rights reserved.
+
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        
+        <Button
+            android:id="@+id/baidu_btn"
+            android:layout_weight="1"
+            android:layout_width="match_parent"            
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Load Baidu Page" />        
+        
+        <Button
+            android:id="@+id/clear_baidu_btn"
+            android:layout_weight="1"
+            android:layout_width="match_parent"            
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Clear Baidu Cache Single File" />
+
+    </LinearLayout>
+    
+    <TextView   
+    	android:layout_width="match_parent"  
+    	android:layout_height="wrap_content"
+    	android:text="ClearCacheForSingleFile API is used to clear cache for single file. It is for web resources url. In this example cache total size will decrease when I use api to clear the web image cache."  
+    	android:textColor="#00ff00"   /> 
+
+    <TextView  
+        android:id="@+id/text1"  
+    	android:layout_width="match_parent"  
+    	android:layout_height="wrap_content"
+    	android:textColor="#00ff00"   />      	    
+
+    <org.xwalk.core.XWalkView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/xwalkview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </org.xwalk.core.XWalkView>
+
+</LinearLayout>

@@ -566,3 +566,12 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: XWalkUIClient.onUnhandledKeyEvent methods
 
+
+
+### 58. The [XWalkViewWithClearCacheForSingleFileAsync](XWalkViewWithClearCacheForSingleFileAsync.java) sample check XWalkView can implement clearCacheForSingleFile API, include:
+
+* XWalkView can implement clearCacheForSingleFile API
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: clearCacheForSingleFile, load methods
