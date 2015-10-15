@@ -127,7 +127,7 @@ def installWebviewPlugin(pkg_mode, self):
     pluginstatus = commands.getstatusoutput(plugin_install_cmd)
     self.assertEquals(0, pluginstatus[0])
 
-def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, actual_plugin = None):
+def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, extra_plugin = None):
     os.chdir(tool_path)
     if os.path.exists(os.path.join(tool_path, appname)):
         print "Existing %s project, try to clean up..." % appname
@@ -197,8 +197,8 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, act
                     appname,
                     "assets",
                     "www"))
-        if actual_plugin:
-            status_plugman_cmd = "plugman install --platform android --project . --plugin %s" % actual_plugin
+        if extra_plugin:
+            status_plugman_cmd = "plugman install --platform android --project . --plugin %s" % extra_plugin
             installstatus = commands.getstatusoutput(status_plugman_cmd)
             print "status_plugman_cmd=" + status_plugman_cmd
             self.assertEquals(0, installstatus[0])
