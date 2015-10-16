@@ -594,3 +594,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load
 
+
+
+### 59. The [XWalkViewWithOpenFileChooser](XWalkViewWithOpenFileChooser.java) sample check XWalkView can open local file, include:
+
+* XWalkUIClient.openFileChooser can be invoked
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: XWalkUIClient.openFileChooser methods
+
