@@ -41,6 +41,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         try:
             comm.setUp()
             os.chdir(comm.TEMP_DATA_PATH)
+            comm.cleanTempData(comm.TEST_PROJECT_COMM)
             os.mkdir(comm.TEST_PROJECT_COMM)
             cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM
             packstatus = commands.getstatusoutput(cmd)

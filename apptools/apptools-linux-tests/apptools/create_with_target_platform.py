@@ -40,28 +40,33 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_deb(self):
         comm.setUp()
         os.chdir(comm.TEMP_DATA_PATH)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=deb"
         packstatus = commands.getstatusoutput(cmd)
         os.chdir(comm.TEST_PROJECT_COMM)
         buildcmd = "crosswalk-app build"
         comm.build(self, buildcmd)
+        comm.run(self)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(packstatus[0], 0)
 
     def test_create_with_platform_android(self):
         comm.setUp()
         os.chdir(comm.TEMP_DATA_PATH)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=android"
         packstatus = commands.getstatusoutput(cmd)
         os.chdir(comm.TEST_PROJECT_COMM)
         buildcmd = "crosswalk-app build"
         comm.build(self, buildcmd)
+        comm.run(self)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(packstatus[0], 0)
 
     def test_create_with_platform_ios(self):
         comm.setUp()
         os.chdir(comm.TEMP_DATA_PATH)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=ios"
         packstatus = commands.getstatusoutput(cmd)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
@@ -70,6 +75,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_invalid_platform(self):
         comm.setUp()
         os.chdir(comm.TEMP_DATA_PATH)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=target"
         packstatus = commands.getstatusoutput(cmd)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
