@@ -67,36 +67,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
-    def test_display_minimalUi(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["display"] = "minimal-ui"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
-
-    def test_display_browser(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["display"] = "browser"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
-
     def test_display_invalid(self):
         comm.setUp()
         comm.create(self)
