@@ -77,7 +77,7 @@ public class XWalkViewWithDownloadListenerActivityAsync extends Activity impleme
 				                    "contentLength: " + contentLength);
 			}
 		});
-        mXWalkView.load("http://www.baidu.com/", null);
+        mXWalkView.load("http://m.baidu.com/", null);
     }
 
 }
