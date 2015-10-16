@@ -69,7 +69,7 @@ class TestSampleAppFunctions(unittest.TestCase):
         app_root = comm.sample_src_pref + sample_src
         xmlpath = app_root + '/xwalk-echo-extension-src/build.xml'
         init(xmlpath)
-        cmd = "%s/build.sh" % app_root
+        cmd = "%s/build.sh %s %s" % (app_root, comm.MODE, comm.ARCH)
         target_apk_path = comm.const_path + "/../testapp/"
         os.chdir(target_apk_path)
         print "Generate APK %s ----------------> START" % comm.app_name
@@ -77,24 +77,26 @@ class TestSampleAppFunctions(unittest.TestCase):
         self.assertEquals(0, packstatus[0])
         self.assertIn("build successful", packstatus[1].lower())
         print "\nGenerate APK %s ----------------> OK\n" % comm.app_name
+
         apk_path = app_root + "/xwalk-echo-extension-src/lib/"
+        apk_build_flag = False
         for index, name in enumerate(os.listdir(apk_path)):
             if os.path.isdir(apk_path + "/" + name):
                 apk_path += name
                 for apk_index, apkname in enumerate(os.listdir(apk_path)):
                     if apk_index <= len(os.listdir(apk_path)) and \
-                    apkname.endswith(".apk"):
-                        os.chdir(apk_path)
-                        self.assertTrue(apkname.startswith(comm.app_name))
+                    apkname.endswith(".apk") and apkname.startswith(comm.app_name):
                         print 'Found apk %s' % apkname
+                        apk_build_flag = True
+                        os.chdir(apk_path)
                         shutil.move(apkname, target_apk_path)
                     elif apkname.find(".apk") != -1:
                         print 'Continue'
             elif index > len(os.listdir(apk_path)) and \
             os.path.isdir(apk_path + "/" + name) == False:
                 print 'Not found Crosswalk Runtime Binary'
-                self.assertFalse('Not found Crosswalk Runtime Binary')
 
+        self.assertTrue(apk_build_flag)
 
 if __name__ == '__main__':
     unittest.main()
