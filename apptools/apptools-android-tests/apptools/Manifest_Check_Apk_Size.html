@@ -40,14 +40,14 @@ Authors:
   <ol>
     <li>If org.xwalk.test exists in apptools-android-tests/tools/ directory, remove it <br/>
         Then run below commands under apptools-android-tests/tools/ directory: <br/>
-        On Android: <br/>
+        On Linux or OS X host: <br/>
         &nbsp; &nbsp; Shared Mode: <br/>
         &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-shared <br/>
         &nbsp; &nbsp; Embedded Mode: <br/>
         &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
         &nbsp; &nbsp; $ cd org.xwalk.test <br/>
         &nbsp; &nbsp; $ ../crosswalk-app-tools/src/crosswalk-app build <br/>
-        On Windows: <br/>
+        On Windows host: <br/>
         &nbsp; &nbsp; Shared Mode: <br/>
         &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-shared <br/>
         &nbsp; &nbsp; Embedded Mode: <br/>
@@ -58,10 +58,10 @@ Authors:
         &nbsp; &nbsp; Remember the size of shared mode apk <br/>
         Embedded Mode: <br/>
         &nbsp; &nbsp; Remember the size of x86 apk and arm apk <br/>
-        On Android: <br/>
+        On Linux or OS X host: <br/>
         &nbsp; &nbsp; Add '"xwalk_android_webp": "80 80 100"' to app/manifest.json file <br/>
         &nbsp; &nbsp; $ ../crosswalk-app-tools/src/crosswalk-app build <br/>
-        On Windows: <br/>
+        On Windows host: <br/>
         &nbsp; &nbsp; Add '"xwalk_android_webp": "80 80 100"' to app\manifest.json file <br/>
         &nbsp; &nbsp; $ node ..\crosswalk-app-tools\src\crosswalk-app build <br/>
         Check if all the size of new apks are smaller than the old ones

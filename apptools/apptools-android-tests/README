@@ -18,7 +18,7 @@ For example: if you want to test with "crosswalk-13.42.319.11.zip", content of t
 7. Install webp conversion tool from http://downloads.webmproject.org/releases/webp
 
 
-## Precondition for AppTools on Android
+## Precondition for AppTools on Linux or OS X host
 
 1. Download crosswalk-app-tools to apptools-android-tests/tools, then install npm and exec-sync
   1.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
@@ -27,12 +27,13 @@ For example: if you want to test with "crosswalk-13.42.319.11.zip", content of t
       sudo npm install exec-sync
 2. Install nodeunit: sudo npm install nodeunit -g
 3. Environment variable configuration:
-  3.1 export ANDROID_HOME=$(dirname $(dirname $(which android)))
-  3.2 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-android-tests/tools
+  3.1 export DEVICE_ID=device id
+  3.2 export ANDROID_HOME=$(dirname $(dirname $(which android)))
+  3.3 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-android-tests/tools
 4. Install BeautifulSoup: sudo pip install BeautifulSoup
 
 
-## Precondition for AppTools on Windows
+## Precondition for AppTools on Windows host
 
 1. Download crosswalk-app-tools to apptools-android-tests/tools, then install npm
   1.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
@@ -41,8 +42,9 @@ For example: if you want to test with "crosswalk-13.42.319.11.zip", content of t
       npm install exec-sync
 2. Install nodeunit: npm install nodeunit -g
 3. Environment variable configuration:
-  3.1 Set ANDORID_HOME env
-  3.2 Set CROSSWALK_APP_TOOLS_CACHE_DIR env to /path/to/opt/apptools-sampleapp-tests/tools
+  3.1 Set DEVICE_ID env
+  3.2 Set ANDORID_HOME env
+  3.3 Set CROSSWALK_APP_TOOLS_CACHE_DIR env to /path/to/opt/apptools-sampleapp-tests/tools
 4. Install BeautifulSoup: pip install BeautifulSoup
 
 ## Test Steps

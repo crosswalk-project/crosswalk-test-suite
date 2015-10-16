@@ -12,7 +12,7 @@
             <step order="1">
               <step_desc>If com.example.spacedodge exists in apptools-sampleapp-tests/tools/ directory, remove it 
                 Then run below commands under apptools-sampleapp-tests/tools/ directory: 
-                On Android:
+                On Linux or OS X host:
                   Shared Mode:
                     $ crosswalk-app create com.example.spacedodge --android-shared
                   Embedded Mode:
@@ -23,7 +23,7 @@
                   Update "xwalk_version" to "xwalk_app_version" in app/manifest.json file
                   Add '"xwalk_package_id": "com.example.spacedodge", "xwalk_target_platforms": "android"' to app/manifest.json file
                   $ crosswalk-app build
-                On Windows:
+                On Windows host:
                   Shared Mode:
                     $ node %crosswalk-app% create com.example.spacedodge --android-shared
                   Embedded Mode:
