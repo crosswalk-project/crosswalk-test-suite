@@ -10,14 +10,14 @@
             <step order="1">
               <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
                 Then run below commands under usecase-apptools-tests/tools/ directory: 
-                On Android:
+                On Linux or OS X host:
                   Shared Mode:
                     $ crosswalk-app create org.test.foo --android-shared
                   Embedded Mode:
                     $ crosswalk-app create org.test.foo
                   $ cd org.test.foo
                   $ crosswalk-app build
-                On Windows:
+                On Windows host:
                   Shared Mode:
                     $ node %crosswalk-app% create org.test.foo --android-shared
                   Embedded Mode:
@@ -68,11 +68,11 @@
       </testcase>
       <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_install_crosswalk_app" platform="android" priority="P0" purpose="AppTools_install_crosswalk_app Test" status="approved" type="compliance">
         <description>
-          <pre_condition>On Android:
+          <pre_condition>On Linux or OS X host:
               Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'.
               Install crosswalk-app by run command:
               $ sudo npm install -g crosswalk-app-tools
-            On Windows:
+            On Windows host:
               Remove crosswalk-app environment.
               Install crosswalk-app by run command:
               $ npm install -g crosswalk-app-tools
@@ -126,10 +126,10 @@
               <expected>Success to uninstall foo app</expected>
             </step>
             <step order="9">
-              <step_desc>On Android:
+              <step_desc>On Linux or OS X host:
                   Uninstall crosswalk-app by run command: $ sudo npm uninstall -g crosswalk-app-tools
                   Set environment PATH or invoke with "crosswalk-app-tools/src/crosswalk-app" directory
-                On Windows:
+                On Windows host:
                   Uninstall crosswalk-app by run command: $ npm uninstall -g crosswalk-app-tools
                   Create 'crosswalk-app' env, invoke with 'crosswalk-app-tools/src/crosswalk-app' directory</step_desc>
               <expected>Success to uninstall crosswalk-app and set the env</expected>
