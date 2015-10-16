@@ -51,6 +51,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = os.system(buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
+        if comm.SHELL_FLAG == "False":
+            os.system('adb start-server')
         self.assertEquals(buildstatus, 0)
 
     def test_display_standalone(self):
@@ -67,6 +69,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = os.system(buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
+        if comm.SHELL_FLAG == "False":
+            os.system('adb start-server')
         self.assertEquals(buildstatus, 0)
 
     def test_display_invalid(self):

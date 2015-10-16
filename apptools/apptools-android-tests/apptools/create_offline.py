@@ -51,6 +51,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
+        if comm.SHELL_FLAG == "False":
+            os.system('adb start-server')
         self.assertNotIn("Looking for", create_output)
 
 if __name__ == '__main__':

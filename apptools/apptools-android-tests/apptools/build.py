@@ -44,7 +44,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        os.system('adb start-server')
+        if comm.SHELL_FLAG == "False":
+            os.system('adb start-server')
 
     def test_build_release(self):
         comm.setUp()
@@ -54,7 +55,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        os.system('adb start-server')
+        if comm.SHELL_FLAG == "False":
+            os.system('adb start-server')
 
     def test_build_missing_so_file(self):
         comm.setUp()
@@ -91,7 +93,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             self.assertEquals(x86Length, 0)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        os.system('adb start-server')
+        if comm.SHELL_FLAG == "False":
+            os.system('adb start-server')
 
     def test_build_missing_both_so_file(self):
         comm.setUp()
