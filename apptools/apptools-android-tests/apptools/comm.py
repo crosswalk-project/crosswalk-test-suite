@@ -69,12 +69,12 @@ def setUp():
     mode.close()
 
     host = open(ConstPath + "/../host.txt", 'r')
-    if host.read().strip("\n\t") != "Android":
-        HOST_PREFIX = "node "
-        SHELL_FLAG = "False"
-    else:
+    if host.read().strip("\n\t") != "Windows":
         HOST_PREFIX = ""
         SHELL_FLAG = "True"
+    else:
+        HOST_PREFIX = "node "
+        SHELL_FLAG = "False"
     host.close()
 
     vp = open(ConstPath + "/../version.txt", 'r')
@@ -191,7 +191,8 @@ def run(self):
                 device +
                 ' shell am force-stop org.xwalk.test')
             uninstatus = os.popen('adb -s ' + device + ' uninstall org.xwalk.test').read()
-            os.system('adb kill-server')
+            if SHELL_FLAG == "False":
+                os.system('adb kill-server')
             self.assertEquals(return_inst_code, 0)
             self.assertIn("org.xwalk.test", pmstatus[0])
             self.assertEquals(return_laun_code, 0)

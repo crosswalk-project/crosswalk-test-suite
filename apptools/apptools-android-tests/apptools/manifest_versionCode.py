@@ -57,6 +57,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 break
         comm.run(self)
         comm.clear("org.xwalk.test")
+        if comm.SHELL_FLAG == "False":
+            os.system('adb start-server')
         self.assertEquals(versionCode, versionCode_xml)
 
     def test_update_app_version(self):
@@ -87,6 +89,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 break
         comm.run(self)
         comm.clear("org.xwalk.test")
+        if comm.SHELL_FLAG == "False":
+            os.system('adb start-server')
         self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "1")
         self.assertEquals(versionCode, versionCode_xml)
 
@@ -118,6 +122,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 break
         comm.run(self)
         comm.clear("org.xwalk.test")
+        if comm.SHELL_FLAG == "False":
+            os.system('adb start-server')
         self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.0.1")
         self.assertEquals(versionCode, versionCode_xml)
 
