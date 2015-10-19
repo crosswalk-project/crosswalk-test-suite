@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>WebAudio Test: default value of AnalyserNode's members</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://webaudio.github.io/web-audio-api/#idl-def-AnalyserNode">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+test(function() {
+  var context = new AudioContext();
+  var analyser = context.createAnalyser();
+
+  assert_equals(analyser.numberOfInputs, 1, "analyser.numberOfInputs");
+  assert_equals(analyser.numberOfOutputs, 1, "analyser.numberOfOutputs");
+  assert_equals(analyser.channelCount, 1, "analyser.channelCount");
+  assert_equals(analyser.channelCountMode, "max", "analyser.channelCountMode");
+  assert_equals(analyser.channelInterpretation, "speakers", "analyser.channelInterpretation");
+
+  assert_equals(analyser.fftSize, 2048, "fftSize default value");
+  analyser.frequencyBinCount = 64;
+  assert_equals(analyser.frequencyBinCount, 1024, "frequencyBinCount is readonly, and the value is half of fftSize");
+  assert_equals(analyser.maxDecibels, -30, "maxDecibels's default value");
+  assert_equals(analyser.minDecibels, -100, "minDecibels's default value");
+  assert_equals(analyser.smoothingTimeConstant, 0.8, "smoothingTimeConstant's default value");
+
+}, "Check that the default values of AnalyserNode's members as specified.");
+</script>
+

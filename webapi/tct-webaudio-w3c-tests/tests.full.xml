@@ -3,6 +3,18 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="tct-webaudio-w3c-tests">
     <set name="WebAudio1" type="js">
+      <testcase component="W3C_HTML5 APIs/Media/Web Audio API" execution_type="auto" id="analysernode_default_value" priority="P2" purpose="Check that the default values of AnalyserNode's members as specified" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/analysernode_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="fftSize" element_type="attribute" interface="AnalyserNode" section="Media" specification="Web Audio API" />
+            <spec_url>http://webaudio.github.io/web-audio-api/#idl-def-AnalyserNode</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Audio API" execution_type="auto" id="analysernode_fftSize_exists" priority="P1" purpose="Check if AnalyserNode.fftSize attribute exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/analysernode_fftSize_exists.html</test_script_entry>
@@ -3973,6 +3985,18 @@
           <spec>
             <spec_assertion category="Tizen W3C API Specifications" element_name="createAnalyser" element_type="method" interface="AudioContext" section="Media" specification="Web Audio API" />
             <spec_url>http://www.w3.org/TR/2012/WD-webaudio-20121213/#methodsandparams-AudioContext</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Audio API" execution_type="auto" id="audiocontext_createAnalyser_return_value" priority="P2" purpose="Check that AudioContext.createAnalyser() returns an instance of AnalyserNode" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createAnalyser_return_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="createAnalyser" element_type="method" interface="AudioContext" section="Media" specification="Web Audio API" />
+            <spec_url>http://webaudio.github.io/web-audio-api/#widl-AudioContext-createAnalyser-AnalyserNode</spec_url>
             <spec_statement />
           </spec>
         </specs>
