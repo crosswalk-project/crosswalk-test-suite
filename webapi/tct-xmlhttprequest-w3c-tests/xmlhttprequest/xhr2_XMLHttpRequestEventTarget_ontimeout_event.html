@@ -57,7 +57,9 @@ Authors:
         });
 
         client.open("HEAD", "./support/test.xml");
-        client.send();
+        setTimeout(function send() {
+          client.send();
+        }, 200);
     </script>
   </body>
 </html>
