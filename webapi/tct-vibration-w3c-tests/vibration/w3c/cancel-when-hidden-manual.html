@@ -14,24 +14,16 @@
 
 <h1>Description</h1>
 <p>
-  After hitting the button below, your device must vibrate for a short period of time (roughly one
-  second). If it vibrates for a longer time (roughly five seconds, it should feel somewhat long) then
-  the test has failed.
+  After hitting the button below, your device must vibrate, and stop when switch test to background.
+  If it does not stop after switch then the test has failed.
 </p>
 <button id='vib'>Vibrate!</button>
 <script src='vendor-prefix.js' data-prefixed-objects='[{"ancestors":["navigator"], "name":"vibrate"}]'></script>
 <script>
-  var win;
 
   if (undefined !== navigator.vibrate) {
     document.getElementById('vib').onclick = function () {
-      navigator.vibrate(5000);
-      setTimeout(function () {
-        win = window.open('about:blank', '_blank');
-        setTimeout(function() {
-          win.close();
-        }, 100);
-      }, 1000);
+      navigator.vibrate(50000);
     };
   }
 </script>
