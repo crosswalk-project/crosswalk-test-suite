@@ -7,6 +7,7 @@ import time
 import sys
 import subprocess
 from optparse import OptionParser, make_option
+import commands
 
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -53,7 +54,7 @@ def instPKGs():
     action_status = True
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
-            if file.endswith(".apk"):
+            if file.endswith(".apk") and "upgrade" not in file:
                 cmd = "%s -s %s install %s" % (ADB_CMD,
                                                PARAMETERS.device, os.path.join(root, file))
                 (return_code, output) = doCMD(cmd)
@@ -61,6 +62,10 @@ def instPKGs():
                     if "Failure" in line:
                         action_status = False
                         break
+    pushstatus = commands.getstatusoutput(
+        "adb push %s/res/filereadertest.docx /mnt/sdcard/" %
+        SCRIPT_DIR)
+    print pushstatus[1]
     return action_status
 
 
