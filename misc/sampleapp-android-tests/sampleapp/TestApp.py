@@ -149,23 +149,19 @@ class TestApp():
     def isInstalled(self):
         action_status = False
         if not self.pkgname == "":
-            cmd = "%s -s %s shell pm list packages |grep %s" % (ADB_CMD, self.device, self.pkgname)
+            cmd = "%s -s %s shell pm list packages |grep %s|awk -F ':' '{print $2}'" % (ADB_CMD, self.device, self.pkgname)
             (return_code, output) = doCMD(cmd)
-            for line in output:
-                if self.pkgname in line:
-                    action_status = True
-                    break
+            if self.pkgname in output:
+                action_status = True
         return action_status
 
     def isRunning(self):
         action_status = False
         if not self.pkgname == "":
-            cmd = "%s -s %s shell ps |grep %s" % (ADB_CMD, self.device, self.pkgname)
+            cmd = "%s -s %s shell ps |grep %s|awk -F ' ' '{print $NF}'" % (ADB_CMD, self.device, self.pkgname)
             (return_code, output) = doCMD(cmd)
-            for line in output:
-                if self.pkgname in line:
-                    action_status = True
-                    break
+            if self.pkgname in output:
+                action_status = True
         return action_status
 
     def isActivity(self):
