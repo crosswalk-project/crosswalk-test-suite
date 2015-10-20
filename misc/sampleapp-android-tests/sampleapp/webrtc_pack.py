@@ -40,7 +40,7 @@ class TestSampleAppFunctions(unittest.TestCase):
     def test_pack(self):
         comm.setUp()
         app_name = "Webrtc"
-        sample_src = "/webrtc/client/"
+        sample_src = "webrtc/client/"
         manifest_file = comm.sample_src_pref + sample_src + "manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.%s --manifest=%s --arch=%s --mode=%s --enable-remote-debugging" % \
             (comm.pack_tools,
