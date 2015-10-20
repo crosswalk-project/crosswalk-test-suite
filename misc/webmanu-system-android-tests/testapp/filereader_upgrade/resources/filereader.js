@@ -140,6 +140,22 @@ function savefile(){
     }, errorCallback);
 }
 
+function readeWritenFile() {
+    function onInitFs(fs) {  
+      fs.root.getFile('test.txt', {}, function(fileEntry) {  
+        fileEntry.file(function(file) {  
+           var reader = new FileReader();  
+           reader.onloadend = function(e) {  
+             $("#filePreview").html("WRITTEN FILE:" + this.result);
+           };  
+           reader.readAsText(file, "UTF-8");  
+        }, errorCallback);  
+      }, errorCallback);  
+    }  
+    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;      
+    window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs, errorCallback);  
+}
+
 function errorCallback(e) {
    $("#filePreview").attr("readonly","readonly");
    $("#filePreview").html(e.name + ":" + e.message);

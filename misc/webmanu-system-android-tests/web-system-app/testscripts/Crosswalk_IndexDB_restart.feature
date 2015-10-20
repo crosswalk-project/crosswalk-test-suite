@@ -1,5 +1,5 @@
 Feature: web-system-app
- Scenario: Crosswalk IndexDB kill
+ Scenario: Crosswalk IndexDB restart
   When launch "indexdb"
     And I fill in "txtName" with "123"
     And I fill in "txtEmail" with "Intel"
