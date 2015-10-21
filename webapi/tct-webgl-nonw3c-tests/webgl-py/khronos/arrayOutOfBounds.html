@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html><head>
+<html>
+<head>
 <meta charset="utf-8">
 <!--
-Tests for the OpenGL ES 2.0 HTML Canvas context
 
-Copyright (C) 2011  Ilmari Heikkinen <ilmari.heikkinen@gmail.com>
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+/*
+** Copyright (c) 2012 The Khronos Group Inc.
+**
+** Permission is hereby granted, free of charge, to any person obtaining a
+** copy of this software and/or associated documentation files (the
+** "Materials"), to deal in the Materials without restriction, including
+** without limitation the rights to use, copy, modify, merge, publish,
+** distribute, sublicense, and/or sell copies of the Materials, and to
+** permit persons to whom the Materials are furnished to do so, subject to
+** the following conditions:
+**
+** The above copyright notice and this permission notice shall be included
+** in all copies or substantial portions of the Materials.
+**
+** THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+** MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+** CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+** TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+** MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
+*/
 
 -->
 <link rel="stylesheet" type="text/css" href="./resources/unit.css" />
@@ -35,7 +35,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 Tests.startUnit = function () {
   var canvas = document.getElementById('gl');
-  var gl = canvas.getContext(GL_CONTEXT_ID);
+  var gl = getGLContext(canvas);
   return [gl];
 }
 
@@ -55,10 +55,12 @@ Tests.testOk = function(gl) {
 
 var arr = ['cr', 'cw', 'vr', 'vw'];
 arr.forEach(function(e){
-    Tests['test'+e+'vert'] = function(gl) {
-        var sh = new Filter(gl, e+'vert', 'frag');
-        assertFail(function(){sh.apply();});
-        sh.destroy();
+    if (e == 'cr' || e == 'cw') {
+        Tests['test'+e+'vert'] = function(gl) {
+            var sh = new Filter(gl, e+'vert', 'frag');
+            assertFail(function(){sh.apply();});
+            sh.destroy();
+        }
     }
     Tests['test'+e+'frag'] = function(gl) {
         var sh = new Filter(gl, 'vert', e+'frag');
@@ -118,6 +120,7 @@ arr.forEach(function(e){
     gl_Position = vec4(Vertex, x[4]);
   }
 </script>
+<!-- This one can't be required to fail compilation, because vertex shaders must support arbitrary array indexing -->
 <script id="vrvert" type="x-shader/x-vertex">
 
 
@@ -135,6 +138,7 @@ arr.forEach(function(e){
     gl_Position = vec4(Vertex, x[idx]);
   }
 </script>
+<!-- This one can't be required to fail compilation, because vertex shaders must support arbitrary array indexing -->
 <script id="vwvert" type="x-shader/x-vertex">
 
 
@@ -216,6 +220,7 @@ arr.forEach(function(e){
     gl_FragColor = vec4(1.0, 0.0, TexCoord.s, x[4]);
   }
 </script>
+<!-- This one actually fails because of WebGL's restrictions on indexing expressions in fragment shaders -->
 <script id="vrfrag" type="x-shader/x-fragment">
 
 
@@ -234,6 +239,7 @@ arr.forEach(function(e){
     gl_FragColor = vec4(1.0, 0.0, TexCoord.s, x[idx]);
   }
 </script>
+<!-- This one actually fails because of WebGL's restrictions on indexing expressions in fragment shaders -->
 <script id="vwfrag" type="x-shader/x-fragment">
 
 
@@ -265,10 +271,9 @@ arr.forEach(function(e){
     gl_FragColor = vec4(1.0, 0.0, TexCoord.s, 1.0);
   }
 </script>
-</body>
-</html><style>canvas{ position:absolute; }</style>
-</head>
-<body>
+
+
+<style>canvas{ position:absolute; }</style>
+</head><body>
   <canvas id="gl" width="16" height="16"></canvas>
-</body>
-</html>
+</body></html>

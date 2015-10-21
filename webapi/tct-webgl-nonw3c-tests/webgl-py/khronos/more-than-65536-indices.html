@@ -1,7 +1,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -32,8 +32,8 @@
 <title>WebGL More than 65536 indices.</title>
 <link rel="stylesheet" href="./resources/js-test-style.css"/>
 <script src="./resources/js-test-pre.js"></script>
-<script src="./resources/webgl-test.js"></script>
-<script src="./resources/webgl-test-utils.js"></script>
+<script src="./resources/webgl-test.js"> </script>
+<script src="./resources/webgl-test-utils.js"> </script>
 </head>
 <body>
 <canvas id="example" width="1" height="1" style="width: 40px; height: 40px;"></canvas>
@@ -45,6 +45,7 @@ attribute vec4 vColor;
 varying vec4 color;
 void main() {
     gl_Position = vPosition;
+    gl_PointSize = 1.0;
     color = vColor;
 }
 </script>
@@ -138,5 +139,8 @@ var successfullyParsed = true;
 </script>
 
 <script src="./resources/js-test-post.js"></script>
+
 </body>
 </html>
+
+

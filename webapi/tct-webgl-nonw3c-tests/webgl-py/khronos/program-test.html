@@ -1,7 +1,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -265,7 +265,7 @@ function go() {
             debug(infolog);
         if (gl.getError() != gl.NO_ERROR)
             assertMsg(false, "unexpected error in getProgramParameter()");
-
+        
         if (testInvalidEnums) {
             // Verify that constants removed from the WebGL spec generate INVALID_ENUM errors
             assertMsg(gl.getProgramParameter(prog, desktopGL['INFO_LOG_LENGTH']) === null, "invalid call to getProgramParameter should return null");
@@ -391,22 +391,22 @@ function go() {
     gl.useProgram(prg);
     var posLoc = gl.getAttribLocation(prg, "a_position");
     wtu.setupUnitQuad(gl, posLoc);
-    wtu.drawQuad(gl);
+    wtu.clearAndDrawUnitQuad(gl);
     wtu.checkCanvas(gl, [255, 0, 0, 255], "should be red");
     gl.shaderSource(fs, wtu.getScript("fshader-green"));
     gl.compileShader(fs);
     gl.linkProgram(prg);
     // Program should be new program at this point without calling useProgram
-    wtu.drawQuad(gl);
+    wtu.clearAndDrawUnitQuad(gl);
     wtu.checkCanvas(gl, [0, 255, 0, 255], "should be green");
     var prg = wtu.setupProgram(gl, ["vshader", "fshader-settable"], ["a_position"]);
     var colorLoc = gl.getUniformLocation(prg, "u_color");
     gl.uniform4f(colorLoc, 1, 0, 0, 1);
-    wtu.drawQuad(gl);
+    wtu.clearAndDrawUnitQuad(gl);
     wtu.checkCanvas(gl, [255, 0, 0, 255], "should be red");
     gl.linkProgram(prg);
     // Program's uniforms should be cleared at this point without calling useProgram
-    wtu.drawQuad(gl, [0, 255, 0, 255]);
+    wtu.clearAndDrawUnitQuad(gl, [0, 255, 0, 255]);
     wtu.checkCanvas(gl, [0, 0, 0, 0], "should be tranparent black");
     glErrorShouldBe(gl, gl.NO_ERROR, "should be no errors");
 }
@@ -417,5 +417,6 @@ go();
 var successfullyParsed = true;
 </script>
 <script src="./resources/js-test-post.js"></script>
+
 </body>
 </html>

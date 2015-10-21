@@ -565,9 +565,9 @@ var setupTexturedQuadWithTexCoords = function(
  *     expressed in the number of quads across and down.
  * @param {number} opt_positionLocation The attrib location for position.
  */
-var setupQuad = function (
+var setupIndexedQuad = function (
     gl, gridRes, opt_positionLocation, opt_flipOddTriangles) {
-  return setupQuadWithOptions(gl,
+  return setupIndexedQuadWithOptions(gl,
     { gridRes: gridRes,
       positionLocation: opt_positionLocation,
       flipOddTriangles: opt_flipOddTriangles
@@ -591,7 +591,7 @@ var setupQuad = function (
  *   colorLocation: attrib location for vertex colors. If
  *      undefined no vertex colors will be created.
  */
-var setupQuadWithOptions = function (gl, options) {
+var setupIndexedQuadWithOptions = function (gl, options) {
   var positionLocation = options.positionLocation || 0;
   var objects = [];
 
@@ -781,13 +781,21 @@ var drawUByteColorQuad = function(gl, color) {
 };
 
 /**
- * Draws a previously setup quad.
+ * Draws a previously setupUnitQuad.
+ * @param {!WebGLContext} gl The WebGLContext to use.
+ */
+var drawUnitQuad = function(gl) {
+  gl.drawArrays(gl.TRIANGLES, 0, 6);
+};
+
+/**
+ * Clears then Draws a previously setupUnitQuad.
  * @param {!WebGLContext} gl The WebGLContext to use.
  * @param {!Array.<number>} opt_color The color to fill clear with before
  *        drawing. A 4 element array where each element is in the range 0 to
  *        255. Default [255, 255, 255, 255]
  */
-var drawQuad = function(gl, opt_color) {
+var clearAndDrawUnitQuad = function(gl, opt_color) {
   opt_color = opt_color || [255, 255, 255, 255];
   gl.clearColor(
       opt_color[0] / 255,
@@ -795,18 +803,27 @@ var drawQuad = function(gl, opt_color) {
       opt_color[2] / 255,
       opt_color[3] / 255);
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  gl.drawArrays(gl.TRIANGLES, 0, 6);
+  drawUnitQuad(gl);
 };
 
 /**
- * Draws a previously setup quad.
+ * Draws a quad previsouly settup with setupIndexedQuad.
+ * @param {!WebGLContext} gl The WebGLContext to use.
+ * @param {number} gridRes Resolution of grid.
+ */
+var drawIndexedQuad = function(gl, gridRes) {
+  gl.drawElements(gl.TRIANGLES, gridRes * gridRes * 6, gl.UNSIGNED_SHORT, 0);
+};
+
+/**
+ * Draws a previously setupIndexedQuad
  * @param {!WebGLContext} gl The WebGLContext to use.
  * @param {number} gridRes Resolution of grid.
  * @param {!Array.<number>} opt_color The color to fill clear with before
  *        drawing. A 4 element array where each element is in the range 0 to
  *        255. Default [255, 255, 255, 255]
  */
-var drawIndexedQuad = function(gl, gridRes, opt_color) {
+var clearAndDrawIndexedQuad = function(gl, gridRes, opt_color) {
   opt_color = opt_color || [255, 255, 255, 255];
   gl.clearColor(
       opt_color[0] / 255,
@@ -814,7 +831,7 @@ var drawIndexedQuad = function(gl, gridRes, opt_color) {
       opt_color[2] / 255,
       opt_color[3] / 255);
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  gl.drawElements(gl.TRIANGLES, gridRes * 6, gl.UNSIGNED_SHORT, 0);
+  drawIndexedQuad(gl, gridRes);
 };
 
 /**
@@ -833,15 +850,17 @@ var drawIndexedQuad = function(gl, gridRes, opt_color) {
  * @param {!function()} differentFn Function to call if a pixel
  *        is different than color
  * @param {!function()} logFn Function to call for logging.
+ * @param {Uint8Array} opt_readBackBuf typically passed to reuse existing
+ *        buffer while reading back pixels.
  */
-var checkCanvasRectColor = function(gl, x, y, width, height, color, opt_errorRange, sameFn, differentFn, logFn) {
+var checkCanvasRectColor = function(gl, x, y, width, height, color, opt_errorRange, sameFn, differentFn, logFn, opt_readBackBuf) {
   var errorRange = opt_errorRange || 0;
   if (!errorRange.length) {
     errorRange = [errorRange, errorRange, errorRange, errorRange]
   }
   var buf;
   if (gl instanceof WebGLRenderingContext) {
-    buf = new Uint8Array(width * height * 4);
+    buf = opt_readBackBuf ? opt_readBackBuf : new Uint8Array(width * height * 4);
     gl.readPixels(x, y, width, height, gl.RGBA, gl.UNSIGNED_BYTE, buf);
   } else {
     buf = gl.getImageData(x, y, width, height).data;
@@ -855,7 +874,7 @@ var checkCanvasRectColor = function(gl, x, y, width, height, color, opt_errorRan
         for (j = 1; j < color.length; ++j) {
           was += "," + buf[offset + j];
         }
-        logFn('at (' + (i % width) + ', ' + Math.floor(i / width) +
+        logFn('at (' + (x + (i % width)) + ', ' + (y + Math.floor(i / width)) +
               ') expected: ' + color + ' was ' + was);
         return;
       }
@@ -960,6 +979,30 @@ var hasAttributeCaseInsensitive = function(obj, attr) {
       return key;
     }
   }
+};
+
+/**
+ * Returns a map of URL querystring options
+ * @return {Object?} Object containing all the values in the URL querystring
+ */
+var getUrlOptions = function() {
+  var options = {};
+  var s = window.location.href;
+  var q = s.indexOf("?");
+  var e = s.indexOf("#");
+  if (e < 0) {
+    e = s.length;
+  }
+  var query = s.substring(q + 1, e);
+  var pairs = query.split("&");
+  for (var ii = 0; ii < pairs.length; ++ii) {
+    var keyValue = pairs[ii].split("=");
+    var key = keyValue[0];
+    var value = decodeURIComponent(keyValue[1]);
+    options[key] = value;
+  }
+
+  return options;
 };
 
 /**
@@ -1421,6 +1464,8 @@ var loadStandardProgram = function(gl) {
   var program = gl.createProgram();
   gl.attachShader(program, loadStandardVertexShader(gl));
   gl.attachShader(program, loadStandardFragmentShader(gl));
+  gl.bindAttribLocation(program, 0, "a_vertex");
+  gl.bindAttribLocation(program, 1, "a_normal");
   linkProgram(gl, program);
   return program;
 };
@@ -1918,7 +1963,7 @@ var waitForComposite = function(gl, callback) {
 /**
  * Starts playing a video and waits for it to be consumable.
  * @param {!HTMLVideoElement} video An HTML5 Video element.
- * @param {!function(!HTMLVideoElement): void>} callback Function to call when
+ * @param {!function(!HTMLVideoElement): void>} callback. Function to call when
  *        video is ready.
  */
 var startPlayingAndWaitForVideo = function(video, callback) {
@@ -1955,32 +2000,6 @@ var startPlayingAndWaitForVideo = function(video, callback) {
   video.play();
 };
 
-/**
- * Draws a previously setupUnitQuad.
- * @param {!WebGLRenderingContext} gl The WebGLRenderingContext to use.
- */
-var drawUnitQuad = function(gl) {
-  gl.drawArrays(gl.TRIANGLES, 0, 6);
-};
-
-/**
- * Clears then Draws a previously setupUnitQuad.
- * @param {!WebGLRenderingContext} gl The WebGLRenderingContext to use.
- * @param {!Array.<number>} opt_color The color to fill clear with before
- *        drawing. A 4 element array where each element is in the range 0 to
- *        255. Default [255, 255, 255, 255]
- */
-var clearAndDrawUnitQuad = function(gl, opt_color) {
-  opt_color = opt_color || [255, 255, 255, 255];
-  gl.clearColor(
-      opt_color[0] / 255,
-      opt_color[1] / 255,
-      opt_color[2] / 255,
-      opt_color[3] / 255);
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  drawUnitQuad(gl);
-};
-
 return {
   addShaderSource: addShaderSource,
   cancelAnimFrame: cancelAnimFrame,
@@ -1990,10 +2009,11 @@ return {
   checkCanvas: checkCanvas,
   checkCanvasRect: checkCanvasRect,
   checkCanvasRectColor: checkCanvasRectColor,
-  clearAndDrawUnitQuad: clearAndDrawUnitQuad,
   createColoredTexture: createColoredTexture,
   createProgram: createProgram,
-  drawQuad: drawQuad,
+  clearAndDrawUnitQuad: clearAndDrawUnitQuad,
+  clearAndDrawIndexedQuad: clearAndDrawIndexedQuad,
+  drawUnitQuad: drawUnitQuad,
   drawIndexedQuad: drawIndexedQuad,
   drawUByteColorQuad: drawUByteColorQuad,
   drawFloatColorQuad: drawFloatColorQuad,
@@ -2005,6 +2025,7 @@ return {
   getScript: getScript,
   getSupportedExtensionWithKnownPrefixes: getSupportedExtensionWithKnownPrefixes,
   getUrlArguments: getUrlArguments,
+  getUrlOptions: getUrlOptions,
   getAttribMap: getAttribMap,
   getUniformMap: getUniformMap,
   glEnumToString: glEnumToString,
@@ -2032,8 +2053,8 @@ return {
   shallowCopyObject: shallowCopyObject,
   setupColorQuad: setupColorQuad,
   setupProgram: setupProgram,
-  setupQuad: setupQuad,
-  setupQuadWithOptions: setupQuadWithOptions,
+  setupIndexedQuad: setupIndexedQuad,
+  setupIndexedQuadWithOptions: setupIndexedQuadWithOptions,
   setupSimpleColorFragmentShader: setupSimpleColorFragmentShader,
   setupSimpleColorVertexShader: setupSimpleColorVertexShader,
   setupSimpleColorProgram: setupSimpleColorProgram,
