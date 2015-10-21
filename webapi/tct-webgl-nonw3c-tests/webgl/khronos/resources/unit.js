@@ -1,29 +1,59 @@
 /*
 Unit testing library for the OpenGL ES 2.0 HTML Canvas context
-
-Copyright (C) 2011  Ilmari Heikkinen <ilmari.heikkinen@gmail.com>
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
 */
+
+/*
+** Copyright (c) 2012 The Khronos Group Inc.
+**
+** Permission is hereby granted, free of charge, to any person obtaining a
+** copy of this software and/or associated documentation files (the
+** "Materials"), to deal in the Materials without restriction, including
+** without limitation the rights to use, copy, modify, merge, publish,
+** distribute, sublicense, and/or sell copies of the Materials, and to
+** permit persons to whom the Materials are furnished to do so, subject to
+** the following conditions:
+**
+** The above copyright notice and this permission notice shall be included
+** in all copies or substantial portions of the Materials.
+**
+** THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+** MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+** CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+** TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+** MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
+*/
+
+/* -- plaform specific code -- */
+
+// WebKit
+if (window.testRunner && !window.layoutTestController) {
+  window.layoutTestController = window.testRunner;
+}
+
+if (window.layoutTestController) {
+  layoutTestController.overridePreference("WebKitWebGLEnabled", "1");
+  layoutTestController.dumpAsText();
+  layoutTestController.waitUntilDone();
+
+  // The WebKit testing system compares console output.
+  // Because the output of the WebGL Tests is GPU dependent
+  // we turn off console messages.
+  window.console.log = function() { };
+  window.console.error = function() { };
+
+  // RAF doesn't work in LayoutTests. Disable it so the tests will
+  // use setTimeout instead.
+  window.requestAnimationFrame = undefined;
+  window.webkitRequestAnimationFrame = undefined;
+}
+
+if (window.internals) {
+  window.internals.settings.setWebGLErrorsToConsoleEnabled(false);
+}
+
+/* -- end platform specific code --*/
 Tests = {
   autorun : true,
   message : null,
@@ -39,26 +69,6 @@ var __testSuccess__ = true;
 var __testFailCount__ = 0;
 var __testLog__;
 var __backlog__ = [];
-
-var caseName = null;
-var subcaseIndex = 0;
-
-function KhronosUnitTest(name) {
-  this.name = name;
-  this.status = null;
-  this.message = null;
-}
-
-var khronosUnitTests = [];
-var khronosUnitTestMsg = null;
-
-function Status() {
-  this.status = null;
-  this.message = null;
-}
-
-var statusObj = new Status();
-statusObj.status = 0;
 
 Object.toSource = function(a, seen){
   if (a == null) return "null";
@@ -156,9 +166,6 @@ function runTests() {
     __testLog__ = document.createElement('div');
     __testSuccess__ = true;
     try {
-      caseName = i;
-      subcaseIndex = 1;
-
       doTestNotify (i);
       var args = setup_args;
       if (Tests.setup != null)
@@ -207,12 +214,6 @@ function doTestNotify(name) {
 }
 
 function testFailed(assertName, name) {
-  var kutest = new KhronosUnitTest(caseName + "/" + subcaseIndex);
-  kutest.status = 1;
-  kutest.message = name;
-  khronosUnitTests.push(kutest);
-  subcaseIndex += 1;
-
   var d = document.createElement('div');
   var h = document.createElement('h3');
   var d1 = document.createElement("span");
@@ -238,12 +239,6 @@ function testFailed(assertName, name) {
 }
 
 function testPassed(assertName, name) {
-  var kutest = new KhronosUnitTest(caseName + "/" + subcaseIndex);
-  kutest.status = 0;
-  kutest.message = name;
-  khronosUnitTests.push(kutest);
-  subcaseIndex += 1;
-
   var d = document.createElement('div');
   var h = document.createElement('h3');
   var d1 = document.createElement("span");
@@ -253,7 +248,6 @@ function testPassed(assertName, name) {
   h.appendChild(document.createTextNode(
       name==null ? assertName : name + " (in " + assertName + ")"));
   d.appendChild(h);
-  kutest.message = name==null ? assertName : name + " (in " + assertName + ")";
   var args = []
   for (var i=2; i<arguments.length; i++) {
     var a = arguments[i];
@@ -261,7 +255,6 @@ function testPassed(assertName, name) {
     p.style.whiteSpace = 'pre';
     p.textContent = (a == null) ? "null" :
                     (typeof a == 'boolean' || typeof a == 'string') ? a : Object.toSource(a);
-    kutest.message += "\n" + p.textContent;
     args.push(p.textContent);
     d.appendChild(p);
   }
@@ -297,7 +290,7 @@ function log(msg) {
 function printTestStatus(testsRun) {
   var status = document.getElementById('test-status');
   if (testsRun) {
-    status.className = checkTestSuccess() ? 'pass' : 'fail';
+    status.className = checkTestSuccess() ? 'ok' : 'fail';
     status.textContent = checkTestSuccess() ? "PASS" : "FAIL";
   } else {
     status.className = 'fail';
@@ -395,6 +388,38 @@ function assertArrayEquals(name, v, p) {
   }
   testPassed("assertArrayEquals", name, v, p);
   return true;
+}
+
+function assertArrayEqualsWithEpsilon(name, v, p, l) {
+if (l == null) { l = p; p = v; v = name; name = null; }
+if (!v) {
+testFailed("assertArrayEqualsWithEpsilon: first array undefined", name, v, p);
+return false;
+}
+if (!p) {
+testFailed("assertArrayEqualsWithEpsilon: second array undefined", name, v, p);
+return false;
+}
+if (!l) {
+testFailed("assertArrayEqualsWithEpsilon: limit array undefined", name, v, p);
+return false;
+}
+if (v.length != p.length) {
+testFailed("assertArrayEqualsWithEpsilon", name, v, p, l);
+return false;
+}
+if (v.length != l.length) {
+testFailed("assertArrayEqualsWithEpsilon", name, v, p, l);
+return false;
+}
+for (var ii = 0; ii < v.length; ++ii) {
+if (Math.abs(v[ii]- p[ii])>l[ii]) {
+testFailed("assertArrayEqualsWithEpsilon", name, v, p, l);
+return false;
+}
+}
+testPassed("assertArrayEqualsWithEpsilon", name, v, p, l);
+return true;
 }
 
 function assertNotEquals(name, v, p) {
@@ -868,7 +893,7 @@ GLConstants = [
 
 function reportTestResultsToHarness(success, msg) {
   if (window.parent.webglTestHarness) {
-    window.parent.webglTestHarness.reportResults(success, msg);
+    window.parent.webglTestHarness.reportResults(window.location.pathname, success, msg);
   }
 }
 
@@ -878,7 +903,7 @@ function notifyFinishedToHarness() {
   }
 
   if (window.parent.webglTestHarness) {
-    window.parent.webglTestHarness.notifyFinished();
+    window.parent.webglTestHarness.notifyFinished(window.location.pathname);
   }
 }
 

@@ -41,19 +41,24 @@ function generateTest(pixelFormat, pixelType, prologue) {
     // Test each format separately because many browsers implement each
     // differently. Some might be GPU accelerated, some might not. Etc...
     var videos = [
-      { src: "../resources/red-green.mp4"         , type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"', },
-      { src: "../resources/red-green.webmvp8.webm", type: 'video/webm; codecs="vp8, vorbis"',           },
-      { src: "../resources/red-green.theora.ogv",   type: 'video/ogg; codecs="theora, vorbis"',         },
+      { src: "./resources/red-green.mp4"         , type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"', },
+      { src: "./resources/red-green.webmvp8.webm", type: 'video/webm; codecs="vp8, vorbis"',           },
+      { src: "./resources/red-green.theora.ogv",   type: 'video/ogg; codecs="theora, vorbis"',         },
     ];
 
     var videoNdx = 0;
     var video;
-    var runNextVideo = function() {
+
+    function runNextVideo() {
+        if (video) {
+            video.pause();
+        }
+
         if (videoNdx == videos.length) {
-            video.removeEventListener("playing", runTest);
             finishTest();
             return;
         }
+
         var info = videos[videoNdx++];
         debug("");
         debug("testing: " + info.type);
@@ -61,7 +66,7 @@ function generateTest(pixelFormat, pixelType, prologue) {
         var canPlay = true;
         if (!video.canPlayType) {
           testFailed("video.canPlayType required method missing");
-          runNextTest();
+          runNextVideo();
           return;
         }
 
@@ -72,12 +77,9 @@ function generateTest(pixelFormat, pixelType, prologue) {
         };
 
         document.body.appendChild(video);
-        video.addEventListener(
-            "playing", function() { runTest(video); }, true);
         video.type = info.type;
         video.src = info.src;
-        video.loop = true;
-        video.play();
+        wtu.startPlayingAndWaitForVideo(video, runTest);
     }
 
     var init = function()
@@ -140,15 +142,16 @@ function generateTest(pixelFormat, pixelType, prologue) {
         // Point the uniform sampler to texture unit 0
         gl.uniform1i(textureLoc, 0);
         // Draw the triangles
-        wtu.drawQuad(gl, [0, 0, 0, 255]);
+        wtu.clearAndDrawUnitQuad(gl, [0, 0, 0, 255]);
         // Check a few pixels near the top and bottom and make sure they have
         // the right color.
+        var tolerance = 5;
         debug("Checking lower left corner");
         wtu.checkCanvasRect(gl, 4, 4, 2, 2, bottomColor,
-                            "shouldBe " + bottomColor);
+                            "shouldBe " + bottomColor, tolerance);
         debug("Checking upper left corner");
         wtu.checkCanvasRect(gl, 4, gl.canvas.height - 8, 2, 2, topColor,
-                            "shouldBe " + topColor);
+                            "shouldBe " + topColor, tolerance);
     }
 
     function runTest(videoElement)

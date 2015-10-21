@@ -1,7 +1,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -92,13 +92,17 @@ for (var ii = 0; ii < 7; ++ii) {
   gl.vertexAttribPointer(ii + 1, 4, gl.FLOAT, false, 0, 0);
 }
 
-wtu.drawQuad(gl);
+wtu.clearAndDrawUnitQuad(gl);
 glErrorShouldBe(gl, gl.NO_ERROR, "Should be no errors from setup.");
 wtu.checkCanvasRect(gl, 0, 0, gl.canvas.width, gl.canvas.height, [255, 127, 64, 32], "Should render 255,127,64,32 (+/-1)", 1);
 
 var successfullyParsed = true;
 
 </script>
+</body>
 <script src="./resources/js-test-post.js"></script>
+
 </body>
 </html>
+
+
