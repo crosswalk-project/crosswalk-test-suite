@@ -123,18 +123,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check that Notification.body (basic)" type="compliance" status="approved" component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="manual" priority="P3" id="body-basic">
-        <description>
-          <test_script_entry>/opt/tct-notification-w3c-tests/notification/w3c/body-basic-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="body" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/notifications/#api</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check that Notification.body (empty string)" type="compliance" status="approved" component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="manual" priority="P3" id="body-empty">
         <description>
           <test_script_entry>/opt/tct-notification-w3c-tests/notification/w3c/body-empty-manual.html</test_script_entry>
@@ -142,18 +130,6 @@
         <specs>
           <spec>
             <spec_assertion element_type="attribute" element_name="body" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/notifications/#api</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check that Notification.onclick (basic)" type="compliance" status="approved" component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="manual" priority="P3" id="event-onclick">
-        <description>
-          <test_script_entry>/opt/tct-notification-w3c-tests/notification/w3c/event-onclick-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="eventhandler" element_name="onclick" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/notifications/#api</spec_url>
             <spec_statement/>
           </spec>
@@ -207,30 +183,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check that Notification.tag (two tags with different values)" type="compliance" status="approved" component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="manual" priority="P3" id="tag-different">
-        <description>
-          <test_script_entry>/opt/tct-notification-w3c-tests/notification/w3c/tag-different-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="tag" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/notifications/#api</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check that Notification.tag (two tags with same value)" type="compliance" status="approved" component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="manual" priority="P3" id="tag-same">
-        <description>
-          <test_script_entry>/opt/tct-notification-w3c-tests/notification/w3c/tag-same-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="tag" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/notifications/#api</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
     </set>
     <set name="Onshow" type="js">
       <testcase component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="auto" id="onshow_using" priority="P2" purpose="Check if the notification.onshow event can work" status="approved" type="compliance">
@@ -269,6 +221,58 @@
           <spec>
             <spec_assertion element_type="true" element_name="" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/2012/WD-notifications-20120614/#api</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that Notification.body (basic)" type="compliance" status="approved" component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="manual" priority="P3" id="body-basic">
+        <description>
+          <test_script_entry>/opt/tct-notification-w3c-tests/notification/w3c/bdd/body-basic-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-notification-w3c-tests/w3c-notification-app/testscripts/body-basic-manual.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="body" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/notifications/#api</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that Notification.onclick (basic)" type="compliance" status="approved" component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="manual" priority="P3" id="event-onclick">
+        <description>
+          <test_script_entry>/opt/tct-notification-w3c-tests/notification/w3c/bdd/event-onclick-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-notification-w3c-tests/w3c-notification-app/testscripts/event-onclick-manual.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onclick" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/notifications/#api</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that Notification.tag (two tags with different values)" type="compliance" status="approved" component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="manual" priority="P3" id="tag-different">
+        <description>
+          <test_script_entry>/opt/tct-notification-w3c-tests/notification/w3c/bdd/tag-different-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-notification-w3c-tests/w3c-notification-app/testscripts/tag-different-manual.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="tag" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/notifications/#api</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that Notification.tag (two tags with same value)" type="compliance" status="approved" component="W3C_HTML5 APIs/UI/Web Notifications" execution_type="manual" priority="P3" id="tag-same">
+        <description>
+          <test_script_entry>/opt/tct-notification-w3c-tests/notification/w3c/bdd/tag-same-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-notification-w3c-tests/w3c-notification-app/testscripts/tag-same-manual.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="tag" interface="Notification" specification="Web Notifications" section="UI" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/notifications/#api</spec_url>
             <spec_statement/>
           </spec>
         </specs>
