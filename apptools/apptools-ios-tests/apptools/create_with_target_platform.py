@@ -40,6 +40,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_ios(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=ios"
         packstatus = commands.getstatusoutput(cmd)
         os.chdir('org.xwalk.test')
@@ -51,6 +52,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_android(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=android"
         packstatus = commands.getstatusoutput(cmd)
         os.chdir('org.xwalk.test')
@@ -62,6 +64,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_deb(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=deb"
         packstatus = commands.getstatusoutput(cmd)
         comm.clear("org.xwalk.test")
@@ -70,6 +73,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_invalid_platform(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=target"
         packstatus = commands.getstatusoutput(cmd)
         comm.clear("org.xwalk.test")
