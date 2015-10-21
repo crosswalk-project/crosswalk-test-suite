@@ -1,0 +1,39 @@
+{
+    "pkg-blacklist": [
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "suite.json",
+        "inst.apk.py"
+    ],
+    "pkg-list": {
+        "cordova": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.apk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "blacklist": [],
+                "copylist": {
+                    "extra_plugins/AppSecurityApi": "PACK-TOOL-ROOT/extra_plugins/AppSecurityApi",
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            }
+        },
+        "cordova-aio": {
+            "blacklist": [],
+            "copylist": {
+                "PACK-TOOL-ROOT/resources/testharness": "resources",
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+            }
+        }
+    },
+    "pkg-name": "cordova-appsecurityapi-android-tests"
+}
