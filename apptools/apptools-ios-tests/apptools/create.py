@@ -39,6 +39,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_dir_exist(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
         os.mkdir("org.xwalk.test")
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test"
         packstatus = commands.getstatusoutput(cmd)
