@@ -49,8 +49,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('../')
         shutil.rmtree("pkg")
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_build_path_release(self):
         comm.setUp()
@@ -65,8 +63,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('../')
         shutil.rmtree("pkg")
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
 if __name__ == '__main__':
     unittest.main()
