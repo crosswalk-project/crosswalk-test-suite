@@ -32,6 +32,7 @@
 import sys
 import commands
 import subprocess
+import time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -117,6 +118,7 @@ class TestApp():
             # Switch to Home
             # keycode
             # 3 --> "KEYCODE_HOME"
+            time.sleep(5)
             cmd = "%s -s %s shell input keyevent 3" % (ADB_CMD, self.device)
             (return_code, output) = doCMD(cmd)
             if not self.isActivity():
