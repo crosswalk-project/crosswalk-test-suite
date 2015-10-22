@@ -2,7 +2,6 @@
 
 This is a test suite for Crosswalk, which includes:
 
-* `behavior/`: behavior test tool
 * `cordova/`: Crosswalk based Cordova tests
 * `usecase/`: use-case samples as tests
 * `webapi/`: Web API tests
@@ -25,14 +24,12 @@ Check out our documents at `doc/`.
 For test suite and test case development, please go through the following
 documents firstly:
 
-* `doc/Behavior_Test_Tool_Developer_Guide`
 * `doc/Coding_Style_Guide_CheatSheet`
 * `doc/Web_Test_Suite_Developer_Guide`
 * `doc/Web_Test_Suite_Packaging_Guide`
 
 For testing execution and reports, please follow these user guides:
 
-* `doc/Behavior_Test_Tool_User_Guide`
 * `doc/Cordova_Test_Suite_User_Guide`
 * `doc/WebAPI_Test_Suite_User_Guide`
 * `doc/Web_BAT_Test_Suite_User_Guide`
