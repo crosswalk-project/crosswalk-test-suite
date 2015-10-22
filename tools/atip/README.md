@@ -427,6 +427,10 @@ def i_visit_url(context, url):
 @step(u'I reload above process and save result to object "{key}"')
 @step(u'I wait saved object "{key}" gone in {time_out:d} seconds')
 @step(u'I expect the content "{text}" in the dumped xml')
+@step(u'I clear notifications with text "{notification_text}"')
+@step(u'I click notifications with text "{notification_text}"')
+@step(u'I should see notifications with text "{notification_text}"')
+@step(u'I should not see notifications with text "{notification_text}"')
 ```
 
 * "common" steps - done

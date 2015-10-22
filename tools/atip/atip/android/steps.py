@@ -310,3 +310,48 @@ def open_notification(context, text):
         assert True
     else:
         assert False
+
+
+#Clear notifications with given text
+@step(u'I clear notifications with text "{notification_text}"')
+def clear_notification(context, notification_text):
+    context.android.openNotification()
+    ele = context.android.d(text=notification_text)
+    for view in ele:
+        view.swipe.left()
+    context.android.pressKeyBy("back")
+
+
+#Click notification with given text
+@step(u'I click notifications with text "{notification_text}"')
+def click_notification(context, notification_text):
+    context.android.openNotification()
+    ele = context.android.d(text=notification_text)
+    time.sleep(10)
+    if ele.exists:
+        ele.click()
+    else:
+        assert False
+
+#Should see notifications with given text
+@step(u'I should see notifications with text "{notification_text}"')
+def should_see_notification(context, notification_text):
+    context.android.openNotification()
+    ele = context.android.d(text=notification_text)
+    time.sleep(10)
+    if ele.exists:
+        assert True
+    else:
+        assert False
+
+
+#Should not see notifications with given text
+@step(u'I should not see notifications with text "{notification_text}"')
+def should_not_see_notification(context, notification_text):
+    context.android.openNotification()
+    ele = context.android.d(text=notification_text)
+    time.sleep(10)
+    if ele.exists:
+        assert False
+    else:
+        assert True
