@@ -1,7 +1,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -71,7 +71,7 @@
       var program = wtu.setupProgram(gl, ["vshader", "fshader"], ["vPosition"]);
 
       var gridRes = 4;
-      wtu.setupQuad(gl, gridRes, 0, true);
+      wtu.setupIndexedQuad(gl, gridRes, 0, true);
 
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, gridRes * gridRes * 6, gl.UNSIGNED_SHORT, 0);
@@ -90,9 +90,9 @@
             ];
             var msg = "should be " + color;
             wtu.checkCanvasRect(
-                gl,
-                xx + quarterStep + halfStep * ii,
-                yy + quarterStep + halfStep * ii,
+                gl, 
+                xx + quarterStep + halfStep * ii, 
+                yy + quarterStep + halfStep * ii, 
                 1, 1, color, msg, 4);
           }
         }
@@ -103,5 +103,6 @@
     var successfullyParsed = true;
   </script>
 <script src="./resources/js-test-post.js"></script>
+
 </body>
 </html>

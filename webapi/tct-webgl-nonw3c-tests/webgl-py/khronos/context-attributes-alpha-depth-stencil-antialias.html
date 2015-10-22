@@ -1,7 +1,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -222,9 +222,7 @@ function testDepth(depth)
       gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       drawAndReadPixel(gl, vertices, colors, 0, 0);
-      //Fix TTS-1261 for driver limitation
-      //wtu.checkCanvasRect(gl, 0, 0, 1, 1, [0, 0, 0, 255]);
-      wtu.checkCanvasRect(gl, 0, 0, 1, 1, correctColor);
+      wtu.checkCanvasRect(gl, 0, 0, 1, 1, [0, 0, 0, 255]);
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     }
 }

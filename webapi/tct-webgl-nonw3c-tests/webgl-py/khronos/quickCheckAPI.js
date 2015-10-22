@@ -1,4 +1,27 @@
 /*
+** Copyright (c) 2012 The Khronos Group Inc.
+**
+** Permission is hereby granted, free of charge, to any person obtaining a
+** copy of this software and/or associated documentation files (the
+** "Materials"), to deal in the Materials without restriction, including
+** without limitation the rights to use, copy, modify, merge, publish,
+** distribute, sublicense, and/or sell copies of the Materials, and to
+** permit persons to whom the Materials are furnished to do so, subject to
+** the following conditions:
+**
+** The above copyright notice and this permission notice shall be included
+** in all copies or substantial portions of the Materials.
+**
+** THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+** MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+** CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+** TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+** MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
+*/
+
+/*
   QuickCheck tests for WebGL:
 
     1. Write a valid arg generator for each function
@@ -22,7 +45,7 @@
 var GLcanvas = document.createElement('canvas');
 var canvas2D = document.createElement('canvas');
 GLcanvas.width = GLcanvas.height = 256;
-GL = GLcanvas.getContext(GL_CONTEXT_ID);
+GL = getGLContext(GLcanvas);
 Array.from = function(o) {
   var a = [];
   for (var i=0; i<o.length; i++)
@@ -135,7 +158,6 @@ getParameterPname = constCheck(
   GL.MAX_VERTEX_TEXTURE_IMAGE_UNITS || "GL.MAX_VERTEX_TEXTURE_IMAGE_UNITS",
   GL.MAX_VERTEX_UNIFORM_VECTORS || "GL.MAX_VERTEX_UNIFORM_VECTORS",
   GL.MAX_VIEWPORT_DIMS || "GL.MAX_VIEWPORT_DIMS",
-  GL.NUM_COMPRESSED_TEXTURE_FORMATS || "GL.NUM_COMPRESSED_TEXTURE_FORMATS",
   GL.PACK_ALIGNMENT || "GL.PACK_ALIGNMENT",
   GL.POLYGON_OFFSET_FACTOR || "GL.POLYGON_OFFSET_FACTOR",
   GL.POLYGON_OFFSET_FILL || "GL.POLYGON_OFFSET_FILL",
@@ -331,7 +353,7 @@ randomLineWidth = function() {
 randomImage = function(w,h) {
   var img;
   var r = Math.random();
-  if (r < 0.5) {
+  if (r < 0.25) {
     img = document.createElement('canvas');
     img.width = w; img.height = h;
     img.getContext('2d').fillRect(0,0,w,h);
@@ -388,4 +410,21 @@ argGeneratorTestRunner = function(argGen, testFunction, numberOfTests) {
   if (argGen.teardown)
     argGen.teardown.apply(argGen, setupVars);
   if (error) throw(error);
-}
+};
+
+// TODO: Remove this
+// WebKit or at least Chrome is really slow at laying out strings with
+// unprintable characters. Without this tests can take 30-90 seconds.
+// With this they're instant.
+sanitize = function(str) {
+  var newStr = [];
+  for (var ii = 0; ii < str.length; ++ii) {
+    var c = str.charCodeAt(ii);
+    newStr.push((c > 31 && c < 128) ? str[ii] : "?");
+  }
+  return newStr.join('');
+};
+
+argsToString = function(args) {
+  return sanitize(args.map(function(a){return Object.toSource(a)}).join(","));
+};

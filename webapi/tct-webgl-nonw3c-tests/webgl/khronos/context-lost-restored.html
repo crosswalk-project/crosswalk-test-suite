@@ -5,7 +5,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -39,6 +39,7 @@ var canvas;
 var gl;
 var shouldGenerateGLError;
 var extensionNames = [
+    "WEBGL_lose_context",
     "WEBKIT_WEBGL_lose_context",
     "MOZ_WEBGL_lose_context",
 ];
@@ -125,7 +126,7 @@ function testLosingAndRestoringContext()
       // restore the context after this event has exited.
       setTimeout(function() {
         shouldGenerateGLError(gl, gl.NO_ERROR, "extension.restoreContext()");
-        // The context should still be lost. It will not get restored until the
+        // The context should still be lost. It will not get restored until the 
         // webglrestorecontext event is fired.
         shouldBeTrue("gl.isContextLost()");
         shouldBe("gl.getError()", "gl.NO_ERROR");
@@ -164,7 +165,7 @@ function testRendering()
     texture = wtu.createColoredTexture(gl, canvas.width, canvas.height, texColor);
 
     gl.uniform1i(gl.getUniformLocation(program, "tex"), 0);
-    wtu.drawQuad(gl, [0, 0, 0, 255]);
+    wtu.clearAndDrawUnitQuad(gl, [0, 0, 0, 255]);
 
     var compare = texColor.slice(0, 3);
     wtu.checkCanvasRect(gl, 0, 0, canvas.width, canvas.height, compare, "shouldBe " + compare);

@@ -1,7 +1,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -54,11 +54,12 @@ gl.bindTexture(gl.TEXTURE_2D, tex);
 var pixel = new Uint8Array([0, 255, 0, 255]);
 gl.texImage2D(
   gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, pixel);
-wtu.drawQuad(gl);
+wtu.clearAndDrawUnitQuad(gl);
 
 glErrorShouldBe(gl, gl.NO_ERROR, "Should be no errors from setup.");
 var successfullyParsed = true;
 </script>
 <script src="./resources/js-test-post.js"></script>
+
 </body>
 </html>

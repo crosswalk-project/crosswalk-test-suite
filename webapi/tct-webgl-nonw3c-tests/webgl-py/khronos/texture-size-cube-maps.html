@@ -1,7 +1,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -135,7 +135,7 @@ function test() {
     finishTest();
   } else {
     ++sizeCount;
-    setTimeout(test, 100);
+    setTimeout(test, 0);
   }
 }
 
@@ -184,7 +184,7 @@ function testSize(size) {
       var color = colors[(rr + count) % colors.length];
       var rotMat = axisRotation(rot.axis, rot.angle);
       gl.uniformMatrix4fv(rotLoc, false, rotMat);
-      wtu.drawQuad(gl);
+      wtu.clearAndDrawUnitQuad(gl);
       wtu.checkCanvas(
           gl, color.color,
           wtu.glEnumToString(gl, targets[rr]) + " should be " + color.name);
@@ -199,7 +199,7 @@ function testSize(size) {
         var rotMat = mulMatrix(tmpMat, rotMat);
       }
       gl.uniformMatrix4fv(rotLoc, false, rotMat);
-      wtu.drawQuad(gl);
+      wtu.clearAndDrawUnitQuad(gl);
 
       for (var ii = 0; ii < 2; ++ii) {
         checkRect(
@@ -351,3 +351,5 @@ var successfullyParsed = true;
 </script>
 </body>
 </html>
+
+

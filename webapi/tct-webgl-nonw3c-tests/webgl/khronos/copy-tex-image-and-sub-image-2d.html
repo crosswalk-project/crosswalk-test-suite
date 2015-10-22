@@ -1,7 +1,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -54,7 +54,7 @@ function runTestIteration(antialias)
 {
     var canvas = document.getElementById(
         antialias ? "antialiasOn" : "antialiasOff");
-    var attribs = antialias ? { antialias: false } : undefined;
+    var attribs = antialias ? { antialias: true } : { antialias: false };
     gl = wtu.create3DContext(canvas, attribs);
     var program = wtu.setupTexturedQuad(gl);
     var textureLoc = gl.getUniformLocation(program, "tex");
@@ -112,7 +112,7 @@ function runTestIteration(antialias)
           gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
           // Draw the triangles
-          wtu.drawQuad(gl);
+          wtu.clearAndDrawUnitQuad(gl);
 
           // check the rendering results
           for (var iy = 0; iy < 2; ++iy) {

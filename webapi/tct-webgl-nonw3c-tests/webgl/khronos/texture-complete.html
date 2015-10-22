@@ -1,7 +1,7 @@
 <!--
 
 /*
-** Copyright (c) 2014 The Khronos Group Inc.
+** Copyright (c) 2012 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
 ** copy of this software and/or associated documentation files (the
@@ -32,7 +32,7 @@
 <title>WebGL "Texture Complete" texture conformance test.</title>
 <link rel="stylesheet" href="./resources/js-test-style.css"/>
 <script src="./resources/js-test-pre.js"></script>
-<script src="./resources/webgl-test.js"></script>
+<script src="./resources/webgl-test.js"> </script>
 <script src="./resources/webgl-test-utils.js"></script>
 </head>
 <body>
@@ -69,7 +69,7 @@ function init()
   var loc = gl.getUniformLocation(program, "tex");
   gl.uniform1i(loc, 0);
 
-  wtu.drawQuad(gl);
+  wtu.clearAndDrawUnitQuad(gl);
   wtu.checkCanvas(gl, [0,0,0,255],
       "texture that is not -texture-complete- when " +
       "TEXTURE_MIN_FILTER not NEAREST or LINEAR should draw with 0,0,0,255");
@@ -80,5 +80,7 @@ var successfullyParsed = true;
 </script>
 
 <script src="./resources/js-test-post.js"></script>
+
 </body>
 </html>
+

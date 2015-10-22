@@ -30,6 +30,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="./resources/js-test-style.css"/>
 <script src="./resources/js-test-pre.js"></script>
+<script src="./resources/webgl-test.js"></script>
 <script src="./resources/webgl-test-utils.js"></script>
 <script>
 "use strict";
@@ -37,8 +38,9 @@ var wtu = WebGLTestUtils;
 var gl = null;
 var textureLoc = null;
 var successfullyParsed = false;
+var video;
 
-initTestingHarness();
+initTestingHarnessWaitUntilDone();
 
 function init()
 {
@@ -50,21 +52,30 @@ function init()
 
     gl.clearColor(0,0,0,1);
     gl.clearDepth(1);
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    // Disable any writes to the alpha channel
-    gl.colorMask(1, 1, 1, 0);
 
     textureLoc = gl.getUniformLocation(program, "tex");
 
-    var video = document.getElementById("vid");
+    video = document.getElementById("vid");
     wtu.startPlayingAndWaitForVideo(video, runTest);
 }
+
+// These two declarations need to be global for "shouldBe" to see them
+var buf = null;
+var idx = 0;
+var pixel = [0, 0, 0];
+var correctColor = null;
+var texture;
 
 function runOneIteration(videoElement, useTexSubImage2D, flipY, topColor, bottomColor, badMinFilter, badClamp, genMips)
 {
     debug('Testing ' + (useTexSubImage2D ? 'texSubImage2D' : 'texImage2D') +
           ' with flipY=' + flipY);
-    var texture = gl.createTexture();
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    // Disable any writes to the alpha channel
+    gl.colorMask(1, 1, 1, 0);
+    if (!texture) {
+        texture = gl.createTexture();
+    }
     // Bind the texture to texture unit 0
     gl.bindTexture(gl.TEXTURE_2D, texture);
     // Set up pixel store parameters
@@ -73,11 +84,13 @@ function runOneIteration(videoElement, useTexSubImage2D, flipY, topColor, bottom
     debug("size: " + videoElement.videoWidth + "x" + videoElement.videoHeight);
     if (useTexSubImage2D) {
         // Initialize the texture to black first
+        debug("use texSubImage2D");
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA,
                       videoElement.videoWidth, videoElement.videoHeight, 0,
                       gl.RGBA, gl.UNSIGNED_BYTE, null);
         gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGBA, gl.UNSIGNED_BYTE, videoElement);
     } else {
+        debug("use texImage2D");
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, videoElement);
     }
 
@@ -102,8 +115,11 @@ function runOneIteration(videoElement, useTexSubImage2D, flipY, topColor, bottom
     if (genMips) {
         debug("generate mips");
         gl.generateMipmap(gl.TEXTURE_2D);
-        wtu.glErrorShouldBe(gl, gl.INVALID_OPERATION, "should be INVALID_OPERATION");
+        glErrorShouldBe(gl, gl.INVALID_OPERATION, "should be INVALID_OPERATION");
     }
+
+    gl.bindTexture(gl.TEXTURE_2D, null);
+    gl.bindTexture(gl.TEXTURE_2D, texture);
 
 //    var c = document.createElement("canvas");
 //    c.width = 16;
@@ -143,7 +159,7 @@ function runTest(videoElement)
     runOneIteration(videoElement, true, true, green, red, false, false, false);
     runOneIteration(videoElement, true, false, red, green, false, false, false);
 
-    wtu.glErrorShouldBe(gl, gl.NO_ERROR, "should be no errors");
+    glErrorShouldBe(gl, gl.NO_ERROR, "should be no errors");
     finishTest();
 }
 </script>
