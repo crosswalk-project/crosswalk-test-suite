@@ -41,7 +41,7 @@ class TestSampleAppFunctions(unittest.TestCase):
         comm.setUp()
         #memorygame, hexgl,hangoman
         app_name = "Hexgl"
-        sample_src = "/HexGL/assets/www/"
+        sample_src = "HexGL/assets/www/"
         app_root = comm.sample_src_pref + sample_src
         cmd = "python %smake_apk.py --package=org.xwalk.%s --name=%s --app-root=%s --app-local-path=%s --arch=%s --mode=%s --enable-remote-debugging" % \
             (comm.pack_tools,
