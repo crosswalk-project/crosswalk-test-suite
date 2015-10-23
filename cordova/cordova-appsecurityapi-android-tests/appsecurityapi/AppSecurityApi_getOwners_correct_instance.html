@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_createFromData_no_optional</title>
+<title>Secure Data Test: AppSecurityApi_getOwners_correct_instance</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -47,10 +47,21 @@ function test() {
     try{
       intel.security.secureData.createFromData(
         function(instanceID) {
-          t.step(function() {
-            assert_not_equals(instanceID, null);
-          });
-          t.done();
+          intel.security.secureData.getOwners(
+            function(owners){
+              t.step(function() {
+                assert_equals(owners[0], 0);
+              });
+              t.done();
+            },
+            function(errorObj) {
+              t.step(function() {
+                assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
+              });
+              t.done();
+            },
+            instanceID
+          );
         },
         function(errorObj) {
           t.step(function() {
@@ -58,12 +69,13 @@ function test() {
           });
           t.done();
         },
-        {'data': 'plaintext data'}
+        {'data': 'plaintext data', 'tag': 'Test', 'extraKey': 0, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ''}
       );
     } catch (e){
       assert_true(false, "Exception: {" + e.message + "}");
     }
   }, document.title);
 }
+
 </script>
 

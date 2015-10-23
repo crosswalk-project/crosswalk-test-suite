@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_createFromData_no_optional</title>
+<title>Secure Data Test: AppSecurityApi_ changeExtraKey_data_below</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -40,17 +40,42 @@ Authors:
 <div id="log"></div>
 <script type="text/javascript">
 
+var error_code_bad_data = 7
 setTimeout(function() { test(); }, 500);
 
 function test() {
   async_test(function(t) {
     try{
+      newExtraKeyInstanceID = null
       intel.security.secureData.createFromData(
         function(instanceID) {
-          t.step(function() {
-            assert_not_equals(instanceID, null);
-          });
-          t.done();
+          newExtraKeyInstanceID = instanceID
+          intel.security.secureData.createFromData(
+            function(instanceID) {
+              intel.security.secureData.changeExtraKey(
+                function(){
+                  t.step(function() {
+                    assert_unreached("changeExtraKey should fail");
+                  });
+                  t.done();
+                },
+                function(errorObj){
+                  t.step(function() {
+                    assert_equals(errorObj.code, error_code_bad_data);
+                  });
+                  t.done();
+                },
+                {'instanceID': instanceID, 'extraKey': newExtraKeyInstanceID }
+              );
+            },
+            function(errorObj) {
+              t.step(function() {
+                assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
+              });
+              t.done();
+            },
+            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': 0, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ''}
+          );
         },
         function(errorObj) {
           t.step(function() {
@@ -58,7 +83,7 @@ function test() {
           });
           t.done();
         },
-        {'data': 'plaintext data'}
+        {'data': '123', 'noRead': true, 'noStore': true}
       );
     } catch (e){
       assert_true(false, "Exception: {" + e.message + "}");
