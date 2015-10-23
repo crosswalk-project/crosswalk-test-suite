@@ -355,3 +355,9 @@ def should_not_see_notification(context, notification_text):
         assert False
     else:
         assert True
+
+
+#switch to given language
+@step(u'switch to language "{language}"')
+def switch_language(context, language):
+    assert context.android.switchLanguage(language)
