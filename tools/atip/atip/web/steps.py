@@ -75,11 +75,7 @@ def launch_app_by_names(context, app_name, apk_pkg_name, apk_activity_name):
 
 @step(u'switch to "{app_name}"')
 def switch_to_app_name(context, app_name):
-    if app_name in context.apps:
-        context.web = context.apps[app_name]
-        assert True
-    else:
-        assert False
+    web.launch_webapp_by_name(context, app_name)
 
 
 @step(u'I go to "{url}"')
