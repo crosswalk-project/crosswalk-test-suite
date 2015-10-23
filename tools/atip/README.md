@@ -12,7 +12,7 @@ Environmental controls. In ATIP usage, you can write the environment initial pro
 In WebDriver testing, the template need to know the some test variables, e.g. which device be tested? which test platform? Some WebDriver variables. These variables can be got by following ways:
 
 * By environment variables:  
-  TEST_PLATFORM: android, tizen, chrome_ubuntu, others(if have)   
+  TEST_PLATFORM: android, chrome_ubuntu, others(if have)   
   DEVICE_ID    
   CONNECT_TYPE: adb, sdb   
   WEBDRIVER_VARS: webdriver_url, desired_capabilities, others  
@@ -31,7 +31,6 @@ tools/
 |-- bdd.chrome.json
 |-- bdd.android_cordova.json
 |-- bdd.android_xwalk.json
-`-- bdd.xw_tizen.json
 ```
 
 ## Tests Development
@@ -360,7 +359,6 @@ def i_visit_url(context, url):
   "native": native based functions (TBD)  
   "common": common operations cross different platforms, e.g. call python image lib to compare image files  
   "android": Android platform specific functions which is implemented by uiautomator  
-  "tizen": Tizen platform specific functions  
 
 * "web" steps - done
 ```

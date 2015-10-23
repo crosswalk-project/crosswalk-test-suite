@@ -49,13 +49,6 @@ elif [[ $1 == "android_cordova" ]]; then
     export TIZEN_USER=""
     export LAUNCHER="CordovaLauncher"
     export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"androidPackage\": \"TEST_PKG_NAME\", \"androidActivity\": \"TEST_ACTIVITY_NAME\"}}, \"test_prefix\": \"file:///android_asset/www/\"}"
-elif [[ $1 == "xw_tizen" ]]; then
-    export TEST_PLATFORM="tizen"
-    export DEVICE_ID=""
-    export CONNECT_TYPE="sdb"
-    export TIZEN_USER=""
-    export LAUNCHER=""
-    export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"tizenAppId\": \"TEST_APP_ID\", \"tizenDebuggerAddress\": \"http://127.0.0.1:9333\"}}, \"test_prefix\": \"file:///opt/TESTER-HOME-DIR/apps_rw/xwalk/applications/TEST_APP_ID/\"}"
 elif [[ $1 == "xw_deepin" ]]; then
     export TEST_PLATFORM="deepin"
     export DEVICE_ID=""
