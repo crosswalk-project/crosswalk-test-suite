@@ -41,7 +41,6 @@ from selenium.common.exceptions import (
     StaleElementReferenceException,
     NoAlertPresentException,
     WebDriverException)
-from atip.tizen import tizen
 from atip.common import common
 from atip.android import android
 
@@ -80,9 +79,6 @@ class WebAPP(common.APP):
         apk_activity_name = apk_activity_name
         apk_pkg_name = apk_pkg_name
         if "platform" in app_config and "name" in app_config["platform"]:
-            if app_config["platform"]["name"].upper().find('TIZEN') >= 0:
-                self.app_id = tizen.get_appid_by_name(
-                    self.app_name, app_config["platform"], app_config["tizen_user"])
             if app_config["platform"]["name"].upper().find('ANDROID') >= 0:
                 if apk_activity_name == apk_pkg_name is None:
                     if "app_launcher" in app_config and app_config[

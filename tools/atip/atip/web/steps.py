@@ -42,10 +42,8 @@ def get_page_url(context, text):
     try:
         test_platform = context.web.app_config["platform"]["name"].upper()
         url_components = urlparse(context.web.current_url())
-        if test_platform == 'TIZEN':
-            test_prefix = '%s://%s//' % (url_components.scheme,
-                                         url_components.netloc)
-        elif test_platform == 'ANDROID':
+
+        if test_platform == 'ANDROID':
             if url_components.scheme == 'http':
                 test_prefix = '%s://%s/' % (url_components.scheme,
                                             url_components.netloc)
