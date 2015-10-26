@@ -67,7 +67,7 @@ function startSpeech() {
     clearTimeout(showId);
     showId = setTimeout("show()", 10000);
     $("#infobox").text("Starting......");
-    window.speechUtter = "tizen" in window ? new tizen.SpeechSynthesisUtterance(content): new SpeechSynthesisUtterance(content);
+    window.speechUtter = new SpeechSynthesisUtterance(content);
     //speechUtter.text = content;
     speechUtter.lang = "en-US";
     speechUtter.rate = 1.2;
@@ -90,7 +90,7 @@ function startSpeech() {
         $("#resume").hide();
         $("#pause").attr('disabled', true);
     };
-    window.speechSyn = "tizen" in window ? tizen.speechSynthesis: window.speechSynthesis;
+    window.speechSyn = window.speechSynthesis;
     speechSyn.speak(speechUtter);
     status();
 }
