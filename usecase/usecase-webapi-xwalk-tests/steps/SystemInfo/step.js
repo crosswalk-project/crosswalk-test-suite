@@ -1,8 +1,0 @@
-var step = '<font style="font-size:85%">'
-           + '<p>Test Purpose: </p>'
-           + '<p>Verifies a SystemInfo reflects current device status.</p>'
-           + '<p>Test Steps: </p>'
-           + '<p>Check target device information</p>'
-           + '<p>Expected Result: </p>'
-           + '<p>Test passes if target device information is correct.</p>'
-         + '</font>'
