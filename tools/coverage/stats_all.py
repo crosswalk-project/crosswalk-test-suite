@@ -17,9 +17,7 @@ usecase_list = [
     "usecase-embedding-android-tests",
     "usecase-litewrt-android-tests",
     "usecase-webapi-xwalk-tests",
-    "usecase-wrt-android-tests",
-    "usecase-wrt-tizen-tests",
-    "behavior"]
+    "usecase-wrt-android-tests"]
 
 
 def iterfindfiles(path, fnexp):
@@ -141,7 +139,7 @@ def analy_test_file(file_path=None):
                     subcase = string.atoi(s_subcase)
                 if s_priority == 'P0':
                     if usecase_flag == 1:
-                        if flag == 1 and s_execution_type == "auto" and platform_type != "tizen":
+                        if flag == 1 and s_execution_type == "auto":
                             p0_auto_webdriver += 1 * subcase
                         if flag == 1 and s_execution_type == "manual":
                             p0_manual += 1 * subcase
@@ -155,7 +153,7 @@ def analy_test_file(file_path=None):
                             p0_manual += 1 * subcase
                 elif s_priority == 'P1':
                     if usecase_flag == 1:
-                        if flag == 1 and s_execution_type == "auto" and platform_type != "tizen":
+                        if flag == 1 and s_execution_type == "auto":
                             p1_auto_webdriver += 1 * subcase
                         if flag == 1 and s_execution_type == "manual":
                             p1_manual += 1 * subcase
@@ -169,7 +167,7 @@ def analy_test_file(file_path=None):
                             p1_manual += 1 * subcase
                 elif s_priority == 'P2':
                     if usecase_flag == 1:
-                        if flag == 1 and s_execution_type == "auto" and platform_type != "tizen":
+                        if flag == 1 and s_execution_type == "auto":
                             p2_auto_webdriver += 1 * subcase
                         if flag == 1 and s_execution_type == "manual":
                             p2_manual += 1 * subcase
@@ -183,7 +181,7 @@ def analy_test_file(file_path=None):
                             p2_manual += 1 * subcase
                 elif s_priority == 'P3':
                     if usecase_flag == 1:
-                        if flag == 1 and s_execution_type == "auto" and platform_type != "tizen":
+                        if flag == 1 and s_execution_type == "auto":
                             p3_auto_webdriver += 1 * subcase
                         if flag == 1 and s_execution_type == "manual":
                             p3_manual += 1 * subcase
@@ -274,8 +272,6 @@ def get_upstream(file_path):
 
 def get_case_status(file_path):
 
-    # if "tct-widget02-w3c-tests" in file_path:
-    #    return
     if "tct-manual-w3c-tests" in file_path:
         return
     if "tct-testconfig" in file_path:
@@ -321,7 +317,7 @@ def main():
     Platforminfo = ""
 
     try:
-        usage = "copy stats_all.py and projects.json to the root directory of crosswalk-test-suite, ./stat.py [-p <platform: all | android | tizen] [-f <apk tests.full.xml>] [-r <direction name>]"
+        usage = "copy stats_all.py and projects.json to the root directory of crosswalk-test-suite, ./stat.py [-p <platform: all | android] [-f <apk tests.full.xml>] [-r <direction name>]"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
             "-r",
@@ -334,7 +330,7 @@ def main():
         opts_parser.add_option(
             "-p",
             dest="inplatform",
-            help="specify the platform name,It will list the case number of all packages on the platform,Three platform name you can choose: all, android, tizen .")
+            help="specify the platform name,It will list the case number of all packages on the platform,Three platform name you can choose: all, android.")
 
         # init_result_file()
         if len(sys.argv) == 1:
@@ -364,21 +360,19 @@ def main():
                 'sampleapp': 'Sample App',
                 'cordovausecase': 'Cordova Use case'}
 
-            platformlist = ('all', 'android', 'tizen')
+            platformlist = ('all', 'android')
 
             with open('projects.json') as ffjson:
                 allpkgdict = json.load(ffjson)
 
             androidpkglist = []
-            tienpkglist = []
 
             for list1 in allpkgdict['android'].keys():
                 androidpkglist = allpkgdict['android'][list1] + androidpkglist
-            for list2 in allpkgdict['tizen'].keys():
-                tienpkglist = allpkgdict['tizen'][list2] + tienpkglist
+
 
             if PARAMETERS.inplatform not in platformlist:
-                print "platform '%s' not exists,only three platform can be chosed: all, android, tizen."
+                print "platform '%s' not exists,only three platform can be chosed: all, android."
                 sys.exit(1)
             with open('projects.json') as fjson:
                 pkginfodic = json.load(fjson)
@@ -388,17 +382,12 @@ def main():
 
                 for pkgname in pkginfodic[PARAMETERS.inplatform].get(pkggroup):
                     for dirname in iterfinddirs(rootdir, str(pkgname)):
-                        if pkgname in set(
-                                androidpkglist) and pkgname in set(tienpkglist):
-                            Platforminfo = "Common"
-                        elif pkgname in set(androidpkglist) and pkgname not in set(tienpkglist):
+                        if pkgname in set(androidpkglist):
                             Platforminfo = "Android"
-                        elif pkgname in set(tienpkglist) and pkgname not in set(androidpkglist):
-                            Platforminfo = "Tizen"
+                        elif pkgname not in set(androidpkglist):
+                            Platforminfo = "Common"
 
                         xmlf = str(dirname) + '/tests.full.xml'
-                        # if str(os.path.dirname(dirname)) == "wrt-manifest-tizen-tests" or str(os.path.dirname(dirname)) == "wrt-manifest-android-tests" :
-                        #    xmlf = str(dirname) + '/tests.xml'
                         Component = pkgdict.get(pkggroup)
                         if os.path.exists(xmlf):
                             get_case_status(xmlf)
