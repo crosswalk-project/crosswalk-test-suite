@@ -1,6 +1,6 @@
 ## Usecase Design
 
-### 1. The [XWalkPreferencesActivityAsync](XWalkPreferencesActivityAsync.java) sample demonstrates XWALK-2376 feature basic functionalities, include:
+### 1. The [XWalkViewWithPreferencesAsync](XWalkViewWithPreferencesAsync.java) sample demonstrates XWALK-2376 feature basic functionalities, include:
 
 * XWalkView can set style value
 * XWalkView can get style value
@@ -11,7 +11,7 @@ This usecase covers following interface and methods:
 
 
 
-### 2. The [EchoExtensionActivityAsync](EchoExtensionActivityAsync.java) sample demonstrates XWALK-3917 feature basic functionalities, include:
+### 2. The [XWalkViewWithEchoExtensionAsync](XWalkViewWithEchoExtensionAsync.java) sample demonstrates XWALK-3917 feature basic functionalities, include:
 
 * extension can be supported
 
@@ -22,7 +22,7 @@ These two usecases cover following interface and methods:
 
 
 
-### 3. The [MultiSurfaceViewsActivityAsync](MultiSurfaceViewsActivityAsync.java) and [MultiTextureViewsActivityAsync](MultiTextureViewsActivityAsync.java) sample demonstrate XWALK-2012 feature basic functionalities, include:
+### 3. The [XWalkViewWithMultiSurfaceViewsAsync](XWalkViewWithMultiSurfaceViewsAsync.java) and [XWalkViewWithMultiTextureViewsAsync](XWalkViewWithMultiTextureViewsAsync.java) sample demonstrate XWALK-2012 feature basic functionalities, include:
 
 * Multiple surfaceViews can be shown in order at first
 * Multiple surfaceViews can be shown in order when rotating the device screen 90 degrees
@@ -38,7 +38,7 @@ This usecase covers following interface and methods:
 
 
 
-### 4. The [AnimatableXWalkViewActivityAsync](AnimatableXWalkViewActivityAsync.java) sample demonstrates how to use the basic functionalities of animatible XWalkView, include:
+### 4. The [XWalkViewWithAnimatableAsync](XWalkViewWithAnimatableAsync.java) sample demonstrates how to use the basic functionalities of animatible XWalkView, include:
 
 * Animatable XWalkView can be scaled down or scaled up
 
@@ -49,7 +49,7 @@ This usecase covers following interface and methods:
 
 
 
-### 5. The [LoadAppFromManifestLayoutActivityAsync](LoadAppFromManifestLayoutActivityAsync.java) sample demonstrates how to load app from manifest, include:
+### 5. The [XWalkViewWithLoadAppFromManifestAsync](XWalkViewWithLoadAppFromManifestAsync.java) sample demonstrates how to load app from manifest, include:
 
 * XWalkView can load app from manifest
 
@@ -59,7 +59,7 @@ This usecase covers following interface and methods:
 
 
 
-### 6. The [MultiXWalkViewActivityAsync](MultiXWalkViewActivityAsync.java) sample demonstrates how to create multi instance, include:
+### 6. The [XWalkViewWithMultiInstanceActivityAsync](XWalkViewWithMultiInstanceActivityAsync.java) sample demonstrates how to create multi instance, include:
 
 * XWalkView can create multi instance
 
@@ -69,7 +69,7 @@ This usecase covers following interface and methods:
 
 
 
-### 7. The [OnHideOnShowActivityAsync](OnHideOnShowActivityAsync.java) sample demonstrates XWalkView can hide and show, include:
+### 7. The [XWalkViewWithOnHideOnShowAsync](XWalkViewWithOnHideOnShowAsync.java) sample demonstrates XWalkView can hide and show, include:
 
 * XWalkView can hide when clicking home key
 * There is no short white screen displayed when clicking home key
@@ -81,7 +81,7 @@ This usecase covers following interface and methods:
 
 
 
-### 8. The [PauseTimersActivityAsync](PauseTimersActivityAsync.java) sample demonstrates XWalkView can pause timers, include:
+### 8. The [XWalkViewWithPauseTimerAsync](XWalkViewWithPauseTimerAsync.java) sample demonstrates XWalkView can pause timers, include:
 
 * XWalkView can pause timers when it's pauseTimers() method is called
 * XWalkView can resume timers when it's resumeTimers() method is called
@@ -92,7 +92,7 @@ This usecase covers following interface and methods:
 
 
 
-### 9. The [ResourceAndUIClientsActivityAsync](ResourceAndUIClientsActivityAsync.java) sample demonstrates how to set resource client and UI client, include:
+### 9. The [XWalkViewWithResourceAndUIClientAsync](XWalkViewWithResourceAndUIClientAsync.java) sample demonstrates how to set resource client and UI client, include:
 
 * XWalkView can set resource client
 * XWalkView can set UI client
@@ -106,7 +106,7 @@ This usecase covers following interface and methods:
 
 
 
-### 10. The [XWalkNavigationActivityAsync](XWalkNavigationActivityAsync.java) sample demonstrates how to forward and backward history, include:
+### 10. The [XWalkViewWithNavigationAsync](XWalkViewWithNavigationAsync.java) sample demonstrates how to forward and backward history, include:
 
 * XWalkView can backward history client when go backward button is clicked
 * XWalkView can forward history client when go forward button is clicked
@@ -119,7 +119,7 @@ This usecase covers following interface and methods:
 
 
 
-### 11. The [XWalkVersionAndAPIVersionAsync](XWalkVersionAndAPIVersionAsync.java) sample demonstrates how to get API version and xwalk version, include:
+### 11. The [XWalkViewWithVersionAndAPIVersionAsync](XWalkViewWithVersionAndAPIVersionAsync.java) sample demonstrates how to get API version and xwalk version, include:
 
 * XWalkView can get and show API version
 * XWalkView can get and show xwalk version
@@ -140,7 +140,7 @@ This usecase covers following interface and methods:
 
 
 
-### 13. The [OnIconAvailableOnReceivedIconActivityAsync](OnIconAvailableOnReceivedIconActivityAsync.java) sample demonstrates how to load icon when it's available, include:
+### 13. The [XWalkViewWithOnIconAvailableOnReceivedIconAsync](XWalkViewWithOnIconAvailableOnReceivedIconAsync.java) sample demonstrates how to load icon when it's available, include:
 
 * XWalkView can load icon when it's available
 
@@ -151,7 +151,7 @@ This usecase covers following interface and methods:
 
 
 
-### 14. The [OnCreateWindowRequestedActivityAsync](OnCreateWindowRequestedActivityAsync.java) sample demonstrates how to create new window, include:
+### 14. The [XWalkViewWithOnCreateWindowRequestedAsync](XWalkViewWithOnCreateWindowRequestedAsync.java) sample demonstrates how to create new window, include:
 
 * XWalkView can create new window
 
@@ -162,7 +162,7 @@ This usecase covers following interface and methods:
 
 
 
-### 15. The [FullScreenActivityAsync](FullScreenActivityAsync.java) sample demonstrates how to enter and exit fullscreen, include:
+### 15. The [XWalkViewWithFullScreenActivityAsync](XWalkViewWithFullScreenActivityAsync.java) sample demonstrates how to enter and exit fullscreen, include:
 
 * XWalkView can enter and exit fullscreen
 
@@ -172,7 +172,7 @@ This usecase covers following interface and methods:
 
 
 
-### 16. The [ShouldOverrideUrlLoadingActivityAsync](ShouldOverrideUrlLoadingActivityAsync.java) sample demonstrates how to trigger shouldOverrideUrlLoading method, include:
+### 16. The [XWalkViewWithShouldOverrideUrlLoadingAsync](XWalkViewWithShouldOverrideUrlLoadingAsync.java) sample demonstrates how to trigger shouldOverrideUrlLoading method, include:
 
 * XWalkView can trigger shouldOverrideUrlLoading method
 
@@ -226,7 +226,7 @@ This usecase covers following interface and methods:
 
 
 
-### 21. The [ContactExtensionActivityAsync](ContactExtensionActivityAsync.java) sample demonstrates XWALK-3917 feature basic functionalities, include:
+### 21. The [XWalkViewWithContactExtensionAsync](XWalkViewWithContactExtensionAsync.java) sample demonstrates XWALK-3917 feature basic functionalities, include:
 
 * extension can be supported with additional permissions
 
@@ -237,7 +237,7 @@ These two usecases cover following interface and methods:
 
 
 
-### 22. The [ZoomInAndOutXWalkViewActivityAsync](ZoomInAndOutXWalkViewActivityAsync.java) sample check whether xwalkview can zoom, include:
+### 22. The [XWalkViewWithZoomInAndOutAsync](XWalkViewWithZoomInAndOutAsync.java) sample check whether xwalkview can zoom, include:
 
 * XWalkView can zoom in, zoom out, zoom by
 
@@ -257,7 +257,7 @@ This usecase covers following interface and methods:
 
 
 
-### 24. The [XWalkBlockAndErrorRedirectionAsync](XWalkBlockAndErrorRedirectionAsync.java) sample check whether xwalkview can block response and redirect when url or internet is not avaliable, include:
+### 24. The [XWalkViewWithBlockAndErrorRedirectionAsync](XWalkViewWithBlockAndErrorRedirectionAsync.java) sample check whether xwalkview can block response and redirect when url or internet is not avaliable, include:
 
 * XWalkView can block response & make error redirection
 
@@ -268,7 +268,7 @@ This usecase covers following interface and methods:
 
 
 
-### 25. The [XWalkWithSaveStateAsync](XWalkWithSaveStateAsync.java) sample check whether xwalkview can saveState & restoreState bundle, include:
+### 25. The [XWalkViewWithSaveStateAsync](XWalkViewWithSaveStateAsync.java) sample check whether xwalkview can saveState & restoreState bundle, include:
 
 * XWalkView can saveState & restoreState bundle
 
@@ -278,7 +278,7 @@ This usecase covers following interface and methods:
 
 
 
-### 26. The [XWalkWithInputConnectionAsync](XWalkWithInputConnectionAsync.java) sample check whether xwalkview can use onCreateInputConnection method, include:
+### 26. The [XWalkViewWithInputConnectionAsync](XWalkViewWithInputConnectionAsync.java) sample check whether xwalkview can use onCreateInputConnection method, include:
 
 * XWalkView can use onCreateInputConnection method
 
@@ -317,8 +317,7 @@ This usecase covers following interface and methods:
 * XWalkView interface: dispatchDraw methods
 
 
-
-### 30. The [CookieManagerTestActivityAsync](CookieManagerTestActivityAsync.java) sample check whether XWalkCookieManager apis can work, include:
+### 30. The [XWalkViewWithCookieManagerTestAsync](XWalkViewWithCookieManagerTestAsync.java) sample check whether XWalkCookieManager apis can work, include:
 
 * XWalkCookieManager apis can work
 
@@ -335,7 +334,7 @@ This usecase covers following interface and methods:
 
 This usecase covers following interface and methods:
 
-* XWalkView interface: onDraw methods
+* XWalkView interface: onDraw method
 
 
 
@@ -345,28 +344,37 @@ This usecase covers following interface and methods:
 
 This usecase covers following interface and methods:
 
-* XWalkView interface: onOverScrolled methods
+* XWalkView interface: onOverScrolled method
 
 
 
-### 33. The [AcceptFileSchemeCookiesActivityAsync](AcceptFileSchemeCookiesActivityAsync.java) sample check whether XWalkCookieManager can set AcceptFileSchemeCookies, include:
+### 33. The [XWalkViewWithAcceptFileSchemeCookiesAsync](XWalkViewWithAcceptFileSchemeCookiesAsync.java) sample check whether XWalkCookieManager can set AcceptFileSchemeCookies, include:
 
 * XWalkCookieManager apis can work
 
 This usecase covers following interface and methods:
 
-* XWalkView interface: onDraw method
 * XWalkCookieManager interface: setAcceptFileSchemeCookies, allowFileSchemeCookies methods
 
 
 
-### 34. The [XWalkViewWithOnTouchEventAsync](XWalkViewWithOnTouchEventAsyc.java) sample check whether onTouchEvent method work as same as WebView, include:
+### 34. The [XWalkViewWithOnTouchEventAsync](XWalkViewWithOnTouchEventAsync.java) sample check whether onTouchEvent method work as same as WebView, include:
 
 * onTouchEvent can be override
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: onTouchEvent method
+
+
+
+### 35. The [XWalkViewWithOverScrollByAsync](XWalkViewWithOverScrollByAsync.java) sample check whether overScrollBy method work as same as WebView, include:
+
+* overScrollBy can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: overScrollBy method
 
 
 
@@ -387,7 +395,6 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onScrollChanged method
-
 
 
 ### 38. The [XWalkViewWithSizeChangedAsync](XWalkViewWithSizeChangedAsync.java) sample check whether onSizeChanged method work as same as WebView, include:
@@ -427,13 +434,14 @@ This usecase covers following interface and methods:
 * XWalkView interface: onWindowVisibilityChanged method
 
 
-### 42. The [XWalkWithClearFormDataAsync](XWalkWithClearFormDataAsync.java) sample check whether clearFormData method work as same as WebView, include:
+### 42. The [XWalkViewWithClearFormDataAsync](XWalkViewWithClearFormDataAsync.java) sample check whether clearFormData method work as same as WebView, include:
 
 * clearFormData can work
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, clearFormData methods
+
 
 
 
@@ -447,15 +455,13 @@ This usecase covers following interface and methods:
 
 
 
-
-### 44. The [XWalkWithOnReceivedLoadErrorAsync](XWalkWithOnReceivedLoadErrorAsync.java) sample check whether XWalkView change dialog of onReceivedLoadError to toast, include:
+### 44. The [XWalkViewWithOnReceivedLoadErrorAsync](XWalkViewWithOnReceivedLoadErrorAsync.java) sample check whether XWalkView change dialog of onReceivedLoadError to toast, include:
 
 * onReceivedLoadError can work
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, onReceivedLoadError methods
-
 
 
 ### 45. The [XWalkViewWithLongClickAsync](XWalkViewWithLongClickAsync.java) sample check whether performLongClick and setOnLongClickListener method work as same as WebView, include:
@@ -465,7 +471,6 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: performLongClick, setOnLongClickListener methods
-
 
 
 ### 46. The [XWalkViewWithRequestFocusAsync](XWalkViewWithRequestFocusAsync.java) sample check whether requestFocus method work as same as WebView, include:
@@ -512,6 +517,8 @@ This usecase covers following interface and methods:
 
 * XWalkView XWalkUIClient interface: onReceivedTitle methods
 
+
+
 ### 51. The [XWalkViewWithClientOnRequestFocusAsync](XWalkViewWithClientOnRequestFocusAsync.java) sample check whether XWalkUIClient.onRequestFocus method work as same as WebView, include:
 
 * XWalkUIClient.onRequestFocus can be invoked
@@ -519,6 +526,7 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: XWalkUIClient.onRequestFocus methods
+
 
 ### 52. The [XWalkViewWithClientKeyEventAsync](XWalkViewWithClientKeyEventAsync.java) sample check whether XWalkUIClient.shouldOverrideKeyEvent method work as same as WebView, include:
 
@@ -588,11 +596,10 @@ This usecase covers following interface and methods:
 
 
 
-### 59. The [XWalkViewWithOpenFileChooser](XWalkViewWithOpenFileChooser.java) sample check XWalkView can open local file, include:
+### 59. The [XWalkViewWithOpenFileChooserAsync](XWalkViewWithOpenFileChooserAsync.java) sample check XWalkView can open local file, include:
 
 * XWalkUIClient.openFileChooser can be invoked
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: XWalkUIClient.openFileChooser methods
-
