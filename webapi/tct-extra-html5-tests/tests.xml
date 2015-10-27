@@ -478,14 +478,6 @@
           <test_script_entry>/opt/tct-extra-html5-tests/w3c/system-state-and-capabilities/the-navigator-object/navigatorlanguage.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Systemstateandcapabilities" execution_type="manual" id="get-navigatorlanguage" purpose="navigator.language returns the user's preferred language">
-        <description>
-          <pre_condition>
-            Set Android phone language to Espanol (Estados Unidos).
-          </pre_condition>
-          <test_script_entry>/opt/tct-extra-html5-tests/w3c/system-state-and-capabilities/the-navigator-object/get-navigatorlanguage-manual.html</test_script_entry>
-        </description>
-      </testcase>
     </set>
     <set name="browsers-bdd" type="js" ui-auto="bdd">
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Browsers" execution_type="manual" id="window_alert_base" purpose="Check if pop the alert dialog">
@@ -518,6 +510,17 @@
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/dom/bdd/document_onchange_event-manual.html</test_script_entry>
           <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/document_onchange_event.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="system-state-and-capabilities-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Systemstateandcapabilities" execution_type="manual" id="get-navigatorlanguage" purpose="navigator.language returns the user's preferred language">
+        <description>
+          <pre_condition>
+            Set Android phone language to English (United Kingdom).
+          </pre_condition>
+          <test_script_entry>/opt/tct-extra-html5-tests/w3c/system-state-and-capabilities/the-navigator-object/bdd/get-navigatorlanguage-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/get-navigatorlanguage.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
