@@ -3,15 +3,17 @@
 This test suite is for testing cordova app security api specification:
 * https://software.intel.com/en-us/app-security-api/api
 
-## Authors:
-
-* Zhu, YongyongX <yongyongx.zhu@intel.com>
-
 ## Pre-condition
 
 There are extra plugins needed for packing this suite:
+
 Create extra_plugins directory in cordova-appsecurityapi-android-tests
+
 Git clone https://github.com/01org/AppSecurityApi.git in extra_plugins directory
+
+## Authors:
+
+* Zhu, YongyongX <yongyongx.zhu@intel.com>
 
 
 ## LICENSE

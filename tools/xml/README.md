@@ -5,15 +5,23 @@ This directory contains tools for verifying tests.full.xml and converting xml to
 ## Command
   
 To convert tests.full.xml to csv file with command:
+    ```
     python xml2csv.py -c /path/to/tests.full.xml
+    ```
 
 
 To convert csv file to tests.full.xml and tests.xml with command:
+    ```
     python csv2xml.py -c /path/***.csv
+    ```
 
 
 To verify case path, id, purpose and set type are right with command:
+    ```
     python xmlverifier.py -v /path/***
+    ```
 
 To convert tests result xml to csv file with command:
+    ```
     python result2csv.py -c /path/to/result.xml
+    ```

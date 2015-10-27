@@ -12,25 +12,47 @@ http://cordova.apache.org/docs/en/3.4.0/cordova_plugins_pluginapis.md.html#Plugi
 ### For cordova 4.x build
 
 * Require Android API level 22
-* Require the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'
+* Require the latest Cordova CLI, and must >= 5.0.0, install with command: `$ sudo npm install cordova -g`
 * Get cordova4.x_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/
-* If Build Cordova 4.x App with Crosswalk Canary, need these as follows 
+* If Build Cordova 4.x App with Crosswalk Canary, need these as follows
+
 **Download canary crosswalk file**: 
-  ```wget https://download.01.org/crosswalk/releases/crosswalk/android/canary/<canary-version>/crosswalk-<canary-version>.aar``` 
+
+  ```
+  wget https://download.01.org/crosswalk/releases/crosswalk/android/canary/<canary-version>/crosswalk-<canary-version>.aar
+  ```
+
 **Install canary to local maven repo**: 
-  ```mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library -Dversion=<canary-version> -Dpackaging=aar -Dfile=<crosswalk-path>/crosswalk-<canary-version>.aar -DgeneratePom=true``` 
-  ```canary-version: e.g. 13.42.319.0, it must be consistent with the dependencies version [testprefix-path]/opt/cordova-feature-android-tests/tools/cordova-plugin-crosswalk-webview/src/android/xwalk.gradle``` 
-  ```crosswalk-path: the downloaded canary crosswalk file path```
+
+  ```
+  mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library -Dversion=<canary-version> -Dpackaging=aar -Dfile=<crosswalk-path>/crosswalk-<canary-version>.aar -DgeneratePom=true
+ 
+  canary-version: e.g. 13.42.319.0, it must be consistent with the dependencies version [testprefix-path]/opt/cordova-feature-android-tests/tools/cordova-plugin-crosswalk-webview/src/android/xwalk.gradle
+
+  crosswalk-path: the downloaded canary crosswalk file path
+  ```
 
 ## Test Steps
+
 1. unzip cordova-feature-android-tests<version>.zip -d [testprefix-path]
+
 2. cd [testprefix-path]/opt/wrt-apptools-android-tests/
+
 3. update arch.txt if your run with 'x86' device
+
 4. update mode.txt if your run with 'shared' mode pkg
+
 5. for cordova 4.x, update pack-type if your want to install cordova-plugin-crosswalk-webview from 'npm'
-6. run test case  
-   ```testkit-lite -f [testprefix-path]/opt/cordova-feature-android-tests/tests.xml -A -o [testprefix-path]/opt/cordova-feature-android-tests/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E;CONNECT_TYPE=adb" --testprefix=[testprefix-path]```     
-   DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00".  
+
+6. run test case
+
+   ```
+   testkit-lite -f [testprefix-path]/opt/cordova-feature-android-tests/tests.xml -A
+   -o [testprefix-path]/opt/cordova-feature-android-tests/result.xml --comm localhost
+   --testenvs "DEVICE_ID=Medfield3C6DFF2E;CONNECT_TYPE=adb" --testprefix=[testprefix-path]
+   ```
+
+   DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00".
    Query device id by command "adb devices -l" in host.
 
 ## Authors:

@@ -5,7 +5,7 @@ This test suite is stability test for crosswalk on Android
 ## Authors:
 
 * Cici Li <cici.x.li@intel.com>
-  Ivan Chen <yufeix.chen@intel.com>
+* Ivan Chen <yufeix.chen@intel.com>
 
 ## LICENSE
 

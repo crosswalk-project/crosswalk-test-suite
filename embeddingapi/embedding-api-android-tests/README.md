@@ -10,17 +10,29 @@ This test suite is for the unit tests of Embedding API crosswalk module with XWa
 
 ## Environment
 
-1.install android sdk
+1. Install android sdk
+
+    ```
     unzip adt-bundle-linux-x86-20130917.zip 
     gedit ~/.bashrc 
     export PATH=/home/api/ADT/adt-bundle-linux-x86-20130917/sdk:/home/api/ADT/adt-bundle-linux-x86-20130917/sdk/tools:/home/api/ADT/adt-bundle-linux-x86-20130917/sdk/platform-tools:$PATH
-2.install ant
-    sudo apt-get install ant
-3.install jdk
-4.install Gradle(gradle-2.3 is known work)
-5.install Maven(apache-maven-3.2.5 is known work)
-6.install Maven Android SDK Deployer
-7.install Maven Android Plugin
+    ```
+
+2. Install ant
+
+   ```
+   sudo apt-get install ant
+   ```
+
+3. Install jdk
+
+4. Install Gradle(gradle-2.3 is known work)
+
+5. Install Maven(apache-maven-3.2.5 is known work)
+
+6. Install Maven Android SDK Deployer
+
+7. Install Maven Android Plugin
 
 ## Authors:
 

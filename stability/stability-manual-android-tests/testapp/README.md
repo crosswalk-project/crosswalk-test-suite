@@ -3,6 +3,7 @@
 This folder is to put testapps' APK file.
 
 cross_arm.apk and cross_intel.apk come from https://crosswalk-project.org/jira/browse/XWALK-3575
+
 They are copyright by Google Inc and dual-licensed under the Apache License:
 http://www.apache.org/licenses/LICENSE-2.0
 

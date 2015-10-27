@@ -5,11 +5,15 @@ This test suite is for apptools-ios-tests
 ## Precondition
 
 1. Connect iOS devices to your localhost
+
 2. The Android SDK, JDK, and apache ant must be functional
+
 3. Environment variable configuration:
-  3.1 export ANDROID_HOME=$(dirname $(dirname $(which android)))
+
+  `export ANDROID_HOME=$(dirname $(dirname $(which android)))`
+
 4. Set up the test environment under the tools directory, please refer the link about the detail info:
-https://github.com/crosswalk-project/crosswalk-app-tools-ios
+   https://github.com/crosswalk-project/crosswalk-app-tools-ios
 
 ## Authors:
 

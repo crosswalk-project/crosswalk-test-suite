@@ -6,8 +6,10 @@ This test suite is for testing webappmanu-linux-tests specification
 1. Need to remove the file "/usr/bin/xwalk"
 2. Create shell script named 'xwalk.sh' in /usr/bin/:
 
+   ```
    #!/bin/sh
    exec /opt/crosswalk-project/crosswalk --remote-debugging-port=12450 $1
+   ```
 
 3. Add executable permissions with "sudo chmod 755 /usr/bin/xwalk.sh"
 4. Create new soft link with "sudo ln /usr/bin/xwalk.sh /usr/bin/xwalk

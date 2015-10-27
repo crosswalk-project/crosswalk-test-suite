@@ -2,14 +2,14 @@
 
 This test suite is for testing wrt-upgrademanu-android-tests specification
 
-## Authors:
-
-* Wang, Hongjuan <hongjuanx.wang@intel.com>
-
 ## Precondition
 
 * The test Crosswalk Runtime Binary and Library need to compatible with newer/older version,
 the incompatible scene such as the Library need to update or mismatches and so on.
+
+## Authors:
+
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 ## LICENSE
 
