@@ -40,7 +40,6 @@ from optparse import OptionParser
 import build_android
 import build_cordova
 import build_embeddingapi
-import build_tizen
 import varshop
 import utils
 
@@ -51,8 +50,6 @@ TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 PKG_TYPES = [
     "apk",
-    "xpk",
-    "wgt",
     "apk-aio",
     "cordova-aio",
     "cordova",
@@ -193,13 +190,7 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     app_tpye = utils.safelyGetValue(build_json, 'app-type')
 
-    if utils.checkContains(BUILD_PARAMETERS.pkgtype, "XPK"):
-        if not build_tizen.packXPK(build_json, app_src, app_dest, app_name):
-            return False
-    elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "WGT"):
-        if not build_tizen.packWGT(build_json, app_src, app_dest, app_name):
-            return False
-    elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "APK") and app_tpye != "EMBEDDINGAPI":
+    if utils.checkContains(BUILD_PARAMETERS.pkgtype, "APK") and app_tpye != "EMBEDDINGAPI":
         if not build_android.packAPK(build_json, app_src, app_dest, app_name):
             return False
     elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "CORDOVA"):
@@ -319,16 +310,6 @@ def buildPKGAPP(build_json=None):
                   os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.png")):
         return False
 
-    if utils.checkContains(BUILD_PARAMETERS.pkgtype, "XPK"):
-        if not utils.doCopy(
-                os.path.join(BUILD_ROOT_SRC, "manifest.json"),
-                os.path.join(BUILD_ROOT_SRC_PKG_APP, "manifest.json")):
-            return False
-    elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "WGT"):
-        if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "config.xml"),
-                      os.path.join(BUILD_ROOT_SRC_PKG_APP, "config.xml")):
-            return False
-
     hosted_app = False
     if utils.safelyGetValue(build_json, "hosted-app") == "true":
         hosted_app = True
@@ -393,7 +374,7 @@ def main():
             "-t",
             "--type",
             dest="pkgtype",
-            help="specify the pkg type, e.g. apk, xpk, wgt ...")
+            help="specify the pkg type, e.g. apk, cordova ...")
         opts_parser.add_option(
             "-m",
             "--mode",
@@ -423,11 +404,6 @@ def main():
             dest="bnotclean",
             action="store_true",
             help="disable the build root clean after the packing")
-        opts_parser.add_option(
-            "--sign",
-            dest="signature",
-            action="store_true",
-            help="signature operation will be done when packing wgt")
         opts_parser.add_option(
             "-v",
             "--version",
