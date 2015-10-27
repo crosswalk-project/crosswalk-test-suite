@@ -238,6 +238,24 @@ class Android(common.APP):
         return False
 
 
+    def switchLanguage(self, language):
+        self.openSettings()
+        languageAndInput = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                          .child_by_text(u'Language & input', className="android.widget.LinearLayout")
+        if languageAndInput.exists:
+            languageAndInput.click()
+            languageList = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                         .child_by_text("Language", className="android.widget.LinearLayout")
+            if languageList.exists:
+                 languageList.click()
+                 languageOption = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                                    .child_by_text(language, className="android.widget.LinearLayout")
+                 if languageOption.exists:
+                     languageOption.click()
+                     self.d.press.home()
+                     return True
+        return False
+
     def checkCurrentApp(self):
         currentPackageName = self.d.info["currentPackageName"]
         if currentPackageName == self.package_name:

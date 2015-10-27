@@ -429,6 +429,7 @@ def i_visit_url(context, url):
 @step(u'I click notifications with text "{notification_text}"')
 @step(u'I should see notifications with text "{notification_text}"')
 @step(u'I should not see notifications with text "{notification_text}"')
+@step(u'switch to language "{language}"')
 ```
 
 * "common" steps - done
