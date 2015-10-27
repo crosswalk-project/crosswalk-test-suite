@@ -1,6 +1,5 @@
 {
   "pkg-blacklist": [
-    "config.xml",
     "pack.py",
     "testcase.xsl",
     "testresult.xsl",
@@ -53,63 +52,6 @@
           "apk-common-opts": "--enable-remote-debugging",
           "copylist": {
             "../webstorage/w3c/bdd": "webstorage/w3c"
-          }
-        }
-      }
-    },
-    "wgt": {
-      "blacklist": [
-        "*"
-      ],
-      "copylist": {
-        "inst.wgt.py": "inst.py",
-        "tests.full.xml": "tests.full.xml",
-        "tests.xml": "tests.xml"
-      },
-      "pkg-app": {
-        "copylist": {
-          "PACK-TOOL-ROOT/resources/testharness": "resources",
-          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-        }
-      },
-      "subapp-list": {
-        "w3c-webstorage-app": {
-          "apk-icon-opt": "",
-          "blacklist": [
-            "manifest.json"
-          ],
-          "copylist": {
-            "../webstorage/bdd": "webstorage",
-            "bdd.config.xml": "config.xml"
-          }
-        }
-      }
-    },
-    "xpk": {
-      "blacklist": [
-        "*"
-      ],
-      "copylist": {
-        "inst.xpk.py": "inst.py",
-        "tests.full.xml": "tests.full.xml",
-        "tests.xml": "tests.xml"
-      },
-      "pkg-app": {
-        "blacklist": [],
-        "copylist": {
-          "PACK-TOOL-ROOT/resources/testharness": "resources",
-          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-        }
-      },
-      "subapp-list": {
-        "w3c-webstorage-app": {
-          "apk-icon-opt": "",
-          "blacklist": [
-            "manifest.json"
-          ],
-          "copylist": {
-            "../webstorage/bdd": "webstorage",
-            "bdd.config.xml": "config.xml"
           }
         }
       }
