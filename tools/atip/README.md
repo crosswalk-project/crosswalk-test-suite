@@ -430,6 +430,7 @@ def i_visit_url(context, url):
 @step(u'I should see notifications with text "{notification_text}"')
 @step(u'I should not see notifications with text "{notification_text}"')
 @step(u'switch to language "{language}"')
+@step(u'I repeat fling to end and beginning vertically in {times_sec:d} seconds')
 ```
 
 * "common" steps - done
