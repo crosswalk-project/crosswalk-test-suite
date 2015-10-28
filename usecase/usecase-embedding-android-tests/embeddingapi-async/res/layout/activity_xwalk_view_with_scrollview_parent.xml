@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="org.xwalk.embedded.api.sample.basic.XWalkViewWithScrollViewParentAsync">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add XWalkView as a child to a scrollview, XWalkView and its web content should be displayed"
+        android:id="@+id/textView" />
+
+    <ScrollView
+        android:layout_below="@id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <org.xwalk.core.XWalkView
+            android:id="@+id/xwalkview_in_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </org.xwalk.core.XWalkView>
+
+    </ScrollView>
+</RelativeLayout>
