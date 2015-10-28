@@ -257,5 +257,26 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(return_code, 0)
         self.assertEquals(apkLength, 1)
 
+    def test_create_package_without_channel(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android  " + comm.ConstPath + "/../testapp/create_package_basic/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+        self.assertEquals(apkLength, 2)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
 if __name__ == '__main__':
     unittest.main()
