@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_getSealedData_correct_instance</title>
+<title>Secure Data Test: AppSecurityApi_read_noRead_false</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -40,38 +40,64 @@ Authors:
 <div id="log"></div>
 <script type="text/javascript">
 
+var error_code_policy_violation = 13
 setTimeout(function() { test(); }, 500);
-
 function test() {
   async_test(function(t) {
     try{
+      extraKey1 = null;
+      extraKey2 = null;
       intel.security.secureData.createFromData(
         function(instanceID) {
+          extraKey1 = instanceID
           intel.security.secureData.createFromData(
             function(instanceID) {
-              intel.security.secureData.getSealedData(
-                function(data){
+              extraKey2 = instanceID
+              intel.security.secureData.createFromData(
+                function(instanceID) {
+                  intel.security.secureStorage.write(
+	            function() {
+                      intel.security.secureStorage.read(
+                        function(instanceID) {
+                          t.step(function() {
+                            assert_unreached("read should fail");
+                          });
+                          t.done();
+                        },
+                        function(errorObj) {
+                          t.step(function() {
+                            assert_equals(errorObj.code, error_code_policy_violation);
+                          });
+                          t.done();
+                        },
+                        {'id': 'id1', 'storageType': 0, 'extraKey': extraKey2}
+                      );
+                    },
+	            function(errorObj) {
+                      t.step(function() {
+                        assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+                      });
+                      t.done();
+                    },
+	            {'id': 'id1', 'instanceID': instanceID}
+	          );
+                },
+                function(errorObj) {
                   t.step(function() {
-                    assert_not_equals(data, null);
+                    assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
                   });
                   t.done();
                 },
-                function(errorObj){
-                  t.step(function() {
-                    assert_true(false, 'fail:code = ' + errorObj.code+', message = ' + errorObj.message);
-                  });
-                  t.done();
-                },
-                instanceID
+                {'data': 'plaintext data', 'tag': 'Test', 'extraKey': extraKey1, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ''}
               );
             },
             function(errorObj) {
               t.step(function() {
-                assert_true(false, 'fail:code = ' + errorObj.code+', message = ' + errorObj.message);
+                assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
               });
               t.done();
             },
-            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': instanceID, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ''}
+            {'data': 'test1', 'noRead': false, 'noStore': true}
           );
         },
         function(errorObj) {
@@ -82,11 +108,10 @@ function test() {
         },
         {'data': 'test1', 'noRead': true, 'noStore': true}
       );
-    } catch (e){
+    } catch (e) {
       assert_true(false, "Exception: {" + e.message + "}");
     }
   }, document.title);
 }
-
 </script>
 

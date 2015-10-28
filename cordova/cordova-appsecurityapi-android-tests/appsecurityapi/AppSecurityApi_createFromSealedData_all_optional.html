@@ -45,7 +45,7 @@ setTimeout(function() { test(); }, 500);
 function test() {
   async_test(function(t) {
     try{
-      extraKey = null
+      extraKey = null;
       intel.security.secureData.createFromData(
         function(instanceID) {
           extraKey = instanceID
