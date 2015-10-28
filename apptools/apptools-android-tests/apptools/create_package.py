@@ -31,6 +31,8 @@
 import unittest
 import os
 import comm
+import zipfile
+import shutil
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
@@ -224,6 +226,36 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         if comm.SHELL_FLAG == "False":
             os.system('adb start-server')
         self.assertEquals(return_code, 0)
+
+    def test_create_package_crosswalkdir(self):
+        comm.setUp()
+        for i in range(len(os.listdir(comm.XwalkPath))):
+                if os.listdir(comm.XwalkPath)[i].endswith(".zip"):
+                    androidCrosswalk = os.listdir(comm.XwalkPath)[i]
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        crosswalkzip = zipfile.ZipFile(comm.XwalkPath + androidCrosswalk,'r')
+        for file in crosswalkzip.namelist():
+            crosswalkzip.extract(file, r'.')
+        crosswalkzip.close()
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --crosswalk=" + comm.XwalkPath + androidCrosswalk[:androidCrosswalk.index(".zip")] + "/ " + comm.ConstPath + "/../testapp/create_package_basic/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+        self.assertEquals(apkLength, 2)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        shutil.rmtree(androidCrosswalk[:androidCrosswalk.index(".zip")])
+        self.assertEquals(return_code, 0)
+        self.assertEquals(apkLength, 1)
 
 if __name__ == '__main__':
     unittest.main()
