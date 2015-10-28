@@ -44,8 +44,9 @@ DEFAULT_CMD_TIMEOUT = 600
 
 
 def setUp():
-    global XwalkPath, windowsCrosswalk, PackTools, HOST_PREFIX, SHELL_FLAG
+    global XwalkPath, windowsCrosswalk, PackTools, HOST_PREFIX, SHELL_FLAG, cachedir
 
+    cachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
     HOST_PREFIX = "node "
     SHELL_FLAG = "False"
 
@@ -58,10 +59,14 @@ def setUp():
     elif "crosswalk-app-tools" in os.listdir(XwalkPath) and len(os.listdir(XwalkPath)) < 2:
         print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
         sys.exit(1)
-
-    for i in range(len(os.listdir(XwalkPath))):
-        if os.listdir(XwalkPath)[i].endswith(".zip"):
-            windowsCrosswalk = os.listdir(XwalkPath)[i]
+    if not cachedir:        
+        for i in range(len(os.listdir(XwalkPath))):
+            if os.listdir(XwalkPath)[i].endswith(".zip"):
+                windowsCrosswalk = os.listdir(XwalkPath)[i]
+    else:
+        for i in range(len(os.listdir(cachedir))):
+            if os.listdir(cachedir)[i].endswith(".zip"):
+                windowsCrosswalk = os.listdir(cachedir)[i]
 
 def getstatusoutput(cmd, time_out=DEFAULT_CMD_TIMEOUT):
     pre_time = time.time()
@@ -121,3 +126,19 @@ def update(self, cmd):
     (return_update_code, update_output) = getstatusoutput(cmd)
     self.assertEquals(return_update_code, 0)
     self.assertNotIn("ERROR:", update_output[0])
+
+
+def check_crosswalk_version(self, channel):
+    htmlDoc = urllib2.urlopen(
+        'https://download.01.org/crosswalk/releases/crosswalk/windows/' +
+        channel +
+        '/').read()
+    soup = BeautifulSoup(htmlDoc)
+    alist = soup.find_all('a')
+    version = ''
+    for  index in range(-1, -len(alist)-1, -1):
+        aEle = alist[index]
+        version = aEle['href'].strip('/')
+        if re.search('[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*', version):
+            break
+    return version
