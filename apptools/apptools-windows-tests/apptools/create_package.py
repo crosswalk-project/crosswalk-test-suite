@@ -128,5 +128,28 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertIn("17.45.421.0", output[0])
         self.assertEquals(apkLength, 1)
 
+    def test_create_package_crosswalkdir(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        crosswalkzip = zipfile.ZipFile(comm.XwalkPath + comm.windowsCrosswalk,'r')
+        for file in crosswalkzip.namelist():
+            crosswalkzip.extract(file, r'.')
+        crosswalkzip.close()
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk[:comm.windowsCrosswalk.index(".zip")] + "/ " + comm.ConstPath + "/../testapp/create_package_basic/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        comm.clear("org.xwalk.test")
+        shutil.rmtree(comm.windowsCrosswalk[:comm.windowsCrosswalk.index(".zip")])
+        self.assertEquals(return_code, 0)
+        self.assertEquals(apkLength, 1)
+
 if __name__ == '__main__':
     unittest.main()
