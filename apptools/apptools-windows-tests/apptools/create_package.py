@@ -151,5 +151,34 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(return_code, 0)
         self.assertEquals(apkLength, 1)
 
+    def test_create_package_without_channel(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        version = comm.check_crosswalk_version(self, "stable")
+        crosswalk = 'crosswalk-{}.zip'.format(version)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        comm.clear("org.xwalk.test")
+        if not comm.cachedir:
+            namelist = os.listdir(os.getcwd())
+        else:
+            newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
+            os.chdir(newcachedir)
+            namelist = os.listdir(os.getcwd())
+        self.assertEquals(return_code, 0)
+        self.assertIn("stable", output[0])
+        self.assertIn(version, output[0])
+        self.assertIn(crosswalk, namelist)
+        self.assertEquals(apkLength, 1)
+
 if __name__ == '__main__':
     unittest.main()
