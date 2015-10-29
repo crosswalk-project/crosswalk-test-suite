@@ -49,7 +49,7 @@ async_test(function(t) {
   var speechReco = new speechRecognition();
   speechReco.onresult = t.step_func(function (evt) {
     assert_true("emma" in evt, "emma attribute exist in SpeechRecognitionEvent");
-    assert_true(evt.emma.indexOf("<emma:emma version=\"1.0\"") > 0, "EMMA 1.0 representation of this result");
+    assert_equals(evt.emma, null);
     speechReco.stop();
     t.done();
   });
