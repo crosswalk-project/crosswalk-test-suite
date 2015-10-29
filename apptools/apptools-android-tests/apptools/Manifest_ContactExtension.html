@@ -46,8 +46,9 @@ Authors:
         &nbsp; &nbsp; Embedded Mode: <br/>
         &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
         &nbsp; &nbsp; $ cd org.xwalk.test <br/>
-        &nbsp; &nbsp; Set "start_url" to "../../../testapp/extension_permission/index.html" in app/manifest.json file <br/>
-        &nbsp; &nbsp; Add '"xwalk_extensions": ["../../../testapp/extension_permission/contactextension"]' to app/manifest.json file <br/>
+        &nbsp; &nbsp; Cope ../../../testapp/extension_permission to app/ <br/>
+        &nbsp; &nbsp; Set "start_url" to "extension_permission/index.html" in app/manifest.json file <br/>
+        &nbsp; &nbsp; Add '"xwalk_extensions": ["extension_permission/contactextension"]' to app/manifest.json file <br/>
         &nbsp; &nbsp; $ ../crosswalk-app-tools/src/crosswalk-app build <br/>
         On Windows host: <br/>
         &nbsp; &nbsp; Shared Mode: <br/>
@@ -55,8 +56,9 @@ Authors:
         &nbsp; &nbsp; Embedded Mode: <br/>
         &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test <br/>
         &nbsp; &nbsp; $ cd org.xwalk.test <br/>
-        &nbsp; &nbsp; Set "start_url" to "../../../testapp/extension_permission/index.html" in app\manifest.json file <br/>
-        &nbsp; &nbsp; Add '"xwalk_extensions": ["../../../testapp/extension_permission/contactextension"]' to app\manifest.json file <br/>
+        &nbsp; &nbsp; Cope ..\..\..\testapp\extension_permission to app\ <br/>
+        &nbsp; &nbsp; Set "start_url" to "extension_permission/index.html" in app\manifest.json file <br/>
+        &nbsp; &nbsp; Add '"xwalk_extensions": ["extension_permission/contactextension"]' to app\manifest.json file <br/>
         &nbsp; &nbsp; $ node ..\crosswalk-app-tools\src\crosswalk-app build <br/>
         Shared Mode: <br/>
         &nbsp; &nbsp; Install shared mode app on android device which is "arm" architecture <br/>
