@@ -51,5 +51,31 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertEquals(data['xwalk_target_platforms'].strip(os.linesep), "android")
 
+    def test_init_manifest_windowsPlatforms(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-app manifest " + \
+            comm.XwalkPath + "org.xwalk.test --platforms=windows"
+        os.system(cmd)
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json") as json_file:
+            data = json.load(json_file)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(data['xwalk_target_platforms'].strip(os.linesep), "windows")
+
+    def test_init_manifest_invalidPlatforms(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-app manifest " + \
+            comm.XwalkPath + "org.xwalk.test --platforms=invalid"
+        return_code = os.system(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(return_code, 0)
+
 if __name__ == '__main__':
     unittest.main()
