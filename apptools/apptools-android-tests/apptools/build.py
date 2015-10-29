@@ -44,8 +44,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_build_release(self):
         comm.setUp()
@@ -55,17 +53,16 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_build_missing_so_file(self):
         comm.setUp()
+        os.chdir(comm.XwalkPath)
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
             comm.crosswalkVersion
         os.system(cmd)
         os.chdir('org.xwalk.test')
-        if comm.ARCH == "x86":
+        if comm.ARCH_X86 == "x86":
             os.remove(
                 os.getcwd() +
                 '/prj/android/xwalk_core_library/libs/armeabi-v7a/libxwalkcore.so')
@@ -78,7 +75,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 if pkgs[i].endswith(".apk") and "arm" in pkgs[i]:
                     armLength = armLength + 1
             self.assertEquals(armLength, 0)
-        else:
+        elif comm.ARCH_ARM == "arm":
             os.remove(
                 os.getcwd() +
                 '/prj/android/xwalk_core_library/libs/x86/libxwalkcore.so')
@@ -93,11 +90,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             self.assertEquals(x86Length, 0)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_build_missing_both_so_file(self):
         comm.setUp()
+        os.chdir(comm.XwalkPath)
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
             comm.crosswalkVersion

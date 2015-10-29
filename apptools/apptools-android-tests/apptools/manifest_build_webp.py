@@ -52,8 +52,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_build_release_webp(self):
         comm.setUp()
@@ -69,8 +67,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_build_debug_path_webp(self):
         comm.setUp()
@@ -91,8 +87,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('../')
         shutil.rmtree("pkg")
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_build_release_path_webp(self):
         comm.setUp()
@@ -113,8 +107,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('../')
         shutil.rmtree("pkg")
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_webp_jpeg_size_valid(self):
         comm.setUp()
@@ -132,8 +124,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_webp_jpeg_size_invalid(self):
         comm.setUp()
@@ -166,8 +156,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_webp_png_size_invalid(self):
         comm.setUp()
@@ -198,8 +186,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_webp_alpha_size_invalid(self):
         comm.setUp()
@@ -230,8 +216,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
 if __name__ == '__main__':
     unittest.main()

@@ -7,7 +7,7 @@ This test suite is for apptools-android-tests
 
 1. Connect Android devices to your localhost
 2. Need to edit the file "apptools-android-tests/arch.txt" according to the type of test device.
-If test device is "arm" platform, content of the file should be "arm", default value is "x86"
+If test device is "arm" platform, content of the file should be "arm". If test device is "x86" platform, content of the file should be "x86". If test devices are "arm" and "x86" platforms, content of the file should be "arm,x86", default value is "x86,arm"
 3. Need to edit the file "apptools-android-tests/mode.txt" according to the type of build mode.
 If build "shared" mode apk, content of the file should be "shared", default value is "embedded"
 4. Need to edit the file "apptools-android-tests/host.txt" according to the type of test host.
@@ -27,7 +27,7 @@ For example: if you want to test with "crosswalk-13.42.319.11.zip", content of t
       sudo npm install exec-sync
 2. Install nodeunit: sudo npm install nodeunit -g
 3. Environment variable configuration:
-  3.1 export DEVICE_ID=device id
+  3.1 export DEVICE_ID=test device id, DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00"
   3.2 export ANDROID_HOME=$(dirname $(dirname $(which android)))
   3.3 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-android-tests/tools
 4. Install BeautifulSoup: sudo pip install BeautifulSoup
@@ -42,7 +42,7 @@ For example: if you want to test with "crosswalk-13.42.319.11.zip", content of t
       npm install exec-sync
 2. Install nodeunit: npm install nodeunit -g
 3. Environment variable configuration:
-  3.1 Set DEVICE_ID env
+  3.1 Set DEVICE_ID env, DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00"
   3.2 Set ANDORID_HOME env
   3.3 Set CROSSWALK_APP_TOOLS_CACHE_DIR env to /path/to/opt/apptools-sampleapp-tests/tools
 4. Install BeautifulSoup: pip install BeautifulSoup

@@ -56,8 +56,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(apkLength, 2)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(return_code, 0)
 
     def test_create_package_missing_icon_startUrl(self):
@@ -79,8 +77,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(apkLength, 2)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(return_code, 0)
 
     def test_create_package_stable(self):
@@ -102,8 +98,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(apkLength, 2)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(return_code, 0)
 
     def test_create_package_beta(self):
@@ -125,8 +119,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(apkLength, 2)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(return_code, 0)
 
     def test_create_package_canary(self):
@@ -148,8 +140,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(apkLength, 2)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(return_code, 0)
 
     def test_create_package_version(self):
@@ -171,8 +161,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(apkLength, 2)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(return_code, 0)
 
     def test_create_package_pathToRelease(self):
@@ -197,8 +185,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(apkLength, 2)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(return_code, 0)
 
     def test_build_package_release(self):
@@ -223,8 +209,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(apkLength, 2)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(return_code, 0)
 
     def test_create_package_crosswalkdir(self):

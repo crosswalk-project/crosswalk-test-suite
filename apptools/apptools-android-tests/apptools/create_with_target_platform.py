@@ -46,8 +46,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
 
     def test_create_with_platform_ios(self):
         comm.setUp()

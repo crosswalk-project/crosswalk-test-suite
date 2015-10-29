@@ -33,45 +33,75 @@ import os
 import comm
 import urllib2
 import json
+import shutil
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_target_create(self):
         comm.setUp()
-        comm.clear("org.xwalk.test")
-        cmd = "which android"
+        if comm.SHELL_FLAG == "False":
+            cmd = "where android"
+        else:
+            cmd = "which android"
         (return_code, androidpath) = comm.getstatusoutput(cmd)
         targetversionpath = os.path.dirname(os.path.dirname(androidpath[0]))
         os.chdir(targetversionpath)
-        movepath = os.path.dirname(os.path.dirname(targetversionpath)) + "/new-platforms/"
-        os.system("mv platforms/ " + movepath)
+        if os.path.exists(os.path.dirname(os.path.dirname(targetversionpath)) + "/platforms/"):
+            shutil.rmtree(os.path.dirname(os.path.dirname(targetversionpath)) + "/platforms/")
+        os.mkdir(os.path.dirname(os.path.dirname(targetversionpath)) + "/platforms/")
+        movepath = os.path.dirname(os.path.dirname(targetversionpath))
+        if comm.SHELL_FLAG == "False":
+            os.system("xcopy /s /e /i /y platforms\* " + movepath + "\platforms")
+        else:
+            os.system("mv platforms/* " + movepath + "/platforms/")
+        shutil.rmtree("platforms")
+        comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
         createcmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + \
             comm.crosswalkVersion
         (return_create_code, output) = comm.getstatusoutput(createcmd)
-        os.chdir(movepath + "../")
-        os.system("mv new-platforms/ " + targetversionpath + "/platforms/")
+        os.chdir(movepath)
+        os.mkdir(targetversionpath + "/platforms")
+        if comm.SHELL_FLAG == "False":
+            os.system("xcopy /s /e /i /y platforms\* " + targetversionpath + "\platforms")
+        else:
+            os.system("mv platforms/* " + targetversionpath + "/platforms/")
+        shutil.rmtree("platforms")
         comm.clear("org.xwalk.test")
         self.assertNotEquals(return_create_code, 0)
-        self.assertIn("android list targets", output[0])
 
     def test_target_build(self):
         comm.setUp()
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
         comm.create(self)
-        cmd = "which android"
+        if comm.SHELL_FLAG == "False":
+            cmd = "where android"
+        else:
+            cmd = "which android"
         (return_code, androidpath) = comm.getstatusoutput(cmd)
         targetversionpath = os.path.dirname(os.path.dirname(androidpath[0]))
         os.chdir(targetversionpath)
-        movepath = os.path.dirname(os.path.dirname(targetversionpath)) + "/new-platforms/"
-        os.system("mv platforms/ " + movepath)
+        if os.path.exists(os.path.dirname(os.path.dirname(targetversionpath)) + "/platforms/"):
+            shutil.rmtree(os.path.dirname(os.path.dirname(targetversionpath)) + "/platforms/")
+        os.mkdir(os.path.dirname(os.path.dirname(targetversionpath)) + "/platforms/")
+        movepath = os.path.dirname(os.path.dirname(targetversionpath))
+        if comm.SHELL_FLAG == "False":
+            os.system("xcopy /s /e /i /y platforms\* " + movepath + "\platforms")
+        else:
+            os.system("mv platforms/* " + movepath + "/platforms/")
+        shutil.rmtree("platforms")
         os.chdir(comm.XwalkPath)
         os.chdir('org.xwalk.test')
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         (return_build_code, buildstatus) = comm.getstatusoutput(buildcmd)
-        os.chdir(movepath + "../")
-        os.system("mv new-platforms/ " + targetversionpath + "/platforms/")
+        os.chdir(movepath)
+        os.mkdir(targetversionpath + "/platforms")
+        if comm.SHELL_FLAG == "False":
+            os.system("xcopy /s /e /i /y platforms\* " + targetversionpath + "\platforms")
+        else:
+            os.system("mv platforms/* " + targetversionpath + "/platforms/")
+        shutil.rmtree("platforms")
         comm.clear("org.xwalk.test")
         self.assertNotEquals(return_build_code, 0)
         self.assertIn("project target", buildstatus[0])

@@ -51,8 +51,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = os.system(buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(buildstatus, 0)
 
     def test_icon_change_any_size(self):
@@ -69,8 +67,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = os.system(buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(buildstatus, 0)
 
     def test_icon_gif(self):
@@ -87,8 +83,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = os.system(buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(buildstatus, 0)
 
     def test_icon_jpg(self):
@@ -105,8 +99,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = os.system(buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(buildstatus, 0)
 
     def test_icon_bmp(self):
@@ -123,8 +115,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = os.system(buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(buildstatus, 0)
 
     def test_multiple_icons(self):
@@ -141,8 +131,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = os.system(buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(buildstatus, 0)
 
     def test_icons_default(self):
@@ -159,8 +147,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = os.system(buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        if comm.SHELL_FLAG == "False":
-            os.system('adb start-server')
         self.assertEquals(buildstatus, 0)
 
 if __name__ == '__main__':
