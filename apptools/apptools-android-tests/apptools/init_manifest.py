@@ -77,5 +77,26 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertNotEquals(return_code, 0)
 
+    def test_init_manifest_packageid(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-app manifest " + \
+            comm.XwalkPath + "org.xwalk.test --platforms=android --package-id=org.xwalk.test"
+        os.system(cmd)
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json") as json_file:
+            data = json.load(json_file)
+        updatecmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-app manifest " + \
+            comm.XwalkPath + "org.xwalk.test --platforms=android --package-id=org.test.foo"
+        os.system(updatecmd)
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json") as json_file_update:
+            updatedata = json.load(json_file_update)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
+        self.assertEquals(updatedata['xwalk_package_id'].strip(os.linesep), "org.test.foo")
+
 if __name__ == '__main__':
     unittest.main()
