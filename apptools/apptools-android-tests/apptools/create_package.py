@@ -262,5 +262,29 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
 
+    def test_create_package_manifest(self):
+        comm.setUp()
+        for i in range(len(os.listdir(comm.XwalkPath))):
+                if os.listdir(comm.XwalkPath)[i].endswith(".zip"):
+                    androidCrosswalk = os.listdir(comm.XwalkPath)[i]
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --crosswalk=" + comm.XwalkPath + androidCrosswalk + " --manifest=org.xwalk.test " + comm.ConstPath + "/../testapp/start_url/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+        self.assertEquals(apkLength, 2)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
 if __name__ == '__main__':
     unittest.main()
