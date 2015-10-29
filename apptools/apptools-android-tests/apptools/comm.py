@@ -45,7 +45,7 @@ DEFAULT_CMD_TIMEOUT = 600
 
 
 def setUp():
-    global device_x86, device_arm, XwalkPath, crosswalkVersion, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE
+    global device_x86, device_arm, XwalkPath, crosswalkVersion, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE, ANDROID_MODE
 
     device_x86 = ""
     device_arm = ""
@@ -67,8 +67,10 @@ def setUp():
     mode = open(ConstPath + "/../mode.txt", 'r')
     if mode.read().strip("\n\t") != "shared":
         MODE = ""
+        ANDROID_MODE = ""
     else:
         MODE = " --android-shared"
+        ANDROID_MODE = " --android=shared"
     mode.close()
 
     host = open(ConstPath + "/../host.txt", 'r')

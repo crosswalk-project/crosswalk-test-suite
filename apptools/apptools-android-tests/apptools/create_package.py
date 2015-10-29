@@ -44,16 +44,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android " + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " " + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
@@ -65,16 +72,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
@@ -86,16 +100,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --crosswalk=stable " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=stable " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
@@ -107,16 +128,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --crosswalk=beta " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=beta " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
@@ -128,16 +156,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --crosswalk=canary " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=canary " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
@@ -149,16 +184,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --crosswalk=" + comm.crosswalkVersion + " " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkVersion + " " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
@@ -173,16 +215,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --crosswalk=" + comm.XwalkPath + androidCrosswalk + " " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=" + comm.XwalkPath + androidCrosswalk + " " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
@@ -197,16 +246,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --release=true " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --release=true " + comm.ConstPath + "/../testapp/create_package_missing_icon_startUrl/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
@@ -225,16 +281,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         crosswalkzip.close()
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --crosswalk=" + comm.XwalkPath + androidCrosswalk[:androidCrosswalk.index(".zip")] + "/ " + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=" + comm.XwalkPath + androidCrosswalk[:androidCrosswalk.index(".zip")] + "/ " + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         shutil.rmtree(androidCrosswalk[:androidCrosswalk.index(".zip")])
@@ -248,16 +311,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android  " + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " " + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
@@ -272,18 +342,26 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --crosswalk=" + comm.XwalkPath + androidCrosswalk + " --manifest=org.xwalk.test " + comm.ConstPath + "/../testapp/start_url/"
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=" + comm.XwalkPath + androidCrosswalk + " --manifest=org.xwalk.test " + comm.ConstPath + "/../testapp/start_url/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
-        for i in range(len(apks)):
-            if apks[i].endswith(".apk") and "x86" in apks[i]:
-                apkLength = apkLength + 1
-            if apks[i].endswith(".apk") and "arm" in apks[i]:
-                apkLength = apkLength + 1
-        self.assertEquals(apkLength, 2)
+        if not comm.ANDROID_MODE:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
+        os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
         self.assertEquals(return_code, 0)
 
 if __name__ == '__main__':
