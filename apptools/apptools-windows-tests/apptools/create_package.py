@@ -195,6 +195,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             if apks[i].endswith(".msi"):
                 apkLength = apkLength + 1
         comm.clear("org.xwalk.test")
+        os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
         self.assertEquals(return_code, 0)
         self.assertEquals(apkLength, 1)
 
