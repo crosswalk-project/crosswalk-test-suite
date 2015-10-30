@@ -28,6 +28,7 @@
 
 import android
 import sys
+import time
 from behave import step
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -361,3 +362,14 @@ def should_not_see_notification(context, notification_text):
 @step(u'switch to language "{language}"')
 def switch_language(context, language):
     assert context.android.switchLanguage(language)
+
+
+#Repeat operation of fling to end and beginning vertically.
+@step(u'I repeat fling to end and beginning vertically in {times_sec:d} seconds')
+def repeat_fling_end_beginning(context, times_sec):
+    while times_sec:
+        assert context.android.flingToEnd()
+        time.sleep(1)
+        assert context.android.flingToBeginning()
+        times_sec = times_sec - 1
+    assert True

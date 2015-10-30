@@ -429,6 +429,11 @@ class Android(common.APP):
         return self.d(scrollable=True).fling.toEnd()
 
 
+    def flingToBeginning(self):
+        # fling to beginning vertically
+        return self.d(scrollable=True).fling.vert.toBeginning()
+
+
     def scrollForward(self, steps=10):
         # scroll forward(default) vertically(default)
         return self.d(scrollable=True).scroll(steps=steps)
@@ -477,6 +482,7 @@ class Android(common.APP):
 
     def getDumpedXml(self):
         return self.d.dump()
+
 
 
 def launch_app_by_name(
