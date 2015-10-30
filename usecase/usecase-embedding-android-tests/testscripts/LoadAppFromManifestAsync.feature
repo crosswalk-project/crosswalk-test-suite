@@ -1,6 +1,6 @@
 Feature: Embedding api usecase tests
     Scenario: load app from manifest
-        When I launch "usecase-embedding-android-test" with "org.xwalk.embedded.api.asyncsample" and "LoadAppFromManifestLayoutActivityAsync" on android
+        When I launch "usecase-embedding-android-test" with "org.xwalk.embedded.api.asyncsample" and "basic.XWalkViewWithLoadAppFromManifestAsync" on android
          And I register watcher "ClearInfoWindow" when "Info" click "confirm"
          And I register watcher "AlertOK" when "Javascript Alert" click "OK"
          And I force to run all watchers
