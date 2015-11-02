@@ -382,7 +382,10 @@ class WebAPP(common.APP):
 
     def current_url(self):
         try:
-            return self.driver.current_url
+            if isinstance(self.driver.current_url, dict):
+                return self.driver.current_url['CurrentUrl']
+            else:
+                return self.driver.current_url
         except Exception as e:
             print "Failed to get current url: %s" % e
             return None
