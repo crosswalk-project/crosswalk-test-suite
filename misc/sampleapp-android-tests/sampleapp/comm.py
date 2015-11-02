@@ -54,17 +54,11 @@ def setUp():
         sys.exit(1)
 
     fp = open(const_path + "/../arch.txt", 'r')
-    if fp.read().strip("\n\t") != "x86":
-        ARCH = "arm"
-    else:
-        ARCH = "x86"
+    ARCH = fp.read().strip("\n\t")
     fp.close()
 
     mode = open(const_path + "/../mode.txt", 'r')
-    if mode.read().strip("\n\t") != "shared":
-        MODE = "embedded"
-    else:
-        MODE = "shared"
+    MODE = mode.read().strip("\n\t")
     mode.close()
 
 
