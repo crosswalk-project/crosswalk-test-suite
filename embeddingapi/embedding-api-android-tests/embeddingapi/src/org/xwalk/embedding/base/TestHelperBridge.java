@@ -43,6 +43,7 @@ public class TestHelperBridge {
     private final OnDownloadStartHelper mOnDownloadStartHelper;
     private final OnDocumentLoadedInFrameHelper mOnDocumentLoadedInFrameHelper;
     private final OnReceivedClientCertRequestHelper mOnReceivedClientCertRequestHelper;
+    private final OnReceivedHttpAuthRequestHelper mOnReceivedHttpAuthRequestHelper;
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -67,7 +68,8 @@ public class TestHelperBridge {
         mOnConsoleMessageHelper = new OnConsoleMessageHelper();
         mOnDownloadStartHelper = new OnDownloadStartHelper();
         mOnDocumentLoadedInFrameHelper = new OnDocumentLoadedInFrameHelper();
-        mOnReceivedClientCertRequestHelper = new OnReceivedClientCertRequestHelper();        
+        mOnReceivedClientCertRequestHelper = new OnReceivedClientCertRequestHelper();
+        mOnReceivedHttpAuthRequestHelper = new OnReceivedHttpAuthRequestHelper();
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -137,7 +139,7 @@ public class TestHelperBridge {
         mChangedTitle = title;
         mOnTitleUpdatedHelper.notifyCalled(title);
     }
-   
+
     public String getChangedTitle() {
         return mChangedTitle;
     }
@@ -245,7 +247,7 @@ public class TestHelperBridge {
     public OnDownloadStartHelper getOnDownloadStartHelper() {
     	return mOnDownloadStartHelper;
     }
-    
+
     public void onDownloadStart(String url, String userAgent,
             String contentDisposition, String mimetype, long contentLength) {
         mOnDownloadStartHelper.notifyCalled(url, userAgent, contentDisposition,
@@ -255,16 +257,24 @@ public class TestHelperBridge {
     public void onDocumentLoadedInFrame(long frameId) {
         mOnDocumentLoadedInFrameHelper.notifyCalled(frameId);
     }
-    
+
     public OnDocumentLoadedInFrameHelper getOnDocumentLoadedInFrameHelper() {
         return mOnDocumentLoadedInFrameHelper;
     }
-    
+
     public OnReceivedClientCertRequestHelper getOnReceivedClientCertRequestHelper() {
     	return mOnReceivedClientCertRequestHelper;
     }
-    
+
     public void onReceivedClientCertRequest(XWalkView view, ClientCertRequest handler) {
     	mOnReceivedClientCertRequestHelper.notifyCalled(handler);
-    }    
+    }
+
+    public OnReceivedHttpAuthRequestHelper getOnReceivedHttpAuthRequestHelper() {
+        return mOnReceivedHttpAuthRequestHelper;
+    }
+
+    public void onReceivedHttpAuthRequest(String host) {
+        mOnReceivedHttpAuthRequestHelper.notifyCalled(host);
+    }
 }
