@@ -5,15 +5,13 @@ import os.path
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
-ARCH = "x86"
 
 
 def geUnitcase():
     try:
         global ARCH
         fp = open(ConstPath + "/arch.txt")
-        if fp.read().strip("\n\t") != "x86":
-            ARCH = "arm"
+        ARCH = fp.read().strip("\n\t")
         fp.close()
         print "Generate tests.py ---------------->Start"
         if os.path.exists(ConstPath + "/tests.py"):

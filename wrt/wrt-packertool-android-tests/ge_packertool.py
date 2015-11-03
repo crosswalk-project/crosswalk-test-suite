@@ -13,7 +13,6 @@ all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
-ARCH = "x86"
 totalNum = 0
 
 
@@ -181,8 +180,7 @@ def genCmd(caseInput, flag):
         sectionList = line.split("\t")
 
         fp = open(ConstPath + "/arch.txt")
-        if fp.read().strip("\n\t") != "x86":
-            ARCH = "arm"
+        ARCH = fp.read().strip("\n\t")
         fp.close()
 
         if not os.path.exists(ConstPath + "/tcs/" + ARCH):
