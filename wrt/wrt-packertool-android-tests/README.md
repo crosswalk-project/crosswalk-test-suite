@@ -46,9 +46,9 @@ with DEVICE_ID which you input.
 
    ./[DEVICE_ID]/allparis/ save test seed file which would be tested on the device.
 
-4. ./ge_manifest.py create packertool resource
+4. ./ge_packertool.py create packertool resource
 
-5. ./ge_package.py create packertool package
+5. ./gen_apks.py create packertool package
 
 6. ./ge_unitcase.py create tests.py
 
@@ -76,13 +76,14 @@ If test device is "x86" platform, content of the file should be "x86".
 
 3. ./inst.py -i
 
-4. ./ge_package.py
+4. ./gen_apks.py
 
 5. run test case
 
    testkit-lite -f [testprefix-path]/opt/wrt-packertool-android-tests/tests.xml -A
-   -o [testprefix-path]/opt/wrt-packertool-android-tests/result.xml --comm localhost
+   -o [testprefix-path]/opt/wrt-packertool-android-tests/result.xml --comm androidmobile
    --testenvs "DEVICE_ID=Medfield3C6DFF2E CONNECT_TYPE=adb;APK_DIR=[apk-folder-path]"
+   --testprefix [testprefix-path]
 
   DEVICE_ID can also be multiple ids like "Medfield3C6DFF2E,Medfield3C6DFF00".
   Query device id by commmand "adb devices -l" in host.
