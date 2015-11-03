@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="org.xwalk.embedded.api.sample.basic.XWalkViewWithMultiInstanceOverlay">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This case shows a framelayout with two xwalkviews in it and both filling the parent view. Expect that two xwalkviews can be displayed dynamically by swapping to set xwalkviews' visbility to be 'visible' or 'invisible'."
+        android:id="@+id/textView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/xwalk_overlay_label"
+        android:layout_below="@+id/textView"
+        android:textColor="#00ff00"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Swap XWalkView"
+        android:id="@+id/swap_button"
+        android:layout_below="@+id/xwalk_overlay_label"
+        android:layout_alignParentStart="true" />
+
+    <FrameLayout
+        android:layout_below="@id/swap_button"
+        android:id="@+id/overlay_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </FrameLayout>
+
+</RelativeLayout>

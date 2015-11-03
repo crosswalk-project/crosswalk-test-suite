@@ -613,3 +613,13 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load methods
+
+
+
+### 61. The [XWalkViewWithMultiInstanceOverlayAsync](basic/XWalkViewWithMultiInstanceOverlayAsync.java) sample check two xwalkviews filling in the same parent view can be displayed dynamically, include:
+
+* Two xwalkviews filling in the same parent view can be displayed dynamically
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load methods
