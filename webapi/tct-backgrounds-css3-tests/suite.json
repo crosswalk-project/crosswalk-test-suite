@@ -69,6 +69,43 @@
           }
         }
       }
+    },
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "css3-backgrounds-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "css3-backgrounds-app/data": "data",
+        "css3-backgrounds-app/testscripts": "css3-backgrounds-app/testscripts",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "icon.png": "icon.ico",
+          "backgrounds/csswg/support": "backgrounds/csswg/bdd/support",
+          "backgrounds/webkit/resources": "backgrounds/bdd/webkit/resources"
+        }
+      },
+      "subapp-list": {
+        "css3-backgrounds-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../backgrounds/bdd": "backgrounds",
+            "../backgrounds/csswg/bdd": "backgrounds/csswg",
+            "../backgrounds/csswg/support": "backgrounds/csswg/support",
+            "../backgrounds/webkit/resources": "backgrounds/webkit/resources"
+          }
+        }
+      }
     }
   },
   "pkg-name": "tct-backgrounds-css3-tests"

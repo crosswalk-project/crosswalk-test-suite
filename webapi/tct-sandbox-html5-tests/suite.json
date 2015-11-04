@@ -54,6 +54,38 @@
           }
         }
       }
+    },
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "html5-sandbox-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "html5-sandbox-app/testscripts": "html5-sandbox-app/testscripts",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "icon.png": "icon.ico"
+        }
+      },
+      "subapp-list": {
+        "html5-sandbox-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "copylist": {
+            "../sandbox/w3c/bdd": "w3c",
+            "../sandbox/w3c/support": "w3c/support"
+          }
+        }
+      }
     }
   },
   "pkg-name": "tct-sandbox-html5-tests"

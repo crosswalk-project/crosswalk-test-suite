@@ -55,6 +55,36 @@
           }
         }
       }
+    },
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-webstorage-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "w3c-webstorage-app/testscripts": "w3c-webstorage-app/testscripts",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "icon.png": "icon.ico"
+        }
+      },
+      "subapp-list": {
+        "w3c-webstorage-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../webstorage/w3c/bdd": "webstorage/w3c"
+          }
+        }
+      }
     }
   },
   "pkg-name": "tct-webstorage-w3c-tests"

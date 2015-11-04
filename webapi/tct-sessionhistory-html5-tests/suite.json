@@ -61,6 +61,41 @@
           }
         }
       }
+    },
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "html5-sessionhistory-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "html5-sessionhistory-app/testscripts": "html5-sessionhistory-app/testscripts",
+        "sessionhistory/w3c/cgi": "sessionhistory/w3c",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "icon.png": "icon.ico",
+          "sessionhistory/support": "sessionhistory/bdd/support"
+        }
+      },
+      "subapp-list": {
+        "html5-sessionhistory-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../sessionhistory/bdd": "sessionhistory",
+            "../sessionhistory/support": "sessionhistory/support"
+          }
+        }
+      }
     }
   },
   "pkg-name": "tct-sessionhistory-html5-tests"
