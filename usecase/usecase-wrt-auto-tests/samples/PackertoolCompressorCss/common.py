@@ -47,10 +47,7 @@ def setUp():
     global ARCH, MODE, AppName
 
     fp = open(ConstPath + "/../../arch.txt", 'r')
-    if fp.read().strip("\n\t") != "x86":
-        ARCH = "arm"
-    else:
-        ARCH = "x86"
+    ARCH = fp.read().strip("\n\t")
     fp.close()
 
     mode = open(ConstPath + "/../../mode.txt", 'r')
