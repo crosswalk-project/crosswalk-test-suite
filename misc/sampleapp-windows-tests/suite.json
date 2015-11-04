@@ -1,0 +1,72 @@
+{
+    "pkg-blacklist": [
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "suite.json",
+        "inst.apk.py"
+    ],
+    "pkg-list": {
+        "msi": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "blacklist": ["res"],
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            },
+            "subapp-list": {
+                "res/HangOnMan": {
+                    "copylist": {
+                        "../../icon.ico": "icon.ico",
+                        "../manifest_HangOnMan.json": "manifest.json"
+                    },
+                    "apk-type": "MANIFEST",
+                    "app-name": "hangOnMan"
+                },
+                "res/HexGL": {
+                    "copylist": {
+                        "../../icon.ico": "icon.ico",
+                        "../manifest_HexGL.json": "manifest.json"
+                    },
+                    "apk-type": "MANIFEST",
+                    "app-name": "hexGL"
+                },
+                "res/MemoryGame": {
+                    "copylist": {
+                        "../../icon.ico": "icon.ico",
+                        "../manifest_MemoryGame.json": "manifest.json"
+                    },
+                    "apk-type": "MANIFEST",
+                    "app-name": "memoryGame"
+                },
+                "res/simd-mandelbrot": {
+                    "copylist": {
+                        "../../icon.ico": "icon.ico",
+                        "../manifest_simd.json": "manifest.json"
+                    },
+                    "apk-type": "MANIFEST",
+                    "app-name": "simd"
+                },
+                "res/SysApps_DeviceCapabilities": {
+                    "copylist": {
+                        "../../icon.ico": "icon.ico",
+                        "../manifest_SysApps.json": "manifest.json"
+                    },
+                    "apk-type": "MANIFEST",
+                    "app-name": "sysAppsDeviceCapabilities"
+                }
+            }
+        }
+    },
+    "pkg-name": "sampleapp-windows-tests"
+}

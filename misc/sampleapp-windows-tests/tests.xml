@@ -3,10 +3,15 @@
 <test_definition>
   <suite category="Crosswalk_Sample_App" name="sampleapp-windows-tests">
     <set name="SampleAppTest" type="js">
+      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_AppPack" purpose="Validate if sample app HangOnMan could be packaged">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HangOnMan_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_AppLaunch" purpose="Validate if sample app HangOnMan could launch">
         <description>
           <pre_condition>
-            1.Make sure the HangOnMan app is put in a server and can be accessed
+            1.Make sure the HangOnMan app is installed
           </pre_condition>
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HangOnMan_AppLaunch.html</test_script_entry>
         </description>
@@ -19,10 +24,15 @@
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HangOnMan_AppFunction.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="HexGL_AppPack" purpose="Validate if sample app HexGL could be packaged">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HexGL_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="HexGL_AppLaunch" purpose="Validate if sample app HexGL could launch">
         <description>
           <pre_condition>
-            1.Make sure the HexGL app is put in a server and can be accessed
+            1.Make sure the HexGL app is installed
           </pre_condition>
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HexGL_AppLaunch.html</test_script_entry>
         </description>
@@ -35,10 +45,15 @@
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HexGL_AppFunction.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_AppPack" purpose="Validate if sample app MemoryGame could be packaged">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/MemoryGame_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_AppLaunch" purpose="Validate if sample app MemoryGame could launch">
         <description>
           <pre_condition>
-            1.Make sure the MemoryGame app is put in a server and can be accessed
+            1.Make sure the MemoryGame app is installed
           </pre_condition>
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/MemoryGame_AppLaunch.html</test_script_entry>
         </description>
@@ -51,10 +66,15 @@
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/MemoryGame_AppFunction.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="SIMD_AppPack" purpose="Validate if sample app SIMD could could be packaged">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/SIMD_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="SIMD_AppLaunch" purpose="Validate if sample app SIMD could launch">
         <description>
           <pre_condition>
-            1.Make sure the SIMD app is put in a server and can be accessed
+            1.Make sure the SIMD app is installed
           </pre_condition>
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/SIMD_AppLaunch.html</test_script_entry>
         </description>
@@ -65,6 +85,59 @@
             1.Make sure the SIMD app is launched
           </pre_condition>
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/SIMD_AppFunction.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_AppPack" purpose="Validate if sample app SysApps_DeviceCapabilities could be packaged">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_AppLaunch" purpose="Validate if sample app SysApps_DeviceCapabilities could launch">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is installed
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_AppLaunch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_Audio_Video_Upload" purpose="Validate if the audio or video files can be uploaded successfully">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_Audio_Video_Upload.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_CPU_Monitor" purpose="Validate if the chart and the description for 'CPU Monitor' is exact">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_CPU_Monitor.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_Display_State" purpose="Validate if the 'Display State' info is exact">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_Display_State.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_Memory_Monitor" purpose="Validate if the 'Memory Monitor' info is exact">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_Memory_Monitor.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_Storage_State" purpose="Validate if The 'Storage State' info is exact">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_Storage_State.html</test_script_entry>
         </description>
       </testcase>
     </set>
