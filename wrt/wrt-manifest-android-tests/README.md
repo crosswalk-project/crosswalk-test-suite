@@ -36,7 +36,7 @@ This test suite is for wrt-manifest-android-tests
 
 4. ./ge_manifest.py create manifest resource
 
-5. ./ge_package.py create manifest package
+5. ./gen_apks.py create manifest package
 
 6. ./ge_unitcase.py create tests.py
 
@@ -60,7 +60,7 @@ If test device is "x86" platform, content of the file should be "x86".
 
 2. cd [testprefix-path]/opt/wrt-manifest-android-tests/
 
-3. ./ge_package.py
+3. ./gen_apks.py
 
 4. run test case
 
