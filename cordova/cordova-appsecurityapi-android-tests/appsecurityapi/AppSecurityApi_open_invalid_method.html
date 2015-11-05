@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_setMethod_correct_parameters</title>
+<title>Secure Data Test: AppSecurityApi_open_invalid_method</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -41,35 +41,25 @@ Authors:
 <script type="text/javascript">
 
 setTimeout(function() { test(); }, 500);
+var error_code_invalid_method = 30
 
 function test() {
   async_test(function(t) {
     try{
       intel.security.secureTransport.open(
         function(instanceID) {
-          intel.security.secureTransport.setMethod(
-            function(){
-              t.step(function() {
-                assert_true(true, 'success to set the url');
-              });
-              t.done();
-            },
-            function(errorObj){
-              t.step(function() {
-                assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-              });
-              t.done();
-            },
-            {'instanceID': instanceID, 'method': 'POST'}
-          );
-        },
-        function(errorObj) {
           t.step(function() {
-            assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+            assert_unreached("open should fail");
           });
           t.done();
         },
-        {'url': 'https://www.myserver.com', 'method': 'GET', 'serverKey': '', 'timeout': 1000}
+        function(errorObj) {
+          t.step(function() {
+            assert_equals(errorObj.code, error_code_invalid_method);
+          });
+          t.done();
+        },
+        {'url': 'https://crosswalk-project.org', 'method': '1234', 'serverKey': '', 'timeout': 1000}
       );
     } catch (e) {
       assert_true(false, "Exception: {" + e.message + "}");

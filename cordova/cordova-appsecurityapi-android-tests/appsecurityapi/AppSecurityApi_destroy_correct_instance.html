@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_getData_correct_instance</title>
+<title>Secure Data Test: AppSecurityApi_destroy_correct_instance</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -49,16 +49,16 @@ function test() {
         function(instanceID) {
           intel.security.secureData.createFromData(
             function(instanceID) {
-              intel.security.secureData.getData(
-                function(data){
+              intel.security.secureData.destroy(
+                function(){
                   t.step(function() {
-                    assert_equals(data, 'Plaintext Data');
+                    assert_true(true, 'success to destroy the security data');
                   });
                   t.done();
                 },
-                function(errorObj) {
+                function(errorObj){
                   t.step(function() {
-                    assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
+                    assert_true(false, 'fail:code = '+ errorObj.code + ', message = ' + errorObj.message);
                   });
                   t.done();
                 },
@@ -67,11 +67,11 @@ function test() {
             },
             function(errorObj) {
               t.step(function() {
-                assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
+                assert_true(false, 'fail:code = '+ errorObj.code + ', message = ' + errorObj.message);
               });
               t.done();
             },
-            {'data': 'Plaintext Data', 'tag': 'Test', 'extraKey': instanceID, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ''}
+            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': instanceID, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ''}
           );
         },
         function(errorObj) {
@@ -87,6 +87,5 @@ function test() {
     }
   }, document.title);
 }
-
 </script>
 

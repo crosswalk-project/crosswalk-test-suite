@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_getData_correct_instance</title>
+<title>Secure Data Test: AppSecurityApi_setMethod_GET</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -45,33 +45,22 @@ setTimeout(function() { test(); }, 500);
 function test() {
   async_test(function(t) {
     try{
-      intel.security.secureData.createFromData(
+      intel.security.secureTransport.open(
         function(instanceID) {
-          intel.security.secureData.createFromData(
-            function(instanceID) {
-              intel.security.secureData.getData(
-                function(data){
-                  t.step(function() {
-                    assert_equals(data, 'Plaintext Data');
-                  });
-                  t.done();
-                },
-                function(errorObj) {
-                  t.step(function() {
-                    assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
-                  });
-                  t.done();
-                },
-                instanceID
-              );
-            },
-            function(errorObj) {
+          intel.security.secureTransport.setMethod(
+            function(){
               t.step(function() {
-                assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
+                assert_true(true, 'success to set the method');
               });
               t.done();
             },
-            {'data': 'Plaintext Data', 'tag': 'Test', 'extraKey': instanceID, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ''}
+            function(errorObj){
+              t.step(function() {
+                assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+              });
+              t.done();
+            },
+            {'instanceID': instanceID, 'method': 'GET'}
           );
         },
         function(errorObj) {
@@ -80,13 +69,12 @@ function test() {
           });
           t.done();
         },
-        {'data': 'test1', 'noRead': true, 'noStore': true}
+        {'url': 'https://www.myserver.com', 'method': 'GET', 'serverKey': '', 'timeout': 1000}
       );
-    } catch (e){
+    } catch (e) {
       assert_true(false, "Exception: {" + e.message + "}");
     }
   }, document.title);
 }
-
 </script>
 
