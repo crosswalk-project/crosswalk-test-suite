@@ -185,10 +185,14 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.XwalkPath)
         comm.clear("org.xwalk.test")
         os.mkdir("org.xwalk.test")
+        if os.path.exists(comm.ConstPath + "/../testapp/start_url/manifest.json"):
+            os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " --manifest=org.xwalk.test " + comm.ConstPath + "/../testapp/start_url/"
         return_code = os.system(cmd)
+        with open(comm.ConstPath + "/../testapp/start_url/manifest.json") as json_file:
+            data = json.load(json_file)
         apks = os.listdir(os.getcwd())
         apkLength = 0
         for i in range(len(apks)):
@@ -197,6 +201,31 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
         self.assertEquals(return_code, 0)
+        self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
+        self.assertEquals(apkLength, 1)
+
+    def test_create_package_reading_manifest(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        if os.path.exists(comm.ConstPath + "/../testapp/start_url/manifest.json"):
+            os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " --manifest '{ \"xwalk_package_id\": \"org.xwalk.test\", \"start_url\": \"start.html\" }' " + comm.ConstPath + "/../testapp/start_url/"
+        return_code = os.system(cmd)
+        with open(comm.ConstPath + "/../testapp/start_url/manifest.json") as json_file:
+            data = json.load(json_file)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        comm.clear("org.xwalk.test")
+        os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
+        self.assertEquals(return_code, 0)
+        self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
         self.assertEquals(apkLength, 1)
 
 
