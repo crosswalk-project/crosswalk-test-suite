@@ -43,7 +43,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + \
-            comm.crosswalkVersion
+            comm.crosswalkzip
         return_code = os.system(cmd)
         self.assertNotEquals(return_code, 0)
         comm.clear("org.xwalk.test")

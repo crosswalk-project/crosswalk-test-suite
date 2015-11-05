@@ -45,7 +45,7 @@ DEFAULT_CMD_TIMEOUT = 600
 
 
 def setUp():
-    global device_x86, device_arm, XwalkPath, crosswalkVersion, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE, ANDROID_MODE
+    global device_x86, device_arm, XwalkPath, crosswalkVersion, crosswalkzip, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE, ANDROID_MODE
 
     device_x86 = ""
     device_arm = ""
@@ -65,12 +65,16 @@ def setUp():
     fp.close()
 
     mode = open(ConstPath + "/../mode.txt", 'r')
-    if mode.read().strip("\n\t") != "shared":
+    mode_type = mode.read().strip("\n\t")
+    if mode_type == "embedded":
         MODE = ""
         ANDROID_MODE = ""
-    else:
+    elif mode_type == "shared":
         MODE = " --android-shared"
         ANDROID_MODE = " --android=shared"
+    else:
+        MODE = " --android-lite"
+        ANDROID_MODE = " --android=lite"
     mode.close()
 
     host = open(ConstPath + "/../host.txt", 'r')
@@ -130,6 +134,11 @@ def setUp():
         print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
         sys.exit(1)
 
+    crosswalkzip = XwalkPath + 'crosswalk-{}.zip'.format(crosswalkVersion)
+    if not os.path.exists(crosswalkzip):
+        print "Please check if " + crosswalkzip + " exists"
+        sys.exit(1)
+
 def getstatusoutput(cmd, time_out=DEFAULT_CMD_TIMEOUT):
     pre_time = time.time()
     output = []
@@ -174,7 +183,7 @@ def create(self):
     os.chdir(XwalkPath)
     cmd = HOST_PREFIX + PackTools + \
         "crosswalk-app create org.xwalk.test" + MODE + " --android-crosswalk=" + \
-        crosswalkVersion
+        crosswalkzip
     return_code = os.system(cmd)
     self.assertEquals(return_code, 0)
     self.assertIn("org.xwalk.test", os.listdir(os.getcwd()))
@@ -185,7 +194,7 @@ def build(self, cmd):
     self.assertEquals(return_code, 0)
     apks = os.listdir(os.getcwd())
     apkLength = 0
-    if not MODE:
+    if MODE != " --android-shared":
         for i in range(len(apks)):
             if apks[i].endswith(".apk") and "x86" in apks[i]:
                 apkLength = apkLength + 1
@@ -201,23 +210,6 @@ def build(self, cmd):
                 appVersion = apks[i].split('-')[1]
         self.assertEquals(apkLength, 1)
     return appVersion
-
-
-def update(self, cmd):
-    (return_update_code, update_output) = getstatusoutput(cmd)
-    self.assertEquals(return_update_code, 0)
-    self.assertNotIn("ERROR:", update_output[0])
-    version = update_output[0].split(" * " + os.linesep)[-1].split(' ')[-1][1:-2]
-    if not cachedir:
-        namelist = os.listdir(os.getcwd())
-    else:
-        newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
-        os.chdir(newcachedir)
-        namelist = os.listdir(os.getcwd())
-        os.chdir(XwalkPath + 'org.xwalk.test')
-    crosswalk = 'crosswalk-{}.zip'.format(version)
-    self.assertIn(crosswalk, namelist)
-    return version
 
 
 def run(self):
@@ -272,10 +264,24 @@ def channel(self, channel):
     createcmd = HOST_PREFIX + PackTools + \
         "crosswalk-app create org.xwalk.test" + MODE + " --android-crosswalk=" + channel
     (return_create_code, output) = getstatusoutput(createcmd)
-    htmlDoc = urllib2.urlopen(
-        'https://download.01.org/crosswalk/releases/crosswalk/android/' +
-        channel +
-        '/').read()
+    version = check_crosswalk_version(self, channel)
+    clear("org.xwalk.test")
+    self.assertEquals(return_create_code, 0)
+    self.assertIn(channel, output[0])
+    self.assertIn(version, output[0])
+
+
+def check_crosswalk_version(self, channel):
+    if MODE != " --android-lite":
+        htmlDoc = urllib2.urlopen(
+            'https://download.01.org/crosswalk/releases/crosswalk/android/' +
+            channel +
+            '/').read()
+    else:
+        htmlDoc = urllib2.urlopen(
+            'https://download.01.org/crosswalk/releases/crosswalk-lite/android/' +
+            channel +
+            '/').read()
     soup = BeautifulSoup(htmlDoc)
     alist = soup.find_all('a')
     version = ''
@@ -286,8 +292,12 @@ def channel(self, channel):
             break
     print "-----------" + version
     crosswalk = 'crosswalk-{}.zip'.format(version)
-    namelist = os.listdir(os.getcwd())
-    clear("org.xwalk.test")
-    self.assertEquals(return_create_code, 0)
-    self.assertIn(channel, output[0])
+    if not cachedir:
+        namelist = os.listdir(os.getcwd())
+    else:
+        newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
+        os.chdir(newcachedir)
+        namelist = os.listdir(os.getcwd())
+        os.chdir(XwalkPath + 'org.xwalk.test')
     self.assertIn(crosswalk, namelist)
+    return version

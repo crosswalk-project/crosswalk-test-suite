@@ -45,22 +45,11 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
         createcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE
-        return_code = os.system(createcmd)
-        htmlDoc = urllib2.urlopen(
-            'https://download.01.org/crosswalk/releases/crosswalk/android/stable/').read()
-        soup = BeautifulSoup(htmlDoc)
-        alist = soup.find_all('a')
-        version = ''
-        for  index in range(-1, -len(alist)-1, -1):
-            aEle = alist[index]
-            version = aEle['href'].strip('/')
-            if re.search('[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*', version):
-                break
-        crosswalk = 'crosswalk-{}.zip'.format(version)
-        namelist = os.listdir(os.getcwd())
+        (return_code, output) = comm.getstatusoutput(createcmd)
+        version = comm.check_crosswalk_version(self, "stable")
         comm.clear("org.xwalk.test")
-        self.assertIn(crosswalk, namelist)
         self.assertEquals(return_code, 0)
+        self.assertIn(version, output[0])
 
 if __name__ == '__main__':
     unittest.main()

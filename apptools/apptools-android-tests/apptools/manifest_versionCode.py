@@ -48,7 +48,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             index = x -1
             if buildstatus[index].find("Using android:versionCode") != -1:
                 break
-        versionCode = buildstatus[index].strip(" *\nUsing android:versionCode")[1:-1]
+        versionCode = buildstatus[index].strip(" *\nUsing android:versionCode").split(' ')[-1][1:-1]
         root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
         attributes = root.attrib
         for x in attributes.keys():
@@ -78,7 +78,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             index = x -1
             if buildstatus[index].find("Using android:versionCode") != -1:
                 break
-        versionCode = buildstatus[index].strip(" *\nUsing android:versionCode")[1:-1]
+        versionCode = buildstatus[index].strip(" *\nUsing android:versionCode").split(' ')[-1][1:-1]
         root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
         attributes = root.attrib
         for x in attributes.keys():
@@ -109,7 +109,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             index = x -1
             if buildstatus[index].find("Using android:versionCode") != -1:
                 break
-        versionCode = buildstatus[index].strip(" *\nUsing android:versionCode")[1:-1]
+        versionCode = buildstatus[index].strip(" *\nUsing android:versionCode").split(' ')[-1][1:-1]
         root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
         attributes = root.attrib
         for x in attributes.keys():

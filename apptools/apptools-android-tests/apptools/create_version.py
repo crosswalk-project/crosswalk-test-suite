@@ -40,13 +40,13 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
         createcmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=15.44.384.7"
+            "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + comm.crosswalkVersion
         (return_code, output) = comm.getstatusoutput(createcmd)
-        crosswalk = 'crosswalk-15.44.384.7.zip'
+        crosswalk = 'crosswalk-{}.zip'.format(comm.crosswalkVersion)
         namelist = os.listdir(os.getcwd())
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
-        self.assertIn("15.44.384.7", output[0])
+        self.assertIn(comm.crosswalkVersion, output[0])
         self.assertIn(crosswalk, namelist)
 
 if __name__ == '__main__':
