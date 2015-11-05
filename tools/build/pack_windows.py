@@ -392,35 +392,39 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     os.chdir(BUILD_ROOT)
     pkg_name = "org.xwalk." + app_name.replace("-", "")
-    project_root = os.path.join(BUILD_ROOT, pkg_name)
+    #project_root = os.path.join(BUILD_ROOT, pkg_name)
     crosswalk_app_tools = os.getenv("CROSSWALK_APP_TOOLS")
     if crosswalk_app_tools == None:
         LOG.error("Pls add an environment variable named 'CROSSWALK_APP_TOOLS', and set the crosswalk-app-tools path to this environment variable")
         os.chdir(orig_dir)
         return False
-    create_cmd = "node %s/src/crosswalk-app create %s --platforms=windows --windows-crosswalk=crosswalk-%s.zip" \
-	        % (crosswalk_app_tools, pkg_name, CROSSWALK_VERSION)
 
-    if not doCMD(create_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
+    if not safelyGetValue(build_json, "apk-type") or safelyGetValue(build_json, "apk-type") != "MANIFEST":
+        if os.path.exists(os.path.join(app_src, "manifest.json")):
+            if not doRemove([os.path.join(app_src, "manifest.json")]):
+                os.chdir(orig_dir)
+                return False
+        if os.path.exists(os.path.join(app_src, "icon.ico")):
+            build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows -m " \
+                    "\"{\"\"\"icons\"\"\": [{\"\"sizes\"\": \"\"72x72\"\",\"\"src\"\": \"\"icon.ico\"\"}], \"\"\"name\"\"\": \"\"\"%s\"\"\", " \
+                    "\"\"\"xwalk_package_id\"\"\": \"\"\"%s\"\"\"}\" %s" % (crosswalk_app_tools, CROSSWALK_VERSION, app_name, pkg_name, app_src)
 
-    if not doRemove([os.path.join(project_root, "app")]):
-        return False
-    if not doCopy(os.path.join(app_src), os.path.join(project_root, "app")):
-        os.chdir(orig_dir)
-        return False
+        else:
+            build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows -m " \
+                    "\"{\"\"\"name\"\"\": \"\"\"%s\"\"\", " \
+                    "\"\"\"xwalk_package_id\"\"\": \"\"\"%s\"\"\"}\" %s" % (crosswalk_app_tools, CROSSWALK_VERSION, app_name, pkg_name, app_src)
+    else:
+        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows %s" % (crosswalk_app_tools, CROSSWALK_VERSION, app_src)
 
-    os.chdir(os.path.join(BUILD_ROOT, pkg_name))
-    pack_cmd = "node %s/src/crosswalk-app build" % crosswalk_app_tools
-    LOG.info("Packing cmd : %s" % pack_cmd)
 
-    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
+    print build_cmd
+    if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT):
+        LOG.error("Fail to pack: %s" % build_cmd)
+
 
     # After build successfully, copy the .msi file from project_root to app_dest
-    files = glob.glob(os.path.join(project_root, "*.msi"))
+    time.sleep(5)
+    files = glob.glob(os.path.join(BUILD_ROOT, "*.msi"))
     if not doCopy(
             files[0],
             os.path.join(app_dest, "%s.msi" % app_name)):
@@ -504,18 +508,28 @@ def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
 
 def buildPKGAPP(build_json=None):
     LOG.info("+Building package APP ...")
-    if not doCopy(os.path.join(BUILD_ROOT_SRC, "icon.ico"),
-                  os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.ico")):
-        return False
 
-    if not doCopy(
-            os.path.join(BUILD_ROOT_SRC, "manifest.json"),
-            os.path.join(BUILD_ROOT_SRC_PKG_APP, "manifest.json")):
-        return False
+    if safelyGetValue(build_json, "apk-type") == "MANIFEST":
+        if not doCopy(
+                os.path.join(BUILD_ROOT_SRC, "manifest.json"),
+                os.path.join(BUILD_ROOT_SRC_PKG_APP, "manifest.json")):
+            return False
+
+    if os.path.exists(os.path.join(BUILD_ROOT_SRC, "icon.ico")):
+        if not doCopy(os.path.join(BUILD_ROOT_SRC, "icon.ico"),
+                      os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.ico")):
+            return False
+    elif os.path.exists(os.path.join(BUILD_ROOT_SRC, "icon.png")):
+        if not doCopy(os.path.join(BUILD_ROOT_SRC, "icon.png"),
+                    os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.ico")):
+            return False
 
     hosted_app = False
     if safelyGetValue(build_json, "hosted-app") == "true":
         hosted_app = True
+
+    if not os.path.exists(BUILD_ROOT_SRC_PKG_APP):
+        os.makedirs(BUILD_ROOT_SRC_PKG_APP)
     if not createIndexFile(
             os.path.join(BUILD_ROOT_SRC_PKG_APP, "index.html"), hosted_app):
         return False
