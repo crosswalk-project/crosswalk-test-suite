@@ -44,12 +44,13 @@ var t = async_test("Test if the long attribute represents how many n-best altern
 
 t.step(function () {
   var speechReco = new webkitSpeechRecognition();
+  speechReco.continuous = true;
   speechReco.onresult = function (evt) {
     var actual_long = 0;
-    for (var i in evt.results) {
+    for (var i = evt.resultIndex; i < evt.results.length; i++) {
       actual_long++;
     }
-    assert_euqals(actual_long, evt.results.length);
+    assert_equals(actual_long, evt.results.length);
     t.done();
   };
   speechReco.onerror = t.step_func(function (evt) {
