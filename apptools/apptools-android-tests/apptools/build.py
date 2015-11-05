@@ -32,6 +32,7 @@
 import unittest
 import os
 import comm
+import shutil
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
@@ -63,9 +64,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.system(cmd)
         os.chdir('org.xwalk.test')
         if comm.ARCH_X86 == "x86":
-            os.remove(
+            shutil.rmtree(
                 os.getcwd() +
-                '/prj/android/xwalk_core_library/libs/armeabi-v7a/libxwalkcore.so')
+                '/prj/android/xwalk_core_library/libs/armeabi-v7a/')
             buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
             buildstatus = os.system(buildcmd)
             self.assertEquals(buildstatus, 0)
@@ -76,9 +77,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                     armLength = armLength + 1
             self.assertEquals(armLength, 0)
         elif comm.ARCH_ARM == "arm":
-            os.remove(
+            shutil.rmtree(
                 os.getcwd() +
-                '/prj/android/xwalk_core_library/libs/x86/libxwalkcore.so')
+                '/prj/android/xwalk_core_library/libs/x86/')
             buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
             buildstatus = os.system(buildcmd)
             self.assertEquals(buildstatus, 0)
@@ -99,16 +100,26 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             comm.crosswalkVersion
         os.system(cmd)
         os.chdir('org.xwalk.test')
-        os.remove(
+        shutil.rmtree(
             os.getcwd() +
-            '/prj/android/xwalk_core_library/libs/armeabi-v7a/libxwalkcore.so')
-        os.remove(
+            '/prj/android/xwalk_core_library/libs/armeabi-v7a/')
+        shutil.rmtree(
             os.getcwd() +
-            '/prj/android/xwalk_core_library/libs/x86/libxwalkcore.so')
+            '/prj/android/xwalk_core_library/libs/x86/')
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
+        pkgs = os.listdir(os.getcwd())
+        armLength = 0
+        x86Length = 0
+        for i in range(len(pkgs)):
+            if pkgs[i].endswith(".apk") and "x86" in pkgs[i]:
+                x86Length = x86Length + 1
+            if pkgs[i].endswith(".apk") and "arm" in pkgs[i]:
+                armLength = armLength + 1
         comm.clear("org.xwalk.test")
-        self.assertNotEquals(buildstatus, 0)
+        self.assertEquals(buildstatus, 0)
+        self.assertEquals(x86Length, 0)
+        self.assertEquals(armLength, 0)
 
 if __name__ == '__main__':
     unittest.main()
