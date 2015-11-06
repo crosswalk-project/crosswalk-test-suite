@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_open_all_optional</title>
+<title>Secure Data Test: AppSecurityApi_setMethod_PUT</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -47,10 +47,21 @@ function test() {
     try{
       intel.security.secureTransport.open(
         function(instanceID) {
-          t.step(function() {
-            assert_not_equals(instanceID, null);
-          });
-          t.done();
+          intel.security.secureTransport.setMethod(
+            function(){
+              t.step(function() {
+                assert_true(true, 'success to set the method');
+              });
+              t.done();
+            },
+            function(errorObj){
+              t.step(function() {
+                assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+              });
+              t.done();
+            },
+            {'instanceID': instanceID, 'method': 'PUT'}
+          );
         },
         function(errorObj) {
           t.step(function() {
