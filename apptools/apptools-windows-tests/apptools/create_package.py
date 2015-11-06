@@ -48,7 +48,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " " + comm.ConstPath + "/../testapp/create_package_basic/"
-        return_code = os.system(cmd)
+        (return_code, output) = comm.getstatusoutput(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
         for i in range(len(apks)):
@@ -56,6 +56,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 apkLength = apkLength + 1
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
+        self.assertIn("candle", output[0])
+        self.assertIn("light", output[0])
+        self.assertNotIn("target android", output[0])
         self.assertEquals(apkLength, 1)
 
     def test_create_package_missing_icon_startUrl(self):
