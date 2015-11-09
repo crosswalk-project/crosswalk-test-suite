@@ -634,3 +634,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, setResourceClient methods
 * ResourceClient interface: onReceivedHttpAuthRequest methods
+
+
+
+### 63. The [XWalkViewWithWindowSecureAsync](basic/XWalkViewWithWindowSecureAsync.java) sample check xwalkview window can prevent from the screenshoting by setting window flag SECURE, include:
+
+* walkview window can prevent from the screenshoting by setting window flag SECURE
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load methods
