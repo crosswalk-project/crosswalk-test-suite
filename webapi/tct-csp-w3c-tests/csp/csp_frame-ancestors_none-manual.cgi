@@ -1,4 +1,7 @@
 #!/bin/sh
+echo "Content-Security-Policy:child-src 'none'"
+echo "X-Content-Security-Policy:child-src 'none'"
+echo "X-WebKit-CSP:child-src 'none'"
 echo
 echo '<!DOCTYPE html>
 <!--

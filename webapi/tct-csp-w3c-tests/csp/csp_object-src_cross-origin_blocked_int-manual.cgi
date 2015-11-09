@@ -47,6 +47,6 @@ Authors:
   </head>
   <body>
     <p>Test passes if there is <strong>no red</strong>.</p>
-    <object data="support/red-100x100.png"/>
+    <object type="text/html" data="http://127.0.0.1:8080/opt/tct-csp-w3c-tests/csp/support/object-src-block.html"></object>
   </body>
 </html> '

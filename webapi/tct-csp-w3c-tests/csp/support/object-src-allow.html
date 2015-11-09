@@ -1,11 +1,6 @@
-#!/bin/sh
-echo "Content-Security-Policy:object-src *"
-echo "X-Content-Security-Policy:object-src *"
-echo "X-WebKit-CSP:object-src *"
-echo
-echo '<!DOCTYPE html>
+<!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -29,24 +24,15 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Hao, Yunfei <yunfeix.hao@intel.com>
-
 -->
 
-<html>
-  <head>
-    <title>CSP Test: csp_object-src_asterisk_allowed_int</title>
-    <link rel="author" title="Intel" href="http://www.intel.com"/>
-    <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src"/>
-    <link rel="match" href="reference/csp_object-src_allowed-ref.html"/>
-    <meta name="flags" content=""/>
-    <meta name="assert" content="object-src *"/>
-    <meta charset="utf-8"/>
-  </head>
-  <body>
-    <p>Test passes if there is a PASS.</p>
-    <object type="text/html" data="support/object-src-allow.html"></object>
-  </body>
-</html> '
+<meta charset="utf-8">
+<title>csp referrer</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://w3c.github.io/webappsec/specs/referrer-policy/#referrer-policy-delivery">
+
+<body>
+  <p style="color:green">PASS</p>
+</body>
+

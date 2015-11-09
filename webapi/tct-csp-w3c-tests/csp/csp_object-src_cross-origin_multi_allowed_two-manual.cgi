@@ -40,13 +40,13 @@ Authors:
     <title>CSP Test: csp_object-src_cross-origin_allowed_two</title>
     <link rel="author" title="Intel" href="http://www.intel.com/"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src"/>
-    <link rel="match" href="reference/csp_frame-src_asterisk_allowed_ext-ref.html"/>
+    <link rel="match" href="reference/csp_object-src_allowed-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="object-src http://127.0.0.1:8081 http://127.0.0.1:8083"/>
     <meta charset="utf-8"/>
   </head>
   <body>
-    <p>Test passes if there is a filled green square.</p>
-    <object data="http://127.0.0.1:8082/opt/tct-csp-w3c-tests/csp/support/green-100x100.png"/>
+    <p>Test passes if there is a PASS.</p>
+    <object type="text/html" data="http://127.0.0.1:8081/opt/tct-csp-w3c-tests/csp/support/object-src-allow.html"></object>
   </body>
 </html> '
