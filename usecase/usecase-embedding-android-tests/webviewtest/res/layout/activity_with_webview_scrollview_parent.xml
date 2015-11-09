@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="org.android.webview.api.sample.basic.WebViewWithScrollViewParent">
+
+    <TextView
+        android:id="@+id/case_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="@string/webview_with_scrollview_parent" />
+
+    <TextView
+        android:id="@+id/invoked_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/case_desc"
+        android:textSize="18sp"
+        android:textColor="#00ff00" />
+
+    <ScrollView
+        android:layout_below="@id/invoked_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <WebView
+            android:id="@+id/webview_in_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </WebView>
+
+    </ScrollView>
+</RelativeLayout>

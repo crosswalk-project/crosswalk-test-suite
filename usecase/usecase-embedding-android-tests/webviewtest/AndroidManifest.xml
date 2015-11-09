@@ -31,7 +31,8 @@
         </activity>
         <activity
             android:name=".basic.WebViewWithLayoutActivity"
-            android:label="@string/title_activity_webview_with_layout" >
+            android:label="@string/title_activity_webview_with_layout"
+            android:parentActivityName=".WebViewAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="WebView.Basic" />
@@ -39,7 +40,8 @@
         </activity>
         <activity
             android:name=".basic.WebViewWithAnimatableActivity"
-            android:label="@string/title_activity_webview_with_animatable" >
+            android:label="@string/title_activity_webview_with_animatable"
+            android:parentActivityName=".WebViewAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="WebView.Basic" />
@@ -47,7 +49,8 @@
         </activity>
         <activity
             android:name=".basic.WebViewWithLoadDataWithBaseURL"
-            android:label="@string/title_activity_webview_with_loaddata" >
+            android:label="@string/title_activity_webview_with_loaddata"
+            android:parentActivityName=".WebViewAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="WebView.Basic" />
@@ -55,7 +58,8 @@
         </activity>
         <activity
             android:name=".basic.WebViewWithMultiInstanceActivity"
-            android:label="@string/title_activity_multi_webview" >
+            android:label="@string/title_activity_multi_webview"
+            android:parentActivityName=".WebViewAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="WebView.Basic" />
@@ -63,7 +67,8 @@
         </activity>
         <activity
             android:name=".basic.WebViewWithPlayVideoActivity"
-            android:label="@string/title_activity_webview_with_playvideo" >
+            android:label="@string/title_activity_webview_with_playvideo"
+            android:parentActivityName=".WebViewAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="WebView.Basic" />
@@ -71,10 +76,47 @@
         </activity>
         <activity
             android:name=".basic.WebViewWithPauseTimerActivity"
-            android:label="@string/title_activity_webview_with_pausetimer" >
+            android:label="@string/title_activity_webview_with_pausetimer"
+            android:parentActivityName=".WebViewAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="WebView.Basic" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".basic.WebViewWithScrollViewParent"
+            android:label="@string/title_activity_webview_with_scrollview_parent"
+            android:parentActivityName=".WebViewAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="WebView.Basic" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".basic.WebViewWithMultiInstanceOverlay"
+            android:label="@string/title_activity_webview_with_multi_instance_overlay"
+            android:parentActivityName=".WebViewAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="WebView.Basic" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".client.WebViewWithClients"
+            android:label="@string/title_activity_webview_with_clients"
+            android:parentActivityName=".WebViewAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="WebView.WebChromeClient.WebViewClient" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".misc.WebViewWithNavigation"
+            android:label="@string/title_activity_webview_with_navigation"
+            android:parentActivityName=".WebViewAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="WebView.Misc" />
             </intent-filter>
         </activity>
     </application>
