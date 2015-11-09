@@ -53,7 +53,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.XwalkPath)
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + \
-            comm.crosswalkVersion
+            comm.crosswalkzip
         (return_create_code, packstatus) = comm.getstatusoutput(cmd)
         os.environ['ANDROID_HOME'] = android_home
         os.environ['PATH'] = allpath

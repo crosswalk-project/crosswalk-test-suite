@@ -13,7 +13,8 @@ This test suite is for apptools-android-tests
    If test devices are "arm" and "x86" platforms, content of the file should be "arm,x86", default value is "x86,arm"
 
 3. Need to edit the file "apptools-android-tests/mode.txt" according to the type of build mode.
-   If build "shared" mode apk, content of the file should be "shared", default value is "embedded".
+   If create project with crosswalk lite zip, content of the file should be "lite". If create project with crosswalk zip and build "shared" mode apk, content of the file should be "shared". If create project with crosswalk zip and build "embedded" mode apk, content of the file should be "embedded".
+(Note: If you test "shared" mode, when uninstall crosswalk runtime library from android device before testing, it will be prompted to download crosswalk runtime library from google play in formal test process.)
 
 4. Need to edit the file "apptools-android-tests/host.txt" according to the type of test host.
    If test host is "Windows" platform, content of the file should be "Windows", default value is "Android".
@@ -28,11 +29,13 @@ This test suite is for apptools-android-tests
 
 ## Precondition for AppTools on Linux or OS X host
 
-1. Download crosswalk-app-tools to apptools-android-tests/tools, then install npm and exec-sync
+1. Download crosswalk-app-tools and release crosswalk zip to apptools-android-tests/tools, then install npm and exec-sync
 
   1.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
 
-  1.2 Run commands: cd crosswalk-app-tools, then run:
+  1.2 Download the release Crosswalk zip which you want to test
+
+  1.3 Run commands: cd crosswalk-app-tools, then run:
 
       sudo npm install
       sudo npm install exec-sync
@@ -52,11 +55,13 @@ This test suite is for apptools-android-tests
 
 ## Precondition for AppTools on Windows host
 
-1. Download crosswalk-app-tools to apptools-android-tests/tools, then install npm
+1. Download crosswalk-app-tools and release crosswalk zip to apptools-android-tests/tools, then install npm
 
   1.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
 
-  1.2 Run commands: cd crosswalk-app-tools, then run:
+  1.2 Download the release Crosswalk zip which you want to test
+
+  1.3 Run commands: cd crosswalk-app-tools, then run:
 
       npm install
       npm install exec-sync

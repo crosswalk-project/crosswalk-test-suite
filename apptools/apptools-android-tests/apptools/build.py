@@ -60,7 +60,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.XwalkPath)
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
-            comm.crosswalkVersion
+            comm.crosswalkzip
         os.system(cmd)
         os.chdir('org.xwalk.test')
         if comm.ARCH_X86 == "x86":
@@ -97,7 +97,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.XwalkPath)
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
-            comm.crosswalkVersion
+            comm.crosswalkzip
         os.system(cmd)
         os.chdir('org.xwalk.test')
         shutil.rmtree(
