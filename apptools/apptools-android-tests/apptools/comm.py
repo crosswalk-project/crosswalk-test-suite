@@ -225,7 +225,7 @@ def run(self):
             (return_laun_code_arm, launstatus_arm) = getstatusoutput(
                 'adb -s ' +
                 device_arm +
-                ' shell am start -n org.xwalk.test/.MainActivity')
+                ' shell am start -n org.xwalk.test/.TestActivity')
             return_stop_code_arm = os.system(
                 'adb -s ' +
                 device_arm +
@@ -246,7 +246,7 @@ def run(self):
             (return_laun_code_x86, launstatus_x86) = getstatusoutput(
                 'adb -s ' +
                 device_x86 +
-                ' shell am start -n org.xwalk.test/.MainActivity')
+                ' shell am start -n org.xwalk.test/.TestActivity')
             return_stop_code_x86 = os.system(
                 'adb -s ' +
                 device_x86 +
