@@ -42,7 +42,8 @@ public class TestHelperBridge {
     private final OnConsoleMessageHelper mOnConsoleMessageHelper;
     private final OnDownloadStartHelper mOnDownloadStartHelper;
     private final OnDocumentLoadedInFrameHelper mOnDocumentLoadedInFrameHelper;
-    private final OnReceivedClientCertRequestHelper mOnReceivedClientCertRequestHelper;    
+    private final OnReceivedClientCertRequestHelper mOnReceivedClientCertRequestHelper;
+    private final OnReceivedHttpAuthRequestHelper mOnReceivedHttpAuthRequestHelper;
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -67,7 +68,8 @@ public class TestHelperBridge {
         mOnConsoleMessageHelper = new OnConsoleMessageHelper();
         mOnDownloadStartHelper = new OnDownloadStartHelper();
         mOnDocumentLoadedInFrameHelper = new OnDocumentLoadedInFrameHelper();
-        mOnReceivedClientCertRequestHelper = new OnReceivedClientCertRequestHelper();  
+        mOnReceivedClientCertRequestHelper = new OnReceivedClientCertRequestHelper();
+        mOnReceivedHttpAuthRequestHelper = new OnReceivedHttpAuthRequestHelper();
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -267,4 +269,11 @@ public class TestHelperBridge {
     public void onReceivedClientCertRequest(XWalkView view, ClientCertRequest handler) {
     	mOnReceivedClientCertRequestHelper.notifyCalled(handler);
     }    
+    public OnReceivedHttpAuthRequestHelper getOnReceivedHttpAuthRequestHelper() {
+        return mOnReceivedHttpAuthRequestHelper;
+    }
+
+    public void onReceivedHttpAuthRequest(String host) {
+        mOnReceivedHttpAuthRequestHelper.notifyCalled(host);
+    }
 }

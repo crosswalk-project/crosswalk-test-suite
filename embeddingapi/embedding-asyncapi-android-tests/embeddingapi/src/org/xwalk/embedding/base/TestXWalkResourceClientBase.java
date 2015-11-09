@@ -1,6 +1,7 @@
 package org.xwalk.embedding.base;
 
 import org.xwalk.core.ClientCertRequest;
+import org.xwalk.core.XWalkHttpAuthHandler;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkView;
 
@@ -63,4 +64,9 @@ public class TestXWalkResourceClientBase extends XWalkResourceClient{
 			ClientCertRequest handler) {
 		mInnerContentsClient.onReceivedClientCertRequest(view, handler);
 	}    
+    @Override
+    public void onReceivedHttpAuthRequest(XWalkView view,
+            XWalkHttpAuthHandler handler, String host, String realm) {
+        mInnerContentsClient.onReceivedHttpAuthRequest(host);
+    }
 }
