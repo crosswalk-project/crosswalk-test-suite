@@ -623,3 +623,14 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load methods
+
+
+
+### 62. The [XWalkViewWithOnReceivedHttpAuthRequest](client/XWalkViewWithOnReceivedHttpAuthRequest.java) sample check onReceivedHttpAuthRequest will be invoked when website needs auth request, include:
+
+* XWalkView can handle an authentication request
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setResourceClient methods
+* ResourceClient interface: onReceivedHttpAuthRequest methods
