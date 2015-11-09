@@ -36,6 +36,7 @@ import urllib2
 import re
 from bs4 import BeautifulSoup
 import zipfile
+import json
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
@@ -231,6 +232,47 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
         self.assertEquals(apkLength, 1)
 
+    def test_create_package_keep(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " --keep " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        projectDir = output[0].split(" * " + os.linesep)[-1].split(' ')[-1].strip(os.linesep)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertEquals(apkLength, 1)
+        self.assertIn("app", os.listdir(projectDir))
+        self.assertIn("prj", os.listdir(projectDir))
+
+    def test_create_package_k(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " -k " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        projectDir = output[0].split(" * " + os.linesep)[-1].split(' ')[-1].strip(os.linesep)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertEquals(apkLength, 1)
+        self.assertIn("app", os.listdir(projectDir))
+        self.assertIn("prj", os.listdir(projectDir))
 
 if __name__ == '__main__':
     unittest.main()

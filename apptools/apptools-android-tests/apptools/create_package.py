@@ -408,5 +408,67 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(return_code, 0)
         self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
 
+    def test_create_package_keep(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --keep " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        if comm.MODE != " --android-shared":
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
+        projectDir = output[0].split(" * " + os.linesep)[-1].split(' ')[-1].strip(os.linesep)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("app", os.listdir(projectDir))
+        self.assertIn("prj", os.listdir(projectDir))
+
+def test_create_package_k(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " -k " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        if comm.MODE != " --android-shared":
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
+        projectDir = output[0].split(" * " + os.linesep)[-1].split(' ')[-1].strip(os.linesep)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("app", os.listdir(projectDir))
+        self.assertIn("prj", os.listdir(projectDir))
+
 if __name__ == '__main__':
     unittest.main()
