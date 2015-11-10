@@ -53,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "xwalkCommandLine", "privateNotes"]
+PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes"]
 CORDOVA_VERSIONS = ["3.6", "4.x"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
@@ -312,6 +312,13 @@ def createIndexFile(index_file_path=None, hosted_app=None):
                            '<button onclick="StatusBar.show();">Status Bar Show</button><br><br>\n' \
                            '<p>Click "Status Bar Hide" button to hide status bar:</p>\n' \
                            '<button onclick="StatusBar.hide();">Status Bar Hide</button>'
+        elif hosted_app == "setBackgroundColor":
+            html_content = '<script src="./cordova.js"></script>\n' \
+                           '<div id="header">\n' \
+                           '  <h3 id="main_page_title">BackgroundColor Test</h3>\n' \
+                           '</div>\n<br><br>\n' \
+                           '<p>This page\'s background color should be red</p>\n' \
+                           '<a href="https://crosswalk-project.org">crosswalk</a>\n'
         index_file = open(index_file_path, "w")
         index_file.write(html_content)
         index_file.close()
@@ -550,10 +557,10 @@ def installPlugins(plugin_tool, app_name):
         xwalk_version = "org.xwalk:xwalk_%s_library_beta:%s" % (pkg_mode_tmp, CROSSWALK_VERSION)
 
     webview_plugin_name = "cordova-plugin-crosswalk-webview"
-    install_variable_cmd = ""
     if os.path.exists(plugin_tool): 
         plugin_dirs = os.listdir(plugin_tool)
         for i_dir in plugin_dirs:
+            install_variable_cmd = ""
             i_plugin_dir = os.path.join(plugin_tool, i_dir)
             plugin_crosswalk_source = i_plugin_dir
             if i_dir == webview_plugin_name:
@@ -943,6 +950,13 @@ def packSampleApp_cli(app_name=None):
         os.chdir(orig_dir)
         return False
 
+    if checkContains(app_name, "SETBACKGROUNDCOLOR"):
+        replaceUserString(
+            project_root,
+            'config.xml',
+            '</widget>',
+            '    <preference name="BackgroundColor" value="0xFFFF0000" />\n</widget>')
+        createIndexFile(os.path.join(project_root, "www", "index.html"), "setBackgroundColor")
     if checkContains(app_name, "STATUSBAR"):
         replaceUserString(
             project_root,
@@ -980,7 +994,7 @@ def packSampleApp_cli(app_name=None):
     if checkContains(app_name, "REMOTEDEBUGGING"):
         pack_cmd = "cordova build android --debug"
 
-    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT * 5):
         os.chdir(orig_dir)
         return False
 
