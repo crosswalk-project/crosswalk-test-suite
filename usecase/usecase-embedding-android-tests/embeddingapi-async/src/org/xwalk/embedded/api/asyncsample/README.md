@@ -639,8 +639,19 @@ This usecase covers following interface and methods:
 
 ### 63. The [XWalkViewWithWindowSecureAsync](basic/XWalkViewWithWindowSecureAsync.java) sample check xwalkview window can prevent from the screenshoting by setting window flag SECURE, include:
 
-* walkview window can prevent from the screenshoting by setting window flag SECURE
+* xwalkview window can prevent from the screenshoting by setting window flag SECURE
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: load methods
+
+
+
+### 65. The [XWalkViewWithOnJavascriptModalDialogAsync](client/XWalkViewWithOnJavascriptModalDialogAsync.java) sample check XWalkUIClient API onJavascriptModalDialog method can work, include:
+
+* XWalkUIClient API onJavascriptModalDialog method can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load methods
+* UIClient interface: onJavascriptModalDialog methods
