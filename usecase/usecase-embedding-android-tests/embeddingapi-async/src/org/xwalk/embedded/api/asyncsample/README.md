@@ -647,6 +647,7 @@ This usecase covers following interface and methods:
 
 
 
+
 ### 64. The [XWalkViewWithSessionStorageAsync](misc/XWalkViewWithSessionStorageAsync.java) sample check xwalkview can restore html5 sessionstorage value when screen rotates, include:
 
 * xwalkview can restore html5 sessionstorage value when screen rotates
@@ -664,4 +665,18 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load methods
+
 * UIClient interface: onJavascriptModalDialog methods
+
+
+
+### 66. The [XWalkViewWithOnJavascriptCloseWindowAsync](client/XWalkViewWithOnJavascriptCloseWindowAsync.java) sample check XWalkUIClient API onJavascriptCloseWindow method can work, include:
+
+* XWalkUIClient API onJavascriptCloseWindow method can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load methods
+
+* UIClient interface: onJavascriptCloseWindow methods
+

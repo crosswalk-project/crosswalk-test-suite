@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>JavaScript Window Close Example</title>
+</head>
+<script type="text/javascript">
+    function popuponclick()
+    {
+        my_window = window.open("",
+            "mywindow", "status=1,width=350,height=150");
+        my_window.document.write('<h1>The Popup Window</h1>');
+        my_window.document.write('<p><a href="javascript: closepopup()">Close the Popup Window</a></p>');
+    }
+
+    function closepopup()
+    {
+        if(false == my_window.closed)
+        {
+            my_window.close();
+        }
+        else
+        {
+            alert("Window already closed!");
+        }
+    }
+</script>
+<body>
+    <p>
+        <a href="javascript: popuponclick()">Open Popup Window</a>
+    </p>
+</body>
+</html>
