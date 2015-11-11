@@ -127,9 +127,11 @@ if [ $pack_type == "apk" ]; then
     mv $BUILD_DEST/index.html $BUILD_DEST/index_real.html
     mv $BUILD_DEST/index_tmp.html $BUILD_DEST/index.html
     ## creat apk ##
-    cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
-    cd $BUILD_ROOT/crosswalk
-    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$pack_mode --arch=$arch --enable-remote-debugging
+    #cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
+    #cd $BUILD_ROOT/crosswalk
+    cd $BUILD_ROOT
+    #python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$pack_mode --arch=$arch --enable-remote-debugging
+    crosswalk-pkg --android=$pack_mode --crosswalk=$crosswalk_version --manifest=''\{\"name\":\"$appname\"\,\"xwalk_package_id\":\"org.xwalk."$appname"\",\"start_url\":\"index.html\"\}'' -p android --targets=$arch $BUILD_DEST
     if [ $? -ne 0 ];then
         echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         clean_workspace
@@ -137,7 +139,7 @@ if [ $pack_type == "apk" ]; then
     fi
     
     ## creat zip package ##
-    mv $BUILD_ROOT/crosswalk/*.apk $BUILD_DEST/opt/$name/
+    mv $BUILD_ROOT/*.apk $BUILD_DEST/opt/$name/
     if [ -f $BUILD_DEST/opt/$name/WebapiNoneserviceTests_$arch.apk ] || [ -f $BUILD_DEST/opt/$name/WebapiNoneserviceTests.apk ];then
         mv $BUILD_DEST/opt/$name/WebapiNoneserviceTests*.apk $BUILD_DEST/opt/$name/$appname.apk
     fi

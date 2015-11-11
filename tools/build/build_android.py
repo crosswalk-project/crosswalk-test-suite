@@ -56,50 +56,69 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     BUILD_ROOT = varshop.getValue("BUILD_ROOT")
     BUILD_ROOT_SRC = varshop.getValue("BUILD_ROOT_SRC")
     BUILD_TIME= varshop.getValue("BUILD_TIME")
+    CROSSWALK_VERSION = varshop.getValue("CROSSWALK_VERSION")
     DEFAULT_CMD_TIMEOUT= varshop.getValue("DEFAULT_CMD_TIMEOUT")
     PKG_MODES= varshop.getValue("PKG_MODES")
     PKG_ARCHS= varshop.getValue("PKG_ARCHS")
     app_name = app_name.replace("-", "_")
+    get_real_arch = {"x86": "x86",
+                     "x86_64": "x86_64",
+                     "arm": "armeabi-v7a",
+                     "arm64": "arm64-v8a"}
 
-    if not os.path.exists(os.path.join(BUILD_ROOT, "crosswalk")):
-        if not utils.doCopy(
-                os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk"),
-                os.path.join(BUILD_ROOT, "crosswalk")):
-            return False
+    #Use crosswalk zip in local mode
+    #if not os.path.exists(os.path.join(BUILD_ROOT, "crosswalk-%s.zip" % CROSSWALK_VERSION)):
+    #    if not utils.doCopy(
+    #            os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk-%s.zip" % CROSSWALK_VERSION),
+    #            os.path.join(BUILD_ROOT, "crosswalk-%s.zip" % CROSSWALK_VERSION)):
+    #        return False
 
-    files = glob.glob(os.path.join(BUILD_ROOT, "crosswalk", "*.apk"))
+    files = glob.glob(os.path.join(BUILD_ROOT, "*.apk"))
     if files:
         if not utils.doRemove(files):
             return False
 
-    ext_opt = ""
+    ext_opt = []
     cmd_opt = ""
     url_opt = ""
     mode_opt = ""
     arch_opt = ""
     icon_opt = ""
+    icons_opt = []
     version_opt = ""
     pkg_opt = ""
     version_code_opt = ""
     fullscreen_opt = ""
+    orientation_opt = ""
+    screenOn_opt = ""
+    animatableView_opt = ""
+    webp_opt = ""
+    shortName_opt = ""
+    permissions_opt = []
 
     common_opts = utils.safelyGetValue(build_json, "apk-common-opts")
     if common_opts is None:
-        common_opts = ""
+        common_opts = "-r"
+    else:
+        common_opts_array = common_opts.split()
+        if "-r" in common_opts_array:
+            pass
+        elif "--enable-remote-debugging" in common_opts_array:
+            common_opts = common_opts.replace('--enable-remote-debugging', '')
+        else:
+            common_opts += "-r"
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-ext-opt")
     if tmp_opt:
-        ext_opt = "--extensions='%s'" % os.path.join(BUILD_ROOT_SRC, tmp_opt)
+        ext_opt = [os.path.join(BUILD_ROOT_SRC, tmp_opt)]
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-version-opt")
     if tmp_opt:
-        version_opt = "--app-version='%s'" % ''.join([tmp_opt, BUILD_TIME])
-        version_code_opt = "--app-versionCode='%s'" % ''.join(
-            ['6', BUILD_TIME])
+        version_opt = "%s" % tmp_opt
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-fullscreen-opt")
     if tmp_opt:
-        ext_opt = "--%s" % tmp_opt
+        fullscreen_opt = "%s" % tmp_opt
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-pkg-opt")
     if tmp_opt:
@@ -107,68 +126,138 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-cmd-opt")
     if tmp_opt:
-        cmd_opt = "--xwalk-command-line='%s'" % tmp_opt
+        cmd_opt = "%s" % tmp_opt
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-url-opt")
     if tmp_opt:
         url_opt = "--app-url='%s'" % tmp_opt
 
+    tmp_opt = utils.safelyGetValue(build_json, "apk-orientation-opt")
+    if tmp_opt:
+        orientation_opt = "%s" % tmp_opt
+
+    tmp_opt = utils.safelyGetValue(build_json, "apk-screenOn-opt")
+    if tmp_opt:
+        screenOn_opt = "%s" % tmp_opt
+
+    tmp_opt = utils.safelyGetValue(build_json, "apk-animatableView-opt")
+    if tmp_opt:
+        animatableView_opt = "%s" % tmp_opt
+
+    tmp_opt = utils.safelyGetValue(build_json, "apk-webp-opt")
+    if tmp_opt:
+        webp_opt = "%s" % tmp_opt
+
+    tmp_opt = utils.safelyGetValue(build_json, "apk-shortName-opt")
+    if tmp_opt:
+        shortName_opt = "%s" % tmp_opt
+
+    tmp_opt = utils.safelyGetValue(build_json, "apk-permissions-opt")
+    if tmp_opt:
+        permissions_opt = [tmp_opt]
+
     tmp_opt = utils.safelyGetValue(build_json, "apk-mode-opt")
     if tmp_opt:
         if tmp_opt in PKG_MODES:
-            mode_opt = "--mode=%s" % tmp_opt
+            mode_opt = "--android=\"%s\"" % tmp_opt
+            if tmp_opt == "embedded":
+                mode_opt = ""
         else:
             LOG.error("Got wrong app mode: %s" % tmp_opt)
             return False
     else:
-        mode_opt = "--mode=%s" % BUILD_PARAMETERS.pkgmode
+        mode_opt = "--android=\"%s\"" % BUILD_PARAMETERS.pkgmode
+        if BUILD_PARAMETERS.pkgmode == "embedded":
+            mode_opt = ""
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-arch-opt")
     if tmp_opt:
         if tmp_opt in PKG_ARCHS:
-            arch_opt = "--arch=%s" % tmp_opt
+            arch_opt = "%s" % tmp_opt
         else:
             LOG.error("Got wrong app arch: %s" % tmp_opt)
             return False
     else:
-        arch_opt = "--arch=%s" % BUILD_PARAMETERS.pkgarch
+        arch_opt = "%s" % BUILD_PARAMETERS.pkgarch
+    arch_opt = get_real_arch[arch_opt]
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-icon-opt")
     if tmp_opt:
-        icon_opt = "--icon=%s" % tmp_opt
+        icon_opt = "%s" % tmp_opt
+        icon_set = {}
+        icon_set["src"] = icon_opt
+        icon_set["sizes"] = "72x72"
+        icons_opt = [icon_set]
     elif tmp_opt == "":
-        icon_opt = ""
+        pass
     else:
-        icon_opt = "--icon=%s/icon.png" % app_src
+        icon_opt = "icon.png"
+        icon_set = {}
+        icon_set["src"] = icon_opt
+        icon_set["sizes"] = "72x72"
+        icons_opt = [icon_set]
+
+    manifest_opt = {}
+    manifest_opt["name"] = "%s" % app_name
+    manifest_opt["xwalk_package_id"] = "org.xwalk.%s" % app_name
+    if url_opt:
+        manifest_opt["start_url"] = url_opt
+    else:
+        manifest_opt["start_url"] = "index.html"
+    if ext_opt:
+        manifest_opt["xwalk_extensions"] = ext_opt
+    if cmd_opt:
+        manifest_opt["xwalk_command_line"] = cmd_opt
+    if fullscreen_opt:
+        manifest_opt["display"] = fullscreen_opt
+    if version_opt:
+        manifest_opt["xwalk_app_version"] = version_opt
+    if icons_opt:
+        manifest_opt["icons"] = icons_opt
+    if orientation_opt:
+        manifest_opt["orientation"] = orientation_opt
+    if screenOn_opt:
+        manifest_opt["xwalk_android_keep_screen_on"] = screenOn_opt
+    if animatableView_opt:
+        manifest_opt["xwalk_android_animatable_view"] = animatableView_opt
+    if webp_opt:
+        manifest_opt["xwalk_android_webp"] = webp_opt
+    if shortName_opt:
+        manifest_opt["short_name"] = shortName_opt
+    if permissions_opt:
+        manifest_opt["xwalk_android_permissions"] = permissions_opt 
+
+    manifest_opt = json.JSONEncoder().encode(manifest_opt)
 
     if utils.safelyGetValue(build_json, "apk-type") == "MANIFEST":
-        pack_cmd = "python make_apk.py --package=org.xwalk.%s " \
-            "--manifest=%s/manifest.json  %s %s %s %s %s %s %s %s %s" % (
-                app_name, app_src, mode_opt, arch_opt,
-                ext_opt, cmd_opt, common_opts, version_opt, pkg_opt, version_code_opt, fullscreen_opt)
+        pack_cmd = "crosswalk-pkg %s --crosswalk=%s " \
+                   "-p android --targets=\"%s\" %s %s" % (
+                       mode_opt, CROSSWALK_VERSION, arch_opt, common_opts,
+                       app_src)
     elif utils.safelyGetValue(build_json, "apk-type") == "HOSTEDAPP":
         if not url_opt:
             LOG.error(
                 "Fail to find the key \"apk-url-opt\" for hosted APP packing")
             return False
-        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s %s " \
-                   "%s %s %s %s %s %s %s %s %s" % (
-                       app_name, app_name, mode_opt, arch_opt, ext_opt,
-                       cmd_opt, url_opt, common_opts, version_opt, pkg_opt, version_code_opt, fullscreen_opt)
+        app_src_temp = "%s_%s" % (app_src, utils.getRandomStr())
+        os.mkdir(app_src_temp)
+        pack_cmd = "crosswalk-pkg %s --crosswalk=%s --manifest='%s' " \
+                   "-p android --targets=\"%s\" %s %s" % (
+                       mode_opt, CROSSWALK_VERSION, manifest_opt, arch_opt,
+                       common_opts, app_src_temp)
     else:
-        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s " \
-                   "--app-root=%s --app-local-path=index.html %s %s " \
-                   "%s %s %s %s %s %s %s %s" % (
-                       app_name, app_name, app_src, icon_opt, mode_opt,
-                       arch_opt, ext_opt, cmd_opt, common_opts, version_opt, pkg_opt, version_code_opt, fullscreen_opt)
+        pack_cmd = "crosswalk-pkg %s --crosswalk=%s --manifest='%s' " \
+                   "-p android --targets=\"%s\" %s %s" % (
+                       mode_opt, CROSSWALK_VERSION, manifest_opt, arch_opt,
+                       common_opts, app_src)
 
     orig_dir = os.getcwd()
-    os.chdir(os.path.join(BUILD_ROOT, "crosswalk"))
+    os.chdir(os.path.join(BUILD_ROOT))
     if not utils.doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
 
-    files = glob.glob(os.path.join(BUILD_ROOT, "crosswalk", "*.apk"))
+    files = glob.glob(os.path.join(BUILD_ROOT, "*.apk"))
     if files:
         if not utils.doCopy(files[0], os.path.join(app_dest, "%s.apk" % app_name)):
             os.chdir(orig_dir)

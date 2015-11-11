@@ -90,10 +90,11 @@ fi
 cp -a $SRC_ROOT/icon.png     $BUILD_ROOT/
 
 if [ $pack_type == "apk" ];then
-    cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
+    #cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 
-    cd $BUILD_ROOT/crosswalk
-    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_ROOT/icon.png --mode=$pack_mode --arch=$arch --enable-remote-debugging
+    cd $BUILD_ROOT
+    #python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_ROOT/icon.png --mode=$pack_mode --arch=$arch --enable-remote-debugging
+    crosswalk-pkg --android=$pack_mode --crosswalk=$crosswalk_version --manifest=''\{\"name\":\"$appname\"\,\"xwalk_package_id\":\"org.xwalk."$appname"\",\"start_url\":\"http://127.0.0.1:8080/index.html\"\}'' -p android --targets=$arch $BUILD_DEST
 elif [ $pack_type == "cordova" ];then
     if [ $sub_version == "4.x" ]; then
         cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
@@ -199,10 +200,10 @@ done
 
 ## creat zip package ##
 if [ $pack_type == "apk" ];then
-    mv $BUILD_ROOT/crosswalk/*.apk $BUILD_ROOT/opt/$name/
+    mv $BUILD_ROOT/*.apk $BUILD_ROOT/opt/$name/
 
-    if [ -f $BUILD_ROOT/opt/$name/WebapiServiceTests_$arch.apk ] || [ -f $BUILD_ROOT/opt/$name/WebapiServiceTests.apk ];then
-        mv $BUILD_ROOT/opt/$name/WebapiServiceTests*.apk $BUILD_ROOT/opt/$name/$appname.apk
+    if [ -f $BUILD_ROOT/opt/$name/*webapi_service_tests*$arch.apk ] || [ -f $BUILD_ROOT/opt/$name/WebapiServiceTests.apk ];then
+        mv $BUILD_ROOT/opt/$name/*webapi_service_tests*.apk $BUILD_ROOT/opt/$name/$appname.apk
     fi
 elif [ $pack_type == "cordova" ];then
     if [ $sub_version == "3.6" ]; then
