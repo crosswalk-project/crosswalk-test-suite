@@ -3,10 +3,15 @@
 <test_definition>
   <suite category="Crosswalk_Sample_App" name="sampleapp-windows-tests">
     <set name="SampleAppTest" type="js">
+      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_AppPack" priority="P1" purpose="Validate if sample app HangOnMan could be packaged" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HangOnMan_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_AppLaunch" priority="P1" purpose="Validate if sample app HangOnMan could launch" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the HangOnMan app is put in a server and can be accessed
+            1.Make sure the HangOnMan app is installed
           </pre_condition>
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HangOnMan_AppLaunch.html</test_script_entry>
         </description>
@@ -19,10 +24,15 @@
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HangOnMan_AppFunction.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="HexGL_AppPack" priority="P1" purpose="Validate if sample app HexGL could be packaged" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HexGL_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="HexGL_AppLaunch" priority="P1" purpose="Validate if sample app HexGL could launch" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the HexGL app is put in a server and can be accessed
+            1.Make sure the HexGL app is installed
           </pre_condition>
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HexGL_AppLaunch.html</test_script_entry>
         </description>
@@ -35,10 +45,15 @@
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/HexGL_AppFunction.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_AppPack" priority="P1" purpose="Validate if sample app MemoryGame could be packaged" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/MemoryGame_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_AppLaunch" priority="P1" purpose="Validate if sample app MemoryGame could launch" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the MemoryGame app is put in a server and can be accessed
+            1.Make sure the MemoryGame app is installed
           </pre_condition>
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/MemoryGame_AppLaunch.html</test_script_entry>
         </description>
@@ -51,10 +66,68 @@
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/MemoryGame_AppFunction.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_AppPack" priority="P1" purpose="Validate if sample app SysApps_DeviceCapabilities could be packaged" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_AppLaunch" priority="P1" purpose="Validate if sample app SysApps_DeviceCapabilities could launch" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is installed
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_AppLaunch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_Audio_Video_Upload" priority="P1" purpose="Validate if sample app SysApps_DeviceCapabilities Audio Video Upload function could work well" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_Audio_Video_Upload.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_CPU_Monitor" priority="P1" purpose="Validate if sample app SysApps_DeviceCapabilities CPU Monitor function could work well" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_CPU_Monitor.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_Display_State" priority="P1" purpose="Validate if sample app SysApps_DeviceCapabilities Display State function could work well" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_Display_State.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_Memory_Monitor" priority="P1" purpose="Validate if sample app SysApps_DeviceCapabilities Memory Monitor function could work well" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_Memory_Monitor.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="Sysapps_Storage_State" priority="P1" purpose="Validate if sample app SysApps_DeviceCapabilities Storage State function could work well" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the SysApps_DeviceCapabilities app is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/Sysapps_Storage_State.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="SIMD_AppPack" priority="P1" purpose="Validate if sample app SIMD could could be packaged" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/SIMD_AppPack.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="SIMD_AppLaunch" priority="P1" purpose="Validate if sample app SIMD could launch" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the SIMD app is put in a server and can be accessed
+            1.Make sure the SIMD app is installed
           </pre_condition>
           <test_script_entry>/opt/sampleapp-windows-tests/sampleapp/SIMD_AppLaunch.html</test_script_entry>
         </description>

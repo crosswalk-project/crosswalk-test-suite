@@ -1,1 +1,0 @@
-xwalk.exe http://wts.sh.intel.com/tests/usecase/samples/SIMD/index.html?tid=SIMD

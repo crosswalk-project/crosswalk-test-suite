@@ -3,10 +3,14 @@
 This test suite is for testing sampleapp-windows-tests specification
 
 
-
 ## Authors:
 
 * Zhu,Yongyong <yongyongx.zhu@intel.com>
+
+
+## Pre-condition
+Copy sourcecode of sampleapp named "HangOnMan", "HexGL", "MemoryGame", "simd-mandelbrot" and "SysApps_DeviceCapabilities" to the "res" directory before pack this suite
+
 
 ## LICENSE
 
