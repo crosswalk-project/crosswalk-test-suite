@@ -35,20 +35,47 @@ Authors:
   <head>
     <title>CSS3 Text Effects Test: CSS3FlexBox_align-self</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-css3-flexbox-20120612/#align-self" />
+    <link rel="help" href="https://drafts.csswg.org/css-flexbox-1/#align-items-property" />
     <meta name="flags" content="" />
     <meta name="assert" content="Check if the 'align-self' property exists" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
     <script src="support/flexiblebox.js"></script>
+    <style>
+        #container {
+            display: flex;
+            align-items: center;
+        }
+
+        #no-parent-test {
+            display: flex;
+        }
+    </style>
   </head>
   <body>
     <div id="log"></div>
+    <div id="container">
+        <div id="has-parent-test"></div>
+    </div>
+    <div id="no-parent-test"></div>
     <script>
         test(function () {
             var div = document.getElementById("log");
             assert_true(hasStyle("align-self", div.style), "The align-self property exists");
         }, document.title);
+
+        test(function () {
+            var div = document.getElementById("has-parent-test");
+            var initialValue = getComputedStyle(div)["align-self"];
+            assert_equals(initialValue, "center", "The value of align-self property");
+        }, "Check that 'align-self' computes the value of 'align-items' on the element's parent "
+            + "when the element's 'align-self' set to the default value.");
+
+        test(function () {
+            var div = document.getElementById("no-parent-test");
+            var initialValue = getComputedStyle(div)["align-self"];
+            assert_equals(initialValue, "stretch", "The value of align-self property");
+        }, "Check that 'align-self' computes 'stretch' if the element has no parent.");
     </script>
   </body>
 </html>
