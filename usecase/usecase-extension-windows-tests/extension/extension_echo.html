@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Zhu, Yongyong <yongyongx.zhu@intel.com>
+
+-->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Copy the extension dll file to myextension folder and rename it to "echo_extension.dll"</li>
+    <li>Copy the xwalk_dotnet_bridge.dll from windows Crosswalk pkg to myextension folder and rename it to "echo_extension_bridge.dll"</li>
+    <li>Enter opt/usecase-extension-windows-tests/xwalk-echo-app use cmd, execute "python -m SimpleHTTPServer 8080" to start a server</li>
+    <li>Unzip the windows crosswalk pkg, open cmd, execute the command to launch the echo extension app:
+      <ol>xwalk.exe http://localhost:8080 --allow-external-extensions-for-remote-sources --external-extensions-path=/path/to/myextension</ol>
+    </li>
+    <li>Click "Test Sync Echo"</li>
+    <li>Click "Test Async Echo"</li>
+  </ol>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Launch app successfully</li>
+    <li>Page shows "Sync echo passed"</li>
+    <li>Page shows "Async echo passed"</li>
+  </ol>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+</div>

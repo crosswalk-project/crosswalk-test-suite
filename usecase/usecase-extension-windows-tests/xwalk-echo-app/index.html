@@ -1,0 +1,53 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>
+function testSyncEcho(){
+  var div = document.getElementById("div");
+  try {
+    var d = new Date().toString();
+    var expected = "From dll sync:" + d;
+    var msg = echo.syncEcho(d);
+    div.innerHTML = div.innerHTML + msg + "<br/>";
+
+    if (msg === expected) {
+      div.innerHTML = div.innerHTML + "Sync echo <font color=green>passed</font>.<br/>";
+      document.title = "Pass";
+    } else {
+      div.innerHTML = div.innerHTML + "Sync echo <font color=red>failed</font>.<br/>";
+      document.title = "Fail";
+    }
+  } catch(e) {
+    div.innerHTML = div.innerHTML + e + "<br/>";
+    document.title = "Fail";
+  }
+}
+
+function testAsyncEcho(){
+  var div = document.getElementById("div");
+  try {
+    var d = new Date().toString();
+    var expected = "From dll async:" + d;
+    var msg = echo.echo(d, function(msg){
+	  div.innerHTML = div.innerHTML + msg + "<br/>";
+      if (msg === expected) {
+        div.innerHTML = div.innerHTML + "Async echo <font color=green>passed</font>.<br/>";
+        document.title = "Pass";
+      } else {
+       div.innerHTML = div.innerHTML + "Async echo <font color=red>failed</font>.<br/>";
+        document.title = "Fail";
+      }
+    });
+  } catch(e) {
+    div.innerHTML = div.innerHTML + e + "<br/>";
+    document.title = "Fail";
+  }
+}
+</script>
+<button onclick="testSyncEcho()">Test Sync Echo</button>
+<button onclick="testAsyncEcho()">Test Async Echo</button><br/><br/>
+<div id="div"></div>
+</body>
+</html>
