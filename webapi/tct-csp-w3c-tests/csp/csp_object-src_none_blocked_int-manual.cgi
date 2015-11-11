@@ -47,6 +47,6 @@ Authors:
   </head>
   <body>
     <p>Test passes if there is <strong>no red</strong>.</p>
-    <object data="support/red-100x100.png"/>
+    <object type="text/html" data="support/object-src-block.html"/>
   </body>
 </html> '
