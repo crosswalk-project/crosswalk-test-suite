@@ -69,7 +69,15 @@ class Android(common.APP):
         self.productName = self.d.info["productName"]
         self.info_temp = {}
         self.process_args = {"func_name": None, "func_args": []}
-
+        try:
+            # Android Verion: [x.x.x]
+            (return_code, output) = self.doCMD(self.adb + " getprop |grep \"\[ro.build.version.release\]\" |awk -F \":\" '{print $NF}'")
+            if return_code == 0 and output:
+                androidVersion = output[0].strip()
+            # Get frist 'x' as int
+            self.androidVersion = int(androidVersion[1:2])
+        except Exception as e:
+            print("Fail to get android version: %s" % e)
 
     def launch_app(self):
         cmd = self.adb + \
@@ -172,11 +180,19 @@ class Android(common.APP):
             or self.productName == PRODUCTS_NAME["nexus4"] \
             or self.productName == PRODUCTS_NAME["nexus5"]:
             if self.openSettings():
-                more = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                        .child_by_text(u'More\u2026', className="android.widget.LinearLayout")
+                # UI changed on Android 5+
+                if self.androidVersion >= 5:
+                    more = self.d(className="android.widget.ScrollView", resourceId="com.android.settings:id/dashboard") \
+                               .child_by_text(u'More', className="android.widget.TextView")
+                else:
+                    more = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                            .child_by_text(u'More\u2026', className="android.widget.LinearLayout")
                 if more.exists:
                     self.clickObject(more)
-                    rtn = self.selectSwitchChild(u'Airplane mode', turnon, "android.widget.CheckBox")
+                    if self.androidVersion >= 5:
+                        rtn = self.selectSwitchChild(u'Airplane mode', turnon, "android.widget.Switch")
+                    else:
+                        rtn = self.selectSwitchChild(u'Airplane mode', turnon, "android.widget.CheckBox")
                     if rtn:
                         self.pressKeyBy("back")
                         return True
