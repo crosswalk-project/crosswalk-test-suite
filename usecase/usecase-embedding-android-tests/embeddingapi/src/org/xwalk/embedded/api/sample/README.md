@@ -664,4 +664,17 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load methods
+
 * UIClient interface: onJavascriptModalDialog methods
+
+
+
+### 66. The [XWalkViewWithOnJavascriptCloseWindow](client/XWalkViewWithOnJavascriptCloseWindow.java) sample check XWalkUIClient API onJavascriptCloseWindow method can work, include:
+
+* XWalkUIClient API onJavascriptCloseWindow method can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load methods
+
+* UIClient interface: onJavascriptCloseWindow methods
