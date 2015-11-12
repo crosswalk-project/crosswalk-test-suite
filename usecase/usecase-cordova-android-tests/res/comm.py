@@ -131,7 +131,9 @@ def create(app_name, pkg_name, tmp_path):
 
 def installWebviewPlugin(xwalk_mode=None, xwalk_version=None):
     print "Install webview plugin----------------> Start"
-    xwalk_mode_cmd = "--variable XWALK_MODE=\"%s\"" % xwalk_mode
+    xwalk_mode_cmd = ""
+    if xwalk_mode:
+        xwalk_mode_cmd = "--variable XWALK_MODE=\"%s\"" % xwalk_mode
     xwalk_version_cmd = ""
     if xwalk_version:
         xwalk_version_cmd = "--variable XWALK_VERSION=\"%s\"" % xwalk_version
