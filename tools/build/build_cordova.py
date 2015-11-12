@@ -122,9 +122,9 @@ def packCordova_cli(
         xwalk_version = "org.xwalk:xwalk_%s_library_beta:%s" % (pkg_mode_tmp, CROSSWALK_VERSION)
 
     webview_plugin_name = "cordova-plugin-crosswalk-webview"
-    install_variable_cmd = ""
     plugin_dirs = os.listdir(plugin_tool)
     for i_dir in plugin_dirs:
+        install_variable_cmd = ""
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
         plugin_crosswalk_source = i_plugin_dir
         if i_dir == webview_plugin_name:
