@@ -255,13 +255,18 @@ class Android(common.APP):
 
 
     def switchLanguage(self, language):
+        languageAndInput = None
         self.openSettings()
-        languageAndInput = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                          .child_by_text(u'Language & input', className="android.widget.LinearLayout")
+        if self.androidVersion >= 5:
+            languageAndInput = self.d(className="android.widget.ScrollView", resourceId="com.android.settings:id/dashboard").child_by_text(u'Language \u0026 input', className="android.widget.TextView")
+        else:
+            languageAndInput = self.d(className="android.widget.ListView", resourceId="android:id/list").\
+                          child_by_text(u'Language & input', className="android.widget.LinearLayout")
+
         if languageAndInput.exists:
             languageAndInput.click()
             languageList = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                         .child_by_text("Language", className="android.widget.LinearLayout")
+                         .child(text="Language")
             if languageList.exists:
                  languageList.click()
                  languageOption = self.d(className="android.widget.ListView", resourceId="android:id/list") \
