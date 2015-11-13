@@ -94,10 +94,84 @@ This usecase covers following interface and methods:
 
 ### 10. The [WebViewWithNavigation](misc/WebViewWithNavigation.java) sample sample demonstrates how to forward and backward history, include:
 
-* XWalkView can backward history client when go backward button is clicked
-* XWalkView can forward history client when go forward button is clicked
+* WebView can backward history client when go backward button is clicked
+* WebView can forward history client when go forward button is clicked
 
 This usecase covers following interface and methods:
 
 * WebView interface: loadUrl, canGoBack, canGoForward, goBack, goForward, copyBackForwardList method
 * WebHistoryItem interface: getUrl, getOriginalUrl, getTitle methods
+
+
+
+### 11. The [WebViewWithOnReceivedIcon](client/WebViewWithOnReceivedIcon.java) sample demonstrates how to load icon when it's available, include:
+
+* WebView can load icon when it's available
+
+This usecase covers following interface and methods:
+
+* WebView interface: loadUrl method
+* WebChromeClient interface: onReceivedIcon method
+
+
+
+### 12. The [WebViewWithOnCreateWindow](client/WebViewWithOnCreateWindow.java) sample demonstrates how to create new window, include:
+
+* WebView can create new window
+
+This usecase covers following interface and methods:
+
+* WebView interface: loadUrl method
+* WebChromeClient interface: onCreateWindow method
+
+
+
+### 13. The [WebViewWithFullScreenActivity](basic/WebViewWithFullScreenActivity.java) sample demonstrates how to enter and exit fullscreen, include:
+
+* WebView can enter and exit fullscreen
+
+This usecase covers following interface and methods:
+
+* WebView interface: loadUrl method
+
+
+
+### 14. The [WebViewWithShouldOverrideUrlLoading](client/WebViewWithShouldOverrideUrlLoading.java) sample demonstrates how to trigger shouldOverrideUrlLoading method, include:
+
+* WebView can trigger shouldOverrideUrlLoading method
+
+This usecase covers following interface and methods:
+
+* WebView interface: loadUrl method
+* WebViewClient interface: shouldOverrideUrlLoading methods
+
+
+
+### 15. The [WebViewWithTransparent](basic/WebViewWithTransparent.java) sample check WebView's transparent feature, include:
+
+* WebView's transparent can display
+
+This usecase covers following interface and methods:
+
+* WebView interface: loadUrl, setBackgroundColor methods
+
+
+
+### 16. The [WebViewWithClearCache](basic/WebViewWithClearCache.java) sample check whether WebView can clear cache, include:
+
+* WebView can clear cache
+
+This usecase covers following interface and methods:
+
+* WebView interface: loadUrl, clearCache methods
+* WebViewClient interface: onPageFinished methods
+
+
+
+### 17. The [WebViewWithOnShowFileChooser](client/WebViewWithOnShowFileChooser.java) sample check WebView can open local file, include:
+
+* WebChromeClient.onShowFileChooser can be invoked
+
+This usecase covers following interface and methods:
+
+* WebView interface: WebChromeClient.onShowFileChooser methods
