@@ -61,7 +61,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 if findLine in line:
                     print "Find"
                     start = line.index("name")
-                    self.assertIn('MainActivity', line[start:])
+                    self.assertIn('TestActivity', line[start:])
                     break
                 else:
                     print "Continue find"

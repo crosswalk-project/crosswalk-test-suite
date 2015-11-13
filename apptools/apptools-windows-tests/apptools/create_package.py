@@ -217,7 +217,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " --manifest '{ \"xwalk_package_id\": \"org.xwalk.test\", \"start_url\": \"start.html\" }' " + comm.ConstPath + "/../testapp/start_url/"
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + ' --manifest "{ """xwalk_package_id""": """org.xwalk.test""", """start_url""": """start.html""" }" ' + comm.ConstPath + "/../testapp/start_url/"
         return_code = os.system(cmd)
         with open(comm.ConstPath + "/../testapp/start_url/manifest.json") as json_file:
             data = json.load(json_file)
