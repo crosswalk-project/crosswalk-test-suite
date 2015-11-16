@@ -122,7 +122,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-pkg-opt")
     if tmp_opt:
-        pkg_opt = "--package='org.xwalk.%s'" % tmp_opt
+        pkg_opt = "%s" % tmp_opt
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-cmd-opt")
     if tmp_opt:
@@ -130,7 +130,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-url-opt")
     if tmp_opt:
-        url_opt = "--app-url='%s'" % tmp_opt
+        url_opt = "%s" % tmp_opt
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-orientation-opt")
     if tmp_opt:
@@ -199,7 +199,10 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     manifest_opt = {}
     manifest_opt["name"] = "%s" % app_name
-    manifest_opt["xwalk_package_id"] = "org.xwalk.%s" % app_name
+    if pkg_opt:
+        manifest_opt["xwalk_package_id"] = "org.xwalk.%s" % pkg_opt
+    else:
+        manifest_opt["xwalk_package_id"] = "org.xwalk.%s" % app_name
     if url_opt:
         manifest_opt["start_url"] = url_opt
     else:
