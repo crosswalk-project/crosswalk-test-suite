@@ -215,7 +215,9 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
         manifest_opt["display"] = fullscreen_opt
     if version_opt:
         manifest_opt["xwalk_app_version"] = version_opt
-    if icons_opt:
+    if icons_opt and \
+           utils.safelyGetValue(build_json, "apk-type") != "MANIFEST" and \
+           utils.safelyGetValue(build_json, "apk-type") != "HOSTEDAPP":
         manifest_opt["icons"] = icons_opt
     if orientation_opt:
         manifest_opt["orientation"] = orientation_opt
