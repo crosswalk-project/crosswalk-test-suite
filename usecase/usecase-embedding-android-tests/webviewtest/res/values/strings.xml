@@ -20,6 +20,13 @@ found in the LICENSE file.
     <string name="title_activity_webview_with_multi_instance_overlay">WebViewWithMultiInstanceOverlay</string>
     <string name="title_activity_webview_with_clients">WebViewWithClients</string>
     <string name="title_activity_webview_with_navigation">WebViewWithNavigation</string>
+    <string name="title_activity_webview_with_on_received_icon">WebViewWithOnReceivedIcon</string>
+    <string name="title_activity_webview_with_on_create_window">WebViewWithOnCreateWindow</string>
+    <string name="title_activity_webview_with_fullscreen">WebViewWithFullScreenActivity</string>
+    <string name="title_activity_webview_with_should_override_url_loading">WebViewWithShouldOverrideUrlLoading</string>
+    <string name="title_activity_webview_with_transparent">WebViewWithTransparent</string>
+    <string name="title_activity_webview_with_clear_cache">WebViewWithClearCache</string>
+    <string name="title_activity_webview_with_onshow_file_chooser">WebViewWithOnShowFileChooser</string>
 
     <string name="webview_with_layout_desc">This case shows how webview load a url. When case invoked, the load url will show.</string>
     <string name="webview_with_multi_instance_desc">This case shows how to display multi webview instance in one layout.</string>
@@ -31,5 +38,12 @@ found in the LICENSE file.
     <string name="webview_with_multi_instance_overlay">This case shows a framelayout with two webviews in it and both filling the parent view. Expect that two webviews can be displayed dynamically by swapping to set webviews\' visbility to be visible or invisible.</string>
     <string name="webview_with_clients_desc">This case shows WebView\'s WebViewClient and WebChromeClient override methods will be invoked when webview load a url.</string>
     <string name="webview_with_navigation_desc">This case demonstrates how to forward and backward history in webview.</string>
+    <string name="webview_with_on_received_icon_desc">Notify the host application of a new favicon for the current page. If the feature is invoked, the favicon will show.</string>
+    <string name="webview_with_on_create_window_desc">Request the host application to create a new window. If the host application chooses to honor this request, it should return true from this method, create a new WebView to host the window. If the host application chooses not to honor the request, it should return false from this method. If the feature is invoked, it will show</string>
+    <string name="webview_with_fullscreen_desc">This case tests webview can handle html5 fullscreen feature or not.</string>
+    <string name="webview_with_should_override_url_loading_desc">Give the host application a chance to take over the control when a new url is about to be loaded in the current WebView. If WebViewClient is not provided, by default WebView will ask Activity Manager to choose the proper handler for the url. If WebViewClient is provided, return true means the host application handles the url, while return false means the current WebView handles the url.</string>
+    <string name="webview_with_transparent_desc">This case tests webview transparent feature by setting background color transparent.</string>
+    <string name="webview_with_clear_cache_desc">Clears the resource cache. Note that the cache is per-application, so this will clear the cache for all WebViews used. By clicking the clear cache button, the cache size will drop down a lot.</string>
+    <string name="webview_with_onshow_file_chooser_desc">This feature tells the client to show a file chooser. This is called to handle HTML forms with \'file\' input type, in response to the user pressing the \'Select File\' button. This feature needs API 21+. If the feature is invoked, it will show</string>
 
 </resources>
