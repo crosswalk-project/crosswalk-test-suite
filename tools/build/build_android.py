@@ -98,7 +98,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     common_opts = utils.safelyGetValue(build_json, "apk-common-opts")
     if common_opts is None:
-        common_opts = "-r"
+        common_opts = " -r "
     else:
         common_opts_array = common_opts.split()
         if "-r" in common_opts_array:
@@ -106,7 +106,9 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
         elif "--enable-remote-debugging" in common_opts_array:
             common_opts = common_opts.replace('--enable-remote-debugging', '')
         else:
-            common_opts += "-r"
+            common_opts += " -r "
+    #workaround for XWALK-4042
+    common_opts = common_opts.replace(' -r ','')
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-ext-opt")
     if tmp_opt:
