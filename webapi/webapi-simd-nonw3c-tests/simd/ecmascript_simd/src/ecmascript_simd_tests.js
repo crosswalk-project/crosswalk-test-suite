@@ -31,18 +31,18 @@ test('Float32x4 constructor', function() {
   notEqual(undefined, SIMD.Float32x4(1.0, 2.0, 3.0, 4.0));  // New object.
   var f1 = SIMD.Float32x4(1.0, 2.0, 3.0, 4.0);
   var f2 = SIMD.Float32x4.check(f1);
-  equal(f1.x, f2.x, "the value of x should equal");
-  equal(f1.y, f2.y, "the value of y should equal");
-  equal(f1.z, f2.z, "the value of z should equal");
-  equal(f1.w, f2.w, "the value of w should equal");
+  equal(SIMD.Float32x4.extractLane(f1, 0), SIMD.Float32x4.extractLane(f2, 0), "the value of x should equal");
+  equal(SIMD.Float32x4.extractLane(f1, 1), SIMD.Float32x4.extractLane(f2, 1), "the value of y should equal");
+  equal(SIMD.Float32x4.extractLane(f1, 2), SIMD.Float32x4.extractLane(f2, 2), "the value of z should equal");
+  equal(SIMD.Float32x4.extractLane(f1, 3), SIMD.Float32x4.extractLane(f2, 3), "the value of w should equal");
 });
 
 test('Float32x4 scalar getters', function() {
   var a = SIMD.Float32x4(1.0, 2.0, 3.0, 4.0);
-  equal(1.0, a.x);
-  equal(2.0, a.y);
-  equal(3.0, a.z);
-  equal(4.0, a.w);
+  equal(1.0, SIMD.Float32x4.extractLane(a, 0));
+  equal(2.0, SIMD.Float32x4.extractLane(a, 1));
+  equal(3.0, SIMD.Float32x4.extractLane(a, 2));
+  equal(4.0, SIMD.Float32x4.extractLane(a, 3));
 });
 
 test('Float32x4 signMask getter', function() {
@@ -61,54 +61,54 @@ test('Float32x4 vector getters', function() {
   var zzzz = SIMD.Float32x4.swizzle(a, 2, 2, 2, 2);
   var wwww = SIMD.Float32x4.swizzle(a, 3, 3, 3, 3);
   var wzyx = SIMD.Float32x4.swizzle(a, 3, 2, 1, 0);
-  equal(4.0, xxxx.x);
-  equal(4.0, xxxx.y);
-  equal(4.0, xxxx.z);
-  equal(4.0, xxxx.w);
-  equal(3.0, yyyy.x);
-  equal(3.0, yyyy.y);
-  equal(3.0, yyyy.z);
-  equal(3.0, yyyy.w);
-  equal(2.0, zzzz.x);
-  equal(2.0, zzzz.y);
-  equal(2.0, zzzz.z);
-  equal(2.0, zzzz.w);
-  equal(1.0, wwww.x);
-  equal(1.0, wwww.y);
-  equal(1.0, wwww.z);
-  equal(1.0, wwww.w);
-  equal(1.0, wzyx.x);
-  equal(2.0, wzyx.y);
-  equal(3.0, wzyx.z);
-  equal(4.0, wzyx.w);
+  equal(4.0, SIMD.Float32x4.extractLane(xxxx, 0));
+  equal(4.0, SIMD.Float32x4.extractLane(xxxx, 1));
+  equal(4.0, SIMD.Float32x4.extractLane(xxxx, 2));
+  equal(4.0, SIMD.Float32x4.extractLane(xxxx, 3));
+  equal(3.0, SIMD.Float32x4.extractLane(yyyy, 0));
+  equal(3.0, SIMD.Float32x4.extractLane(yyyy, 1));
+  equal(3.0, SIMD.Float32x4.extractLane(yyyy, 2));
+  equal(3.0, SIMD.Float32x4.extractLane(yyyy, 3));
+  equal(2.0, SIMD.Float32x4.extractLane(zzzz, 0));
+  equal(2.0, SIMD.Float32x4.extractLane(zzzz, 1));
+  equal(2.0, SIMD.Float32x4.extractLane(zzzz, 2));
+  equal(2.0, SIMD.Float32x4.extractLane(zzzz, 3));
+  equal(1.0, SIMD.Float32x4.extractLane(wwww, 0));
+  equal(1.0, SIMD.Float32x4.extractLane(wwww, 1));
+  equal(1.0, SIMD.Float32x4.extractLane(wwww, 2));
+  equal(1.0, SIMD.Float32x4.extractLane(wwww, 3));
+  equal(1.0, SIMD.Float32x4.extractLane(wzyx, 0));
+  equal(2.0, SIMD.Float32x4.extractLane(wzyx, 1));
+  equal(3.0, SIMD.Float32x4.extractLane(wzyx, 2));
+  equal(4.0, SIMD.Float32x4.extractLane(wzyx, 3));
 });
 
 test('Float32x4 abs', function() {
   var a = SIMD.Float32x4(-4.0, -3.0, -2.0, -1.0);
   var c = SIMD.Float32x4.abs(a);
-  equal(4.0, c.x);
-  equal(3.0, c.y);
-  equal(2.0, c.z);
-  equal(1.0, c.w);
+  equal(4.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(3.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(2.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(1.0, SIMD.Float32x4.extractLane(c, 3));
   c = SIMD.Float32x4.abs(SIMD.Float32x4(4.0, 3.0, 2.0, 1.0));
-  equal(4.0, c.x);
-  equal(3.0, c.y);
-  equal(2.0, c.z);
-  equal(1.0, c.w);
+  equal(4.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(3.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(2.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(1.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 neg', function() {
   var a = SIMD.Float32x4(-4.0, -3.0, -2.0, -1.0);
   var c = SIMD.Float32x4.neg(a);
-  equal(4.0, c.x);
-  equal(3.0, c.y);
-  equal(2.0, c.z);
-  equal(1.0, c.w);
+  equal(4.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(3.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(2.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(1.0, SIMD.Float32x4.extractLane(c, 3));
   c = SIMD.Float32x4.neg(SIMD.Float32x4(4.0, 3.0, 2.0, 1.0));
-  equal(-4.0, c.x);
-  equal(-3.0, c.y);
-  equal(-2.0, c.z);
-  equal(-1.0, c.w);
+  equal(-4.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(-3.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(-2.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(-1.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 
@@ -116,40 +116,40 @@ test('Float32x4 add', function() {
   var a = SIMD.Float32x4(4.0, 3.0, 2.0, 1.0);
   var b = SIMD.Float32x4(10.0, 20.0, 30.0, 40.0);
   var c = SIMD.Float32x4.add(a, b);
-  equal(14.0, c.x);
-  equal(23.0, c.y);
-  equal(32.0, c.z);
-  equal(41.0, c.w);
+  equal(14.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(23.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(32.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(41.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 sub', function() {
   var a = SIMD.Float32x4(4.0, 3.0, 2.0, 1.0);
   var b = SIMD.Float32x4(10.0, 20.0, 30.0, 40.0);
   var c = SIMD.Float32x4.sub(a, b);
-  equal(-6.0, c.x);
-  equal(-17.0, c.y);
-  equal(-28.0, c.z);
-  equal(-39.0, c.w);
+  equal(-6.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(-17.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(-28.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(-39.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 mul', function() {
   var a = SIMD.Float32x4(4.0, 3.0, 2.0, 1.0);
   var b = SIMD.Float32x4(10.0, 20.0, 30.0, 40.0);
   var c = SIMD.Float32x4.mul(a, b);
-  equal(40.0, c.x);
-  equal(60.0, c.y);
-  equal(60.0, c.z);
-  equal(40.0, c.w);
+  equal(40.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(60.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(60.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(40.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 div', function() {
   var a = SIMD.Float32x4(4.0, 9.0, 8.0, 1.0);
   var b = SIMD.Float32x4(2.0, 3.0, 1.0, 0.5);
   var c = SIMD.Float32x4.div(a, b);
-  equal(2.0, c.x);
-  equal(3.0, c.y);
-  equal(8.0, c.z);
-  equal(2.0, c.w);
+  equal(2.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(3.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(8.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(2.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 clamp', function() {
@@ -157,66 +157,66 @@ test('Float32x4 clamp', function() {
   var lower = SIMD.Float32x4(2.0, 1.0, 50.0, 0.0);
   var upper = SIMD.Float32x4(2.5, 5.0, 55.0, 1.0);
   var c = SIMD.Float32x4.clamp(a, lower, upper);
-  equal(2.0, c.x);
-  equal(5.0, c.y);
-  equal(50.0, c.z);
-  equal(0.5, c.w);
+  equal(2.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(5.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(50.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(0.5, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 min', function() {
   var a = SIMD.Float32x4(-20.0, 10.0, 30.0, 0.5);
   var lower = SIMD.Float32x4(2.0, 1.0, 50.0, 0.0);
   var c = SIMD.Float32x4.min(a, lower);
-  equal(-20.0, c.x);
-  equal(1.0, c.y);
-  equal(30.0, c.z);
-  equal(0.0, c.w);
+  equal(-20.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(1.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(30.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(0.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 max', function() {
   var a = SIMD.Float32x4(-20.0, 10.0, 30.0, 0.5);
   var upper = SIMD.Float32x4(2.5, 5.0, 55.0, 1.0);
   var c = SIMD.Float32x4.max(a, upper);
-  equal(2.5, c.x);
-  equal(10.0, c.y);
-  equal(55.0, c.z);
-  equal(1.0, c.w);
+  equal(2.5, SIMD.Float32x4.extractLane(c, 0));
+  equal(10.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(55.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(1.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 reciprocal', function() {
   var a = SIMD.Float32x4(8.0, 4.0, 2.0, -2.0);
   var c = SIMD.Float32x4.reciprocal(a);
-  equal(0.125, c.x);
-  equal(0.250, c.y);
-  equal(0.5, c.z);
-  equal(-0.5, c.w);
+  equal(0.125, SIMD.Float32x4.extractLane(c, 0));
+  equal(0.250, SIMD.Float32x4.extractLane(c, 1));
+  equal(0.5, SIMD.Float32x4.extractLane(c, 2));
+  equal(-0.5, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 reciprocal sqrt', function() {
   var a = SIMD.Float32x4(1.0, 0.25, 0.111111, 0.0625);
   var c = SIMD.Float32x4.reciprocalSqrt(a);
-  almostEqual(1.0, c.x);
-  almostEqual(2.0, c.y);
-  almostEqual(3.0, c.z);
-  almostEqual(4.0, c.w);
+  almostEqual(1.0, SIMD.Float32x4.extractLane(c, 0));
+  almostEqual(2.0, SIMD.Float32x4.extractLane(c, 1));
+  almostEqual(3.0, SIMD.Float32x4.extractLane(c, 2));
+  almostEqual(4.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 scale', function() {
   var a = SIMD.Float32x4(8.0, 4.0, 2.0, -2.0);
   var c = SIMD.Float32x4.scale(a, 0.5);
-  equal(4.0, c.x);
-  equal(2.0, c.y);
-  equal(1.0, c.z);
-  equal(-1.0, c.w);
+  equal(4.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(2.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(1.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(-1.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 sqrt', function() {
   var a = SIMD.Float32x4(16.0, 9.0, 4.0, 1.0);
   var c = SIMD.Float32x4.sqrt(a);
-  equal(4.0, c.x);
-  equal(3.0, c.y);
-  equal(2.0, c.z);
-  equal(1.0, c.w);
+  equal(4.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(3.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(2.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(1.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 shuffleMix', function() {
@@ -225,93 +225,93 @@ test('Float32x4 shuffleMix', function() {
   var xyxy = SIMD.Float32x4.shuffleMix(a, b, SIMD.XYXY);
   var zwzw = SIMD.Float32x4.shuffleMix(a, b, SIMD.ZWZW);
   var xxxx = SIMD.Float32x4.shuffleMix(a, b, SIMD.XXXX);
-  equal(1.0, xyxy.x);
-  equal(2.0, xyxy.y);
-  equal(5.0, xyxy.z);
-  equal(6.0, xyxy.w);
-  equal(3.0, zwzw.x);
-  equal(4.0, zwzw.y);
-  equal(7.0, zwzw.z);
-  equal(8.0, zwzw.w);
-  equal(1.0, xxxx.x);
-  equal(1.0, xxxx.y);
-  equal(5.0, xxxx.z);
-  equal(5.0, xxxx.w);
+  equal(1.0, SIMD.Float32x4.extractLane(xyxy, 0));
+  equal(2.0, SIMD.Float32x4.extractLane(xyxy, 1));
+  equal(5.0, SIMD.Float32x4.extractLane(xyxy, 2));
+  equal(6.0, SIMD.Float32x4.extractLane(xyxy, 3));
+  equal(3.0, SIMD.Float32x4.extractLane(zwzw, 0));
+  equal(4.0, SIMD.Float32x4.extractLane(zwzw, 1));
+  equal(7.0, SIMD.Float32x4.extractLane(zwzw, 2));
+  equal(8.0, SIMD.Float32x4.extractLane(zwzw, 3));
+  equal(1.0, SIMD.Float32x4.extractLane(xxxx, 0));
+  equal(1.0, SIMD.Float32x4.extractLane(xxxx, 1));
+  equal(5.0, SIMD.Float32x4.extractLane(xxxx, 2));
+  equal(5.0, SIMD.Float32x4.extractLane(xxxx, 3));
 });
 
 test('Float32x4 withX', function() {
     var a = SIMD.Float32x4(16.0, 9.0, 4.0, 1.0);
-    var c = SIMD.Float32x4.withX(a, 20.0);
-    equal(20.0, c.x);
-    equal(9.0, c.y);
-    equal(4.0, c.z);
-    equal(1.0, c.w);
+    var c = SIMD.Float32x4.replaceLane(a, 0, 20.0);
+    equal(20.0, SIMD.Float32x4.extractLane(c, 0));
+    equal(9.0, SIMD.Float32x4.extractLane(c, 1));
+    equal(4.0, SIMD.Float32x4.extractLane(c, 2));
+    equal(1.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 withY', function() {
     var a = SIMD.Float32x4(16.0, 9.0, 4.0, 1.0);
-    var c = SIMD.Float32x4.withY(a, 20.0);
-    equal(16.0, c.x);
-    equal(20.0, c.y);
-    equal(4.0, c.z);
-    equal(1.0, c.w);
+    var c = SIMD.Float32x4.replaceLane(a, 1, 20.0);
+    equal(16.0, SIMD.Float32x4.extractLane(c, 0));
+    equal(20.0, SIMD.Float32x4.extractLane(c, 1));
+    equal(4.0, SIMD.Float32x4.extractLane(c, 2));
+    equal(1.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 withZ', function() {
     var a = SIMD.Float32x4(16.0, 9.0, 4.0, 1.0);
-    var c = SIMD.Float32x4.withZ(a, 20.0);
-    equal(16.0, c.x);
-    equal(9.0, c.y);
-    equal(20.0, c.z);
-    equal(1.0, c.w);
+    var c = SIMD.Float32x4.replaceLane(a, 2, 20.0);
+    equal(16.0, SIMD.Float32x4.extractLane(c, 0));
+    equal(9.0, SIMD.Float32x4.extractLane(c, 1));
+    equal(20.0, SIMD.Float32x4.extractLane(c, 2));
+    equal(1.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 withW', function() {
     var a = SIMD.Float32x4(16.0, 9.0, 4.0, 1.0);
-    var c = SIMD.Float32x4.withW(a, 20.0);
-    equal(16.0, c.x);
-    equal(9.0, c.y);
-    equal(4.0, c.z);
-    equal(20.0, c.w);
+    var c = SIMD.Float32x4.replaceLane(a, 3, 20.0);
+    equal(16.0, SIMD.Float32x4.extractLane(c, 0));
+    equal(9.0, SIMD.Float32x4.extractLane(c, 1));
+    equal(4.0, SIMD.Float32x4.extractLane(c, 2));
+    equal(20.0, SIMD.Float32x4.extractLane(c, 3));
 });
 
 test('Float32x4 Int32x4 conversion', function() {
   var m = SIMD.Int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
   var n = SIMD.Float32x4.fromInt32x4Bits(m);
-  equal(1.0, n.x);
-  equal(2.0, n.y);
-  equal(3.0, n.z);
-  equal(4.0, n.w);
+  equal(1.0, SIMD.Float32x4.extractLane(n, 0));
+  equal(2.0, SIMD.Float32x4.extractLane(n, 1));
+  equal(3.0, SIMD.Float32x4.extractLane(n, 2));
+  equal(4.0, SIMD.Float32x4.extractLane(n, 3));
   n = SIMD.Float32x4(5.0, 6.0, 7.0, 8.0);
   m = SIMD.Int32x4.fromFloat32x4Bits(n);
-  equal(0x40A00000, m.x);
-  equal(0x40C00000, m.y);
-  equal(0x40E00000, m.z);
-  equal(0x41000000, m.w);
+  equal(0x40A00000, SIMD.Int32x4.extractLane(m, 0));
+  equal(0x40C00000, SIMD.Int32x4.extractLane(m, 1));
+  equal(0x40E00000, SIMD.Int32x4.extractLane(m, 2));
+  equal(0x41000000, SIMD.Int32x4.extractLane(m, 3));
   // Flip sign using bit-wise operators.
   n = SIMD.Float32x4(9.0, 10.0, 11.0, 12.0);
   m = SIMD.Int32x4(0x80000000, 0x80000000, 0x80000000, 0x80000000);
   var nMask = SIMD.Int32x4.fromFloat32x4Bits(n);
   nMask = SIMD.Int32x4.xor(nMask, m); // flip sign.
   n = SIMD.Float32x4.fromInt32x4Bits(nMask);
-  equal(-9.0, n.x);
-  equal(-10.0, n.y);
-  equal(-11.0, n.z);
-  equal(-12.0, n.w);
+  equal(-9.0, SIMD.Float32x4.extractLane(n, 0));
+  equal(-10.0, SIMD.Float32x4.extractLane(n, 1));
+  equal(-11.0, SIMD.Float32x4.extractLane(n, 2));
+  equal(-12.0, SIMD.Float32x4.extractLane(n, 3));
   nMask = SIMD.Int32x4.fromFloat32x4Bits(n);
   nMask = SIMD.Int32x4.xor(nMask, m); // flip sign.
   n = SIMD.Float32x4.fromInt32x4Bits(nMask);
-  equal(9.0, n.x);
-  equal(10.0, n.y);
-  equal(11.0, n.z);
-  equal(12.0, n.w);
+  equal(9.0, SIMD.Float32x4.extractLane(n, 0));
+  equal(10.0, SIMD.Float32x4.extractLane(n, 1));
+  equal(11.0, SIMD.Float32x4.extractLane(n, 2));
+  equal(12.0, SIMD.Float32x4.extractLane(n, 3));
   // Should stay unmodified across bit conversions
   m = SIMD.Int32x4(0xFFFFFFFF, 0xFFFF0000, 0x80000000, 0x0);
   var m2 = SIMD.Int32x4.fromFloat32x4Bits(SIMD.Float32x4.fromInt32x4Bits(m));
-  equal(m.x, m2.x);
-  equal(m.y, m2.y);
-  equal(m.z, m2.z);
-  equal(m.w, m2.w);
+  equal(SIMD.Int32x4.extractLane(m, 0), SIMD.Int32x4.extractLane(m2, 0));
+  equal(SIMD.Int32x4.extractLane(m, 1), SIMD.Int32x4.extractLane(m2, 1));
+  equal(SIMD.Int32x4.extractLane(m, 2), SIMD.Int32x4.extractLane(m2, 2));
+  equal(SIMD.Int32x4.extractLane(m, 3), SIMD.Int32x4.extractLane(m2, 3));
 });
 
 test('Float32x4 comparisons', function() {
@@ -319,40 +319,40 @@ test('Float32x4 comparisons', function() {
   var n = SIMD.Float32x4(2.0, 2.0, 0.001, 0.1);
   var cmp;
   cmp = SIMD.Float32x4.lessThan(m, n);
-  equal(-1, cmp.x);
-  equal(0x0, cmp.y);
-  equal(0x0, cmp.z);
-  equal(-1, cmp.w);
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 0));
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 1));
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 2));
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 3));
 
   cmp = SIMD.Float32x4.lessThanOrEqual(m, n);
-  equal(-1, cmp.x);
-  equal(-1, cmp.y);
-  equal(0x0, cmp.z);
-  equal(-1, cmp.w);
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 0));
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 1));
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 2));
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 3));
 
   cmp = SIMD.Float32x4.equal(m, n);
-  equal(0x0, cmp.x);
-  equal(-1, cmp.y);
-  equal(0x0, cmp.z);
-  equal(0x0, cmp.w);
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 0));
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 1));
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 2));
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 3));
 
   cmp = SIMD.Float32x4.notEqual(m, n);
-  equal(-1, cmp.x);
-  equal(0x0, cmp.y);
-  equal(-1, cmp.z);
-  equal(-1, cmp.w);
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 0));
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 1));
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 2));
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 3));
 
   cmp = SIMD.Float32x4.greaterThanOrEqual(m, n);
-  equal(0x0, cmp.x);
-  equal(-1, cmp.y);
-  equal(-1, cmp.z);
-  equal(0x0, cmp.w);
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 0));
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 1));
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 2));
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 3));
 
   cmp = SIMD.Float32x4.greaterThan(m, n);
-  equal(0x0, cmp.x);
-  equal(0x0, cmp.y);
-  equal(-1, cmp.z);
-  equal(0x0, cmp.w);
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 0));
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 1));
+  equal(-1, SIMD.Int32x4.extractLane(cmp, 2));
+  equal(0x0, SIMD.Int32x4.extractLane(cmp, 3));
 });
 
 test('Int32x4 select', function() {
@@ -360,46 +360,46 @@ test('Int32x4 select', function() {
   var t = SIMD.Int32x4(1, 2, 3, 4);
   var f = SIMD.Int32x4(5, 6, 7, 8);
   var s = SIMD.Int32x4.select(m, t, f);
-  equal(1, s.x);
-  equal(2, s.y);
-  equal(7, s.z);
-  equal(8, s.w);
+  equal(1, SIMD.Int32x4.extractLane(s, 0));
+  equal(2, SIMD.Int32x4.extractLane(s, 1));
+  equal(7, SIMD.Int32x4.extractLane(s, 2));
+  equal(8, SIMD.Int32x4.extractLane(s, 3));
 });
 
 test('Int32x4 withX', function() {
     var a = SIMD.Int32x4(1, 2, 3, 4);
-    var c = SIMD.Int32x4.withX(a, 20);
-    equal(20, c.x);
-    equal(2, c.y);
-    equal(3, c.z);
-    equal(4, c.w);
+    var c = SIMD.Int32x4.replaceLane(a, 0, 20);
+    equal(20, SIMD.Int32x4.extractLane(c, 0));
+    equal(2, SIMD.Int32x4.extractLane(c, 1));
+    equal(3, SIMD.Int32x4.extractLane(c, 2));
+    equal(4, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 withY', function() {
     var a = SIMD.Int32x4(1, 2, 3, 4);
-    var c = SIMD.Int32x4.withY(a, 20);
-    equal(1, c.x);
-    equal(20, c.y);
-    equal(3, c.z);
-    equal(4, c.w);
+    var c = SIMD.Int32x4.replaceLane(a, 1, 20);
+    equal(1, SIMD.Int32x4.extractLane(c, 0));
+    equal(20, SIMD.Int32x4.extractLane(c, 1));
+    equal(3, SIMD.Int32x4.extractLane(c, 2));
+    equal(4, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 withZ', function() {
     var a = SIMD.Int32x4(1, 2, 3, 4);
-    var c = SIMD.Int32x4.withZ(a, 20);
-    equal(1, c.x);
-    equal(2, c.y);
-    equal(20, c.z);
-    equal(4, c.w);
+    var c = SIMD.Int32x4.replaceLane(a, 2, 20);
+    equal(1, SIMD.Int32x4.extractLane(c, 0));
+    equal(2, SIMD.Int32x4.extractLane(c, 1));
+    equal(20, SIMD.Int32x4.extractLane(c, 2));
+    equal(4, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 withW', function() {
     var a = SIMD.Int32x4(1, 2, 3, 4);
-    var c = SIMD.Int32x4.withW(a, 20);
-    equal(1, c.x);
-    equal(2, c.y);
-    equal(3, c.z);
-    equal(20, c.w);
+    var c = SIMD.Int32x4.replaceLane(a, 3, 20);
+    equal(1, SIMD.Int32x4.extractLane(c, 0));
+    equal(2, SIMD.Int32x4.extractLane(c, 1));
+    equal(3, SIMD.Int32x4.extractLane(c, 2));
+    equal(20, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 withFlagX', function() {
@@ -414,10 +414,10 @@ test('Int32x4 withFlagX', function() {
     equal(false, c.flagY);
     equal(true, c.flagZ);
     equal(false, c.flagW);
-    equal(0x0, c.x);
-    equal(0x0, c.y);
-    equal(-1, c.z);
-    equal(0x0, c.w);
+    equal(0x0, SIMD.Int32x4.extractLane(c, 0));
+    equal(0x0, SIMD.Int32x4.extractLane(c, 1));
+    equal(-1, SIMD.Int32x4.extractLane(c, 2));
+    equal(0x0, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 withFlagY', function() {
@@ -432,16 +432,16 @@ test('Int32x4 withFlagY', function() {
     equal(false, c.flagY);
     equal(true, c.flagZ);
     equal(false, c.flagW);
-    equal(-1, c.x);
-    equal(0x0, c.y);
-    equal(-1, c.z);
-    equal(0x0, c.w);
+    equal(-1, SIMD.Int32x4.extractLane(c, 0));
+    equal(0x0, SIMD.Int32x4.extractLane(c, 1));
+    equal(-1, SIMD.Int32x4.extractLane(c, 2));
+    equal(0x0, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 withFlagZ', function() {
     var a = SIMD.Int32x4.bool(true, false, true, false);
     var c = SIMD.Int32x4.withFlagZ(a, true);
-    equal(-1, c.x);
+    equal(-1, SIMD.Int32x4.extractLane(c, 0));
     equal(true, c.flagX);
     equal(false, c.flagY);
     equal(true, c.flagZ);
@@ -451,10 +451,10 @@ test('Int32x4 withFlagZ', function() {
     equal(false, c.flagY);
     equal(false, c.flagZ);
     equal(false, c.flagW);
-    equal(-1, c.x);
-    equal(0x0, c.y);
-    equal(0x0, c.z);
-    equal(0x0, c.w);
+    equal(-1, SIMD.Int32x4.extractLane(c, 0));
+    equal(0x0, SIMD.Int32x4.extractLane(c, 1));
+    equal(0x0, SIMD.Int32x4.extractLane(c, 2));
+    equal(0x0, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 withFlagW', function() {
@@ -469,32 +469,32 @@ test('Int32x4 withFlagW', function() {
     equal(false, c.flagY);
     equal(true, c.flagZ);
     equal(false, c.flagW);
-    equal(-1, c.x);
-    equal(0x0, c.y);
-    equal(-1, c.z);
-    equal(0x0, c.w);
+    equal(-1, SIMD.Int32x4.extractLane(c, 0));
+    equal(0x0, SIMD.Int32x4.extractLane(c, 1));
+    equal(-1, SIMD.Int32x4.extractLane(c, 2));
+    equal(0x0, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 and', function() {
   var m = SIMD.Int32x4(0xAAAAAAAA, 0xAAAAAAAA, -1431655766, 0xAAAAAAAA);
   var n = SIMD.Int32x4(0x55555555, 0x55555555, 0x55555555, 0x55555555);
-  equal(-1431655766, m.x);
-  equal(-1431655766, m.y);
-  equal(-1431655766, m.z);
-  equal(-1431655766, m.w);
-  equal(0x55555555, n.x);
-  equal(0x55555555, n.y);
-  equal(0x55555555, n.z);
-  equal(0x55555555, n.w);
+  equal(-1431655766, SIMD.Int32x4.extractLane(m, 0));
+  equal(-1431655766, SIMD.Int32x4.extractLane(m, 1));
+  equal(-1431655766, SIMD.Int32x4.extractLane(m, 2));
+  equal(-1431655766, SIMD.Int32x4.extractLane(m, 3));
+  equal(0x55555555, SIMD.Int32x4.extractLane(n, 0));
+  equal(0x55555555, SIMD.Int32x4.extractLane(n, 1));
+  equal(0x55555555, SIMD.Int32x4.extractLane(n, 2));
+  equal(0x55555555, SIMD.Int32x4.extractLane(n, 3));
   equal(true, n.flagX);
   equal(true, n.flagY);
   equal(true, n.flagZ);
   equal(true, n.flagW);
   var o = SIMD.Int32x4.and(m,n);  // and
-  equal(0x0, o.x);
-  equal(0x0, o.y);
-  equal(0x0, o.z);
-  equal(0x0, o.w);
+  equal(0x0, SIMD.Int32x4.extractLane(o, 0));
+  equal(0x0, SIMD.Int32x4.extractLane(o, 1));
+  equal(0x0, SIMD.Int32x4.extractLane(o, 2));
+  equal(0x0, SIMD.Int32x4.extractLane(o, 3));
   equal(false, o.flagX);
   equal(false, o.flagY);
   equal(false, o.flagZ);
@@ -505,10 +505,10 @@ test('Int32x4 or', function() {
   var m = SIMD.Int32x4(0xAAAAAAAA, 0xAAAAAAAA, 0xAAAAAAAA, 0xAAAAAAAA);
   var n = SIMD.Int32x4(0x55555555, 0x55555555, 0x55555555, 0x55555555);
   var o = SIMD.Int32x4.or(m,n);  // or
-  equal(-1, o.x);
-  equal(-1, o.y);
-  equal(-1, o.z);
-  equal(-1, o.w);
+  equal(-1, SIMD.Int32x4.extractLane(o, 0));
+  equal(-1, SIMD.Int32x4.extractLane(o, 1));
+  equal(-1, SIMD.Int32x4.extractLane(o, 2));
+  equal(-1, SIMD.Int32x4.extractLane(o, 3));
   equal(true, o.flagX);
   equal(true, o.flagY);
   equal(true, o.flagZ);
@@ -518,19 +518,19 @@ test('Int32x4 or', function() {
 test('Int32x4 xor', function() {
   var m = SIMD.Int32x4(0xAAAAAAAA, 0xAAAAAAAA, 0xAAAAAAAA, 0xAAAAAAAA);
   var n = SIMD.Int32x4(0x55555555, 0x55555555, 0x55555555, 0x55555555);
-  n = SIMD.Int32x4.withX(n, 0xAAAAAAAA);
-  n = SIMD.Int32x4.withY(n, 0xAAAAAAAA);
-  n = SIMD.Int32x4.withZ(n, 0xAAAAAAAA);
-  n = SIMD.Int32x4.withW(n, 0xAAAAAAAA);
-  equal(-1431655766, n.x);
-  equal(-1431655766, n.y);
-  equal(-1431655766, n.z);
-  equal(-1431655766, n.w);
+  n = SIMD.Int32x4.replaceLane(n, 0, 0xAAAAAAAA);
+  n = SIMD.Int32x4.replaceLane(n, 1, 0xAAAAAAAA);
+  n = SIMD.Int32x4.replaceLane(n, 2, 0xAAAAAAAA);
+  n = SIMD.Int32x4.replaceLane(n, 3, 0xAAAAAAAA);
+  equal(-1431655766, SIMD.Int32x4.extractLane(n, 0));
+  equal(-1431655766, SIMD.Int32x4.extractLane(n, 1));
+  equal(-1431655766, SIMD.Int32x4.extractLane(n, 2));
+  equal(-1431655766, SIMD.Int32x4.extractLane(n, 3));
   var o = SIMD.Int32x4.xor(m,n);  // xor
-  equal(0x0, o.x);
-  equal(0x0, o.y);
-  equal(0x0, o.z);
-  equal(0x0, o.w);
+  equal(0x0, SIMD.Int32x4.extractLane(o, 0));
+  equal(0x0, SIMD.Int32x4.extractLane(o, 1));
+  equal(0x0, SIMD.Int32x4.extractLane(o, 2));
+  equal(0x0, SIMD.Int32x4.extractLane(o, 3));
   equal(false, o.flagX);
   equal(false, o.flagY);
   equal(false, o.flagZ);
@@ -542,14 +542,14 @@ test('Int32x4 neg', function() {
   var n = SIMD.Int32x4(-1, -2, -3, -4);
   m = SIMD.Int32x4.neg(m);
   n = SIMD.Int32x4.neg(n);
-  equal(-16, m.x);
-  equal(-32, m.y);
-  equal(-64, m.z);
-  equal(-128, m.w);
-  equal(1, n.x);
-  equal(2, n.y);
-  equal(3, n.z);
-  equal(4, n.w);
+  equal(-16, SIMD.Int32x4.extractLane(m, 0));
+  equal(-32, SIMD.Int32x4.extractLane(m, 1));
+  equal(-64, SIMD.Int32x4.extractLane(m, 2));
+  equal(-128, SIMD.Int32x4.extractLane(m, 3));
+  equal(1, SIMD.Int32x4.extractLane(n, 0));
+  equal(2, SIMD.Int32x4.extractLane(n, 1));
+  equal(3, SIMD.Int32x4.extractLane(n, 2));
+  equal(4, SIMD.Int32x4.extractLane(n, 3));
 });
 
 test('Int32x4 signMask getter', function() {
@@ -566,30 +566,30 @@ test('Int32x4 add', function() {
   var a = SIMD.Int32x4(0xFFFFFFFF, 0xFFFFFFFF, 0x7fffffff, 0x0);
   var b = SIMD.Int32x4(0x1, 0xFFFFFFFF, 0x1, 0xFFFFFFFF);
   var c = SIMD.Int32x4.add(a, b);
-  equal(0x0, c.x);
-  equal(-2, c.y);
-  equal(-0x80000000, c.z);
-  equal(-1, c.w);
+  equal(0x0, SIMD.Int32x4.extractLane(c, 0));
+  equal(-2, SIMD.Int32x4.extractLane(c, 1));
+  equal(-0x80000000, SIMD.Int32x4.extractLane(c, 2));
+  equal(-1, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 sub', function() {
   var a = SIMD.Int32x4(0xFFFFFFFF, 0xFFFFFFFF, 0x80000000, 0x0);
   var b = SIMD.Int32x4(0x1, 0xFFFFFFFF, 0x1, 0xFFFFFFFF);
   var c = SIMD.Int32x4.sub(a, b);
-  equal(-2, c.x);
-  equal(0x0, c.y);
-  equal(0x7FFFFFFF, c.z);
-  equal(0x1, c.w);
+  equal(-2, SIMD.Int32x4.extractLane(c, 0));
+  equal(0x0, SIMD.Int32x4.extractLane(c, 1));
+  equal(0x7FFFFFFF, SIMD.Int32x4.extractLane(c, 2));
+  equal(0x1, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Int32x4 mul', function() {
   var a = SIMD.Int32x4(0xFFFFFFFF, 0xFFFFFFFF, 0x80000000, 0x0);
   var b = SIMD.Int32x4(0x1, 0xFFFFFFFF, 0x80000000, 0xFFFFFFFF);
   var c = SIMD.Int32x4.mul(a, b);
-  equal(-1, c.x);
-  equal(0x1, c.y);
-  equal(0x0, c.z);
-  equal(0x0, c.w);
+  equal(-1, SIMD.Int32x4.extractLane(c, 0));
+  equal(0x1, SIMD.Int32x4.extractLane(c, 1));
+  equal(0x0, SIMD.Int32x4.extractLane(c, 2));
+  equal(0x0, SIMD.Int32x4.extractLane(c, 3));
 });
 
 test('Float32x4Array simple', function() {
@@ -878,75 +878,75 @@ test('Int32x4 shiftLeftByScalar', function() {
   var a = SIMD.Int32x4(0xffffffff, 0x7fffffff, 0x1, 0x0);
   var b;
   b = SIMD.Int32x4.shiftLeftByScalar(a, 1);
-  equal(b.x, 0xfffffffe|0);
-  equal(b.y, 0xfffffffe|0);
-  equal(b.z, 0x00000002);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0xfffffffe|0);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0xfffffffe|0);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000002);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
   b = SIMD.Int32x4.shiftLeftByScalar(a, 2);
-  equal(b.x, 0xfffffffc|0);
-  equal(b.y, 0xfffffffc|0);
-  equal(b.z, 0x00000004);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0xfffffffc|0);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0xfffffffc|0);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000004);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
   b = SIMD.Int32x4.shiftLeftByScalar(a, 30);
-  equal(b.x, 0xc0000000|0);
-  equal(b.y, 0xc0000000|0);
-  equal(b.z, 0x40000000);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0xc0000000|0);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0xc0000000|0);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x40000000);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
   b = SIMD.Int32x4.shiftLeftByScalar(a, 31);
-  equal(b.x, 0x80000000|0);
-  equal(b.y, 0x80000000|0);
-  equal(b.z, 0x80000000|0);
-  equal(b.w, 0x0);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0x80000000|0);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0x80000000|0);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x80000000|0);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x0);
 });
 
 test('Int32x4 shiftRightLogicalByScalar', function() {
   var a = SIMD.Int32x4(0xffffffff, 0x7fffffff, 0x1, 0x0);
   var b;
   b = SIMD.Int32x4.shiftRightLogicalByScalar(a, 1);
-  equal(b.x, 0x7fffffff);
-  equal(b.y, 0x3fffffff);
-  equal(b.z, 0x00000000);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0x7fffffff);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0x3fffffff);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
   b = SIMD.Int32x4.shiftRightLogicalByScalar(a, 2);
-  equal(b.x, 0x3fffffff);
-  equal(b.y, 0x1fffffff);
-  equal(b.z, 0x00000000);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0x3fffffff);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0x1fffffff);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
   b = SIMD.Int32x4.shiftRightLogicalByScalar(a, 30);
-  equal(b.x, 0x00000003);
-  equal(b.y, 0x00000001);
-  equal(b.z, 0x00000000);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0x00000003);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0x00000001);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
   b = SIMD.Int32x4.shiftRightLogicalByScalar(a, 31);
-  equal(b.x, 0x00000001);
-  equal(b.y, 0x00000000);
-  equal(b.z, 0x00000000);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0x00000001);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
 });
 
 test('Int32x4 shiftRightArithmeticByScalar', function() {
   var a = SIMD.Int32x4(0xffffffff, 0x7fffffff, 0x1, 0x0);
   var b;
   b = SIMD.Int32x4.shiftRightArithmeticByScalar(a, 1);
-  equal(b.x, 0xffffffff|0);
-  equal(b.y, 0x3fffffff);
-  equal(b.z, 0x00000000);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0xffffffff|0);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0x3fffffff);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
   b = SIMD.Int32x4.shiftRightArithmeticByScalar(a, 2);
-  equal(b.x, 0xffffffff|0);
-  equal(b.y, 0x1fffffff);
-  equal(b.z, 0x00000000);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0xffffffff|0);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0x1fffffff);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
   b = SIMD.Int32x4.shiftRightArithmeticByScalar(a, 30);
-  equal(b.x, 0xffffffff|0);
-  equal(b.y, 0x00000001);
-  equal(b.z, 0x00000000);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0xffffffff|0);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0x00000001);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
   b = SIMD.Int32x4.shiftRightArithmeticByScalar(a, 31);
-  equal(b.x, 0xffffffff|0);
-  equal(b.y, 0x00000000);
-  equal(b.z, 0x00000000);
-  equal(b.w, 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 0), 0xffffffff|0);
+  equal(SIMD.Int32x4.extractLane(b, 1), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
+  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
 });
 
 test('Float32x4 shuffle', function() {
@@ -955,33 +955,33 @@ test('Float32x4 shuffle', function() {
   var xyxy = SIMD.Float32x4.shuffle(a, b, 0, 1, 4, 5);
   var zwzw = SIMD.Float32x4.shuffle(a, b, 2, 3, 6, 7);
   var xxxx = SIMD.Float32x4.shuffle(a, b, 0, 0, 4, 4);
-  equal(1.0, xyxy.x);
-  equal(2.0, xyxy.y);
-  equal(5.0, xyxy.z);
-  equal(6.0, xyxy.w);
-  equal(3.0, zwzw.x);
-  equal(4.0, zwzw.y);
-  equal(7.0, zwzw.z);
-  equal(8.0, zwzw.w);
-  equal(1.0, xxxx.x);
-  equal(1.0, xxxx.y);
-  equal(5.0, xxxx.z);
-  equal(5.0, xxxx.w);
+  equal(1.0, SIMD.Float32x4.extractLane(xyxy, 0));
+  equal(2.0, SIMD.Float32x4.extractLane(xyxy, 1));
+  equal(5.0, SIMD.Float32x4.extractLane(xyxy, 2));
+  equal(6.0, SIMD.Float32x4.extractLane(xyxy, 3));
+  equal(3.0, SIMD.Float32x4.extractLane(zwzw, 0));
+  equal(4.0, SIMD.Float32x4.extractLane(zwzw, 1));
+  equal(7.0, SIMD.Float32x4.extractLane(zwzw, 2));
+  equal(8.0, SIMD.Float32x4.extractLane(zwzw, 3));
+  equal(1.0, SIMD.Float32x4.extractLane(xxxx, 0));
+  equal(1.0, SIMD.Float32x4.extractLane(xxxx, 1));
+  equal(5.0, SIMD.Float32x4.extractLane(xxxx, 2));
+  equal(5.0, SIMD.Float32x4.extractLane(xxxx, 3));
   var c = SIMD.Float32x4.shuffle(a, b, 0, 4, 5, 1);
   var d = SIMD.Float32x4.shuffle(a, b, 2, 6, 3, 7);
   var e = SIMD.Float32x4.shuffle(a, b, 0, 4, 0, 4);
-  equal(1.0, c.x);
-  equal(5.0, c.y);
-  equal(6.0, c.z);
-  equal(2.0, c.w);
-  equal(3.0, d.x);
-  equal(7.0, d.y);
-  equal(4.0, d.z);
-  equal(8.0, d.w);
-  equal(1.0, e.x);
-  equal(5.0, e.y);
-  equal(1.0, e.z);
-  equal(5.0, e.w);
+  equal(1.0, SIMD.Float32x4.extractLane(c, 0));
+  equal(5.0, SIMD.Float32x4.extractLane(c, 1));
+  equal(6.0, SIMD.Float32x4.extractLane(c, 2));
+  equal(2.0, SIMD.Float32x4.extractLane(c, 3));
+  equal(3.0, SIMD.Float32x4.extractLane(d, 0));
+  equal(7.0, SIMD.Float32x4.extractLane(d, 1));
+  equal(4.0, SIMD.Float32x4.extractLane(d, 2));
+  equal(8.0, SIMD.Float32x4.extractLane(d, 3));
+  equal(1.0, SIMD.Float32x4.extractLane(e, 0));
+  equal(5.0, SIMD.Float32x4.extractLane(e, 1));
+  equal(1.0, SIMD.Float32x4.extractLane(e, 2));
+  equal(5.0, SIMD.Float32x4.extractLane(e, 3));
 });
 
 test('Float64x2 swizzle', function() {
@@ -990,14 +990,14 @@ test('Float64x2 swizzle', function() {
   var xy = SIMD.Float64x2.swizzle(a, 0, 1);
   var yx = SIMD.Float64x2.swizzle(a, 1, 0);
   var yy = SIMD.Float64x2.swizzle(a, 1, 1);
-  equal(1.0, xx.x);
-  equal(1.0, xx.y);
-  equal(1.0, xy.x);
-  equal(2.0, xy.y);
-  equal(2.0, yx.x);
-  equal(1.0, yx.y);
-  equal(2.0, yy.x);
-  equal(2.0, yy.y);
+  equal(1.0, SIMD.Float64x2.extractLane(xx, 0));
+  equal(1.0, SIMD.Float64x2.extractLane(xx, 1));
+  equal(1.0, SIMD.Float64x2.extractLane(xy, 0));
+  equal(2.0, SIMD.Float64x2.extractLane(xy, 1));
+  equal(2.0, SIMD.Float64x2.extractLane(yx, 0));
+  equal(1.0, SIMD.Float64x2.extractLane(yx, 1));
+  equal(2.0, SIMD.Float64x2.extractLane(yy, 0));
+  equal(2.0, SIMD.Float64x2.extractLane(yy, 1));
 });
 
 test('Float64x2 shuffle', function() {
@@ -1007,26 +1007,26 @@ test('Float64x2 shuffle', function() {
   var xy = SIMD.Float64x2.shuffle(a, b, 0, 3);
   var yx = SIMD.Float64x2.shuffle(a, b, 1, 0);
   var yy = SIMD.Float64x2.shuffle(a, b, 1, 3);
-  equal(1.0, xx.x);
-  equal(3.0, xx.y);
-  equal(1.0, xy.x);
-  equal(4.0, xy.y);
-  equal(2.0, yx.x);
-  equal(1.0, yx.y);
-  equal(2.0, yy.x);
-  equal(4.0, yy.y);
+  equal(1.0, SIMD.Float64x2.extractLane(xx, 0));
+  equal(3.0, SIMD.Float64x2.extractLane(xx, 1));
+  equal(1.0, SIMD.Float64x2.extractLane(xy, 0));
+  equal(4.0, SIMD.Float64x2.extractLane(xy, 1));
+  equal(2.0, SIMD.Float64x2.extractLane(yx, 0));
+  equal(1.0, SIMD.Float64x2.extractLane(yx, 1));
+  equal(2.0, SIMD.Float64x2.extractLane(yy, 0));
+  equal(4.0, SIMD.Float64x2.extractLane(yy, 1));
   var c = SIMD.Float64x2.shuffle(a, b, 1, 0);
   var d = SIMD.Float64x2.shuffle(a, b, 3, 2);
   var e = SIMD.Float64x2.shuffle(a, b, 0, 1);
   var f = SIMD.Float64x2.shuffle(a, b, 0, 2);
-  equal(2.0, c.x);
-  equal(1.0, c.y);
-  equal(4.0, d.x);
-  equal(3.0, d.y);
-  equal(1.0, e.x);
-  equal(2.0, e.y);
-  equal(1.0, f.x);
-  equal(3.0, f.y);
+  equal(2.0, SIMD.Float64x2.extractLane(c, 0));
+  equal(1.0, SIMD.Float64x2.extractLane(c, 1));
+  equal(4.0, SIMD.Float64x2.extractLane(d, 0));
+  equal(3.0, SIMD.Float64x2.extractLane(d, 1));
+  equal(1.0, SIMD.Float64x2.extractLane(e, 0));
+  equal(2.0, SIMD.Float64x2.extractLane(e, 1));
+  equal(1.0, SIMD.Float64x2.extractLane(f, 0));
+  equal(3.0, SIMD.Float64x2.extractLane(f, 1));
 });
 
 test('Int32x4 shuffle', function() {
@@ -1035,33 +1035,33 @@ test('Int32x4 shuffle', function() {
   var xyxy = SIMD.Int32x4.shuffle(a, b, 0, 1, 4, 5);
   var zwzw = SIMD.Int32x4.shuffle(a, b, 2, 3, 6, 7);
   var xxxx = SIMD.Int32x4.shuffle(a, b, 0, 0, 4, 4);
-  equal(1, xyxy.x);
-  equal(2, xyxy.y);
-  equal(5, xyxy.z);
-  equal(6, xyxy.w);
-  equal(3, zwzw.x);
-  equal(4, zwzw.y);
-  equal(7, zwzw.z);
-  equal(8, zwzw.w);
-  equal(1, xxxx.x);
-  equal(1, xxxx.y);
-  equal(5, xxxx.z);
-  equal(5, xxxx.w);
+  equal(1, SIMD.Int32x4.extractLane(xyxy, 0));
+  equal(2, SIMD.Int32x4.extractLane(xyxy, 1));
+  equal(5, SIMD.Int32x4.extractLane(xyxy, 2));
+  equal(6, SIMD.Int32x4.extractLane(xyxy, 3));
+  equal(3, SIMD.Int32x4.extractLane(zwzw, 0));
+  equal(4, SIMD.Int32x4.extractLane(zwzw, 1));
+  equal(7, SIMD.Int32x4.extractLane(zwzw, 2));
+  equal(8, SIMD.Int32x4.extractLane(zwzw, 3));
+  equal(1, SIMD.Int32x4.extractLane(xxxx, 0));
+  equal(1, SIMD.Int32x4.extractLane(xxxx, 1));
+  equal(5, SIMD.Int32x4.extractLane(xxxx, 2));
+  equal(5, SIMD.Int32x4.extractLane(xxxx, 3));
   var c = SIMD.Int32x4.shuffle(a, b, 0, 4, 5, 1);
   var d = SIMD.Int32x4.shuffle(a, b, 2, 6, 3, 7);
   var e = SIMD.Int32x4.shuffle(a, b, 0, 4, 0, 4);
-  equal(1, c.x);
-  equal(5, c.y);
-  equal(6, c.z);
-  equal(2, c.w);
-  equal(3, d.x);
-  equal(7, d.y);
-  equal(4, d.z);
-  equal(8, d.w);
-  equal(1, e.x);
-  equal(5, e.y);
-  equal(1, e.z);
-  equal(5, e.w);
+  equal(1, SIMD.Int32x4.extractLane(c, 0));
+  equal(5, SIMD.Int32x4.extractLane(c, 1));
+  equal(6, SIMD.Int32x4.extractLane(c, 2));
+  equal(2, SIMD.Int32x4.extractLane(c, 3));
+  equal(3, SIMD.Int32x4.extractLane(d, 0));
+  equal(7, SIMD.Int32x4.extractLane(d, 1));
+  equal(4, SIMD.Int32x4.extractLane(d, 2));
+  equal(8, SIMD.Int32x4.extractLane(d, 3));
+  equal(1, SIMD.Int32x4.extractLane(e, 0));
+  equal(5, SIMD.Int32x4.extractLane(e, 1));
+  equal(1, SIMD.Int32x4.extractLane(e, 2));
+  equal(5, SIMD.Int32x4.extractLane(e, 3));
 });
 
 test('Int32x4 vector getters', function() {
@@ -1071,24 +1071,24 @@ test('Int32x4 vector getters', function() {
   var zzzz = SIMD.Int32x4.swizzle(a, 2, 2, 2, 2);
   var wwww = SIMD.Int32x4.swizzle(a, 3, 3, 3, 3);
   var wzyx = SIMD.Int32x4.swizzle(a, 3, 2, 1, 0);
-  equal(4, xxxx.x);
-  equal(4, xxxx.y);
-  equal(4, xxxx.z);
-  equal(4, xxxx.w);
-  equal(3, yyyy.x);
-  equal(3, yyyy.y);
-  equal(3, yyyy.z);
-  equal(3, yyyy.w);
-  equal(2, zzzz.x);
-  equal(2, zzzz.y);
-  equal(2, zzzz.z);
-  equal(2, zzzz.w);
-  equal(1, wwww.x);
-  equal(1, wwww.y);
-  equal(1, wwww.z);
-  equal(1, wwww.w);
-  equal(1, wzyx.x);
-  equal(2, wzyx.y);
-  equal(3, wzyx.z);
-  equal(4, wzyx.w);
+  equal(4, SIMD.Int32x4.extractLane(xxxx, 0));
+  equal(4, SIMD.Int32x4.extractLane(xxxx, 1));
+  equal(4, SIMD.Int32x4.extractLane(xxxx, 2));
+  equal(4, SIMD.Int32x4.extractLane(xxxx, 3));
+  equal(3, SIMD.Int32x4.extractLane(yyyy, 0));
+  equal(3, SIMD.Int32x4.extractLane(yyyy, 1));
+  equal(3, SIMD.Int32x4.extractLane(yyyy, 2));
+  equal(3, SIMD.Int32x4.extractLane(yyyy, 3));
+  equal(2, SIMD.Int32x4.extractLane(zzzz, 0));
+  equal(2, SIMD.Int32x4.extractLane(zzzz, 1));
+  equal(2, SIMD.Int32x4.extractLane(zzzz, 2));
+  equal(2, SIMD.Int32x4.extractLane(zzzz, 3));
+  equal(1, SIMD.Int32x4.extractLane(wwww, 0));
+  equal(1, SIMD.Int32x4.extractLane(wwww, 1));
+  equal(1, SIMD.Int32x4.extractLane(wwww, 2));
+  equal(1, SIMD.Int32x4.extractLane(wwww, 3));
+  equal(1, SIMD.Int32x4.extractLane(wzyx, 0));
+  equal(2, SIMD.Int32x4.extractLane(wzyx, 1));
+  equal(3, SIMD.Int32x4.extractLane(wzyx, 2));
+  equal(4, SIMD.Int32x4.extractLane(wzyx, 3));
 });
