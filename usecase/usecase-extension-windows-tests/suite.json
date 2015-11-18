@@ -1,0 +1,32 @@
+{
+  "pkg-blacklist": [
+        "config.xml",
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "msi": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "xwalk-echo-app": "xwalk-echo-app"
+            },
+            "pkg-app": {
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            }
+        }
+    },
+    "pkg-name": "usecase-extension-windows-tests"
+}
