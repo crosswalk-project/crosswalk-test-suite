@@ -38,7 +38,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_android(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=android"
+        comm.clear("org.xwalk.test")
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=android --android-crosswalk=" + comm.crosswalkzip
         packstatus = os.system(cmd)
         self.assertEquals(packstatus, 0)
         os.chdir('org.xwalk.test')
@@ -50,7 +51,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_ios(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=ios"
+        comm.clear("org.xwalk.test")
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=ios --android-crosswalk=" + comm.crosswalkzip
         packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(packstatus, 0)
@@ -58,7 +60,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_deb(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=deb"
+        comm.clear("org.xwalk.test")
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=deb --android-crosswalk=" + comm.crosswalkzip
         packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(packstatus, 0)
@@ -66,7 +69,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_invalid_platform(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=target"
+        comm.clear("org.xwalk.test")
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + " --platforms=target --android-crosswalk=" + comm.crosswalkzip
         packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(packstatus, 0)

@@ -20,7 +20,7 @@ This test suite is for apptools-android-tests
    If test host is "Windows" platform, content of the file should be "Windows", default value is "Android".
 
 5. Need to edit the file "apptools-android-tests/version.txt" according to the Crosswalk which you want to test.
-   For example: if you want to test with "crosswalk-13.42.319.11.zip", content of the file should be "13.42.319.11".
+   For example: if you want to test with "crosswalk-17.45.434.0.zip", content of the file should be "17.45.434.0 32". If you want to test with "crosswalk-17.45.434.0-64bit.zip", content of the file should be "17.45.434.0 64".
 
 6. The node.js, Android SDK, JDK, apache ant, and git must be functional
 

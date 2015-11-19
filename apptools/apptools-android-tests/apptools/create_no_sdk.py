@@ -51,6 +51,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 new_path = os.linesep.join(paths).strip()
         os.environ['PATH'] = new_path
         os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + \
             comm.crosswalkzip

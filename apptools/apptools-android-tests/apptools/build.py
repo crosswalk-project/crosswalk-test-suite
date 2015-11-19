@@ -58,15 +58,21 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_build_missing_so_file(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
             comm.crosswalkzip
         os.system(cmd)
         os.chdir('org.xwalk.test')
-        if comm.ARCH_X86 == "x86":
-            shutil.rmtree(
-                os.getcwd() +
-                '/prj/android/xwalk_core_library/libs/armeabi-v7a/')
+        if comm.ARCH_X86 != "":
+            if comm.BIT == "64":
+                shutil.rmtree(
+                    os.getcwd() +
+                    '/prj/android/xwalk_core_library/libs/arm64-v8a/')
+            else:
+                shutil.rmtree(
+                    os.getcwd() +
+                    '/prj/android/xwalk_core_library/libs/armeabi-v7a/')
             buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
             buildstatus = os.system(buildcmd)
             self.assertEquals(buildstatus, 0)
@@ -76,10 +82,15 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 if pkgs[i].endswith(".apk") and "arm" in pkgs[i]:
                     armLength = armLength + 1
             self.assertEquals(armLength, 0)
-        elif comm.ARCH_ARM == "arm":
-            shutil.rmtree(
-                os.getcwd() +
-                '/prj/android/xwalk_core_library/libs/x86/')
+        elif comm.ARCH_ARM != "":
+            if comm.BIT == "64":
+                shutil.rmtree(
+                    os.getcwd() +
+                    '/prj/android/xwalk_core_library/libs/x86_64/')
+            else:
+                shutil.rmtree(
+                    os.getcwd() +
+                    '/prj/android/xwalk_core_library/libs/x86/')
             buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
             buildstatus = os.system(buildcmd)
             self.assertEquals(buildstatus, 0)
@@ -95,17 +106,26 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_build_missing_both_so_file(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
             comm.crosswalkzip
         os.system(cmd)
         os.chdir('org.xwalk.test')
-        shutil.rmtree(
-            os.getcwd() +
-            '/prj/android/xwalk_core_library/libs/armeabi-v7a/')
-        shutil.rmtree(
-            os.getcwd() +
-            '/prj/android/xwalk_core_library/libs/x86/')
+        if comm.BIT == "64":
+            shutil.rmtree(
+                os.getcwd() +
+                '/prj/android/xwalk_core_library/libs/arm64-v8a/')
+            shutil.rmtree(
+                os.getcwd() +
+                '/prj/android/xwalk_core_library/libs/x86_64/')
+        else:
+            shutil.rmtree(
+                os.getcwd() +
+                '/prj/android/xwalk_core_library/libs/armeabi-v7a/')
+            shutil.rmtree(
+                os.getcwd() +
+                '/prj/android/xwalk_core_library/libs/x86/')
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
         pkgs = os.listdir(os.getcwd())

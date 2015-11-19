@@ -45,7 +45,7 @@ DEFAULT_CMD_TIMEOUT = 600
 
 
 def setUp():
-    global device_x86, device_arm, XwalkPath, crosswalkVersion, crosswalkzip, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE, ANDROID_MODE
+    global device_x86, device_arm, XwalkPath, crosswalkVersion, crosswalkzip, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE, ANDROID_MODE, BIT
 
     device_x86 = ""
     device_arm = ""
@@ -53,14 +53,25 @@ def setUp():
 
     fp = open(ConstPath + "/../arch.txt", 'r')
     fp_arch = fp.read().strip("\n\t")
-    if "x86" in fp_arch and "arm" in fp_arch:
-        ARCH_ARM = "arm"
-        ARCH_X86 = "x86"
-    elif "x86" in fp_arch and "arm" not in fp_arch:
+    if "," in fp_arch:
+        if "a" in fp_arch and "x" in fp_arch:
+            if "a" in fp_arch.split(',')[0].strip("\n\t"):
+                ARCH_ARM = fp_arch.split(',')[0].strip("\n\t")
+                ARCH_X86 = fp_arch.split(',')[1].strip("\n\t")
+            else:
+                ARCH_ARM = fp_arch.split(',')[1].strip("\n\t")
+                ARCH_X86 = fp_arch.split(',')[0].strip("\n\t")
+        else:
+            ARCH_ARM = ""
+            ARCH_X86 = ""
+    elif "," not in fp_arch and "x" in fp_arch and "a" not in fp_arch:
         ARCH_ARM = ""
-        ARCH_X86 = "x86"
+        ARCH_X86 = fp_arch
+    elif "," not in fp_arch and "x" not in fp_arch and "a" in fp_arch:
+        ARCH_ARM = fp_arch
+        ARCH_X86 = ""
     else:
-        ARCH_ARM = "arm"
+        ARCH_ARM = ""
         ARCH_X86 = ""
     fp.close()
 
@@ -91,7 +102,7 @@ def setUp():
     if not device:
         print ("Get DEVICE_ID env error\n")
         sys.exit(1)
-    if ARCH_ARM == "arm" and ARCH_X86 == "x86":
+    if ARCH_ARM != "" and ARCH_X86 != "":
         if "," in device:
             if getDeviceCpuAbi(device.split(',')[0]) == "x86":
                 device_x86 = device.split(',')[0]
@@ -107,13 +118,13 @@ def setUp():
         else:
             print ("Need x86 and arm architecture devices id\n")
             sys.exit(1)
-    elif ARCH_ARM == "arm" and ARCH_X86 != "x86":
+    elif ARCH_ARM != "" and ARCH_X86 == "":
         if getDeviceCpuAbi(device) == "arm":
             device_arm = device
         if not device_arm:
             print ("Need arm architecture devices id\n")
             sys.exit(1)
-    elif ARCH_ARM != "arm" and ARCH_X86 == "x86":
+    elif ARCH_ARM == "" and ARCH_X86 != "":
         if getDeviceCpuAbi(device) == "x86":
             device_x86 = device
         if not device_x86:
@@ -121,7 +132,9 @@ def setUp():
             sys.exit(1)
 
     vp = open(ConstPath + "/../version.txt", 'r')
-    crosswalkVersion = vp.read().strip("\n\t")
+    vp_version = vp.read().strip("\n\t")
+    crosswalkVersion = vp_version.split(" ")[0]
+    BIT = vp_version.split(" ")[1]
     vp.close()
 
     PackTools = ConstPath + "/../tools/crosswalk-app-tools/src/"
@@ -134,7 +147,10 @@ def setUp():
         print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
         sys.exit(1)
 
-    crosswalkzip = XwalkPath + 'crosswalk-{}.zip'.format(crosswalkVersion)
+    if BIT == "64":
+        crosswalkzip = XwalkPath + 'crosswalk-{}-64bit.zip'.format(crosswalkVersion)
+    else:
+        crosswalkzip = XwalkPath + 'crosswalk-{}.zip'.format(crosswalkVersion)
     if not os.path.exists(crosswalkzip):
         print "Please check if " + crosswalkzip + " exists"
         sys.exit(1)
@@ -197,9 +213,13 @@ def build(self, cmd):
     if MODE != " --android-shared":
         for i in range(len(apks)):
             if apks[i].endswith(".apk") and "x86" in apks[i]:
+                if BIT == "64":
+                    self.assertIn("64", apks[i])
                 apkLength = apkLength + 1
                 appVersion = apks[i].split('-')[1]
             if apks[i].endswith(".apk") and "arm" in apks[i]:
+                if BIT == "64":
+                    self.assertIn("64", apks[i])
                 apkLength = apkLength + 1
                 appVersion = apks[i].split('-')[1]
         self.assertEquals(apkLength, 2)
@@ -216,7 +236,7 @@ def run(self):
     setUp()
     apks = os.listdir(os.getcwd())
     for apk in apks:
-        if ARCH_ARM == "arm" and (ARCH_ARM in apk or "shared" in apk):
+        if ARCH_ARM != "" and ("arm" in apk or "shared" in apk):
             return_inst_code_arm = os.system('adb -s ' + device_arm + ' install -r ' + apk)
             (return_pm_code_arm, pmstatus_arm) = getstatusoutput(
                 'adb -s ' +
@@ -237,7 +257,7 @@ def run(self):
             self.assertNotEquals("Error", launstatus_arm[0])
             self.assertEquals(return_stop_code_arm, 0)
             self.assertNotEquals("Success", uninstatus_arm)
-        if ARCH_X86 == "x86" and (ARCH_X86 in apk or "shared" in apk):
+        if ARCH_X86 != "" and ("x86" in apk or "shared" in apk):
             return_inst_code_x86 = os.system('adb -s ' + device_x86 + ' install -r ' + apk)
             (return_pm_code_x86, pmstatus_x86) = getstatusoutput(
                 'adb -s ' +
