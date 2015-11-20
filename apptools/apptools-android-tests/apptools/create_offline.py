@@ -38,13 +38,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_offline(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        for i in range(len(os.listdir(comm.XwalkPath))):
-            if os.listdir(comm.XwalkPath)[i].endswith(".zip"):
-                androidCrosswalk = os.listdir(comm.XwalkPath)[i]
         comm.clear("org.xwalk.test")
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + \
-            androidCrosswalk
+            comm.crosswalkzip
         (return_create_code, create_output) = comm.getstatusoutput(cmd)
         os.chdir('org.xwalk.test')
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
