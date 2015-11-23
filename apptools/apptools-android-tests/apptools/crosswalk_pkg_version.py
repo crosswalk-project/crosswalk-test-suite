@@ -42,11 +42,12 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.XwalkPath)
         cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-pkg --version"
         (return_code, output) = comm.getstatusoutput(cmd)
+        cmd_1 = comm.HOST_PREFIX + comm.PackTools + "crosswalk-pkg -v"
+        (return_code_1, output_1) = comm.getstatusoutput(cmd_1)
         with open(comm.ConstPath + "/../tools/crosswalk-app-tools/package.json") as json_file:
             data = json.load(json_file)
-        self.assertEquals(
-            data['version'].strip(os.linesep),
-            output[0].strip(os.linesep))
+        self.assertEquals(data['version'].strip(os.linesep), output[0].strip(os.linesep))
+        self.assertEquals(data['version'].strip(os.linesep), output_1[0].strip(os.linesep))
 
 if __name__ == '__main__':
     unittest.main()

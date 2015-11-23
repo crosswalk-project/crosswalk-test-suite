@@ -274,5 +274,79 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertIn("app", os.listdir(projectDir))
         self.assertIn("prj", os.listdir(projectDir))
 
+    def test_create_package_p(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg -p windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("candle", output[0])
+        self.assertIn("light", output[0])
+        self.assertNotIn("target android", output[0])
+        self.assertEquals(apkLength, 1)
+
+    def test_create_package_c(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows -c canary " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        version = comm.check_crosswalk_version(self, "canary")
+        crosswalk = 'crosswalk-{}.zip'.format(version)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        comm.clear("org.xwalk.test")
+        if not comm.cachedir:
+            namelist = os.listdir(os.getcwd())
+        else:
+            newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
+            os.chdir(newcachedir)
+            namelist = os.listdir(os.getcwd())
+        self.assertEquals(return_code, 0)
+        self.assertIn("canary", output[0])
+        self.assertIn(version, output[0])
+        self.assertIn(crosswalk, namelist)
+        self.assertEquals(apkLength, 1)
+
+    def test_create_package_m(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        if os.path.exists(comm.ConstPath + "/../testapp/start_url/manifest.json"):
+            os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " -m org.xwalk.test " + comm.ConstPath + "/../testapp/start_url/"
+        return_code = os.system(cmd)
+        with open(comm.ConstPath + "/../testapp/start_url/manifest.json") as json_file:
+            data = json.load(json_file)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        comm.clear("org.xwalk.test")
+        os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
+        self.assertEquals(return_code, 0)
+        self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
+        self.assertEquals(apkLength, 1)
+
 if __name__ == '__main__':
     unittest.main()

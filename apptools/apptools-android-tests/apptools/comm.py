@@ -82,10 +82,10 @@ def setUp():
         ANDROID_MODE = ""
     elif mode_type == "shared":
         MODE = " --android-shared"
-        ANDROID_MODE = " --android=shared"
+        ANDROID_MODE = "shared"
     else:
         MODE = " --android-lite"
-        ANDROID_MODE = " --android=lite"
+        ANDROID_MODE = "lite"
     mode.close()
 
     host = open(ConstPath + "/../host.txt", 'r')
