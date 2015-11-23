@@ -84,8 +84,7 @@ class WebAPP(common.APP):
                     if "app_launcher" in app_config and app_config[
                             "app_launcher"] == "XWalkLauncher":
                         self.app_name = self.app_name.replace("-", "_")
-                        apk_name_update = "".join(
-                            [i.capitalize() for i in self.app_name.split("_") if i])
+                        apk_name_update = self.app_name.capitalize()
                         apk_activity_name = ".%sActivity" % apk_name_update
                         apk_pkg_name = "org.xwalk.%s" % self.app_name
                     if "app_launcher" in app_config and app_config[
