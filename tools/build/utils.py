@@ -168,6 +168,9 @@ def zipDir(dir_path, zip_file):
         z_file = zipfile.ZipFile(zip_file, "w")
         orig_dir = os.getcwd()
         os.chdir(dir_path)
+        
+        # Remove the .git directory to reduce the size of cordova packages
+        os.system('find . -name ".git" | xargs rm -fr')
         for root, dirs, files in os.walk("."):
             for i_file in files:
                 LOG.info("zip %s" % os.path.join(root, i_file))
