@@ -83,6 +83,40 @@
           "notification/support": "notification/bdd/support"
         }
       }
+    },
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-notification-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "w3c-notification-app/testscripts": "w3c-notification-app/testscripts",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "icon.png": "icon.ico",
+          "notification/support": "notification/bdd/support"
+        }
+      },
+      "subapp-list": {
+        "w3c-notification-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../notification/bdd": "notification",
+            "../notification/support": "notification/support",
+            "../notification/w3c/bdd": "notification/w3c/bdd",
+            "../notification/w3c/common.js": "notification/w3c/common.js",
+            "PACK-TOOL-ROOT/resources/testharness": "resources"
+          }
+        }
+      }
     }
   },
   "pkg-name": "tct-notification-w3c-tests"

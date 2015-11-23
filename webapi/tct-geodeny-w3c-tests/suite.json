@@ -60,6 +60,38 @@
           }
         }
       }
+    },
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-geodeny-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "w3c-geodeny-app/testscripts": "w3c-geodeny-app/testscripts",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "icon.png": "icon.ico"
+        }
+      },
+      "subapp-list": {
+        "w3c-geodeny-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-icon-opt": "",
+          "copylist": {
+            "../geodeny/bdd": "geodeny/bdd",
+            "../geodeny/w3c/bdd": "geodeny/w3c/bdd",
+            "PACK-TOOL-ROOT/resources/testharness": "resources"
+          }
+        }
+      }
     }
   },
   "pkg-name": "tct-geodeny-w3c-tests"
