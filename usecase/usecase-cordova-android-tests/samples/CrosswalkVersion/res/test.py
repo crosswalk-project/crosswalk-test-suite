@@ -126,6 +126,19 @@ for version_tmp in VERSION_TYPES:
     comm.removeWebviewPlugin()
     index = index + 1
 
+if comm.CROSSWALK_BRANCH != "canary":
+    os.system('cp ../index.html www/index.html')
+    latestVersion = comm.getLatestCrosswalkVersion('stable', '15')
+    os.system('sed -i "s/{expectedVersion}/%s/g" www/index.html' % latestVersion)
+
+    comm.installWebviewPlugin()
+    comm.build(app_name)
+    apk_source = os.path.join(project_path, "platforms", "android", 
+            "build", "outputs", "apk", "android-%s-debug.apk" % pkg_arch_tmp)
+    apk_dest = os.path.join(current_path_tmp, "CrosswalkVersion_%s_%d.apk" % (comm.CROSSWALK_BRANCH, count))
+    comm.doCopy(apk_source, apk_dest)
+    count = count + 1
+
 for i in range(count - 1):
     comm.checkApkExist("../CrosswalkVersion_%s_%d.apk" % (comm.CROSSWALK_BRANCH, (i + 1)))
 
