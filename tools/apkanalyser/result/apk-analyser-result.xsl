@@ -37,7 +37,11 @@
       .limw { min-width: 60px; max-width: 96px; overflow: hidden; width: 106px;  }
       .emb { background-color:#00B1E1; color: rgba(255, 255, 255, 1.0); text-shadow: 0px 1px 0px rgba(0,0,0,0.2);}
       .sha { background-color:#EB7E7F; color: rgba(255, 255, 255, 1.0); }
+      .archall { background-color:#000000; color: rgba(255, 255, 255, 1.0); }
+      .arch64 { background-color:#666666; color: rgba(255, 255, 255, 1.0); }
+      .arm64 { background-color:rgba(1, 134, 179, 1.0); color: rgba(255, 255, 255, 1.0);}
       .arm { background-color:#EC795E; color: rgba(255, 255, 255, 1.0);}
+      .x86_64 { background-color:rgba(226, 69, 124, 1.0); color: rgba(255, 255, 255, 1.0);}
       .armx86 { background-color:#E082A5; color: rgba(255, 255, 255, 1.0);}
       .x86 { background-color:#FFBE65; color: rgba(0, 0, 0, 0.6); }
       .rt { background-color:#0ACDC7; color: rgba(255, 255, 255, 1.0); }
@@ -52,7 +56,7 @@
       #note, #dt { font-style: italic; margin-right: 6px; }
       .hili { color: rgba(211, 84, 0,1.0); }
     </style>
-    <script src='../../resources/webrunner/jquery-1.10.2.min.js'></script>
+    <script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
   </head>
   <body>
     <div id='wrapper'>
@@ -106,8 +110,19 @@
               <td class="limw"><xsl:value-of select="@mode"/></td>
             </xsl:otherwise>
           </xsl:choose>
-
            <xsl:choose>
+             <xsl:when test="@architecture = 'arm64 + x86_64 + arm + x86'">
+             <td class="archall limw"><xsl:value-of select="@architecture"/></td>
+            </xsl:when>
+             <xsl:when test="@architecture = 'arm64 + x86_64'">
+             <td class="arch64 limw"><xsl:value-of select="@architecture"/></td>
+            </xsl:when>
+             <xsl:when test="@architecture = 'arm64'">
+             <td class="arm64 limw"><xsl:value-of select="@architecture"/></td>
+            </xsl:when>
+             <xsl:when test="@architecture = 'x86_64'">
+             <td class="x86_64 limw"><xsl:value-of select="@architecture"/></td>
+            </xsl:when>
              <xsl:when test="@architecture = 'arm + x86'">
              <td class="armx86 limw"><xsl:value-of select="@architecture"/></td>
             </xsl:when>

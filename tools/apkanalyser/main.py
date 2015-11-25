@@ -37,8 +37,10 @@ import shutil
 import subprocess
 from optparse import OptionParser
 from datetime import *
+
 import comm
 import xml
+
 
 workpath = os.getcwd()
 apkpath = os.path.join(workpath, 'apks')
@@ -48,7 +50,6 @@ xmlpath = reportpath + '/apk-analyser-result_' + \
 
 
 def aaptdump(path):
-
     try:
         aaptdump = 'aapt d badging ' + path + ' AndroidManifest.xml'
         content = subprocess.check_output(aaptdump, shell=True)
@@ -103,21 +104,31 @@ def aaptdump(path):
 
 
 def aaptanalyser(path):
-
     architecture = ''
     try:
         aaptlist = 'aapt list -a ' + path
         r = subprocess.check_output(aaptlist, shell=True)
 
-        if (r.find('lib/armeabi-v7a/libxwalkcore.so') > -1 or r.find('lib/armeabi/libxwalkcore.so')
-                > -1) and r.find('lib/x86/libxwalkcore.so') > -1:
+        if r.find('lib/arm64-v8a/libxwalkcore.so') > -1 \
+                and (r.find('lib/x86_64/libxwalkcore.so') > -1 or r.find('lib/x86-64/libxwalkcore.so') > -1) \
+                and (r.find('lib/armeabi-v7a/libxwalkcore.so') > -1 or r.find('lib/armeabi/libxwalkcore.so') > -1) \
+                and r.find('lib/x86/libxwalkcore.so') > -1:
+            architecture = 'arm64 + x86_64 + arm + x86'
+        elif r.find('lib/arm64-v8a/libxwalkcore.so') > -1 \
+                and (r.find('lib/x86_64/libxwalkcore.so') > -1 or r.find('lib/x86-64/libxwalkcore.so') > -1):
+            architecture = 'arm64 + x86_64'
+        elif r.find('lib/arm64-v8a/libxwalkcore.so') > -1:
+            architecture = 'arm64'
+        elif r.find('lib/x86_64/libxwalkcore.so') > -1 or r.find('lib/x86-64/libxwalkcore.so') > -1:
+            architecture = 'x86_64'
+        elif (r.find('lib/armeabi-v7a/libxwalkcore.so') > -1 or r.find('lib/armeabi/libxwalkcore.so') > -1) \
+                and r.find('lib/x86/libxwalkcore.so') > -1:
             architecture = 'arm + x86'
-        elif r.find('lib/armeabi-v7a/libxwalkcore.so') > -1 or r.find('lib/armeabi/libxwalkcore.so') > -1:
-            print 'arm'
-            architecture = 'arm'
         elif r.find('lib/x86/libxwalkcore.so') > -1:
-            print 'x86'
             architecture = 'x86'
+        elif r.find('lib/armeabi-v7a/libxwalkcore.so') > -1 or r.find('lib/armeabi/libxwalkcore.so') > -1:
+            architecture = 'arm'
+        print architecture
         return [architecture]
 
     except Exception as ex:
@@ -146,7 +157,6 @@ def getxwalkwebviewplugin(path):
 
 
 def apktoolanalyser(path):
-
     apkname = path.split('/')[-1]
     apkdedecompiled = os.path.join(workpath, apkname.replace('.apk', ''))
     embeddedpatharm = os.path.join(
@@ -163,6 +173,21 @@ def apktoolanalyser(path):
         apkdedecompiled,
         'lib',
         'x86',
+        'libxwalkcore.so')
+    embeddedpatharm64 = os.path.join(
+        apkdedecompiled,
+        'lib',
+        'arm64-v8a',
+        'libxwalkcore.so')
+    embeddedpathx86_64 = os.path.join(
+        apkdedecompiled,
+        'lib',
+        'x86_64',
+        'libxwalkcore.so')
+    embeddedpathx86_64_ = os.path.join(
+        apkdedecompiled,
+        'lib',
+        'x86-64',
         'libxwalkcore.so')
 
     xwalkcoreviewsmali = os.path.join(
@@ -221,8 +246,9 @@ def apktoolanalyser(path):
         t = subprocess.check_output(apktoolcmd, shell=True)
         if comm.find_dir(apkdedecompiled):
 
-            if comm.find_file(embeddedpatharm) > -1 or comm.find_file(
-                    embeddedpatharmv5) > -1 or comm.find_file(embeddedpathx86) > -1:
+            if comm.find_file(embeddedpatharm) > -1 or comm.find_file(embeddedpatharmv5) > -1 \
+                    or comm.find_file(embeddedpathx86) > -1 or comm.find_file(embeddedpatharm64) > -1 \
+                    or comm.find_file(embeddedpathx86_64) > -1 or comm.find_file(embeddedpathx86_64_) > -1:
                 mode = 'embedded'
             elif comm.find_file(xwalkcoreviewsmali):
                 mode = 'shared'
@@ -314,7 +340,6 @@ def apksize(path):
 
 
 def analyser(path):
-
     g = aaptdump(path)
     t = aaptanalyser(path)
     k = apktoolanalyser(path)
@@ -348,7 +373,8 @@ def analyser(path):
     xml.insert_xml_result(xmlpath, filename, apksize(path), appname, packagename,
                           launchableactivity, versioncode, versionname, sdkversion, targetsdkversion,
                           mode, architecture,
-                          crosswalk, webview, chromium, coreinternal, cordova, xwalkwebvieweg, isintelxdk, xwalklist, chromiumlist, cordovalist, smalilist, assetlist, note)
+                          crosswalk, webview, chromium, coreinternal, cordova, xwalkwebvieweg, isintelxdk, xwalklist,
+                          chromiumlist, cordovalist, smalilist, assetlist, note)
     print 'Completed: ' + path
     print '__________________________________________'
 
@@ -378,6 +404,7 @@ def main():
                       help='(mandatory) The path of apk or apks.')
     (options, args) = parser.parse_args()
     option_check(options.path)
+
 
 if __name__ == '__main__':
     sys.exit(main())
