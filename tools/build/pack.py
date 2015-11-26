@@ -478,6 +478,7 @@ def main():
         if BUILD_PARAMETERS.pkgversion:
             LOG.info("Using %s as pkg version " % BUILD_PARAMETERS.pkgversion)
             pkg_main_version = BUILD_PARAMETERS.pkgversion
+            CROSSWALK_BRANCH = "master"
         else:
             if pkg_version_file_path is not None:
                 LOG.info("Using pkg version file: %s" % pkg_version_file_path)

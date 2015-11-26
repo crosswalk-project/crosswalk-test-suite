@@ -218,8 +218,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     if version_opt:
         manifest_opt["xwalk_app_version"] = version_opt
     if icons_opt and \
-           utils.safelyGetValue(build_json, "apk-type") != "MANIFEST" and \
-           utils.safelyGetValue(build_json, "apk-type") != "HOSTEDAPP":
+           utils.safelyGetValue(build_json, "apk-type") != "MANIFEST":
         manifest_opt["icons"] = icons_opt
     if orientation_opt:
         manifest_opt["orientation"] = orientation_opt
@@ -241,17 +240,6 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
                    "-p android --targets=\"%s\" %s %s" % (
                        mode_opt, CROSSWALK_VERSION, arch_opt, common_opts,
                        app_src)
-    elif utils.safelyGetValue(build_json, "apk-type") == "HOSTEDAPP":
-        if not url_opt:
-            LOG.error(
-                "Fail to find the key \"apk-url-opt\" for hosted APP packing")
-            return False
-        app_src_temp = "%s_%s" % (app_src, utils.getRandomStr())
-        os.mkdir(app_src_temp)
-        pack_cmd = "crosswalk-pkg %s --crosswalk=%s --manifest='%s' " \
-                   "-p android --targets=\"%s\" %s %s" % (
-                       mode_opt, CROSSWALK_VERSION, manifest_opt, arch_opt,
-                       common_opts, app_src_temp)
     else:
         pack_cmd = "crosswalk-pkg %s --crosswalk=%s --manifest='%s' " \
                    "-p android --targets=\"%s\" %s %s" % (
