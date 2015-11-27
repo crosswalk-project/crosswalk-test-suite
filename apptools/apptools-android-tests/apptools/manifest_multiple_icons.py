@@ -117,6 +117,38 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
+    def test_icon_webp(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        jsons = jsonfile.read()
+        jsonfile.close()
+        jsonDict = json.loads(jsons)
+        jsonDict["icons"][0]["src"] = "../../../icon/icon.webp"
+        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        buildstatus = os.system(buildcmd)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(buildstatus, 0)
+
+    def test_non_exist_icon(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        jsons = jsonfile.read()
+        jsonfile.close()
+        jsonDict = json.loads(jsons)
+        jsonDict["icons"][0]["src"] = "icon/icon.png"
+        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        buildstatus = os.system(buildcmd)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(buildstatus, 0)
+
     def test_multiple_icons(self):
         comm.setUp()
         comm.create(self)
