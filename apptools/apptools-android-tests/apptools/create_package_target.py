@@ -47,10 +47,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('org.xwalk.test')
         if comm.BIT == "64":
             cmd = comm.HOST_PREFIX + comm.PackTools + \
-                "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + ' --targets="arm64-v8a x86_64" ' + comm.ConstPath + "/../testapp/create_package_basic/"
+                "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + ' --targets="arm64-v8a x86_64" ' + comm.ConstPath + "/../testapp/create_package_basic/"
         else:
             cmd = comm.HOST_PREFIX + comm.PackTools + \
-                "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + ' --targets="armeabi-v7a x86" ' + comm.ConstPath + "/../testapp/create_package_basic/"
+                "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + ' --targets="armeabi-v7a x86" ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -96,7 +96,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + ' --targets="32 64" ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + ' --targets="32 64" ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -146,7 +146,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         crosswalkdir.close()
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip[:comm.crosswalkzip.index(".zip")] + ' --targets="32 64" ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip[:comm.crosswalkzip.index(".zip")] + ' --targets="32 64" ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -193,7 +193,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + ' --targets="' + comm.BIT + '" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="' + comm.BIT + '" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -239,7 +239,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + ' --targets="a x" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="a x" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -278,7 +278,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + ' --targets="ar x8" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="ar x8" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -317,7 +317,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + ' --targets="arm x86" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="arm x86" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -356,7 +356,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + ' --targets="arm" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="arm" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -395,7 +395,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + ' --targets="invalid" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="invalid" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -434,7 +434,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + ' -t "armeabi-v7a x8" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' -t "armeabi-v7a x8" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -473,7 +473,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + ' -t "arm invalid" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' -t "arm invalid" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0
@@ -512,7 +512,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android" + comm.ANDROID_MODE + ' -t "x86 invalid" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' -t "x86 invalid" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0

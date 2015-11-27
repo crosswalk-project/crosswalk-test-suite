@@ -369,8 +369,12 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         if os.path.exists(comm.ConstPath + "/../testapp/start_url/manifest.json"):
             os.remove(comm.ConstPath + "/../testapp/start_url/manifest.json")
         os.chdir('org.xwalk.test')
-        cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + " --manifest '{ \"xwalk_package_id\": \"org.xwalk.test\", \"start_url\": \"start.html\" }' " + comm.ConstPath + "/../testapp/start_url/"
+        if comm.SHELL_FLAG == "False":
+            cmd = comm.HOST_PREFIX + comm.PackTools + \
+                "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + ' --manifest "{ """xwalk_package_id""": """org.xwalk.test""", """start_url""": """start.html""" }" ' + comm.ConstPath + "/../testapp/start_url/"
+        else:
+            cmd = comm.HOST_PREFIX + comm.PackTools + \
+                "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + " --manifest '{ \"xwalk_package_id\": \"org.xwalk.test\", \"start_url\": \"start.html\" }' " + comm.ConstPath + "/../testapp/start_url/"
         return_code = os.system(cmd)
         with open(comm.ConstPath + "/../testapp/start_url/manifest.json") as json_file:
             data = json.load(json_file)
