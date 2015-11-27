@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="org.xwalk.embedded.api.asyncsample.setting.XWalkViewSettingUserAgentAsync">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check if XWalkView can show different web content by switching the userAgent default UserAgent and the Mozila5.0 (Chrome 41). Pass, when the 'Baidu' page is different when switching."
+        android:id="@+id/textView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/message_tv"
+        android:textColor="#00ff00"
+        android:layout_below="@+id/textView"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_user_agent"
+        android:layout_below="@+id/message_tv"
+        android:layout_alignParentStart="true" />
+
+    <org.xwalk.core.XWalkView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/xwalk_view"
+        android:layout_below="@+id/switch_user_agent" />
+
+</RelativeLayout>

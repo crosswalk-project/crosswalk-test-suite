@@ -680,3 +680,22 @@ This usecase covers following interface and methods:
 
 * UIClient interface: onJavascriptCloseWindow methods
 
+
+### 67. The [XWalkViewSettingUserAgentAsync](setting/XWalkViewSettingUserAgentAsync.java) sample check XWalkSetting API setUserAgentString method can work, include:
+
+* XWalkSetting API setUserAgentString method can work
+
+This usecase covers following interface and methods:
+
+* XWalkSetting interface: setUserAgentString
+* XWalkView interface: load methods
+
+
+### 68. The [XWalkViewSettingAcceptLanguageAsync](setting/XWalkViewSettingAcceptLanguageAsync.java) sample check XWalkSetting API setAcceptLanguage method can work, include:
+
+* XWalkSetting API setAcceptLanguage method can work
+
+This usecase covers following interface and methods:
+
+* XWalkSetting interface: setAcceptLanguage
+* XWalkView interface: load methods
