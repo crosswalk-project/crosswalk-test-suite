@@ -4,7 +4,7 @@ Feature: wrt-ux-app
     And I wait 15 seconds
     And I click view "description=mobile"
    Then I should see title "World Wide Web Consortium (W3C)" in 60 seconds
-    And launch "wrt-ux-app"
+    And launch "wrt_ux_app"
    Then I should see title "test"
     And I press "recent" hardware key
     And I save relative view "className=android.widget.ImageView" on the "right" side of view "text=touch_gesture_click" to object "touch_app"
