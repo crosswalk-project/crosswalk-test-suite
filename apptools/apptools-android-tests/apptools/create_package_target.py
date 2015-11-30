@@ -544,5 +544,83 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
 
+    def test_create_package_target_arm_32(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="arm 32" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        x86Length = 0
+        x86_64Length = 0
+        armLength = 0
+        arm_64Length = 0
+        if comm.MODE != " --android-shared":
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    if "64" in apks[i]:
+                        x86_64Length = x86_64Length + 1
+                    else:
+                        x86Length = x86Length + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    if "64" in apks[i]:
+                        arm_64Length = arm_64Length + 1
+                    else:
+                        armLength = armLength + 1
+            self.assertEquals(x86_64Length, 0)
+            self.assertEquals(arm_64Length, 1)
+            self.assertEquals(x86Length, 1)
+            self.assertEquals(armLength, 1)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
+    def test_create_package_target_x86_64(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="x86 64" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        x86Length = 0
+        x86_64Length = 0
+        armLength = 0
+        arm_64Length = 0
+        if comm.MODE != " --android-shared":
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    if "64" in apks[i]:
+                        x86_64Length = x86_64Length + 1
+                    else:
+                        x86Length = x86Length + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    if "64" in apks[i]:
+                        arm_64Length = arm_64Length + 1
+                    else:
+                        armLength = armLength + 1
+            self.assertEquals(x86_64Length, 1)
+            self.assertEquals(arm_64Length, 1)
+            self.assertEquals(x86Length, 1)
+            self.assertEquals(armLength, 0)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
 if __name__ == '__main__':
     unittest.main()

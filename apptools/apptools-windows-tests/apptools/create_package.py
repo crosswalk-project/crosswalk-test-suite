@@ -62,6 +62,108 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertNotIn("target android", output[0])
         self.assertEquals(apkLength, 1)
 
+    def test_create_package_relative_path(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " ../../testapp/create_package_basic/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertEquals(apkLength, 1)
+
+    def test_create_package_non_exist_path(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " " + comm.ConstPath + "/../testapp/non_exist_path/"
+        return_code = os.system(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(return_code, 0)
+
+    def test_create_package_non_exist_relative_path(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " ../../testapp/non_exist_path/"
+        return_code = os.system(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(return_code, 0)
+
+    def test_create_package_missing_path(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk
+        return_code = os.system(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(return_code, 0)
+
+    def test_create_package_missing_manifest(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " " + comm.ConstPath + "/../testapp/start_url/"
+        return_code = os.system(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(return_code, 0)
+
+    def test_create_package_missing_manifest_relative_path(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " ../../testapp/start_url/"
+        return_code = os.system(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(return_code, 0)
+
+    def test_create_package_filepath(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " " + comm.ConstPath + "/../testapp/create_package_basic/manifest.json"
+        return_code = os.system(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(return_code, 0)
+
+    def test_create_package_relative_filepath(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " ../../testapp/create_package_basic/manifest.json"
+        return_code = os.system(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(return_code, 0)
+
     def test_create_package_missing_icon_startUrl(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
@@ -113,12 +215,12 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         comm.clear("org.xwalk.test")
-        if os.path.exists("crosswalk-17.45.421.0.zip"):
-            os.remove("crosswalk-17.45.421.0.zip")
+        if os.path.exists("crosswalk-17.45.426.0.zip"):
+            os.remove("crosswalk-17.45.426.0.zip")
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=windows --crosswalk=17.45.421.0 " + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=windows --crosswalk=17.45.426.0 " + comm.ConstPath + "/../testapp/create_package_basic/"
         (return_code, output) = comm.getstatusoutput(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
@@ -128,8 +230,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         namelist = os.listdir(os.getcwd())
         self.assertEquals(return_code, 0)
-        self.assertIn("crosswalk-17.45.421.0.zip", namelist)
-        self.assertIn("17.45.421.0", output[0])
+        self.assertIn("crosswalk-17.45.426.0.zip", namelist)
+        self.assertIn("17.45.426.0", output[0])
         self.assertEquals(apkLength, 1)
 
     def test_create_package_crosswalkdir(self):
