@@ -1,4 +1,4 @@
-package org.xwalk.embedding.test.v5;
+package org.xwalk.embedding.test.v6;
 
 import android.test.suitebuilder.annotation.MediumTest;
 
@@ -8,7 +8,7 @@ import org.xwalk.embedding.base.XWalkViewTestBase;
 /**
  * Created by joey on 11/27/15.
  */
-public class XWalkSettingTestAsync extends XWalkViewTestBase {
+public class XWalkSettingTest extends XWalkViewTestBase {
 
     private static final String USER_AGENT =
             "Chrome/44.0.2403.81 Crosswalk/15.44.376.0 Mobile Safari/537.36";
