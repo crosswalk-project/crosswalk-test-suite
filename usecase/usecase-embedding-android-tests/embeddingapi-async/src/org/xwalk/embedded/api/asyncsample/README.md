@@ -699,3 +699,25 @@ This usecase covers following interface and methods:
 
 * XWalkSetting interface: setAcceptLanguage
 * XWalkView interface: load methods
+
+
+
+### 70. The [XWalkViewSettingTextZoomAsync](setting/XWalkViewSettingTextZoomAsync.java) sample check XWalkSetting API getTextZoom & setTextZoom method can work, include:
+
+* XWalkSetting API getTextZoom & setTextZoom method can work
+
+This usecase covers following interface and methods:
+
+* XWalkSetting interface: getTextZoom, setTextZoom
+* XWalkView interface: load methods
+
+
+
+### 71. The [XWalkViewSettingSupportZoomAsync](setting/XWalkViewSettingSupportZoomAsync.java) sample check XWalkSetting API support zoom method can work, include:
+
+* XWalkSetting API setUseWideViewPort & getUseWideViewPort & setSupportZoom & supportZoom & setBuiltInZoomControls & getBuiltInZoomControls method can work
+
+This usecase covers following interface and methods:
+
+* XWalkSetting interface: setUseWideViewPort, getUseWideViewPort, setSupportZoom, supportZoom, setBuiltInZoomControls, getBuiltInZoomControls methods
+* XWalkView interface: load methods
