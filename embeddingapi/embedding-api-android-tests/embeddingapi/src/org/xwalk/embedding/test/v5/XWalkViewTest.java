@@ -12,8 +12,6 @@ import java.util.concurrent.Callable;
 import android.graphics.Color;
 import android.graphics.Point;
 
-import org.apache.http.Header;
-import org.apache.http.HttpRequest;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -42,8 +40,8 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(false);
         }
     }
-    
-    
+
+
     @SmallTest
     public void testUserAgent() throws Throwable {
         final String USER_AGENT = "Chrome/44.0.2403.81 Crosswalk/15.44.376.0 Mobile Safari/537.36";
@@ -61,30 +59,30 @@ public class XWalkViewTest extends XWalkViewTestBase {
         setUserAgent(null);
         assertEquals(defaultUserAgentString, getUserAgent());
     }
-    
-    @MediumTest
-    public void testUserAgentWithTestServer() throws Throwable {
-        final String customUserAgentString = "testUserAgentWithTestServerUserAgent";
 
-        String fileName = null;
-        try {
-            final String httpPath = "/testUserAgentWithTestServer.html";
-            final String url = mWebServer.setResponse(httpPath, "foo", null);
+    // @MediumTest
+    // public void testUserAgentWithTestServer() throws Throwable {
+    //     final String customUserAgentString = "testUserAgentWithTestServerUserAgent";
 
-            setUserAgent(customUserAgentString);
-            loadUrlSync(url);
+    //     String fileName = null;
+    //     try {
+    //         final String httpPath = "/testUserAgentWithTestServer.html";
+    //         final String url = mWebServer.setResponse(httpPath, "foo", null);
 
-            assertEquals(1, mWebServer.getRequestCount(httpPath));
-            HttpRequest request = mWebServer.getLastRequest(httpPath);
-            Header[] matchingHeaders  = request.getHeaders("User-Agent");
-            assertEquals(1, matchingHeaders.length);
+    //         setUserAgent(customUserAgentString);
+    //         loadUrlSync(url);
 
-            Header header = matchingHeaders[0];
-            assertEquals(customUserAgentString, header.getValue());
-            assertEquals(customUserAgentString, getUserAgent());
-        } finally {
-        }
-    }    
+    //         assertEquals(1, mWebServer.getRequestCount(httpPath));
+    //         HttpRequest request = mWebServer.getLastRequest(httpPath);
+    //         Header[] matchingHeaders  = request.getHeaders("User-Agent");
+    //         assertEquals(1, matchingHeaders.length);
+
+    //         Header header = matchingHeaders[0];
+    //         assertEquals(customUserAgentString, header.getValue());
+    //         assertEquals(customUserAgentString, getUserAgent());
+    //     } finally {
+    //     }
+    // }
 
     @SmallTest
     public void testSetZOrderOnTop_True() {
@@ -119,7 +117,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(false);
         }
     }
-    
+
     @SmallTest
     public void testSetBackgroundColor_Color() {
         try {
@@ -153,7 +151,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(false);
         }
     }
-    
+
     @SmallTest
     public void testSetBackgroundColor_Transparent() {
         try {
@@ -170,7 +168,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(false);
         }
     }
-    
+
     @SmallTest
     public void testSetXWalkViewTransparent() {
         try {
@@ -214,7 +212,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
             e.printStackTrace();
 		}
     }
-    
+
     @SmallTest
     public void testOnZoomByLimited() {
         try {
@@ -229,7 +227,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
                     return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
-            
+
             zoomByOnUiThreadAndWait(4.0f);
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
@@ -237,7 +235,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
                     return MAXIMUM_SCALE == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
-            
+
             zoomByOnUiThreadAndWait(0.5f);
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
@@ -262,7 +260,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
             e.printStackTrace();
 		}
     }
-    
+
     @SmallTest
     public void testOnZoomInAndOut() {
         try {
@@ -286,7 +284,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
                 zoomOutOnUiThreadAndWait();
             }
             assertTrue("Should be able to zoom in", canZoomInOnUiThread());
-            
+
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
@@ -313,7 +311,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertEquals(expectedLanguages[i], result);
         }
     }
-    
+
     @SmallTest
     public void testSetInitialScale1() throws Throwable {
 
@@ -384,7 +382,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
         mTestHelperBridge.getOnScaleChangedHelper().waitForCallback(onScaleChangedCallCount);
         assertEquals(defaultScale, getPixelScale(), .01f);
     }
-    
+
     @SmallTest
     public void testClearCacheForSingleFile() throws Throwable {
         final String pagePath = "/clear_cache_test.html";
@@ -433,5 +431,5 @@ public class XWalkViewTest extends XWalkViewTestBase {
         clearCacheOnUiThread(false);
         loadUrlSync(pageUrl);
         assertEquals(2, mWebServer.getRequestCount(pagePath));
-    }        
+    }
 }
