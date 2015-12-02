@@ -3,4 +3,5 @@ var step = '<p>Test Purpose: </p>'
             +'<p>Expected Result: </p>'
             +'<ol>'
             +'<li>The background color of the status bar is blue</li>'
+            +'<li>The background color of the status bar is blue</li>'
             +'</ol>';
