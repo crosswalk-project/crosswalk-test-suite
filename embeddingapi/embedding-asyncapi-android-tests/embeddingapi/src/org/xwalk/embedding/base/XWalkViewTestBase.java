@@ -34,6 +34,7 @@ import org.xwalk.core.XWalkDownloadListener;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
 import org.xwalk.core.XWalkView;
+import org.xwalk.core.XWalkSettings;
 import org.xwalk.embedding.MainActivity;
 
 import com.test.server.ActivityInstrumentationTestCase2;
@@ -63,18 +64,18 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 
     protected static final String EXPECTED_USER_AGENT =
             "\"Set User Agent String Test Mozilla/5.0 Apple Webkit Cosswalk Mobile Safari\"";
-            
+
     protected static final int NUM_OF_CONSOLE_CALL = 10;
 
     protected static final String REDIRECT_TARGET_PATH = "/redirect_target.html";
     protected static final String TITLE = "TITLE";
     protected final String mExpectedStr = "xwalk";
     protected static final String DATA_URL = "data:text/html,<div/>";
-    
+
     protected final static int WAIT_TIMEOUT_SECONDS = 15;
     protected final static long WAIT_TIMEOUT_MS = 2000;
     private final static int CHECK_INTERVAL = 100;
-    
+
     protected XWalkView mXWalkView;
     protected XWalkView mRestoreXWalkView;
     protected MainActivity mainActivity;
@@ -286,7 +287,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
             public String call() throws Exception {
-                
+
                 return mXWalkView.getNavigationHistory().getCurrentItem().getUrl();
             }
         });
@@ -296,7 +297,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
             public String call() throws Exception {
-                
+
                 return mXWalkView.getNavigationHistory().getCurrentItem().getOriginalUrl();
             }
         });
@@ -391,8 +392,8 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         }
         @Override
         public void run() {
-            
-            
+
+
         }
     }
 
@@ -601,7 +602,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
                 TimeUnit.SECONDS);
     }
-    
+
     protected void loadFromManifestAsync(final String path, final String name) throws Exception {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
@@ -812,7 +813,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             @Override
             public void run() {
                 mXWalkView.setDownloadListener(new XWalkDownloadListener(getActivity()) {
-					
+
 					@Override
 					public void onDownloadStart(String url, String userAgent,
 			                String contentDisposition, String mimetype, long contentLength) {
@@ -833,7 +834,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected boolean canZoomOutOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
             @Override
@@ -842,7 +843,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected void zoomInOnUiThreadAndWait() throws Throwable {
     	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
         final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
@@ -878,7 +879,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected void zoomByOnUiThreadAndWait(final float delta) throws Throwable {
     	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
         final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
@@ -905,7 +906,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
 	protected void setUserAgent(final String userAgent) {
 	    getInstrumentation().runOnMainSync(new Runnable() {
 	        @Override
@@ -913,8 +914,8 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 	            mXWalkView.setUserAgentString(userAgent);
 	        }
 	    });
-	}    
-	
+	}
+
 	protected String getUserAgent() throws Exception {
 	    return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
@@ -922,8 +923,8 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 return mXWalkView.getUserAgentString();
             }
         });
-    }	    
-	
+    }
+
     protected void setCookie(final String name, final String value) throws Exception {
         String jsCommand = "javascript:void((function(){" +
                 "var expirationDate = new Date();" +
@@ -951,7 +952,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         }
         MoreAsserts.assertEquals(
                 foundCookieNames, new HashSet<String>(Arrays.asList(expectedCookieNames)));
-    }    	
+    }
 
     protected String makeExpiringCookie(String cookie, int secondsTillExpiry) {
         return makeExpiringCookieMs(cookie, secondsTillExpiry * 1000);
@@ -963,14 +964,14 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         date.setTime(date.getTime() + millisecondsTillExpiry);
         return cookie + "; expires=" + date.toGMTString();
     }
-    
+
     protected boolean fileURLCanSetCookie(String suffix) throws Throwable {
         String value = "value" + suffix;
         String url = "file:///android_asset/cookie_test.html?value=" + value;
         loadUrlSync(url);
         String cookie = mCookieManager.getCookie(url);
         return cookie != null && cookie.contains("test=" + value);
-    }   
+    }
 
     public static final String ABOUT_TITLE = "About the Google";
 
@@ -1023,7 +1024,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected void clearSingleCacheOnUiThread(final String url) throws Exception {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
@@ -1031,5 +1032,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 mXWalkView.clearCacheForSingleFile(url);
             }
         });
-    }    
+    }
+
+    protected XWalkSettings getXWalkSettingsOnUiThreadByXWalkView(
+            final XWalkView view) throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<XWalkSettings>() {
+            @Override
+            public XWalkSettings call() throws Exception {
+                return view.getSettings();
+            }
+        });
+    }
 }

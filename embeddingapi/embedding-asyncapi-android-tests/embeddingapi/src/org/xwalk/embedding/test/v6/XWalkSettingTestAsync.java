@@ -1,5 +1,6 @@
 package org.xwalk.embedding.test.v6;
 
+import android.test.suitebuilder.annotation.SmallTest;
 import android.test.suitebuilder.annotation.MediumTest;
 
 import org.xwalk.core.XWalkSettings;
@@ -136,6 +137,31 @@ public class XWalkSettingTestAsync extends XWalkViewTestBase {
                 }
             }
         });
+    }
+
+    @SmallTest
+    public void testZoomUsingMultiTouch() {
+        try {
+            XWalkSettings settings = getXWalkSettingsOnUiThreadByXWalkView(getXWalkView());
+            String url = "file:///android_asset/zoom.html";
+            loadUrlSync(url);
+
+            assertTrue(settings.supportZoom());
+            assertFalse(settings.getBuiltInZoomControls());
+            assertFalse(settings.supportsMultiTouchZoomForTest());
+
+            settings.setBuiltInZoomControls(true);
+            assertTrue(settings.supportsMultiTouchZoomForTest());
+
+            settings.setSupportZoom(false);
+            assertFalse(settings.supportsMultiTouchZoomForTest());
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
     }
 
 }
