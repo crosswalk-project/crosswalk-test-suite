@@ -701,6 +701,18 @@ This usecase covers following interface and methods:
 
 
 
+### 69. The [XWalkViewSettingSetInitialPageScale](setting/XWalkViewSettingSetInitialPageScale.java) sample check XWalkSetting API setInitialPageScale method can work, include:
+
+* XWalkSetting API setInitialPageScale method can work
+
+This usecase covers following interface and methods:
+
+* XWalkSetting interface: setInitialPageScale
+>>>>>>> [EmbeddingAPI] Add usecase for XWalkView Setting API setInitialPageScale
+* XWalkView interface: load methods
+
+
+
 ### 70. The [XWalkViewSettingTextZoom](setting/XWalkViewSettingTextZoom.java) sample check XWalkSetting API getTextZoom & setTextZoom method can work, include:
 
 * XWalkSetting API getTextZoom & setTextZoom method can work
@@ -719,4 +731,3 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkSetting interface: setUseWideViewPort, getUseWideViewPort, setSupportZoom, supportZoom, setBuiltInZoomControls, getBuiltInZoomControls methods
-* XWalkView interface: load methods
