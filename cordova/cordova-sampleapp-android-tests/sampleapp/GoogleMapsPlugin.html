@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Li, Hao" href="mailto:haox.li@intel.com">
+<link rel="help" href="https://crosswalk-project.org/jira/browse/XWALK-5779">
+<div>
+  <h4>Precondition</h4>
+  <ul>
+    <li>Cordova Android 4+, CLI 5+
+      <div>$ sudo npm install cordova -g</div>
+    </li>
+    <li>minSdkVersion 16 (4.1 is the minimum supported version)</li>
+    <li>Set the environment path to the <span style="font-weight: bold;">Android SDK Platform-tools*</span> and <span style="font-weight: bold;">**Android SDK Build-tools</span></li>
+    <li>Install <a href="http://ant.apache.org/">Apache Ant</a></li>
+    <li>Set the JAVA_HOME to the environment path</li>
+  </ul>
+  <div>Refer to <a href="https://github.com/mapsplugin/cordova-plugin-googlemaps/wiki/Tutorial-for-Mac">
+                https://github.com/mapsplugin/cordova-plugin-googlemaps/wiki/Tutorial-for-Mac</a></div>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Obtain the Google Maps API key for Android
+      <ul>
+        <li>Find the keytool
+          <div> ~/.android/</div></li>
+        <li>Display the SHA-1 fingerprint
+          <div>keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android</div></li>
+        <li>Go to <a href="https://code.google.com/apis/console/">https://code.google.com/apis/console/</a></li>
+        <li>Register your project</li>
+        <li>Turn on <span style="font-weight: bold;">Google Maps Android API v2</span>.</li>
+        <li>Go to <span style="font-weight: bold;">API Access page</span>.</li>
+        <li>Click [Create New Android Key] button</li>
+        <li>In the resulting dialog, enter the SHA-1 fingerprint, then a semicolon, then the package name: org.xwalk.hellomap</li>
+        <li>Write down the API Key See [the official document: Get an Android certificate and the Google Maps API key]</li>
+      </ul>
+    </li>
+    <li>Build
+      <ul>
+        <li>cd res/GoogleMapsPlugin</li>
+        <li>./google-maps-plugin.py -k [google Maps API key]</li>
+      </ul>
+    </li>
+    <p>Details <a href="https://github.com/mapsplugin/cordova-plugin-googlemaps/wiki/Tutorial-for-CrossWalk-Webview-Plugin-%28Android%29">
+                 https://github.com/mapsplugin/cordova-plugin-googlemaps/wiki/Tutorial-for-CrossWalk-Webview-Plugin-%28Android%29</a></p>
+    <li>Install and Run
+      <ul>
+        <li>The apk can be installed and uninstalled successfully</li>
+        <li>Launch the app, the google map load successfully</li>
+        <li>Click full screen, the google map should change to full screen, full screen button is hiddened</li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+
