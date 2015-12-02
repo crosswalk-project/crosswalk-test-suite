@@ -45,7 +45,7 @@ LOCAL_INSTALL_CMD = "msiexec /i %s /qn /quiet"
 #msiexec /x C:\\packages\\opt\\tct-backgrounds-css3-tests\\tct-backgrounds-css3-tests.msi /qn /quiet
 LOCAL_UNINSTALL_CMD = "msiexec /x %s /qf"
 #curl http://10.239.250.79:8000/powershell_install -d '{"suite": "tct-backgrounds-css3-tests", "file": "opt/tct-backgrounds-css3-tests/tct-backgrounds-css3-tests.msi"}' -X POST
-REMOTE_INSTALL_CMD = "curl http://%s:8000/powershell_install -d '{\"suite\": \"%s\", \"file\": \"%s\"}' -X POST"
+REMOTE_INSTALL_CMD = "curl http://%s:8000/powershell_install -d '{\"suite\": \"%s\", \"host\": \"%s\", \"file\": \"%s\"}' -X POST"
 #curl http://10.239.250.79:8000/powershell_uninstall -d '{"suite": "tct-backgrounds-css3-tests"}' -X POST
 REMOTE_UNINSTALL_CMD = "curl http://%s:8000/powershell_uninstall -d '{\"suite\": \"%s\"}' -X POST"
 
@@ -112,11 +112,11 @@ def instPKGs():
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
             if file.endswith(".msi"):
-                if PARAMETERS.device is not None:
+                if (PARAMETERS.device is not None) and (PARAMETERS.hostip is not None) :
                     app_name = file.split(".")[0]
                     app_relative_path = "opt" + os.sep + os.path.join(root, file).split(os.sep + "opt" + os.sep)[-1]
                     # Install to remote windows device
-                    cmd = REMOTE_INSTALL_CMD % (PARAMETERS.device, app_name, app_relative_path)
+                    cmd = REMOTE_INSTALL_CMD % (PARAMETERS.device, app_name, PARAMETERS.hostip, app_relative_path)
                     (return_code, output) = doCMD(cmd)
                     for line in output:
                         if "OK" in line:
@@ -158,6 +158,8 @@ def main():
             "-u", dest="buninstpkg", action="store_true", help="Uninstall package")
         opts_parser.add_option(
             "-d", dest="device", action="store", help="Device IP Address")
+        opts_parser.add_option(
+            "-m", dest="hostip", action="store", help="Host IP Address")
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
     except Exception as e:
