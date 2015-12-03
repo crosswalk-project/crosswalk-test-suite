@@ -733,3 +733,15 @@ This usecase covers following interface and methods:
 
 * XWalkSetting interface: setUseWideViewPort, getUseWideViewPort, setSupportZoom, supportZoom, setBuiltInZoomControls, getBuiltInZoomControls methods
 * XWalkView interface: load methods
+
+
+
+
+### 74. The [XWalkViewWithCaptureBitmapAsync](basic/XWalkViewWithCaptureBitmapAsync.java) sample check XWalkView can capture the visible content of web page, include:
+
+* XWalkView API captureBitmapAsync method can work
+
+This usecase covers following interface and methods:
+
+* XWalkSetting interface: scaptureBitmapAsync methods
+* XWalkView interface: load methods
