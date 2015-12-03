@@ -14,7 +14,7 @@ import android.webkit.ValueCallback;
 
 public class TestXWalkUIClientBase extends XWalkUIClient {
     TestHelperBridge mInnerContentsClient;
-    
+
     protected final String ALERT_TEXT = "Hello World!";
     final String CONFIRM_TEXT = "Would you like a cookie?";
     boolean flagForConfirmCancelled = false;
@@ -29,7 +29,7 @@ public class TestXWalkUIClientBase extends XWalkUIClient {
         mInnerContentsClient = client;
         mInnerCallbackCalled = callbackCalled;
     }
-    
+
     @Override
     public void onPageLoadStarted(XWalkView view, String url) {
         mInnerContentsClient.onPageStarted(url);
@@ -96,29 +96,21 @@ public class TestXWalkUIClientBase extends XWalkUIClient {
             String url, String message, String defaultValue, XWalkJavascriptResult result) {
         switch(type) {
             case JAVASCRIPT_ALERT:
-                mInnerCallbackCalled.set(true);
-                result.confirm();
-                return false;
+                 onJsAlert(view, url, message, result);
+                 break;
             case JAVASCRIPT_CONFIRM:
-                if (flagForConfirmCancelled == true) {
-                    result.cancel();
-                } else {
-                    result.confirm();
-                }
-                mInnerCallbackCalled.set(true);
-                return false;
+                 onJsConfirm(view, url, message, result);
+                 break;
             case JAVASCRIPT_PROMPT:
-                result.confirmWithResult(PROMPT_RESULT);
-                mInnerCallbackCalled.set(true);
-                return false;
+                 onJsPrompt(view, url, message, defaultValue, result);
+                 break;
             case JAVASCRIPT_BEFOREUNLOAD:
-                result.cancel();
-                jsBeforeUnloadHelper.notifyCalled();
-                return false;
+                // Reuse onJsConfirm to show the dialog.
+                onJsConfirm(view, url, message, result);
+                break;
             default:
                 break;
-            }
-        assert(false);
+        }
         return false;
     }
 
@@ -126,5 +118,24 @@ public class TestXWalkUIClientBase extends XWalkUIClient {
     public boolean onConsoleMessage(XWalkView view, String message,
             int lineNumber, String sourceId, ConsoleMessageType messageType) {
         return mInnerContentsClient.onConsoleMessage(message,lineNumber,sourceId, messageType);
+    }
+
+    @Override
+    public boolean onJsAlert(XWalkView view,
+            String url, String message, XWalkJavascriptResult result) {
+        return mInnerContentsClient.onJsAlert(message);
+    }
+
+    @Override
+    public boolean onJsConfirm(XWalkView view,
+            String url, String message, XWalkJavascriptResult result) {
+        return mInnerContentsClient.onJsConfirm(message);
+    }
+
+    @Override
+    public boolean onJsPrompt(XWalkView view,
+            String url, String message, String defaultValue,
+            XWalkJavascriptResult result) {
+        return mInnerContentsClient.onJsPrompt(message);
     }
 }
