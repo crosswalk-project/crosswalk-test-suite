@@ -48,7 +48,7 @@ class TestSampleAppFunctions(unittest.TestCase):
         if pmstatus[0] != 0:
             print "Uninstall APK ----------------> %s App haven't installed, need to install it!" % app_name
             os.chdir(comm.const_path + "/../testapp/")
-            apk_file = commands.getstatusoutput("ls | grep %s" % app_name)[1]
+            apk_file = commands.getstatusoutput("ls | grep %s" % app_name.lower())[1]
             cmdinst = "adb -s " + comm.device + " install -r " + apk_file
             comm.app_install(cmdinst, cmdfind, self)
 

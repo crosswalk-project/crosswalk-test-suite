@@ -2,9 +2,22 @@
 
 This test suite is for testing sampleapp-android-tests specification
 
+## Precondition
+
+1. Set CROSSWALK_APP_TOOLS_CACHE_DIR
+  ```export CROSSWALK_APP_TOOLS_CACHE_DIR=[local-path]```
+
+2. Clone crosswalk-app-tools to CROSSWALK_APP_TOOLS_CACHE_DIR
+   ```
+   git clone https://github.com/crosswalk-project/crosswalk-app-tools
+   cd crosswalk-app-tools
+   sudo npm install
+   ```
+3. Download the crosswalk zip you want to test to CROSSWALK_APP_TOOLS_CACHE_DIR
+
 ## Test Step
 
-1. Copy the source code folder named like crosswalk-demo to the path /tmp/
+1. Copy the source code folder named like crosswalk-samples to the path /tmp/
 
 2. unzip sampleapp-android-tests<version>.zip -d [testprefix-path]
 

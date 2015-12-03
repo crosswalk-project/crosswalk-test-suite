@@ -55,6 +55,7 @@ class TestSampleAppFunctions(unittest.TestCase):
             time.sleep(1)
         cmdstop = "adb -s " + comm.device + \
             " shell am force-stop org.crosswalkproject.sample"
+        comm.app_stop(cmdstop, self)
 
 if __name__ == '__main__':
     unittest.main()
