@@ -35,13 +35,20 @@ if [ "${command}""x" == "x" ];then
     exit 1
 fi
 
+PKG_TOOLS=$CROSSWALK_APP_TOOLS_CACHE_DIR/crosswalk-app-tools/src/crosswalk-pkg
+CROSSWALK_ZIP=$CROSSWALK_APP_TOOLS_CACHE_DIR/`ls $CROSSWALK_APP_TOOLS_CACHE_DIR |grep crosswalk-|grep .zip| sort -r`
+
 #install webapp
 cd $local_path
-cd ../tools/crosswalk
+mkdir testapp
 for((i=0; i<100; i++)); do
 echo $i
-python make_apk.py --package=org.xwalk.test$i  --app-url=https://crosswalk-project.org --arch=x86 --name=test$i > /tmp/install.txt
-$command install -r Test$i*.apk > /tmp/install.txt
+if [ -f $local_path/testapp/manifest.json ];then
+    rm $local_path/testapp/manifest.json
+fi 
+$PKG_TOOLS --crosswalk=$CROSSWALK_ZIP --platforms=android --android=embedded --targets=x86 -m "{\"name\": \"test$i\", \"start_url\": \"https://crosswalk-project.org\", \"xwalk_package_id\": \"org.xwalk.test$i\"}" ./testapp > /tmp/install.txt
+mv org.xwalk.test$i* test$i.apk
+$command install -r test$i.apk > /tmp/install.txt
 $command shell am start -n org.xwalk.test$i/."Test"$i"Activity" > /tmp/install.txt
 grep "Success" /tmp/install.txt
 $command shell "top -n 1" | grep org.xwalk.test0 > /tmp/install.txt
