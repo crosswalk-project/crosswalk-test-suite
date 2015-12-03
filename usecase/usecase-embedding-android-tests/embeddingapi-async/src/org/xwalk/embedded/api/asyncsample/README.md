@@ -766,3 +766,14 @@ This usecase covers following interface and methods:
 
 * XWalkSetting interface: scaptureBitmapAsync methods
 * XWalkView interface: load methods
+
+
+
+### 75. The [XWalkViewWithOnTouchListenerAsync](misc/XWalkViewWithOnTouchListenerAsync.java) sample check XWalkView API setOnTouchListener method can work, include:
+
+* XWalkView API setOnTouchListener method can work
+
+This usecase covers following interface and methods:
+
+* XWalkSetting interface: setOnTouchListener
+* XWalkView interface: load methods
