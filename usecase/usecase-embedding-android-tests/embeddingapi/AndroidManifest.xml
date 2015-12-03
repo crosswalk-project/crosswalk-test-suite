@@ -684,7 +684,8 @@
         </activity>
         <activity
             android:name=".setting.XWalkViewSettingSupportZoom"
-            android:label="@string/title_activity_xwalk_view_setting_support_zoom" >
+            android:label="@string/title_activity_xwalk_view_setting_support_zoom"
+            android:parentActivityName=".XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="XWalkView.Setting" />
@@ -693,10 +694,20 @@
         <activity
             android:name=".setting.XWalkViewSettingSetInitialPageScale"
             android:label="@string/title_activity_xwalk_view_setting_set_initial_pagescale"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:parentActivityName=".XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="XWalkView.Setting" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".basic.XWalkViewWithCaptureBitmapAsync"
+            android:label="@string/title_activity_xwalk_view_setting_capture_bitmap_async"
+            android:parentActivityName=".XWalkEmbeddedAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="XWalkView.Basic" />
             </intent-filter>
         </activity>
     </application>

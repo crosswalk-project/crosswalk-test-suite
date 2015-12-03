@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <org.xwalk.core.XWalkView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/xwalkview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+    </org.xwalk.core.XWalkView>
+
+    <Button
+        android:id="@+id/capture_btn"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Capture Bitmap" />
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:scaleType="centerInside" />
+
+</LinearLayout>
