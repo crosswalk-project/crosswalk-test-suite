@@ -736,6 +736,27 @@ This usecase covers following interface and methods:
 
 
 
+### 72. The [XWalkViewSettingDefaultFontSizeAsync](setting/XWalkViewSettingDefaultFontSizeAsync.java) sample check XWalkSetting API set default font size method can work, include:
+
+* XWalkSetting API setDefaultFontSize, getDefaultFontSize method can work
+
+This usecase covers following interface and methods:
+
+* XWalkSetting interface: setDefaultFontSize, getDefaultFontSize methods
+* XWalkView interface: load methods
+
+
+
+### 73. The [XWalkViewSettingDefaultFixedFontSizeAsync](setting/XWalkViewSettingDefaultFixedFontSizeAsync.java) sample check XWalkSetting API set default fixed font size method can work, include:
+
+* XWalkSetting API setDefaultFixedFontSize, getDefaultFixedFontSize method can work
+
+This usecase covers following interface and methods:
+
+* XWalkSetting interface: setDefaultFixedFontSize, getDefaultFixedFontSize methods
+* XWalkView interface: load methods
+
+
 
 ### 74. The [XWalkViewWithCaptureBitmapAsync](basic/XWalkViewWithCaptureBitmapAsync.java) sample check XWalkView can capture the visible content of web page, include:
 
