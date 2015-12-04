@@ -117,5 +117,20 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(buildstatus, 0)
 
+    def test_display_blank(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
+        jsons = jsonfile.read()
+        jsonfile.close()
+        jsonDict = json.loads(jsons)
+        jsonDict["display"] = ""
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
+        buildstatus = os.system(buildcmd)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
+        self.assertEquals(buildstatus, 0)
+
 if __name__ == '__main__':
     unittest.main()

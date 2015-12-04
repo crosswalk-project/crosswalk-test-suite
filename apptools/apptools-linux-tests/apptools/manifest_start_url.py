@@ -37,68 +37,52 @@ import json
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_display_fullscreen(self):
+    def test_start_url_https(self):
         comm.setUp()
         comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["display"] = "fullscreen"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        jsonDict["start_url"] = "https://www.baidu.com"
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
         buildstatus = os.system(buildcmd)
         comm.run(self)
-        comm.clear("org.xwalk.test")
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(buildstatus, 0)
 
-    def test_display_standalone(self):
+    def test_start_url_noexist(self):
         comm.setUp()
         comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["display"] = "standalone"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        jsonDict["start_url"] = "http://www.noexist.com"
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
         buildstatus = os.system(buildcmd)
         comm.run(self)
-        comm.clear("org.xwalk.test")
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(buildstatus, 0)
 
-    def test_display_invalid(self):
+    def test_start_url_blank(self):
         comm.setUp()
         comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["display"] = "invalid"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        jsonDict["start_url"] = ""
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
         buildstatus = os.system(buildcmd)
         comm.run(self)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
-
-    def test_display_blank(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["display"] = ""
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
-        comm.clear("org.xwalk.test")
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(buildstatus, 0)
 
 if __name__ == '__main__':

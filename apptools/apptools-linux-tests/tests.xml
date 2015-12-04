@@ -38,14 +38,29 @@
           <test_script_entry>/opt/apptools-linux-tests/apptools/build_path.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_package_id" purpose="Linux - Validate if package ID is used as expansion field" subcase="2">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_package_id" purpose="Linux - Validate if package ID is used as expansion field" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-linux-tests/apptools/manifest_package_id.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_display" purpose="Linux - Validate if project can be built with valid display value" subcase="5">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_display" purpose="Linux - Validate if project can be built with valid display value" subcase="6">
         <description>
           <test_script_entry>/opt/apptools-linux-tests/apptools/manifest_display.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_name" purpose="Linux - Validate if the 'name' field in the web manifest can be changed" subcase="5">
+        <description>
+          <test_script_entry>/opt/apptools-linux-tests/apptools/manifest_name.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_start_url" purpose="Linux - Validate if 'start_url' field can be set to 'http/https/blank' in the web manifest" subcase="3">
+        <description>
+          <test_script_entry>/opt/apptools-linux-tests/apptools/manifest_start_url.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_app_version" purpose="Linux - Validate if apk name contains app version" subcase="5">
+        <description>
+          <test_script_entry>/opt/apptools-linux-tests/apptools/manifest_app_version.py</test_script_entry>
         </description>
       </testcase>
     </set>
@@ -130,6 +145,11 @@
       <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Display_Browser" purpose="Linux - Validate if web app can be launched with using the platform-specific convention for opening hyperlinks">
         <description>
           <test_script_entry>/opt/apptools-linux-tests/apptools/Manifest_Display_Browser.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Start_Url_Http" purpose="Linux - Validate if app can be started with http">
+        <description>
+          <test_script_entry>/opt/apptools-linux-tests/apptools/Manifest_Start_Url_Http.html</test_script_entry>
         </description>
       </testcase>
     </set>

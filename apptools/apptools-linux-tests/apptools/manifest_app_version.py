@@ -37,16 +37,19 @@ import json
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_packageID(self):
+    def test_app_version_normal(self):
         comm.setUp()
         comm.create(self)
         os.chdir(comm.TEST_PROJECT_COMM)
-        with open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json") as json_file:
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
             data = json.load(json_file)
+        buildcmd = "crosswalk-app build"
+        appVersion = comm.build(self, buildcmd)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
-        self.assertEquals(data['xwalk_package_id'].strip(os.linesep), comm.TEST_PROJECT_COMM)
+        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.1")
+        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), appVersion)
 
-    def test_update_packageID(self):
+    def test_update_app_version(self):
         comm.setUp()
         comm.create(self)
         os.chdir(comm.TEST_PROJECT_COMM)
@@ -54,14 +57,46 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["xwalk_package_id"] = "org.test.foo"
+        jsonDict["xwalk_app_version"] = "1"
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
+        appVersion = comm.build(self, buildcmd)
+        comm.run(self)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
+        self.assertEquals("1", appVersion)
+
+    def test_app_version_twodot(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
+        jsons = jsonfile.read()
+        jsonfile.close()
+        jsonDict = json.loads(jsons)
+        jsonDict["xwalk_app_version"] = "0.0.1"
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
+        appVersion = comm.build(self, buildcmd)
+        comm.run(self)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
+        self.assertEquals("0.0.1", appVersion)
+
+    def test_app_version_threedot(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
+        jsons = jsonfile.read()
+        jsonfile.close()
+        jsonDict = json.loads(jsons)
+        jsonDict["xwalk_app_version"] = "0.0.0.1"
         json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
         buildcmd = "crosswalk-app build"
         return_code = os.system(buildcmd)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertNotEquals(return_code, 0)
 
-    def test_no_packageID(self):
+    def test_app_version_out_of_range(self):
         comm.setUp()
         comm.create(self)
         os.chdir(comm.TEST_PROJECT_COMM)
@@ -69,7 +104,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict.pop("xwalk_package_id")
+        jsonDict["xwalk_app_version"] = "1000"
         json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
         buildcmd = "crosswalk-app build"
         return_code = os.system(buildcmd)

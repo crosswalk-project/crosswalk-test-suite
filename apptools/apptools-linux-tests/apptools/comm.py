@@ -86,7 +86,9 @@ def build(self, cmd):
         if deb.endswith(".deb"):
             print "The pkg deb is " + deb
             debLength = debLength + 1
+            appVersion = apks[i].split('-')[1][:apks[i].split('-')[1].index(".ipa")].strip()
     self.assertEquals(debLength, 1)
+    return appVersion
 
 
 def run(self):
