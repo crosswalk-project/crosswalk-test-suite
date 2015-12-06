@@ -51,6 +51,21 @@ import utils
 global LOG
 LOG = utils.getLogger("build_android")
 
+def getNameById(filename=None):
+    '''
+    According to the rule defined in crosswalk-pkg tool,
+    package built name will be org.xwalk.extensions_ad-0.1-debug.shared.apk,
+    so here we get the name "extension_ad" as apk's name
+    '''
+    try:
+        lst_name_dot = filename.split('.', 2)
+        lst_name_hyphen = lst_name_dot[2].split('-')
+        return lst_name_hyphen[0]
+    except Exception as e:
+        LOG.error("Cannot get apk's name, error is: %s" % e)
+        sys.exit(1)
+
+
 def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     BUILD_PARAMETERS = varshop.getValue("BUILD_PARAMETERS")
     BUILD_ROOT = varshop.getValue("BUILD_ROOT")
@@ -254,7 +269,10 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     files = glob.glob(os.path.join(BUILD_ROOT, "*.apk"))
     if files:
-        if not utils.doCopy(files[0], os.path.join(app_dest, "%s.apk" % app_name)):
+        rename_app_name = utils.safelyGetValue(build_json, "app-name")
+        if not rename_app_name:
+            rename_app_name = getNameById(files[0])
+        if not utils.doCopy(files[0], os.path.join(app_dest, "%s.apk" % rename_app_name)):
             os.chdir(orig_dir)
             return False
     else:
