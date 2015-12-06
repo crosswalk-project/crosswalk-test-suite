@@ -192,9 +192,9 @@ cp $SRC_ROOT/inst.py $BUILD_ROOT/opt/$name/inst.py
 
 for list in $LIST;do
     suite=`basename $list`
-    cp $SRC_ROOT/../../../crosswalk-test-suite/webapi/$list/tests.xml  $BUILD_ROOT/opt/$name/$suite.tests.xml
+    cp $SRC_ROOT/../../webapi/$list/tests.xml  $BUILD_ROOT/opt/$name/$suite.tests.xml
     sed -i "s/<suite/<suite widget=\"$name\"/g" $BUILD_ROOT/opt/$name/$suite.tests.xml
-    cp $SRC_ROOT/../../../crosswalk-test-suite/webapi/$list/tests.full.xml  $BUILD_ROOT/opt/$name/$suite.tests.full.xml
+    cp $SRC_ROOT/../../webapi/$list/tests.full.xml  $BUILD_ROOT/opt/$name/$suite.tests.full.xml
     sed -i "s/<suite/<suite widget=\"$name\"/g" $BUILD_ROOT/opt/$name/$suite.tests.full.xml
 done
 
