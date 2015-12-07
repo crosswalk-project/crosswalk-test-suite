@@ -5,6 +5,8 @@
     "manifest.json",
     "suite.json",
     "*-py",
+    "opt",
+    "*.zip",
     "inst.*"
   ],
   "pkg-list": {
@@ -13,15 +15,15 @@
       "copylist": {
         "inst.apk.py": "inst.py",
         "tests.android.xml": "tests.xml",
-        "tests.full.xml": "tests.full.xml",
-        "testscripts": "testscripts"
+        "tests.full.xml": "tests.full.xml"
       },
       "subapp-list": {
         ".": {
           "apk-common-opts": "--enable-remote-debugging",
           "app-name": "usecase-extension-android-tests",
           "blacklist": [
-            "manifest.json"
+            "manifest.json",
+            "opt"
           ],
           "copylist": {
             "PACK-TOOL-ROOT/bootstrap-fw": ".",
@@ -30,41 +32,45 @@
           },
           "install-path": "."
         },
-        "XWalkEchoApp": {
-          "apk-ext-file": "XWalkEchoExtension",
-          "apk-ext-opt": "XWalkEchoApp/XWalkEchoExtension",
+        "samples/XWalkEchoApp": {
+          "apk-ext-src": "samples/XWalkEchoExtension",
+          "apk-ext-opt": "samples/XWalkEchoExtension/echoextension",
           "app-name": "xwalk_echo_app",
           "app-type": "EXTENSION",
+          "apk-type": "MANIFEST",
           "install-path": "."
         },
-        "XWalkContactApp": {
-          "apk-ext-file": "XWalkContactExtension",
-          "apk-ext-opt": "XWalkContactApp/XWalkContactExtension",
+        "samples/XWalkContactApp": {
+          "apk-ext-src": "samples/XWalkContactExtension",
+          "apk-ext-opt": "samples/XWalkContactExtension/contactextension",
           "app-name": "xwalk_contact_app",
           "app-type": "EXTENSION",
+          "apk-type": "MANIFEST",
           "install-path": "."
         },
-        "XWalkEchoJsStubGenApp": {
-          "apk-ext-file": "XWalkEchoJsStubGenExtension",
-          "apk-ext-opt": "XWalkEchoJsStubGenApp/XWalkEchoJsStubGenExtension",
+        "samples/XWalkEchoJsStubGenApp": {
+          "apk-ext-src": "samples/XWalkEchoJsStubGenExtension",
+          "apk-ext-opt": "samples/XWalkEchoJsStubGenExtension/echoJsStubGenExtension",
           "app-name": "xwalk_echo_jsstubgen_app",
           "app-type": "EXTENSION",
+          "apk-type": "MANIFEST",
           "install-path": "."
         },
-        "XWalkConstructorJsStubGenApp": {
-          "apk-ext-file": "XWalkConstructorJsStubGenExtension",
-          "apk-ext-opt": "XWalkConstructorJsStubGenApp/XWalkConstructorJsStubGenExtension",
+        "samples/XWalkConstructorJsStubGenApp": {
+          "apk-ext-src": "samples/XWalkConstructorJsStubGenExtension",
+          "apk-ext-opt": "samples/XWalkConstructorJsStubGenExtension/constructorJsStubGen",
           "app-name": "xwalk_constructor_jsstubgen_app",
           "app-type": "EXTENSION",
+          "apk-type": "MANIFEST",
           "install-path": "."
         },
-        "ExtensionPermission/res": {
-          "apk-ext-opt": "ExtensionPermission/res/contactextension",
+        "samples/ExtensionPermission/res": {
+          "apk-ext-opt": "samples/ExtensionPermission/res/contactextension",
           "app-name": "extension_permission",
           "install-path": "."
         }
       }
     }
   },
-  "pkg-name": "usecase-wrt-android-tests"
+  "pkg-name": "usecase-extension-android-tests"
 }
