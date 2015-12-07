@@ -775,3 +775,14 @@ This usecase covers following interface and methods:
 
 * XWalkSetting interface: setOnTouchListener
 * XWalkView interface: load methods
+
+
+
+### 76. The [XWalkViewWithOnJsAlert](client/XWalkViewWithOnJsAlert.java) sample check API XWalkUIClient.onJsAlert, XWalkUICLient.onJsConfirm and XWalkUIClient.onJsPropmt can work, include:
+
+* API XWalkUIClient.onJsAlert, XWalkUICLient.onJsConfirm and XWalkUIClient.onJsPropmt can work
+
+This usecase covers following interface and methods:
+
+* XWalkUIClient interface: onJsAlert, onJsConfirm, onJsPropmt methods
+* XWalkView interface: load methods
