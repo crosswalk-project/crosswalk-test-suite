@@ -3,9 +3,11 @@ Feature: web-system-app
   When launch "canvas"
     And I wait 3 seconds
     And I click view "className=android.widget.Button^^^description=Rotate 90deg"
+    And I wait 3 seconds
     And I save the page to "rotate-90deg-lock"
     And I save the screenshot md5 as "rotate-90deg-lock"
     And I click view "className=android.widget.Button^^^description=Scale 200%"
+    And I wait 3 seconds
     And I save the page to "scale-200-lock"
     And I save the screenshot md5 as "scale-200-lock"
    Then file "rotate-90deg-lock" of baseline and result should be the same
