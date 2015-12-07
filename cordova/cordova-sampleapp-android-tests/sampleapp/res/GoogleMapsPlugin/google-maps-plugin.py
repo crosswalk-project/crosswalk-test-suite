@@ -52,7 +52,7 @@ def buildHelloMap(key):
     os.chdir(build_src)
     os.system('cordova platform add android')
     os.system('cordova plugin add %s/../../tools/cordova-plugin-crosswalk-webview' % SCRIPT_DIR)
-    os.system('cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="%s"' % key)
+    os.system('cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="%s"' % key)
     shutil.copyfile(SCRIPT_DIR + '/index.html', build_src  + '/www/index.html')
     # Update android:theme="@android:style/Theme.Black.NoTitleBar" to android:theme="@android:style/Theme.Translucent.NoTitleBar" in AndroidManifest.xml
     os.system('sed -i "s/%s/%s/g" %s' % ("@android:style\/Theme.Black.NoTitleBar", "@android:style\/Theme.Translucent.NoTitleBar", build_src + "/platforms/android/AndroidManifest.xml"))
@@ -62,6 +62,40 @@ def buildHelloMap(key):
     f = open(build_src + '/config.xml', 'w')
     f.writelines(lines)
     f.close()
+    # Workaround for zOrderOnTop
+    googlemapjava = build_src + "/platforms/android/src/plugin/google/maps/GoogleMaps.java"
+    if os.path.exists(googlemapjava):
+        file = open(googlemapjava, 'r')
+        lines = open(googlemapjava, 'r').readlines()
+        # Add new code postion flag
+        import_pos = 0
+        showdialog_pos = 0
+        resizemap_pos = len(lines)
+        insert1_pos = 0
+        insert2_pos = 0
+        for (num, value) in enumerate(file):
+            if value.find("import com.google.android.gms.maps.model.VisibleRegion;") != -1:
+                import_pos = num
+            elif value.find("private void showDialog") != -1:
+                showdialog_pos = num
+            elif value.find("private void resizeMap") != -1:
+                resizemap_pos = num
+            # Workaroundorkaround code should be added to the behind of GoogleMaps.this.onMapEvent("map_close") in showDialog()
+            elif value.find("GoogleMaps.this.onMapEvent(\"map_close\");") != -1 and num > showdialog_pos and num < resizemap_pos:
+                insert1_pos = num
+            # Workaround code should be added to the behind of callbackContext.success(); in showDialog()
+            elif value.find("callbackContext.success();") != -1 and num > showdialog_pos and num < resizemap_pos:
+                insert2_pos = num
+        # Add workaround code by desc
+        lines.insert(insert2_pos + 1, "\n    XWalkCordovaView view = (XWalkCordovaView) webView.getView();\n")
+        lines.insert(insert2_pos + 2, "    view.setZOrderOnTop(false);\n")
+        lines.insert(insert1_pos + 1, "\n        XWalkCordovaView view = (XWalkCordovaView) webView.getView();\n")
+        lines.insert(insert1_pos + 2, "        view.setZOrderOnTop(true);\n")
+        lines.insert(import_pos + 1, "import org.crosswalk.engine.XWalkCordovaView;\n")
+        file = open(googlemapjava, 'w')
+        file.writelines(lines)
+        file.close()
+        
     os.system('cordova build android')
     time.sleep(5)
     files = glob.glob(os.path.join(build_src + "/platforms/android/build/outputs/apk", "*-debug.apk"))
