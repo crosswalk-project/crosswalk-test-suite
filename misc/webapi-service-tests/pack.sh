@@ -201,10 +201,7 @@ done
 ## creat zip package ##
 if [ $pack_type == "apk" ];then
     mv $BUILD_ROOT/*.apk $BUILD_ROOT/opt/$name/
-
-    if [ -f $BUILD_ROOT/opt/$name/*webapi_service_tests*$arch.apk ] || [ -f $BUILD_ROOT/opt/$name/WebapiServiceTests.apk ];then
-        mv $BUILD_ROOT/opt/$name/*webapi_service_tests*.apk $BUILD_ROOT/opt/$name/$appname.apk
-    fi
+    mv $BUILD_ROOT/opt/$name/org.xwalk.webapi_service_tests*.apk $BUILD_ROOT/opt/$name/$appname.apk
 elif [ $pack_type == "cordova" ];then
     if [ $sub_version == "3.6" ]; then
         if [ -f $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk ];then

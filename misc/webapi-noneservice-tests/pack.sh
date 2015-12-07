@@ -140,9 +140,7 @@ if [ $pack_type == "apk" ]; then
     
     ## creat zip package ##
     mv $BUILD_ROOT/*.apk $BUILD_DEST/opt/$name/
-    if [ -f $BUILD_DEST/opt/$name/WebapiNoneserviceTests_$arch.apk ] || [ -f $BUILD_DEST/opt/$name/WebapiNoneserviceTests.apk ];then
-        mv $BUILD_DEST/opt/$name/WebapiNoneserviceTests*.apk $BUILD_DEST/opt/$name/$appname.apk
-    fi
+    mv $BUILD_DEST/opt/$name/org.xwalk.webapi_noneservice_tests*.apk $BUILD_DEST/opt/$name/$appname.apk
 elif [ $pack_type == "cordova" ]; then
     if [ $sub_version == "4.x" ]; then
         cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins

@@ -272,6 +272,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
         rename_app_name = utils.safelyGetValue(build_json, "app-name")
         if not rename_app_name:
             rename_app_name = getNameById(files[0])
+        rename_app_name = rename_app_name.replace("-", "_")
         if not utils.doCopy(files[0], os.path.join(app_dest, "%s.apk" % rename_app_name)):
             os.chdir(orig_dir)
             return False
