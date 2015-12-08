@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+    Zhu,Yongyong <yongyongx.zhu@intel.com>
+
+-->
+
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Crosswalk_Cordova_SampleApp_Compatibility2</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+  </head>
+  <body>
+    <p>
+      <strong>Test steps:</strong>
+    </p>
+    <ol>
+      <li>Download different version sample app apks from testsuites release url, include:
+        <div>
+          Embedded sample app built with V(n) version Crosswalk and NPM(α) version cordova-plugin-crosswalk-webview</br>
+          Embedded sample app built with V(n-1) version Crosswalk and NPM(α-1) version cordova-plugin-crosswalk-webview</br>
+          Embedded sample app built with V(n-2) version Crosswalk and NPM(α-2) version cordova-plugin-crosswalk-webview</br>
+          Embedded sample app built with V(n-3) version Crosswalk and NPM(α-3) version cordova-plugin-crosswalk-webview</br>
+          Shared sample app built with V(n-1) version Crosswalk and NPM(α-1) version cordova-plugin-crosswalk-webview</br>
+        </div>
+          Note:
+          <div>
+          These apks should be different sample app, they have different app names</br>
+          Release candidate version of Crosswalk library = V(n)</br>
+          Release candidate version of NPM version= NPM (α), mapping Crosswalk library V(n) by default</br>
+          α: master branch of cordova-plugin-crosswalk-webview</br>
+          α-1: published NPM version, e.g. 1.4.0</br>
+        </div>
+      </li>
+      <li>Install these sample app apks on one device</li>
+      <li>Launch the apps</li>
+      <li>Run the apps</li>
+      <li>Uninstall the apps</li>
+    </ol>
+    <p>
+      <strong>Expected Output:</strong>
+    </p>
+    <ol>
+      <li>Download different version sample app apks successfully</li>
+      <li>These apps can be installed successfully</li>
+      <li>These apps can launch successfully</li>
+      <li>These apps can run successfully</li>
+      <li>These apps can be uninstalled successfully</li>
+    </ol>
+  </body>
+</html>
