@@ -957,6 +957,7 @@ def packSampleApp_cli(app_name=None):
             '</widget>',
             '    <preference name="BackgroundColor" value="0xFFFF0000" />\n</widget>')
         createIndexFile(os.path.join(project_root, "www", "index.html"), "setBackgroundColor")
+
     if checkContains(app_name, "STATUSBAR"):
         replaceUserString(
             project_root,
@@ -973,6 +974,12 @@ def packSampleApp_cli(app_name=None):
 
         status_plugman_cmd = "cordova plugin add cordova-plugin-statusbar"
         if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
+
+    if checkContains(app_name, "PRIVATENOTES"):
+        status_plugman_cmd = "cordova plugin add https://github.com/01org/AppSecurityApi"
+        if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT * 5):
             os.chdir(orig_dir)
             return False
 
