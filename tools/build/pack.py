@@ -40,6 +40,7 @@ from optparse import OptionParser
 import build_android
 import build_cordova
 import build_embeddingapi
+import build_extension
 import varshop
 import utils
 
@@ -190,7 +191,12 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     app_tpye = utils.safelyGetValue(build_json, 'app-type')
 
-    if utils.checkContains(BUILD_PARAMETERS.pkgtype, "APK") and app_tpye != "EMBEDDINGAPI":
+    if utils.checkContains(BUILD_PARAMETERS.pkgtype, "APK") and app_tpye == "EXTENSION":
+        if not build_extension.packExtension(build_json, app_src, app_dest, app_name):
+            return False
+        if not build_android.packAPK(build_json, app_src, app_dest, app_name):
+            return False
+    elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "APK") and app_tpye != "EMBEDDINGAPI":
         if not build_android.packAPK(build_json, app_src, app_dest, app_name):
             return False
     elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "CORDOVA"):
@@ -684,7 +690,7 @@ def main():
         LOG.info("pkg_file: %s" % pkg_file)
         if not utils.zipDir(os.path.join(BUILD_ROOT, "pkg"), pkg_file):
             exitHandler(1)
-    elif BUILD_PARAMETERS.pkgtype.startswith("embeddingapi") and BUILD_PARAMETERS.packtype: 
+    elif BUILD_PARAMETERS.pkgtype.startswith("embeddingapi") and BUILD_PARAMETERS.packtype:
         pkg_file = os.path.join(
             BUILD_PARAMETERS.destdir,
             "%s-%s-%s.%s-%s.zip" %
