@@ -11,6 +11,8 @@ import org.xwalk.core.ClientCertRequest;
 import org.xwalk.core.XWalkUIClient.ConsoleMessageType;
 import org.xwalk.core.XWalkUIClient.LoadStatus;
 import org.xwalk.core.XWalkView;
+import org.xwalk.core.XWalkWebResourceRequest;
+import org.xwalk.core.XWalkWebResourceResponse;
 
 import android.net.Uri;
 import android.webkit.ValueCallback;
@@ -47,6 +49,7 @@ public class TestHelperBridge {
     private final OnJsAlertHelper mOnJsAlertHelper;
     private final OnJsConfirmHelper mOnJsConfirmHelper;
     private final OnJsPromptHelper mOnJsPromptHelper;
+    private final OnReceivedResponseHeadersHelper mOnReceivedResponseHeadersHelper;
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -76,6 +79,7 @@ public class TestHelperBridge {
         mOnJsAlertHelper = new OnJsAlertHelper();
         mOnJsConfirmHelper = new OnJsConfirmHelper();
         mOnJsPromptHelper = new OnJsPromptHelper();
+        mOnReceivedResponseHeadersHelper = new OnReceivedResponseHeadersHelper();
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -309,5 +313,15 @@ public class TestHelperBridge {
     public boolean onJsPrompt(String message) {
         mOnJsPromptHelper.notifyCalled(message);
         return true;
+    }
+
+    public OnReceivedResponseHeadersHelper getOnReceivedResponseHeadersHelper() {
+        return mOnReceivedResponseHeadersHelper;
+    }
+
+    public void onReceivedResponseHeaders(XWalkView view,
+                    XWalkWebResourceRequest request,
+                    XWalkWebResourceResponse response) {
+        mOnReceivedResponseHeadersHelper.notifyCalled(request, response);
     }
 }

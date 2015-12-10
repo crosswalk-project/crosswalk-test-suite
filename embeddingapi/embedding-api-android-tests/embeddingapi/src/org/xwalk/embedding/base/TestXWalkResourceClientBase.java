@@ -4,6 +4,9 @@ import org.xwalk.core.ClientCertRequest;
 import org.xwalk.core.XWalkHttpAuthHandler;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkView;
+import org.xwalk.core.XWalkWebResourceRequest;
+import org.xwalk.core.XWalkWebResourceResponse;
+
 
 import android.net.http.SslError;
 import android.webkit.ValueCallback;
@@ -69,5 +72,12 @@ public class TestXWalkResourceClientBase extends XWalkResourceClient{
     public void onReceivedHttpAuthRequest(XWalkView view,
             XWalkHttpAuthHandler handler, String host, String realm) {
         mInnerContentsClient.onReceivedHttpAuthRequest(host);
+    }
+
+    @Override
+    public void onReceivedResponseHeaders(XWalkView view,
+            XWalkWebResourceRequest request,
+            XWalkWebResourceResponse response) {
+        mInnerContentsClient.onReceivedResponseHeaders(view, request, response);
     }
 }
