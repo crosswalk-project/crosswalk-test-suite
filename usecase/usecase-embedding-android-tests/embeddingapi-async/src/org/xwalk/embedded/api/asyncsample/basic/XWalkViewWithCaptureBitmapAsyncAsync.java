@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 
-public class XWalkViewWithCaptureBitmapAsync extends Activity implements XWalkInitializer.XWalkInitListener {
+public class XWalkViewWithCaptureBitmapAsyncAsync extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
     private ImageView mImageView;
     private Button mCaptureButton;
