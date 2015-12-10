@@ -83,6 +83,36 @@
            <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Eh_uninstall.py</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="auto" id="privateNotes_build" purpose="Validate if sample app PrivateNotes could be built successfully">
+        <description>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/privateNotes_build.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="auto" id="privateNotes_install" purpose="Validate if sample app PrivateNotes could be installed successfully">
+        <description>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/privateNotes_install.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="auto" id="privateNotes_launch" purpose="Validate if sample app PrivateNotes could be launched successfully">
+        <description>
+           <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/privateNotes_launch.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="auto" id="privateNotes_close" purpose="Validate if sample app PrivateNotes could be closed successfully">
+        <description>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/privateNotes_close.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="auto" id="privateNotes_uninstall" purpose="Validate if sample app PrivateNotes could be uninstalled successfully">
+        <description>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/privateNotes_uninstall.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="auto" id="privateNotes_uninstall_withAppRunning" purpose="Validate Crosswalk support that uninstall the sample app PrivateNotes when it's actually running">
+        <description>
+           <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/privateNotes_uninstall_withAppRunning.py</test_script_entry>
+        </description>
+      </testcase>
     </set>
     <set name="SampleApp_manual" type="js">
       <testcase component="Cordova Sample Apps/Spacedodge" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Spacedodge_AppFunction" purpose="Validate if sample app Spacedodge function could work well">
@@ -140,6 +170,39 @@
             1. Make sure the Eh webapp is installed in two adnroid devices.
           </pre_condition>
           <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_Eh_AppFunction.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="manual" id="Crosswalk_Cordova_SampleApp_PrivateNotes_AppFunction" purpose="Validate if sample app PrivateNotes function could work well">
+        <description>
+          <pre_condition>
+            1. Make sure the PrivateNotes webapp is launched.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_PrivateNotes_AppFunction.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="manual" id="Crosswalk_Cordova_SampleApp_PrivateNotes_Icon" purpose="Validate if sample app PrivateNotes icon display normally">
+        <description>
+          <pre_condition>
+            1. Make sure PrivateNotes webapp is installed;
+            2. Make sure PrivateNotes webapp is available.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_PrivateNotes_Icon.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="manual" id="Crosswalk_Cordova_SampleApp_PrivateNotes_Switch" purpose="Validate if sample app PrivateNotes could switch back successfully">
+        <description>
+          <pre_condition>
+            1. Make sure the PrivateNotes webapp is launched.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_PrivateNotes_Switch.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/PrivateNotes" execution_type="manual" id="Crosswalk_Cordova_SampleApp_PrivateNotes_Orientation" purpose="Validate if sample app PrivateNotes could rotate between portrait orientation screen and landscape orientation screen">
+        <description>
+          <pre_condition>
+            1. Make sure the PrivateNotes webapp is launched.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_PrivateNotes_Orientation.html </test_script_entry>
         </description>
       </testcase>
     </set>
