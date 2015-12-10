@@ -66,6 +66,12 @@ def packExtension(build_json=None, app_src=None, app_dest=None, app_name=None):
     tmp_opt = utils.safelyGetValue(build_json, "apk-ext-src")
     if tmp_opt:
         ext_src = os.path.join(BUILD_ROOT_SRC, tmp_opt)
+        if not os.path.exists(os.path.join(ext_src, "libs")):
+            try:
+                os.makedirs(os.path.join(ext_src, "libs"))
+            except Exception as e:
+                LOG.error("Fail to init extension libs dir: %s" % e)
+                return False
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-ext-opt")
     if tmp_opt:
@@ -81,6 +87,7 @@ def packExtension(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     if not os.path.exists(os.path.join(BUILD_ROOT, "crosswalk", "template", "libs", "xwalk_app_runtime_java.jar")):
         return False
+
     if not utils.doCopy(
             os.path.join(BUILD_ROOT, "crosswalk", "template", "libs", "xwalk_app_runtime_java.jar"),
             os.path.join(ext_src, "libs")):
