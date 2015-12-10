@@ -430,6 +430,9 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
             os.path.join(app_dest, "%s.msi" % app_name)):
         return False
 
+    if not doRemove([files[0]]):
+        return False
+
     os.chdir(orig_dir)
     return True
 
