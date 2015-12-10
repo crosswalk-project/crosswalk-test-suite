@@ -550,10 +550,10 @@ def installPlugins(plugin_tool, app_name):
         xwalk_version = "org.xwalk:xwalk_%s_library_beta:%s" % (pkg_mode_tmp, CROSSWALK_VERSION)
 
     webview_plugin_name = "cordova-plugin-crosswalk-webview"
-    install_variable_cmd = ""
     if os.path.exists(plugin_tool): 
         plugin_dirs = os.listdir(plugin_tool)
         for i_dir in plugin_dirs:
+            install_variable_cmd = ""
             i_plugin_dir = os.path.join(plugin_tool, i_dir)
             plugin_crosswalk_source = i_plugin_dir
             if i_dir == webview_plugin_name:
@@ -962,6 +962,12 @@ def packSampleApp_cli(app_name=None):
             os.chdir(orig_dir)
             return False
 
+    if checkContains(app_name, "PRIVATENOTES"):
+        status_plugman_cmd = "cordova plugin add https://github.com/01org/AppSecurityApi"
+        if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT * 5):
+            os.chdir(orig_dir)
+            return False
+
     if not installPlugins(plugin_tool, app_name):
         os.chdir(orig_dir)
         return False
@@ -980,7 +986,7 @@ def packSampleApp_cli(app_name=None):
     if checkContains(app_name, "REMOTEDEBUGGING"):
         pack_cmd = "cordova build android --debug"
 
-    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT * 5):
         os.chdir(orig_dir)
         return False
 
