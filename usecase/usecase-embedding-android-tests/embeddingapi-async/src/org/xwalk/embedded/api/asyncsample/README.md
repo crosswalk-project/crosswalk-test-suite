@@ -788,3 +788,14 @@ This usecase covers following interface and methods:
 
 * XWalkUIClient interface: onJsAlert, onJsConfirm, onJsPropmt methods
 * XWalkView interface: load methods
+
+
+
+### 77. The [XWalkViewWithOnReceivedResponseHeadersAsync](client/XWalkViewWithOnReceivedResponseHeadersAsync.java) sample check API XWalkResourceClient.onReceivedResponseHeaders can work, include:
+
+* API XWalkResourceClient.onReceivedResponseHeaders can work
+
+This usecase covers following interface and methods:
+
+* XWalkResourceClient interface: onReceivedResponseHeaders
+* XWalkView interface: load methods
