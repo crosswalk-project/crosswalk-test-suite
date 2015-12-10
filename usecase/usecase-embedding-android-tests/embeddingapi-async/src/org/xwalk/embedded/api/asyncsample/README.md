@@ -758,7 +758,7 @@ This usecase covers following interface and methods:
 
 
 
-### 74. The [XWalkViewWithCaptureBitmapAsync](basic/XWalkViewWithCaptureBitmapAsync.java) sample check XWalkView can capture the visible content of web page, include:
+### 74. The [XWalkViewWithCaptureBitmapAsyncAsync](basic/XWalkViewWithCaptureBitmapAsyncAsync.java) sample check XWalkView can capture the visible content of web page, include:
 
 * XWalkView API captureBitmapAsync method can work
 
