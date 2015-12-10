@@ -306,6 +306,13 @@ def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
 
 def buildPKGAPP(build_json=None):
     LOG.info("+Building package APP ...")
+    if utils.safelyGetValue(build_json, "apk-type") == "MANIFEST":
+        if not os.path.exists(os.path.join(BUILD_ROOT_SRC, "manifest.json")):
+            LOG.error("Not found manifest.json in suite folder, please check!")
+            sys.exit(1)
+        if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "manifest.json"),
+                      os.path.join(BUILD_ROOT_SRC_PKG_APP, "manifest.json")):
+            return False
     if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "icon.png"),
                   os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.png")):
         return False
