@@ -113,8 +113,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
         buildcmd = "crosswalk-app build"
         buildstatus = os.system(buildcmd)
+        comm.run(self)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
-        self.assertNotEquals(buildstatus, 0)
+        self.assertEquals(buildstatus, 0)
 
 if __name__ == '__main__':
     unittest.main()
