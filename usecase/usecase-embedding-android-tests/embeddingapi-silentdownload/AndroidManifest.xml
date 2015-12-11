@@ -1,0 +1,54 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.xwalk.embedded.api.silentdownload" >
+
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <!-- disable the download notification, used for silent download mode -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+
+    <application
+        android:label="usecase-embedding-android-tests"
+        android:allowBackup="true" >
+
+        <meta-data android:name="xwalk_apk_url" android:value="http://10.0.2.2/XWalkRuntimeLib.apk" />
+        <!-- enable download mode -->
+        <meta-data android:name="xwalk_enable_download_mode" android:value="enable" />
+        <!-- disable signature check for development-->
+        <meta-data android:name="xwalk_verify" android:value="disable" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".XWalkLayoutWithSilentDownload"
+            android:label="@string/xwalk_layout"
+            android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".XWalkJSWithSilentDownload"
+            android:label="@string/xwalk_js"
+            android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
