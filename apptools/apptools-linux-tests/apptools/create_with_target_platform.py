@@ -41,7 +41,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.TEMP_DATA_PATH)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
-        cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=deb"
+        cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platform=deb"
         packstatus = commands.getstatusoutput(cmd)
         os.chdir(comm.TEST_PROJECT_COMM)
         buildcmd = "crosswalk-app build"
@@ -54,7 +54,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.TEMP_DATA_PATH)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
-        cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=android"
+        cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platform=android"
         packstatus = commands.getstatusoutput(cmd)
         os.chdir(comm.TEST_PROJECT_COMM)
         buildcmd = "crosswalk-app build"
@@ -67,7 +67,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.TEMP_DATA_PATH)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
-        cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=ios"
+        cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platform=ios"
         packstatus = commands.getstatusoutput(cmd)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertNotEquals(packstatus[0], 0)
@@ -76,7 +76,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.TEMP_DATA_PATH)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
-        cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platforms=target"
+        cmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM + " --platform=target"
         packstatus = commands.getstatusoutput(cmd)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertNotEquals(packstatus[0], 0)

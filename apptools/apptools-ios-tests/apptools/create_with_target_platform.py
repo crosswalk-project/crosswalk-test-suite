@@ -41,7 +41,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         comm.clear("org.xwalk.test")
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=ios"
+        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platform=ios"
         packstatus = commands.getstatusoutput(cmd)
         os.chdir('org.xwalk.test')
         buildcmd = comm.PackTools + "crosswalk-app build"
@@ -53,7 +53,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         comm.clear("org.xwalk.test")
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=android"
+        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platform=android"
         packstatus = commands.getstatusoutput(cmd)
         os.chdir('org.xwalk.test')
         buildcmd = comm.PackTools + "crosswalk-app build"
@@ -65,7 +65,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         comm.clear("org.xwalk.test")
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=deb"
+        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platform=deb"
         packstatus = commands.getstatusoutput(cmd)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(packstatus[0], 0)
@@ -74,7 +74,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         comm.clear("org.xwalk.test")
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=target"
+        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platform=target"
         packstatus = commands.getstatusoutput(cmd)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(packstatus[0], 0)

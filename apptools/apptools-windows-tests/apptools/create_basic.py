@@ -41,7 +41,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         os.mkdir("org.xwalk.test")
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-app create org.xwalk.test --platforms=windows --windows-crosswalk=" + \
+            "crosswalk-app create org.xwalk.test --platform=windows --windows-crosswalk=" + \
             comm.XwalkPath + comm.windowsCrosswalk
         return_code = os.system(cmd)
         self.assertNotEquals(return_code, 0)

@@ -65,14 +65,14 @@ def generate_cmd():
         num = num + 1
         flag = 'positive' + str(num)
         cmd = flag + '\tcrosswalk-app create ' + \
-            i + ' --platforms=windows --windows-crosswalk=' + '\n'
+            i + ' --platform=windows --windows-crosswalk=' + '\n'
         # print cmd
         fp.write(cmd)
     for j in negative_data:
         num = num + 1
         flag = 'negative' + str(num)
         cmd = flag + '\tcrosswalk-app create ' + \
-            j + ' --platforms=windows --windows-crosswalk=' + '\n'
+            j + ' --platform=windows --windows-crosswalk=' + '\n'
 
         # print cmd
         fp.write(cmd)
@@ -143,7 +143,7 @@ def tryRunApp(item, cmd):
     try:
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        package = cmd[cmd.index("create") + 6:cmd.index("--platforms")].strip()
+        package = cmd[cmd.index("create") + 6:cmd.index("--platform")].strip()
         exec_cmd = comm.HOST_PREFIX + comm.PackTools + cmd + comm.XwalkPath + comm.windowsCrosswalk
         # print exec_cmd
         if 'negative' in item:

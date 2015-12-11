@@ -58,7 +58,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app manifest " + \
-            comm.XwalkPath + "org.xwalk.test --platforms=windows"
+            comm.XwalkPath + "org.xwalk.test --platform=windows"
         os.system(cmd)
         with open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json") as json_file:
             data = json.load(json_file)
@@ -72,7 +72,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app manifest " + \
-            comm.XwalkPath + "org.xwalk.test --platforms=invalid"
+            comm.XwalkPath + "org.xwalk.test --platform=invalid"
         return_code = os.system(cmd)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(return_code, 0)
@@ -84,13 +84,13 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app manifest " + \
-            comm.XwalkPath + "org.xwalk.test --platforms=windows --package-id=org.xwalk.test"
+            comm.XwalkPath + "org.xwalk.test --platform=windows --package-id=org.xwalk.test"
         os.system(cmd)
         with open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json") as json_file:
             data = json.load(json_file)
         updatecmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app manifest " + \
-            comm.XwalkPath + "org.xwalk.test --platforms=windows --package-id=org.test.foo"
+            comm.XwalkPath + "org.xwalk.test --platform=windows --package-id=org.test.foo"
         os.system(updatecmd)
         with open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json") as json_file_update:
             updatedata = json.load(json_file_update)
