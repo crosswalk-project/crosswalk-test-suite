@@ -8,7 +8,7 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xwalk.app.runtime.extension.*;
+import org.xwalk.core.extension.*;
 
 /*
  * Example for JavaScript stub auto-generation feature on Android.
@@ -53,7 +53,7 @@ public class Echo extends BindingObjectAutoJS {
   // 2. provide a specified method "toJSONString" in the objects to be serialized.
   // 3. rely on the auto-serializing feature in the system, but it may be unqualified for
   //    complicated Java objects. Please do use this feature on simple sturctures.
-  
+
   // Event object specified serializing method "toJSONObject", this must be public method.
   public class Student {
       private String name;
@@ -115,7 +115,7 @@ public class Echo extends BindingObjectAutoJS {
           event.put("type", "updatePrefix");
           event.put("data", "Event data.");
           dispatchEvent("updatePrefix", event);
-          
+
           // Trigger another event with object data will be auto serialized.
           // Only public fields will be serialized and please do keep it simple.
           Event e1 = new Event("click", 99, "helloWorld!");

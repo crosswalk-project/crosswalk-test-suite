@@ -4,14 +4,14 @@
 
 package com.example.jsStub;
 
-import org.xwalk.app.runtime.extension.*;
+import org.xwalk.core.extension.*;
 
-public class EchoExtension extends XWalkExtensionClient {
+public class EchoExtension extends XWalkExternalExtension {
 
   public EchoExtension(String extensionName, String jsApi, XWalkExtensionContextClient context) {
     super(extensionName, jsApi, context);
   }
-  
+
   @JsConstructor(isEntryPoint = true, mainClass = Echo.class)
   public Echo onEcho() {
       return new Echo();
