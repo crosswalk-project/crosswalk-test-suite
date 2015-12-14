@@ -102,7 +102,7 @@ def create(self):
     setUp()
     os.chdir(XwalkPath)
     cmd = HOST_PREFIX + PackTools + \
-        "crosswalk-app create org.xwalk.test --platforms=windows --windows-crosswalk=" + \
+        "crosswalk-app create org.xwalk.test --platform=windows --windows-crosswalk=" + \
         XwalkPath + windowsCrosswalk
     return_code = os.system(cmd)
     self.assertEquals(return_code, 0)
