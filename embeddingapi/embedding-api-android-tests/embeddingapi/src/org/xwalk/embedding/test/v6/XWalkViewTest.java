@@ -9,6 +9,9 @@ import java.util.Locale;
 
 import android.graphics.Point;
 
+import org.apache.http.Header;
+import org.apache.http.HttpRequest;
+
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -38,29 +41,29 @@ public class XWalkViewTest extends XWalkViewTestBase {
         assertEquals(defaultUserAgentString, getUserAgent());
     }
 
-    // @MediumTest
-    // public void testUserAgentWithTestServer() throws Throwable {
-    //     final String customUserAgentString = "testUserAgentWithTestServerUserAgent";
+    @MediumTest
+    public void testUserAgentWithTestServer() throws Throwable {
+        final String customUserAgentString = "testUserAgentWithTestServerUserAgent";
 
-    //     String fileName = null;
-    //     try {
-    //         final String httpPath = "/testUserAgentWithTestServer.html";
-    //         final String url = mWebServer.setResponse(httpPath, "foo", null);
+        String fileName = null;
+        try {
+            final String httpPath = "/testUserAgentWithTestServer.html";
+            final String url = mWebServer.setResponse(httpPath, "foo", null);
 
-    //         setUserAgent(customUserAgentString);
-    //         loadUrlSync(url);
+            setUserAgent(customUserAgentString);
+            loadUrlSync(url);
 
-    //         assertEquals(1, mWebServer.getRequestCount(httpPath));
-    //         HttpRequest request = mWebServer.getLastRequest(httpPath);
-    //         Header[] matchingHeaders  = request.getHeaders("User-Agent");
-    //         assertEquals(1, matchingHeaders.length);
+            assertEquals(1, mWebServer.getRequestCount(httpPath));
+            HttpRequest request = mWebServer.getLastRequest(httpPath);
+            Header[] matchingHeaders  = request.getHeaders("User-Agent");
+            assertEquals(1, matchingHeaders.length);
 
-    //         Header header = matchingHeaders[0];
-    //         assertEquals(customUserAgentString, header.getValue());
-    //         assertEquals(customUserAgentString, getUserAgent());
-    //     } finally {
-    //     }
-    // }
+            Header header = matchingHeaders[0];
+            assertEquals(customUserAgentString, header.getValue());
+            assertEquals(customUserAgentString, getUserAgent());
+        } finally {
+        }
+    }
 
     @SmallTest
     public void testSetInitialScale1() throws Throwable {
