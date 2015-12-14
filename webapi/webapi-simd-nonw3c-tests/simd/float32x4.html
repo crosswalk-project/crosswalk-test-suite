@@ -40,40 +40,12 @@ Authors:
 <div id="qunit-fixture"></div>
 <script>
 
-test("Check if the zero function of Float32x4 can change the parameter to 0.0", function() {
-  var z1 = SIMD.Float32x4.zero();
-  equal(0.0, SIMD.Float32x4.extractLane(z1, 0), "the value of z1.x should be 0.0");
-  equal(0.0, SIMD.Float32x4.extractLane(z1, 1), "the value of z1.y should be 0.0");
-  equal(0.0, SIMD.Float32x4.extractLane(z1, 2), "the value of z1.z should be 0.0");
-  equal(0.0, SIMD.Float32x4.extractLane(z1, 3), "the value of z1.w should be 0.0");
-});
-
 test("Check if the splat function of Float32x4 can change the parameter to specified value", function () {
   var z2 = SIMD.Float32x4.splat(5.0);
   equal(5.0, SIMD.Float32x4.extractLane(z2, 0), "the value of z2.x should be 5.0");
   equal(5.0, SIMD.Float32x4.extractLane(z2, 1), "the value of z2.y should be 5.0");
   equal(5.0, SIMD.Float32x4.extractLane(z2, 2), "the value of z2.z should be 5.0");
   equal(5.0, SIMD.Float32x4.extractLane(z2, 3), "the value of z2.w should be 5.0");
-});
-
-test("Check if the fromFloat64x2 method of Float32x4 is valid", function () {
-  var m = SIMD.Float32x4(9.0, 10.0, 11.0, 12.0);
-  var nMask = SIMD.Float64x2.fromFloat32x4(m);
-  var n = SIMD.Float32x4.fromFloat64x2(nMask);
-  equal(9.0, SIMD.Float32x4.extractLane(n, 0), "the value of n.x should be 9.0");
-  equal(10.0, SIMD.Float32x4.extractLane(n, 1), "the value of n.y should be 10.0");
-  equal(0, SIMD.Float32x4.extractLane(n, 2), "the value of n.z should be 0");
-  equal(0, SIMD.Float32x4.extractLane(n, 3), "the value of n.w should be 0");
-});
-
-test("Check if the fromFloat64x2Bits method of Float32x4 is valid", function () {
-  var m = SIMD.Float32x4(9.0, 10.0, 11.0, 12.0);
-  var nMask = SIMD.Float64x2.fromFloat32x4Bits(m);
-  var n = SIMD.Float32x4.fromFloat64x2Bits(nMask);
-  equal(9.0, SIMD.Float32x4.extractLane(n, 0), "the value of n.x should be 9.0");
-  equal(10.0, SIMD.Float32x4.extractLane(n, 1), "the value of n.y should be 10.0");
-  equal(11.0, SIMD.Float32x4.extractLane(n, 2), "the value of n.z should be 11.0");
-  equal(12.0, SIMD.Float32x4.extractLane(n, 3), "the value of n.w should be 12.0");
 });
 
 test("Check if the fromInt32x4 method of Float32x4 is valid", function () {
@@ -97,7 +69,7 @@ test("Check if the fromInt32x4Bits method of Float32x4 is valid", function () {
 });
 
 test("Check if the select method of Float32x4 is valid", function () {
-  var m = SIMD.Int32x4.bool(true, true, false, false);
+  var m = SIMD.Bool32x4(true, true, false, false);
   var t = SIMD.Float32x4(1.0, 2.0, 3.0, 4.0);
   var f = SIMD.Float32x4(5.0, 6.0, 7.0, 8.0);
   var s = SIMD.Float32x4.select(m, t, f);
@@ -117,5 +89,25 @@ test('Float32x4 store smi check', function() {
   for (var i = 0; i < a.length; i++) {
     equal(i, a[i]);
   }
+});
+
+test('Check Float32x4 maxNum', function() {
+  var m = SIMD.Float32x4(1.0, 2.0, 5.0, 6.0);
+  var n = SIMD.Float32x4(0.0, 4.0, 5.0, 7.0);
+  var o = SIMD.Float32x4.maxNum(m, n);
+  equal(1.0, SIMD.Float32x4.extractLane(o, 0));
+  equal(4.0, SIMD.Float32x4.extractLane(o, 1));
+  equal(5.0, SIMD.Float32x4.extractLane(o, 2));
+  equal(7.0, SIMD.Float32x4.extractLane(o, 3));
+});
+
+test('Check Float32x4 minNum', function() {
+  var m = SIMD.Float32x4(1.0, 2.0, 5.0, 6.0);
+  var n = SIMD.Float32x4(0.0, 4.0, 5.0, 7.0);
+  var o = SIMD.Float32x4.minNum(m, n);
+  equal(0.0, SIMD.Float32x4.extractLane(o, 0));
+  equal(2.0, SIMD.Float32x4.extractLane(o, 1));
+  equal(5.0, SIMD.Float32x4.extractLane(o, 2));
+  equal(6.0, SIMD.Float32x4.extractLane(o, 3));
 });
 </script>
