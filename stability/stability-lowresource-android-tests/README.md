@@ -41,13 +41,20 @@ After complete the testing, we need release the memory:
      ```
 
 - TestAppRepeatedlyInLowDisk
-  1. Download crosswalk from https://crosswalk-project.org/documentation/downloads.html
-  2. Unzip it to /path/to/opt/
-  3. Make sure test envrionment can build apk successfully:
+  1. Set CROSSWALK_APP_TOOLS_CACHE_DIR
+    ```export CROSSWALK_APP_TOOLS_CACHE_DIR=[local-path]```
+
+  2. Clone crosswalk-app-tools to CROSSWALK_APP_TOOLS_CACHE_DIR
+     ```
+     git clone https://github.com/crosswalk-project/crosswalk-app-tools
+     cd crosswalk-app-tools
+     sudo npm install
+     ```
+  3. Download the crosswalk zip you want to test to CROSSWALK_APP_TOOLS_CACHE_DIR
+  4. Make sure test envrionment can build apk successfully:
 
      ```
-     $ python /path/to/opt/crosswalk/make_apk.py --package=org.xwalk.helloworld
-       --name=helloworld --app-url=www.baidu.com
+     $ ${CROSSWALK_APP_TOOLS_CACHE_DIR}/crosswalk-app-tools/src/crosswalk-pkg --crosswalk=${CROSSWALK_APP_TOOLS_CACHE_DIR}/crosswalk-&lt;version&gt;.zip --platforms=android /path/to/testapp/helloworld
      ```
 
 - TestAppRepeatedlyInLowBattery

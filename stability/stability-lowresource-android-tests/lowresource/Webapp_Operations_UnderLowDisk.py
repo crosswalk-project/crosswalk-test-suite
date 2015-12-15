@@ -36,6 +36,7 @@ import commands
 import shutil
 import time
 import subprocess
+import glob
 from TestApp import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -44,10 +45,11 @@ SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
 appsrc = ConstPath + "/../testapp/helloworld"
 approot = ConstPath + "/helloworld"
+app_tools_dir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
 instaled_app_list = []
 
 def setUp():
-    global device
+    global device, apptools, crosswalkzip
     #device = 'E6OKCY411012'
     device = os.environ.get('DEVICE_ID')
     global device_abi
@@ -55,6 +57,24 @@ def setUp():
     if not device:
         print 'Get env error\n'
         sys.exit(1)
+
+    if not app_tools_dir:
+        print ("Not find CROSSWALK_APP_TOOLS_CACHE_DIR\n")
+        sys.exit(1)
+
+    # app tools commend
+    apptools = "crosswalk-pkg"
+    if os.system(apptools) != 0:
+        apptools = app_tools_dir + "/crosswalk-app-tools/src/crosswalk-pkg"
+
+    # crosswalk lib
+    zips = glob.glob(os.path.join(app_tools_dir, "crosswalk-*.zip"))
+    if len(zips) == 0:
+        print ("Not find crosswalk zip in CROSSWALK_APP_TOOLS_CACHE_DIR\n")
+        sys.exit(1)
+    # latest version
+    zips.sort(reverse = True)
+    crosswalkzip = zips[0]
 
 def getFreeDiskSize(device):
     # Disk size: M
@@ -90,12 +110,23 @@ def getFileSize(filepath):
 
 def createAPK(appname):
     action_status = True
+    # Remove existed manifest.json
+    if os.path.exists(appsrc + "/manifest.json"):
+        os.remove(appsrc + "/manifest.json")
     # build apk
-    cmd = "python %s/../../crosswalk/make_apk.py --package=org.xwalk.%s --name=%s --app-root=%s --app-local-path=index.html --mode=embedded --arch=%s" % (ConstPath, appname, appname, appsrc, device_abi)
+    cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s -m " \
+          "\"{\\\"name\\\": \\\"%s\\\", \\\"start_url\\\": \\\"index.html\\\", \\\"xwalk_package_id\\\": \\\"org.xwalk.%s\\\"}\" %s" % \
+          (apptools,
+           crosswalkzip,
+           "embedded",
+           device_abi,
+           appname,
+           appname,
+           appsrc)
     (return_code, output) = doCMD(cmd)
     if return_code == 0:
         print "-->> org.xwalk.%s success to build." % appname
-        cmd = "mv *.apk %s/" % (approot)
+        cmd = "mv *.apk %s/%s.apk" % (approot, appname)
         (return_code, output) = doCMD(cmd)
     else:
         print "-->> org.xwalk.%s fail to build." % appname
@@ -172,7 +203,7 @@ def makeLowDisk():
         appname = "helloworld%s" % int(time.time())
         if createAPK(appname):
             apkname = appname[0].upper() + appname[1:]
-            apkpath = approot + "/" + apkname + "_" + device_abi + ".apk"
+            apkpath = approot + "/" + appname + ".apk"
             testapp = TestApp(device, apkpath,
                                     "org.xwalk." + appname, apkname + "Activity")
 
