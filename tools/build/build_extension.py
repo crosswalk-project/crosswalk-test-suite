@@ -85,11 +85,11 @@ def packExtension(build_json=None, app_src=None, app_dest=None, app_name=None):
         ext_jar_name = ext_output.split("/")[-1]
 
 
-    if not os.path.exists(os.path.join(BUILD_ROOT, "crosswalk", "template", "libs", "xwalk_app_runtime_java.jar")):
+    if not os.path.exists(os.path.join(BUILD_ROOT, "crosswalk", "xwalk_core_library", "libs", "xwalk_core_library_java.jar")):
         return False
 
     if not utils.doCopy(
-            os.path.join(BUILD_ROOT, "crosswalk", "template", "libs", "xwalk_app_runtime_java.jar"),
+            os.path.join(BUILD_ROOT, "crosswalk", "xwalk_core_library", "libs", "xwalk_core_library_java.jar"),
             os.path.join(ext_src, "libs")):
         return False
 
