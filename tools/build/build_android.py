@@ -81,13 +81,6 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
                      "arm": "armeabi-v7a",
                      "arm64": "arm64-v8a"}
 
-    #Use crosswalk zip in local mode
-    #if not os.path.exists(os.path.join(BUILD_ROOT, "crosswalk-%s.zip" % CROSSWALK_VERSION)):
-    #    if not utils.doCopy(
-    #            os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk-%s.zip" % CROSSWALK_VERSION),
-    #            os.path.join(BUILD_ROOT, "crosswalk-%s.zip" % CROSSWALK_VERSION)):
-    #        return False
-
     files = glob.glob(os.path.join(BUILD_ROOT, "*.apk"))
     if files:
         if not utils.doRemove(files):
@@ -250,20 +243,33 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     manifest_opt = json.JSONEncoder().encode(manifest_opt)
 
+    app_tools_dir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
+    if app_tools_dir:
+        if "64" in arch_opt and os.path.exists(os.path.join(app_tools_dir,
+                "crosswalk-%s-64bit.zip" % CROSSWALK_VERSION)):
+            crosswalk_version_opt = os.path.join(app_tools_dir,
+                    "crosswalk-%s-64bit.zip" % CROSSWALK_VERSION)
+        elif os.path.exists(os.path.join(app_tools_dir,
+                "crosswalk-%s.zip" % CROSSWALK_VERSION)):
+            crosswalk_version_opt = os.path.join(app_tools_dir,
+                    "crosswalk-%s.zip" % CROSSWALK_VERSION)
+        else:
+            crosswalk_version_opt = CROSSWALK_VERSION
+
     if utils.safelyGetValue(build_json, "apk-type") == "MANIFEST":
         pack_cmd = "crosswalk-pkg %s --crosswalk=%s " \
                    "-p android --targets=\"%s\" %s %s" % (
-                       mode_opt, CROSSWALK_VERSION, arch_opt, common_opts,
+                       mode_opt, crosswalk_version_opt, arch_opt, common_opts,
                        app_src)
     else:
         pack_cmd = "crosswalk-pkg %s --crosswalk=%s --manifest='%s' " \
                    "-p android --targets=\"%s\" %s %s" % (
-                       mode_opt, CROSSWALK_VERSION, manifest_opt, arch_opt,
+                       mode_opt, crosswalk_version_opt, manifest_opt, arch_opt,
                        common_opts, app_src)
 
     orig_dir = os.getcwd()
     os.chdir(os.path.join(BUILD_ROOT))
-    if not utils.doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+    if not utils.doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT * 1.5):
         os.chdir(orig_dir)
         return False
 
