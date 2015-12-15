@@ -19,9 +19,17 @@
         "inst.apk.py": "inst.py",
         "tests.xml": "tests.xml"
       },
-      "pkg-app": {
-        "apk-type": "HOSTEDAPP",
-        "apk-url-opt": "http://127.0.0.1:8080/index.html"
+      "subapp-list": {
+        ".": {
+          "app-name": "web-abat-xwalk-tests",
+          "apk-type": "MANIFEST",
+          "blacklist": [
+            "*"
+          ],
+          "copylist": {
+              "manifest.json": "manifest.json"
+          }
+        }
       }
     },
     "apk-aio": {
