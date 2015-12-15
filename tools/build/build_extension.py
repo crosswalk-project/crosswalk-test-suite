@@ -75,7 +75,7 @@ def packExtension(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-ext-opt")
     if tmp_opt:
-        ext_output = os.path.join(BUILD_ROOT_SRC, tmp_opt)
+        ext_output = os.path.join(app_src, tmp_opt)
         if not os.path.exists(ext_output):
             try:
                 os.makedirs(ext_output)
