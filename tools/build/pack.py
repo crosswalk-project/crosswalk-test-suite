@@ -74,7 +74,7 @@ CROSSWALK_BRANCH = ""
 CROSSWALK_VERSION = ""
 DEFAULT_CMD_TIMEOUT = 600
 PKG_MODES = ["shared", "embedded"]
-PKG_ARCHS = ["x86", "arm"]
+PKG_ARCHS = ["x86", "arm", "x86_64", "arm64"]
 
 
 def updateCopylistPrefix(src_default, dest_default, src_sub, dest_sub):
@@ -312,6 +312,13 @@ def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
 
 def buildPKGAPP(build_json=None):
     LOG.info("+Building package APP ...")
+    if utils.safelyGetValue(build_json, "apk-type") == "MANIFEST":
+        if not os.path.exists(os.path.join(BUILD_ROOT_SRC, "manifest.json")):
+            LOG.error("Not found manifest.json in suite folder, please check!")
+            sys.exit(1)
+        if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "manifest.json"),
+                      os.path.join(BUILD_ROOT_SRC_PKG_APP, "manifest.json")):
+            return False
     if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "icon.png"),
                   os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.png")):
         return False
@@ -484,6 +491,7 @@ def main():
         if BUILD_PARAMETERS.pkgversion:
             LOG.info("Using %s as pkg version " % BUILD_PARAMETERS.pkgversion)
             pkg_main_version = BUILD_PARAMETERS.pkgversion
+            CROSSWALK_BRANCH = "master"
         else:
             if pkg_version_file_path is not None:
                 LOG.info("Using pkg version file: %s" % pkg_version_file_path)

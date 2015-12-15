@@ -90,10 +90,11 @@ fi
 cp -a $SRC_ROOT/icon.png     $BUILD_ROOT/
 
 if [ $pack_type == "apk" ];then
-    cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
+    #cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 
-    cd $BUILD_ROOT/crosswalk
-    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_ROOT/icon.png --mode=$pack_mode --arch=$arch --enable-remote-debugging
+    cd $BUILD_ROOT
+    #python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_ROOT/icon.png --mode=$pack_mode --arch=$arch --enable-remote-debugging
+    crosswalk-pkg --android=$pack_mode --crosswalk=$crosswalk_version --manifest=''\{\"name\":\"$appname\"\,\"xwalk_package_id\":\"org.xwalk."$appname"\",\"start_url\":\"http://127.0.0.1:8080/index.html\"\}'' -p android --targets=$arch $BUILD_DEST
 elif [ $pack_type == "cordova" ];then
     if [ $sub_version == "4.x" ]; then
         cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
@@ -191,19 +192,16 @@ cp $SRC_ROOT/inst.py $BUILD_ROOT/opt/$name/inst.py
 
 for list in $LIST;do
     suite=`basename $list`
-    cp $SRC_ROOT/../../../crosswalk-test-suite/webapi/$list/tests.xml  $BUILD_ROOT/opt/$name/$suite.tests.xml
+    cp $SRC_ROOT/../../webapi/$list/tests.xml  $BUILD_ROOT/opt/$name/$suite.tests.xml
     sed -i "s/<suite/<suite widget=\"$name\"/g" $BUILD_ROOT/opt/$name/$suite.tests.xml
-    cp $SRC_ROOT/../../../crosswalk-test-suite/webapi/$list/tests.full.xml  $BUILD_ROOT/opt/$name/$suite.tests.full.xml
+    cp $SRC_ROOT/../../webapi/$list/tests.full.xml  $BUILD_ROOT/opt/$name/$suite.tests.full.xml
     sed -i "s/<suite/<suite widget=\"$name\"/g" $BUILD_ROOT/opt/$name/$suite.tests.full.xml
 done
 
 ## creat zip package ##
 if [ $pack_type == "apk" ];then
-    mv $BUILD_ROOT/crosswalk/*.apk $BUILD_ROOT/opt/$name/
-
-    if [ -f $BUILD_ROOT/opt/$name/WebapiServiceTests_$arch.apk ] || [ -f $BUILD_ROOT/opt/$name/WebapiServiceTests.apk ];then
-        mv $BUILD_ROOT/opt/$name/WebapiServiceTests*.apk $BUILD_ROOT/opt/$name/$appname.apk
-    fi
+    mv $BUILD_ROOT/*.apk $BUILD_ROOT/opt/$name/
+    mv $BUILD_ROOT/opt/$name/org.xwalk.webapi_service_tests*.apk $BUILD_ROOT/opt/$name/$appname.apk
 elif [ $pack_type == "cordova" ];then
     if [ $sub_version == "3.6" ]; then
         if [ -f $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk ];then
