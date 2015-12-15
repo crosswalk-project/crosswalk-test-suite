@@ -25,14 +25,17 @@
 #   2015-09-23: Change the samples reference from crosswalk-samples.
 #	              tizen-apis and gallery, sysapps removed.
 #               Releated: https://crosswalk-project.org/jira/browse/XWALK-4685
+#   2015-12-03: Replace make_apk.py by app tools
+#               Releated: https://crosswalk-project.org/jira/browse/XWALK-5737
 
 
 . /etc/profile
 usage="Usage: ./sampleApp_pack.sh -v <sdk_version> -r
 -v <sdk_version> use <sdk_version> to  pack apk only,
 -r it will not only pack apk but also comparess and pack sourcecode for release !!!"
-ROOT_DIR=$(dirname $(readlink -f $0))
-PKG_TOOLS_DIR=/mnt/jiajiax_shared/pkg_tools
+ROOT_DIR=$PWD
+PKG_TOOLS_DIR=$CROSSWALK_APP_TOOLS_CACHE_DIR
+CROSSWALK_PKG=$PKG_TOOLS_DIR/crosswalk-app-tools/src/crosswalk-pkg
 
 SDK_VERSION=""
 RELEASE_FLAG=0
@@ -63,57 +66,49 @@ update_code(){
     git reset --hard HEAD
     git checkout master
     git pull
-
+    git submodule update --init --recursive
 }
 
 clean_dir(){
     echo "Clean workspace..."
     cd $ROOT_DIR
-    rm -rf Sampleapp_sourcecode Sampleapp_binary crosswalk-samples crosswalk-$SDK_VERSION
+    rm -rf Sampleapp_sourcecode Sampleapp_binary crosswalk-samples
     cd -
 }
 
 clean_dir
 
-update_code $ROOT_DIR/crosswalk-samples-original
-update_code $ROOT_DIR/webapps-hangonman
-update_code $ROOT_DIR/webapps-hangonman/app/lib/smokesignals.js
-
-if [ -d $ROOT_DIR/crosswalk-demos ]; then
-    update_code $ROOT_DIR/crosswalk-demos
-else
-    git clone https://github.com/crosswalk-project/crosswalk-demos.git
-    mv crosswalk-demos $ROOT_DIR
+if [ ! -d $ROOT_DIR/crosswalk-demos ]; then
+   git clone https://github.com/crosswalk-project/crosswalk-demos.git $ROOT_DIR/crosswalk-demos
 fi
+
+update_code $ROOT_DIR/crosswalk-demos
+update_code $ROOT_DIR/crosswalk-samples-original
 
 rm -rf $ROOT_DIR/crosswalk-samples
 cp -a $ROOT_DIR/crosswalk-samples-original $ROOT_DIR/crosswalk-samples
 
 cp -a $ROOT_DIR/crosswalk-demos/HangOnMan $ROOT_DIR/crosswalk-samples/
+cp -a $ROOT_DIR/crosswalk-demos/HangOnMan/manifest.json $ROOT_DIR/crosswalk-samples/HangOnMan/src
 cp -a $ROOT_DIR/crosswalk-demos/MemoryGame $ROOT_DIR/crosswalk-samples/
-cp -a $ROOT_DIR/MemoryGame/src/* $ROOT_DIR/crosswalk-samples/MemoryGame/src/
-cp -r $ROOT_DIR/webapps-hangonman/* $ROOT_DIR/crosswalk-samples/HangOnMan/src/
+cp -a $ROOT_DIR/crosswalk-demos/MemoryGame/manifest.json $ROOT_DIR/crosswalk-samples/MemoryGame/src
 cp -a $ROOT_DIR/HexGL $ROOT_DIR/crosswalk-samples/
+
 
 # subsitute the server IP and port in webrtc/client/main.js
 sed -i "s|var SERVER_IP = '192.168.0.25'|var SERVER_IP = '106.187.98.180'|" $ROOT_DIR/crosswalk-samples/webrtc/client/main.js
 sed -i "s|var SERVER_PORT = 9000|var SERVER_PORT = 9001|" $ROOT_DIR/crosswalk-samples/webrtc/client/main.js
 
 if [ -n $SDK_VERSION ];then
-    if [ -d $PKG_TOOLS_DIR/crosswalk-$SDK_VERSION ];then
-        rm -rf $ROOT_DIR/crosswalk-$SDK_VERSION
-        cp -r $PKG_TOOLS_DIR/crosswalk-$SDK_VERSION $ROOT_DIR/
-        CROSSWALK_DIR=$ROOT_DIR/crosswalk-$SDK_VERSION
-        
+    if [ -f $PKG_TOOLS_DIR/crosswalk-$SDK_VERSION.zip ];then
+        CROSSWALK_ZIP=$PKG_TOOLS_DIR/crosswalk-$SDK_VERSION.zip
+
         sed -i "s|8.37.189.14|${SDK_VERSION}|" $ROOT_DIR/crosswalk-samples/extensions-android/xwalk-echo-extension-src/build.xml
         sed -i "s|crosswalkproject.sample|crosswalkproject.sample --mode=\$1 --arch=\$2|" $ROOT_DIR/crosswalk-samples/extensions-android/build.sh
         mkdir $ROOT_DIR/crosswalk-samples/extensions-android/xwalk-echo-extension-src/lib
-        cp -fr $ROOT_DIR/crosswalk-${SDK_VERSION} $ROOT_DIR/crosswalk-samples/extensions-android/xwalk-echo-extension-src/lib/crosswalk-${SDK_VERSION}
-        cd ${ROOT_DIR}
-        zip crosswalk.zip crosswalk-${SDK_VERSION}/
-        mv -fv crosswalk.zip $ROOT_DIR/crosswalk-samples/extensions-android/xwalk-echo-extension-src/lib/
+        cp -a $CROSSWALK_ZIP $ROOT_DIR/crosswalk-samples/extensions-android/xwalk-echo-extension-src/lib/crosswalk.zip
     else
-        echo "$PKG_TOOLS_DIR/crosswalk-$SDK_VERSION not exists, Please download first !!"
+        echo "$PKG_TOOLS_DIR/crosswalk-$SDK_VERSION.zip not exists, Please download first !!"
         exit 1
     fi
 fi
@@ -130,41 +125,50 @@ build_apk(){
     cp $ROOT_DIR/inst.py $BINARY_DIR/
     
     # Hexgl:
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.hexgl --name=Hexgl --app-root=$ROOT_DIR/crosswalk-samples/HexGL/assets/www --app-local-path=index.html --mode=$1 --arch=$2 --enable-remote-debugging
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging $ROOT_DIR/crosswalk-samples/HexGL/assets/www
     
     # Memorygame:
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.memorygame --name=Memorygame --app-root=$ROOT_DIR/crosswalk-samples/MemoryGame/src --app-local-path=index.html --mode=$1 --arch=$2 --enable-remote-debugging
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging $ROOT_DIR/crosswalk-samples/MemoryGame/src
     
     #Simd:
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.simd --manifest=$ROOT_DIR/crosswalk-samples/simd-mandelbrot/manifest.json --app-versionCode=1 --mode=$1 --arch=$2  --enable-remote-debugging
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging $ROOT_DIR/crosswalk-samples/simd-mandelbrot
     
     #Webrtc
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.webrtc --manifest=$ROOT_DIR/crosswalk-samples/webrtc/client/manifest.json --mode=$1 --arch=$2 --enable-remote-debugging
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging $ROOT_DIR/crosswalk-samples/webrtc/client
     
     #Hangoman
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.hangonman --name=hangonman --app-root=$ROOT_DIR/crosswalk-samples/HangOnMan/src/app --app-local-path=index.html --mode=$1 --arch=$2 --enable-remote-debugging
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging $ROOT_DIR/crosswalk-samples/HangOnMan/src
     
     # hello-world
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.helloworld --manifest=$ROOT_DIR/crosswalk-samples/hello-world/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging $ROOT_DIR/crosswalk-samples/hello-world
     
     # space-dodge-game
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.spacedodgegame --manifest=$ROOT_DIR/crosswalk-samples/space-dodge-game/base/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging $ROOT_DIR/crosswalk-samples/space-dodge-game/base
 
-    python $CROSSWALK_DIR/make_apk.py --name='Space Dodge2' --package=org.xwalk.spacedodgegame2 --manifest=$ROOT_DIR/crosswalk-samples/space-dodge-game/manifest-orientation-resize/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
+    # Change package id of other version space-dodge-game, to void same apk name.
+    sed -i "s/Space Dodge/Space Dodge2/g" $ROOT_DIR/crosswalk-samples/space-dodge-game/manifest-orientation-resize/manifest.json
+    sed -i "s/org.xwalk.spacedodgegame/org.xwalk.spacedodgegame2/g" $ROOT_DIR/crosswalk-samples/space-dodge-game/manifest-orientation-resize/manifest.json
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging  $ROOT_DIR/crosswalk-samples/space-dodge-game/manifest-orientation-resize
 
-    python $CROSSWALK_DIR/make_apk.py --name='Space Dodge3' --package=org.xwalk.spacedodgegame3 --manifest=$ROOT_DIR/crosswalk-samples/space-dodge-game/manifest-orientation-scale/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
+    sed -i "s/Space Dodge/Space Dodge3/g" $ROOT_DIR/crosswalk-samples/space-dodge-game/manifest-orientation-scale/manifest.json
+    sed -i "s/org.xwalk.spacedodgegame/org.xwalk.spacedodgegame3/g" $ROOT_DIR/crosswalk-samples/space-dodge-game/manifest-orientation-scale/manifest.json
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging  $ROOT_DIR/crosswalk-samples/space-dodge-game/manifest-orientation-scale
 
-    python $CROSSWALK_DIR/make_apk.py --name='Space Dodge4' --package=org.xwalk.spacedodgegame4 --manifest=$ROOT_DIR/crosswalk-samples/space-dodge-game/screen-orientation-resize/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
+    sed -i "s/Space Dodge/Space Dodge4/g" $ROOT_DIR/crosswalk-samples/space-dodge-game/screen-orientation-resize/manifest.json
+    sed -i "s/org.xwalk.spacedodgegame/org.xwalk.spacedodgegame4/g" $ROOT_DIR/crosswalk-samples/space-dodge-game/screen-orientation-resize/manifest.json
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging  $ROOT_DIR/crosswalk-samples/space-dodge-game/screen-orientation-resize
 
-    python $CROSSWALK_DIR/make_apk.py --name='Space Dodge5' --package=org.xwalk.spacedodgegame5 --manifest=$ROOT_DIR/crosswalk-samples/space-dodge-game/screen-orientation-scale/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
+    sed -i "s/Space Dodge/Space Dodge5/g" $ROOT_DIR/crosswalk-samples/space-dodge-game/screen-orientation-scale/manifest.json
+    sed -i "s/org.xwalk.spacedodgegame/org.xwalk.spacedodgegame5/g" $ROOT_DIR/crosswalk-samples/space-dodge-game/screen-orientation-scale/manifest.json
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging  $ROOT_DIR/crosswalk-samples/space-dodge-game/screen-orientation-scale
     
     # webgl
-    python $CROSSWALK_DIR/make_apk.py --package=org.xwalk.webgl --manifest=$ROOT_DIR/crosswalk-samples/webgl/manifest.json --app-versionCode=1 --mode=$1 --arch=$2 --enable-remote-debugging
+    $CROSSWALK_PKG --crosswalk=$CROSSWALK_ZIP --platforms=android --android=$1 --targets=$2 --enable-remote-debugging $ROOT_DIR/crosswalk-samples/webgl
        
     # extensions-android
     cd $ROOT_DIR/crosswalk-samples/extensions-android
     ./build.sh $1 $2
-    mv -fv $ROOT_DIR/crosswalk-samples/extensions-android/xwalk-echo-extension-src/lib/crosswalk-${SDK_VERSION}/*.apk $BINARY_DIR
+    mv -fv *.apk $BINARY_DIR
     cd $BINARY_DIR
     
     set +e
@@ -224,4 +228,3 @@ fi
 
 
 clean_dir
-rm -rf $CROSSWALK_DIR

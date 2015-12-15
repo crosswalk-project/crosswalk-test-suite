@@ -34,23 +34,28 @@ import os
 import sys
 import commands
 import shutil
+import glob
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
 script_path = os.path.realpath(__file__)
 const_path = os.path.dirname(script_path)
 sample_src_pref = "/tmp/crosswalk-samples/"
-pack_tools = const_path + "/../tools/crosswalk/"
+app_tools_dir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
 index_path = "index.html"
 
 
 def setUp():
-    global ARCH, MODE, device
+    global ARCH, MODE, device, apptools, crosswalkzip
 
     device = os.environ.get('DEVICE_ID')
 
     if not device:
         print (" get device id error\n")
+        sys.exit(1)
+
+    if not app_tools_dir:
+        print ("Not find CROSSWALK_APP_TOOLS_CACHE_DIR\n")
         sys.exit(1)
 
     fp = open(const_path + "/../arch.txt", 'r')
@@ -60,6 +65,20 @@ def setUp():
     mode = open(const_path + "/../mode.txt", 'r')
     MODE = mode.read().strip("\n\t")
     mode.close()
+
+    # app tools commend
+    apptools = "crosswalk-pkg"
+    if os.system(apptools) != 0:
+        apptools = app_tools_dir + "/crosswalk-app-tools/src/crosswalk-pkg"
+
+    # crosswalk lib
+    zips = glob.glob(os.path.join(app_tools_dir, "crosswalk-*.zip"))
+    if len(zips) == 0:
+        print ("Not find crosswalk zip in CROSSWALK_APP_TOOLS_CACHE_DIR\n")
+        sys.exit(1)
+    # latest version
+    zips.sort(reverse = True)
+    crosswalkzip = zips[0]
 
 
 def check_appname():
@@ -74,7 +93,8 @@ def check_appname():
 
 def pack(cmd, appname, self):
     setUp()
-    os.chdir(const_path + "/../testapp/")
+    pack_path = const_path + "/../testapp/"
+    os.chdir(pack_path)
     print "Generate APK %s ----------------> START" % appname
     print cmd
     packstatus = commands.getstatusoutput(cmd)
@@ -115,9 +135,3 @@ def app_uninstall(cmd, self):
     self.assertEquals(0, unistatus[0])
     print "Uninstall APK ----------------> OK"
 
-
-def others():
-    if os.path.exists(pack_tools + "/" + AppName):
-        os.remove(pack_tools + "/" + AppName)
-    if os.path.exists(const_path + "/../" + AppName):
-        os.remove(const_path + "/../" + AppName)

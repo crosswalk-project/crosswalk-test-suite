@@ -42,7 +42,7 @@ class TestSampleAppFunctions(unittest.TestCase):
         comm.check_appname()
         os.chdir(comm.const_path + "/../testapp/")
         apk_file = commands.getstatusoutput("ls | grep %s | grep %s" % \
-            (comm.app_name, comm.ARCH))[1]
+            (comm.app_name.lower(), comm.ARCH))[1]
         cmd = "adb -s " + comm.device + " install -r " + apk_file
         print cmd
         cmdfind = "adb -s " + comm.device + \

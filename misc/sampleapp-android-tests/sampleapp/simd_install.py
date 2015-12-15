@@ -41,7 +41,7 @@ class TestSampleAppFunctions(unittest.TestCase):
         comm.setUp()
         os.chdir(comm.const_path + "/../testapp/")
         app_name = "Simd"
-        apk_file = commands.getstatusoutput("ls | grep %s" % app_name)[1]
+        apk_file = commands.getstatusoutput("ls | grep %s" % app_name.lower())[1]
         cmd = "adb -s " + comm.device + " install -r " + apk_file
         cmdfind = "adb -s " + comm.device + \
             " shell pm list packages |grep org.xwalk.%s" % (app_name.lower())

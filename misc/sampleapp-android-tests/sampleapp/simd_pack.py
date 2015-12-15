@@ -42,14 +42,14 @@ class TestSampleAppFunctions(unittest.TestCase):
         comm.setUp()
         app_name = "Simd"
         sample_src = "simd-mandelbrot/"
-        manifest_file = comm.sample_src_pref + sample_src + "manifest.json"
-        cmd = "python %smake_apk.py --package=org.xwalk.%s --manifest=%s --app-versionCode=1 --arch=%s --mode=%s --enable-remote-debugging" % \
-            (comm.pack_tools,
-             app_name.lower(),
-             manifest_file,
+        app_root = comm.sample_src_pref + sample_src
+        cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s --enable-remote-debugging %s" % \
+            (comm.apptools,
+             comm.crosswalkzip,
+             comm.MODE,
              comm.ARCH,
-             comm.MODE)
-        comm.pack(cmd, app_name, self)
+             app_root)
+        comm.pack(cmd, app_name.lower(), self)
 
 if __name__ == '__main__':
     unittest.main()

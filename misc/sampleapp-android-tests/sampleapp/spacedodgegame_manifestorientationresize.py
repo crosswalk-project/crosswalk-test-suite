@@ -48,22 +48,18 @@ class Spacedodgegame(unittest.TestCase):
 
     def test_1_pack(self):
         #clean up old apk
-        commands.getstatusoutput("rm %s%s*" % (app_dir, app_name))
+        commands.getstatusoutput("rm %s%s*" % (app_dir, "org.xwalk." + app_name.lower()))
 
-        cmd = "python %smake_apk.py --package=%s --name=%s "\
-        "--app-root=%s --app-local-path=%s --arch=%s --mode=%s "\
-        "--enable-remote-debugging --app-versionCode=123" % \
-            (comm.pack_tools,
-             package_name,
-             app_name,
-             sample_src,
-             comm.index_path,
+        cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s --enable-remote-debugging %s" % \
+            (comm.apptools,
+             comm.crosswalkzip,
+             comm.MODE,
              comm.ARCH,
-             comm.MODE)
-        comm.pack(cmd, app_name, self)
+             sample_src)
+        comm.pack(cmd, app_name.lower(), self)
 
     def test_2_install(self):
-        apk_file = commands.getstatusoutput("ls %s| grep %s" % (app_dir, app_name))[1]
+        apk_file = commands.getstatusoutput("ls %s| grep %s" % (app_dir, app_name.lower()))[1]
         if apk_file.endswith(".apk"):
             global testapp
             testapp = TestApp(comm.device, app_dir + apk_file, package_name, active_name)
