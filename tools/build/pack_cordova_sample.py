@@ -53,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes"]
+PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes", "setUserAgent"]
 CORDOVA_VERSIONS = ["3.6", "4.x"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
@@ -415,7 +415,8 @@ def copySampleSource(app_name, target_path):
         source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk-samples", "space-dodge-game", "base")
     if checkContains(app_name, "PRIVATENOTES"):
         source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "sample-my-private-notes", "www")
-
+    if checkContains(app_name, "SETUSERAGENT"):
+        source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "..", "usecase", "usecase-cordova-android-tests", "samples", "SetUserAgent", "res")
     if source_path:
         if not doCopy(source_path,
                 target_path):
@@ -982,6 +983,13 @@ def packSampleApp_cli(app_name=None):
         if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT * 5):
             os.chdir(orig_dir)
             return False
+
+    if checkContains(app_name, "SETUSERAGENT"):
+        replaceUserString(
+            project_root,
+            'config.xml',
+            '</widget>',
+            '    <preference name="xwalkUserAgent" value="Custom UA" />\n</widget>')
 
     if not installPlugins(plugin_tool, app_name):
         os.chdir(orig_dir)
