@@ -1,0 +1,12 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verify the cordova crosswalk app can configure the userAgent value</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>Get the setUserAgent.apk successfully</li>'
+            +'<li>The app can be installed successfully</li>'
+            +'<li>The app can launch and run successfully</li>'
+            +'<li>The value of UserAgent is "Custom UA"</li>'
+            +'<li>The app can exit successfully</li>'
+            +'</ol>'
+          +'</font>';
