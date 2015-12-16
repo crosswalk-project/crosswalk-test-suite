@@ -25,72 +25,38 @@
         }
       },
       "subapp-list": {
-        "test_arm": {
+        "testapp/test_arm": {
           "apk-arch-opt": "arm",
-          "apk-common-opts": "--app-versionCode=60000001 --app-version=1.0.0",
           "apk-mode-opt": "embedded",
-          "apk-type": "HOSTEDAPP",
-          "apk-url-opt": "http://crosswalk-project.org",
-          "app-dir": "",
-          "app-name": "test_arm",
-          "install-path": "."
+          "apk-type": "MANIFEST"
         },
-        "test_manifest": {
+        "testapp/test_x86": {
           "apk-arch-opt": "x86",
-          "apk-common-opts": "--app-versionCode=60000001",
+          "apk-mode-opt": "embedded",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/test_multiple_1": {
+          "apk-arch-opt": "x86",
+          "apk-mode-opt": "embedded",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/test_multiple_2": {
+          "apk-arch-opt": "arm",
           "apk-mode-opt": "embedded",
           "apk-type": "MANIFEST",
-          "app-dir": "googleplay/test_manifest",
-          "app-name": "test_manifest",
-          "install-path": "."
-        },
-        "test_multiple_1": {
-          "apk-arch-opt": "x86",
-          "apk-common-opts": "--app-versionCodeBase=1 --app-version=1.0.0",
-          "apk-mode-opt": "embedded",
-          "apk-type": "HOSTEDAPP",
-          "apk-url-opt": "http://crosswalk-project.org",
-          "app-dir": "",
-          "app-name": "test_multiple",
-          "install-path": "."
-        },
-        "test_multiple_2": {
-          "apk-arch-opt": "arm",
-          "apk-common-opts": "--app-versionCodeBase=1 --app-version=1.0.0",
-          "apk-mode-opt": "embedded",
-          "apk-type": "HOSTEDAPP",
-          "apk-url-opt": "http://crosswalk-project.org",
-          "app-dir": "",
-          "app-name": "test_multiple",
           "install-path": "test_multiple/"
         },
-        "test_origin": {
-          "apk-arch-opt": "x86",
-          "apk-common-opts": "--app-versionCode=60000001 --app-version=1.0.0",
-          "apk-mode-opt": "embedded",
-          "apk-type": "HOSTEDAPP",
-          "apk-url-opt": "http://crosswalk-project.org",
-          "app-dir": "",
+        "testapp/test_origin": {
           "app-name": "test_upgrade",
-          "install-path": "."
+          "apk-arch-opt": "x86",
+          "apk-mode-opt": "embedded",
+          "apk-type": "MANIFEST"
         },
-        "test_upgrade": {
+        "testapp/test_upgrade": {
           "apk-arch-opt": "x86",
-          "apk-common-opts": "--app-versionCode=60000002 --app-version=1.0.1",
           "apk-mode-opt": "embedded",
-          "apk-type": "HOSTEDAPP",
-          "apk-url-opt": "http://crosswalk-project.org",
-          "app-dir": "",
-          "app-name": "test_upgrade",
+          "apk-type": "MANIFEST",
           "install-path": "test_upgrade/"
-        },
-        "test_x86": {
-          "apk-arch-opt": "x86",
-          "apk-common-opts": "--app-versionCode=60000001 --app-version=1.0.0",
-          "apk-mode-opt": "embedded",
-          "app-dir": "googleplay/test_x86/",
-          "app-name": "test_x86",
-          "install-path": "."
         }
       }
     },

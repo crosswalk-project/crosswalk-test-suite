@@ -41,18 +41,18 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package a web app using the package command, for example:"python make_apk.py --package=com.httpauthentication --name=HttpAuthentication --app-url=http://httpbin.org/basic-auth/user/passwd" </li>
-      <li>Install the apk via command "adb install Httpauthentication.apk"</li>
-      <li>Click the HttpAuthentication icon from app launcher</li>
+      <li>Package a web app using the package command, for example:"crosswalk-pkg -m '{"name": "HttpAuthentication", "xwalk_package_id": "org.xwalk.httpauthentication","start_url": "http://httpbin.org/basic-auth/user/passwd"}' -t x86 -c /path/to/crosswalk**.zip /path/to/apk_saved_directory"</li>
+      <li>Install the generated apk</li>
+      <li>Launch web app</li>
       <li>Input correct user/pwd :"user/passwd" and login</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>HttpAuthentication App is generated after command execution. Its name is 'Httpauthentication.apk'file.</li>
-      <li>HttpAuthentication is intalled successfully</li>
-      <li>HttpAuthentication web page is opened and user name and password box pops up</li>
+      <li>Web app is generated successfully</li>
+      <li>Web app is intalled successfully</li>
+      <li>Web app is launched, user name and password box pops up</li>
       <li>HttpAuthentication web content is displayed successfully</li>
     </ol>
   </body>
