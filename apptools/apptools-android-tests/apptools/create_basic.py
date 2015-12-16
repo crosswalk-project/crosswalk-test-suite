@@ -32,9 +32,26 @@
 import unittest
 import os
 import comm
+import zipfile
+import shutil
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
+    def test_create_crosswalkdir(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        crosswalkdir = zipfile.ZipFile(comm.crosswalkzip,'r')
+        for file in crosswalkdir.namelist():
+            crosswalkdir.extract(file, r'.')
+        crosswalkdir.close()
+        comm.clear("org.xwalk.test")
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + comm.crosswalkzip[:comm.crosswalkzip.index(".zip")] + "/ "
+        return_code = os.system(cmd)
+        self.assertEquals(return_code, 0)
+        comm.clear("org.xwalk.test")
+        shutil.rmtree(comm.crosswalkzip[:comm.crosswalkzip.index(".zip")])
 
     def test_dir_exist(self):
         comm.setUp()

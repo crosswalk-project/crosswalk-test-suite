@@ -41,19 +41,16 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         if os.path.exists("cache"):
             shutil.rmtree("cache")
         os.mkdir("cache")
-        comm.create(self)
         os.environ["CROSSWALK_APP_TOOLS_CACHE_DIR"] = comm.XwalkPath + "cache"
-        os.chdir('org.xwalk.test')
-        updatecmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app update 13.42.319.5"
-        comm.update(self, updatecmd)
-        namelist = os.listdir(os.getcwd())
         os.chdir(comm.XwalkPath + "cache")
+        createcmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + comm.crosswalkVersion + comm.ANDROID_TARGETS
+        return_code = os.system(createcmd)
         crosswalklist = os.listdir(os.getcwd())
         os.environ["CROSSWALK_APP_TOOLS_CACHE_DIR"] = comm.XwalkPath
         os.chdir(comm.XwalkPath)
         shutil.rmtree("cache")
-        comm.clear("org.xwalk.test")
-        self.assertNotIn("crosswalk-13.42.319.5.zip", namelist)
+        self.assertEquals(return_code, 0)
         self.assertIn("crosswalk-13.42.319.5.zip", crosswalklist)
 
 if __name__ == '__main__':
