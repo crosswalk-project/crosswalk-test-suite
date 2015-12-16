@@ -20,9 +20,7 @@
       "subapp-list": {
         ".": {
           "apk-common-opts": "--enable-remote-debugging",
-          "app-name": "usecase-extension-android-tests",
           "blacklist": [
-            "manifest.json",
             "opt"
           ],
           "copylist": {
@@ -30,51 +28,47 @@
             "steps": "steps",
             "tests.android.xml": "tests.xml"
           },
+          "apk-type": "MANIFEST",
           "install-path": "."
         },
         "samples/XWalkEchoApp": {
           "apk-ext-src": "samples/XWalkEchoExtension",
-          "apk-ext-opt": "samples/XWalkEchoExtension/echoextension",
-          "app-name": "xwalk_echo_app",
+          "apk-ext-opt": "echoextension",
           "app-type": "EXTENSION",
           "apk-type": "MANIFEST",
           "install-path": "."
         },
         "samples/XWalkContactApp": {
           "apk-ext-src": "samples/XWalkContactExtension",
-          "apk-ext-opt": "samples/XWalkContactExtension/contactextension",
-          "app-name": "xwalk_contact_app",
+          "apk-ext-opt": "contactextension",
           "app-type": "EXTENSION",
           "apk-type": "MANIFEST",
           "install-path": "."
         },
         "samples/XWalkEchoJsStubGenApp": {
           "apk-ext-src": "samples/XWalkEchoJsStubGenExtension",
-          "apk-ext-opt": "samples/XWalkEchoJsStubGenExtension/echoJsStubGenExtension",
-          "app-name": "xwalk_echo_jsstubgen_app",
+          "apk-ext-opt": "echoJsStubGenExtension",
           "app-type": "EXTENSION",
           "apk-type": "MANIFEST",
           "install-path": "."
         },
         "samples/XWalkConstructorJsStubGenApp": {
           "apk-ext-src": "samples/XWalkConstructorJsStubGenExtension",
-          "apk-ext-opt": "samples/XWalkConstructorJsStubGenExtension/constructorJsStubGen",
-          "app-name": "xwalk_constructor_jsstubgen_app",
+          "apk-ext-opt": "constructorJsStubGen",
           "app-type": "EXTENSION",
           "apk-type": "MANIFEST",
           "install-path": "."
         },
         "samples/XWalkJsStubAppByBMI": {
           "apk-ext-src": "samples/XWalkJsStubExtensionByBMI",
-          "apk-ext-opt": "samples/XWalkJsStubExtensionByBMI/jsStubExtensionByBMI",
-          "app-name": "xwalk_jsstub_app_by_bmi",
+          "apk-ext-opt": "jsStubExtensionByBMI",
           "app-type": "EXTENSION",
           "apk-type": "MANIFEST",
           "install-path": "."
         },
+
         "samples/ExtensionPermission/res": {
-          "apk-ext-opt": "samples/ExtensionPermission/res/contactextension",
-          "app-name": "extension_permission",
+          "apk-type": "MANIFEST",
           "install-path": "."
         }
       }
