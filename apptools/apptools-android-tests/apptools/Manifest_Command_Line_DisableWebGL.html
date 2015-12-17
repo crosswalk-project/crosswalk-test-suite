@@ -42,22 +42,22 @@ Authors:
         Then run below commands under apptools-android-tests/tools/ directory: <br/>
         On Linux or OS X host: <br/>
         &nbsp; &nbsp; Shared Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-shared <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-shared --android-crosswalk=<path to release crosswalk zip> <br/>
         &nbsp; &nbsp; Embedded Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-crosswalk=<path to release crosswalk zip> <br/>
         &nbsp; &nbsp; Lite Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-lite <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-lite --android-crosswalk=<path to release crosswalk zip> <br/>
         &nbsp; &nbsp; $ cd org.xwalk.test <br/>
         &nbsp; &nbsp; Replace app/index.html with ../../../testapp/webgl_disable_tests/index.html <br/>
         &nbsp; &nbsp; Set "xwalk-command-line" to "--disable-webgl" in app/manifest.json file <br/>
         &nbsp; &nbsp; $ ../crosswalk-app-tools/src/crosswalk-app build <br/>
         On Windows host: <br/>
         &nbsp; &nbsp; Shared Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-shared <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-shared --android-crosswalk=<path to release crosswalk zip> <br/>
         &nbsp; &nbsp; Embedded Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-crosswalk=<path to release crosswalk zip> <br/>
         &nbsp; &nbsp; Lite Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-lite <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-lite --android-crosswalk=<path to release crosswalk zip> <br/>
         &nbsp; &nbsp; $ cd org.xwalk.test <br/>
         &nbsp; &nbsp; Replace app\index.html with ..\..\..\testapp\webgl_disable_tests\index.html <br/>
         &nbsp; &nbsp; Set "xwalk-command-line" to "--disable-webgl" in app\manifest.json file <br/>

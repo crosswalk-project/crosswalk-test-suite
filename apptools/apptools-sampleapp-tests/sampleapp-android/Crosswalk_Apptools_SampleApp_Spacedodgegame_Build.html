@@ -51,11 +51,11 @@ Authors:
         Then run below commands under apptools-sampleapp-tests/tools/ directory:</br>
         On Linux or OS X host: <br/>
         &nbsp; &nbsp; Shared Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ crosswalk-app create com.example.spacedodge --android-shared</br>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ crosswalk-app create com.example.spacedodge --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
         &nbsp; &nbsp; Embedded Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ crosswalk-app create com.example.spacedodge</br>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ crosswalk-app create com.example.spacedodge --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
         &nbsp; &nbsp; Lite Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ crosswalk-app create com.example.spacedodge --android-lite</br>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ crosswalk-app create com.example.spacedodge --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
         &nbsp; &nbsp; $ cd com.example.spacedodge</br>
         &nbsp; &nbsp; $ git clone https://github.com/crosswalk-project/crosswalk-samples.git</br>
         &nbsp; &nbsp; $ mv crosswalk-samples/space-dodge-game/base/* app/</br>
@@ -64,11 +64,11 @@ Authors:
         &nbsp; &nbsp; $ crosswalk-app build</br>
         On Windows host: <br/>
         &nbsp; &nbsp; Shared Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ node %crosswalk-app% create com.example.spacedodge --android-shared</br>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ node %crosswalk-app% create com.example.spacedodge --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
         &nbsp; &nbsp; Embedded Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ node %crosswalk-app% create com.example.spacedodge</br>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ node %crosswalk-app% create com.example.spacedodge --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
         &nbsp; &nbsp; Lite Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ node %crosswalk-app% create com.example.spacedodge --android-lite</br>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ node %crosswalk-app% create com.example.spacedodge --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
         &nbsp; &nbsp; $ cd com.example.spacedodge</br>
         &nbsp; &nbsp; $ git clone https://github.com/crosswalk-project/crosswalk-samples.git</br>
         &nbsp; &nbsp; $ xcopy /s /e /i /y crosswalk-samples\space-dodge-game\base\* app\</br>

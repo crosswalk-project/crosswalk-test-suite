@@ -45,7 +45,7 @@ DEFAULT_CMD_TIMEOUT = 600
 
 
 def setUp():
-    global device_x86, device_arm, XwalkPath, crosswalkVersion, crosswalkzip, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE, ANDROID_MODE, BIT
+    global device_x86, device_arm, XwalkPath, crosswalkVersion, crosswalkzip, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE, ANDROID_MODE, BIT, ANDROID_TARGETS
 
     device_x86 = ""
     device_arm = ""
@@ -149,8 +149,10 @@ def setUp():
 
     if BIT == "64":
         crosswalkzip = XwalkPath + 'crosswalk-{}-64bit.zip'.format(crosswalkVersion)
+        ANDROID_TARGETS = ' --android-targets="arm64-v8a x86_64"'
     else:
         crosswalkzip = XwalkPath + 'crosswalk-{}.zip'.format(crosswalkVersion)
+        ANDROID_TARGETS = ""
     if not os.path.exists(crosswalkzip):
         print "Please check if " + crosswalkzip + " exists"
         sys.exit(1)
@@ -282,7 +284,7 @@ def run(self):
 
 def channel(self, channel):
     createcmd = HOST_PREFIX + PackTools + \
-        "crosswalk-app create org.xwalk.test" + MODE + " --android-crosswalk=" + channel
+        "crosswalk-app create org.xwalk.test" + MODE + " --android-crosswalk=" + channel + ANDROID_TARGETS
     (return_create_code, output) = getstatusoutput(createcmd)
     version = check_crosswalk_version(self, channel)
     clear("org.xwalk.test")

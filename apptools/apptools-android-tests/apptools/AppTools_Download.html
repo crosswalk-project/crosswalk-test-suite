@@ -39,20 +39,22 @@ Authors:
     <strong>Test steps:</strong>
   </p>
   <ol>
-    <li>If org.xwalk.test and lastest stable version crosswalk exist in apptools-android-tests/tools/ directory, remove them <br/>
+    <li>If org.xwalk.test and lastest canary version crosswalk exist in apptools-android-tests/tools/ directory, remove them <br/>
         Then run below commands to create project under apptools-android-tests/tools/ directory: <br/>
         On Linux or OS X host: <br/>
         &nbsp; &nbsp; Shared Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-shared <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"<br/>
         &nbsp; &nbsp; Embedded Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
-        On Windows host: <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64" <br/>
         &nbsp; &nbsp; Lite Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-lite <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64" <br/>
+        On Windows host: <br/>
         &nbsp; &nbsp; Shared Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-shared <br/>
-        &nbsp; &nbsp; Embedded Mode or Lite Mode: <br/>
-        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64" <br/>
+        &nbsp; &nbsp; Embedded Mode: <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64" <br/>
+        &nbsp; &nbsp; Lite Mode: <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64" <br/>
         Check the output message on the terminal
     </li>
   </ol>

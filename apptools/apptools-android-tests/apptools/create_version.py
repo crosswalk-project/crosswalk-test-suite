@@ -40,7 +40,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
         createcmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + comm.crosswalkVersion
+            "crosswalk-app create org.xwalk.test" + comm.MODE + " --android-crosswalk=" + comm.crosswalkVersion + comm.ANDROID_TARGETS
         (return_code, output) = comm.getstatusoutput(createcmd)
         crosswalk = 'crosswalk-{}.zip'.format(comm.crosswalkVersion)
         namelist = os.listdir(os.getcwd())

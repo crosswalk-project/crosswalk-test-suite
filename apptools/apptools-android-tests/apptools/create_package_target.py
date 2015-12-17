@@ -193,7 +193,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="' + comm.BIT + '" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="' + comm.BIT + '"  -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
         x86Length = 0

@@ -44,7 +44,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
-        createcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE
+        createcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test" + comm.MODE + comm.ANDROID_TARGETS
         (return_code, output) = comm.getstatusoutput(createcmd)
         version = comm.check_crosswalk_version(self, "stable")
         comm.clear("org.xwalk.test")

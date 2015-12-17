@@ -12,20 +12,20 @@
                 Then run below commands under usecase-apptools-tests/tools/ directory: 
                 On Linux or OS X host:
                   Shared Mode:
-                    $ crosswalk-app create org.test.foo --android-shared
+                    $ crosswalk-app create org.test.foo --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
                   Embedded Mode:
-                    $ crosswalk-app create org.test.foo
+                    $ crosswalk-app create org.test.foo --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
                   Lite Mode:
-                    $ crosswalk-app create org.test.foo --android-lite
+                    $ crosswalk-app create org.test.foo --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
                   $ cd org.test.foo
                   $ crosswalk-app build
                 On Windows host:
                   Shared Mode:
-                    $ node %crosswalk-app% create org.test.foo --android-shared
+                    $ node %crosswalk-app% create org.test.foo --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
                   Embedded Mode:
-                    $ node %crosswalk-app% create org.test.foo
+                    $ node %crosswalk-app% create org.test.foo --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
                   Lite Mode:
-                    $ node %crosswalk-app% create org.test.foo --android-lite
+                    $ node %crosswalk-app% create org.test.foo --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
                   $ cd org.test.foo
                   $ node %crosswalk-app% build
               </step_desc>
@@ -86,11 +86,11 @@
               <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
                 Then run below commands under usecase-apptools-tests/tools/crosswalk-app-tools/ directory:
                 Shared Mode:
-                  $ crosswalk-app create org.test.foo --android-shared
+                  $ crosswalk-app create org.test.foo --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
                 Embedded Mode:
-                  $ crosswalk-app create org.test.foo
+                  $ crosswalk-app create org.test.foo --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
                 Lite Mode:
-                  $ crosswalk-app create org.test.foo --android-lite
+                  $ crosswalk-app create org.test.foo --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
                 $ cd org.test.foo
                 $ crosswalk-app build
               </step_desc>

@@ -61,11 +61,11 @@ Authors:
     <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</br>
       Then run below commands under usecase-apptools-tests/tools/ directory:</br>
       Shared Mode: <br/>
-      &nbsp; &nbsp; $ crosswalk-app create org.test.foo --android-shared</br>
+      &nbsp; &nbsp; $ crosswalk-app create org.test.foo --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
       Embedded Mode: <br/>
-      &nbsp; &nbsp; $ crosswalk-app create org.test.foo</br>
+      &nbsp; &nbsp; $ crosswalk-app create org.test.foo --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
       Lite Mode: <br/>
-      &nbsp; &nbsp; $ crosswalk-app create org.test.foo --android-lite</br>
+      &nbsp; &nbsp; $ crosswalk-app create org.test.foo --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
       $ cd org.test.foo</br>
       $ crosswalk-app build
     </li>
