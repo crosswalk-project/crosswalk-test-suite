@@ -3,7 +3,7 @@
 ## Introduction
 
 This test suite is for checking compliance with Presentation API specification:
-* http://webscreens.github.io/presentation-api/
+* https://w3c.github.io/presentation-api/
 
 ## Authors
 

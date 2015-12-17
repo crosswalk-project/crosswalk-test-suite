@@ -27,10 +27,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>PresentationSession basic attributes</title>
+<title>Availability basic attribute</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-availability">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="precondition">
@@ -42,19 +42,14 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 setup({ explicit_timeout: true })
 
 var presUrl = location.protocol + "//" + location.host
-            + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation.html";
+            + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
 
 async_test(function(t) {
-  navigator.presentation.startSession(presUrl)
-  .then(function(newSession) {
+  navigator.presentation.getAvailability(presUrl)
+  .then(function(availability) {
     t.step(function() {
-      assert_true("id" in newSession, "PresentationSession should implement id attribute");
-      assert_true("state" in newSession, "PresentationSession should implement state attribute");
-      assert_true("close" in newSession, "PresentationSession should implement close method");
-      assert_true("onstatechange" in newSession, "PresentationSession should implement onstatechange event");
-      assert_true("binaryType" in newSession, "PresentationSession should implement binaryType attribute");
-      assert_true("onmessage" in newSession, "PresentationSession should implement onmessage event");
-      assert_true("send" in newSession, "PresentationSession should implement id send mehtod");
+      assert_true("value" in availability, "availability should implement value attribute");
+      assert_true("onchange" in availability, "availability should implement onchange event");
     });
     t.done();
   }, function(error) {
