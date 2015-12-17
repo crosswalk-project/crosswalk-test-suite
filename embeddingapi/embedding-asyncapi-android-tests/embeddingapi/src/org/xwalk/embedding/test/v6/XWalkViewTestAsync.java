@@ -5,20 +5,26 @@
 package org.xwalk.embedding.test.v6;
 
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Locale;
+import java.util.concurrent.Callable;
 
 import android.graphics.Point;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import org.apache.http.Header;
 import org.apache.http.HttpRequest;
 
 import org.xwalk.embedding.base.XWalkViewTestBase;
+import org.xwalk.embedding.util.CommonResources;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.test.suitebuilder.annotation.MediumTest;
-import android.view.WindowManager;
 import android.util.Pair;
+import android.view.WindowManager;
 
 @SuppressLint("NewApi")
 public class XWalkViewTestAsync extends XWalkViewTestBase {
@@ -134,5 +140,41 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
         loadDataSync(null, page, "text/html", false);
         mTestHelperBridge.getOnScaleChangedHelper().waitForCallback(onScaleChangedCallCount);
         assertEquals(defaultScale, getPixelScale(), .01f);
+    }
+
+    @SmallTest
+    public void testGetFavicon() {
+        try {
+            final String faviconUrl = mWebServer.setResponseBase64(
+                    "/" + CommonResources.FAVICON_FILENAME, CommonResources.FAVICON_DATA_BASE64,
+                    CommonResources.getImagePngHeaders(false));
+            final String pageUrl = mWebServer.setResponse("/favicon.html",
+                    CommonResources.FAVICON_STATIC_HTML, null);
+
+            loadUrlAsync(pageUrl);
+
+            // The getFavicon will return the right icon a certain time after
+            // the page load completes which makes it slightly hard to test.
+            pollOnUiThread(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception{
+                    return mXWalkView.getFavicon() != null;
+                }
+            });
+
+            final Object originalFaviconSource = (new URL(faviconUrl)).getContent();
+            final Bitmap originalFavicon =
+                    BitmapFactory.decodeStream((InputStream) originalFaviconSource);
+
+            final Bitmap currentFavicon = getFaviconOnUiThread();
+
+            assertNotNull(originalFavicon);
+
+            assertTrue(currentFavicon.sameAs(originalFavicon));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            assertFalse(true);
+        }
     }
 }
