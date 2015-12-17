@@ -45,6 +45,7 @@ import android.os.Bundle;
 import android.test.MoreAsserts;
 import android.util.Log;
 import android.util.Pair;
+import android.graphics.Bitmap;
 import android.webkit.WebResourceResponse;
 
 public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActivity> {
@@ -1071,6 +1072,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             @Override
             public XWalkSettings call() throws Exception {
                 return view.getSettings();
+            }
+        });
+    }
+
+    protected Bitmap getFaviconOnUiThread() throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<Bitmap>() {
+            @Override
+            public Bitmap call() throws Exception {
+                return mXWalkView.getFavicon();
             }
         });
     }
