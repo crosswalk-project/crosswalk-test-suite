@@ -762,8 +762,7 @@ This usecase covers following interface and methods:
 
 This usecase covers following interface and methods:
 
-* XWalkSetting interface: scaptureBitmapAsync methods
-* XWalkView interface: load methods
+* XWalkView interface: load, scaptureBitmapAsync methods
 
 
 
@@ -797,3 +796,13 @@ This usecase covers following interface and methods:
 
 * XWalkResourceClient interface: onReceivedResponseHeaders
 * XWalkView interface: load methods
+
+
+
+### 78. The [XWalkViewWithGetFavicon](basic/XWalkViewWithGetFavicon.java) sample check XWalkView can get favicon from the html, include:
+
+* XWalkView API getFavicon method can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, getFavicon methods
