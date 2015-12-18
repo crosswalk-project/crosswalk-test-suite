@@ -38,7 +38,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <div>$ sudo npm install cordova -g</div>
     </li>
     <li>minSdkVersion 16 (4.1 is the minimum supported version)</li>
-    <li>Set the environment path to the <span style="font-weight: bold;">Android SDK Platform-tools*</span> and <span style="font-weight: bold;">**Android SDK Build-tools</span></li>
+    <li>Set the environment path to the <span style="font-weight: bold;">Android SDK Platform-tools</span> and <span style="font-weight: bold;">Android SDK Build-tools</span></li>
     <li>Install <a href="http://ant.apache.org/">Apache Ant</a></li>
     <li>Set the JAVA_HOME to the environment path</li>
   </ul>
@@ -48,23 +48,28 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <ol>
     <li>Obtain the Google Maps API key for Android
       <ul>
-        <li>Find the keytool
-          <div> ~/.android/</div></li>
-        <li>Display the SHA-1 fingerprint
+        <li>Locate your debug keystore file: debug.keystore
+          <div>OS X and Linux: ~/.android/</div></li>
+        <li>List the SHA-1 fingerprint
           <div>keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android</div></li>
-        <li>Go to <a href="https://code.google.com/apis/console/">https://code.google.com/apis/console/</a></li>
-        <li>Register your project</li>
-        <li>Turn on <span style="font-weight: bold;">Google Maps Android API v2</span>.</li>
-        <li>Go to <span style="font-weight: bold;">API Access page</span>.</li>
-        <li>Click [Create New Android Key] button</li>
-        <li>In the resulting dialog, enter the SHA-1 fingerprint, then a semicolon, then the package name: org.xwalk.hellomap</li>
-        <li>Write down the API Key See [the official document: Get an Android certificate and the Google Maps API key]</li>
+        <li>Go to <a href="https://console.developers.google.com">https://console.developers.google.com</a></li>
+        <li>Select a project, or create a new one</li>
+        <li>Open the API Library(https://console.developers.google.com/projectselector/apis/library) in the Google Developers Console. If prompted, select a project or create a new one.<br/>
+            Select the <span style="font-weight: bold;">Enabled APIs</span> link in the API section to see a list of all your enabled APIs. Make sure that the API is on the list of enabled APIs.<br/>
+            If you have not enabled it, select the API from the list of APIs, then select the Enable API button for the API.<br/>
+            The only API you need is the Google Maps Android API, although you can choose to enable other APIs for the same project too.</li>
+        <li>In the sidebar on the left, select <span style="font-weight: bold;">Credentials</span></li>
+        <li>If your project doesn't already have an Android API key, create one now by selecting<br/>
+           <span style="font-weight: bold;">Add credentials</span> > <span style="font-weight: bold;">API key</span> > <span style="font-weight: bold;">Android key</span></li>
+        <li>In the resulting dialog, enter your app's SHA-1 fingerprint, and please fill the package name with <span style="font-weight: bold;">com.example.hellomap</span></li>
+        <li>Your new Android API key appears in the list of API keys for your project. An API key is a string of characters, something like this:
+           <div>AIzaSyBdVl-cTICSwYKrZ95SuvNw7dbMuDt1KG0</div></li>
       </ul>
     </li>
     <li>Build
       <ul>
         <li>cd res/GoogleMapsPlugin</li>
-        <li>./google-maps-plugin.py -k [google Maps API key]</li>
+        <li>./google-maps-plugin.py -k [Google Maps API key]</li>
       </ul>
     </li>
     <p>Details <a href="https://github.com/mapsplugin/cordova-plugin-googlemaps/wiki/Tutorial-for-CrossWalk-Webview-Plugin-%28Android%29">
