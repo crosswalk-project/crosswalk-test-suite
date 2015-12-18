@@ -243,6 +243,8 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     manifest_opt = json.JSONEncoder().encode(manifest_opt)
 
+    crosswalk_version_opt = CROSSWALK_VERSION
+
     app_tools_dir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
     if app_tools_dir:
         if "64" in arch_opt and os.path.exists(os.path.join(app_tools_dir,
