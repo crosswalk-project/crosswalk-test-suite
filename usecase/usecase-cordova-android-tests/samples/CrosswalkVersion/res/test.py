@@ -106,7 +106,7 @@ for version_tmp in VERSION_TYPES:
     print version_tmp
     print EXCEPTED_VERSIONS[index]
     comm.installWebviewPlugin(BUILD_PARAMETERS.pkgmode, version_tmp)
-    comm.build(app_name)
+    comm.build(app_name, BUILD_PARAMETERS.pkgarch)
 
     apk_source = os.path.join(project_path, "platforms", "android", 
             "build", "outputs", "apk", "android-%s-debug.apk" % pkg_arch_tmp)
@@ -119,7 +119,7 @@ for version_tmp in VERSION_TYPES:
     comm.installWebviewPlugin(BUILD_PARAMETERS.pkgmode)
     os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\"' \
             ' value=\\"%s\\" \/>/g" config.xml' % version_tmp)
-    comm.build(app_name)
+    comm.build(app_name, BUILD_PARAMETERS.pkgarch)
     os.system('cp platforms/android/build/outputs/apk/android-%s-debug.apk ../CrosswalkVersion_%s_%d.apk' 
         % (pkg_arch_tmp, comm.CROSSWALK_BRANCH, count))
     count = count + 1

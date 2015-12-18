@@ -152,10 +152,10 @@ def removeWebviewPlugin():
     buildstatus = commands.getstatusoutput(cmd)
     print "\nRemove webview plugin----------------> OK"
 
-def build(appname):
+def build(appname, pkgarch="arm"):
     print "Build project %s ----------------> START" % appname
     if CORDOVA_VERSION == "4.x":
-        cmd = "cordova build android"
+        cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pkgarch
     else:
         cmd = "./cordova/build"
     print cmd
