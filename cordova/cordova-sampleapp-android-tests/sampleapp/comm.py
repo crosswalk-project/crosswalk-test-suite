@@ -266,11 +266,12 @@ def buildGoogleApp(appname, sourcecodepath, self):
 def build(appname, isDebug, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Build project %s ----------------> START" % appname
+
     if CORDOVA_VERSION == "4.x":
-        cmd = "cordova build android"
+        cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % ARCH
         if isDebug == True:
             print "build debug app"
-            cmd = "cordova build android --debug"
+            cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % ARCH
     else:
         cmd = "./cordova/build"
         if isDebug == True:
