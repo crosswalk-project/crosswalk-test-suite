@@ -74,4 +74,6 @@ def build(self, cmd):
     for i in range(len(apks)):
         if apks[i].endswith(".ipa"):
             ipaLength = ipaLength + 1
+            appVersion = apks[i].split('-')[1][:apks[i].split('-')[1].index(".ipa")].strip()
     self.assertEquals(ipaLength, 1)
+    return appVersion

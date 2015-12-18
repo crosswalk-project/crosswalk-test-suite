@@ -37,23 +37,19 @@ import json
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_display_fullscreen(self):
+    def test_app_version_normal(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["display"] = "fullscreen"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
+            data = json.load(json_file)
+        buildcmd = comm.PackTools + "crosswalk-app build"
+        appVersion = comm.build(self, buildcmd)
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
+        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.1")
+        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), appVersion)
 
-    def test_display_standalone(self):
+    def test_update_app_version(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
@@ -61,15 +57,14 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["display"] = "standalone"
+        jsonDict["xwalk_app_version"] = "1"
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
+        buildcmd = comm.PackTools + "crosswalk-app build"
+        appVersion = comm.build(self, buildcmd)
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
+        self.assertEquals("1", appVersion)
 
-    def test_display_invalid(self):
+    def test_app_version_twodot(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
@@ -77,15 +72,14 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["display"] = "invalid"
+        jsonDict["xwalk_app_version"] = "0.0.1"
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
+        buildcmd = comm.PackTools + "crosswalk-app build"
+        appVersion = comm.build(self, buildcmd)
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
+        self.assertEquals("0.0.1", appVersion)
 
-    def test_display_blank(self):
+    def test_app_version_threedot(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
@@ -93,13 +87,27 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["display"] = ""
+        jsonDict["xwalk_app_version"] = "0.0.0.1"
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
+        buildcmd = comm.PackTools + "crosswalk-app build"
+        return_code = os.system(buildcmd)
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
+        self.assertNotEquals(return_code, 0)
+
+    def test_app_version_out_of_range(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        jsons = jsonfile.read()
+        jsonfile.close()
+        jsonDict = json.loads(jsons)
+        jsonDict["xwalk_app_version"] = "1000"
+        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
+        buildcmd = comm.PackTools + "crosswalk-app build"
+        return_code = os.system(buildcmd)
+        comm.clear("org.xwalk.test")
+        self.assertNotEquals(return_code, 0)
 
 if __name__ == '__main__':
     unittest.main()

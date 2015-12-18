@@ -33,72 +33,83 @@ import os
 import comm
 from xml.etree import ElementTree
 import json
+import shutil
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_display_fullscreen(self):
+    def test_name_number(self):
         comm.setUp()
         comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["display"] = "fullscreen"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        jsonDict["name"] = "000"
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
         buildstatus = os.system(buildcmd)
         comm.run(self)
-        comm.clear("org.xwalk.test")
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(buildstatus, 0)
 
-    def test_display_standalone(self):
+    def test_name_symbol(self):
         comm.setUp()
         comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["display"] = "standalone"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        jsonDict["name"] = "[]*&^%!@#$%^&*()<>"
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
         buildstatus = os.system(buildcmd)
         comm.run(self)
-        comm.clear("org.xwalk.test")
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(buildstatus, 0)
 
-    def test_display_invalid(self):
+    def test_name_chinese(self):
         comm.setUp()
         comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["display"] = "invalid"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        os.chdir(comm.TEST_PROJECT_COMM)
+        shutil.copyfile(comm.TEMP_DATA_PATH + "/../testapp/manifest_name_chinese/manifest.json", comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json")
+        buildcmd = "crosswalk-app build"
         buildstatus = os.system(buildcmd)
         comm.run(self)
-        comm.clear("org.xwalk.test")
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(buildstatus, 0)
 
-    def test_display_blank(self):
+    def test_name_special_characters(self):
         comm.setUp()
         comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["display"] = ""
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        jsonDict["name"] = "/n"
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
         buildstatus = os.system(buildcmd)
         comm.run(self)
-        comm.clear("org.xwalk.test")
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
+        self.assertEquals(buildstatus, 0)
+
+    def test_name_blank(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir(comm.TEST_PROJECT_COMM)
+        jsonfile = open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "r")
+        jsons = jsonfile.read()
+        jsonfile.close()
+        jsonDict = json.loads(jsons)
+        jsonDict["name"] = ""
+        json.dump(jsonDict, open(comm.TEMP_DATA_PATH + comm.TEST_PROJECT_COMM + "/app/manifest.json", "w"))
+        buildcmd = "crosswalk-app build"
+        buildstatus = os.system(buildcmd)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
         self.assertEquals(buildstatus, 0)
 
 if __name__ == '__main__':

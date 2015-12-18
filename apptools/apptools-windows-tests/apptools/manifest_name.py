@@ -38,54 +38,6 @@ import shutil
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_name_normal(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        comm.build(self, buildcmd)
-        root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
-        application_attributes = root.find('application').attrib
-        for x in application_attributes.keys():
-            if x.find("label") != -1:
-                application_xml = application_attributes[x]
-                break
-        activity_attributes = root.find('application').find('activity').attrib
-        for y in activity_attributes.keys():
-            if y.find("label") != -1:
-                activity_xml = activity_attributes[y]
-                break
-        comm.clear("org.xwalk.test")
-        self.assertEquals(application_xml, "org.xwalk.test")
-        self.assertEquals(activity_xml, "org.xwalk.test")
-
-    def test_update_name(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["name"] = "org.example.test"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        comm.build(self, buildcmd)
-        root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
-        application_attributes = root.find('application').attrib
-        for x in application_attributes.keys():
-            if x.find("label") != -1:
-                application_xml = application_attributes[x]
-                break
-        activity_attributes = root.find('application').find('activity').attrib
-        for y in activity_attributes.keys():
-            if y.find("label") != -1:
-                activity_xml = activity_attributes[y]
-                break
-        comm.clear("org.xwalk.test")
-        self.assertEquals(application_xml, "org.example.test")
-        self.assertEquals(activity_xml, "org.example.test")
-
     def test_name_number(self):
         comm.setUp()
         comm.create(self)
@@ -98,7 +50,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -114,7 +65,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -125,7 +75,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         shutil.copyfile(comm.ConstPath + "/../testapp/manifest_name_chinese/manifest.json", comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json")
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -141,7 +90,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
@@ -157,7 +105,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
