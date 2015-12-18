@@ -39,7 +39,7 @@ DEFAULT_PARAMETER_KEYS = ["text", "textContains", "textMatches", "textStartsWith
                 "resourceId", "resourceIdMatches", "className", "packageName", "index"]
 OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName",
                 "selected", "enabled", "className"]
-PRODUCTS_NAME = {"nexus7": "razor", "memo8": "CN_K011", "nexus4": "occam", "nexus5": "hammerhead", "zte": "V975"}
+PRODUCTS_NAME = {"nexus7": "razor", "memo8": "CN_K011", "nexus4": "occam", "nexus5": "hammerhead", "zte": "V975", "ecs2-8a": "cloudpad"}
 
 class Android(common.APP):
 
@@ -69,7 +69,15 @@ class Android(common.APP):
         self.productName = self.d.info["productName"]
         self.info_temp = {}
         self.process_args = {"func_name": None, "func_args": []}
-
+        try:
+            # Android Verion: [x.x.x]
+            (return_code, output) = self.doCMD(self.adb + " getprop |grep \"\[ro.build.version.release\]\" |awk -F \":\" '{print $NF}'")
+            if return_code == 0 and output:
+                androidVersion = output[0].strip()
+            # Get frist 'x' as int
+            self.androidVersion = int(androidVersion[1:2])
+        except Exception as e:
+            print("Fail to get android version: %s" % e)
 
     def launch_app(self):
         cmd = self.adb + \
@@ -120,38 +128,40 @@ class Android(common.APP):
         except Exception as e:
             return False
 
-
-    def wifiOperate(self, turnon):
-        if self.productName == PRODUCTS_NAME["nexus7"] \
-            or self.productName == PRODUCTS_NAME["nexus5"]:
-            if self.openSettings():
-                return self.selectSwitchChild(u'Wi\u2011Fi', turnon)
-        elif self.productName == PRODUCTS_NAME["nexus4"]:
-            if self.openSettings():
-                return self.selectSwitchChild(u'Wi-Fi', turnon)
-        elif self.productName == PRODUCTS_NAME["memo8"]:
-            return self.selectQuickSetting("WLAN", turnon)
-        elif self.productName == PRODUCTS_NAME["zte"]:
-            if self.openSettings():
-                return self.selectSwitchChild(u'WLAN', turnon)
-        return False
-
+    def selectItem(self, text):
+        obj = None
+        settings = self.selectObjectBy("text=Settings")
+        if self.androidVersion >= 5 and settings.exists:
+            obj = self.d(className="android.widget.ScrollView", resourceId="com.android.settings:id/dashboard") \
+                      .child_by_text(text, className="android.widget.FrameLayout")
+        else:
+            obj = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                      .child_by_text(text, className="android.widget.LinearLayout")
+        return self.clickObject(obj)
 
     def selectSwitchChild(self, child_name, turnon, default_cls="android.widget.Switch"):
         try:
             switch = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                    .child_by_text(child_name, className="android.widget.LinearLayout") \
-                    .child(className=default_cls)
+                         .child_by_text(child_name, className='android.widget.LinearLayout') \
+                         .child(className=default_cls)
             if switch.exists:
                 switch_state = self.getObjectInfo(switch, "checked")
                 if (not turnon and switch_state) or (turnon and not switch_state):
                     self.clickObject(switch)
-                self.pressKeyBy("back")
                 return True
             return False
         except Exception as e:
             return False
 
+    def selectToggle(self, turnon, default_cls='android.widget.Switch'):
+        gps_switch = self.selectObjectBy("className=%s" % default_cls)
+        if gps_switch.exists:
+            for g in gps_switch:
+                state = self.getObjectInfo(g, "checked")
+                if (not state and turnon) or (state and not turnon):
+                    self.clickObject(g)
+            return True
+        return False
 
     def selectQuickSetting(self, child_name, turnon):
         self.openQuickSettings()
@@ -166,77 +176,93 @@ class Android(common.APP):
                 return True
         return False
 
+    def backToActiveApp(self):
+        while True:
+            settings = self.selectObjectBy("text=Settings")
+            if not settings.exists:
+                self.pressKeyBy("back")
+            else:
+                break
+        self.pressKeyBy("back")
+
+    def wifiOperate(self, turnon):
+        if self.openSettings():
+            rtn = False
+            if self.productName == PRODUCTS_NAME["nexus7"] \
+                or self.productName == PRODUCTS_NAME["nexus5"] \
+                or self.productName == PRODUCTS_NAME["nexus4"]:
+                if self.androidVersion >= 5:
+                    if self.selectItem(u'Wi\u2011Fi'):
+                        rtn = self.selectToggle(turnon)
+                else:
+                    rtn = self.selectSwitchChild(u'Wi\u2011Fi', turnon)
+            elif self.productName == PRODUCTS_NAME["memo8"]:
+                if self.selectItem(u'WLAN'):
+                    rtn = self.selectToggle(turnon)
+            elif self.productName == PRODUCTS_NAME["zte"]:
+                rtn = self.selectSwitchChild(u'WLAN', turnon)
+            elif self.productName == PRODUCTS_NAME["ecs2-8a"]:
+                if self.selectItem(u'Wi\u2011Fi'):
+                    rtn = self.selectToggle(turnon)
+            self.backToActiveApp()
+            return rtn
+        return False
 
     def airplaneModeOperate(self, turnon):
-        if self.productName == PRODUCTS_NAME["nexus7"] \
-            or self.productName == PRODUCTS_NAME["nexus4"] \
-            or self.productName == PRODUCTS_NAME["nexus5"]:
-            if self.openSettings():
-                more = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                        .child_by_text(u'More\u2026', className="android.widget.LinearLayout")
-                if more.exists:
-                    self.clickObject(more)
-                    rtn = self.selectSwitchChild(u'Airplane mode', turnon, "android.widget.CheckBox")
-                    if rtn:
-                        self.pressKeyBy("back")
-                        return True
-        elif self.productName == PRODUCTS_NAME["memo8"]:
-            return self.selectQuickSetting("Airplane mode", turnon)
-        elif self.productName == PRODUCTS_NAME["zte"]:
-            if self.openSettings():
-                return self.selectSwitchChild(u'Airplane mode', turnon)
+        if self.openSettings():
+            rtn = False
+            if self.productName == PRODUCTS_NAME["nexus7"] \
+                or self.productName == PRODUCTS_NAME["nexus4"] \
+                or self.productName == PRODUCTS_NAME["nexus5"] \
+                or self.productName == PRODUCTS_NAME["memo8"]:
+                more = None
+                if self.androidVersion >= 5:
+                    more = self.selectItem(u'More')
+                else:
+                    more = self.selectItem(u'More\u2026')
+                if more:
+                    if self.androidVersion >= 5:
+                        rtn = self.selectSwitchChild(u'Airplane mode', turnon)
+                    else:
+                        rtn = self.selectSwitchChild(u'Airplane mode', turnon, "android.widget.CheckBox")
+            elif self.productName == PRODUCTS_NAME["zte"]:
+                rtn = self.selectSwitchChild(u'Airplane mode', turnon)
+            elif self.productName == PRODUCTS_NAME["ecs2-8a"]:
+                if self.selectItem(u'More'):
+                    rtn = self.selectToggle(turnon)
+            self.backToActiveApp()
+            return rtn
         return False
-
 
     def gpsOperate(self, turnon):
-        if self.productName == PRODUCTS_NAME["nexus7"] \
-            or self.productName == PRODUCTS_NAME["nexus4"]:
-            if self.openSettings():
-                return self.modifyGPSSwitch("Location access", turnon)
-        elif self.productName == PRODUCTS_NAME["nexus5"]:
-            if self.openSettings():
-                return self.modifyGPSSwitch("Location", turnon)
-        elif self.productName == PRODUCTS_NAME["memo8"]:
-            gps = self.selectQuickSetting("GPS", turnon)
-            if not gps:
-                return self.selectQuickSetting("Location", turnon)
-            return gps
-        elif self.productName == PRODUCTS_NAME["zte"]:
-            if self.openSettings():
+        if self.openSettings():
+            rtn = False
+            if self.productName == PRODUCTS_NAME["nexus7"]:
+                rtn = self.modifyGPSSwitch("Location access", turnon)
+            elif self.productName == PRODUCTS_NAME["nexus5"] \
+                or self.productName == PRODUCTS_NAME["nexus4"] \
+                or self.productName == PRODUCTS_NAME["memo8"] \
+                or self.productName == PRODUCTS_NAME["ecs2-8a"]:
+                rtn = self.modifyGPSSwitch("Location", turnon)
+            elif self.productName == PRODUCTS_NAME["zte"]:
                 self.d(scrollable=True).scroll(steps=10)
-                return self.modifyGPSSwitch("Location services", turnon)
+                rtn = self.modifyGPSSwitch("Location services", turnon)
+            self.backToActiveApp()
+            return rtn
         return False
-
 
     def modifyGPSSwitch(self, child_name, turnon):
-        gps = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                .child_by_text(child_name, className="android.widget.LinearLayout")
-        if gps.exists:
-            self.clickObject(gps)
+        if self.selectItem(child_name):
             if self.productName == PRODUCTS_NAME["zte"]:
-                gps_checkbox = self.selectObjectBy("className=android.widget.CheckBox")
-                if gps_checkbox.exists:
-                    for g in gps_checkbox:
-                        state = self.getObjectInfo(g, "checked")
-                        if (not state and turnon) or (state and not turnon):
-                            self.clickObject(g)
-                    self.pressKeyBy("back")
-                    self.pressKeyBy("back")
-                    return True
+                return self.selectToggle(turnon, "android.widget.CheckBox")
             else:
-                self.registerWatcher("gps", "Location consent", "Agree")
-                gps_switch = self.selectObjectBy("className=android.widget.Switch")
-                if gps_switch.exists:
-                    for g in gps_switch:
-                        state = self.getObjectInfo(g, "checked")
-                        if (not state and turnon) or (state and not turnon):
-                            self.clickObject(g)
-                            self.runAllWatchers()
-                    self.pressKeyBy("back")
-                    self.pressKeyBy("back")
-                    return True
+                self.registerWatcher("gps1", u"Use Google's location service?", "Agree")
+                self.registerWatcher("gps2", u"Location consent", "Agree")
+                self.registerWatcher("gps3", u"Improve Location accuracy?", "Agree")
+                self.selectToggle(turnon)
+                self.runAllWatchers()
+                return True
         return False
-
 
     def checkCurrentApp(self):
         currentPackageName = self.d.info["currentPackageName"]
@@ -250,10 +276,10 @@ class Android(common.APP):
             self.d.watcher(watcherName).remove()
         if whenText2:
             self.d.watcher(watcherName).when(text=whenText1).when(whenText2) \
-                                        .click(text=clickText)
+                                       .click(text=clickText)
         else:
             self.d.watcher(watcherName).when(text=whenText1) \
-                                        .click(text=clickText)
+                                       .click(text=clickText)
 
 
     def removeAllWatchers(self):
@@ -276,8 +302,9 @@ class Android(common.APP):
         self.d.sleep()
 
 
-    def pressKeyBy(self, device_key):
-        self.d.press(device_key)
+    def pressKeyBy(self, device_key, times=1):
+        for x in range(times):
+            self.d.press(device_key)
 
 
     def setDeviceOrientation(self, orientation):
@@ -409,6 +436,11 @@ class Android(common.APP):
     def flingToEnd(self):
         # fling to end vertically
         return self.d(scrollable=True).fling.toEnd()
+
+
+    def flingToBeginning(self):
+        # fling to beginning vertically
+        return self.d(scrollable=True).fling.vert.toBeginning()
 
 
     def scrollForward(self, steps=10):
