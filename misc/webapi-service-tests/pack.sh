@@ -137,7 +137,7 @@ elif [ $pack_type == "cordova" ];then
 </head>
 EOF
         cd $BUILD_ROOT/$appname
-        cordova build android
+        cordova build android -- --gradleArg=-PcdvBuildArch=$arch
     elif [ $sub_version == "3.6" ]; then
         cp -ar $SRC_ROOT/../../tools/cordova $BUILD_ROOT/cordova
         cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
@@ -208,29 +208,28 @@ elif [ $pack_type == "cordova" ];then
             mv $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk $BUILD_ROOT/opt/$name/$appname.apk
         fi
     elif [ $sub_version == "4.x" ]; then
+        apk_name_arch="armv7"
         if [ $arch == 'x86' ]; then
-            if [ -f $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-x86-debug.apk ];then
-                mv $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-x86-debug.apk $BUILD_ROOT/opt/$name/$appname.apk
-            elif [ -f $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/android-x86-debug.apk ];then
-                mv $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/android-x86-debug.apk $BUILD_ROOT/opt/$name/$appname.apk
-            else
-                echo "Copy apk failed, " + $BUILD_ROOT + "/" + $appname + "/platforms/android/build/outputs/apk/android-x86-debug.apk does not exist"
-                clean_workspace
-                exit 1
-            fi
+            apk_name_arch="x86"
         else
             if [ $arch != 'arm' ]; then
                 echo "apk runtime arch can only be x86 or arm, now take arm as default.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-            fi
-            if [ -f $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-armv7-debug.apk ];then
-                mv $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-armv7-debug.apk $BUILD_ROOT/opt/$name/$appname.apk
-            elif [ -f $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/android-armv7-debug.apk ];then
-                mv $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/android-armv7-debug.apk $BUILD_ROOT/opt/$name/$appname.apk
-            else
-                echo "Copy apk failed, " + $BUILD_ROOT + "/" + $appname + "/platforms/android/build/outputs/apk/android-armv7-debug.apk does not exist"
-                clean_workspace
                 exit 1
             fi
+        fi
+
+        dir_source=$BUILD_ROOT/$appname/platforms/android/build/outputs/apk
+        apk_source1=$dir_source/$appname-$apk_name_arch-debug.apk
+        apk_source2=$dir_source/android-$apk_name_arch-debug.apk
+        apk_dest=$BUILD_ROOT/opt/$name/$appname.apk
+        if [ -f $apk_source1 ];then
+            mv $apk_source1 $apk_dest
+        elif [ -f $apk_source2 ];then
+            mv $apk_source2 $apk_dest
+        else
+            echo "Copy apk failed, " + $apk_source1 + " does not exist"
+            clean_workspace
+            exit 1
         fi
     fi
 fi

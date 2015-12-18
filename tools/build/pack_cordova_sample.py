@@ -586,7 +586,7 @@ def installPlugins(plugin_tool, app_name):
                 return False
     return True
 
-def copyCordovaCliApk(app_name, orig_dir):
+def copyCordovaCliApk(app_name, orig_dir, apk_name_arch="armv7"):
     project_root = os.path.join(BUILD_ROOT, app_name)
     outputs_dir = os.path.join(
         project_root,
@@ -596,22 +596,14 @@ def copyCordovaCliApk(app_name, orig_dir):
         "outputs",
         "apk")
 
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-x86-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-x86-debug.apk")
-    else:
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-armv7-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-armv7-debug.apk")
+    cordova_tmp_path = os.path.join(
+        outputs_dir,
+        "%s-%s-debug.apk" %
+        (app_name, apk_name_arch))
+    cordova_tmp_path_spare = os.path.join(
+        outputs_dir,
+        "android-%s-debug.apk" %
+        apk_name_arch)
 
     if os.path.exists(cordova_tmp_path):
         if not doCopy(
@@ -730,7 +722,7 @@ def packGoogleApp(app_name=None):
         os.chdir(orig_dir)
         return False
 
-    plugin_uninstall_webview = "cordova plugin remove cordova-plugin-crosswalk-webview"
+    plugin_uninstall_webview = "cca plugin remove cordova-plugin-crosswalk-webview"
     if not doCMD(plugin_uninstall_webview, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
@@ -739,12 +731,16 @@ def packGoogleApp(app_name=None):
         os.chdir(orig_dir)
         return False
 
+    apk_name_arch = "armv7"
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        apk_name_arch = "x86"
+
     build_cmd = "cca build android"
     if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT * 2):
         os.chdir(orig_dir)
         return False
 
-    if not copyCordovaCliApk(app_name, orig_dir):
+    if not copyCordovaCliApk(app_name, orig_dir, apk_name_arch):
         os.chdir(orig_dir)
         return False
 
@@ -882,12 +878,19 @@ def packMobileSpec_cli(app_name=None):
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
 
-    pack_cmd = "cordova build android"
+    apk_name_arch = "armv7"
+    pack_arch_tmp = "arm"
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        apk_name_arch = "x86"
+        pack_arch_tmp = "x86"
+
+    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
+
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
 
-    if not copyCordovaCliApk(app_name, orig_dir):
+    if not copyCordovaCliApk(app_name, orig_dir, apk_name_arch):
         os.chdir(orig_dir)
         return False
 
@@ -1004,16 +1007,23 @@ def packSampleApp_cli(app_name=None):
 
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
-    pack_cmd = "cordova build android"
+
+    apk_name_arch = "armv7"
+    pack_arch_tmp = "arm"
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        apk_name_arch = "x86"
+        pack_arch_tmp = "x86"
+
+    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
 
     if checkContains(app_name, "REMOTEDEBUGGING"):
-        pack_cmd = "cordova build android --debug"
+        pack_cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
 
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT * 5):
         os.chdir(orig_dir)
         return False
 
-    if not copyCordovaCliApk(app_name, orig_dir):
+    if not copyCordovaCliApk(app_name, orig_dir, apk_name_arch):
         os.chdir(orig_dir)
         return False
 
