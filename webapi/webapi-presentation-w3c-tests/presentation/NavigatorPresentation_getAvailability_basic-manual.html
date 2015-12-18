@@ -27,10 +27,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Availability basic attribute</title>
+<title>getAvailability</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-availability">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="precondition">
@@ -42,14 +42,13 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 setup({ explicit_timeout: true })
 
 var presUrl = location.protocol + "//" + location.host
-            + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation.html";
+            + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
 
 async_test(function(t) {
   navigator.presentation.getAvailability(presUrl)
   .then(function(availability) {
     t.step(function() {
-      assert_true("value" in availability, "availability should implement value attribute");
-      assert_true("onchange" in availability, "availability should implement onchange event");
+      assert_true(availability instanceof Availability);
     });
     t.done();
   }, function(error) {
@@ -59,7 +58,7 @@ async_test(function(t) {
     t.done();
   });
 
-});
+}, "navigator.presentation.getAvailability should return Availability Object")
 
 </script>
 

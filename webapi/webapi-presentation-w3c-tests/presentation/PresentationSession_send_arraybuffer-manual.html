@@ -27,50 +27,41 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Play video on presentation displays</title>
+<title>Send arraybuffer to the presentation display</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation">
-<meta name="assert" content="Test checks that an example of playing video on presentation displays.">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession">
+<link rel="help" href="http://www.w3.org/TR/presentation-api/#interface-navigatorpresentation">
+<meta name="assert" content="Test checks that when send message with type arraybuffer, then initialise
+                             event's data attribute to a new ArrayBuffer object whose contents are
+                             presentation message data.">
 <body>
   <div id="precondition">
     <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
-    <p>Make sure connect to an available network.</p>
   </div>
-  <p>Test passes if the presentation display play a video after clicking the below button.</p>
-  <input id="btnPlay" type="button" onclick="startNewSession()" value="Play">
-  <div id="log"></div>
+  <p>Test passes if the presentation display should display:
+     "Event's data type is ArrayBuffer: true."
+     after clicking the below button.
+  </p>
+  <input type="button" onclick="startNewSession()" value="Send">
   <script>
-    var log = null;
     var presUrl = location.protocol + "//" + location.host
-                + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation_player.html";
+                + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation_arraybuffer.html";
+    var blob = new Blob(["Hello"]);
+    var reader = new FileReader();
 
-    window.onload = init;
+    function startNewSession() {
+      navigator.presentation.startSession(presUrl).then(function(newSession) {
+        session.binaryType = "arraybuffer";
+        
+        reader.onload = function(evt) {
+          newSession.send(reader.result);
+        });
 
-    function init() {
-      log = document.getElementById("log");
-
-      if(!navigator.presentation) {
-        log.innerHTML = "<font color='red'>Navigator has not implement presentation.</font>";
-        return;
-      }
-
-      navigator.presentation.getAvailability(presUrl)
-        .then(function(availability) {
-          var btnPlay = document.getElementById("btnPlay");
-          btnPlay.display = availability.value ? "inline" : "none";
-      })
-        .catch(function() {
-          log.innerHTML = "<font color='red'>No available presentation display.</font>";
+        reader.readAsArrayBuffer(blob);
       });
     }
 
-    function startNewSession() {
-      navigator.presentation.startSession(presUrl)
-        .then(function(newSession) {
-          newSession.send("http://media.w3.org/2010/05/video/movie_5.mp4");
-        });
-    }
   </script>
 </body>
 

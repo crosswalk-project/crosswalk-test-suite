@@ -27,46 +27,41 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Send blob to the presentation display</title>
+<title>Monitor the list of available presentation displays</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession">
-<link rel="help" href="http://www.w3.org/TR/presentation-api/#interface-navigatorpresentation">
-<meta name="assert" content="Test checks that when send message with type blob, then initialise
-                             event's data attribute to a new Blob object that represents presentation
-                             message data as its raw data.">
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation">
+<meta name="assert" content="Test checks that the value property of an Availability object to
+                             offer presentation only when there are available displays.">
 <body>
   <div id="precondition">
     <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
-    <p>Make sure connect to an available network.</p>
   </div>
-  <p>Test passes if the presentation displays a cat picture
-     after clicking the below button.
-  </p>
-  <input type="button" onclick="startNewSession()" value="Send">
+  <p>Test passes if 'Cast' button can display.</p>
+  <button id="castBtn" style="display: none;">Cast</button>
+  <div id="log"></div>
   <script>
     var presUrl = location.protocol + "//" + location.host
-                + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation_blob.html";
+                + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
+    var castBtn = document.getElementById("castBtn");
+    var log = document.getElementById("log");
+    
+    if(navigator.presentation) {
 
-    function startNewSession() {
-      navigator.presentation.startSession(presUrl).then(function(newSession) {
-        session.binaryType = "blob";
-        var blob = imageRequest();
-        session.send(blob);
+      var handleAvailabilityChange = function(available) {
+        castBtn.style.display = available ? "inline" : "none";
+      };
+
+      navigator.presentation.getAvailability(presUrl).then(function(availability) {
+        handleAvailabilityChange(availability.value);
+        availability.onchange = function() {
+          handleAvailabilityChange(this.value);
+        };
+      }).catch(function() {
+        handleAvailabilityChange(true);
       });
-    }
-
-    function imageRequest() {
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", "http://test.csswg.org/source/support/cat.png", true);
-      xhr.responseType = "blob";
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == xhr.DONE) {
-          var blob = xhr.response;
-          return blob;
-        }
-      }
-      xhr.send();
+    } else {
+      log.innerHTML = "<font color='red'>Navigator does not implement presentation.</font>";
     }
 
   </script>

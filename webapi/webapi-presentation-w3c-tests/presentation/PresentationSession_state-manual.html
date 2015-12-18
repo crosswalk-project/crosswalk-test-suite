@@ -27,38 +27,31 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>startSession</title>
+<title>PresentationSession state</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
+<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession">
+
 <div id="precondition">
   <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
 </div>
-<div id="log"></div>
+<p>Test passes if Session state value is "connected" or "disconnected".
+</p>
+Session state:
+<div id="state"></div>
 <script>
+  var sessionState = document.getElementById("state"); 
+  var presUrl = location.protocol + "//" + location.host
+              + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
+ 
+    navigator.presentation.startSession(presUrl)
+      .then(function(newSession) {
+        newSession.onstatechange =function() {
+          sessionState.innerHTML = newSession.state;
+        }
 
-setup({ explicit_timeout: true })
-
-var presUrl = location.protocol + "//" + location.host
-            + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation.html";
-
-async_test(function(t) {
-  navigator.presentation.startSession(presUrl)
-  .then(function(newSession) {
-    t.step(function() {
-      assert_true(newSession instanceof PresentationSession);
-    });
-    t.done();
-  }, function(error) {
-    t.step(function() {
-      assert_unreached(error.name);
-    });
-    t.done();
-  });
-
-}, "navigator.presentation.startSession should return PresentationSession Object")
+        sessionState.innerHTML = newSession.state;
+      });
 
 </script>
 

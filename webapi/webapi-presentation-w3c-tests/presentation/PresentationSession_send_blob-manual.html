@@ -27,39 +27,46 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Send arraybuffer to the presentation display</title>
+<title>Send blob to the presentation display</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
 <link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession">
 <link rel="help" href="http://www.w3.org/TR/presentation-api/#interface-navigatorpresentation">
-<meta name="assert" content="Test checks that when send message with type arraybuffer, then initialise
-                             event's data attribute to a new ArrayBuffer object whose contents are
-                             presentation message data.">
+<meta name="assert" content="Test checks that when send message with type blob, then initialise
+                             event's data attribute to a new Blob object that represents presentation
+                             message data as its raw data.">
 <body>
   <div id="precondition">
     <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
+    <p>Make sure connect to an available network.</p>
   </div>
-  <p>Test passes if the presentation display should display:
-     "Event's data type is ArrayBuffer: true."
+  <p>Test passes if the presentation displays a cat picture
      after clicking the below button.
   </p>
   <input type="button" onclick="startNewSession()" value="Send">
   <script>
     var presUrl = location.protocol + "//" + location.host
-                + "/opt/webapi-presentation-xwalk-tests/presentation/display/presentation_arraybuffer.html";
-    var blob = new Blob(["Hello"]);
-    var reader = new FileReader();
+                + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation_blob.html";
 
     function startNewSession() {
       navigator.presentation.startSession(presUrl).then(function(newSession) {
-        session.binaryType = "arraybuffer";
-        
-        reader.onload = function(evt) {
-          newSession.send(reader.result);
-        });
-
-        reader.readAsArrayBuffer(blob);
+        session.binaryType = "blob";
+        var blob = imageRequest();
+        session.send(blob);
       });
+    }
+
+    function imageRequest() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "http://test.csswg.org/source/support/cat.png", true);
+      xhr.responseType = "blob";
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == xhr.DONE) {
+          var blob = xhr.response;
+          return blob;
+        }
+      }
+      xhr.send();
     }
 
   </script>

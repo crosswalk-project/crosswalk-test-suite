@@ -214,7 +214,7 @@ Please see Appendix 5 for the package list.
 - webapi-locale-ivi-tests
 - webapi-messageport-ivi-tests
 - webapi-notification-ivi-tests
-- webapi-presentation-xwalk-tests
+- webapi-presentation-w3c-tests
 - webapi-promises-nonw3c-tests
 - webapi-rawsockets-w3c-tests
 - webapi-resourcetiming-w3c-tests
@@ -585,7 +585,7 @@ Please see Appendix 5 for the package list.
 - webapi-locale-ivi-tests
 - webapi-messageport-ivi-tests
 - webapi-notification-ivi-tests
-- webapi-presentation-xwalk-tests
+- webapi-presentation-w3c-tests
 - webapi-promises-nonw3c-tests
 - webapi-rawsockets-w3c-tests
 - webapi-resourcetiming-w3c-tests
