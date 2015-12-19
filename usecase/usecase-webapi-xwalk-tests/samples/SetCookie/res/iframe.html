@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Reference File</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<body onload="oninit()">
+  <ul>
+    <li>Content-Length:<span id="clength" style="color:green;"></span></li>
+    <li>Content-Type:<span id="ctype" style="color:green;"></span></li>
+    <li>Date:<span id="date" style="color:green;"></span></li>
+    <li>Last-Modified:<span id="lmodified" style="color:green;"></span></li>
+    <li>Server:<span id="server" style="color:green;"></span></li>
+    <li>Set-Cookie:<span id="cookie" style="color:green;"></span></li>
+  </ul>
+
+  <script>
+    function oninit() {
+      var txtCLength = document.getElementById("clength");
+      var txtType = document.getElementById("ctype");
+      var txtDate = document.getElementById("date");
+      var txtLModified = document.getElementById("lmodified");
+      var txtServer = document.getElementById("server");
+      var txtCookie = document.getElementById("cookie");
+
+      var request = new XMLHttpRequest();
+      var url = "http://127.0.0.1:8081/opt/usecase-webapi-xwalk-tests/samples/SetCookie/res/headers.cgi";
+      request.onreadystatechange = function() {
+        if(request.readyState == 4) {
+          txtCLength.textContent = request.getResponseHeader("Content-Length");
+          txtType.textContent = request.getResponseHeader("Content-Type");
+          txtDate.textContent = request.getResponseHeader("Date");
+          txtLModified.textContent = request.getResponseHeader("Last-Modified");
+          txtServer.textContent = request.getResponseHeader("Server");
+          txtCookie.textContent = request.getResponseHeader("Set-Cookie");
+        }
+      }
+      request.open("GET", url);
+      request.send(null);
+    }
+  </script>
+</body>
+
