@@ -177,4 +177,23 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertFalse(true);
         }
     }
+
+    @SmallTest
+    public void testLoadExtension() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    String extensionAsset = "xwalk-extensions/contactextension";
+                    mXWalkView.getExtensionManager().loadExtension(extensionAsset);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            assertFalse(true);
+        }
+    }
 }
