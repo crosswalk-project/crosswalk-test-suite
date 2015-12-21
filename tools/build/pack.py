@@ -41,6 +41,7 @@ import build_android
 import build_cordova
 import build_embeddingapi
 import build_extension
+import build_deb
 import varshop
 import utils
 
@@ -54,7 +55,8 @@ PKG_TYPES = [
     "apk-aio",
     "cordova-aio",
     "cordova",
-    "embeddingapi"]
+    "embeddingapi",
+    "deb"]
 PKG_BLACK_LIST = []
 PACK_TYPES = ["ant", "gradle", "maven"]
 CORDOVA_PACK_TYPES = ["npm", "local"]
@@ -244,6 +246,9 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
             if not build_embeddingapi.packEmbeddingAPI_ant(
                     build_json, app_src, app_dest, app_name, app_version):
                 return False
+    elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "DEB"):
+        if not build_deb.packDeb(build_json, app_src, app_dest, app_name):
+            return False
     else:
         LOG.error("Got wrong pkg type: %s" % BUILD_PARAMETERS.pkgtype)
         return False
