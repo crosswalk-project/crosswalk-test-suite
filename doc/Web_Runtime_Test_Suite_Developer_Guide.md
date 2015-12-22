@@ -1,4 +1,4 @@
-# Web Runtime Crosswalk Test Suite DeveloperGuide
+# Web Runtime Test Suite DeveloperGuide
 
 ## 1. Overview
 
