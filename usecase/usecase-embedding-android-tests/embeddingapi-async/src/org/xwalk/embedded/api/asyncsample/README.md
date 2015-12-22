@@ -807,3 +807,13 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, getFavicon methods
+
+
+
+### 79. The [XWalkViewWithLoadExtensionAsync](misc/XWalkViewWithLoadExtensionAsync.java) sample check XWalkView can load external extensions dynamically, include:
+
+* XWalkView API getExtensionManager().loadExtension method can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, getExtensionManager().loadExtension methods
