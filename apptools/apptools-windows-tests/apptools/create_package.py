@@ -450,5 +450,29 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
         self.assertEquals(apkLength, 1)
 
+    def test_create_package_multiple_backends(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            'crosswalk-pkg --platforms="windows android" --crosswalk=' + comm.XwalkPath + comm.windowsCrosswalk + " " + comm.ConstPath + "/../testapp/create_package_basic/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        msiLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".msi"):
+                msiLength = msiLength + 1
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertEquals(apkLength, 2)
+        self.assertEquals(msiLength, 1)
+
 if __name__ == '__main__':
     unittest.main()
