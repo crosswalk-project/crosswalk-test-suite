@@ -47,10 +47,10 @@ test('Float32x4 load', function() {
   }
   for (var i = 0; i < a.length - 3; i++) {
     var v = SIMD.Float32x4.load(a, i);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(i+3, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Float32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Float32x4.extractLane(v, 2));
+    equal(i+3, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -63,10 +63,10 @@ test('Float32x4 overaligned load', function() {
   }
   for (var i = 0; i < a.length - 3; i += 2) {
     var v = SIMD.Float32x4.load(af, i / 2);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(i+3, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Float32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Float32x4.extractLane(v, 2));
+    equal(i+3, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -85,10 +85,10 @@ test('Float32x4 unaligned load', function() {
   // Load the values unaligned.
   for (var i = 0; i < a.length - 3; i++) {
     var v = SIMD.Float32x4.load(b, i * 4 + 1);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(i+3, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Float32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Float32x4.extractLane(v, 2));
+    equal(i+3, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -99,10 +99,10 @@ test('Float32x4 loadX', function() {
   }
   for (var i = 0; i < a.length; i++) {
     var v = SIMD.Float32x4.loadX(a, i);
-    equal(i, v.x);
-    equal(0.0, v.y);
-    equal(0.0, v.z);
-    equal(0.0, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 1));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 2));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -115,10 +115,10 @@ test('Float32x4 overaligned loadX', function() {
   }
   for (var i = 0; i < a.length; i += 2) {
     var v = SIMD.Float32x4.loadX(af, i / 2);
-    equal(i, v.x);
-    equal(0.0, v.y);
-    equal(0.0, v.z);
-    equal(0.0, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 1));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 2));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -136,10 +136,10 @@ test('Float32x4 unaligned loadX', function() {
   // Load the values unaligned.
   for (var i = 0; i < a.length; i++) {
     var v = SIMD.Float32x4.loadX(b, i * 4 + 1);
-    equal(i, v.x);
-    equal(0.0, v.y);
-    equal(0.0, v.z);
-    equal(0.0, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 1));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 2));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -150,10 +150,10 @@ test('Float32x4 loadXY', function() {
   }
   for (var i = 0; i < a.length - 1; i++) {
     var v = SIMD.Float32x4.loadXY(a, i);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(0.0, v.z);
-    equal(0.0, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Float32x4.extractLane(v, 1));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 2));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -166,10 +166,10 @@ test('Float32x4 overaligned loadXY', function() {
   }
   for (var i = 0; i < a.length - 1; i += 2) {
   var v = SIMD.Float32x4.loadXY(af, i / 2);
-  equal(i, v.x);
-  equal(i+1, v.y);
-  equal(0.0, v.z);
-  equal(0.0, v.w);
+  equal(i, SIMD.Float32x4.extractLane(v, 0));
+  equal(i+1, SIMD.Float32x4.extractLane(v, 1));
+  equal(0.0, SIMD.Float32x4.extractLane(v, 2));
+  equal(0.0, SIMD.Float32x4.extractLane(v, 3));
 }
 });
 
@@ -187,10 +187,10 @@ test('Float32x4 unaligned loadXY', function() {
   // Load the values unaligned.
   for (var i = 0; i < a.length - 1; i++) {
     var v = SIMD.Float32x4.loadXY(b, i * 4 + 1);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(0.0, v.z);
-    equal(0.0, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Float32x4.extractLane(v, 1));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 2));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -201,10 +201,10 @@ test('Float32x4 loadXYZ', function() {
   }
   for (var i = 0; i < a.length - 2; i++) {
     var v = SIMD.Float32x4.loadXYZ(a, i);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(0.0, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Float32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Float32x4.extractLane(v, 2));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -217,10 +217,10 @@ test('Float32x4 overaligned loadXYZ', function() {
   }
   for (var i = 0; i < a.length - 2; i += 2) {
     var v = SIMD.Float32x4.loadXYZ(af, i / 2);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(0.0, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Float32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Float32x4.extractLane(v, 2));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -238,10 +238,10 @@ test('Float32x4 unaligned loadXYZ', function() {
   // Load the values unaligned.
   for (var i = 0; i < a.length - 2; i++) {
     var v = SIMD.Float32x4.loadXYZ(b, i * 4 + 1);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(0.0, v.w);
+    equal(i, SIMD.Float32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Float32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Float32x4.extractLane(v, 2));
+    equal(0.0, SIMD.Float32x4.extractLane(v, 3));
   }
 });
 
@@ -568,8 +568,8 @@ test('Float64x2 load', function() {
   }
   for (var i = 0; i < a.length - 1; i++) {
     var v = SIMD.Float64x2.load(a, i);
-    equal(i, v.x);
-    equal(i+1, v.y);
+    equal(i, SIMD.Float64x2.extractLane(v, 0));
+    equal(i+1, SIMD.Float64x2.extractLane(v, 1));
   }
 });
 
@@ -587,8 +587,8 @@ test('Float64x2 unaligned load', function() {
   // Load the values unaligned.
   for (var i = 0; i < a.length - 1; i++) {
     var v = SIMD.Float64x2.load(b, i * 8 + 1);
-    equal(i, v.x);
-    equal(i+1, v.y);
+    equal(i, SIMD.Float64x2.extractLane(v, 0));
+    equal(i+1, SIMD.Float64x2.extractLane(v, 1));
   }
 });
 
@@ -599,8 +599,8 @@ test('Float64x2 loadX', function() {
   }
   for (var i = 0; i < a.length; i++) {
     var v = SIMD.Float64x2.loadX(a, i);
-    equal(i, v.x);
-    equal(0.0, v.y);
+    equal(i, SIMD.Float64x2.extractLane(v, 0));
+    equal(0.0, SIMD.Float64x2.extractLane(v, 1));
   }
 });
 
@@ -618,8 +618,8 @@ test('Float64x2 unaligned loadX', function() {
   // Copy the values unaligned.
   for (var i = 0; i < a.length; i++) {
     var v = SIMD.Float64x2.loadX(b, i * 8 + 1);
-    equal(i, v.x);
-    equal(0.0, v.y);
+    equal(i, SIMD.Float64x2.extractLane(v, 0));
+    equal(0.0, SIMD.Float64x2.extractLane(v, 1));
   }
 });
 
@@ -758,10 +758,10 @@ test('Int32x4 load', function() {
   }
   for (var i = 0; i < a.length - 3; i++) {
     var v = SIMD.Int32x4.load(a, i);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(i+3, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Int32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Int32x4.extractLane(v, 2));
+    equal(i+3, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -774,10 +774,10 @@ test('Int32x4 overaligned load', function() {
   }
   for (var i = 0; i < a.length - 3; i += 2) {
     var v = SIMD.Int32x4.load(af, i / 2);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(i+3, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Int32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Int32x4.extractLane(v, 2));
+    equal(i+3, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -795,10 +795,10 @@ test('Int32x4 unaligned load', function() {
   // Load the values unaligned.
   for (var i = 0; i < a.length - 3; i++) {
     var v = SIMD.Int32x4.load(b, i * 4 + 1);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(i+3, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Int32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Int32x4.extractLane(v, 2));
+    equal(i+3, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -809,10 +809,10 @@ test('Int32x4 loadX', function() {
   }
   for (var i = 0; i < a.length ; i++) {
     var v = SIMD.Int32x4.loadX(a, i);
-    equal(i, v.x);
-    equal(0, v.y);
-    equal(0, v.z);
-    equal(0, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(0, SIMD.Int32x4.extractLane(v, 1));
+    equal(0, SIMD.Int32x4.extractLane(v, 2));
+    equal(0, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -825,10 +825,10 @@ test('Int32x4 overaligned loadX', function() {
   }
   for (var i = 0; i < a.length; i++) {
     var v = SIMD.Int32x4.loadX(af, i);
-    equal(i, v.x);
-    equal(0, v.y);
-    equal(0, v.z);
-    equal(0, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(0, SIMD.Int32x4.extractLane(v, 1));
+    equal(0, SIMD.Int32x4.extractLane(v, 2));
+    equal(0, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -846,10 +846,10 @@ test('Int32x4 unaligned loadX', function() {
   // Load the values unaligned.
   for (var i = 0; i < a.length ; i++) {
     var v = SIMD.Int32x4.loadX(b, i * 4 + 1);
-    equal(i, v.x);
-    equal(0, v.y);
-    equal(0, v.z);
-    equal(0, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(0, SIMD.Int32x4.extractLane(v, 1));
+    equal(0, SIMD.Int32x4.extractLane(v, 2));
+    equal(0, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -860,10 +860,10 @@ test('Int32x4 loadXY', function() {
   }
   for (var i = 0; i < a.length - 1; i++) {
     var v = SIMD.Int32x4.loadXY(a, i);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(0, v.z);
-    equal(0, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Int32x4.extractLane(v, 1));
+    equal(0, SIMD.Int32x4.extractLane(v, 2));
+    equal(0, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -876,10 +876,10 @@ test('Int32x4 overaligned loadXY', function() {
   }
   for (var i = 0; i < a.length - 1; i += 2) {
     var v = SIMD.Int32x4.loadXY(af, i / 2);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(0, v.z);
-    equal(0, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Int32x4.extractLane(v, 1));
+    equal(0, SIMD.Int32x4.extractLane(v, 2));
+    equal(0, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -897,10 +897,10 @@ test('Int32x4 unaligned loadXY', function() {
   // Load the values unaligned.
   for (var i = 0; i < a.length - 1; i++) {
     var v = SIMD.Int32x4.loadXY(b, i * 4 + 1);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(0, v.z);
-    equal(0, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Int32x4.extractLane(v, 1));
+    equal(0, SIMD.Int32x4.extractLane(v, 2));
+    equal(0, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -911,10 +911,10 @@ test('Int32x4 loadXYZ', function() {
   }
   for (var i = 0; i < a.length - 2; i++) {
     var v = SIMD.Int32x4.loadXYZ(a, i);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(0, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Int32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Int32x4.extractLane(v, 2));
+    equal(0, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -927,10 +927,10 @@ test('Int32x4 overaligned loadXYZ', function() {
   }
   for (var i = 0; i < a.length - 2; i += 2) {
     var v = SIMD.Int32x4.loadXYZ(af, i / 2);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(0, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Int32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Int32x4.extractLane(v, 2));
+    equal(0, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 
@@ -949,10 +949,10 @@ test('Int32x4 unaligned loadXYZ', function() {
   // Load the values unaligned.
   for (var i = 0; i < a.length - 2; i++) {
     var v = SIMD.Int32x4.loadXYZ(b, i * 4 + 1);
-    equal(i, v.x);
-    equal(i+1, v.y);
-    equal(i+2, v.z);
-    equal(0, v.w);
+    equal(i, SIMD.Int32x4.extractLane(v, 0));
+    equal(i+1, SIMD.Int32x4.extractLane(v, 1));
+    equal(i+2, SIMD.Int32x4.extractLane(v, 2));
+    equal(0, SIMD.Int32x4.extractLane(v, 3));
   }
 });
 test('Int32x4 store', function() {
