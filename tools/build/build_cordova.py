@@ -140,7 +140,14 @@ def packCordova_cli(
 
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
-    pack_cmd = "cordova build android"
+
+    apk_name_arch = "armv7"
+    pack_arch_tmp = "arm"
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        apk_name_arch = "x86"
+        pack_arch_tmp = "x86"
+
+    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
 
     if not utils.doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
@@ -154,22 +161,14 @@ def packCordova_cli(
         "outputs",
         "apk")
 
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-x86-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-x86-debug.apk")
-    else:
-        cordova_tmp_path = os.path.join(
-            outputs_dir,
-            "%s-armv7-debug.apk" %
-            app_name)
-        cordova_tmp_path_spare = os.path.join(
-            outputs_dir,
-            "android-armv7-debug.apk")
+    cordova_tmp_path = os.path.join(
+        outputs_dir,
+        "%s-%s-debug.apk" %
+        (app_name, apk_name_arch))
+    cordova_tmp_path_spare = os.path.join(
+        outputs_dir,
+        "android-%s-debug.apk" %
+        apk_name_arch)
 
     if not os.path.exists(cordova_tmp_path):
         if not utils.doCopy(
