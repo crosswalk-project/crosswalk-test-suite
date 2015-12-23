@@ -53,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes", "setUserAgent"]
+PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes", "setUserAgent", "loadExtension"]
 CORDOVA_VERSIONS = ["3.6", "4.x"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
@@ -417,6 +417,9 @@ def copySampleSource(app_name, target_path):
         source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "sample-my-private-notes", "www")
     if checkContains(app_name, "SETUSERAGENT"):
         source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "..", "usecase", "usecase-cordova-android-tests", "samples", "SetUserAgent", "res")
+    if checkContains(app_name, "LOADEXTENSION"):
+        source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "..", "usecase", "usecase-cordova-android-tests", "samples", "LoadExtension", "res", "www")
+
     if source_path:
         if not doCopy(source_path,
                 target_path):
@@ -940,6 +943,7 @@ def packSampleApp_cli(app_name=None):
 
     copySampleSource(app_name, os.path.join(project_root, "www"))
 
+
     if checkContains(app_name, "HELLOWORLD"):
         if not replaceKey(os.path.join(project_root, "www", "index.html"),
                           "<a href='http://www.intel.com'>Intel</a>\n</body>",
@@ -953,6 +957,24 @@ def packSampleApp_cli(app_name=None):
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
+
+    if checkContains(app_name, "LOADEXTENSION"):
+        source_lib = os.path.join(BUILD_PARAMETERS.pkgpacktools, "..", "usecase", "usecase-cordova-android-tests", "samples", "LoadExtension", "res", "libs")
+        source_extension = os.path.join(BUILD_PARAMETERS.pkgpacktools, "..", "usecase", "usecase-cordova-android-tests", "samples", "LoadExtension", "res", "xwalk-extensions")
+        target_lib = os.path.join(project_root, "platforms", "android", "libs")
+        target_extension = os.path.join(project_root, "platforms", "android", "assets", "xwalk-extensions")
+
+        if source_lib:
+            if not doCopy(source_lib,
+                    target_lib):
+                os.chdir(orig_dir)
+                return False
+
+        if source_extension:
+            if not doCopy(source_extension,
+                    target_extension):
+                os.chdir(orig_dir)
+                return False
 
     if checkContains(app_name, "SETBACKGROUNDCOLOR"):
         replaceUserString(

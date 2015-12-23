@@ -1,0 +1,13 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verify the cordova crosswalk app can load extension synchronously and asynchronously</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>Get the loadExtension.apk successfully</li>'
+            +'<li>The app can be installed successfully</li>'
+            +'<li>The app can launch and run successfully</li>'
+            +'<li>The value of "Echo Sync Test" is <font color=green>passed</font> in green color</li>'
+            +'<li>The value of "Echo Async Test" is <font color=green>passed</font> in green color</li>'
+            +'<li>The app can exit successfully</li>'
+            +'</ol>'
+          +'</font>';
