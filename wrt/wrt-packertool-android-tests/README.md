@@ -1,0 +1,101 @@
+## Introduction
+
+This test suite is for wrt-packertool-android-tests
+
+1. allparis is seed file folder:
+
+  1.1 allparis/positive -> positive seed folder,support multi seed files
+
+      allparis/negative -> negative seed folder,support multi seed files
+
+  1.2 seed file format:
+
+     1) Values separator ","
+
+       name--1:a,b
+
+     2) The same field value separter by "--":
+
+       name--1:a,b
+       name--2:c,d
+
+     3) Self combination add 'null' to each self field:
+
+       name--2:000,a000b,000b,b000,null
+
+     4) The space character please use 000 to replace:
+
+       000a-> a,a000b->a b,b000->b
+
+     5) The icon value include ",", so the separator is "comma",please refer to seed file:
+
+       icon--1:{"src": "icon/lowres"comma"sizes": "64x64"comma"type": "image/webp"}
+
+2. ./metacomm/ folder is allpairs.
+
+3. After start test, new folders would be created. And names of the folder are the same
+with DEVICE_ID which you input.
+
+   In each new folder, there are several folders like report and allparis.
+
+   ./[DEVICE_ID]/report/ save the auto wrt-packertool-android-tests.xml file.
+
+      3.1 packertool_positive.txt is all positive packertool case content.
+
+      3.2 packertool_negative.txt is all negative packertool case content.
+
+   ./[DEVICE_ID]/allparis/ save test seed file which would be tested on the device.
+
+4. ./ge_packertool.py create packertool resource
+
+5. ./gen_apks.py create packertool package
+
+6. ./ge_unitcase.py create tests.py
+
+## Precondition
+
+1. Download and install allpairs
+
+   http://sourceforge.net/projects/allpairs/files/allpairs/
+
+2. Connect a Android device to your localhost
+
+3. Edit your input_seed.txt(in ./allpairs/) file to generate webapp.
+
+4. Since there are "Shared Mode" test cases during the automation, download Xwalk Runtime Library and put it in crosswalk-test-suite/tools folder
+
+5. Need to edit the file "wrt-packertool-android-tests/arch.txt" according to the type of test device.
+
+If test device is "x86" platform, content of the file should be "x86".
+
+## Test Step
+
+1. unzip -d [testprefix-path] wrt-packertool-android-tests<version>.zip
+
+2. cd [testprefix-path]/opt/wrt-packertool-android-tests/
+
+3. ./inst.py -i
+
+4. ./gen_apks.py
+
+5. run test case
+
+   testkit-lite -f [testprefix-path]/opt/wrt-packertool-android-tests/tests.xml -A
+   -o [testprefix-path]/opt/wrt-packertool-android-tests/result.xml --comm androidmobile
+   --testenvs "DEVICE_ID=Medfield3C6DFF2E CONNECT_TYPE=adb;APK_DIR=[apk-folder-path]"
+   --testprefix [testprefix-path]
+
+  DEVICE_ID can also be multiple ids like "Medfield3C6DFF2E,Medfield3C6DFF00".
+  Query device id by commmand "adb devices -l" in host.
+  Base on the seed file, the total case number is 190.
+
+## Authors:
+
+* Xu, Kang <kangx.xu@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
+
+## LICENSE
+
+Copyright (c) 2014 Intel Corporation.
+Except as noted, this software is licensed under BSD-3-Clause License.
+Please see the COPYING file for the BSD-3-Clause License.
