@@ -3,159 +3,149 @@
 <test_definition>
   <suite category="Crosswalk App Tools" name="apptools-android-tests">
     <set name="CLI" type="pyunit">
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_no_sdk" priority="P1" purpose="Android - Validate if project is created fail without android sdk" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_no_sdk" priority="P2" purpose="Android - Validate if project is created fail without android sdk" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_no_sdk.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_basic" priority="P1" purpose="Android - Validate if the default main activity is 'MainActivity' and project is created fail when the project has been exist" status="approved" type="Functional" subcase="3">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_basic" priority="P2" purpose="Android - Validate if the default main activity is 'MainActivity' and project is created fail when the project has been exist" status="approved" type="Functional" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_basic.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_pkgName" priority="P1" purpose="Android - Validate project can be created with validate package naming rule" status="approved" type="Functional" subcase="16">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_pkgName" priority="P2" purpose="Android - Validate project can be created with validate package naming rule" status="approved" type="Functional" subcase="16">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/pkgName.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_build" priority="P1" purpose="Android - Validate if project is built successfully with build command" status="approved" type="Functional" subcase="4">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_build" priority="P2" purpose="Android - Validate if project is built successfully with build command" status="approved" type="Functional" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/build.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_remote" priority="P1" purpose="Android - Validate if Crosswalk tools can be downloaded when network well" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_remote" priority="P2" purpose="Android - Validate if Crosswalk tools can be downloaded when network well" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_remote.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_channel" priority="P1" purpose="Android - Validate if project can be created with difference Crosswalk channel" status="approved" type="Functional" subcase="3">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_channel" priority="P2" purpose="Android - Validate if project can be created with difference Crosswalk channel" status="approved" type="Functional" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_channel.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_version" priority="P1" purpose="Android - Validate if project can be created by Crosswalk version" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_version" priority="P2" purpose="Android - Validate if project can be created by Crosswalk version" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_version.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_app_version" priority="P1" purpose="Android - Validate if crosswalk-app version command can display version information" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/apptools-android-tests/apptools/crosswalk_app_version.py</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_pkg_version" priority="P1" purpose="Android - Validate if crosswalk-pkg version command can display version information" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/apptools-android-tests/apptools/crosswalk_pkg_version.py</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_setup_cache_dir" priority="P1" purpose="Android - Validate if download file under CROSSWALK_APP_TOOLS_CACHE_DIR dir" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_setup_cache_dir" priority="P2" purpose="Android - Validate if download file under CROSSWALK_APP_TOOLS_CACHE_DIR dir" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/setup_cache_dir.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_target_platforms" priority="P1" purpose="Android - Validate if platforms command can list available target platforms" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/apptools-android-tests/apptools/target_platforms.py</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_versionCode" priority="P1" purpose="Android - Validate if versionCode can be generated in android manifest" status="approved" type="Functional" subcase="5">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_versionCode" priority="P2" purpose="Android - Validate if versionCode can be generated in android manifest" status="approved" type="Functional" subcase="4">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_versionCode.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_with_target_platform" priority="P1" purpose="Android - Validate project can be created with validate platform" status="approved" type="Functional" subcase="4">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_with_target_platform" priority="P2" purpose="Android - Validate project can be created with validate platform" status="approved" type="Functional" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_with_target_platform.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_versionName" priority="P1" purpose="Android - Validate if versionName is from manifest version code" status="approved" type="Functional" subcase="2">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_versionName" priority="P2" purpose="Android - Validate if versionName is from manifest version code" status="approved" type="Functional" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_versionName.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_multiple_icons" priority="P1" purpose="Android - Validate if web app support multiple icons" status="approved" type="Functional" subcase="9">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_multiple_icons" priority="P2" purpose="Android - Validate if web app support multiple icons" status="approved" type="Functional" subcase="8">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_multiple_icons.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_build_path" priority="P1" purpose="Android - Validate if project can be built with webapp path" status="approved" type="Functional" subcase="2">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_build_path" priority="P2" purpose="Android - Validate if project can be built with webapp path" status="approved" type="Functional" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/build_path.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_package_id" priority="P1" purpose="Android - Validate if package ID is used as expansion field" status="approved" type="Functional" subcase="3">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_package_id" priority="P2" purpose="Android - Validate if package ID is used as expansion field" status="approved" type="Functional" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_package_id.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_apk_name" priority="P1" purpose="Android - Validate if apk name contains versionCode" status="approved" type="Functional" subcase="2">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_apk_name" priority="P2" purpose="Android - Validate if apk name contains versionCode" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_apk_name.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_check_host" priority="P1" purpose="Android - Validate if check command can test host setup" status="approved" type="Functional" subcase="2">
-        <description>
-          <test_script_entry>/opt/apptools-android-tests/apptools/check_host.py</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_name" priority="P1" purpose="Android - Validate if android label is changed by the 'name' field in the web manifest" status="approved" type="Functional" subcase="7">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_name" priority="P2" purpose="Android - Validate if android label is changed by the 'name' field in the web manifest" status="approved" type="Functional" subcase="6">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_name.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_build_webp" priority="P1" purpose="Android - Validate if automatic conversion of assets is the WebP format" status="approved" type="Functional" subcase="11">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_build_webp" priority="P2" purpose="Android - Validate if automatic conversion of assets is the WebP format" status="approved" type="Functional" subcase="11">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_build_webp.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_offline" priority="P1" purpose="Android - Validate if project can be created with crosswalk zip directly" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_offline" priority="P2" purpose="Android - Validate if project can be created with crosswalk zip directly" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_offline.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_package" priority="P1" purpose="Android - Validate if package can be created without a project" status="approved" type="Functional" subcase="21">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_package" priority="P2" purpose="Android - Validate if package can be created without a project" status="approved" type="Functional" subcase="14">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_package.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_check_target_version" priority="P1" purpose="Android - Validate if project can not be created and built without required minimun API" status="approved" type="Functional" subcase="2">
-        <description>
-          <test_script_entry>/opt/apptools-android-tests/apptools/check_target_version.py</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_orientation" priority="P1" purpose="Android - Validate if project can not be built with invalid orientation value" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_orientation" priority="P2" purpose="Android - Validate if project can not be built with invalid orientation value" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_orientation.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_display" priority="P1" purpose="Android - Validate if project can be built with valid display value" status="approved" type="Functional" subcase="4">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_display" priority="P2" purpose="Android - Validate if project can be built with valid display value" status="approved" type="Functional" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_display.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_init_manifest" priority="P1" purpose="Android - Validate if the web manifest can be initialised and updated" status="approved" type="Functional" subcase="4">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_init_manifest" priority="P2" purpose="Android - Validate if the web manifest can be initialised and updated" status="approved" type="Functional" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/init_manifest.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_activity_name" priority="P1" purpose="Android - Validate if activity name can be customized by package id" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_activity_name" priority="P2" purpose="Android - Validate if activity name can be customized by package id" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/activity_name.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_package_target" priority="P1" purpose="Android - Validate if particular target ABIs can be built" status="approved" type="Functional" subcase="14">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_package_target" priority="P2" purpose="Android - Validate if particular target ABIs can be built" status="approved" type="Functional" subcase="12">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_package_target.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_package_abbreviated_command" priority="P1" purpose="Android - Validate if package can be created with abbreviated paremeter" status="approved" type="Functional" subcase="5">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_package_abbreviated_command" priority="P2" purpose="Android - Validate if package can be created with abbreviated paremeter" status="approved" type="Functional" subcase="5">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_package_abbreviated_command.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_start_url" priority="P1" purpose="Android - Validate if 'start_url' field can be set to 'http/https/blank' in the web manifest" status="approved" type="Functional" subcase="3">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_start_url" priority="P2" purpose="Android - Validate if 'start_url' field can be set to 'http/https/blank' in the web manifest" status="approved" type="Functional" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/manifest_start_url.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_app_basic" priority="P1" purpose="Android - Validate if basic functions of crosswalk-app command can work fine" status="approved" type="Functional" subcase="10">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/CI/crosswalk_app_basic.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_app_basic" priority="P1" purpose="Android - Validate if basic functions of crosswalk-pkg command can work fine" status="approved" type="Functional" subcase="10">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/CI/crosswalk_pkg_basic.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_manifest_basic" priority="P1" purpose="Android - Validate if the fields in manifest can work fine" status="approved" type="Functional" subcase="6">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/CI/manifest_basic.py</test_script_entry>
         </description>
       </testcase>
     </set>
@@ -287,7 +277,7 @@
       </testcase>
     </set>
     <set name="CLI_manual" type="js">
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Download" priority="P1" purpose="Android - Validate if App Tool can download the crosswalk binary automatically" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Download" priority="P2" purpose="Android - Validate if App Tool can download the crosswalk binary automatically" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/AppTools_Download.html</test_script_entry>
         </description>
@@ -302,133 +292,133 @@
           <test_script_entry>/opt/apptools-android-tests/apptools/AppTools_Crosswalk_Pkg_Help.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Check_VersionName" priority="P1" purpose="Android - Validate if versionName is from manifest version code" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Check_VersionName" priority="P2" purpose="Android - Validate if versionName is from manifest version code" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Check_VersionName.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Keeping_Screen_On" priority="P1" purpose="Android - Validate if web app can be kept screen on status all along" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Keeping_Screen_On" priority="P2" purpose="Android - Validate if web app can be kept screen on status all along" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Keeping_Screen_On.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Display_Fullscreen" priority="P1" purpose="Android - Validate if web app can be launched with fullscreen" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Display_Fullscreen" priority="P2" purpose="Android - Validate if web app can be launched with fullscreen" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Display_Fullscreen.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Display_Standalone" priority="P1" purpose="Android - Validate if web app can be launched with standalone" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Display_Standalone" priority="P2" purpose="Android - Validate if web app can be launched with standalone" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Display_Standalone.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Remote_Debugging" priority="P1" purpose="Android - Validate if remote debugging is enabled automatically for debug builds" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Remote_Debugging" priority="P2" purpose="Android - Validate if remote debugging is enabled automatically for debug builds" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Remote_Debugging.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Using_Better_Fitting_Size_Icon" priority="P1" purpose="Android - Validate if the better fitting size icon is used to the icon of web app" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Using_Better_Fitting_Size_Icon" priority="P2" purpose="Android - Validate if the better fitting size icon is used to the icon of web app" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Using_Better_Fitting_Size_Icon.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Check_WebApp_Name" priority="P1" purpose="Android - Validate if web app name is changed by the 'name' field in the web manifest" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Check_WebApp_Name" priority="P2" purpose="Android - Validate if web app name is changed by the 'name' field in the web manifest" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Check_WebApp_Name.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Check_Apk_Size" priority="P1" purpose="Android - Validate if web app image assets can be converted to webp in order to
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Check_Apk_Size" priority="P2" purpose="Android - Validate if web app image assets can be converted to webp in order to
 reduce the APK size" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Check_Apk_Size.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Command_Line_EnableRemoteDebugging" priority="P1" purpose="Android - Validate if remote debug is enabled over HTTP on the specified port" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Command_Line_EnableRemoteDebugging" priority="P2" purpose="Android - Validate if remote debug is enabled over HTTP on the specified port" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Command_Line_EnableRemoteDebugging.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Command_Line_EnableWebGL" priority="P1" purpose="Android - Validate if GPU blacklist is ignored" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Command_Line_EnableWebGL" priority="P2" purpose="Android - Validate if GPU blacklist is ignored" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Command_Line_EnableWebGL.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Command_Line_DisableWebGL" priority="P1" purpose="Android - Validate if WebGL support is disabled experimental" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Command_Line_DisableWebGL" priority="P2" purpose="Android - Validate if WebGL support is disabled experimental" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Command_Line_DisableWebGL.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Landscape" priority="P1" purpose="Android - Validate if web app could be launched with landscape-primary and landscape-secondary orientation" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Landscape" priority="P2" purpose="Android - Validate if web app could be launched with landscape-primary and landscape-secondary orientation" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_Landscape.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Any" priority="P1" purpose="Android - Validate if web app could be launched with portrait-primary, portrait-secondary, landscape-primary and landscape-secondary orientation" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Any" priority="P2" purpose="Android - Validate if web app could be launched with portrait-primary, portrait-secondary, landscape-primary and landscape-secondary orientation" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_Any.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Natural" priority="P1" purpose="Android - Validate if web app could be launched with portrait-primary and landscape-primary orientation" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Natural" priority="P2" purpose="Android - Validate if web app could be launched with portrait-primary and landscape-primary orientation" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_Natural.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Portrait" priority="P1" purpose="Android - Validate if web app could be launched with portrait-primary and portrait-secondary orientation" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_Portrait" priority="P2" purpose="Android - Validate if web app could be launched with portrait-primary and portrait-secondary orientation" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_Portrait.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_PortraitPrimary" priority="P1" purpose="Android - Validate if web app could be launched with portrait-primary orientation" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_PortraitPrimary" priority="P2" purpose="Android - Validate if web app could be launched with portrait-primary orientation" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_PortraitPrimary.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_PortraitSecondary" priority="P1" purpose="Android - Validate if web app could be launched with portrait-secondary orientation" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_PortraitSecondary" priority="P2" purpose="Android - Validate if web app could be launched with portrait-secondary orientation" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_PortraitSecondary.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_LandscapePrimary" priority="P1" purpose="Android - Validate if web app could be launched with landscape-primary orientation" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_LandscapePrimary" priority="P2" purpose="Android - Validate if web app could be launched with landscape-primary orientation" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_LandscapePrimary.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_LandscapeSecondary" priority="P1" purpose="Android - Validate if web app could be launched with landscape-secondary orientation" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Orientation_LandscapeSecondary" priority="P2" purpose="Android - Validate if web app could be launched with landscape-secondary orientation" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Orientation_LandscapeSecondary.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_ContactExtension" priority="P1" purpose="Android - Validate if project could be built with extension" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_ContactExtension" priority="P2" purpose="Android - Validate if project could be built with extension" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_ContactExtension.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Enable_AnimatableView" priority="P1" purpose="Android - Validate if app view can be scaled up and down when enabling animatable view" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Enable_AnimatableView" priority="P2" purpose="Android - Validate if app view can be scaled up and down when enabling animatable view" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Enable_AnimatableView.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Disable_AnimatableView" priority="P1" purpose="Android - Validate if app view can not be scaled up and down when disabling animatable view" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Disable_AnimatableView" priority="P2" purpose="Android - Validate if app view can not be scaled up and down when disabling animatable view" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Disable_AnimatableView.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Background_Color" priority="P1" purpose="Android - Validate if app can be started with background color" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Background_Color" priority="P2" purpose="Android - Validate if app can be started with background color" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Background_Color.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Default_Splash_Screen" priority="P1" purpose="Android - Validate if app can be started with default splash screen" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Default_Splash_Screen" priority="P2" purpose="Android - Validate if app can be started with default splash screen" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Default_Splash_Screen.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Custom_Icon_Splash_Screen" priority="P1" purpose="Android - Validate if app can be started with custom icon splash screen" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Custom_Icon_Splash_Screen" priority="P2" purpose="Android - Validate if app can be started with custom icon splash screen" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Custom_Icon_Splash_Screen.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Start_Url_Http" priority="P1" purpose="Android - Validate if app can be started with http" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Manifest_Start_Url_Http" priority="P2" purpose="Android - Validate if app can be started with http" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/Manifest_Start_Url_Http.html</test_script_entry>
         </description>

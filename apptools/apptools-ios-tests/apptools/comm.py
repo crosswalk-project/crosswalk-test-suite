@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import os
 import sys
@@ -40,10 +41,12 @@ ConstPath = os.path.dirname(SCRIPT_PATH)
 def setUp():
     global XwalkPath, PackTools
 
-    PackTools = ConstPath + "/../tools/crosswalk-app-tools/src/"
+    PackTools = os.environ.get('CROSSWALK_APP_SRC')
+    if not PackTools:
+        PackTools = ConstPath + "/../tools/crosswalk-app-tools/src/"
 
     XwalkPath = ConstPath + "/../tools/"
-    if "crosswalk-app-tools" not in os.listdir(XwalkPath):
+    if not PackTools and "crosswalk-app-tools" not in os.listdir(XwalkPath):
         print "Please check if the crosswalk-app-tools exists in " + ConstPath + "/../tools/"
         sys.exit(1)
 

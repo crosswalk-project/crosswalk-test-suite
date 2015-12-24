@@ -37,15 +37,6 @@ import json
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_packageID(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
-            data = json.load(json_file)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
-
     def test_update_packageID(self):
         comm.setUp()
         comm.create(self)

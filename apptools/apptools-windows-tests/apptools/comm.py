@@ -50,14 +50,13 @@ def setUp():
     HOST_PREFIX = "node "
     SHELL_FLAG = "False"
 
-    PackTools = ConstPath + "/../tools/crosswalk-app-tools/src/"
+    PackTools = os.environ.get('CROSSWALK_APP_SRC')
+    if not PackTools:
+        PackTools = ConstPath + "/../tools/crosswalk-app-tools/src/"
 
     XwalkPath = ConstPath + "/../tools/"
-    if "crosswalk-app-tools" not in os.listdir(XwalkPath):
+    if not PackTools and "crosswalk-app-tools" not in os.listdir(XwalkPath):
         print "Please check if the crosswalk-app-tools exists in " + ConstPath + "/../tools/"
-        sys.exit(1)
-    elif "crosswalk-app-tools" in os.listdir(XwalkPath) and len(os.listdir(XwalkPath)) < 2:
-        print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
         sys.exit(1)
     if not cachedir:        
         for i in range(len(os.listdir(XwalkPath))):
@@ -67,6 +66,9 @@ def setUp():
         for i in range(len(os.listdir(cachedir))):
             if os.listdir(cachedir)[i].endswith(".zip"):
                 windowsCrosswalk = os.listdir(cachedir)[i]
+    if not windowsCrosswalk:
+        print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
+        sys.exit(1)
 
 def getstatusoutput(cmd, time_out=DEFAULT_CMD_TIMEOUT):
     pre_time = time.time()

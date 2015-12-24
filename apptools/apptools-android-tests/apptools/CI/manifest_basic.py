@@ -26,18 +26,32 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#         Liu, Yun <yunx.liu@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import unittest
 import os
-import comm
 from xml.etree import ElementTree
 import json
-
+import sys
+sys.path.append("../")
+import comm
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_icon_change_size(self):
+    def test_apkName_contains_appVersion(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
+            data = json.load(json_file)
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        appVersion = comm.build(self, buildcmd)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.1")
+        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), appVersion)
+
+    def test_display_fullscreen(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
@@ -45,7 +59,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["icons"][0]["sizes"] = "528x528"
+        jsonDict["display"] = "fullscreen"
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
@@ -53,7 +67,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
-    def test_icon_change_any_size(self):
+    def test_multiple_icons(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
@@ -61,7 +75,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["icons"][0]["sizes"] = "any"
+        jsonDict["icons"] = [{"src":"icon.png","sizes":"72x72"},{"src": "../../../icon/icon.gif","sizes": "82x82"},{"src": "../../../icon/icon.jpg","sizes": "97x97"},{"src": "../../../icon/icon.bmp","sizes": "117x117"}]
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         buildstatus = os.system(buildcmd)
@@ -69,101 +83,57 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
 
-    def test_icon_gif(self):
+    def test_name_normal(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["icons"][0]["src"] = "../../../icon/icon.gif"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
+        comm.build(self, buildcmd)
+        root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
+        application_attributes = root.find('application').attrib
+        for x in application_attributes.keys():
+            if x.find("label") != -1:
+                application_xml = application_attributes[x]
+                break
+        activity_attributes = root.find('application').find('activity').attrib
+        for y in activity_attributes.keys():
+            if y.find("label") != -1:
+                activity_xml = activity_attributes[y]
+                break
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
+        self.assertEquals(application_xml, "org.xwalk.test")
+        self.assertEquals(activity_xml, "org.xwalk.test")
 
-    def test_icon_jpg(self):
+    def test_packageID_normal(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["icons"][0]["src"] = "../../../icon/icon.jpg"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
+            data = json.load(json_file)
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
+        self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
 
-    def test_icon_bmp(self):
+    def test_versionCode_normal(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["icons"][0]["src"] = "../../../icon/icon.bmp"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
+        buildstatus = os.popen(buildcmd).readlines()
+        index = 0
+        for x in range(len(buildstatus),0,-1):
+            index = x -1
+            if buildstatus[index].find("Using android:versionCode") != -1:
+                break
+        versionCode = buildstatus[index].strip(" *\nUsing android:versionCode").split(' ')[-1][1:-1]
+        root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
+        attributes = root.attrib
+        for x in attributes.keys():
+            if x.find("versionCode") != -1:
+                versionCode_xml = attributes[x]
+                break
         comm.run(self)
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
-
-    def test_icon_webp(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["icons"][0]["src"] = "../../../icon/icon.webp"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
-
-    def test_non_exist_icon(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["icons"][0]["src"] = "icon/icon.png"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
-        comm.clear("org.xwalk.test")
-        self.assertNotEquals(buildstatus, 0)
-
-    def test_icons_default(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["icons"] = []
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
+        self.assertEquals(versionCode, versionCode_xml)
 
 if __name__ == '__main__':
     unittest.main()

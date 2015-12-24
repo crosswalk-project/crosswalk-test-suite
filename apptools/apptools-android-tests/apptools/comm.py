@@ -137,16 +137,14 @@ def setUp():
     BIT = vp_version.split(" ")[1]
     vp.close()
 
-    PackTools = ConstPath + "/../tools/crosswalk-app-tools/src/"
+    PackTools = os.environ.get('CROSSWALK_APP_SRC')
+    if not PackTools:
+        PackTools = ConstPath + "/../tools/crosswalk-app-tools/src/"
 
     XwalkPath = ConstPath + "/../tools/"
-    if "crosswalk-app-tools" not in os.listdir(XwalkPath):
+    if not PackTools and "crosswalk-app-tools" not in os.listdir(XwalkPath):
         print "Please check if the crosswalk-app-tools exists in " + ConstPath + "/../tools/"
         sys.exit(1)
-    elif "crosswalk-app-tools" in os.listdir(XwalkPath) and len(os.listdir(XwalkPath)) < 2:
-        print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
-        sys.exit(1)
-
     if BIT == "64":
         crosswalkzip = XwalkPath + 'crosswalk-{}-64bit.zip'.format(crosswalkVersion)
         ANDROID_TARGETS = ' --android-targets="arm64-v8a x86_64"'

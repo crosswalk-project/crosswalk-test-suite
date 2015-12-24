@@ -36,29 +36,7 @@ import commands
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_build_release_sdk(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        buildcmd = comm.PackTools + "crosswalk-app build release --ios-sdk iphoneos"
-        comm.build(self, buildcmd)
-        comm.clear("org.xwalk.test")
 
-    def test_build_release_sign(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        buildcmd = comm.PackTools + 'crosswalk-app build release --ios-sign "iPhone Developer: M VINCENT DAUBRY (J9TS3TJRYX)"'
-        comm.build(self, buildcmd)
-        comm.clear("org.xwalk.test")
-
-    def test_build_release_provison(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        buildcmd = comm.PackTools + 'crosswalk-app build release --ios-provison "ios"'
-        comm.build(self, buildcmd)
-        comm.clear("org.xwalk.test")
 
 if __name__ == '__main__':
     unittest.main()

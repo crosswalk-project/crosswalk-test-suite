@@ -38,27 +38,6 @@ import shutil
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_name_normal(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        comm.build(self, buildcmd)
-        root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
-        application_attributes = root.find('application').attrib
-        for x in application_attributes.keys():
-            if x.find("label") != -1:
-                application_xml = application_attributes[x]
-                break
-        activity_attributes = root.find('application').find('activity').attrib
-        for y in activity_attributes.keys():
-            if y.find("label") != -1:
-                activity_xml = activity_attributes[y]
-                break
-        comm.clear("org.xwalk.test")
-        self.assertEquals(application_xml, "org.xwalk.test")
-        self.assertEquals(activity_xml, "org.xwalk.test")
-
     def test_update_name(self):
         comm.setUp()
         comm.create(self)
