@@ -5,7 +5,6 @@ import os.path
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
-ARCH = "x86"
 
 
 def geUnitcase():
@@ -19,8 +18,7 @@ def geUnitcase():
             "#!/usr/bin/env python \n# coding=utf-8 \nimport random,os,sys,unittest,run_app,codecs \nreload(sys) \nsys.setdefaultencoding( \"utf-8\" ) \nclass TestCaseUnit(unittest.TestCase): \n ")
         casePath = ConstPath + "/tcs/"
         fp = open(ConstPath + "/arch.txt")
-        if fp.read().strip("\n\t") != "x86":
-            ARCH = "arm"
+        ARCH = fp.read().strip("\n\t")
         fp.close()
         newcl = []
         cl = os.listdir(casePath)

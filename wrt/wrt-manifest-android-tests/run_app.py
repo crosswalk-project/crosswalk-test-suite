@@ -7,7 +7,6 @@ import commands
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
-ARCH = "x86"
 
 
 def tryRunApp(num, caseDir):
@@ -28,8 +27,7 @@ def tryRunApp(num, caseDir):
             sys.exit(1)
 
         fp = open(ConstPath + "/arch.txt")
-        if fp.read().strip("\n\t") != "x86":
-            ARCH = "arm"
+        ARCH = fp.read().strip("\n\t")
         fp.close()
         resultfile = open(apkDir + "/apks/" + ARCH + "/Pkg_result.txt")
         lines = resultfile.readlines()
