@@ -1,6 +1,6 @@
 ## Introduction
 
-pack_cordova_sample.py is used for auto build Cordova sample apps, including mobilespec, helloworld, remotedebugging, spacedodge, renamePkg, setBackgroundColor, xwalkCommandLine, privateNotes, setUserAgent and except renamePkg, setBackgroundColor, xwalkCommandLine and setUserAgent only support Cordova 4.x, others support both Cordova 3.6 and Cordova 4.x build.  
+pack_cordova_sample.py is used for auto build Cordova sample apps, including mobilespec, helloworld, remotedebugging, spacedodge, renamePkg, setBackgroundColor, xwalkCommandLine, privateNotes, setUserAgent, LoadExtension and except renamePkg, setBackgroundColor, xwalkCommandLine, setUserAgent and LoadExtension only support Cordova 4.x, others support both Cordova 3.6 and Cordova 4.x build.  
 **Note**: For cordova 4.x pkg, need to configure crosswalk version in crosswalk-test-suite/VERSION file
 
 ## Pre-conditions
@@ -36,7 +36,7 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 ## Usage
 
 * ```./pack_cordova_sample.py -n <pkg-name> --cordova-version <cordova-version> [-m <pkg-mode>] [-a <pkg-arch>] [--tools=<tools-path>]```  
-**pkg-name**: mobilespec, helloworld, remotedebugging, spacedodge, CIRC, statusbar, renamePkg, setBackgroundColor, xwalkCommandLine, privateNotes, setUserAgent  
+**pkg-name**: mobilespec, helloworld, remotedebugging, spacedodge, CIRC, statusbar, renamePkg, setBackgroundColor, xwalkCommandLine, privateNotes, setUserAgent, LoadExtension  
 **cordova-version**: 3.6, 4.x  
 **pkg-mode**: embedded(default), shared  
 **pkg-arch**: arm(default), x86  
