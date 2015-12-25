@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import unittest
 import os
@@ -35,14 +36,6 @@ import commands
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
-
-    def test_build_normal(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        buildcmd = comm.PackTools + "crosswalk-app build"
-        comm.build(self, buildcmd)
-        comm.clear("org.xwalk.test")
 
     def test_build_release(self):
         comm.setUp()

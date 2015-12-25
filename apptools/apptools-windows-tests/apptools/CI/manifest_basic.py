@@ -30,18 +30,38 @@
 
 import unittest
 import os
+from xml.etree import ElementTree
+import json
+import sys
+sys.path.append("../")
 import comm
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_list_target_platforms(self):
+    def test_display_fullscreen(self):
         comm.setUp()
-        os.chdir(comm.XwalkPath)
-        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app platforms"
-        status = os.popen(cmd).readlines()
-        self.assertEquals("android", status[0].strip(" * " + os.linesep))
-        self.assertEquals("windows", status[1].strip(" * " + os.linesep))
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
+        jsons = jsonfile.read()
+        jsonfile.close()
+        jsonDict = json.loads(jsons)
+        jsonDict["display"] = "fullscreen"
+        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        buildstatus = os.system(buildcmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(buildstatus, 0)
+
+    def test_packageID_normal(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
+            data = json.load(json_file)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
 
 if __name__ == '__main__':
     unittest.main()

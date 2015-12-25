@@ -37,28 +37,6 @@ import json
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_versionCode_normal(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.popen(buildcmd).readlines()
-        index = 0
-        for x in range(len(buildstatus),0,-1):
-            index = x -1
-            if buildstatus[index].find("Using android:versionCode") != -1:
-                break
-        versionCode = buildstatus[index].strip(" *\nUsing android:versionCode").split(' ')[-1][1:-1]
-        root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
-        attributes = root.attrib
-        for x in attributes.keys():
-            if x.find("versionCode") != -1:
-                versionCode_xml = attributes[x]
-                break
-        comm.run(self)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(versionCode, versionCode_xml)
-
     def test_update_app_version(self):
         comm.setUp()
         comm.create(self)

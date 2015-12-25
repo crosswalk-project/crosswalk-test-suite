@@ -30,20 +30,74 @@
 
 import unittest
 import os
-import comm
 import commands
 import urllib2
 import json
+import sys
+sys.path.append("../")
+import comm
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
+    def test_build_debug(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        buildcmd = comm.PackTools + "crosswalk-app build"
+        comm.build(self, buildcmd)
+        comm.clear("org.xwalk.test")
+
+    def test_build_release_sdk(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        buildcmd = comm.PackTools + "crosswalk-app build release --ios-sdk iphoneos"
+        comm.build(self, buildcmd)
+        comm.clear("org.xwalk.test")
+
+    def test_build_release_sign(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        buildcmd = comm.PackTools + 'crosswalk-app build release --ios-sign "iPhone Developer: M VINCENT DAUBRY (J9TS3TJRYX)"'
+        comm.build(self, buildcmd)
+        comm.clear("org.xwalk.test")
+
+    def test_build_release_provison(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        buildcmd = comm.PackTools + 'crosswalk-app build release --ios-provison "ios"'
+        comm.build(self, buildcmd)
+        comm.clear("org.xwalk.test")
+
+    def test_create_with_platform_ios(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platform=ios"
+        packstatus = commands.getstatusoutput(cmd)
+        os.chdir('org.xwalk.test')
+        buildcmd = comm.PackTools + "crosswalk-app build"
+        comm.build(self, buildcmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(packstatus[0], 0)
+
+    def test_list_target_platforms(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        cmd = comm.PackTools + "crosswalk-app platforms"
+        status = os.popen(cmd).readlines()
+        self.assertEquals("ios", status[0].strip(" *\n"))
+        self.assertEquals("android", status[1].strip(" *\n"))
 
     def test_version_normal(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         cmd = comm.PackTools + "crosswalk-app version"
         versionstatus = commands.getstatusoutput(cmd)
-        with open(comm.ConstPath + "/../tools/crosswalk-app-tools/package.json") as json_file:
+        with open(comm.PackTools + "../package.json") as json_file:
             data = json.load(json_file)
         self.assertEquals(
             data['version'].strip("\n\t"),

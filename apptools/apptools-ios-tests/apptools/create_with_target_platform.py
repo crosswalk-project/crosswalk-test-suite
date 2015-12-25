@@ -36,19 +36,6 @@ import comm
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-
-    def test_create_with_platform_ios(self):
-        comm.setUp()
-        os.chdir(comm.XwalkPath)
-        comm.clear("org.xwalk.test")
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platform=ios"
-        packstatus = commands.getstatusoutput(cmd)
-        os.chdir('org.xwalk.test')
-        buildcmd = comm.PackTools + "crosswalk-app build"
-        comm.build(self, buildcmd)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(packstatus[0], 0)
-
     def test_create_with_platform_android(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)

@@ -37,19 +37,6 @@ import json
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_versionCode_normal(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
-            data = json.load(json_file)
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        appVersion = comm.build(self, buildcmd)
-        comm.run(self)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.1")
-        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), appVersion)
-
     def test_update_app_version(self):
         comm.setUp()
         comm.create(self)
