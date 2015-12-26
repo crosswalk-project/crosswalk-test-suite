@@ -42,6 +42,7 @@ import build_cordova
 import build_embeddingapi
 import build_extension
 import build_deb
+import build_msi
 import varshop
 import utils
 
@@ -56,7 +57,8 @@ PKG_TYPES = [
     "cordova-aio",
     "cordova",
     "embeddingapi",
-    "deb"]
+    "deb",
+    "msi"]
 PKG_BLACK_LIST = []
 PACK_TYPES = ["ant", "gradle", "maven"]
 CORDOVA_PACK_TYPES = ["npm", "local"]
@@ -249,6 +251,9 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
     elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "DEB"):
         if not build_deb.packDeb(build_json, app_src, app_dest, app_name):
             return False
+    elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "MSI"):
+        if not build_msi.packMsi(build_json, app_src, app_dest, app_name):
+            return False
     else:
         LOG.error("Got wrong pkg type: %s" % BUILD_PARAMETERS.pkgtype)
         return False
@@ -324,9 +329,14 @@ def buildPKGAPP(build_json=None):
         if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "manifest.json"),
                       os.path.join(BUILD_ROOT_SRC_PKG_APP, "manifest.json")):
             return False
-    if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "icon.png"),
-                  os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.png")):
-        return False
+    if os.path.exists(os.path.join(BUILD_ROOT_SRC, "icon.png")):
+        if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "icon.png"),
+                      os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.png")):
+            return False
+    if os.path.exists(os.path.join(BUILD_ROOT_SRC, "icon.ico")):
+        if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "icon.ico"),
+                      os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.ico")):
+            return False
 
     hosted_app = False
     if utils.safelyGetValue(build_json, "hosted-app") == "true":
