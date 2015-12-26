@@ -27,38 +27,33 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>startSession</title>
+<title>PresentationConnection.onmessage</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation">
+<link rel="help" href="http://w3c.github.io/presentation-api/#interface-presentationconnection">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<div id="precondition">
-  <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
-</div>
 <div id="log"></div>
 <script>
-
-setup({ explicit_timeout: true })
-
-var presUrl = location.protocol + "//" + location.host
-            + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
-
 async_test(function(t) {
-  navigator.presentation.startSession(presUrl)
-  .then(function(newSession) {
-    t.step(function() {
-      assert_true(newSession instanceof PresentationSession);
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  request.start()
+    .then(function(connection) {
+      assert_true(connection instanceof PresentationConnection);
+      connection.onconnected = t.step_func(function() {
+        assert_equals(this.state, "connected");
+        this.onmessage = t.step_func_done(function(evt) {
+          assert_equals(evt.type, "message", "evt.type");
+          assert_false(evt.bubbles, "evt.bubbles");
+          assert_false(evt.cancelable, "evt.cancelable");
+        });
+        this.send("ping");
+      });
+    })
+    .catch(function(ex) {
+      assert_unreached(ex.name + ":" + ex.message);
     });
-    t.done();
-  }, function(error) {
-    t.step(function() {
-      assert_unreached(error.name);
-    });
-    t.done();
-  });
-
-}, "navigator.presentation.startSession should return PresentationSession Object")
-
+}, "Check that onmessage event is fired when user agent receive message through a PresentationConnection.");
 </script>
 

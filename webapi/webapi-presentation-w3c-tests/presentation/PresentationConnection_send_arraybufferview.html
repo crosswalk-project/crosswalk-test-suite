@@ -27,39 +27,38 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Availability basic attribute</title>
+<title>PresentationConnection send ArrayBufferView data</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-availability">
+<link rel="help" href="http://w3c.github.io/presentation-api/#interface-presentationconnection">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<div id="precondition">
-  <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
-</div>
 <div id="log"></div>
 <script>
-
-setup({ explicit_timeout: true })
-
-var presUrl = location.protocol + "//" + location.host
-            + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
-
 async_test(function(t) {
-  navigator.presentation.getAvailability(presUrl)
-  .then(function(availability) {
-    t.step(function() {
-      assert_true("value" in availability, "availability should implement value attribute");
-      assert_true("onchange" in availability, "availability should implement onchange event");
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  request.start()
+    .then(function(connection) {
+      connection.onconnected = t.step_func(function() {
+        this.binaryType = "arraybuffer";
+        var buffer = new ArrayBuffer(8);
+        var int8View = new Int8Array(buffer);
+        for(var i= 0; i < 8; i++) {
+          int8View[i] = i;
+        }
+        this.onmessage = t.step_func_done(function(evt) {
+          var data = new Int8Array(evt.data);
+          for(var i= 0; i < data.length; i++) {
+            assert_equals(data[i], int8View[i]);
+          }
+        });
+        this.send(int8View);
+      });
+    })
+    .catch(function(ex) {
+      assert_unreached(ex.name + ":" + ex.message);
     });
-    t.done();
-  }, function(error) {
-    t.step(function() {
-      assert_unreached(error.name);
-    });
-    t.done();
-  });
-
-});
-
+}, "Check that PresentationConnection can send arraybufferview data.");
 </script>
 

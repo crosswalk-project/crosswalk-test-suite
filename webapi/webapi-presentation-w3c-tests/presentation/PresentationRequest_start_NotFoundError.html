@@ -27,29 +27,25 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
+<title>PresentationRequest.start() throws 'NotFoundError'</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<div id="msg"></div>
+<link rel="help" href="http://www.w3.org/TR/presentation-api/#dom-presentationrequest-start">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
 <script>
-  var msg = document.getElementById("msg");
-
-  navigator.presentation.getSession().then(function(session) {
-    session.onmessage = function(evt) {
-      var buffer = evt.data;
-      msg.innerHTML = "<font color='green'>Event's data type is ArrayBuffer: "
-                    + (buffer instanceof ArrayBuffer)
-                    + "</font>";
-    }
-  });
-
-  //Crosswalk implement handler
-  /*
-  window.addEventListener("messagetoremote", function(evt) {
-      var buffer = evt.data;
-      msg.innerHTML = "<font color='green'>Event's data type is ArrayBuffer: "
-                      + (buffer instanceof ArrayBuffer)
-                      + "</font>";
-  }, false);
-  */
+promise_test(function(t) {
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  assert_true(request instanceof PresentationRequest);
+  return request.start()
+    .then(function() {
+    })
+    .catch(function(ex) {
+      assert_true(ex instanceof DOMException);
+      assert_equals(ex.name, "NotFoundError");
+    });
+}, "PresentationRequest.start() throws a 'NotFoundError' exception when no available presentation displays.");
 </script>
 

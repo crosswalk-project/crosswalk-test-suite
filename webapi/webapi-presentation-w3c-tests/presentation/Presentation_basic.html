@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -27,24 +27,42 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
+<title>Presentation basic attributes</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://w3c.github.io/presentation-api/#interface-presentationconnectionlist">
+<link rel="help" href="https://w3c.github.io/presentation-api/#interface-presentation">
+<link rel="help" href="https://w3c.github.io/presentation-api/#idl-def-presentationrequest">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
 <script>
-  var addConnection = function(connection) {
-    connection.onconnected = function () {
-      this.onmessage = function (evt) {
-        this.send(evt.data);
-      };
-  };
-  navigator.receiver.connectionList
-    .then(function(list) {
-      list.onconnectionavailable = function(connections) {
-        addConnection(connections[connections.length-1]);
-      };
-      list.connections.map(function(connection) {
-        addConnection(connection);
-      });
-    });
+
+test(function() {
+  assert_true("presentation" in navigator);
+  assert_true("defaultRequest" in navigator.presentation);
+}, "Check that the Presentation API is present");
+
+test(function() {
+  assert_equals(typeof(navigator.presentation), "object");
+  assert_equals(typeof(navigator.presentation.defaultRequest), "object");
+}, "Check that the Presentation API property types.");
+
+test(function() {
+  assert_true("PresentationRequest" in window);
+  var request = new PresentationRequest("display/presentation.html");
+  assert_true("start" in request);
+  assert_true("reconnect" in request);
+  assert_true("getAvailability" in request);
+  assert_true("onconnectionavailable" in request);
+}, "Check that the PresentationRequest API is present");
+
+test(function() {
+  var request = new PresentationRequest("display/presentation.html");
+  assert_equals(typeof(request.start), "function");
+  assert_equals(typeof(request.reconnect), "function");
+  assert_equals(typeof(request.getAvailability), "function");
+  assert_equals(typeof(request.onconnectionavailable), "object");
+}, "Check that the PresentationRequest API property types.");
+
 </script>
 

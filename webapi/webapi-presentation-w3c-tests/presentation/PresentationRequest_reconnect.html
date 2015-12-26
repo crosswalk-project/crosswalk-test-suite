@@ -27,24 +27,46 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
+<title>PresentationRequest.reconnect()</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://w3c.github.io/presentation-api/#interface-presentationconnectionlist">
+<link rel="help" href="http://w3c.github.io/presentation-api/#dom-presentationrequest-reconnect">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
 <script>
-  var addConnection = function(connection) {
-    connection.onconnected = function () {
-      this.onmessage = function (evt) {
-        this.send(evt.data);
-      };
-  };
-  navigator.receiver.connectionList
-    .then(function(list) {
-      list.onconnectionavailable = function(connections) {
-        addConnection(connections[connections.length-1]);
-      };
-      list.connections.map(function(connection) {
-        addConnection(connection);
+promise_test(function(t) {
+  var presId;
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  return request.start()
+    .then(function(connection) {
+      assert_true(connection instanceof PresentationConnection);
+      presId = connection.id;
+      var closed = new Promise(function(resolve) {
+        connection.onclosed = t.step_func(function() {
+          assert_equals(this.state, "closed");
+          resolve();
+        });
       });
+      var connected = new Promise(function(resolve) {
+        connection.onconnected = t.step_func(function() {
+          this.close();
+          resolve();
+        });
+      });
+      return Promise.all([closed, connected]);
+    })
+    .then(function() {
+      return request.reconnect(presId);
+    })
+    .then(function(reconnection) {
+      assert_true(reconnection instanceof PresentationConnection);
+      assert_equals(reconnection.id, presId);
+    })
+    .catch(function(ex) {
+      assert_unreached(ex.name + ":" + ex.message);
     });
+}, "Check that PresentationRequest.reconnect() can reconnect the presentation displays with known presentationId.");
 </script>
 

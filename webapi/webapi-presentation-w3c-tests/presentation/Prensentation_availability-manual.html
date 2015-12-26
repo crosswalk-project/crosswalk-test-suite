@@ -27,32 +27,27 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Throw NotFoundError exception</title>
+<title>PresentationAvailability</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#starting-a-presentation-session">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
-<div id="precondition">
-  <p>Turn off 'Simulate Secondary Display' by 'Setting' app.</p>
-</div>
-<div id="log"></div>
-<script>
-  var presUrl = location.protocol + "//" + location.host
-              + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
-
-  async_test(function(t) {
-    navigator.presentation.startSession(presUrl).then(function(newSession) {
-      t.step(function() {
-        assert_unreached("unreached here");
-      });
-      t.done();
-    }, function(error) {
-      t.step(function() {
-        assert_equals(error.name, "NotFoundError");
-      });
-      t.done();
+<link rel="author" title="Givenname Surname" href="mailto:givenname.surname@intel.com">
+<link rel="help" href="http://w3c.github.io/presentation-api/">
+<meta name="assert" content="Test checks that user agent monitors availability of presentation displays.">
+<body>
+  <p>Test passes if there is a button with 'Present' displayed.</p>
+  <button id="presentBtn" style="display: none;">Present</button>
+  <script>
+    var presentBtn = document.getElementById("presentBtn");
+    var presUrl = "display/presentation.html";
+    var handleAvailabilityChange = function(available) {
+      presentBtn.style.display = available ? "inline" : "none";
+    };
+    var request = new PresentationRequest(presUrl);
+    request.getAvailability().then(function(available) {
+      handleAvailabilityChange(available.value);
+      available.onchange = function() {
+        handleAvailabilityChange(this.value);
+      };
     });
-  }, "No available presentation displays will throw a DOMException named 'NotFoundError'");
-</script>
+  </script>
+</body>
 

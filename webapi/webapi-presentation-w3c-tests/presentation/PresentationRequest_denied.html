@@ -27,24 +27,22 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
+<title>PresentationRequest.start() throws 'AbortError'</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://w3c.github.io/presentation-api/#interface-presentationconnectionlist">
+<link rel="help" href="http://w3c.github.io/presentation-api/#starting-a-presentation">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
 <script>
-  var addConnection = function(connection) {
-    connection.onconnected = function () {
-      this.onmessage = function (evt) {
-        this.send(evt.data);
-      };
-  };
-  navigator.receiver.connectionList
-    .then(function(list) {
-      list.onconnectionavailable = function(connections) {
-        addConnection(connections[connections.length-1]);
-      };
-      list.connections.map(function(connection) {
-        addConnection(connection);
-      });
+promise_test(function(t) {
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  request.start()
+    .then(function(connection) {
+    }, function(error) {
+      assert_equals(error.name, "AbortError");
     });
+}, "Check that PresentationRequest.start() throws a AbortError exception when the user denies permission.");
 </script>
 

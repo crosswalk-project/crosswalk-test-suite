@@ -27,31 +27,28 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>PresentationSession state</title>
+<title>PresentationRequest.onconnectionavailable</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession">
-
-<div id="precondition">
-  <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
-</div>
-<p>Test passes if Session state value is "connected" or "disconnected".
-</p>
-Session state:
-<div id="state"></div>
+<link rel="help" href="http://w3c.github.io/presentation-api/#event-handlers">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
 <script>
-  var sessionState = document.getElementById("state"); 
-  var presUrl = location.protocol + "//" + location.host
-              + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
- 
-    navigator.presentation.startSession(presUrl)
-      .then(function(newSession) {
-        newSession.onstatechange =function() {
-          sessionState.innerHTML = newSession.state;
-        }
-
-        sessionState.innerHTML = newSession.state;
-      });
-
+async_test(function(t) {
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  request.onconnectionavailable = t.step_func_done(function(evt) {
+    assert_equals(evt.type, "connectionavailable");
+    assert_true(evt.connection instanceof PresentationConnection);
+    t.done();
+  });
+  request.start()
+    .then(function(connection) {
+    })
+    .catch(function(ex) {
+      assert_unreached(ex.name + ":" + ex.message);
+    });
+}, "onconnectionavailable is fired when the user agent starts a presentation successfully.");
 </script>
 

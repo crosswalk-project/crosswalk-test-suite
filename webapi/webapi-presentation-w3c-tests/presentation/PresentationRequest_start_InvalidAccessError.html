@@ -27,25 +27,24 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
+<title>PresentationRequest.start() throws 'InvalidAccessError'</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<video controls="controls"></video>
+<link rel="help" href="http://w3c.github.io/presentation-api/#starting-a-presentation">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
 <script>
-  var video = document.querySelector("video");
-
-  navigator.presentation.getSession().then(function(session) {
-    session.onmessage = function(evt) {
-      video.src = evt.data;
-      video.play();
-    }
-  });
-
-  //Crosswalk implement handler
-  /*
-  window.addEventListener("messagetoremote", function(evt) {
-      video.src = evt.data;
-      video.play();
-  }, false);
-  */
+promise_test(function(t) {
+  var request = new PresentationRequest("http://example.com");
+  assert_true(request instanceof PresentationRequest);
+  return request.start()
+    .then(function() {
+    })
+    .catch(function(ex) {
+      assert_true(ex instanceof DOMException);
+      assert_equals(ex.name, "InvalidAccessError");
+    });
+}, "PresentationRequest.start() requires user gesture.");
 </script>
 

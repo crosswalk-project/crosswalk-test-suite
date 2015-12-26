@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>PresentationConnection basic attributes</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="https://w3c.github.io/presentation-api/#interface-presentationconnection">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+promise_test(function(t) {
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  return request.start()
+    .then(function(connection) {
+      assert_true(connection instanceof PresentationConnection);
+      assert_true(connection instanceof EventTarget);
+      assert_true("id" in connection, "connection.id exists");
+      assert_equals(typeof(connection.value), "DOMString", "connection.id is type of string");
+      assert_readonly(connection, "id", "connection.id is readonly");
+      assert_true("state" in connection, "connection.state exists");
+      assert_equals(typeof(connection.state), "object", "connection.state is type of object");
+      assert_readonly(connection, "state", "connection.state is readonly");
+      assert_true("close" in connection, "connection.close exists");
+      assert_equals(typeof(connection.close), "function", "connection.close is type of function");
+      assert_true("terminate" in connection);
+      assert_equals(typeof(connection.terminate), "function", "connection.terminate is type of function");
+      assert_true("onconnect" in connection);
+      assert_equals(typeof(connection.onconnect), "object", "connection.onconnect is type of object");
+      assert_true("onclose" in connection);
+      assert_equals(typeof(connection.onclose), "object", "connection.onclose is type of object");
+      assert_true("onterminate" in connection);
+      assert_equals(typeof(connection.onterminate), "object", "connection.onterminate is type of object");
+      assert_true("binaryType" in connection);
+      assert_equals(typeof(connection.binaryType), "object", "connection.binaryType is type of object");
+      assert_true("onmessage" in connection);
+      assert_equals(typeof(connection.onmessage), "object", "connection.onmessage is type of object");
+      assert_true("send" in connection);
+      assert_equals(typeof(connection.send), "function", "connection.send is type of function");
+    })
+    .catch(function(ex) {
+      assert_unreached(ex.name + ":" + ex.message);
+    });
+}, "Check that the PresentationConnection API is present.");
+
+</script>
+
