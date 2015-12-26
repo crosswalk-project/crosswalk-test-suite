@@ -1,0 +1,41 @@
+{
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "pmwindows": "pmwindows",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      },
+      "subapp-list": {
+        "testapp": {
+          "copylist": {
+            "../icon.png": "icon.ico"
+          },
+          "install-path": "pmwindows",
+          "apk-url-opt": "http://www.baidu.com"
+        }
+      }
+    }
+  },
+  "pkg-name": "wrt-packagemgt-tests"
+}
