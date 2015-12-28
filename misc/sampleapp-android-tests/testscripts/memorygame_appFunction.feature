@@ -1,7 +1,7 @@
 Feature: memory game
  Scenario: memory game launch checking
   When launch "memorygame"
-   Then I should see title "Memory Game for Older Kids"
+   Then I should see title "Memory Cards for Older Kids"
    And I press "pagebg"
 
    # check help
@@ -25,7 +25,7 @@ Feature: memory game
 
  Scenario: memory game play checking
   When launch "memorygame"
-   Then I should see title "Memory Game for Older Kids"
+   Then I should see title "Memory Cards for Older Kids"
 
    And I press "pagebg"
    And I press "selLevel_levelCard1"
