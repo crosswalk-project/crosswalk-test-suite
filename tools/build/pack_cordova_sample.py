@@ -312,13 +312,6 @@ def createIndexFile(index_file_path=None, hosted_app=None):
                            '<button onclick="StatusBar.show();">Status Bar Show</button><br><br>\n' \
                            '<p>Click "Status Bar Hide" button to hide status bar:</p>\n' \
                            '<button onclick="StatusBar.hide();">Status Bar Hide</button>'
-        elif hosted_app == "setBackgroundColor":
-            html_content = '<script src="./cordova.js"></script>\n' \
-                           '<div id="header">\n' \
-                           '  <h3 id="main_page_title">BackgroundColor Test</h3>\n' \
-                           '</div>\n<br><br>\n' \
-                           '<p>This page\'s background color should be red</p>\n' \
-                           '<a href="https://crosswalk-project.org">crosswalk</a>\n'
         index_file = open(index_file_path, "w")
         index_file.write(html_content)
         index_file.close()
@@ -415,6 +408,8 @@ def copySampleSource(app_name, target_path):
         source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk-samples", "space-dodge-game", "base")
     if checkContains(app_name, "PRIVATENOTES"):
         source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "sample-my-private-notes", "www")
+    if checkContains(app_name, "SETBACKGROUNDCOLOR"):
+        source_path = os.path.join(BUILD_PARAMETERS.pkgpacktools, "..", "usecase", "usecase-cordova-android-tests", "samples", "SetBackgroundColor", "res")
 
     if source_path:
         if not doCopy(source_path,
@@ -956,7 +951,6 @@ def packSampleApp_cli(app_name=None):
             'config.xml',
             '</widget>',
             '    <preference name="BackgroundColor" value="0xFFFF0000" />\n</widget>')
-        createIndexFile(os.path.join(project_root, "www", "index.html"), "setBackgroundColor")
 
     if checkContains(app_name, "STATUSBAR"):
         replaceUserString(
@@ -1106,6 +1100,12 @@ def main():
             "--pack-type",
             dest="packtype",
             help="specify the pack type, e.g. npm, local")
+        opts_parser.add_option(
+            "-l",
+            "--list",
+            dest="appList",
+            action="store_true",
+            help="show the sample app name list")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
@@ -1115,6 +1115,15 @@ def main():
     except Exception as e:
         LOG.error("Got wrong options: %s, exit ..." % e)
         sys.exit(1)
+
+    if BUILD_PARAMETERS.appList:
+        PKG_NAMES.remove("Eh")
+        PKG_NAMES.remove("CIRC")
+        print "APP_LIST=\""
+        for appName in PKG_NAMES:
+            print appName
+        print "\""
+        sys.exit(0)
 
     srcdir = os.getcwd()
     srcdir = os.path.expanduser(srcdir)
