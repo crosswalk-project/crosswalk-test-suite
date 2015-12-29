@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Zhong, Qiu <zhongx.qiu@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>InAppPurchaseDemo_Function</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<body>
+  <p>
+    <strong>Notice</strong>
+    <p>
+      The InAppPurchaseDemo require a specific Apple ID which is provided by the developers. <br />
+        If you have your own Apple ID signed in an iOS device, please sign out before you start the tests.
+    </p>
+  <p>
+    <strong>Test steps:</strong>
+  </p>
+  <ol>
+    <li>Build the project, please refer to <a href="InAppPurchaseDemo_Build.html">Build InAppPurchaseDemo project</a>
+    </li>
+    <li>Connect the iOS device to the Mac OS X system. In Xcode, select <strong>Product</strong> --&gt <strong>Run</strong> to launch the app on the iOS device</li>
+    <li>Check the UI of app InAppPurchaseDemo, follow the text if there is any</li>
+    <li>Purchae products:
+      <ol>
+        <li>Click <strong>Query Products</strong> button</li>
+        <li>Click <strong>Buy Apple</strong> button</li>
+        <li>Select <strong>Use Existing Apple ID</strong></li>
+        <li>Input the Apple ID and password. For the first time it may require you to input twice. Then click <strong>OK</strong> button</li>
+        <li>Click <strong>Confirm</strong> button</li>
+        <li>Click <strong>Allow</strong> button</li>
+      </ol>
+    </li>
+    <li>Click <strong>Get Receipt</strong> button</li>
+    <li>Input the password, and click <strong>OK</strong> button</li>
+    <li>Click <strong>Validate Receipt</strong> button</li>
+    <li>Click <strong>Restore</strong> button</li>
+  </ol>
+  <p>
+    <strong>Expected Results:</strong>
+  </p>
+  <ol>
+    <li>Display message <strong>Build Succeeded</strong> and running the built app</li>
+    <li>Launch the app named <strong>InAppPurchaseDemo</strong> successfully, and no error message, no crash</li>
+    <li>There are 4 buttons <strong>Query Products</strong>, <strong>Validate Receipt</strong>, <strong>Get Receipt</strong> and <strong>Restore</strong>. There is some text below the buttons. The last line displays <strong>Initialization succeeded</strong> and the text contains the Apple ID account information for the test.</li>
+    <li>Purchae products:
+      <ol>
+        <li>Some virtual products like Cherry, Grape, Apple, Pear, Banana with price are listed</li>
+        <li>A dialog popups to ask for choosing existing or new Apple ID</li>
+        <li>A dialog popups to ask for the Apple ID account and password</li>
+        <li>A dialog popups to ask to <strong>Confirm Subscription</strong></li>
+        <li>A dialog popups to ask to <strong>Allow</strong> to share the customer information</li>
+        <li>The UI shows <strong>Purchase succeeded</strong>. There should be no text like "Operation failed"</li>
+      </ol>
+    </li>
+    <li>A dialog popups to ask for the password</li>
+    <li>A long unreadable string shows behind the text <strong>Receipt</strong>. There should be no text like "Operation failed"</li>
+    <li>The last line of the text should be <strong>Validation succeeded.</strong></li>
+    <li>Some product IDs list behind the text <strong>Products restored</strong>. There should be no text like "Restore failed"
+    </li>
+  </ol>
+</body>
