@@ -69,11 +69,13 @@ def packCordova_cli(
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
+    plugin_source = os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins")
     if not os.path.exists(plugin_tool):
-        if not utils.doCopy(
-                os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
-                plugin_tool):
-            return False
+        if os.path.exists(plugin_source):
+            if not utils.doCopy(
+                    os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
+                    plugin_tool):
+                return False
     extra_plugins = os.path.join(BUILD_ROOT, "extra_plugins")
     if os.path.exists(extra_plugins):
         if not utils.doCopy(extra_plugins, plugin_tool):
@@ -163,23 +165,26 @@ def packCordova_cli(
 
     cordova_tmp_path = os.path.join(
         outputs_dir,
-        "%s-%s-debug.apk" %
-        (app_name, apk_name_arch))
-    cordova_tmp_path_spare = os.path.join(
-        outputs_dir,
         "android-%s-debug.apk" %
-        apk_name_arch)
-
+            apk_name_arch)
     if not os.path.exists(cordova_tmp_path):
-        if not utils.doCopy(
-                cordova_tmp_path_spare, os.path.join(app_dest, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
-    else:
-        if not utils.doCopy(
-                cordova_tmp_path, os.path.join(app_dest, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-%s-debug.apk" %
+            (app_name, apk_name_arch))
+        if not os.path.exists(cordova_tmp_path):
+            cordova_tmp_path = os.path.join(
+                outputs_dir,
+                "android-debug.apk")
+            if not os.path.exists(cordova_tmp_path):
+                cordova_tmp_path = os.path.join(
+                    outputs_dir,
+                    "%s-debug.apk" %
+                    app_name)
+    if not utils.doCopy(
+            cordova_tmp_path, os.path.join(app_dest, "%s.apk" % app_name)):
+        os.chdir(orig_dir)
+        return False
     os.chdir(orig_dir)
     return True
 
@@ -197,11 +202,13 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
             return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
+    plugin_source = os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins")
     if not os.path.exists(plugin_tool):
-        if not utils.doCopy(
-                os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
-                plugin_tool):
-            return False
+        if os.path.exists(plugin_source):
+            if not utils.doCopy(
+                    os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
+                    plugin_tool):
+                return False
     extra_plugins = os.path.join(BUILD_ROOT, "extra_plugins")
     if os.path.exists(extra_plugins):
         if not utils.doCopy(extra_plugins, plugin_tool):
