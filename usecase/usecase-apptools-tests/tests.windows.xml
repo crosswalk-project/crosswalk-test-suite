@@ -94,6 +94,59 @@
           <test_script_entry>/opt/usecase-apptools-tests/samples/Windows_Compatible/index.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="Remote_Debugging" purpose="Remote_Debugging Test" type="compliance">
+        <description>
+          <pre_condition>Please refer to README file.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it
+                Then run below commands under usecase-apptools-tests/tools/ directory:
+                  $ node %crosswalk-app% create org.test.foo --platforms=windows --windows-crosswalk=path to xwalk win zip
+                  $ cd org.test.foo
+                  $ node %crosswalk-app% build
+              </step_desc>
+              <expected>Create/Build org.test.foo successfully</expected>
+            </step>
+            <step order="2">
+              <step_desc>Install foo app on windows</step_desc>
+              <expected>Success to install foo app</expected>
+            </step>
+            <step order="3">
+              <step_desc>Right-click app icon and open properties dialog</step_desc>
+              <expected>The "--enable-inspect" show up at the end of the Target entry</expected>
+            </step>
+            <step order="4">
+              <step_desc>Launch the app on Windows, right-click on the app</step_desc>
+              <expected>Launch the foo app successfully and there will be a popup menu "Inspect Element" on right-click</expected>
+            </step>
+            <step order="5">
+              <step_desc>Click "Inspect Element"</step_desc>
+              <expected>Open the inspection page successfully</expected>
+            </step>
+            <step order="6">
+              <step_desc>$ node %crosswalk-app% build release</step_desc>
+              <expected>Build org.test.foo successfully</expected>
+            </step>
+            <step order="7">
+              <step_desc>Install the app on Windows</step_desc>
+              <expected>Success to install foo app</expected>
+            </step>
+            <step order="8">
+              <step_desc>Right-click app icon and open properties dialog</step_desc>
+              <expected>The "--enable-inspect" doesn't show up at the end of the Target entry</expected>
+            </step>
+            <step order="9">
+              <step_desc>Launch the app on Windows, right-click on the app</step_desc>
+              <expected>Launch the foo app successfully and the popup menu will not be shown on right-click</expected>
+            </step>
+            <step order="10">
+              <step_desc>Uninstall foo app on windows</step_desc>
+              <expected>Unistall the foo app successfully</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/usecase-apptools-tests/samples/Remote_Debugging/index.html</test_script_entry>
+        </description>
+      </testcase>
     </set>
   </suite>
 </test_definition>
