@@ -40,6 +40,11 @@ comm.replaceUserString(
         'AndroidManifest.xml',
         'android:supportsRtl="true">',
         'android:supportsRtl="true">\n        <meta-data android:name="xwalk_apk_url" android:value="' + BUILD_PARAMETERS.url + '" />')
+comm.replaceUserString(
+        menifest_path,
+        'AndroidManifest.xml',
+        '</manifest>',
+        '    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />\n</manifest>')
 if comm.CROSSWALK_BRANCH == "beta":
     comm.installWebviewPlugin("shared", "org.xwalk:xwalk_shared_library_beta:%s" % comm.CROSSWALK_VERSION)
 else:
