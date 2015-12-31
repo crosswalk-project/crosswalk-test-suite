@@ -49,5 +49,18 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         shutil.rmtree("pkg")
         comm.clear("org.xwalk.test")
 
+    def test_build_path_release(self):
+        comm.setUp()
+        comm.create(self)
+        if os.path.exists("pkg"):
+            shutil.rmtree("pkg")
+        os.mkdir("pkg")
+        os.chdir('pkg')
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build release " + comm.XwalkPath + "org.xwalk.test"
+        comm.build(self, buildcmd)
+        os.chdir('../')
+        shutil.rmtree("pkg")
+        comm.clear("org.xwalk.test")
+
 if __name__ == '__main__':
     unittest.main()
