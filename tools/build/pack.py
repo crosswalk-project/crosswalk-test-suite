@@ -75,7 +75,7 @@ BUILD_TIME = time.strftime('%Y%m%d', time.localtime(time.time()))
 CROSSWALK_BRANCH = ""
 CROSSWALK_VERSION = ""
 DEFAULT_CMD_TIMEOUT = 600
-PKG_MODES = ["shared", "embedded"]
+PKG_MODES = ["shared", "embedded", "lite"]
 PKG_ARCHS = ["x86", "arm", "x86_64", "arm64"]
 
 
