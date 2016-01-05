@@ -74,7 +74,7 @@ CROSSWALK_BRANCH = ""
 CROSSWALK_VERSION = ""
 DEFAULT_CMD_TIMEOUT = 600
 PKG_MODES = ["shared", "embedded"]
-PKG_ARCHS = ["x86", "arm"]
+PKG_ARCHS = ["x86", "arm", "x86_64", "arm64"]
 
 
 def updateCopylistPrefix(src_default, dest_default, src_sub, dest_sub):
