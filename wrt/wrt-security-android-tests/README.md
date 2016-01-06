@@ -14,6 +14,17 @@ This test suite is for wrt-security-android-tests
 4. Need to edit the file "wrt-security-android-tests/mode.txt" according to the mode of build.
    If test need "embedded" mode, content of the file should be "embedded".
 
+5. Set CROSSWALK_APP_TOOLS_CACHE_DIR
+  ```export CROSSWALK_APP_TOOLS_CACHE_DIR=[local-path]```
+
+6. Clone crosswalk-app-tools to CROSSWALK_APP_TOOLS_CACHE_DIR
+   ```
+   git clone https://github.com/crosswalk-project/crosswalk-app-tools
+   cd crosswalk-app-tools
+   sudo npm install
+   ```
+7. Download the crosswalk zip you want to test to CROSSWALK_APP_TOOLS_CACHE_DIR
+
 ## Test Step
 
 1. unzip wrt-security-android-tests<version>.zip -d [testprefix-path]
@@ -24,7 +35,8 @@ This test suite is for wrt-security-android-tests
 
    testkit-lite -f [testprefix-path]/opt/wrt-security-android-tests/tests.xml -A
    -o [testprefix-path]/opt/wrt-security-android-tests/result.xml --comm localhost
-   --testenvs "DEVICE_ID=Medfield3C6DFF2E;CONNECT_TYPE=adb" --testprefix=[testprefix-path]
+   --testenvs "DEVICE_ID=Medfield3C6DFF2E;CONNECT_TYPE=adb;XWALK_VERSION=18.46.458.0"
+   --testprefix=[testprefix-path]
 
   DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00".
   Query device id by command "adb devices -l" in host.

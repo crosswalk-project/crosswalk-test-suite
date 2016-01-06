@@ -39,12 +39,10 @@ sys.setdefaultencoding("utf-8")
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
-APP_PATH = ConstPath + "/../testapp/example/"
-Pck_Tools = ConstPath + "/../tools/crosswalk/"
-
+app_tools_dir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
 
 def setUp():
-    global ARCH, MODE, AppName, device
+    global ARCH, MODE, device, xwalk_version, apptools, crosswalkzip
 
     #device = "E6OKCY411012"
     device = os.environ.get('DEVICE_ID')
@@ -52,68 +50,74 @@ def setUp():
         print (" get env error\n")
         sys.exit(1)
 
+    if not app_tools_dir:
+        print ("Not find CROSSWALK_APP_TOOLS_CACHE_DIR\n")
+        sys.exit(1)
+
     fp = open(ConstPath + "/../arch.txt", 'r')
     ARCH = fp.read().strip("\n\t")
     fp.close()
 
     mode = open(ConstPath + "/../mode.txt", 'r')
-    if mode.read().strip("\n\t") != "shared":
-        MODE = "embedded"
-        AppName = "Example_" + ARCH + ".apk"
-    else:
-        MODE = "shared"
-        AppName = "Example.apk"
+    MODE = mode.read().strip("\n\t")
     mode.close()
+
+    # app tools commend
+    apptools = "crosswalk-pkg"
+    if os.system(apptools) != 0:
+        apptools = app_tools_dir + "/crosswalk-app-tools/src/crosswalk-pkg"
+
+    # crosswalk lib
+    xwalk_version = os.environ.get('XWALK_VERSION')
+    if not xwalk_version:
+        zips = glob.glob(os.path.join(app_tools_dir, "crosswalk-*.zip"))
+        if len(zips) == 0:
+            print ("Not find crosswalk zip in CROSSWALK_APP_TOOLS_CACHE_DIR\n")
+            sys.exit(1)
+        # latest version
+        zips.sort(reverse = True)
+        crosswalkzip = zips[0]
+    else:
+        if "64" in ARCH:
+            crosswalkzip = os.path.join(app_tools_dir, "crosswalk-%s-64bit.zip" % xwalk_version)
+        else:
+            crosswalkzip = os.path.join(app_tools_dir, "crosswalk-%s.zip" % xwalk_version)
+        if not os.path.exists(crosswalkzip):
+            crosswalkzip = xwalk_version
+
 
 # test for build, install, launch and uninstall
 
 
-def gen_pkg(cmd, self):
+def gen_pkg(cmd, appname, self):
     setUp()
-    if os.path.exists(Pck_Tools + "/" + AppName):
-        os.remove(Pck_Tools + "/" + AppName)
-    if os.path.exists(ConstPath + "/../" + AppName):
-        os.remove(ConstPath + "/../" + AppName)
+    commands.getstatusoutput("rm -rf org.xwalk.%s*" % appname)
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, packstatus[0])
     print "Generate APK ----------------> OK!"
-    result = commands.getstatusoutput("ls")
-    self.assertIn(AppName, result[1])
+    result = commands.getstatusoutput("ls |grep org.xwalk.%s" % appname)
+    self.assertTrue(len(result) > 0)
     inststatus = commands.getstatusoutput(
-        "adb -s " +
-        device +
-        " install -r " +
-        AppName)
+        "adb -s %s install -r %s" % (device, result[1]))
     self.assertEquals(0, inststatus[0])
     print "Install APK ----------------> OK"
     pmstatus = commands.getstatusoutput(
-        "adb -s " +
-        device +
-        " shell pm list packages |grep org.xwalk.example")
+        "adb -s %s shell pm list packages |grep org.xwalk.%s" % (device, appname))
     self.assertEquals(0, pmstatus[0])
     print "Find Package in device ---------------->O.K"
     launchstatus = commands.getstatusoutput(
-        "adb -s " +
-        device +
-        " shell am start -n org.xwalk.example/.ExampleActivity")
+        "adb -s %s shell am start -n org.xwalk.%s/.%sActivity" \
+      % (device, appname, appname.capitalize()))
     self.assertEquals(0, launchstatus[0])
     print "Launch APK ---------------->OK"
     stopstatus = commands.getstatusoutput(
-        "adb -s " +
-        device +
-        " shell am force-stop org.xwalk.example")
+        "adb -s %s shell am force-stop org.xwalk.%s" % (device, appname))
     if stopstatus[0] == 0:
         print "Stop APK ---------------->O.K"
         unistatus = commands.getstatusoutput(
-            "adb -s " +
-            device +
-            " uninstall org.xwalk.example")
+            "adb -s %s uninstall org.xwalk.%s" % (device, appname))
         self.assertEquals(0, unistatus[0])
         print "Uninstall APK ---------------->O.K"
     else:
         print "Stop APK ---------------->Error"
-        os.system("adb -s " + device + " uninstall org.xwalk.example")
-    if os.path.exists(Pck_Tools + "/" + AppName):
-        os.remove(Pck_Tools + "/" + AppName)
-    if os.path.exists(ConstPath + "/../" + AppName):
-        os.remove(ConstPath + "/../" + AppName)
+        os.system("adb -s %s uninstall org.xwalk.%s"% (device, appname))
