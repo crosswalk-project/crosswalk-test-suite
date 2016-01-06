@@ -50,11 +50,15 @@ def init(xmlpath):
     for elem in tree.iter(tag='property'):
         xwalk_version_name = elem.attrib.get('name')
         if xwalk_version_name == 'crosswalk-version':
-            #elem.set(str(elem.attrib.items()[1][0]),'15.44.375.0')
+            # 64bit support
+            if "64" in comm.ARCH:
+                xwalk_version = xwalk_version + "-64bit"
+            #elem.set(str(elem.attrib.items()[1][0]),'16.45.421.19-64bit')
             elem.set(str(elem.attrib.items()[1][0]), xwalk_version)
             for node in tree.iter(tag='get'):
-                #src_val = node.attrib.get('src').replace('stable', 'canary')
-                src_val = node.attrib.get('src').replace('stable', channel)
+                #src_val = https://download.01.org/crosswalk/releases/crosswalk/android/beta/16.45.421.19/crosswalk-16.45.421.19-64bit.zip
+                src_val = "https://download.01.org/crosswalk/releases/crosswalk/android/%s/%s/crosswalk-%s.zip" \
+                          % (channel, os.environ.get('XWALK_VERSION'), xwalk_version)
                 print node.attrib.items()[1][0]
                 node.set(str(node.attrib.items()[1][0]), src_val)
                 print src_val
