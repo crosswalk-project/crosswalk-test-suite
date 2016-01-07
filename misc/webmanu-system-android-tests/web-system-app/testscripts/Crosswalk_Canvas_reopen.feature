@@ -12,8 +12,5 @@ Feature: web-system-app
     And I save the screenshot md5 as "scale-200"
    Then file "rotate-90deg" of baseline and result should be the same
    Then file "scale-200" of baseline and result should be the same
-    And I press "home" hardware key
-    And I press "recent" hardware key
-    And I save relative view "className=android.widget.ImageView" on the "right" side of view "text=Canvas" to object "canvas_app"
-    And I click saved object "canvas_app"
+    And switch to "canvas"
    Then file "scale-200" of baseline and result should be the same
