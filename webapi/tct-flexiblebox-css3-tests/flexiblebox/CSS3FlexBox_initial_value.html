@@ -33,18 +33,23 @@ Authors:
 <meta charset="utf-8">
 <title>CSS3 Text Effects Test: the initial values</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://www.w3.org/TR/2012/WD-css3-flexbox-20120612/">
+<link rel="help" href="https://drafts.csswg.org/css-flexbox-1">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <link rel="stylesheet" href="../resources/testharness.css">
 <script src="support/flexiblebox.js"></script>
+<style>
+  #testDiv {
+    display: flex;
+  }
+</style>
 <div id="log"></div>
 <div id="testDiv"></div>
 <script>
 [
   ["align-content", "stretch"],
   ["align-items", "stretch"],
-  ["align-self", "auto"],
+  ["align-self", "stretch"],
   ["flex", "0 1 auto"],
   ["flex-basis", "auto"],
   ["flex-grow", "0"],
