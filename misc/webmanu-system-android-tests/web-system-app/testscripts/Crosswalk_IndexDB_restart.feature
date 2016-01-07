@@ -12,11 +12,7 @@ Feature: web-system-app
     And I click view "description=Add"
    Then I should see view "className=android.view.View^^^description=123"
    Then I should see view "className=android.view.View^^^description=Intel"
-    And I press "recent" hardware key
-    And I save relative view "className=android.widget.ImageView" on the "right" side of view "text=IndexDB" to object "indexdb_app"
-    And I swipe saved object "indexdb_app" to "left"
-   Then I should not see view "description=Add Record"
-    And I launch "indexdb" with "org.xwalk.indexdb" and "IndexdbActivity" on android
+    And switch to "indexdb"
     And I wait 2 seconds
    Then I should see view "className=android.view.View^^^description=123"
    Then I should see view "className=android.view.View^^^description=Intel"
