@@ -817,3 +817,14 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, getExtensionManager().loadExtension methods
+
+
+
+### 80. The [XWalkViewWithIframesAsync](basic/XWalkViewWithIframesAsync.java) sample check XWalkView can be reliable with iframes, include:
+
+* XWalkView can be reliable with iframes
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load method
+* ResourceClient interface: shouldInterceptLoadRequest method
