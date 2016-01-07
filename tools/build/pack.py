@@ -58,7 +58,8 @@ PKG_TYPES = [
     "cordova",
     "embeddingapi",
     "deb",
-    "msi"]
+    "msi",
+    "ios"]
 PKG_BLACK_LIST = []
 PACK_TYPES = ["ant", "gradle", "maven"]
 CORDOVA_PACK_TYPES = ["npm", "local"]
@@ -254,6 +255,9 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
     elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "MSI"):
         if not build_msi.packMsi(build_json, app_src, app_dest, app_name):
             return False
+    elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "ios"):
+        if not build_ios.packIOS(build_json, app_src, app_dest, app_name):
+            return False            
     else:
         LOG.error("Got wrong pkg type: %s" % BUILD_PARAMETERS.pkgtype)
         return False
