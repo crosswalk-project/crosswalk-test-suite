@@ -34,41 +34,39 @@ import sys
 import commands
 import comm
 
+comm.setUp()
 
 class TestSecurityFunctions(unittest.TestCase):
 
     def test_permission_chinese(self):
-        comm.setUp()
-        manifestPath = comm.ConstPath + \
-            "/../testapp/permission_field_chinese_tests/manifest.json"
-        cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
-              (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
+        app_src = comm.ConstPath + \
+            "/../testapp/permission_field_chinese_tests"
+        cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s %s" % \
+              (comm.apptools, comm.crosswalkzip, comm.MODE, comm.ARCH, app_src)
         packInfo = commands.getstatusoutput(cmd)
         self.assertNotEquals(0, packInfo[0])
 
     def test_permission_noapi(self):
-        comm.setUp()
-        manifestPath = comm.ConstPath + \
-            "/../testapp/permission_field_noapi_tests/manifest.json"
-        cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
-              (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
+        app_src = comm.ConstPath + \
+            "/../testapp/permission_field_noapi_tests"
+        cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s %s" % \
+              (comm.apptools, comm.crosswalkzip, comm.MODE, comm.ARCH, app_src)
         packInfo = commands.getstatusoutput(cmd)
         self.assertNotEquals(0, packInfo[0])
 
     def test_permission_null(self):
-        comm.setUp()
-        manifestPath = comm.ConstPath + \
-            "/../testapp/permission_field_null_tests/manifest.json"
-        cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
-              (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
-        comm.gen_pkg(cmd, self)
+        app_name = "permission_field_null_tests"
+        app_src = comm.ConstPath + \
+            "/../testapp/permission_field_null_tests"
+        cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s %s" % \
+              (comm.apptools, comm.crosswalkzip, comm.MODE, comm.ARCH, app_src)
+        comm.gen_pkg(cmd, app_name, self)
 
     def test_permission_splite(self):
-        comm.setUp()
-        manifestPath = comm.ConstPath + \
-            "/../testapp/permission_field_splite_tests/manifest.json"
-        cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
-              (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
+        app_src = comm.ConstPath + \
+            "/../testapp/permission_field_splite_tests"
+        cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s %s" % \
+              (comm.apptools, comm.crosswalkzip, comm.MODE, comm.ARCH, app_src)
         packInfo = commands.getstatusoutput(cmd)
         self.assertNotEquals(0, packInfo[0])
 
