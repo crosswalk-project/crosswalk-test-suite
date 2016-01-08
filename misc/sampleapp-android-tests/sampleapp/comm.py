@@ -46,8 +46,9 @@ index_path = "index.html"
 
 
 def setUp():
-    global ARCH, MODE, device, apptools, crosswalkzip
+    global xwalk_version, ARCH, MODE, device, apptools, crosswalkzip
 
+    xwalk_version = os.environ.get('XWALK_VERSION')
     device = os.environ.get('DEVICE_ID')
 
     if not device:
@@ -72,14 +73,21 @@ def setUp():
         apptools = app_tools_dir + "/crosswalk-app-tools/src/crosswalk-pkg"
 
     # crosswalk lib
-    zips = glob.glob(os.path.join(app_tools_dir, "crosswalk-*.zip"))
-    if len(zips) == 0:
-        print ("Not find crosswalk zip in CROSSWALK_APP_TOOLS_CACHE_DIR\n")
-        sys.exit(1)
-    # latest version
-    zips.sort(reverse = True)
-    crosswalkzip = zips[0]
-
+    if not xwalk_version:
+        zips = glob.glob(os.path.join(app_tools_dir, "crosswalk-*.zip"))
+        if len(zips) == 0:
+            print ("Not find crosswalk zip in CROSSWALK_APP_TOOLS_CACHE_DIR\n")
+            sys.exit(1)
+        # latest version
+        zips.sort(reverse = True)
+        crosswalkzip = zips[0]
+    else:
+        if "64" in ARCH:
+            crosswalkzip = os.path.join(app_tools_dir, "crosswalk-%s-64bit.zip" % xwalk_version)
+        else:
+            crosswalkzip = os.path.join(app_tools_dir, "crosswalk-%s.zip" % xwalk_version)
+        if not os.path.exists(crosswalkzip):
+            crosswalkzip = xwalk_version
 
 def check_appname():
     global app_name

@@ -42,8 +42,7 @@ def init(xmlpath):
         print (" get channel error\n")
         sys.exit(1)
 
-    xwalk_version = os.environ.get('XWALK_VERSION')
-    if not xwalk_version:
+    if not comm.xwalk_version:
         print (" get crosswalk version error\n")
         sys.exit(1)
 
@@ -51,11 +50,15 @@ def init(xmlpath):
     for elem in tree.iter(tag='property'):
         xwalk_version_name = elem.attrib.get('name')
         if xwalk_version_name == 'crosswalk-version':
+            crosswalk_version = comm.xwalk_version
+            if "64" in comm.ARCH:
+                crosswalk_version = comm.xwalk_version + "-64bit"
             #elem.set(str(elem.attrib.items()[1][0]),'15.44.375.0')
-            elem.set(str(elem.attrib.items()[1][0]), xwalk_version)
+            elem.set(str(elem.attrib.items()[1][0]), crosswalk_version)
             for node in tree.iter(tag='get'):
-                #src_val = node.attrib.get('src').replace('stable', 'canary')
-                src_val = node.attrib.get('src').replace('stable', channel)
+                #src_val = https://download.01.org/crosswalk/releases/crosswalk/android/canary/18.46.452.0/crosswalk-18.46.452.0-64bit.zip
+                src_val = "https://download.01.org/crosswalk/releases/crosswalk/android/%s/%s/crosswalk-%s.zip" \
+                          % (channel, comm.xwalk_version, crosswalk_version)
                 print node.attrib.items()[1][0]
                 node.set(str(node.attrib.items()[1][0]), src_val)
                 print src_val
@@ -70,7 +73,7 @@ class TestSampleAppFunctions(unittest.TestCase):
         app_root = comm.sample_src_pref + sample_src
         xmlpath = app_root + '/xwalk-echo-extension-src/build.xml'
         init(xmlpath)
-        cmd = "%s/build.sh %s %s" % (app_root, comm.MODE, comm.ARCH)
+        cmd = "%s/build.sh -v %s -a %s - m %s" % (app_root, comm.xwalk_version, comm.ARCH, comm.MODE)
         target_apk_path = comm.const_path + "/../testapp/"
         os.chdir(target_apk_path)
         print "Generate APK %s ----------------> START" % comm.app_name
