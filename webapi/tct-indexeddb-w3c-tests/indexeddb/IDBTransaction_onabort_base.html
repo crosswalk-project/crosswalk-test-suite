@@ -49,11 +49,17 @@ Authors:
                 t.done();
             }
             rqOpen.onupgradeneeded = t.step_func(function (event) {
+                db = event.target.result;
                 var txn = event.target.transaction;
+                var objStore = db.createObjectStore(objectStoreName, {keyPath : "key"});
+                objStore.add(record);
+                objStore.add({ key: 1, property: "data2" });
                 txn.onabort = function () {
+                    assert_true(txn.error instanceof DOMException);
+                    assert_true(txn.error.code, 0);
+                    assert_true(txn.error.name, "ConstraintError");
                     t.done();
                 };
-                txn.abort();
             });
             rqOpen.onerror = t.step_func(open_request_error);
         });
