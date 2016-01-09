@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,32 +26,21 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu, Kang <kangx.xu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Crosswalk_WebApp_openfile_png</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-  </head>
-  <body>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Install "web_openfile_thirdpart_tests" app.</li>
-      <li>Launch the app.</li>
-      <li>Click the "Open png file in the third part app" link.</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>The app install successfully.</li>
-      <li>The app launch successfully.</li>
-      <li>File can be opened successfully.</li>
-    </ol>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>web_openfile_thirdpart_tests</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="">
+<meta name="flags" content="">
+<meta name="assert" content="Check if enable open a file with third part app.">
+<body>
+  <label>Format png<label/><br/>
+  <a href="./test.png">Open png file in the third part app</a><br/>
+  <label>Format html<label/><br/>
+  <a href="./test.html">Open html file in the third part app</a><br/>
+  <label>Format docx(C:/test.docx)<label/><br/>
+  <a href="/C:/test.docx">Open docx file in the third part app</a><br/>
+</body>
