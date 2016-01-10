@@ -33,25 +33,40 @@ import os
 import sys
 import commands
 import comm
+import json
 from TestApp import *
 
-app_name = "Spacedodgegame"
+app_name = "Hexgl"
 package_name = "org.xwalk." + app_name.lower()
 active_name = app_name + "Activity"
-sample_src = comm.sample_src_pref + "space-dodge-game/manifest-orientation-scale/"
+sample_src = comm.sample_src_pref + "HexGL/"
 testapp = None
 
 comm.setUp()
 
-class Spacedodgegame(unittest.TestCase):
+class Hexgl(unittest.TestCase):
 
     def test_1_pack(self):
         #clean up old apk
         commands.getstatusoutput("rm %s%s*" % (comm.build_app_dest, "org.xwalk." + app_name.lower()))
-
-        cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s --enable-remote-debugging %s" % \
+        manifest_json = ""
+        if not os.path.exists(sample_src + "manifest.json"):
+            manifest_opt = {}
+            manifest_opt["icons"] = [{"src":"icon_32.png","sizes":"32x32"},
+                                     {"src":"icon_64.png","sizes":"64x64"},
+                                     {"src":"icon_128.png","sizes":"128x128"},
+                                     {"src":"icon_256.png","sizes":"256x256"}
+                                    ]
+            manifest_opt["xwalk_package_id"] = package_name
+            manifest_opt["xwalk_app_version"] = "0.0.1"
+            manifest_opt["start_url"] = "index.html"
+            manifest_opt["name"] = "HexGL"
+            manifest_opt = json.JSONEncoder().encode(manifest_opt)
+            manifest_json = "--manifest='%s'" % manifest_opt
+        cmd = "%s --crosswalk=%s %s --platforms=android --android=%s --targets=%s --enable-remote-debugging %s" % \
             (comm.apptools,
              comm.crosswalkzip,
+             manifest_json,
              comm.MODE,
              comm.ARCH,
              sample_src)

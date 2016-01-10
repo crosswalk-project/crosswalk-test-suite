@@ -38,7 +38,6 @@ from TestApp import *
 app_name = "Spacedodgegame"
 package_name = "org.xwalk." + app_name.lower()
 active_name = app_name + "Activity"
-app_dir = comm.const_path + "/../testapp/"
 sample_src = comm.sample_src_pref + "space-dodge-game/screen-orientation-scale/"
 testapp = None
 
@@ -48,7 +47,7 @@ class Spacedodgegame(unittest.TestCase):
 
     def test_1_pack(self):
         #clean up old apk
-        commands.getstatusoutput("rm %s%s*" % (app_dir, "org.xwalk." + app_name.lower()))
+        commands.getstatusoutput("rm %s%s*" % (comm.build_app_dest, "org.xwalk." + app_name.lower()))
 
         cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s --enable-remote-debugging %s" % \
             (comm.apptools,
@@ -59,15 +58,16 @@ class Spacedodgegame(unittest.TestCase):
         comm.pack(cmd, app_name.lower(), self)
 
     def test_2_install(self):
-        apk_file = commands.getstatusoutput("ls %s| grep %s" % (app_dir, app_name.lower()))[1]
+        # Workaround for XWALK-6016: Build x86 and arm together, add arch filter 
+        apk_file = commands.getstatusoutput("ls %s| grep %s| grep %s" % (comm.build_app_dest, app_name.lower(), comm.ARCH))[1]
         if apk_file.endswith(".apk"):
             global testapp
-            testapp = TestApp(comm.device, app_dir + apk_file, package_name, active_name)
+            testapp = TestApp(comm.device, comm.build_app_dest + apk_file, package_name, active_name)
             if testapp.isInstalled():
                 testapp.uninstall()
             self.assertTrue(testapp.install())
         else:
-            print("-->> No packed %s apk in %s" % (app_name, app_dir))
+            print("-->> No packed %s apk in %s" % (app_name, comm.build_app_dest))
             self.assertTrue(False)
 
     def test_3_launch(self):
