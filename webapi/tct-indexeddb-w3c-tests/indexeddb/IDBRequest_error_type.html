@@ -34,7 +34,7 @@ Authors:
 <meta charset="utf-8">
 <title>IndexDB Test: IDBRequest_error_type</title>
 <link rel="author" title="Intel" href="http://www.intel.com" >
-<link rel="help" href="http://www.w3.org/TR/2011/WD-IndexedDB-20111206/#widl-IDBRequest-error" >
+<link rel="help" href="https://w3c.github.io/IndexedDB/#dom-idbrequest-error" >
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/util.js"></script>
@@ -61,7 +61,9 @@ Authors:
                     assert_unreached("Fail to get error callback");
                 });
                 idbReq.onerror = t.step_func(function (event) {
-                    assert_equals(event.target.error.toString(), "[object DOMError]");
+                    assert_true(idbReq.error instanceof DOMException);
+                    assert_equals(idbReq.error.code, 20);
+                    assert_equals(idbReq.error.name, "AbortError");
                     t.done();
                 });
             });
