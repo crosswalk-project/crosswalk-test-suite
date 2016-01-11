@@ -49,6 +49,20 @@ def uninstPKGs():
         if "Failure" in line:
             return False
             break
+    cmd = "%s -s %s uninstall org.xwalk.embedded.api.silentdownload" % (
+        ADB_CMD, PARAMETERS.device)
+    (return_code, output) = doCMD(cmd)
+    for line in output:
+        if "Failure" in line:
+            return False
+            break
+    cmd = "%s -s %s uninstall org.xwalk.embedded.api.silentdownloadwithlzma" % (
+        ADB_CMD, PARAMETERS.device)
+    (return_code, output) = doCMD(cmd)
+    for line in output:
+        if "Failure" in line:
+            return False
+            break
     return True
 
 
