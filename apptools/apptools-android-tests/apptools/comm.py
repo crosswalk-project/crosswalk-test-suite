@@ -45,11 +45,12 @@ DEFAULT_CMD_TIMEOUT = 600
 
 
 def setUp():
-    global device_x86, device_arm, XwalkPath, crosswalkVersion, crosswalkzip, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE, ANDROID_MODE, BIT, ANDROID_TARGETS
+    global device_x86, device_arm, XwalkPath, crosswalkVersion, crosswalkzip, PackTools, ARCH_ARM, ARCH_X86, cachedir, HOST_PREFIX, SHELL_FLAG, MODE, ANDROID_MODE, BIT, ANDROID_TARGETS, Skip_Emulator
 
     device_x86 = ""
     device_arm = ""
     cachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
+    Skip_Emulator = os.environ.get('SKIP_EMULATOR')
 
     fp = open(ConstPath + "/../arch.txt", 'r')
     fp_arch = fp.read().strip("\n\t")
@@ -99,37 +100,38 @@ def setUp():
 
     #device = "Medfield61809467,066e11baf0ecb889"
     device = os.environ.get('DEVICE_ID')
-    if not device:
+    if not device and not Skip_Emulator:
         print ("Get DEVICE_ID env error\n")
         sys.exit(1)
-    if ARCH_ARM != "" and ARCH_X86 != "":
-        if "," in device:
-            if getDeviceCpuAbi(device.split(',')[0]) == "x86":
-                device_x86 = device.split(',')[0]
+    if device:
+        if ARCH_ARM != "" and ARCH_X86 != "":
+            if "," in device:
+                if getDeviceCpuAbi(device.split(',')[0]) == "x86":
+                    device_x86 = device.split(',')[0]
+                else:
+                    device_arm = device.split(',')[0]
+                if getDeviceCpuAbi(device.split(',')[1]) == "x86":
+                    device_x86 = device.split(',')[1]
+                else:
+                    device_arm = device.split(',')[1]
+                if not device_x86 or not device_arm:
+                    print ("Need x86 and arm architecture devices id\n")
+                    sys.exit(1)
             else:
-                device_arm = device.split(',')[0]
-            if getDeviceCpuAbi(device.split(',')[1]) == "x86":
-                device_x86 = device.split(',')[1]
-            else:
-                device_arm = device.split(',')[1]
-            if not device_x86 or not device_arm:
                 print ("Need x86 and arm architecture devices id\n")
                 sys.exit(1)
-        else:
-            print ("Need x86 and arm architecture devices id\n")
-            sys.exit(1)
-    elif ARCH_ARM != "" and ARCH_X86 == "":
-        if getDeviceCpuAbi(device) == "arm":
-            device_arm = device
-        if not device_arm:
-            print ("Need arm architecture devices id\n")
-            sys.exit(1)
-    elif ARCH_ARM == "" and ARCH_X86 != "":
-        if getDeviceCpuAbi(device) == "x86":
-            device_x86 = device
-        if not device_x86:
-            print ("Need x86 architecture devices id\n")
-            sys.exit(1)
+        elif ARCH_ARM != "" and ARCH_X86 == "":
+            if getDeviceCpuAbi(device) == "arm":
+                device_arm = device
+            if not device_arm:
+                print ("Need arm architecture devices id\n")
+                sys.exit(1)
+        elif ARCH_ARM == "" and ARCH_X86 != "":
+            if getDeviceCpuAbi(device) == "x86":
+                device_x86 = device
+            if not device_x86:
+                print ("Need x86 architecture devices id\n")
+                sys.exit(1)
 
     vp = open(ConstPath + "/../version.txt", 'r')
     vp_version = vp.read().strip("\n\t")
@@ -234,50 +236,51 @@ def build(self, cmd):
 
 def run(self):
     setUp()
-    apks = os.listdir(os.getcwd())
-    for apk in apks:
-        if ARCH_ARM != "" and ("arm" in apk or "shared" in apk):
-            return_inst_code_arm = os.system('adb -s ' + device_arm + ' install -r ' + apk)
-            (return_pm_code_arm, pmstatus_arm) = getstatusoutput(
-                'adb -s ' +
-                device_arm +
-                ' shell pm list package')
-            (return_laun_code_arm, launstatus_arm) = getstatusoutput(
-                'adb -s ' +
-                device_arm +
-                ' shell am start -n org.xwalk.test/.TestActivity')
-            return_stop_code_arm = os.system(
-                'adb -s ' +
-                device_arm +
-                ' shell am force-stop org.xwalk.test')
-            uninstatus_arm = os.popen('adb -s ' + device_arm + ' uninstall org.xwalk.test').read()
-            self.assertEquals(return_inst_code_arm, 0)
-            self.assertIn("org.xwalk.test", pmstatus_arm[0])
-            self.assertEquals(return_laun_code_arm, 0)
-            self.assertNotEquals("Error", launstatus_arm[0])
-            self.assertEquals(return_stop_code_arm, 0)
-            self.assertNotEquals("Success", uninstatus_arm)
-        if ARCH_X86 != "" and ("x86" in apk or "shared" in apk):
-            return_inst_code_x86 = os.system('adb -s ' + device_x86 + ' install -r ' + apk)
-            (return_pm_code_x86, pmstatus_x86) = getstatusoutput(
-                'adb -s ' +
-                device_x86 +
-                ' shell pm list package')
-            (return_laun_code_x86, launstatus_x86) = getstatusoutput(
-                'adb -s ' +
-                device_x86 +
-                ' shell am start -n org.xwalk.test/.TestActivity')
-            return_stop_code_x86 = os.system(
-                'adb -s ' +
-                device_x86 +
-                ' shell am force-stop org.xwalk.test')
-            uninstatus_x86 = os.popen('adb -s ' + device_x86 + ' uninstall org.xwalk.test').read()
-            self.assertEquals(return_inst_code_x86, 0)
-            self.assertIn("org.xwalk.test", pmstatus_x86[0])
-            self.assertEquals(return_laun_code_x86, 0)
-            self.assertNotEquals("Error", launstatus_x86[0])
-            self.assertEquals(return_stop_code_x86, 0)
-            self.assertNotEquals("Success", uninstatus_x86)
+    if device:
+        apks = os.listdir(os.getcwd())
+        for apk in apks:
+            if ARCH_ARM != "" and ("arm" in apk or "shared" in apk):
+                return_inst_code_arm = os.system('adb -s ' + device_arm + ' install -r ' + apk)
+                (return_pm_code_arm, pmstatus_arm) = getstatusoutput(
+                    'adb -s ' +
+                    device_arm +
+                    ' shell pm list package')
+                (return_laun_code_arm, launstatus_arm) = getstatusoutput(
+                    'adb -s ' +
+                    device_arm +
+                    ' shell am start -n org.xwalk.test/.TestActivity')
+                return_stop_code_arm = os.system(
+                    'adb -s ' +
+                    device_arm +
+                    ' shell am force-stop org.xwalk.test')
+                uninstatus_arm = os.popen('adb -s ' + device_arm + ' uninstall org.xwalk.test').read()
+                self.assertEquals(return_inst_code_arm, 0)
+                self.assertIn("org.xwalk.test", pmstatus_arm[0])
+                self.assertEquals(return_laun_code_arm, 0)
+                self.assertNotEquals("Error", launstatus_arm[0])
+                self.assertEquals(return_stop_code_arm, 0)
+                self.assertNotEquals("Success", uninstatus_arm)
+            if ARCH_X86 != "" and ("x86" in apk or "shared" in apk):
+                return_inst_code_x86 = os.system('adb -s ' + device_x86 + ' install -r ' + apk)
+                (return_pm_code_x86, pmstatus_x86) = getstatusoutput(
+                    'adb -s ' +
+                    device_x86 +
+                    ' shell pm list package')
+                (return_laun_code_x86, launstatus_x86) = getstatusoutput(
+                    'adb -s ' +
+                    device_x86 +
+                    ' shell am start -n org.xwalk.test/.TestActivity')
+                return_stop_code_x86 = os.system(
+                    'adb -s ' +
+                    device_x86 +
+                    ' shell am force-stop org.xwalk.test')
+                uninstatus_x86 = os.popen('adb -s ' + device_x86 + ' uninstall org.xwalk.test').read()
+                self.assertEquals(return_inst_code_x86, 0)
+                self.assertIn("org.xwalk.test", pmstatus_x86[0])
+                self.assertEquals(return_laun_code_x86, 0)
+                self.assertNotEquals("Error", launstatus_x86[0])
+                self.assertEquals(return_stop_code_x86, 0)
+                self.assertNotEquals("Success", uninstatus_x86)
 
 
 def channel(self, channel):
