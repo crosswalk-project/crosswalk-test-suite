@@ -34,7 +34,7 @@ Authors:
 <meta charset="utf-8">
 <title>IndexDB Test: IDBObjectStore_createIndex_exception_NotSupportedError</title>
 <link rel="author" title="Intel" href="http://www.intel.com" >
-<link rel="help" href="http://www.w3.org/TR/2011/WD-IndexedDB-20111206/#idl-def-IDBObjectStore" >
+<link rel="help" href="https://w3c.github.io/IndexedDB/#dom-idbobjectstore-createindex" >
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/util.js"></script>
@@ -54,7 +54,7 @@ Authors:
                     db.deleteObjectStore(objectStoreName);
                 }
                 var objStore = db.createObjectStore(objectStoreName);
-                assert_throws("NotSupportedError", function () {
+                assert_throws("InvalidAccessError", function () {
                     objStore.createIndex("name", ["keyPath", "pkey"], {multiEntry : true});
                 });
                 t.done();
@@ -67,5 +67,5 @@ Authors:
                 db.close();
             }
         });
-    }, "Check if IDBObjectStore.createIndex() throws an exception NotSupportedError when keyPath is an Array and the multientry property in the optionalParameters is true");
+    }, "Check if IDBObjectStore.createIndex() throws an exception InvalidAccessError when keyPath is an Array and the multientry property in the optionalParameters is true");
 </script>

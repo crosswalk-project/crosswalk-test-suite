@@ -56,8 +56,8 @@ Authors:
                 objStore.add({ key: 1, property: "data2" });
                 txn.onabort = function () {
                     assert_true(txn.error instanceof DOMException);
-                    assert_true(txn.error.code, 0);
-                    assert_true(txn.error.name, "ConstraintError");
+                    assert_equals(txn.error.code, 0);
+                    assert_equals(txn.error.name, "ConstraintError");
                     t.done();
                 };
             });
