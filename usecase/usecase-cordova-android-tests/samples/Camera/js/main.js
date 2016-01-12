@@ -205,10 +205,10 @@ function createOptionsEl(name, values, selectionDefault) {
 function init() {
     document.addEventListener("deviceready", function() {
       deviceReady = true;
-      createOptionsEl('Encoding Type', Camera.EncodingType, camEncodingTypeDefault);
-      createOptionsEl('Media Type', Camera.MediaType, camMediaTypeDefault);
-      createOptionsEl('Destination Type', Camera.DestinationType, camDestinationTypeDefault);
-      createOptionsEl('Source Type', Camera.PictureSourceType, camPictureSourceTypeDefault); 
+      createOptionsEl('encodingType', Camera.EncodingType, camEncodingTypeDefault);
+      createOptionsEl('mediaType', Camera.MediaType, camMediaTypeDefault);
+      createOptionsEl('destinationType', Camera.DestinationType, camDestinationTypeDefault);
+      createOptionsEl('sourceType', Camera.PictureSourceType, camPictureSourceTypeDefault); 
     }, false);
     window.setTimeout(function() {
       if (!deviceReady) {
