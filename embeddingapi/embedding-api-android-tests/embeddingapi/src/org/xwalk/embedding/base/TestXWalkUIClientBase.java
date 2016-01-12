@@ -96,15 +96,27 @@ public class TestXWalkUIClientBase extends XWalkUIClient {
             String url, String message, String defaultValue, XWalkJavascriptResult result) {
         switch(type) {
             case JAVASCRIPT_ALERT:
-                 onJsAlert(view, url, message, result);
-                 break;
+                mInnerCallbackCalled.set(true);
+                result.confirm();
+                onJsAlert(view, url, message, result);
+                break;
             case JAVASCRIPT_CONFIRM:
-                 onJsConfirm(view, url, message, result);
-                 break;
+                if (flagForConfirmCancelled == true) {
+                    result.cancel();
+                } else {
+                    result.confirm();
+                }
+                mInnerCallbackCalled.set(true);
+                onJsConfirm(view, url, message, result);
+                break;
             case JAVASCRIPT_PROMPT:
-                 onJsPrompt(view, url, message, defaultValue, result);
-                 break;
+                result.confirmWithResult(PROMPT_RESULT);
+                mInnerCallbackCalled.set(true);
+                onJsPrompt(view, url, message, defaultValue, result);
+                break;
             case JAVASCRIPT_BEFOREUNLOAD:
+                result.cancel();
+                jsBeforeUnloadHelper.notifyCalled();
                 // Reuse onJsConfirm to show the dialog.
                 onJsConfirm(view, url, message, result);
                 break;
