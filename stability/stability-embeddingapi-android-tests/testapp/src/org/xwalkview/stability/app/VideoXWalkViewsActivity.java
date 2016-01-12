@@ -33,6 +33,7 @@ public class VideoXWalkViewsActivity extends XWalkBaseVideoActivity {
                             url_index = 0;
                         }
                         XWalkView mXWalkView = new XWalkView(VideoXWalkViewsActivity.this, VideoXWalkViewsActivity.this);
+                        mXWalkView.setId(i);
                         mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
                         mXWalkView.load(checkBoxList.get(url_index).getText().toString(), null);
                         url_index++;
