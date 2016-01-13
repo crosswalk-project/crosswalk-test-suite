@@ -62,9 +62,13 @@ def setUp():
         ARCH = "arm"
     elif arch_tmp.strip("\n\t") == "x86":
         ARCH = "x86"
+    elif arch_tmp.strip("\n\t") == "arm64":
+        ARCH = "arm64"
+    elif arch_tmp.strip("\n\t") == "x86_64":
+        ARCH = "x86_64"
     else:
         print (
-            " get arch error, the content of arch.txt should be 'arm' or 'x86'\n")
+            " get arch error, the content of arch.txt should be 'arm' or 'x86' or arm64 or x86_64\n")
         sys.exit(1)
     f_arch.close()
 
@@ -272,10 +276,16 @@ def build(appname, isDebug, self):
     print "Build project %s ----------------> START" % appname
 
     if CORDOVA_VERSION == "4.x":
-        cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % ARCH
+        pack_arch_tmp = ARCH
+        if ARCH == "x86_64":
+            pack_arch_tmp = "x86 --xwalk64bit"
+        elif ARCH == "arm64":
+            pack_arch_tmp = "arm --xwalk64bit"
+
+        cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
         if isDebug == True:
             print "build debug app"
-            cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % ARCH
+            cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
     else:
         cmd = "./cordova/build"
         if isDebug == True:
