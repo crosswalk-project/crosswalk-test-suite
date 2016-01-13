@@ -56,7 +56,7 @@ DEFAULT_CMD_TIMEOUT = 600
 PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes", "setUserAgent", "loadExtension"]
 CORDOVA_VERSIONS = ["3.6", "4.x"]
 PKG_MODES = ["shared", "embedded"]
-PKG_ARCHS = ["x86", "arm"]
+PKG_ARCHS = ["x86", "arm", "x86_64", "arm64"]
 CORDOVA_PACK_TYPES = ["npm", "local"]
 CROSSWALK_VERSION = ""
 CROSSWALK_BRANCH = ""
@@ -584,6 +584,31 @@ def installPlugins(plugin_tool, app_name):
                 return False
     return True
 
+def buildCordovaCliApk(app_name, orig_dir):
+    apk_name_arch = "armv7"
+    pack_arch_tmp = "arm"
+    if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch != "arm":
+        apk_name_arch = BUILD_PARAMETERS.pkgarch
+        if BUILD_PARAMETERS.pkgarch == "x86":
+            pack_arch_tmp = "x86"
+        elif BUILD_PARAMETERS.pkgarch == "x86_64":
+            pack_arch_tmp = "x86 --xwalk64bit"
+        elif BUILD_PARAMETERS.pkgarch == "arm64":
+            pack_arch_tmp = "arm --xwalk64bit"
+
+    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp 
+
+    if checkContains(app_name, "REMOTEDEBUGGING"):
+        pack_cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
+
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT * 5):
+        os.chdir(orig_dir)
+        return False
+
+    if not copyCordovaCliApk(app_name, orig_dir, apk_name_arch):
+        os.chdir(orig_dir)
+        return False
+
 def copyCordovaCliApk(app_name, orig_dir, apk_name_arch="armv7"):
     project_root = os.path.join(BUILD_ROOT, app_name)
     outputs_dir = os.path.join(
@@ -760,13 +785,14 @@ def packMobileSpec_cli(app_name=None):
 
     orig_dir = os.getcwd()
     os.chdir(cordova_coho)
-    output = commands.getoutput("git pull").strip("\r\n")
+    output1 = commands.getoutput("git pull").strip("\r\n")
 
     os.chdir(cordova_mobilespec_origin)
-    output = commands.getoutput("git pull").strip("\r\n")
+    output2 = commands.getoutput("git pull").strip("\r\n")
     mobilespec_path = os.path.join(
                 BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec_4.x", "mobilespec")
-    if output == "Already up-to-date." and os.path.exists(mobilespec_path):
+    excepted_pull_result = "Already up-to-date."
+    if output1 == excepted_pull_result and output2 == excepted_pull_result and os.path.exists(mobilespec_path):
         if not doCopy(mobilespec_path, project_root):
             return False
     else:
@@ -863,21 +889,7 @@ def packMobileSpec_cli(app_name=None):
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
 
-    apk_name_arch = "armv7"
-    pack_arch_tmp = "arm"
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        apk_name_arch = "x86"
-        pack_arch_tmp = "x86"
-
-    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
-
-    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
-
-    if not copyCordovaCliApk(app_name, orig_dir, apk_name_arch):
-        os.chdir(orig_dir)
-        return False
+    buildCordovaCliApk(app_name, orig_dir)
 
     os.chdir(orig_dir)
     return True
@@ -1011,24 +1023,7 @@ def packSampleApp_cli(app_name=None):
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
 
-    apk_name_arch = "armv7"
-    pack_arch_tmp = "arm"
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        apk_name_arch = "x86"
-        pack_arch_tmp = "x86"
-
-    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
-
-    if checkContains(app_name, "REMOTEDEBUGGING"):
-        pack_cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
-
-    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT * 5):
-        os.chdir(orig_dir)
-        return False
-
-    if not copyCordovaCliApk(app_name, orig_dir, apk_name_arch):
-        os.chdir(orig_dir)
-        return False
+    buildCordovaCliApk(app_name, orig_dir)
 
     os.chdir(orig_dir)
     return True
