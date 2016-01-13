@@ -107,7 +107,7 @@ def setUp():
             CROSSWALK_VERSION = pkg_version_json["main-version"]
             CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
-def installWebviewPlugin(pkg_mode, self):
+def installWebviewPlugin(pkg_mode, self, multiple_apks = None):
     print "Install Crosswalk WebView Plugin --------------> START"
     pkg_mode_tmp = "shared"
     if pkg_mode == "embedded":
@@ -124,10 +124,15 @@ def installWebviewPlugin(pkg_mode, self):
     plugin_install_cmd = "cordova plugin add %s --variable XWALK_MODE=\"%s\"" \
                 " --variable XWALK_VERSION=\"%s\"" % (plugin_crosswalk_source, pkg_mode, xwalk_version)
 
+    if multiple_apks is not None:
+        plugin_install_cmd = plugin_install_cmd + " --variable xwalkMultipleApk=\"%s\"" % multiple_apks
+
+    print plugin_install_cmd
+
     pluginstatus = commands.getstatusoutput(plugin_install_cmd)
     self.assertEquals(0, pluginstatus[0])
 
-def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, extra_plugin = None):
+def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, extra_plugin = None, multiple_apks = None):
     os.chdir(tool_path)
     if os.path.exists(os.path.join(tool_path, appname)):
         print "Existing %s project, try to clean up..." % appname
@@ -163,8 +168,7 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, ext
         cordova_platform_cmd = "cordova platform add android"
         platformstatus = commands.getstatusoutput(cordova_platform_cmd)
         self.assertEquals(0, platformstatus[0])
-
-        installWebviewPlugin(mode, self)
+        installWebviewPlugin(mode, self, multiple_apks)
 
         if replace_index_list is not None and len(replace_index_list) >= 2:
             index_file_path = os.path.join(project_root, "www", "index.html")
@@ -323,6 +327,7 @@ def app_install(appname, pkgname, self):
     if apk_file == "":
         print "Error: No app: %s found in directory: %s" % (appname, testapp_path)
     cmd_inst = "adb -s " + device + " install -r " + apk_file
+    print cmd_inst
     inststatus = commands.getstatusoutput(cmd_inst)
     self.assertEquals(0, inststatus[0])
     print "Install APK ----------------> OK"
