@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="W3C/HTML5 APIs" name="webapi-serviceworkers-w3c-tests">
+    <set name="ServiceWorker" type="js">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_scriptURL" purpose="Check if ServiceWorker.scriptURL return a serialized script url.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-scripturl.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_state" purpose="Check if ServiceWorker.state has values: installing, installed, activating, activated, and redundant.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-state.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_state_redundant" purpose="Check that ServiceWorker's redundant state." subcase="2">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-state-redundant.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_postMessage" purpose="Check if ServiceWorker postMessage can send data.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-postmessage.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_postmessage_InvalidStateError" purpose="Check if postMessage method will throw an InvalidStateError exception when the service worker state  is redundant.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-postmessage-exception.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_onstatechange" purpose="Check if onstatechange is fired when a serviceWorker state changed.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-onstatechange.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerRegistration_installing" purpose="Check if ServiceWorkerRegistration.installing returns installingWorker.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-registration-installing.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerRegistration_waiting" purpose="Check if ServiceWorkerRegistration.waiting returns a waitingWorker.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-registration-waiting.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerRegistration_active" purpose="Check if ServiceWorkerRegistration.active returns a activatedWorker." subcase="2">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-registration-active.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerRegistration_scope" purpose="Check if the scope attribute returns a service worker registration's serialized scope url.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-registration-scope.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerRegistration_update" purpose="Check if registration.update() resolves with undefined." subcase="2">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-registration-update.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerRegistration_unregister" purpose="Check if unregister() method returns true when unregister the service worker registration.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-registration-unregister.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerRegistration_onupdatefound" purpose="Check if ServiceWorkerRegistration has implement addEventListener method.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-registration-onupdatefound.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerContainer_controller" purpose="Check if ServiceWorkerContainer.controller returns ServiceWorker object that represents client's active worker.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-container-controller.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerContainer_ready" purpose="Check if ServiceWorkerContainer.ready resolves with the ServiceWorkerRegistration object.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-container-ready.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerContainer_register" purpose="Check if ServiceWorkerContainer.register() resolves with ServiceWorkerRegistration." subcase="4">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-container-register.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerContainer_getRegistration" purpose="Check if ServiceWorkerContainer.getRegistration() resolve promise with undefined." subcase="3">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-container-getregistration.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerContainer_getRegistrations" purpose="Check if register multiple times then getRegistrations.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-container-getregistrations.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerContainer_oncontrollerchange" purpose="Check if oncontrollerchange is fired when service worker client's active worker changes.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-container-oncontrollerchange.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerContainer_onmessage" purpose="Check if onmessage is fired when it receives a message.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-container-onmessage.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerMessageEvent" purpose="Check if service workers use the ServiceWorkerMessageEvent interface for the message event.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-message-event.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerGlobalScope_clients" purpose="Check if the clients attribute return Clients object.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-global-scope-clients.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerGlobalScope_registration" purpose="Check if registration attribute returns ServiceWorkerRegistration object.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-global-scope-registration.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerGlobalScope_skipWaiting" purpose="Check if skipWaiting() method allows service worker to progress from the registration's waiting position to active.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-global-scope-skipwaiting.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerGlobalScope_onfetch" purpose="Check if event onfetch returns a response." subcase="2">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-global-scope-onfetch.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerGlobalScope_onerror" purpose="Check if event onfetch returns a response.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-global-scope-onerror.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorkerGlobalScope_close" purpose="Check if ServiceWorkerGlobalScope.close() should throw an an 'InvalidAccessError' exception.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/service-worker-global-scope-close.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Client_frameType" purpose="Check if client.frameType return the value of the client's frame type.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/client-frametype.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Client_id" purpose="Check if id attribute return service worker client's id.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/client-id.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Client_url" purpose="Check if url attribute return service worker client's serialized creation url.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/client-url.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="WindowClient_focus" purpose="Check that focus() method and focused attribute." subcase="2">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/window-client-focus.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="WindowClient_navigate" purpose="Check that navigate with 'about:blank' url will throw a TypeError exception.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/window-client-navigate.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="WindowClient_visibilityState" purpose="Check that visibilityState attribute return the context object's visibility state.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/window-client-visibilitystate.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Clients_claim" purpose="Check that clients.claim() return undefined.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/clients-claim.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Clients_matchAll" purpose="Check that Clients.matchAll() returns clients in MRU order.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/clients-matchall.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Fetchevent_constructor" purpose="Check that FetchEvent constructor." subcase="2">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/fetch-event-constructor.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Fetchevent_request_flags" purpose="Check that the flags of request object in fetch event.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/fetch-event-request-flags.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_cache_add" purpose="Check that cache.add() in Service Worker." subcase="14">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/serviceworker/cache-add.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_cache_delete" purpose="Check that cache.delete() in Service Worker." subcase="5">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/serviceworker/cache-delete.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_cache_match" purpose="Check that cache.match() in Service Worker." subcase="23">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/serviceworker/cache-match.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_cache_put" purpose="Check that cache.put() in Service Worker." subcase="20">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/serviceworker/cache-put.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_cache_storage" purpose="Check that CacheStorage in Service Worker." subcase="10">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/serviceworker/cache-storage.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_cache_storage_keys" purpose="Check that CacheStorage.keys() in Service Worker." subcase="2">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/serviceworker/cache-storage-keys.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="ServiceWorker_cache_storage_match" purpose="Check that CacheStorage.match() in Service Worker." subcase="7">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/serviceworker/cache-storage-match.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Window_cache_add" purpose="Check that cache.add() in window." subcase="13">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/window/cache-add.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Window_cache_delete" purpose="Check that cache.delete() in window." subcase="4">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/window/cache-delete.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Window_cache_match" purpose="Check that cache.match() in window." subcase="22">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/window/cache-match.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Window_cache_put" purpose="Check that cache.put() in window." subcase="19">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/window/cache-put.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Window_cache_storage" purpose="Check that CacheStorage in window." subcase="9">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/window/cache-storage.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Window_cache_storage_keys" purpose="Check that CacheStorage.keys() in window.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/window/cache-storage-keys.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Window_cache_storage_match" purpose="Check that CacheStorage.match() in window." subcase="6">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/window/cache-storage-match.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Worker_cache_add" purpose="Check that cache.add() in Web Worker." subcase="13">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/worker/cache-add.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Worker_cache_delete" purpose="Check that cache.delete() in Web Worker." subcase="4">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/worker/cache-delete.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Worker_cache_match" purpose="Check that cache.match() in Web Worker." subcase="22">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/worker/cache-match.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Worker_cache_put" purpose="Check that cache.put() in Web Worker." subcase="19">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/worker/cache-put.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Worker_cache_storage" purpose="Check that CacheStorage in Web Worker." subcase="9">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/worker/cache-storage.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Worker_cache_storage_keys" purpose="Check that CacheStorage.keys() in Web Worker.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/worker/cache-storage-keys.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Worker_cache_storage_match" purpose="Check that CacheStorage.match() in Web Worker." subcase="6">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/worker/cache-storage-match.https.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Service Workers" execution_type="auto" id="Common_cache_storage" purpose="Check that that Window and Workers see same storage.">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="90">/opt/webapi-serviceworkers-w3c-tests/serviceworkers/w3c/cache-storage/common.https.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

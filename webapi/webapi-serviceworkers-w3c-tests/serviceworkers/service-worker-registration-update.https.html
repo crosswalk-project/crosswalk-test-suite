@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>ServiceWorkerRegistration.update()</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-registration-update-method">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="w3c/service-workers/resources/test-helpers.js"></script>
+<div id="log"></div>
+<script>
+
+promise_test(function(t) {
+  var scope = "resources/blank-iframe.html"
+  var scriptURL = "resources/empty-worker.js";
+  var registration;
+  return service_worker_unregister_and_register(t, scriptURL, scope)
+    .then(function(r) {
+      registration = r;
+      return wait_for_state(t, registration.installing, "activated");
+    })
+    .then(function(state) {
+      return registration.update();
+    })
+    .then(function(result) {
+      var expectedURL = normalizeURL(scriptURL);
+      assert_equals(registration.active.scriptURL, expectedURL, "registration.scriptURL");
+      assert_equals(result, undefined, "return undefined on success");
+      return service_worker_unregister_and_done(t, scope);
+    });
+}, "Check that registration.update() with no update.");
+
+
+promise_test(function(t) {
+  var scope = "resources/"
+  var script1 = "resources/empty-worker.js";
+  var script2 = "resources/postmessage-worker.js";
+  var registration;
+  var expectedURL;
+  return service_worker_unregister_and_register(t, script1, scope)
+    .then(function(r) {
+      registration = r;
+      return wait_for_state(t, registration.installing, "activated");
+    })
+    .then(function(state) {
+      assert_equals(registration.active.scriptURL,
+        normalizeURL(script1),
+        "registration.scriptURL");
+      return navigator.serviceWorker.register(script2, {scope: scope});
+    })
+    .then(function() {
+      return registration.update();
+    })
+    .then(function(result) {
+      assert_equals(registration.active.scriptURL,
+        normalizeURL(script2),
+        "registration.scriptURL");
+      assert_equals(result, undefined, "return undefined on success");
+      return service_worker_unregister_and_done(t, scope);
+    });
+}, "Check that registration.update() with a new worker.");
+
+</script>
+
