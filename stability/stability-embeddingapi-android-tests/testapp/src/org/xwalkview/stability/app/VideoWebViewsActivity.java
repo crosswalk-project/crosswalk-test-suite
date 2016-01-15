@@ -35,6 +35,7 @@ public class VideoWebViewsActivity extends XWalkBaseVideoActivity {
                             url_index = 0;
                         }
                         WebView webView = new WebView(VideoWebViewsActivity.this);
+                        webView.setId(i);
                         webView.setWebViewClient(new TestWebViewClientBase());
                         webView.getSettings().setJavaScriptEnabled(true);
                         webView.loadUrl(checkBoxList.get(url_index).getText().toString());
