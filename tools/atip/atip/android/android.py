@@ -258,7 +258,7 @@ class Android(common.APP):
             else:
                 self.registerWatcher("gps1", u"Use Google's location service?", "Agree")
                 self.registerWatcher("gps2", u"Location consent", "Agree")
-                self.registerWatcher("gps3", u"Improve Location accuracy?", "Agree")
+                self.registerWatcher("gps3", u"Improve location accuracy?", "Agree")
                 self.selectToggle(turnon)
                 self.runAllWatchers()
                 return True
