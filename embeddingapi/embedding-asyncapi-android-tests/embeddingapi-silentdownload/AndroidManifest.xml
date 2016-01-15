@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.xwalk.embedding.test"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <!-- disable the download notification, used for silent download mode -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+
+      <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="org.xwalk.embedding.test" />
+
+      <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:label="EmbeddingApiTestUnit"
+        android:name="org.xwalk.core.XWalkApplication" >
+        
+        <meta-data android:name="xwalk_apk_url" android:value="https://github.com/crosswalk-project/crosswalk-test-suite/blob/master/usecase/usecase-embedding-android-tests/XWalkRuntimeLibAPK/XWalkRuntimeLib.apk?raw=true" />
+        <!-- enable download mode -->
+        <meta-data android:name="xwalk_enable_download_mode" android:value="enable" />
+        <!-- disable signature check for development-->
+        <meta-data android:name="xwalk_verify" android:value="disable" />          
+
+       <activity
+            android:name="org.xwalk.embedding.MainActivity"
+            android:label="EmbeddingApiTestUnit_Main" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <uses-library android:name="android.test.runner" />
+    </application>
+
+</manifest>

@@ -3,6 +3,7 @@
     "pack.py",
     "COPYING",
     "suite.json",
+    "opt",
     "inst.*.py"
   ],
   "pkg-list": {
@@ -420,6 +421,29 @@
             "../build.gradle": "build.gradle",
             "../libraries.gradle": "libraries.gradle",
             "../pom.xml": "pom.xml",
+            "libs/chromium/base_java_test_support.jar": "libs/base_java_test_support.jar",
+            "libs/chromium/content_java_test_support.jar": "libs/content_java_test_support.jar",
+            "libs/chromium/net_java_test_support.jar": "libs/net_java_test_support.jar",
+            "libs/testkit/testkit-junit.jar": "libs/testkit-junit.jar"
+          },
+          "embeddingapi-library-name": "crosswalk-webview"
+        }
+      }
+    },
+    "silentdownload": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "inst.apk.py": "inst.py",
+        "tests_sd.xml": "tests_sd.xml"
+      },
+      "subapp-list": {
+        "embeddingapisd": {
+          "app-dir": "embeddingapi-silentdownload",
+          "app-name": "embeddingapi_sd",
+          "app-type": "EMBEDDINGAPI",
+          "copylist": {
             "libs/chromium/base_java_test_support.jar": "libs/base_java_test_support.jar",
             "libs/chromium/content_java_test_support.jar": "libs/content_java_test_support.jar",
             "libs/chromium/net_java_test_support.jar": "libs/net_java_test_support.jar",
