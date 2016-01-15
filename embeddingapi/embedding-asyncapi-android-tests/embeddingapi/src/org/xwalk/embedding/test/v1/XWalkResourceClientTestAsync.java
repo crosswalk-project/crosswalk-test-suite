@@ -46,9 +46,9 @@ public class XWalkResourceClientTestAsync extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testOnLoadStartedWithLocalUrl() {
+    public void testOnLoadStartedWithLoadUrl() {
         try {
-            String url = "file:///android_asset/index.html";
+            String url = "http://m.baidu.com/";
             OnLoadStartedHelper mOnLoadStartedHelper = mTestHelperBridge.getOnLoadStartedHelper();
             int currentCallCount = mOnLoadStartedHelper.getCallCount();
             loadUrlAsync(url);
@@ -228,7 +228,7 @@ public class XWalkResourceClientTestAsync extends XWalkViewTestBase {
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
-        }  
+        }
     }
 
     @SmallTest
@@ -332,9 +332,9 @@ public class XWalkResourceClientTestAsync extends XWalkViewTestBase {
                     new WebResourceResponse("text/html", "UTF-8", new EmptyInputStream()));
             int shouldInterceptRequestCallCount = mShouldInterceptLoadRequestHelper.getCallCount();
             int onPageFinishedCallCount = mTestHelperBridge.getOnPageFinishedHelper().getCallCount();
-    
+
             loadUrlAsync(aboutPageUrl);
-    
+
             mShouldInterceptLoadRequestHelper.waitForCallback(shouldInterceptRequestCallCount);
             mTestHelperBridge.getOnPageFinishedHelper().waitForCallback(onPageFinishedCallCount);
         } catch (Exception e) {
@@ -473,7 +473,7 @@ public class XWalkResourceClientTestAsync extends XWalkViewTestBase {
             loadUrlAsync(existingFileUrl);
             mShouldInterceptLoadRequestHelper.waitForCallback(callCount);
             assertEquals(existingFileUrl, mShouldInterceptLoadRequestHelper.getUrls().get(0));
-    
+
             mTestHelperBridge.getOnPageFinishedHelper().waitForCallback(onPageFinishedCallCount);
             assertEquals(title, getTitleOnUiThread());
             assertEquals(onPageFinishedCallCount + 1,
@@ -566,7 +566,7 @@ public class XWalkResourceClientTestAsync extends XWalkViewTestBase {
             e.printStackTrace();
         }
     }
-    
+
     @SmallTest
     public void testOnReceivedLoadErrorOnFailedSubresourceLoad() {
         try {
