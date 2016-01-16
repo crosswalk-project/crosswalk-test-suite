@@ -50,13 +50,14 @@ Authors:
   </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>Define a meta-data element using the name "xwalk_apk_url" inside the application tag of the file template/AndroidManifest.xml and the same as path with make_apk.py, just like:<br/>
+    <li>Unzip a crosswalk-[version].zip, add a meta-data element using the name "xwalk_apk_url"
+        inside the application tag of crosswalk-[version]/template/AndroidManifest.xml, just like:<br/>
         &lt;application android:name="org.xwalk.core.XWalkApplication"&gt;<br/>
         &lt;meta-data android:name="xwalk_apk_url" android:value="http://host/XWalkRuntimeLib.apk" /&gt;<br/>
         ...<br/>
         &lt;/application&gt;<br/>
-        Rebuild this app again with command:<br/>
-        $ python make_apk.py --package=[package] --manifest=res/manifest.json --mode=shared<br/>
+        Compress crosswalk-[version] and build this app with command:<br/>
+        $ crosswalk-pkg --crosswalk=/path/to/crosswalk-[verison].zip --platforms=android --android=shared /path/to/samples/ConfigUrl/res/manifestxml/res<br/>
         Then install and launch it
     </li>
     <li>Click "Get Crosswalk", check the screen</li>

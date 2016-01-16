@@ -47,15 +47,14 @@ Authors:
   <ol>
     <li>Setup a web server and make sure the test device can connect it</li>
     <li>Make sure the test device has not install XWalkRuntimeLib.apk</li>
+      <li>Add "xwalk_apk_url" to samples/ConfigUrl/res/manifestjson/res/manifest.json, then set XWalkRuntimeLib server address to it, just like:<br/>
+        "xwalk_apk_url": "http://host/XWalkRuntimeLib.apk"</li>
   </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>Define an element with the key "xwalk_apk_url" in res/manifest.json and set your server address to the value, just like:<br/>
-        "xwalk_apk_url": "http://host/XWalkRuntimeLib.apk"<br/>
-        then build a webapp with below command:<br/>
-        $ python make_apk.py --package=[package] --manifest=[path to res/manifest.json] --mode=shared --project-dir=[projectName]
+    <li>Build a webapp with below command:<br/>
+        $ crosswalk-pkg --crosswalk=/path/to/crosswalk-[verison].zip --platforms=android --android=shared /path/to/samples/ConfigUrl/res/manifestjson/res
     </li>
-    <li>Open the AndroidManifest.xml from directory [projectName] and check if there has define a meta-data element with the name "xwalk_apk_url" inside the application tag</li>
     <li>Install and launch it</li>
     <li>Click "Get Crosswalk", check the screen</li>
     <li>Click "Install", then check the screen</li>

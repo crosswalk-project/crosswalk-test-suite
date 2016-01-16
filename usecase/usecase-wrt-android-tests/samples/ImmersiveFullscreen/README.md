@@ -6,4 +6,4 @@ This sample demonstrates ImmersiveFullscreen feature basic functionalities, incl
 
 This usecase covers following method:
 
-* $ python make_apk.py --fullscreen
+* $ { "display": "fullscreen" }

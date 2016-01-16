@@ -46,7 +46,8 @@ Authors:
   <h4>Test Steps</h4>
   <ol>
     <li>Pack a test app using below command line with lower than current Crosswalk version:<br/>
-        $ python make_apk.py --package=org.xwalk.localStorage --manifest=res/res/manifest.json<br/>
+        $ crosswalk-pkg --crosswalk=/path/to/crosswalk-[lower-verison].zip --platforms=android --android=embedded
+          --targets=[arch] /path/to/samples/ApplicationlocalStorage/res/res<br/>
         then install it</li>
     <li>Launch the app and click "Set LocalStorage"</li>
     <li>Click "Get LocalStorage"</li>
