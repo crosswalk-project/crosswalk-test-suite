@@ -44,11 +44,9 @@ Authors:
     <strong>Test steps:</strong>
   </p>
   <ol>
-    <li>Open one terminal command line window run terminal command, just need to run one of the commands below:
+    <li>Open terminal command window to run the command:
       <ul>
-        <li>$ python make_apk.py --name=&lt;name&gt; --package=&lt;package&gt; --app-url=http://www.baidu.com --arch=arm --mode=shared</li>
-        <li>$ python make_apk.py --package=&lt;package&gt; --manifest=&lt;manifest-path&gt; --arch=arm --mode=shared</li>
-        <li>$ python make_apk.py --package=&lt;package&gt; --app-local-path=index.html --app-root=&lt;app-root-path&gt; --arch=arm --mode=shared</li>
+        <li>$ crosswalk-pkg --crosswalk=[crosswalk-version] --platforms=android --android=shared --targets=arm [app-root-path]</li>
       </ul>
     </li>
     <li>Install apk on arm devices</li>
