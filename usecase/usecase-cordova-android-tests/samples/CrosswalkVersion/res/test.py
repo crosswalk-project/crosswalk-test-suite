@@ -7,7 +7,7 @@ sys.path.append(os.path.realpath('..'))
 import comm
 from optparse import OptionParser
 PKG_MODES = ["shared", "embedded"]
-PKG_ARCHS = ["x86", "arm"]
+PKG_ARCHS = ["x86", "arm", "x86_64", "arm64"]
 
 comm.setUp()
 try:
@@ -22,7 +22,7 @@ try:
         "-a",
         "--arch",
         dest="pkgarch",
-        help="specify the apk arch, e.g. x86, arm")
+        help="specify the apk arch, e.g. x86, arm, x86_64, arm64")
     global BUILD_PARAMETERS
     (BUILD_PARAMETERS, args) = opts_parser.parse_args()
 except Exception as e:
@@ -57,13 +57,19 @@ if comm.CROSSWALK_BRANCH == "stable" or comm.CROSSWALK_BRANCH == "beta":
     latestVersion = comm.getLatestCrosswalkVersion(comm.CROSSWALK_BRANCH, main_version)
 
 pkg_mode_tmp = "shared"
-pkg_arch_tmp = "x86"
-
+apk_name_arch = "armv7"
+pack_arch_tmp = "arm"
 if BUILD_PARAMETERS.pkgmode == "embedded":
     pkg_mode_tmp = "core"
 
-if BUILD_PARAMETERS.pkgarch == "arm":
-    pkg_arch_tmp = "armv7"
+if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch != "arm":
+    apk_name_arch = BUILD_PARAMETERS.pkgarch
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        pack_arch_tmp = "x86"
+    elif BUILD_PARAMETERS.pkgarch == "x86_64":
+        pack_arch_tmp = "x86 --xwalk64bit"
+    elif BUILD_PARAMETERS.pkgarch == "arm64":
+        pack_arch_tmp = "arm --xwalk64bit"
 
 VERSION_TYPES = []
 EXCEPTED_VERSIONS = []
@@ -106,10 +112,10 @@ for version_tmp in VERSION_TYPES:
     print version_tmp
     print EXCEPTED_VERSIONS[index]
     comm.installWebviewPlugin(BUILD_PARAMETERS.pkgmode, version_tmp)
-    comm.build(app_name, BUILD_PARAMETERS.pkgarch)
+    comm.build(app_name, pack_arch_tmp)
 
     apk_source = os.path.join(project_path, "platforms", "android", 
-            "build", "outputs", "apk", "android-%s-debug.apk" % pkg_arch_tmp)
+            "build", "outputs", "apk", "android-%s-debug.apk" % apk_name_arch)
     apk_dest = os.path.join(current_path_tmp, "CrosswalkVersion_%s_%d.apk" % (comm.CROSSWALK_BRANCH, count))
     comm.doCopy(apk_source, apk_dest)
 
@@ -119,9 +125,9 @@ for version_tmp in VERSION_TYPES:
     comm.installWebviewPlugin(BUILD_PARAMETERS.pkgmode)
     os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\"' \
             ' value=\\"%s\\" \/>/g" config.xml' % version_tmp)
-    comm.build(app_name, BUILD_PARAMETERS.pkgarch)
+    comm.build(app_name, pack_arch_tmp)
     os.system('cp platforms/android/build/outputs/apk/android-%s-debug.apk ../CrosswalkVersion_%s_%d.apk' 
-        % (pkg_arch_tmp, comm.CROSSWALK_BRANCH, count))
+        % (apk_name_arch, comm.CROSSWALK_BRANCH, count))
     count = count + 1
     comm.removeWebviewPlugin()
     index = index + 1
