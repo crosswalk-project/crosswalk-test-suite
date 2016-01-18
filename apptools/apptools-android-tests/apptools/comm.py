@@ -236,7 +236,7 @@ def build(self, cmd):
 
 def run(self):
     setUp()
-    if device:
+    if device_arm or device_x86:
         apks = os.listdir(os.getcwd())
         for apk in apks:
             if ARCH_ARM != "" and ("arm" in apk or "shared" in apk):
