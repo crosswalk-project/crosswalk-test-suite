@@ -4,7 +4,7 @@ SRC_ROOT=$(cd $(dirname $0);pwd)
 BUILD_ROOT=/tmp/${name}-${path_flag}_pack
 BUILD_DEST=/tmp/${name}-${path_flag}
 
-usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.x>] [-p <local | npm>]
+usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm | x86_64 | arm64>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.x>] [-p <local | npm>]
 [-t apk] option was set as default.
 [-a x86] option was set as default.
 [-m embedded] option was set as default.
@@ -61,7 +61,15 @@ mkdir -p $BUILD_ROOT $BUILD_DEST
 
 if [ $pack_type == "cordova" ]; then
     for list in $LIST;do
-        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version --pack-type $plugin_location -s $SRC_ROOT/../../webapi/$list
+        if [ $sub_version == "4.x" ]; then
+            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST --sub-version $sub_version --pack-type $plugin_location -s $SRC_ROOT/../../webapi/$list
+        elif [ $sub_version == "3.6" ]; then
+            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/$list
+        else
+            echo "package sub version can only be 3.6 or 4.x, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            clean_workspace
+            exit 1
+        fi
         if [ -d $BUILD_DEST/opt/$list/HOST_RESOURCES ]; then
             mkdir -p $BUILD_ROOT/opt/$name/opt/$list
             mv $BUILD_DEST/opt/$list/HOST_RESOURCES/* $BUILD_ROOT/opt/$name/opt/$list
@@ -137,7 +145,22 @@ elif [ $pack_type == "cordova" ];then
 </head>
 EOF
         cd $BUILD_ROOT/$appname
-        cordova build android -- --gradleArg=-PcdvBuildArch=$arch
+
+        pack_arch_tmp="arm"
+        if [ $arch != 'arm' ]; then
+            if [ $arch == 'x86' ]; then
+                pack_arch_tmp="x86"
+            elif [ $arch == 'x86_64' ]; then
+                pack_arch_tmp="x86 --xwalk64bit"
+            elif [ $arch == 'arm64' ]; then
+                pack_arch_tmp="arm --xwalk64bit"
+            else
+                echo "apk runtime arch can only be x86 or arm or x86_64 or arm64, now take arm as default.... >>>>>>>>>>>>>>>"
+                exit 1
+            fi
+        fi
+
+        cordova build android -- --gradleArg=-PcdvBuildArch=$pack_arch_tmp
     elif [ $sub_version == "3.6" ]; then
         cp -ar $SRC_ROOT/../../tools/cordova $BUILD_ROOT/cordova
         cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
@@ -209,13 +232,8 @@ elif [ $pack_type == "cordova" ];then
         fi
     elif [ $sub_version == "4.x" ]; then
         apk_name_arch="armv7"
-        if [ $arch == 'x86' ]; then
-            apk_name_arch="x86"
-        else
-            if [ $arch != 'arm' ]; then
-                echo "apk runtime arch can only be x86 or arm, now take arm as default.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-                exit 1
-            fi
+        if [ $arch != 'arm' ]; then
+            apk_name_arch=$arch
         fi
 
         dir_source=$BUILD_ROOT/$appname/platforms/android/build/outputs/apk
