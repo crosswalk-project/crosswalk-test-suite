@@ -6,4 +6,4 @@ This sample demonstrates MisarchEmbeddedArm feature basic functionalities, inclu
 
 This usecase covers following method:
 
-* $ python make_apk.py --mode=embedded --arch=x86
+* $ crosswalk-pkg --android=embedded --targets=x86

@@ -8,4 +8,4 @@ This sample demonstrates UpgradeLib feature basic functionalities, include:
 
 This usecase covers following method:
 
-* $ python make_apk.py --mode=shared
+* $ crosswalk-pkg --android=shared

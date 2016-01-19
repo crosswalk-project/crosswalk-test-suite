@@ -6,5 +6,5 @@ This sample demonstrates LocalDownload feature basic functionalities, include:
 
 This usecase covers following method:
 
-* $ python make_apk.py --mode=shared
+* crosswalk-pkg --android=shared
 * Crosswalk web App fail to launch due to it has to depend on crosswalk lib

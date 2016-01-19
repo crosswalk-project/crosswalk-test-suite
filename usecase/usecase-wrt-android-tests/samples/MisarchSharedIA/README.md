@@ -6,4 +6,4 @@ This sample demonstrates MisarchSharedIA feature basic functionalities, include:
 
 This usecase covers following method:
 
-* $ python make_apk.py --mode=shared --arch=arm
+* $ crosswalk-pkg --android=shared --targets=arm

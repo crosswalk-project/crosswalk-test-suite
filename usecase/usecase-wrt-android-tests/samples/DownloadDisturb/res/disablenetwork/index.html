@@ -47,11 +47,13 @@ Authors:
     <ol>
       <li>The test device doesn't install the Crosswalk Runtime Library</li>
       <li>Setup a web server and make sure the test device can connect it</li>
+      <li>Add "xwalk_apk_url" to samples/DownloadDisturb/res/disablenetwork/res/manifest.json, then set XWalkRuntimeLib server address to it, just like:<br/>
+          "xwalk_apk_url": "http://host/XWalkRuntimeLib.apk"</li>
     </ol>
     <h4>Test Steps</h4>
     <ol>
       <li>Build apk with below commands:<br/>
-          $ python make_apk.py --package=org.xwalk.disturb1 --manifest=res/manifest.json --xwalk-apk-url=[http://host/XWalkRuntimeLib.apk] --mode=shared<br/>
+          $ crosswalk-pkg --crosswalk=/path/to/crosswalk-[verison].zip --platforms=android --android=shared /path/to/samples/DownloadDisturb/res/disablenetwork/res<br/>
           Then install the apk named like "disturb1" on test device and launch it
       </li>
       <li>Click "Get Crosswalk", check the launching screen</li>

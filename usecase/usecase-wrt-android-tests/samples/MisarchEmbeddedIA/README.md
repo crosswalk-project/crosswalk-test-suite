@@ -6,4 +6,4 @@ This sample demonstrates MisarchEmbeddedIA feature basic functionalities, includ
 
 This usecase covers following method:
 
-* $ python make_apk.py --mode=embedded --arch=arm
+* $ crosswalk-pkg --android=embedded --targets=arm

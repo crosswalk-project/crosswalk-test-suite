@@ -6,4 +6,4 @@ This sample demonstrates DownloadSearchList feature basic functionalities, inclu
 
 This usecase covers following method:
 
-* $ python make_apk.py --mode=shared
+* $ crosswalk-pkg --android=shared
