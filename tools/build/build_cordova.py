@@ -145,9 +145,14 @@ def packCordova_cli(
 
     apk_name_arch = "armv7"
     pack_arch_tmp = "arm"
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        apk_name_arch = "x86"
-        pack_arch_tmp = "x86"
+    if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch != "arm":
+        apk_name_arch = BUILD_PARAMETERS.pkgarch
+        if BUILD_PARAMETERS.pkgarch == "x86":
+            pack_arch_tmp = "x86"
+        elif BUILD_PARAMETERS.pkgarch == "x86_64":
+            pack_arch_tmp = "x86 --xwalk64bit"
+        elif BUILD_PARAMETERS.pkgarch == "arm64":
+            pack_arch_tmp = "arm --xwalk64bit"
 
     pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
 

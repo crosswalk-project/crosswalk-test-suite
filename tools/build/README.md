@@ -39,7 +39,7 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 **pkg-name**: mobilespec, helloworld, remotedebugging, spacedodge, CIRC, statusbar, renamePkg, setBackgroundColor, xwalkCommandLine, privateNotes, setUserAgent, LoadExtension  
 **cordova-version**: 3.6, 4.x  
 **pkg-mode**: embedded(default), shared  
-**pkg-arch**: arm(default), x86  
+**pkg-arch**: arm(default), x86, arm64, x86_64  
 **Note**: -a argument is only for cordova version 4.x, if no --tools argument, please run script under the path where it is.
 
 ## Authors:
