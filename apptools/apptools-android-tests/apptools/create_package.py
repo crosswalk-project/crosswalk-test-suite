@@ -363,5 +363,39 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(return_code, 0)
         self.assertEquals(data['xwalk_package_id'].strip(os.linesep), "org.xwalk.test")
 
+    def test_extensions_without_jsFile(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        shutil.copytree(comm.ConstPath + "/../testapp/extension_permission/", comm.XwalkPath + "/org.xwalk.test/extension_permission/")
+        os.remove(comm.XwalkPath + "/org.xwalk.test/extension_permission/contactextension/contactextension.js")
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + " " + comm.XwalkPath + "/org.xwalk.test/extension_permission/"
+        return_code = os.system(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        if comm.MODE != " --android-shared":
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    if comm.BIT == "64":
+                        self.assertIn("64", apks[i])
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    if comm.BIT == "64":
+                        self.assertIn("64", apks[i])
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+
 if __name__ == '__main__':
     unittest.main()
