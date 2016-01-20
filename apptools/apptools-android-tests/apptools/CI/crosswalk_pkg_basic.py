@@ -30,7 +30,6 @@
 
 import unittest
 import os
-import comm
 import zipfile
 import shutil
 from xml.etree import ElementTree
