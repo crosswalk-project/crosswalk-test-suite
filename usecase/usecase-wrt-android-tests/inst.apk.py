@@ -63,7 +63,7 @@ def instPKGs():
                         action_status = False
                         break
     pushmedia = commands.getstatusoutput(
-        "adb push %s/res/media/meego/*.mp4 /mnt/sdcard/" %
+        "adb push %s/res/media/w3c/*.mp4 /mnt/sdcard/" %
         SCRIPT_DIR)
     print pushmedia[1]
     if pushmedia[0] != 0:
