@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2014 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,28 +24,37 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Ge, Qing <qingx.ge@intel.com>
-
 -->
 
-<html>
-  <head>
-    <title>Iframe Sandbox Test: iframe_sandbox_example_allow-same-origin_allow-forms_allow-scripts</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <iframe id="if2" sandbox="allow-same-origin allow-forms allow-scripts" src="./support/iframe_src_document.html"></iframe>
-    <script>
-        test(function () {
-            assert_equals(document.getElementById("if2").sandbox.value, "allow-same-origin allow-forms allow-scripts",
-                          "The iframe.sandbox should be 'allow-same-origin allow-forms allow-scripts'.");
-        });
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="sandbox allow-scripts">
+<title>sandbox block modals</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="https://wiki.whatwg.org/wiki/Iframe_sandbox_improvments">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+test(function () {
+  var result = alert("Text");
+  assert_equals(result, undefined);
+}, "Check that alert() returns 'undefined' in a blocked modal sandboxed page");
+
+test(function () {
+  var result = print();
+  assert_equals(result, undefined);
+}, "Check that print() returns 'undefined' in a blocked modal sandboxed page");
+
+test(function () {
+  var result = confirm("Text");
+  assert_equals(result, false);
+}, "Check that confirm() returns false in a blocked modal sandboxed page");
+
+test(function () {
+  var result = prompt("Text");
+  assert_equals(result, null);
+}, "Check that prompt() returns null in a blocked modal sandboxed page");
+</script>
+
