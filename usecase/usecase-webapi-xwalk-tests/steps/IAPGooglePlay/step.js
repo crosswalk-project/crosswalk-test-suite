@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            + '<p>Test Purpose: </p>'
+            + '<p>Verify to query the product details and buy the in-app product successfully.</p>'
+            + '<p>Expected Result: </p>'
+            + '<p>It will firstly show "Initialization succeeded."</p>'
+            + '<p>Querying the product details and buying the in-app product successfully.</p>'
+            + '<p>Open Google Wallet -> My Account, there should be a new purchase record named "Apple (Crosswalk IAP Demo)" in Order history section.</p>'
+            + '<p>Notice: </p>'
+            + '<p>It is acceptable for some other features failed and noticed as "NotSupportError" as Google Play does not support them.</p>'
+          +'</font>';

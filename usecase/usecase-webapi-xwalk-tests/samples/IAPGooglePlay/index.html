@@ -26,7 +26,8 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu,Yun <yunx.liu@intel.com>
+        Liu, Yun <yunx.liu@intel.com> 
+        Qiu, Zhong <zhongx.qiu@intel.com>
 
 -->
 
@@ -44,23 +45,25 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content" style="margin: 20px 20px;">
-  Launch sub app "iap"
+  <p>Launch sub app "IAP Google Play Demo", choose "Google Play" and buy some in-app products.</p>
+  </br>
+  <h4>Pre-condition: </h4>
+  <ol>
+    <li>GMS (Google Mobile Services)</br>
+    IAP is provided by GMS, which means the device must have Google Play and Google Wallet installed.</br>
+    For Nexus 5 device, which is shipped Android 4.4 KitKat, they have been integrated in the system.
+    <li>Google account</br>
+    Make sure Google Play has been installed in the Android system. Make sure you can access Google Play.
+    A Google account with an available Google Wallet which should been granted as a tester of the test app com.crosswalk.iapsample from Google Play. 
+    </li> 
+    <li>No GFW</br>
+    IAP is not provided in China mainland, we must find a way to go over GFW to test IAP functionalities. (Maybe in the future, Google Play returns China mainland, then we can test this case without the aid of VPN!)
+    </li>
+  </ol>  
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Verifies query product details and buy gas product successfully.</p>
-  <p>Pre-condition: </p>
-  <ol>
-    <li>GMS</br>
-    IAP is provided by GMS, which means the device must have Google Play installed, and be able to access Google Play.</br>
-    Here is a wiki of setup steps for GMS on ZTE Geek for your reference: http://powerbuilder.sh.intel.com/projects/wrtonandroid/wiki/xwalk/geek_install_gms</li>
-    <li>Google Play developer account</br>
-    IAP must have products for user to buy, these products can only be managed in Google Play developer console by developer. The account on the device which you are using to test your IAP app should be the test account listed in your developer console, for more information please see Testing an APK with Google In-App Billing API</li>
-    <li>Google Wallet merchant account</br>
-    User must have Google Wallet merchant account to use IAP service on Google Play. In our scenario, "user" is the user account on test device - ZTE Geek. Note this account must be different with the developer account in above, use for purchase.</li> 
-    <li>No GFW</br>
-    IAP is not provided in China mainland, we must find a way to go over GFW to test IAP functionalities.</li>
-  </ol>
+  <p>Verify to query the product details and buy the in-app product successfully.</p>
 </div>

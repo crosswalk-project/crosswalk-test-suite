@@ -1,5 +1,6 @@
-/*
-Copyright (c) 2014 Intel Corporation.
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -25,25 +26,38 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu,Yun <yunx.liu@intel.com>
+        Qiu, Zhong <zhongx.qiu@intel.com>
 
-*/
+-->
 
-body { margin: auto; width: 100%; }
-.title { margin: 20px; padding: 20px; font-size: 42px; font-weight: bold; text-align: center; }
-div.centre {
-  width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.btnline { float: left; clear: left; font-size: 36px; }
-.btn { font-size: 40px; margin: 20px; width: 45%; height: 50px; }
-#datawindow {
-   width: 98%;
-   height: 800px;
-   font-size: 36px;
-   overflow: auto;
-   border: 1px solid;
-   margin: 0px auto;
-}
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/tests.js"></script>
+
+<input type="hidden" id="sub_test"/>
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content" style="margin: 20px 20px;">  
+  <p>Launch sub app "IAP Xiaomi Store Demo", choose "XiaoMi Store" and buy some in-app products. </p>
+  </br>
+  <h4>Pre-condition: </h4>
+  <ol>
+    <li>Xiaomi MIUI OS 7.0+</br>
+      Sub app "IAP Xiaomi Store Demo" can only run a MIUI OS with the Xiaomi Game Center Service. Currently, this app can run on Redmi, Xiaomi Mi4 and Xiaomi Note devices successfully.
+    </li>
+    <li>Xiaomi account</br>
+      To test the IAP API feature, you need a Xiaomi account to login in the MIUI system.
+  </ol>  
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Verify to query the product details and buy the in-app product successfully.</p>
+</div>
