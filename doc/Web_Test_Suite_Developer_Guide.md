@@ -512,32 +512,6 @@ Tests.xml Example.
 
 ## Appendix 2 WebAPI Spec Name List
 
-- Tizen Device API Specifications:Tizen:Alarm
-- Tizen Device API Specifications:Tizen:Application
-- Tizen Device API Specifications:Tizen:Bluetooth
-- Tizen Device API Specifications:Tizen:Bookmark
-- Tizen Device API Specifications:Tizen:Calendar
-- Tizen Device API Specifications:Tizen:Call History
-- Tizen Device API Specifications:Tizen:Contact
-- Tizen Device API Specifications:Tizen:Content
-- Tizen Device API Specifications:Tizen:Data Control
-- Tizen Device API Specifications:Tizen:Data Synchronization
-- Tizen Device API Specifications:Tizen:Download
-- Tizen Device API Specifications:Tizen:Filesystem
-- Tizen Device API Specifications:Tizen:Message Port
-- Tizen Device API Specifications:Tizen:Messaging
-- Tizen Device API Specifications:Tizen:NFC
-- Tizen Device API Specifications:Tizen:Network Bearer Selection
-- Tizen Device API Specifications:Tizen:Notification
-- Tizen Device API Specifications:Tizen:Package
-- Tizen Device API Specifications:Tizen:Power
-- Tizen Device API Specifications:Tizen:Push
-- Tizen Device API Specifications:Tizen:Secure Element
-- Tizen Device API Specifications:Tizen:System Information
-- Tizen Device API Specifications:Tizen:System Setting
-- Tizen Device API Specifications:Tizen:Time
-- Tizen Device API Specifications:Tizen:Tizen
-- Tizen Device API Specifications:Tizen:Web Setting
 - W3C API Specifications:DOM Forms:HTML5 Forms
 - W3C API Specifications:DOM Forms:Selectors API Level 1
 - W3C API Specifications:DOM Forms:Selectors API Level 2
@@ -603,34 +577,8 @@ Tests.xml Example.
 
 ## Appendix 3 WebAPI Component Name List
 
-Used by "Component" field in tests.full.xml and tests.xml
+Used by "Component" field in `tests.full.xml` and `tests.xml` files.
 
-- TizenAPI/Application/Alarm
-- TizenAPI/Application/Application
-- TizenAPI/Application/Datacontrol
-- TizenAPI/Application/Package
-- TizenAPI/Communication/Bluetooth
-- TizenAPI/Communication/Messaging
-- TizenAPI/Communication/NBS
-- TizenAPI/Communication/NFC
-- TizenAPI/Communication/Push
-- TizenAPI/Communication/SE
-- TizenAPI/Content/Content
-- TizenAPI/Content/Download
-- TizenAPI/IO/Filesystem
-- TizenAPI/IO/Messageport
-- TizenAPI/Social/Bookmark
-- TizenAPI/Social/Calendar
-- TizenAPI/Social/Callhistory
-- TizenAPI/Social/Contact
-- TizenAPI/Social/Datasync
-- TizenAPI/System/Power
-- TizenAPI/System/Systeminfo
-- TizenAPI/System/Systemsetting
-- TizenAPI/System/Time
-- TizenAPI/System/Websetting
-- TizenAPI/Tizen Common/Tizen
-- TizenAPI/UI/Notification
 - WebAPI/Communication/HTML5 The session history of browsing contexts
 - WebAPI/Communication/HTML5 Web Messaging
 - WebAPI/Communication/Server-Sent Events
@@ -644,27 +592,25 @@ Used by "Component" field in tests.full.xml and tests.xml
 - WebAPI/Device/Touch Events version 1
 - WebAPI/Device/Vibration API
 - WebAPI/DOM, Forms and Styles/CSS 2D Transforms
-- WebAPI/DOM, Forms and Styles/CSS 3D Transforms Module Level 3 - WebAPI/DOM, Forms and Styles/CSS Animations Module Level 3
+- WebAPI/DOM, Forms and Styles/CSS 3D Transforms Module Level 3
+- WebAPI/DOM, Forms and Styles/CSS Animations Module Level 3
 - WebAPI/DOM, Forms and Styles/CSS Backgrounds and Borders Module Level 3
 - WebAPI/DOM, Forms and Styles/CSS Basic User Interface Module Level 3 (CSS3 UI)
 - WebAPI/DOM, Forms and Styles/CSS Color Module Level 3
-- WebAPI/DOM, Forms and Styles/CSS Flexible Box Layout Module - WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3
-- WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module - WebAPI/DOM, Forms and Styles/CSS Style Attribute
-- WebAPI/DOM, Forms and Styles/CSS Text Module Level 3 - WebAPI/DOM, Forms and Styles/CSS Transforms Module Level 1
+- WebAPI/DOM, Forms and Styles/CSS Flexible Box Layout Module
+- WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3
+- WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module
+- WebAPI/DOM, Forms and Styles/CSS Style Attribute
+- WebAPI/DOM, Forms and Styles/CSS Text Module Level 3
+- WebAPI/DOM, Forms and Styles/CSS Transforms Module Level 1
 - WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3
-- WebAPI/DOM, Forms and Styles/DOM/JavaScript related HTML5 Enhancements - WebAPI/DOM, Forms and Styles/HTML5 Forms
+- WebAPI/DOM, Forms and Styles/DOM/JavaScript related HTML5 Enhancements
+- WebAPI/DOM, Forms and Styles/HTML5 Forms
 - WebAPI/DOM, Forms and Styles/Media Queries
 - WebAPI/DOM, Forms and Styles/Selectors API Level 1
 - WebAPI/DOM, Forms and Styles/Selectors API Level 2
-- WebAPI/DOM, Forms and Styles/Selectors API Level 2
-- WebAPI/Graphics/HTML5 SVG - WebAPI/Graphics/HTML5 The canvas element
-- WebAPI/IVI/CSS
-- WebAPI/IVI/DLNA
-- WebAPI/IVI/Locale
-- WebAPI/IVI/Message
-- WebAPI/IVI/Notification
-- WebAPI/IVI/Speech
-- WebAPI/IVI/Vehicle
+- WebAPI/Graphics/HTML5 SVG
+- WebAPI/Graphics/HTML5 The canvas element
 - WebAPI/JavaScript/Promises
 - WebAPI/Location/Geolocation API Specification
 - WebAPI/Media/getUserMedia
@@ -694,19 +640,19 @@ Used by "Component" field in tests.full.xml and tests.xml
 - WebAPI/Storage/Indexed Database API
 - WebAPI/Storage/Web SQL Database
 - WebAPI/Storage/Web Storage
-- WebAPI/Supplementary API Reference/Fullscreen APIMozilla - WebAPI/Supplementary API Reference/SIMD
+- WebAPI/Supplementary API Reference/Fullscreen APIMozilla
+- WebAPI/Supplementary API Reference/SIMD
 - WebAPI/Supplementary API Reference/Typed Arrays - Khronos
 - WebAPI/Supplementary API Reference/WebGL - Khronos
-- WebAPI/Supplementary API Reference/WebGL Specification
 - WebAPI/System-level APIs/Contacts Manager
 - WebAPI/System-level APIs/Device Capabilities
 - WebAPI/System-level APIs/Messaging
 - WebAPI/System-level APIs/Raw Sockets
-- WebAPI/Tizen/Configuration
 - WebAPI/UI/HTML5 Drag and drop
 - WebAPI/UI/HTML5 telephone, email and URL state of input element
 - WebAPI/UI/Web Notifications
-- WebAPI/UI/Web Speech - WebAPI/W3C\_EXTRAHTML5/Attributes
+- WebAPI/UI/Web Speech
+- WebAPI/W3C\_EXTRAHTML5/Attributes
 - WebAPI/W3C\_EXTRAHTML5/Base64
 - WebAPI/W3C\_EXTRAHTML5/Browsers
 - WebAPI/W3C\_EXTRAHTML5/Dom
