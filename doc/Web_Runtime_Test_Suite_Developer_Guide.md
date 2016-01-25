@@ -307,46 +307,6 @@ Note:
 ....1 [2, 3]
 
 
-## Appendix 1 Tests.full.xml and tests.xml
-Each test suite package has two dedicated .xml files (tests.full.xml and tests.xml), which defines all test cases in the package.
-Tests.xml is a simplified version of tests.full.xml; it contains the minimum required elements when running the tests.
-Note: The .xml files must comply with the rules in the test\_definition.xsd file. For details, see  [https://github.com/testkit/testkit-lite/blob/master/xsd/test\_definition.xsd](https://github.com/testkit/testkit-lite/blob/master/xsd/test_definition.xsd).
+## Appendix 1 `tests.full.xml` and `tests.xml`
 
-Tests.full.xml Example:
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
-    <test_definition>
-      <suite name="wrt-i18nmanu-tizen-tests" category="Crosswalk_I18n" launcher="xwalk">
-        <set name="i18n" type="js">
-          <testcase purpose="Validate if the web app can show 'Web' Test when settings language is set to English" type="Functional" status="approved" component="Crosswalk I18n" execution_type="manual" priority="P1" id="Crosswalk_I18n_TestEn">
-            <description>
-              <pre_condition>
-                Make sure Crosswalk application is launched.
-              </pre_condition>
-              <test_script_entry>/opt/wrt-i18nmanu-tizen-tests/i18n/Crosswalk_I18n_TestEn.html</test_script_entry>
-            </description>
-          </testcase>
-        </set>
-      </suite>
-    </test_definition>
-
-Tests.xml Example.
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
-    <test_definition>
-      <suite category="Crosswalk_I18n" launcher="xwalk" name="wrt-i18nmanu-tizen-tests">
-        <set name="i18n" type="js">
-          <testcase component="Crosswalk I18n" execution_type="manual" id="Crosswalk_I18n_TestEn" purpose="Validate if the web app can show 'Web' Test when settings language is set to English">
-            <description>
-              <pre_condition>
-                Make sure Crosswalk application is launched.
-              </pre_condition>
-              <test_script_entry>/opt/wrt-i18nmanu-tizen-tests/i18n/Crosswalk_I18n_TestEn.html</test_script_entry>
-            </description>
-          </testcase>
-         </set>
-      </suite>
-    </test_definition>
-
+See [tests.xml definition and sample](./Tests_XML_Definition_and_Sample.md).

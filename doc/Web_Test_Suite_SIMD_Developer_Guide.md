@@ -182,64 +182,6 @@ Note:
 
 
 
-## Appendix 1 Tests.full.xml and tests.xml
-SIMD has two dedicated .xml files (tests.full.xml and tests.xml), which defines all test cases in the package.
-Tests.xml is a simplified version of tests.full.xml; it contains the minimum required elements when running the tests.
-Note: The .xml files must comply with the rules in the test\_definition.xsd file. For details, see  [https://github.com/testkit/testkit-lite/blob/master/xsd/test\_definition.xsd](https://github.com/testkit/testkit-lite/blob/master/xsd/test_definition.xsd).
+## Appendix 1 `tests.full.xml` and `tests.xml`
 
-Tests.full.xml Example:
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
-    <test_definition>
-      <suite name="webapi-simd-nonw3c-tests" launcher="xwalk" category="SIMD">
-        <set name="webapi-simd-nonw3c-tests">
-          <testcase purpose="Check float32x4 constructor (0, 2, 2)" type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" subcase="2" id="float32x4_constructor">
-            <description>
-              <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/ecmascript_simd/src/index.html?testNumber=1</test_script_entry>
-            </description>
-            <specs>
-              <spec>
-                <spec_assertion element_type="method" element_name="float32x4" interface="SIMD" specification="SIMD" section="SIMD" category="Supplementary API Specifications"/>
-                <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
-                <spec_statement/>
-              </spec>
-            </specs>
-          </testcase>
-          <testcase purpose="Check float32x4 scalar getters (0, 4, 4)" type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" subcase="4" id="float32x4_scalar_getters">
-            <description>
-              <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/ecmascript_simd/src/index.html?testNumber=2</test_script_entry>
-            </description>
-            <specs>
-              <spec>
-                <spec_assertion element_type="method" element_name="float32x4" interface="SIMD" specification="SIMD" section="SIMD" category="Supplementary API Specifications"/>
-                  <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
-                <spec_statement/>
-              </spec>
-            </specs>
-          </testcase>
-         </set>
-      </suite>
-    </test_definition>
-
-Tests.xml Example.
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
-    <test_definition>
-      <suite category="SIMD" launcher="xwalk" name="webapi-simd-nonw3c-tests">
-        <set name="webapi-simd-nonw3c-tests">
-          <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float32x4_constructor" purpose="Check float32x4 constructor (0, 2, 2)" subcase="2">
-            <description>
-              <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/ecmascript_simd/src/index.html?testNumber=1</test_script_entry>
-            </description>
-          </testcase>
-          <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float32x4_scalar_getters" purpose="Check float32x4 scalar getters (0, 4, 4)" subcase="4">
-            <description>
-              <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/ecmascript_simd/src/index.html?testNumber=2</test_script_entry>
-            </description>
-          </testcase>
-         </set>
-      </suite>
-    </test_definition>
-
+See [tests.xml definition and sample](./Tests_XML_Definition_and_Sample.md).
