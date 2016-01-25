@@ -184,4 +184,4 @@ Note:
 
 ## Appendix 1 `tests.full.xml` and `tests.xml`
 
-See documentation [Test Definition in XML](./Test_Definition_in_XML.md).
+See [tests.xml definition and sample](./Tests_XML_Definition_and_Sample.md).

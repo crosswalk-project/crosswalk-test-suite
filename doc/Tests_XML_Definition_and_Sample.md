@@ -1,4 +1,4 @@
-# Test definition in XML
+# Tests.xml definition and sample
 
 Each test suite has two dedicated XML files, `tests.full.xml` and `tests.xml`.
 They define all test cases in the test suite package. They are used as input of
