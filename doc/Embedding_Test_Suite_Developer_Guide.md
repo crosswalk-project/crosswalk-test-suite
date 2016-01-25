@@ -12,8 +12,9 @@ Test developers are supposed to have set up the host and target:
 
 - Setup Ubuntu (12.04 64bit) Host for the Test Environments.
 - Ensure that you have set up your host environment for Android development.
-- set up an Android device to deploy the application to.
-- Ensure that you have installed the necessary ADT componentsfor your host.
+- Set up an Android device to deploy the application to.
+- Ensure that you have installed the necessary ADT components for your host.
+- Android development IDE: Android SDK + Eclipse.
 
 ## Build a development environment
 
@@ -23,23 +24,23 @@ Refer the following link for the way to create an application with the embedding
 
 [https://crosswalk-project.org/#documentation/embedding\_crosswalk/Reference-Crosswalk-webview-from-your-project](https://crosswalk-project.org/#documentation/embedding_crosswalk/Reference-Crosswalk-webview-from-your-project)
 
-### 2. Import EmbeddingAPI Source Code into ADT.
+### 2. Import EmbeddingAPI Source Code into Android SDK + Eclipse.
 
-- Get the EmbeddingAPI Source Code from the following link:[https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/embeddingapi](https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/embeddingapi),Then import the EmbeddingAPI test project into ADT.
+- Get the EmbeddingAPI Source Code from the following link:[https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/embeddingapi](https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/embeddingapi),Then import the EmbeddingAPI test project into Android SDK + Eclipse.
 
-  - Open ADT.
+  - Open Android SDK + Eclipse.
   - Select File > New>Project..., then Android>Android Project From Existing Code.
   - Set Root Directory to the path of the embedding-api-android-tests/directory you extracted.
   - Click Finish. The imported project will now be visible in the Package Explorer.
 
 
-- The next step is to add a reference for the Crosswalk webview project to the imported project.Do the following (in ADT):
+- The next step is to add a reference for the Crosswalk webview project to the imported project.Do the following (in Android SDK + Eclipse):
 
   - Right-click on the imported project in the Package Explorer and select Properties.
   - Select Android.
   - In the Library tab, click Add. Select the crosswalk-webview-XXX-x86 project and click OK. The imported project should now be linked to the Crosswalk webview project.
 
-- Add the jars in the libs directory, Do the following (in ADT):
+- Add the jars in the libs directory, Do the following (in Android SDK + Eclipse):
 
   - Right-click on the imported project in the Package Explorer and select Properties.
   - Select Java Build Path.
@@ -117,9 +118,9 @@ The '@SmallTest' in this code identifies this method is a test method.
 
 The content is as follows, the test\_set\_src identifies the path of the added case class path.
 
-## How to run the subcases in ADT
+## How to run the subcases in Android SDK + Eclipse
 
-Do the following (in ADT):
+Do the following (in Android SDK + Eclipse):
 
 - set up an Android device to the host with USB interface.
 - Right-click on the imported project in the Package Explorer and select Run As.
