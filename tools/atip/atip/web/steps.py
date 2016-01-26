@@ -47,6 +47,9 @@ def get_page_url(context, text):
             if url_components.scheme == 'http':
                 test_prefix = '%s://%s/' % (url_components.scheme,
                                             url_components.netloc)
+        elif test_platform == 'WINDOWS':
+             test_prefix = '%s://%s/' % (url_components.scheme,
+                                        url_components.netloc)
     except Exception as e:
         print "Failed to get page url: %s" % e
         return None

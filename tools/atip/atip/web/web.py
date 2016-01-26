@@ -100,6 +100,8 @@ class WebAPP(common.APP):
             if app_config["platform"]["name"].upper().find('DEEPIN') >= 0:
                 app_config.update({"desired-capabilities": {"loggingPrefs":{},"xwalkOptions": {"binary": "/usr/bin/TEST_BINARY", "debugPort": "12450"}}})
                 self.app_config_str = json.dumps(app_config).replace("TEST_BINARY", self.app_name)
+            if app_config["platform"]["name"].upper().find('WINDOWS') >= 0:
+                self.app_config_str = json.dumps(app_config).replace("TEST_BINARY", self.app_name)
             self.app_config = json.loads(self.app_config_str)
         if "url-prefix" in app_config:
             self.url_prefix = app_config["url-prefix"]
@@ -354,7 +356,7 @@ class WebAPP(common.APP):
             if self.app_config["platform"]["name"] == "android":
                 self.driver = WebDriver(
                     str(self.app_config["driver-url"]), desired_capabilities)
-            elif self.app_config["platform"]["name"] == "deepin":
+            elif self.app_config["platform"]["name"] in ("deepin", "windows"):
                 self.driver = WebDriver(
                     str(self.app_config["driver-url"]), desired_capabilities, keep_alive=True)              
         except Exception as e:
@@ -571,9 +573,12 @@ class WebAPP(common.APP):
 
     def click_element_by_key(self, key, display=True):
         element = self.__get_element_by_key(key, display)
-        print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
         if element:
-            ActionChains(self.driver).click(element).perform()
+            print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
+            if self.app_config["platform"]["name"].upper() == "WINDOWS":
+                element.click()
+            else:
+                ActionChains(self.driver).click(element).perform()
             return True
         return False
 
