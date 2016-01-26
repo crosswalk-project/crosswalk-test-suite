@@ -133,6 +133,26 @@ Example:
   </suite>
 </test_definition>
 ```
+### "nodeunit" type
+The test load with node js unit test runner
+
+Example:
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+    <set name="common_module" type="nodeunit">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_platform" purpose="Android - Validate if Crosswalk version is valid or invalid">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/android/test/android-platform.js</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
+```
 ##Core Test Type 
 ### "script" type
 The test case with directly script execution entry
