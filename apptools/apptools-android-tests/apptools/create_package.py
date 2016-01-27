@@ -397,5 +397,22 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
 
+    def test_external_extensions_way(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --keep --crosswalk=canary " + comm.ConstPath + "/../testapp/extension_permission/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        projectDir = output[0].split(" * " + os.linesep)[-1].split(' ')[-1].strip(os.linesep)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertNotIn("extensions-config.json", os.listdir(projectDir + "/prj/android/assets/"))
+        self.assertIn("contactextension", os.listdir(projectDir + "/prj/android/assets/xwalk-extensions/"))
+        self.assertIn("contactextension.js", os.listdir(projectDir + "/prj/android/assets/xwalk-extensions/contactextension/"))
+        self.assertIn("contactextension.json", os.listdir(projectDir + "/prj/android/assets/xwalk-extensions/contactextension/"))
+
 if __name__ == '__main__':
     unittest.main()
