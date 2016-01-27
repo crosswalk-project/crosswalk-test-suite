@@ -32,6 +32,7 @@
 import sys
 import commands
 import subprocess
+import time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -72,7 +73,7 @@ class TestApp():
         action_status = False
         if self.location.endswith(".apk"):
             if not self.isInstalled():
-                cmd = "%s -s %s install %s" % (ADB_CMD, self.device, self.location)
+                cmd = "%s -s %s install -r %s" % (ADB_CMD, self.device, self.location)
                 (return_code, output) = doCMD(cmd)
                 if self.isInstalled():
                     action_status = True
@@ -102,6 +103,8 @@ class TestApp():
         if not self.isRunning():
             cmd = "%s -s %s shell am start -n %s/.%s" % (ADB_CMD, self.device, self.pkgname, self.activname)
             (return_code, output) = doCMD(cmd)
+            ## waiting for app launch
+            time.sleep(5)
             if self.isRunning():
                 action_status = True
             else:
@@ -117,8 +120,11 @@ class TestApp():
             # Switch to Home
             # keycode
             # 3 --> "KEYCODE_HOME"
+            time.sleep(5)
             cmd = "%s -s %s shell input keyevent 3" % (ADB_CMD, self.device)
             (return_code, output) = doCMD(cmd)
+            ## waiting for app hidden
+            time.sleep(5)
             if not self.isActivity():
                 action_status = True
             else:
@@ -126,6 +132,7 @@ class TestApp():
         else:
             cmd = "%s -s %s shell am start -n %s/.%s" % (ADB_CMD, self.device, self.pkgname, self.activname)
             (return_code, output) = doCMD(cmd)
+            ## waiting for app launch
             if self.isActivity():
                 action_status = True
             else:
@@ -149,23 +156,19 @@ class TestApp():
     def isInstalled(self):
         action_status = False
         if not self.pkgname == "":
-            cmd = "%s -s %s shell pm list packages |grep %s" % (ADB_CMD, self.device, self.pkgname)
+            cmd = "%s -s %s shell pm list packages |grep %s|awk -F ':' '{print $2}'" % (ADB_CMD, self.device, self.pkgname)
             (return_code, output) = doCMD(cmd)
-            for line in output:
-                if self.pkgname in line:
-                    action_status = True
-                    break
+            if self.pkgname in output:
+                action_status = True
         return action_status
 
     def isRunning(self):
         action_status = False
         if not self.pkgname == "":
-            cmd = "%s -s %s shell ps |grep %s" % (ADB_CMD, self.device, self.pkgname)
+            cmd = "%s -s %s shell ps |grep %s|awk -F ' ' '{print $NF}'" % (ADB_CMD, self.device, self.pkgname)
             (return_code, output) = doCMD(cmd)
-            for line in output:
-                if self.pkgname in line:
-                    action_status = True
-                    break
+            if self.pkgname in output:
+                action_status = True
         return action_status
 
     def isActivity(self):

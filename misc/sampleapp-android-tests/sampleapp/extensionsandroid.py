@@ -33,33 +33,91 @@ import os
 import sys
 import commands
 import comm
+import shutil
+import glob
+import xml.etree.ElementTree as ET
 from TestApp import *
 
-app_name = "Spacedodgegame"
-package_name = "org.xwalk." + app_name.lower()
+app_name = "Sample"
+package_name = "org.crosswalkproject." + app_name.lower()
 active_name = app_name + "Activity"
-sample_src = comm.sample_src_pref + "space-dodge-game/screen-orientation-resize/"
+sample_src = comm.sample_src_pref + "extensions-android/"
+xwalk_version = os.environ.get('XWALK_VERSION')
 testapp = None
 
 comm.setUp()
 
-class Spacedodgegame(unittest.TestCase):
+def init(xmlpath):
+    channel = os.environ.get('CHANNEL')
+    if not channel:
+        print (" get channel error\n")
+        sys.exit(1)
+
+    if not xwalk_version:
+        print (" get crosswalk version error\n")
+        sys.exit(1)
+
+    tree = ET.parse(xmlpath)
+    for elem in tree.iter(tag='property'):
+        xwalk_version_name = elem.attrib.get('name')
+        if xwalk_version_name == 'crosswalk-version':
+            crosswalk_version = xwalk_version
+            if "64" in comm.ARCH:
+                crosswalk_version = xwalk_version + "-64bit"
+            #elem.set(str(elem.attrib.items()[1][0]),'15.44.375.0')
+            elem.set(str(elem.attrib.items()[1][0]), crosswalk_version)
+            for node in tree.iter(tag='get'):
+                #src_val = https://download.01.org/crosswalk/releases/crosswalk/android/canary/18.46.452.0/crosswalk-18.46.452.0-64bit.zip
+                src_val = "https://download.01.org/crosswalk/releases/crosswalk/android/%s/%s/crosswalk-%s.zip" \
+                          % (channel, xwalk_version, crosswalk_version)
+                print node.attrib.items()[1][0]
+                node.set(str(node.attrib.items()[1][0]), src_val)
+                print src_val
+                tree.write(xmlpath, "utf-8", "xml")
+
+def check_appname():
+    global app_name
+    #xwalk_version = '8.38.208.0'
+    if int(xwalk_version.split('.')[0]) < 9:
+        app_name = 'xwalk_echo_app'
+    else:
+        app_name = 'Sample'
+
+
+class ExtensionsAndroid(unittest.TestCase):
 
     def test_1_pack(self):
-        #clean up old apk
-        commands.getstatusoutput("rm %s%s*" % (comm.build_app_dest, app_name))
+        check_appname()
+        xmlpath = sample_src + 'xwalk-echo-extension-src/build.xml'
+        init(xmlpath)
+        cmd = "%s/build.sh %s %s" % (sample_src, comm.MODE, comm.ARCH)
+        os.chdir(comm.build_app_dest)
+        print "Generate APK %s ----------------> START" % app_name
+        packstatus = commands.getstatusoutput(cmd)
+        self.assertEquals(0, packstatus[0])
+        self.assertIn("build successful", packstatus[1].lower())
+        print "\nGenerate APK %s ----------------> OK\n" % app_name
 
-        cmd = "python %smake_apk.py --package=%s --name=%s "\
-        "--app-root=%s --app-local-path=%s --arch=%s --mode=%s "\
-        "--enable-remote-debugging --app-versionCode=123" % \
-            (comm.pack_tools,
-             package_name,
-             app_name,
-             sample_src,
-             comm.index_path,
-             comm.ARCH,
-             comm.MODE)
-        comm.pack(cmd, app_name, self)
+        apk_path = sample_src + "xwalk-echo-extension-src/lib/"
+        apk_build_flag = False
+        for index, name in enumerate(os.listdir(apk_path)):
+            if os.path.isdir(apk_path + "/" + name):
+                apk_path += name
+                for apk_index, apkname in enumerate(os.listdir(apk_path)):
+                    if apk_index <= len(os.listdir(apk_path)) and \
+                    apkname.endswith(".apk") and apkname.startswith(app_name):
+                        print 'Found apk %s' % apkname
+                        apk_build_flag = True
+                        os.chdir(apk_path)
+                        shutil.move(apkname, comm.build_app_dest)
+                    elif apkname.find(".apk") != -1:
+                        print 'Continue'
+            elif index > len(os.listdir(apk_path)) and \
+            os.path.isdir(apk_path + "/" + name) == False:
+                print 'Not found Crosswalk Runtime Binary'
+
+        self.assertTrue(apk_build_flag)
+
 
     def test_2_install(self):
         apk_file = commands.getstatusoutput("ls %s| grep %s" % (comm.build_app_dest, app_name))[1]
