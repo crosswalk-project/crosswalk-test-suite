@@ -47,12 +47,11 @@ Authors:
   <ol>
     <li>Install git</li>
     <li>Install gyp by "sudo apt-get install gyp" on Ubuntu or "svn co http://gyp.googlecode.com/svn/trunk build/gyp --revision 1831", add gyp path to PATH</li>
-    <li>Add path to make_apk.py to PATH</li>
+    <li>Install crosswalk-app-tools and set crosswalk-app-tools/src to PATH</li>
     <li>Add path to aidl to PATH. Example, "/home/belem/adt-bundle-linux/sdk/build-tools/19.0.0"</li>
     <li>Install depot_tools by "git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git", add depot_tools path to PATH</li>
     <li>cd /path/to/crosswalk binary folder, e.g. /home/belem/crosswalk/canary/crosswalk-9.38.207.0,<br/>
         $ chmod +x extension_manager.py<br/>
-        $ chmod +x make_apk.py
     </li>
     <p>Besides the original environment path config for Android, you may add more PATH contents like:<br/>
     /home/belem/crosswalk/canary/crosswalk-9.38.207.0:/home/belem/adt-bundle-linux/sdk/build-tools/19.0.0:/home/belem/github/depot_tools</p>
@@ -78,8 +77,8 @@ Authors:
         $ ./extension_manager.py --enable=crosswalk*<br/>
         $ ./extension_manager.py -l
     </li>
-    <li>Usage of make_apk.py, execute terminal command:<br/>
-        $ ./make_apk.py --package=your.app.name --manifest=&lt;your_manifest_path&gt;
+    <li>Usage of crosswalk-pkg, execute terminal command:<br/>
+        $ crosswalk-pkg --crosswalk=[crosswalk-version] -p android --targets=[arch] [your_project_path]
     </li>
     <li>Remove extensions, execute terminal command:<br/>
         $ ./extension_manager.py --remove=crosswalk-android-extensions
