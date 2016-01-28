@@ -35,15 +35,15 @@ import commands
 import comm
 from TestApp import *
 
-app_name = "Spacedodgegame"
+app_name = "Helloworld"
 package_name = "org.xwalk." + app_name.lower()
 active_name = app_name + "Activity"
-sample_src = comm.sample_src_pref + "space-dodge-game/screen-orientation-resize/"
+sample_src = comm.sample_src_pref + "hello-world/"
 testapp = None
 
 comm.setUp()
 
-class Spacedodgegame(unittest.TestCase):
+class Helloworld(unittest.TestCase):
 
     def test_1_pack(self):
         #clean up old apk
