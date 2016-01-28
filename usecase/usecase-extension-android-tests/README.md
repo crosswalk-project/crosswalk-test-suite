@@ -28,16 +28,21 @@ In this tutorial, you will build a Crosswalk Android application with a Java ext
 ## Build an extension
 
 user@host:~$ cd usecase-extension-android-tests/xwalk-echo-extension/
+
 user@host:~$ android update project --target android-22 --path .
+
 user@host:~$ ant release -Dandroid.library=true
 
 
 ## Build a web application
 
 user@host:~$ mv bin/classes.jar echoextension/echoextension.jar
+
 user@host:~$ cp echoextension.json js/echoextension.js echoextension/
+
 user@host:~$ cd libs/crosswalk-xxxx
-user@host:~$ python make_apk.py --fullscreen --enable-remote-debugging --manifest=/local/crosswalk_project/crosswalk-test-suite/usecase/usecase-extension-android-tests/xwalk-echo-app/manifest.json --extensions=/local/crosswalk_project/crosswalk-test-suite/usecase/usecase-extension-android-tests/xwalk-echo-extension/echoextension --package=org.crosswalkproject.sample
+
+user@host:~$ crosswalk-pkg --crosswalk=[crosswalk-version] --platforms=android --targets=[arch] --enable-remote-debugging /path/to/usecase-extension-android-tests/samples/XWalkEchoApp
 
 
 ## Run on Android
