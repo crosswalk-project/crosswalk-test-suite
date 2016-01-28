@@ -2,56 +2,48 @@ Feature: hexgl
  Scenario: hexgl checking - MOTION
   When launch "hexgl"
    # check game title
-   Then I should see title "HexGL"
-
-   # check quality: SD', 'HD', 'ULTRA'
-   And I should see "QUALITY: SD"
-   And I click "s-quality"
-   Then I should see "QUALITY: HD"
-   And I click "s-quality"
-   Then I should see "QUALITY: ULTRA"
+   Then I should see title "HexGL by BKcore"
 
    #check controls
-   Then I should see "CONTROLS: TOUCH"
-   And I click "s-controls"
-   And I should see "CONTROLS: MOTION"
+   Then I should see "Controls: TOUCH"
+   And I click "s-controlType"
+   And I should see "Controls: LEAP MOTION CONTROLLER"
+
+   # check quality
+   And I should see "Quality: VERY HIGH"
+   And I click "s-quality"
+   Then I should see "Quality: LOW"
+
+   # check hud
+   And I should see "HUD: ON"
+   And I click "s-hud"
+   And I should see "HUD: OFF"
 
    #check start
-   And I should see "START"
-   And I click button with class "titles-button" and text "START"
-   And I wait 1 seconds
-   #"controls-1"->"CONTROLS: TOUCH", "controls-2"->"CONTROLS:MOTION"
-   And I click "controls-2"
-
-   Then I should see "Loading..."
+   And I should see "Start"
+   And I click "start"
    And I wait 3 seconds
-
-#   Then I check screenshot "/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/resource/hexgl_motion.png" should have 90 similarity with "/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/resource/hexgl_motion_baseline.png"
-#   And I wait 10 seconds
-   #below time could be more longer during testing, e.g. 10min, as game is dynamic here, so set to 50%
-#   Then I check screenshot "/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/resource/hexgl_motion2.png" should have 50 similarity with "/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/resource/hexgl_motion2_baseline.png"
+   And I click "ctrl-help"
+   And I wait 20 seconds
+   Then I should see "Waiting for the Leap Motion Controller server..."
+   And I wait 3 seconds
 
  Scenario: hexgl checking - TOUCH
   When launch "hexgl"
    # check game title
-   Then I should see title "HexGL"
-   And I should see "QUALITY: SD"
-   Then I should see "CONTROLS: TOUCH"
+   Then I should see title "HexGL by BKcore"
+   Then I should see "Controls: TOUCH"
+   And I should see "Quality: VERY HIGH"
+   And I click "s-quality"
 
    #check start
-   And I should see "START"
-   And I click button with class "titles-button" and text "START"
-   And I wait 1 seconds
-   # "controls-1"->"CONTROLS: TOUCH", "controls-2"->"CONTROLS:MOTION"
-   And I click "controls-1"
-
-   Then I should see "Loading..."
+   And I should see "Start"
+   And I click "start"
+   And I wait 3 seconds
+   Then I should see "Click/Touch to continue"
+   And I click "ctrl-help"
+   And I wait 10 seconds
+   Then I should not see "Click/Touch to continue"
    And I wait 3 seconds
 
-#   Then I check screenshot "/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/resource/hexgl_touch.png" should have 90 similarity with "/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/resource/hexgl_touch_baseline.png"
-#   And I wait 10 seconds
-   #below time could be more longer during testing, e.g. 10min
-#   Then I check screenshot "/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/resource/hexgl_touch.png" should have 90 similarity with "/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/resource/hexgl_touch_baseline.png"
-
-#   Then I get screenshot as base64
 

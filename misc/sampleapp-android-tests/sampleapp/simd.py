@@ -35,28 +35,25 @@ import commands
 import comm
 from TestApp import *
 
-app_name = "Spacedodgegame"
+app_name = "Simd"
 package_name = "org.xwalk." + app_name.lower()
 active_name = app_name + "Activity"
-sample_src = comm.sample_src_pref + "space-dodge-game/screen-orientation-resize/"
+sample_src = comm.sample_src_pref + "simd-mandelbrot/"
 testapp = None
 
 comm.setUp()
 
-class Spacedodgegame(unittest.TestCase):
+class Simd(unittest.TestCase):
 
     def test_1_pack(self):
         #clean up old apk
         commands.getstatusoutput("rm %s%s*" % (comm.build_app_dest, app_name))
 
-        cmd = "python %smake_apk.py --package=%s --name=%s "\
-        "--app-root=%s --app-local-path=%s --arch=%s --mode=%s "\
-        "--enable-remote-debugging --app-versionCode=123" % \
+        manifest_file = sample_src + "manifest.json"
+        cmd = "python %smake_apk.py --package=%s --manifest=%s --app-versionCode=1 --arch=%s --mode=%s --enable-remote-debugging" % \
             (comm.pack_tools,
              package_name,
-             app_name,
-             sample_src,
-             comm.index_path,
+             manifest_file,
              comm.ARCH,
              comm.MODE)
         comm.pack(cmd, app_name, self)

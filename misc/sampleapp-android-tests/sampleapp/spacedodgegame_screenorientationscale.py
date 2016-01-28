@@ -38,7 +38,6 @@ from TestApp import *
 app_name = "Spacedodgegame"
 package_name = "org.xwalk." + app_name.lower()
 active_name = app_name + "Activity"
-app_dir = comm.const_path + "/../testapp/"
 sample_src = comm.sample_src_pref + "space-dodge-game/screen-orientation-scale/"
 testapp = None
 
@@ -48,7 +47,7 @@ class Spacedodgegame(unittest.TestCase):
 
     def test_1_pack(self):
         #clean up old apk
-        commands.getstatusoutput("rm %s%s*" % (app_dir, app_name))
+        commands.getstatusoutput("rm %s%s*" % (comm.build_app_dest, app_name))
 
         cmd = "python %smake_apk.py --package=%s --name=%s "\
         "--app-root=%s --app-local-path=%s --arch=%s --mode=%s "\
@@ -63,15 +62,15 @@ class Spacedodgegame(unittest.TestCase):
         comm.pack(cmd, app_name, self)
 
     def test_2_install(self):
-        apk_file = commands.getstatusoutput("ls %s| grep %s" % (app_dir, app_name))[1]
+        apk_file = commands.getstatusoutput("ls %s| grep %s" % (comm.build_app_dest, app_name))[1]
         if apk_file.endswith(".apk"):
             global testapp
-            testapp = TestApp(comm.device, app_dir + apk_file, package_name, active_name)
+            testapp = TestApp(comm.device, comm.build_app_dest + apk_file, package_name, active_name)
             if testapp.isInstalled():
                 testapp.uninstall()
             self.assertTrue(testapp.install())
         else:
-            print("-->> No packed %s apk in %s" % (app_name, app_dir))
+            print("-->> No packed %s apk in %s" % (app_name, comm.build_app_dest))
             self.assertTrue(False)
 
     def test_3_launch(self):
