@@ -22,22 +22,27 @@ In this tutorial, you will build a Crosswalk Android application with a Java ext
 
 * Require Android API level 22
 * Require Android SDK TOOLS
-* For ant build & web build: Please make sure copy the downloaded crosswalk-xxxx to xwalk-xxxx-extension/libs directory, then move xwalk_core_library/libs/xwalk_core_library_java.jar to libs folder.
+* For ant build & web build: Please make sure copy the downloaded crosswalk-xxxx to XWalkXXXExtension/libs directory, then move xwalk_core_library/libs/xwalk_core_library_java.jar to libs folder.
 
 
 ## Build an extension
 
-user@host:~$ cd usecase-extension-android-tests/xwalk-echo-extension/
+user@host:~$ cd usecase-extension-android-tests/samples/XWalkEchoExtension/
+
 user@host:~$ android update project --target android-22 --path .
+
 user@host:~$ ant release -Dandroid.library=true
 
 
 ## Build a web application
 
-user@host:~$ mv bin/classes.jar echoextension/echoextension.jar
-user@host:~$ cp echoextension.json js/echoextension.js echoextension/
-user@host:~$ cd libs/crosswalk-xxxx
-user@host:~$ python make_apk.py --fullscreen --enable-remote-debugging --manifest=/local/crosswalk_project/crosswalk-test-suite/usecase/usecase-extension-android-tests/xwalk-echo-app/manifest.json --extensions=/local/crosswalk_project/crosswalk-test-suite/usecase/usecase-extension-android-tests/xwalk-echo-extension/echoextension --package=org.crosswalkproject.sample
+user@host:~$ mkdir -p /path/to/XWalkEchoApp/echoextension
+
+user@host:~$ mv bin/classes.jar /path/to/XWalkEchoApp/echoextension/echoextension.jar
+
+user@host:~$ cp echoextension.json js/echoextension.js /path/to/XWalkEchoApp/echoextension/
+
+user@host:~$ crosswalk-pkg --crosswalk=[crosswalk-version] -p android --targets=[arch] /path/to/usecase-extension-android-tests/samples/XWalkEchoApp
 
 
 ## Run on Android
