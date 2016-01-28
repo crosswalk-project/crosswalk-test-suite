@@ -28,12 +28,14 @@
 #
 # Authors:
 #         Cici,Li<cici.x.li@intel.com>
+#         Li, Hao<haox.li@intel.com>
 
 import unittest
 import os
 import sys
 import commands
 import shutil
+import json
 import glob
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -41,9 +43,9 @@ sys.setdefaultencoding("utf-8")
 script_path = os.path.realpath(__file__)
 const_path = os.path.dirname(script_path)
 sample_src_pref = "/tmp/crosswalk-samples/"
+build_app_dest = const_path + "/../testapp/"
 app_tools_dir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
 index_path = "index.html"
-
 
 def setUp():
     global xwalk_version, ARCH, MODE, device, apptools, crosswalkzip
@@ -59,13 +61,17 @@ def setUp():
         print ("Not find CROSSWALK_APP_TOOLS_CACHE_DIR\n")
         sys.exit(1)
 
-    fp = open(const_path + "/../arch.txt", 'r')
-    ARCH = fp.read().strip("\n\t")
-    fp.close()
-
-    mode = open(const_path + "/../mode.txt", 'r')
-    MODE = mode.read().strip("\n\t")
-    mode.close()
+    tests_conf_json = os.path.join(const_path, "../tests-conf.json")
+    if os.path.exists(tests_conf_json):
+        with open(tests_conf_json) as tests_conf_file:
+            tests_conf_str = tests_conf_file.read()
+            tests_conf_file.close()
+            tests_conf = json.loads(tests_conf_str)
+            ARCH = tests_conf.get("arch")
+            MODE = tests_conf.get("mode")
+    else:
+        print ("Not find tests.conf.json\n")
+        sys.exit(1)
 
     # app tools commend
     apptools = "crosswalk-pkg"
@@ -89,57 +95,16 @@ def setUp():
         if not os.path.exists(crosswalkzip):
             crosswalkzip = xwalk_version
 
-def check_appname():
-    global app_name
-    xwalk_version = os.environ.get('XWALK_VERSION')
-    #xwalk_version = '8.38.208.0'
-    if int(xwalk_version.split('.')[0]) < 9:
-        app_name = 'xwalk_echo_app'
-    else:
-        app_name = 'Sample'
-
-
 def pack(cmd, appname, self):
     setUp()
-    pack_path = const_path + "/../testapp/"
-    os.chdir(pack_path)
+    os.chdir(build_app_dest)
     print "Generate APK %s ----------------> START" % appname
     print cmd
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, packstatus[0])
     print "\nGenerate APK %s ----------------> OK\n" % appname
-    result = commands.getstatusoutput("ls")
-    self.assertIn(appname, result[1])
+    apk_file = commands.getstatusoutput("ls %s| grep %s| grep %s" % (build_app_dest, appname.lower(), ARCH))[1]
+    self.assertTrue(apk_file.endswith(".apk"))
     os.chdir("../..")
 
-
-def app_install(cmd, cmdfind, self):
-    print "Install APK ----------------> START"
-    inststatus = commands.getstatusoutput(cmd)
-    self.assertEquals(0, inststatus[0])
-    print "Install APK ----------------> OK"
-    pmstatus = commands.getstatusoutput(cmdfind)
-    self.assertEquals(0, pmstatus[0])
-    print "Find Package in device ----------------> OK"
-
-
-def app_launch(cmd, self):
-    print "Launch APK ----------------> START"
-    launchstatus = commands.getstatusoutput(cmd)
-    self.assertNotIn("error", launchstatus[1].lower())
-    print "Launch APK ----------------> OK"
-
-
-def app_stop(cmd, self):
-    print "Stop APK ----------------> START"
-    stopstatus = commands.getstatusoutput(cmd)
-    self.assertEquals(0, stopstatus[0])
-    print "Stop APK ----------------> OK"
-
-
-def app_uninstall(cmd, self):
-    print "Uninstall APK ----------------> START"
-    unistatus = commands.getstatusoutput(cmd)
-    self.assertEquals(0, unistatus[0])
-    print "Uninstall APK ----------------> OK"
 

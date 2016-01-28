@@ -15,6 +15,8 @@ This test suite is for testing sampleapp-android-tests specification
    ```
 3. Download the crosswalk zip you want to test to CROSSWALK_APP_TOOLS_CACHE_DIR
 
+4. Modify arch and mode in tests-conf.json for test platform.
+
 ## Test Step
 
 1. Copy the source code folder named like crosswalk-samples to the path /tmp/
@@ -38,6 +40,7 @@ This test suite is for testing sampleapp-android-tests specification
 * Xu,Yuhan <yuhanx.xu@intel.com>
 * Li, cici <cici.x.li@intel.com>
 * Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Li, Hao <haox.li@intel.com>
 
 ## LICENSE
 

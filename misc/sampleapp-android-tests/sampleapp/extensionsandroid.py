@@ -26,15 +26,25 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#         Wang. Hongjuan <hongjuanx.wang@intel.com>
+#         Li, Hao<haox.li@intel.com>
 
-import xml.etree.ElementTree as ET
 import unittest
 import os
-import comm
+import sys
 import commands
+import comm
 import shutil
 import glob
+import xml.etree.ElementTree as ET
+from TestApp import *
+
+app_name = "Sample"
+package_name = "org.crosswalkproject." + app_name.lower()
+active_name = app_name + "Activity"
+sample_src = comm.sample_src_pref + "extensions-android/"
+testapp = None
+
+comm.setUp()
 
 def init(xmlpath):
     channel = os.environ.get('CHANNEL')
@@ -64,34 +74,92 @@ def init(xmlpath):
                 print src_val
                 tree.write(xmlpath, "utf-8", "xml")
 
-class TestSampleAppFunctions(unittest.TestCase):
+def check_appname():
+    global app_name
+    #xwalk_version = '8.38.208.0'
+    if int(comm.xwalk_version.split('.')[0]) < 9:
+        app_name = 'xwalk_echo_app'
+    else:
+        app_name = 'Sample'
 
-    def test_pack(self):
-        comm.setUp()
-        comm.check_appname()
-        sample_src = "extensions-android"
-        app_root = comm.sample_src_pref + sample_src
-        xmlpath = app_root + '/xwalk-echo-extension-src/build.xml'
+
+class ExtensionsAndroid(unittest.TestCase):
+
+    def test_1_pack(self):
+        check_appname()
+        xmlpath = sample_src + '/xwalk-echo-extension-src/build.xml'
         init(xmlpath)
-        cmd = "%s/build.sh -v %s -a %s - m %s" % (app_root, comm.xwalk_version, comm.ARCH, comm.MODE)
-        target_apk_path = comm.const_path + "/../testapp/"
-        os.chdir(target_apk_path)
-        print "Generate APK %s ----------------> START" % comm.app_name
+        cmd = "%s/build.sh -v %s -a %s -m %s" % (sample_src, comm.xwalk_version, comm.ARCH, comm.MODE)
+        os.chdir(comm.build_app_dest)
+        print "Generate APK %s ----------------> START" % app_name
         packstatus = commands.getstatusoutput(cmd)
         self.assertEquals(0, packstatus[0])
         self.assertIn("build successful", packstatus[1].lower())
-        print "\nGenerate APK %s ----------------> OK\n" % comm.app_name
+        print "\nGenerate APK %s ----------------> OK\n" % app_name
 
         apk_build_flag = False
-        apks = glob.glob(os.path.join(app_root, "*.apk"))
+        apks = glob.glob(os.path.join(sample_src, "*.apk"))
         if len(apks) > 0:
+            print apks
             apk_build_flag = True
             for apk in apks:
-               shutil.move(apk, target_apk_path)
+               shutil.move(apk, comm.build_app_dest)
         else:
             print 'Not found apk'
 
         self.assertTrue(apk_build_flag)
+
+    def test_2_install(self):
+        # Workaround for XWALK-6016: Build x86 and arm together, add arch filter 
+        apk_file = commands.getstatusoutput("ls %s| grep %s| grep %s" % (comm.build_app_dest, app_name.lower(), comm.ARCH))[1]
+        if apk_file.endswith(".apk"):
+            global testapp
+            testapp = TestApp(comm.device, comm.build_app_dest + apk_file, package_name, active_name)
+            if testapp.isInstalled():
+                testapp.uninstall()
+            self.assertTrue(testapp.install())
+        else:
+            print("-->> No packed %s apk in %s" % (app_name, comm.build_app_dest))
+            self.assertTrue(False)
+
+    def test_3_launch(self):
+        if testapp is not None:
+            self.assertTrue(testapp.launch())
+        else:
+            print("-->> Fail to pack %s apk" % app_name)
+            self.assertTrue(False)
+
+    def test_4_switch(self):
+        if testapp is not None:
+            self.assertTrue(testapp.switch())
+        else:
+            print("-->> Fail to pack %s apk" % app_name)
+            self.assertTrue(False)
+
+    def test_5_stop(self):
+        if testapp is not None:
+            self.assertTrue(testapp.stop())
+        else:
+            print("-->> Fail to pack %s apk" % app_name)
+            self.assertTrue(False)
+
+    def test_6_uninstall(self):
+        if testapp is not None:
+            self.assertTrue(testapp.uninstall())
+        else:
+            print("-->> Fail to pack %s apk" % app_name)
+            self.assertTrue(False)
+
+    def test_7_uninstall_when_app_running(self):
+        if testapp is not None:
+            if not testapp.isInstalled():
+                testapp.install()
+            if not testapp.isRunning():
+                testapp.launch()
+            self.assertTrue(testapp.uninstall())
+        else:
+            print("-->> Fail to pack %s apk" % app_name)
+            self.assertTrue(False)
 
 if __name__ == '__main__':
     unittest.main()

@@ -33,22 +33,24 @@ import os
 import sys
 import commands
 import comm
+import shutil
 from TestApp import *
 
-app_name = "Spacedodgegame"
+app_name = "Hangonman"
 package_name = "org.xwalk." + app_name.lower()
 active_name = app_name + "Activity"
-sample_src = comm.sample_src_pref + "space-dodge-game/manifest-orientation-scale/"
+sample_src = comm.sample_src_pref + "HangOnMan/src/"
 testapp = None
 
 comm.setUp()
 
-class Spacedodgegame(unittest.TestCase):
+class Hangonman(unittest.TestCase):
 
     def test_1_pack(self):
         #clean up old apk
         commands.getstatusoutput("rm %s%s*" % (comm.build_app_dest, "org.xwalk." + app_name.lower()))
-
+        #copy new manifest.json to replace old one
+        shutil.copyfile(sample_src + "../manifest.json", sample_src + "manifest.json")
         cmd = "%s --crosswalk=%s --platforms=android --android=%s --targets=%s --enable-remote-debugging %s" % \
             (comm.apptools,
              comm.crosswalkzip,
