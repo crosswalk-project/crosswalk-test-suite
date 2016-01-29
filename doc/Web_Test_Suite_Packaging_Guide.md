@@ -40,9 +40,9 @@ Set packaging environment for Android:
 
     $ export PATH=${PATH}:/path/to/adt-bundle-<version\>/sdk/platform-tools:/path/to/adb-bundle-/sdk/platform-tools
 
-There are two tools to generate APK package, make\_apk.py and cordova.
+There are two tools to generate APK package, make\_apk.py and crosswalk-app-tools.
 
-make\_apk.py:
+Before crosswalk-18.46.468.0, we use make\_apk.py:
 
 - Get proper package of <version\>/crosswalk-<version\>.zip from [https://download.01.org/crosswalk/releases/crosswalk/android/canary/](https://download.01.org/crosswalk/releases/crosswalk/android/canary/).
 
@@ -52,93 +52,68 @@ make\_apk.py:
 
     $ mv crosswalk-<version\>\* crosswalk/
 
-    make\_apk.py is located in the crosswalk folder.
+From crosswalk-18.46.468.0, make\_apk.py had been removed, which means we use crosswalk-app-tools:
 
-cordova:
+- Set a environment variable named CROSSWALK_APP_TOOLS_CACHE_DIR:
 
-- Get proper package of <version\>/<arch\>/crosswalk-cordova-<version\>-<arch\>.zip from [https://download.01.org/crosswalk/releases/crosswalk/android/canary/](https://download.01.org/crosswalk/releases/crosswalk/android/canary/).
+    export CROSSWALK_APP_TOOLS_CACHE_DIR=/custom/your/environment/path/
 
-    $ cd /path/to/crosswalk-test-suite/tools/
+- Get proper package of <version\>/crosswalk-<version\>.zip from [https://download.01.org/crosswalk/releases/crosswalk/android/canary/](https://download.01.org/crosswalk/releases/crosswalk/android/canary/). And move the crosswalk zip file to CROSSWALK_APP_TOOLS_CACHE_DIR
+    
+    $ mv crosswalk-<version\>.zip ${CROSSWALK_APP_TOOLS_CACHE_DIR}
 
-    $ unzip /path/to/crosswalk-cordova-<version\>-<arch\>.zip
-
-    $ mv crosswalk-cordova-<version\>-<arch\> cordova
 
 ## 3. Pack Web Test Suite Packages
 
-There is a pack.sh script in each test suite. Currently it supports 3 types of test suite packages, APK, XPK and WGT, in .zip, for 3 platforms, Android, Tizen Mobile and IVI.
+There is a pack.py script in crosswalk-test-suite/tools/build. Currently it supports 4 platforms: Android, Linux, Windows, iOS.
 
 ### 3.1  Pack Web Test Suite Packages for Android
 
-Pack APK packages use make\_apk.py:
+Pack APK packages use pack.py
 
-    $ ./pack.sh –t apk –m embedded –a arm|x86
+    $ ../../tools/build/pack.py –t apk –m embedded –a arm|x86
 
-   Pack embedded mode APK package using make\_apk.py. use –a arm or –a x86 to choose the right architecture.
+   Pack embedded mode APK package using pack.py. use –a arm or –a x86 to choose the right architecture.
 
-    $ ./pack.sh –t apk –m shared
+    $ ../../tools/build/pack.py –t apk –m shared –a arm|x86
 
-   Pack shared mode APK package using make\_apk.py.
+   Pack shared mode APK package using pack.py.
 
 Please see the Appendix1 for the packages list.
 
-There is a special package wrt-autohost-android-tests use below command:
+Pack embedded mode APK package using pack.py. use –a arm or –a x86 to choose the right architecture.
 
-    $ ./pack.sh –t pure –m embedded –a arm|x86
+Pack cordova packages use pack.py.
 
-Pack embedded mode APK package using make\_apk.py. use –a arm or –a x86 to choose the right architecture.
+    $ ../../tools/build/pack.py –t cordova --cordova-version 4.x -m embedded -a arm|x86
 
-Pack APK packages use cordova tool:
+Pack cordova sample apps package using pack.py.
 
-    $ ./pack.sh –t cordova
+    $ ../../tools/build/pack_cordova_sample.py -n APPNAME --cordova-version 4.x -m embedded -a arm|x86
 
-Pack APK package using cordova tool
+Please see the Appendix 6 for the packages list and cordova sample app list.
 
-Please see the Appendix 6 for the packages list.
+### 3.2  Pack Web Test Suite Packages for Deepin Linux
 
-### 3.2  Pack Web Test Suite Packages for Tizen Mobile
+    $ ../../tools/build/pack.py –t deb
 
-    $ ./pack.sh –t xpk –p mobile
-
-Pack XPK package.
+Pack deb package.
 
 Please see the Appendix 2 for the packages list.
 
-There is a special package wrt-autohost-tizen-tests use below command:
+### 3.3  Pack Web Test Suite Packages for Windows 8 & 10
 
-    $ ./pack.sh –t pure –p mobile
+    $ ../../tools/build/pack.py -t msi
 
-    $ ./pack.sh –t wgt –p mobile
-
-Pack WGT package.
-
-Please see Appendix 3 for the packages list.
-
-Please notice that Tizen deviceAPI related WGT need authorization to be installed on Tizen.
-
-### 3.3  Pack Web Test Suite Packages for Tizen IVI
-
-    $ ./pack.sh –t xpk –p ivi
-
-Pack XPK package.
+Pack msi package.
 
 Please see Appendix 2 for the package list
 
-There is a special package wrt-autohost-tizen-tests use below command:
+### 3.4  Pack Web Test Suite Packages for iOS
 
-    $ ./pack.sh –t pure –p ivi
+    $ ../../tools/build/pack.py -t ios
 
-    $ ./pack.sh –t wgt –p ivi
-
-Pack WGT package.
-
-Please see Appendix 4 for the package list.
-
-Please notice that Tizen deviceAPI related WGT need authorization to be installed on Tizen.
-
-    $ ./pack.sh –t xpk –p generic
-
-Pack XPK package for Tizen IVI Generic.
+Pack iOS package for iOS.
 
 Please see Appendix 5 for the package list.
 
@@ -245,6 +220,7 @@ Please see Appendix 5 for the package list.
 
 **Cordova**
 
+- cordova-appsecurityapi-android-tests
 - cordova-feature-android-tests
 - cordova-sampleapp-android-tests
 - cordova-webapp-android-tests
@@ -513,7 +489,7 @@ Please see Appendix 5 for the package list.
 - web-mbat-xwalk-tests
 - web-abat-xwalk-tests
 
-## Appendix 6 Cordova APK Packages List
+## Appendix 6 Cordova APK Packages List and Cordova Sample App apk list
 
 **WebAPI**
 
@@ -598,7 +574,22 @@ Please see Appendix 5 for the package list.
 
 **Cordova**
 
+- cordova-appsecurityapi-android-tests
 - cordova-feature-android-tests
 - cordova-sampleapp-android-tests
 - cordova-webapp-android-tests
+- usecase-cordova-android-tests
 
+**Cordova Sample Apps**
+
+- CIRC
+- Eh
+- helloworld
+- mobilespec
+- privateNotes
+- remotedebugging
+- renamePkg
+- setBackgroundColor
+- spacedodge
+- statusbar
+- xwalkCommandLine
