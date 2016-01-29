@@ -12,7 +12,7 @@ Feature: web-system-app
     And I click view "description=Add"
    Then I should see view "className=android.view.View^^^description=123"
    Then I should see view "className=android.view.View^^^description=Intel"
-    And reinstall "../../indexdb_upgrade.apk"
+    And upgrade "../../indexdb_upgrade.apk"
     And I execute command "adb shell am start -n org.xwalk.indexdb/.IndexdbActivity"
     And I wait 2 seconds
    Then I should see view "className=android.view.View^^^description=123"
