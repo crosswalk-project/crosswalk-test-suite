@@ -420,6 +420,12 @@
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_referrer_origin.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="auto" id="csp_base-uri_cross-origin_block" purpose="Check if base-uri is origin, that local img will not display.">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_base-uri_cross-origin_block.cgi</test_script_entry>
+        </description>
+      </testcase>
     </set>
     <set name="csp-ref" type="ref" ui-auto="wd">
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_default-src-inline-blocked" purpose="Check if default-src is 'self' but without unsafe-inline, that inline script will be blocked.">
@@ -1367,19 +1373,6 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_base-uri_asterisk-manual.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_asterisk-ref.html</refer_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0" execution_type="manual" id="csp_base-uri_cross-origin_block" purpose="Check if base-uri is origin, that local img will not display.">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: csp_base-uri_cross-origin_block.cgi</step_desc>
-              <expected>To pass, if there isn't a filled blue square.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_base-uri_cross-origin_block-manual.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>

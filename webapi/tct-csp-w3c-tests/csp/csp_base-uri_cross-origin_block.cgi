@@ -40,14 +40,18 @@ Authors:
     <title>CSP Test: csp_base-uri_cross-origin</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#base-uri"/>
-    <link rel="match" href="reference/csp_base-uri_cross-origin_block-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="base-uri http://www.w3.org"/>
     <meta charset="utf-8"/>
-    <base href = "http://127.0.0.1:8081/opt/tct-csp-w3c-tests/csp/support/" />
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
-    <p>Test passes if there is no blue.</p>
-    <img src="blue-100x100.png"/>
+    <div id="log"></div>
+    <script>
+      test(function() {
+        assert_equals(document.baseURI, document.location.href);
+      }, "Check that base URIs cannot be set if they violate the page policy");
+    </script>
   </body>
 </html> '
