@@ -1,604 +1,208 @@
-# Web Test Suite PackagingGuide
+# Web Test Suite Packaging Guide
 
-## 1. Overview
+## Overview
+This document is intended for developers or testers who need to pack Crosswalk web test suites. Crosswalk web test suites support pack on multiple platforms including Android, Windows, Linux, IOS. 
 
-This document is intended for developers or testers who need to pack web test suites.
-
-You are supposed to have gained the following knowledge:
+You are supposed to have gained the following knowledge before read this guide:
 
 - Where and how to download web test source code files.
 - How to download and install android SDK.
 
-## 2. EnvironmentSetup
+## Environment Setup 
 
-An Ubuntu (12.04) host is needed to pack the web test suites.
+### Set packaging environment for Android and Linux:
+An Ubuntu (12.04) host is needed to pack the web test suites for Android and Linux.
 
-- Install autoconf automake:
+- Install python-dev (2.7 or above):
+	
+        $ sudo apt-get install python-dev
 
-    $ sudo apt-get install autoconf automake
+- Install npm nodejs:
+	
+        $ sudo apt-get install npm nodejs
 
-Set packaging environment for Tizen:
+- Install app-tools
 
-- Install python-dev:
+        $ sudo npm install -g crosswalk-app-tools 
 
-    $ sudo apt-get install python-dev
-
-- Download and install
-
-    pycrypto([https://www.dlitz.net/software/pycrypto/](https://www.dlitz.net/software/pycrypto/))
-
-The XPK tool make\_xpk.py is located in web test source code.
-
-Set packaging environment for Android:
-
-- Install ant nodejs:
-
-    $ sudo apt-get install ant nodejs
-
-- Download and install Android SDK(>=android-19) for your platform from [http://developer.android.com/sdk/index.html](http://developer.android.com/sdk/index.html).
+- Download and install Android SDK(>=android-19) for your platform from <http://developer.android.com/sdk/index.html>.
 - Deploy Android SDK`s tools and platform-tools to PATH environment
 
-    $ export PATH=${PATH}:/path/to/adt-bundle-<version\>/sdk/platform-tools:/path/to/adb-bundle-/sdk/platform-tools
+        $ export PATH=$PATH:/path/to/adt-bundle-<version>/sdk/platform-tools:/path/to/adb-bundle-/sdk/platform-tools
 
-There are two tools to generate APK package, make\_apk.py and cordova.
+- Install ant maven (for android)
 
-make\_apk.py:
+        $ sudo apt-get install ant maven
 
-- Get proper package of <version\>/crosswalk-<version\>.zip from [https://download.01.org/crosswalk/releases/crosswalk/android/canary/](https://download.01.org/crosswalk/releases/crosswalk/android/canary/).
+- Set a environment variable named CROSSWALK_APP_TOOLS_CACHE_DIR:
 
-    $ cd /path/to/crosswalk-test-suite/tools/
+        $ export CROSSWALK_APP_TOOLS_CACHE_DIR=/custom/your/environment/path/
 
-    $ unzip /path/to/crosswalk-<version\>.zip
+- Get proper package of `<version>/crosswalk-<version>.zip` from <https://download.01.org/crosswalk/releases/crosswalk/android/canary/>. 
+    
+        $ mv crosswalk-<version>.zip $CROSSWALK_APP_TOOLS_CACHE_DIR
 
-    $ mv crosswalk-<version\>\* crosswalk/
+Besides app-tools, cordova tool is also support to build Web Apps for Android. 
 
-    make\_apk.py is located in the crosswalk folder.
+- if build with cordova, Get proper package of `<version>/<arch>/crosswalk-cordova-<version>-<arch>.zip` from <https://download.01.org/crosswalk/releases/crosswalk/android/canary/>.
 
-cordova:
+        $ cd /path/to/crosswalk-test-suite/tools/
+        $ unzip /path/to/crosswalk-cordova-<version\>-<arch\>.zip
+        $ mv crosswalk-cordova-<version\>-<arch\> cordova
 
-- Get proper package of <version\>/<arch\>/crosswalk-cordova-<version\>-<arch\>.zip from [https://download.01.org/crosswalk/releases/crosswalk/android/canary/](https://download.01.org/crosswalk/releases/crosswalk/android/canary/).
+### Set packaging environment for Windows:
 
-    $ cd /path/to/crosswalk-test-suite/tools/
+An Windows (8.1 or 10) host is needed to pack the web test suites.
 
-    $ unzip /path/to/crosswalk-cordova-<version\>-<arch\>.zip
+- Download and Install [python](https://www.python.org/downloads/).
+- Deploy python-tools to PATH environment in Advanced system settings/envirnemnt variables.
+- Download and Install [nodejs](https://nodejs.org/en/)
+- Deploy nodejs tool to PATH environment in Advanced system settings/envirnemnt variables.
+- Download and Install [WiX Toolset](http://wixtoolset.org/)
+- Deploy WiX toolset to PATH environment in Advanced system settings/envirnemnt variables
 
-    $ mv crosswalk-cordova-<version\>-<arch\> cordova
+- Install app-tools
 
-## 3. Pack Web Test Suite Packages
+        $ npm install -g crosswalk-app-tools
 
-There is a pack.sh script in each test suite. Currently it supports 3 types of test suite packages, APK, XPK and WGT, in .zip, for 3 platforms, Android, Tizen Mobile and IVI.
+- Set a environment variable named CROSSWALK_APP_TOOLS_CACHE_DIR in Advanced system settings/envirnemnt variablels.
+- Get proper package of `<version>/crosswalk-<version>.zip` from <https://download.01.org/crosswalk/releases/crosswalk/android/canary/>. and move crosswalk-<version>.zip to $CROSSWALK_APP_TOOLS_CACHE_DIR
 
-### 3.1  Pack Web Test Suite Packages for Android
+## `pack.py`
+`pack.py` script in crosswalk-test-suite/tools/build, is a centralized pack solution for crosswalk test suites on different platforms. it integrate various pack tools as build backend, include: crosswalk app-tools build for android, windows, linux, cordova build for android, ant/maven/gradle build for android, IOS build. 
 
-Pack APK packages use make\_apk.py:
+```
+Usage: ./pack.py -t apk -m shared -a x86
 
-    $ ./pack.sh –t apk –m embedded –a arm|x86
+Options:
+  -h, --help            show this help message and exit
+  -c PKGCFG, --cfg=PKGCFG
+                        specify the path of config json file
+  -t PKGTYPE, --type=PKGTYPE
+                        specify the pkg type, e.g. apk, xpk, wgt ...
+  -m PKGMODE, --mode=PKGMODE
+                        specify the apk mode, e.g. shared, embedded
+  -a PKGARCH, --arch=PKGARCH
+                        specify the apk arch, e.g. x86, arm
+  -d DESTDIR, --dest=DESTDIR
+                        specify the installation folder for packed package
+  -s SRCDIR, --src=SRCDIR
+                        specify the path of pkg resource for packing
+  --tools=PKGPACKTOOLS  specify the parent folder of pack tools
+  --notclean            disable the build root clean after the packing
+  -v, --version         show this tool's version
+  --pkg-version=PKGVERSION
+                        specify the pkg version, e.g. 0.0.0.1
+```
 
-   Pack embedded mode APK package using make\_apk.py. use –a arm or –a x86 to choose the right architecture.
+With this script, you could :
+- Not maintain Makefile.am for every subdirectory.
+- Not maintain autoconf since it is hard to build resource on multiple platforms.
+- Share one pack tool (pack.py) for all test suites; maintain a specific JSON file (suite.json) for resource structure in each suite.
+- Share one VERSION file at the top directory.
+- Use scalable options for tools/install destination/package source/packing debug ...
+- Get good experience with multiple packing processes and informational logs.
+- Strict the error handling.
 
-    $ ./pack.sh –t apk –m shared
+## Package Resources 
+Here is a typical Crosswalk test suite resource structure:
 
-   Pack shared mode APK package using make\_apk.py.
+![Typical Web Test Suite Structure](img/Web_Test_Suite_Structure.jpg)
 
+### suite.json
+| Key | Mandatory? | Description | Example | Note |
+|:----|:-----------|:-----------|:--------|:-----|
+| "pkg-name" | No | Package name | `"pkg-name": "web-demo-tests"` |
+| "pkg-blacklist" | No | The common black list used by final zip package and top level package app | `"pkg-blacklist":["pack.py", "COPYING"]` | `pack.py` will handle some app framework files by itself, e.g. `icon.png`, `config.xml`, so you just need add those files to this common black list. The value of the list member can support "regular expression", e.g. `test/*.py` will add all files which have `.py` suffix in `test` folder to the black list. |
+| "pkg-list" | Yes | The detailed package type which the `pack.py` supported | | The package should be the one of `apk`, `xpk`, `wgt`, `apk-aio`, `cordova`. The package type can share a package json section, e.g. `apk,cordova`, or use single section, e.g. `wgt` |
+| "blacklist" | No | The black list used by the parent package or app | `"blacklist":["specname/testapps","specname/testscripts"]` | Effective on relative path， e.g. package's `blacklist` acts on suite folder(in final zip package, is `/`), and package top level app's `blacklist` acts on suite folder(in final zip package, is `/opt/test-suite-name/` folder). But for sub apps' `blacklist`, it act on sub apps source folder(in sub app package, is `/`). The value of the list member can support "regular expression", e.g. `test/*.py` will add all files which have `.py` suffix in `test` folder to the black list. |
+| "copylist"  | No | The copy list used by the parent package or app | `"copylist": {"inst.apk.py": "inst.py","specname/testscripts": "specname/testscripts","specname/testscripts/app01/webdriver.xw_android.cfg": "specname/testscripts/app01/webdriver.cfg"} `| Effective on relative path too, just like `blacklist`, but not support "regular expression". Support MARCO `PACK-TOOL-ROOT` to replace the prefix of "relative path", the `PACK-TOOL-ROOT` is the tools path (point out by `--tools` or default `test-suite-name/../../tools`, e.g. `"PACK-TOOL-ROOT/crosswalk/":"crosswalk"` will copy crosswalk folder under tools to `crosswalk` folder of the package/app source tree) |
+| "pkg-app" | No | The package's top level app | | Only some WebAPI test packages need this top level app |
+| "subapp-list" | No | The black list used by the parent package or app| | The key of the number should be the app's relative path in suite source folder |
+| "app-dir" | No | Specify which directory will be packed as a sub app | `"app-dir": "path/to/folder"` | The sub-app will use the key in `subapp-list` if no `app-dir` provided in json by default |
+| "app-name" | No | Sub app name | `app01` | The app will use the parent folder name if no `app-name` provided in json |
+| "sign-flag" | No| The sign flag of the wgt app| `"sign-flag": "true"` | Only used by wgt package type |
+| "install-path" | No| The app's installation folder in the final zip package | `"install-path":"haha/kkkk"`| Will use the `/` of final zip package if no `install-path` provided |
+| "hosted-app" | No | Point out if the package app is hosted app | `"hosted-app":"true"` | Only use by package app (`pkg-app`), the `pack.py` will update package app's index.html to point to remote http server webrunner |
+| "all-apps" | No | The `pack.py` will pack all sub folders one by one automatically if the value is `true` | `"all-apps": "true"` | The apps' name will use parent folder name |
+| "apk-type" | No | Point out the apk type, the type should one of `HOSTEDAPP`, `MANIFEST` and `COMMANDLINE`. The default apk type is `COMMANDLINE`. (1) `"MANIFEST`": will pack apk with default `manifest.json` in sub app folder by `--manifest=` option. (2) `HOSTEDAPP`: will pack apk by `--app-url`. (3) `COMMANDLINE`: will pack apk by `make_apk.py` command line, e.g. `python make_apk.py --package=org.xwalk.calculator_test --name=calculator_test --app-root=/tmp/tog4ffi40m68ri7/calculator_test --app-local-path=index.html --icon=/tmp/tog4ffi40m68ri7/calculator_test/icon.png --mode=embedded --arch=x86` |
+| "apk-type":"HOSTEDAPP" | The `HOSTEDAPP` need `test" at the same time |
+| "apk-url-opt" | No | Point out value `--app-url` option of `make_apk.py` | `"apk-url-opt":"www.baidu.com"` | Only use by apk type `HOSTEDAPP` |
+| "apk-ext-opt" | No | Point out value `--extensions` option of `make_apk.py`, should be the relative path of suite source | `"apk-ext-opt":"haha/kkkk"` |
+| "apk-cmd-opt" | No | Point out value `--xwalk-command-line` option of `make_apk.py` | `"apk-cmd-opt":"--disable-webgl --disable-webrtc"` |
+| "apk-mode-opt" | No | Point out value `--mode` option of `make_apk.py` | `"apk-mode-opt":"embedded"` | Should be one of `shared` or `embedded`, default value will be the value of `-m` option |
+| "apk-arch-opt" | No | Point out value `--arch` option of `make_apk.py` | `"apk-arch-opt":"x86"` | Should be one of `arm` or `x86`, default value will be the value of `-a` option |
+| "apk-icon-opt" | No | Point out value `--icon` option of `make_apk.py` | `"apk-icon-opt":""` (if no need of `icon.png`) | Default value will use the `icon.png` under current `app-dir` folder |
+| "key-file" | No | Point out key file of `make_xpk.py` | `"key-file":"haha.pem"` | `key.file` is reserved for default xpk packing |
+| "embeddingapi-library-name" | No | Point out embeddingapi core library folder name in tools folder | `"embeddingapi-library-name": "crosswalk-webview"` |
+| "apk-common-opts" | No | Point out apk extra options| `"apk-common-opts": "--keep-screen-on --enable-remote-debugging"` |
+
+### `VERSION`
+This file with version info only is used by the `pack.py` tool. Normally, the pack tool will go through subdirectories, `../../<test-suite-name>`, `../<test-suite-name>` and `../../<test-suite-name>` one by one, and use the fist `VERSION` file found.
+
+| Key | Mandatory? | Description | Example |
+| :-- | :--------- | :---------- | :------ |
+| "main-version" | Yes | Package main version | "main-version": "0.0.0.1" |
+| "release-version" | Yes | Package release(hotfix) version | "release-version": "1" |
+
+## Pack Test Suite Packages
+### Pack Test Suite Packages for Android
+
+Pack APK packages use app-tools
+
+Pack embedded mode APK. use –a arm or –a x86 to choose the right architecture.
+
+    $ ../../tools/build/pack.py –t apk –m embedded –a arm|x86
+
+Pack shared mode APK.
+   
+    $ ../../tools/build/pack.py –t apk –m shared –a arm|x86
 Please see the Appendix1 for the packages list.
 
-There is a special package wrt-autohost-android-tests use below command:
+Pack cordova packages use cordova tool.
 
-    $ ./pack.sh –t pure –m embedded –a arm|x86
+    $ ../../tools/build/pack.py –t cordova --cordova-version 4.x -m embedded -a arm|x86
+Please see the Appendix 1 for the packages list.
 
-Pack embedded mode APK package using make\_apk.py. use –a arm or –a x86 to choose the right architecture.
-
-Pack APK packages use cordova tool:
-
-    $ ./pack.sh –t cordova
-
-Pack APK package using cordova tool
-
-Please see the Appendix 6 for the packages list.
-
-### 3.2  Pack Web Test Suite Packages for Tizen Mobile
-
-    $ ./pack.sh –t xpk –p mobile
-
-Pack XPK package.
+### Pack Test Suite Packages for Deepin Linux
+Pack deb package use app-tools
+   
+    $ ../../tools/build/pack.py –t deb
 
 Please see the Appendix 2 for the packages list.
 
-There is a special package wrt-autohost-tizen-tests use below command:
+### Pack Test Suite Packages for Windows
+Pack msi package on Windows 8.1 & 10 with app-tool
 
-    $ ./pack.sh –t pure –p mobile
+    $ ../../tools/build/pack.py -t msi
 
-    $ ./pack.sh –t wgt –p mobile
+Please see Appendix 3 for the package list
 
-Pack WGT package.
+### Pack Web Test Suite Packages for iOS
+Pack iOS package for iOS.
 
-Please see Appendix 3 for the packages list.
-
-Please notice that Tizen deviceAPI related WGT need authorization to be installed on Tizen.
-
-### 3.3  Pack Web Test Suite Packages for Tizen IVI
-
-    $ ./pack.sh –t xpk –p ivi
-
-Pack XPK package.
-
-Please see Appendix 2 for the package list
-
-There is a special package wrt-autohost-tizen-tests use below command:
-
-    $ ./pack.sh –t pure –p ivi
-
-    $ ./pack.sh –t wgt –p ivi
-
-Pack WGT package.
+    $ ../../tools/build/pack.py -t ios
 
 Please see Appendix 4 for the package list.
 
-Please notice that Tizen deviceAPI related WGT need authorization to be installed on Tizen.
+## Packaged Test Suite Structure
+After packaging, there is a packaged test suite generated, e.g. web-demo-tests-version.apk.zip, Following snapshot are the build out package structure.
 
-    $ ./pack.sh –t xpk –p generic
+![ZIP Packaged Test Suite Structure](img/Web_Test_Suite_Package_Structure_ZIP.jpg)
 
-Pack XPK package for Tizen IVI Generic.
+![XPK Packaged Test Suite Structure](img/Web_Test_Suite_Package_Structure_XPK.jpg)
+## Appendix 1 APK Packages List (include Cordova)
+[tools/build/released_suites/Android-Platform](../tools/build/released_suites/Android-Platform)
 
-Please see Appendix 5 for the package list.
+## Appendix 2 Debian Package List
+[tools/build/released_suites/Linux-Platform](../tools/build/released_suites/Linux-Platform)
 
-## Appendix 1 APK Packages List
+## Appendix 3 MSI Package List
+[tools/build/released_suites/Windows-Platform](../tools/build/released_suites/Windows-Platform)
 
-**WebAPI**
+## Appendix 4 IOS Package List
+[tools/build/released_suites/IOS-Platform](../tools/build/released_suites/IOS-Platform)
 
-- tct-2dtransforms-css3-tests
-- tct-3dtransforms-css3-tests
-- tct-animations-css3-tests
-- tct-animationtiming-w3c-tests
-- tct-appcache-html5-tests
-- tct-audio-html5-tests
-- tct-backgrounds-css3-tests
-- tct-batterystatus-w3c-tests
-- tct-browserstate-html5-tests
-- tct-canvas-html5-tests
-- tct-capability-tests
-- tct-colors-css3-tests
-- tct-cors-w3c-tests
-- tct-csp-w3c-tests
-- tct-deviceorientation-w3c-tests
-- tct-dnd-html5-tests
-- tct-extra-html5-tests
-- tct-fileapi-w3c-tests
-- tct-filesystemapi-w3c-tests
-- tct-filewriterapi-w3c-tests
-- tct-flexiblebox-css3-tests
-- tct-fonts-css3-tests
-- tct-forms-html5-tests
-- tct-fullscreen-nonw3c-tests
-- tct-geoallow-w3c-tests
-- tct-geodeny-w3c-tests
-- tct-gumallow-w3c-tests
-- tct-indexeddb-w3c-tests
-- tct-jsenhance-html5-tests
-- tct-mediacapture-w3c-tests
-- tct-mediaqueries-css3-tests
-- tct-multicolumn-css3-tests
-- tct-navigationtiming-w3c-tests
-- tct-netinfo-w3c-tests
-- tct-notification-w3c-tests
-- tct-pagevisibility-w3c-tests
-- tct-sandbox-html5-tests
-- tct-screenorientation-w3c-tests
-- tct-security-tcs-tests
-- tct-selectorslevel1-w3c-tests
-- tct-selectorslevel2-w3c-tests
-- tct-sessionhistory-html5-tests
-- tct-sse-w3c-tests
-- tct-svg-html5-tests
-- tct-text-css3-tests
-- tct-touchevent-w3c-tests
-- tct-transitions-css3-tests
-- tct-typedarrays-nonw3c-tests
-- tct-ui-css3-tests
-- tct-vibration-w3c-tests
-- tct-video-html5-tests
-- tct-webaudio-w3c-tests
-- tct-webdatabase-w3c-tests
-- tct-webgl-nonw3c-tests
-- tct-webmessaging-w3c-tests
-- tct-websocket-w3c-tests
-- tct-webstorage-w3c-tests
-- tct-workers-w3c-tests
-- tct-xmlhttprequest-w3c-tests
-- webapi-appuri-w3c-tests
-- webapi-deviceadaptation-css3-tests
-- webapi-devicecapabilities-w3c-tests
-- webapi-dlna-ivi-tests
-- webapi-hrtime-w3c-tests
-- webapi-input-html5-tests
-- webapi-locale-ivi-tests
-- webapi-messageport-ivi-tests
-- webapi-notification-ivi-tests
-- webapi-presentation-w3c-tests
-- webapi-promises-nonw3c-tests
-- webapi-rawsockets-w3c-tests
-- webapi-resourcetiming-w3c-tests
-- webapi-simd-nonw3c-tests
-- webapi-speechapi-ivi-tests
-- webapi-usertiming-w3c-tests
-- webapi-vehicleinfo-ivi-tests
-- webapi-webrtc-w3c-tests
-- webapi-webspeech-w3c-tests
 
-**WRT**
 
-- wrt-common-webapp-tests
-- wrt-extension-android-tests
-- wrt-integration-android-tests
-- wrt-packagemgt-android-tests
-- wrt-packertool-android-tests
-- wrt-rtcore-android-tests
-- wrt-rtlib-android-tests
-- sampleapp-android-tests
-- wrt-security-android-tests
-- wrt-webappmgt-android-tests
-- wrt-webfeatures-android-tests
-
-**Behavior**
-
-- tct-behavior-tests
-
-**Cordova**
-
-- cordova-feature-android-tests
-- cordova-sampleapp-android-tests
-- cordova-webapp-android-tests
-
-**Misc**
-
-- web-mbat-xwalk-tests
-- stability-iterative-android-tests
-- web-abat-xwalk-tests
-- wrt-stabiterative-android-tests
-- wrt-stablonglast2D-android-tests
-- wrt-stablonglast3D-android-tests
-- wrt-stablonglastplayvideo-android-tests
-- wrt-stabrecovery-android-tests
-
-## Appendix 2 XPK Package List
-
-**WebAPI**
-
-- tct-2dtransforms-css3-tests
-- tct-3dtransforms-css3-tests
-- tct-animations-css3-tests
-- tct-animationtiming-w3c-tests
-- tct-appcache-html5-tests
-- tct-application-tizen-tests
-- tct-audio-html5-tests
-- tct-backgrounds-css3-tests
-- tct-batterystatus-w3c-tests
-- tct-bluetooth-tizen-tests
-- tct-bookmark-tizen-tests
-- tct-browserstate-html5-tests
-- tct-callhistory-tizen-tests
-- tct-canvas-html5-tests
-- tct-capability-tests
-- tct-colors-css3-tests
-- tct-content-tizen-tests
-- tct-cors-w3c-tests
-- tct-csp-w3c-tests
-- tct-datasync-tizen-tests
-- tct-deviceorientation-w3c-tests
-- tct-dnd-html5-tests
-- tct-download-tizen-tests
-- tct-extra-html5-tests
-- tct-fileapi-w3c-tests
-- tct-filesystemapi-w3c-tests
-- tct-filesystem-tizen-tests
-- tct-filewriterapi-w3c-tests
-- tct-flexiblebox-css3-tests
-- tct-fonts-css3-tests
-- tct-forms-html5-tests
-- tct-fullscreen-nonw3c-tests
-- tct-geoallow-w3c-tests
-- tct-geodeny-w3c-tests
-- tct-getcapabilities
-- tct-gumallow-w3c-tests
-- tct-indexeddb-w3c-tests
-- tct-jsenhance-html5-tests
-- tct-mediacapture-w3c-tests
-- tct-mediaqueries-css3-tests
-- tct-messageport-tizen-tests
-- tct-multicolumn-css3-tests
-- tct-namespace-tizen-tests
-- tct-navigationtiming-w3c-tests
-- tct-netinfo-w3c-tests
-- tct-networkbearerselection-tizen-tests
-- tct-notification-tizen-tests
-- tct-notification-w3c-tests
-- tct-pagevisibility-w3c-tests
-- tct-power-tizen-tests
-- tct-privilege-tizen-tests
-- tct-sandbox-html5-tests
-- tct-screenorientation-w3c-tests
-- tct-security-tcs-tests
-- tct-selectorslevel1-w3c-tests
-- tct-selectorslevel2-w3c-tests
-- tct-sessionhistory-html5-tests
-- tct-sse-w3c-tests
-- tct-svg-html5-tests
-- tct-systeminfo-tizen-tests
-- tct-systemsetting-tizen-tests
-- tct-testconfig
-- tct-text-css3-tests
-- tct-time-tizen-tests
-- tct-touchevent-w3c-tests
-- tct-transitions-css3-tests
-- tct-typedarrays-nonw3c-tests
-- tct-ui-css3-tests
-- tct-vibration-w3c-tests
-- tct-video-html5-tests
-- tct-webaudio-w3c-tests
-- tct-webdatabase-w3c-tests
-- tct-webgl-nonw3c-tests
-- tct-webmessaging-w3c-tests
-- tct-websocket-w3c-tests
-- tct-webstorage-w3c-tests
-- tct-workers-w3c-tests
-- tct-xmlhttprequest-w3c-tests
-- webapi-appuri-w3c-tests
-- webapi-deviceadaptation-css3-tests
-- webapi-devicecapabilities-w3c-tests
-- webapi-dlna-ivi-tests
-- webapi-hrtime-w3c-tests
-- webapi-input-html5-tests
-- webapi-locale-ivi-tests
-- webapi-messageport-ivi-tests
-- webapi-notification-ivi-tests
-- webapi-promises-nonw3c-tests
-- webapi-rawsockets-w3c-tests
-- webapi-resourcetiming-w3c-tests
-- webapi-sanityapp-w3c-tests
-- webapi-speechapi-ivi-tests
-- webapi-usertiming-w3c-tests
-- webapi-vehicleinfo-ivi-tests
-- webapi-webrtc-w3c-tests
-- webapi-webspeech-w3c-tests
-
-**WRT**
-
-- wrt-autodevice-tizen-tests
-- wrt-common-webapp-tests
-- wrt-integration-tizen-tests
-- wrt-packagemgt-tizen-tests
-- wrt-rtbin-tizen-tests
-- wrt-rtcore-tizen-tests
-- sampleapp-tizen-tests
-- wrt-signature-tizen-tests
-- wrt-webfeatures-tizen-tests
-
-**Behavior**
-
-- tct-behavior-tests
-
-**Misc**
-
-- web-mbat-xwalk-tests
-- web-abat-xwalk-tests
-
-## Appendix 3 WGT Package List for Tizen Mobile
-
-**WebAPI**
-
-- tct-2dtransforms-css3-tests
-- tct-3dtransforms-css3-tests
-- tct-alarm-tizen-tests
-- tct-animations-css3-tests
-- tct-animationtiming-w3c-tests
-- tct-appcache-html5-tests
-- tct-appcontrol-tizen-tests
-- tct-application-tizen-tests
-- tct-audio-html5-tests
-- tct-backgrounds-css3-tests
-- tct-batterystatus-w3c-tests
-- tct-bluetooth-tizen-tests
-- tct-bookmark-tizen-tests
-- tct-browserstate-html5-tests
-- tct-calendar-tizen-tests
-- tct-callhistory-tizen-tests
-- tct-canvas-html5-tests
-- tct-capability-tests
-- tct-colors-css3-tests
-- tct-contact-tizen-tests
-- tct-content-tizen-tests
-- tct-cors-w3c-tests
-- tct-csp-w3c-tests
-- tct-datacontrol-tizen-tests
-- tct-datasync-tizen-tests
-- tct-deviceorientation-w3c-tests
-- tct-dnd-html5-tests
-- tct-download-tizen-tests
-- tct-extra-html5-tests
-- tct-fileapi-w3c-tests
-- tct-filesystemapi-w3c-tests
-- tct-filesystem-tizen-tests
-- tct-filewriterapi-w3c-tests
-- tct-flexiblebox-css3-tests
-- tct-fonts-css3-tests
-- tct-forms-html5-tests
-- tct-fullscreen-nonw3c-tests
-- tct-geoallow-w3c-tests
-- tct-geodeny-w3c-tests
-- tct-getcapabilities
-- tct-gumallow-w3c-tests
-- tct-indexeddb-w3c-tests
-- tct-jsenhance-html5-tests
-- tct-mediacapture-w3c-tests
-- tct-mediaqueries-css3-tests
-- tct-messageport-tizen-tests
-- tct-messaging-email-tizen-tests
-- tct-messaging-mms-tizen-tests
-- tct-messaging-sms-tizen-tests
-- tct-multicolumn-css3-tests
-- tct-namespace-tizen-tests
-- tct-navigationtiming-w3c-tests
-- tct-netinfo-w3c-tests
-- tct-networkbearerselection-tizen-tests
-- tct-nfc-tizen-tests
-- tct-notification-tizen-tests
-- tct-notification-w3c-tests
-- tct-package-tizen-tests
-- tct-pagevisibility-w3c-tests
-- tct-power-tizen-tests
-- tct-privilege-tizen-tests
-- tct-push-tizen-tests
-- tct-sandbox-html5-tests
-- tct-screenorientation-w3c-tests
-- tct-secureelement-tizen-tests
-- tct-security-tcs-tests
-- tct-selectorslevel1-w3c-tests
-- tct-selectorslevel2-w3c-tests
-- tct-sessionhistory-html5-tests
-- tct-sse-w3c-tests
-- tct-svg-html5-tests
-- tct-systeminfo-tizen-tests
-- tct-systemsetting-tizen-tests
-- tct-testconfig
-- tct-text-css3-tests
-- tct-time-tizen-tests
-- tct-tizen-tizen-tests
-- tct-touchevent-w3c-tests
-- tct-transitions-css3-tests
-- tct-typedarrays-nonw3c-tests
-- tct-ui-css3-tests
-- tct-vibration-w3c-tests
-- tct-video-html5-tests
-- tct-webaudio-w3c-tests
-- tct-webdatabase-w3c-tests
-- tct-webgl-nonw3c-tests
-- tct-webmessaging-w3c-tests
-- tct-websetting-tizen-tests
-- tct-websocket-w3c-tests
-- tct-webstorage-w3c-tests
-- tct-workers-w3c-tests
-- tct-xmlhttprequest-w3c-tests
-
-**Behavior**
-
-- tct-behavior-tests
-
-## Appendix 4 WGT Package List for Tizen IVI
-
-**WebAPI**
-
-- tct-wgtapi01-w3c-tests
-- tct-wgtapi02-w3c-tests
-- tct-widget01-w3c-tests
-- tct-widget02-w3c-tests
-- tct-widgetpolicy-w3c-tests
-
-**WRT**
-
-- tct-appwgt-wrt-tests
-- tct-ext01-wrt-tests
-- tct-ext02-wrt-tests
-- tct-pm-wrt-tests
-- tct-rt01-wrt-tests
-- tct-rt02-wrt-tests
-- tct-sp01-wrt-tests
-- tct-sp02-wrt-tests
-- tct-stab-wrt-tests
-- tct-ui01-wrt-tests
-
-## Appendix 5 XPK Package List for Tizen IVI Generic
-
-**MISC**
-
-- web-mbat-xwalk-tests
-- web-abat-xwalk-tests
-
-## Appendix 6 Cordova APK Packages List
-
-**WebAPI**
-
-- tct-2dtransforms-css3-tests
-- tct-3dtransforms-css3-tests
-- tct-animations-css3-tests
-- tct-animationtiming-w3c-tests
-- tct-appcache-html5-tests
-- tct-audio-html5-tests
-- tct-backgrounds-css3-tests
-- tct-batterystatus-w3c-tests
-- tct-browserstate-html5-tests
-- tct-canvas-html5-tests
-- tct-capability-tests
-- tct-colors-css3-tests
-- tct-cors-w3c-tests
-- tct-csp-w3c-tests
-- tct-deviceorientation-w3c-tests
-- tct-dnd-html5-tests
-- tct-extra-html5-tests
-- tct-fileapi-w3c-tests
-- tct-filesystemapi-w3c-tests
-- tct-filewriterapi-w3c-tests
-- tct-flexiblebox-css3-tests
-- tct-fonts-css3-tests
-- tct-forms-html5-tests
-- tct-fullscreen-nonw3c-tests
-- tct-geoallow-w3c-tests
-- tct-geodeny-w3c-tests
-- tct-gumallow-w3c-tests
-- tct-indexeddb-w3c-tests
-- tct-jsenhance-html5-tests
-- tct-mediacapture-w3c-tests
-- tct-mediaqueries-css3-tests
-- tct-multicolumn-css3-tests
-- tct-navigationtiming-w3c-tests
-- tct-netinfo-w3c-tests
-- tct-notification-w3c-tests
-- tct-pagevisibility-w3c-tests
-- tct-sandbox-html5-tests
-- tct-screenorientation-w3c-tests
-- tct-security-tcs-tests
-- tct-selectorslevel1-w3c-tests
-- tct-selectorslevel2-w3c-tests
-- tct-sessionhistory-html5-tests
-- tct-sse-w3c-tests
-- tct-svg-html5-tests
-- tct-text-css3-tests
-- tct-touchevent-w3c-tests
-- tct-transitions-css3-tests
-- tct-typedarrays-nonw3c-tests
-- tct-ui-css3-tests
-- tct-vibration-w3c-tests
-- tct-video-html5-tests
-- tct-webaudio-w3c-tests
-- tct-webdatabase-w3c-tests
-- tct-webgl-nonw3c-tests
-- tct-webmessaging-w3c-tests
-- tct-websocket-w3c-tests
-- tct-webstorage-w3c-tests
-- tct-workers-w3c-tests
-- tct-xmlhttprequest-w3c-tests
-- webapi-appuri-w3c-tests
-- webapi-deviceadaptation-css3-tests
-- webapi-devicecapabilities-w3c-tests
-- webapi-dlna-ivi-tests
-- webapi-hrtime-w3c-tests
-- webapi-input-html5-tests
-- webapi-locale-ivi-tests
-- webapi-messageport-ivi-tests
-- webapi-notification-ivi-tests
-- webapi-presentation-w3c-tests
-- webapi-promises-nonw3c-tests
-- webapi-rawsockets-w3c-tests
-- webapi-resourcetiming-w3c-tests
-- webapi-simd-nonw3c-tests
-- webapi-speechapi-ivi-tests
-- webapi-usertiming-w3c-tests
-- webapi-vehicleinfo-ivi-tests
-- webapi-webrtc-w3c-tests
-- webapi-webspeech-w3c-tests
-
-**Cordova**
-
-- cordova-feature-android-tests
-- cordova-sampleapp-android-tests
-- cordova-webapp-android-tests
 
