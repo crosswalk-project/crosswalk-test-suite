@@ -60,7 +60,7 @@ def check_picture(context, pic1, pic2, similarity):
 
 @step(u'launch "{app_name}"')
 def launch_app_by_name(context, app_name):
-    if get_test_platform(context) in ("android", "deepin"):
+    if get_test_platform(context) in ("android", "deepin", "windows"):
         web.launch_webapp_by_name(context, app_name)
 
 
