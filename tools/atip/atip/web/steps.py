@@ -103,6 +103,7 @@ def go_forward(context):
 def quit_app_by_name(context, app_name):
     if app_name in context.apps:
         context.web.quit()
+        context.apps.pop(app_name)
         assert True
     else:
         assert False
