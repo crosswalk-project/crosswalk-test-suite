@@ -470,50 +470,25 @@ test('Int32x4 shiftLeftByScalar', function() {
   equal(SIMD.Int32x4.extractLane(b, 3), 0x0);
 });
 
-test('Int32x4 shiftRightLogicalByScalar', function() {
+test('Int32x4 shiftRightByScalar', function() {
   var a = SIMD.Int32x4(0xffffffff, 0x7fffffff, 0x1, 0x0);
   var b;
-  b = SIMD.Int32x4.shiftRightLogicalByScalar(a, 1);
-  equal(SIMD.Int32x4.extractLane(b, 0), 0x7fffffff);
-  equal(SIMD.Int32x4.extractLane(b, 1), 0x3fffffff);
-  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
-  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
-  b = SIMD.Int32x4.shiftRightLogicalByScalar(a, 2);
-  equal(SIMD.Int32x4.extractLane(b, 0), 0x3fffffff);
-  equal(SIMD.Int32x4.extractLane(b, 1), 0x1fffffff);
-  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
-  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
-  b = SIMD.Int32x4.shiftRightLogicalByScalar(a, 30);
-  equal(SIMD.Int32x4.extractLane(b, 0), 0x00000003);
-  equal(SIMD.Int32x4.extractLane(b, 1), 0x00000001);
-  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
-  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
-  b = SIMD.Int32x4.shiftRightLogicalByScalar(a, 31);
-  equal(SIMD.Int32x4.extractLane(b, 0), 0x00000001);
-  equal(SIMD.Int32x4.extractLane(b, 1), 0x00000000);
-  equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
-  equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
-});
-
-test('Int32x4 shiftRightArithmeticByScalar', function() {
-  var a = SIMD.Int32x4(0xffffffff, 0x7fffffff, 0x1, 0x0);
-  var b;
-  b = SIMD.Int32x4.shiftRightArithmeticByScalar(a, 1);
+  b = SIMD.Int32x4.shiftRightByScalar(a, 1);
   equal(SIMD.Int32x4.extractLane(b, 0), 0xffffffff|0);
   equal(SIMD.Int32x4.extractLane(b, 1), 0x3fffffff);
   equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
   equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
-  b = SIMD.Int32x4.shiftRightArithmeticByScalar(a, 2);
+  b = SIMD.Int32x4.shiftRightByScalar(a, 2);
   equal(SIMD.Int32x4.extractLane(b, 0), 0xffffffff|0);
   equal(SIMD.Int32x4.extractLane(b, 1), 0x1fffffff);
   equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
   equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
-  b = SIMD.Int32x4.shiftRightArithmeticByScalar(a, 30);
+  b = SIMD.Int32x4.shiftRightByScalar(a, 30);
   equal(SIMD.Int32x4.extractLane(b, 0), 0xffffffff|0);
   equal(SIMD.Int32x4.extractLane(b, 1), 0x00000001);
   equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
   equal(SIMD.Int32x4.extractLane(b, 3), 0x00000000);
-  b = SIMD.Int32x4.shiftRightArithmeticByScalar(a, 31);
+  b = SIMD.Int32x4.shiftRightByScalar(a, 31);
   equal(SIMD.Int32x4.extractLane(b, 0), 0xffffffff|0);
   equal(SIMD.Int32x4.extractLane(b, 1), 0x00000000);
   equal(SIMD.Int32x4.extractLane(b, 2), 0x00000000);
