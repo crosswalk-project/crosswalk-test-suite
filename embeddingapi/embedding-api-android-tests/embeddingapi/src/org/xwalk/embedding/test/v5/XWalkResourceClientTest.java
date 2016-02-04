@@ -26,7 +26,7 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
         final String url = addPageToTestServer(mWebServer, path, pageContent);
 
         loadUrlSync(url);
-        assertEquals(1, mOnDocumentLoadedInFrameHelper.getFrameId());
+        assertTrue(mOnDocumentLoadedInFrameHelper.getFrameId() > 0);
         assertEquals(1, mOnDocumentLoadedInFrameHelper.getCallCount());
     }
 

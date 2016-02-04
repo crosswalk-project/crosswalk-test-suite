@@ -154,6 +154,9 @@ public class XWalkViewTest extends XWalkViewTestBase {
                     return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
+
+            Thread.sleep(500);
+
             assertTrue("Should be able to zoom in", canZoomInOnUiThread());
             assertFalse("Should not be able to zoom out", canZoomOutOnUiThread());
 
@@ -228,6 +231,8 @@ public class XWalkViewTest extends XWalkViewTestBase {
                     return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
                 }
             });
+
+            Thread.sleep(500);
 
             while (canZoomInOnUiThread()) {
                 zoomInOnUiThreadAndWait();
