@@ -117,16 +117,17 @@ public class XWalkViewTest extends XWalkViewTestBase {
                 + "testSetInitialScale</p></body></html>";
         final float defaultScaleFactor = 0;
         final float defaultScale = 0.5f;
+        final float scaleFactor = 0.25f;
 
         assertEquals(defaultScaleFactor, getScaleFactor(), .01f);
         loadDataSync(null, page, "text/html", false);
-        assertEquals(defaultScaleFactor, getScaleFactor(), .01f);
+        assertEquals(scaleFactor, getScaleFactor(), .01f);
 
         int onScaleChangedCallCount = mTestHelperBridge.getOnScaleChangedHelper().getCallCount();
-        setInitialScale(50);
+        setInitialScale(60);
         loadDataSync(null, page, "text/html", false);
         mTestHelperBridge.getOnScaleChangedHelper().waitForCallback(onScaleChangedCallCount);
-        assertEquals(0.5f, getPixelScale(), .01f);
+        assertEquals(0.6f, getPixelScale(), .01f);
 
         onScaleChangedCallCount = mTestHelperBridge.getOnScaleChangedHelper().getCallCount();
         setInitialScale(500);
