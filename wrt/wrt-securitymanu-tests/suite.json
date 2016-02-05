@@ -88,9 +88,88 @@
         }
       }
     },
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-security-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "testapp": "testapp",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml",
+        "wrt-security-app/testscripts": "wrt-security-app/testscripts"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      },
+      "subapp-list": {
+        "testapp/csp_directive_list_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/csp_directive_none_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/csp_script_none_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/csp_script_self_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/csp_script_unsafe_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/permission_field_contacts_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/permission_field_geolocation_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/permission_field_messaging_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/permission_undefined_contacts_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/permission_undefined_geolocation_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/permission_undefined_messaging_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "testapp/security_url_certificate_tests": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "wrt-security-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../securitymanu/bdd": "security"
+          }
+        }
+      }
+    },
     "apk-aio": {
       "blacklist": []
     }
   },
-  "pkg-name": "wrt-securitymanu-android-tests"
+  "pkg-name": "wrt-securitymanu-tests"
 }
