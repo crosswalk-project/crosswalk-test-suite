@@ -26,36 +26,37 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-             IVAN CHEN <yufeix.chen@intel.com>
+    Shen,Lin <linx.a.shen@intel.com>
+    Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
-<meta charset='utf-8'>
-<title>Crosswalk_CopyAndPaste_Copy_ToWebapp</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<p>
-<strong>Test steps:</strong>
-</p>
-<ol>
-<li>Launch app "web_support_copyandpaste_tests"</li>
-<li>Long press text in "Select fields" field.</li>
-<li>Select some charset</li>
-<li>Click "copy" button</li>
-<li>Press Home key</li>
-<li>Launch webapp web_support_pasted_tests by icon</li>
-<li>Long press "Paste fields" input box</li>
-<li>Click "paste"</li>
-</ol>
-<p>
-<strong>Expected Output:</strong>
-</p>
-<ol>
-<li>The web app launched successfully.</li>
-<li>Popup function buttons,including copy and so on</li>
-<li>The charest is selected</li>
-<li>Function button is hidden and interface display normal</li>
-<li>Back to HomeScreen</li>
-<li>The web app launched successfully.</li>
-<li>Popup function button, including paste and so on</li>
-<li>Text is pasted into "Paste fields" field and the content correctly.</li>
-</ol>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Crosswalk_WebApp_Integration_Switch</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+  </head>
+  <body>
+    <p>
+      <strong>Test steps:</strong>
+    </p>
+    <ol>
+      <li>Launch app "touch_gesture_click".</li>
+      <li>Launch app "wrt-ux-app".</li>
+      <li>Switch to the home page.</li>
+      <li>Switch to first open web app in Recent App.</li>
+      <li>Check basic function for example button click and drag etc.</li>
+    </ol>
+    <p>
+      <strong>Expected Output:</strong>
+    </p>
+    <ol>
+      <li>The web app is able to open normally.</li>
+      <li>The web app is able to open normally.</li>
+      <li>Into the home page.</li>
+      <li>Into Recent App interface.</li>
+      <li>Basic function work fine and interface display normally.</li>
+    </ol>
+  </body>
+</html>

@@ -26,36 +26,32 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Shen,Lin <linx.a.shen@intel.com>
+             IVAN CHEN <yufeix.chen@intel.com>
+             Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Crosswalk_WebApp_VKB_Rotation</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-  </head>
-  <body>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Launch webapp "web_support_copyandpaste_tests"</li>
-      <li>Click input box</li>
-      <li>Click characters on virtual keyboard</li>
-      <li>Change the rotation between landscape and portrait</li>
-      <li>Continue to input characters in VKB during rotation changed</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>App could be launched successfully</li>
-      <li>Popup virtual keyboard when click input box</li>
-      <li>Characters could be displayed in the input box and correctly</li>
-      <li>VKB rotation changed between landscape and portrait accordingly</li>
-      <li>Characters could be displayed in the input box and correctly after rotation change</li>
-    </ol>
-  </body>
-</html>
+<meta charset='utf-8'>
+<title>Crosswalk_CopyAndPaste_Copy_ToWebapp</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<p>
+<strong>Test steps:</strong>
+</p>
+<ol>
+<li>Launch webapp "web_support_copyandpaste_tests"</li>
+<li>Copy some charsets in the "Select fields" field</li>
+<li>Enter the HomeScreen</li>
+<li>Launch webapp web_support_pasted_tests by icon</li>
+<li>Paste the text content in the "Paste fields" input box</li>
+  * Note: Copy/Paste option could be launched by long press or hotkey Ctrl+C/Ctrl+V
+</ol>
+<p>
+<strong>Expected Output:</strong>
+</p>
+<ol>
+<li>The "web_support_copyandpaste_tests" webapp is launched successfully.</li>
+<li>Copy the text successfully and interface display normal</li>
+<li>Back to HomeScreen</li>
+<li>The "webapp web_support_pasted_tests" webapp is launched successfully.</li>
+<li>Text is pasted into the "Paste fields" field and the content is correctly.</li>
+</ol>

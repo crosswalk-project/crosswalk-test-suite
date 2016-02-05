@@ -26,25 +26,35 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-             IVAN CHEN <yufeix.chen@intel.com>
+             Xu, Kang <kangx.xu@intel.com>
+             Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
 <meta charset='utf-8'>
-<title>Crosswalk_CopyAndPaste_Copy_PhoneNumber</title>
+<title>Crosswalk_CopyAndPaste_Copy_NativeToWeb</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <p>
 <strong>Test steps:</strong>
 </p>
 <ol>
-<li>Launch webapp "web_support_copyandpaste_tests"</li>
-<li>Long press text in "Select mail" field.</li>
+  <li>For android, launch native app "Message" by icon</li>
+    * For windows, new a text document and open it with "Notepad"
+  <li>Input word in the input field</li>
+  <li>Copy some charsets in the input field.</li>
+  <li>Enter the HomeScreen</li>
+  <li>Launch webapp "web_support_pasted_tests"</li>
+  <li>Paste the charsets to the "Paste fields" input box</li>
+    * Note: Copy/Paste option could be launched by long press or hotkey Ctrl+C/Ctrl+V
 </ol>
 <p>
 <strong>Expected Output:</strong>
 </p>
 <ol>
-<li>The web app launched successfully.</li>
-<li>* If not support copy, interface display normal and webApp,crosswalk and OS shouldn't crash</li>
-    * If support copy, should copy and paste photo successfully
+  <li>The web app launched successfully.</li>
+  <li>Input text successfully.</li>
+  <li>Copy some charsets successfully and interface display normal</li>
+  <li>Back to HomeScreen</li>
+  <li>The web app launched successfully.</li>
+  <li>Text is pasted correctly.</li>
 </ol>

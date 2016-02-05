@@ -43,9 +43,44 @@
         }
       }
     },
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-ux-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.windows.xml": "tests.xml",
+        "wrt-ux-app/testscripts": "wrt-ux-app/testscripts"
+      },
+      "pkg-app": {
+        "copylist": {
+          "tests.windows.xml": "tests.xml",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      },
+      "subapp-list": {
+        "testapp": {
+          "all-apps": "true",
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST"
+        },
+        "wrt-ux-app": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../uxmanu/bdd": "ux"
+          }
+        }
+      }
+    },
     "apk-aio": {
       "blacklist": []
     }
   },
-  "pkg-name": "wrt-uxmanu-android-tests"
+  "pkg-name": "wrt-uxmanu-tests"
 }

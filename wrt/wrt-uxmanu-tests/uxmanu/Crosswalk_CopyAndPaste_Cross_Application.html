@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,27 +26,30 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    IVAN CHEN <yufeix.chen@intel.com>
+             Xu, Kang <kangx.xu@intel.com>
+             Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
-<title>Crosswalk_UseChromeBlacklist_WebGLSupport_ARM</title>
+<meta charset='utf-8'>
+<title>Crosswalk_CopyAndPaste_Cross_Application</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <p>
 <strong>Test steps:</strong>
 </p>
 <ol>
-<li>Install one Chrome binay(could be chrome 32) on Android</li>
-<li>Open "chrome://gpu" and verfiy WebGL is enable or not</li>
-<li>Launch app "use_chrome_blacklist_tests"</li>
-<li>Click "Click me to access WebGL"</li>
+<li>Launch app "web_support_copyandpaste_tests"</li>
+<li>Copy all text in the "Select fields" field</li>
+<li>Launch app "web_support_pasted_tests"</li>
+<li>Paste the text content in the "Paste fields" input box</li>
+  * Note: Copy/Paste option could be launched by long press or hotkey Ctrl+C/Ctrl+V
 </ol>
 <p>
 <strong>Expected Output:</strong>
 </p>
 <ol>
-<li>The chrome installed successfully</li>
-<li>Open "chrome://gpu" and interface dispaly normal</li>
-<li>The webapp launched successfully</li>
-<li>The result is same as step2, show "Your browser supports WebGL"</li>
+<li>The app "web_support_copyandpaste_tests" is launched successfully</li>
+<li>Copy the text successfully and interface display normal</li>
+<li>The app "web_support_pasted_tests" is launched successfully</li>
+<li>Text is pasted into the "Paste fields" field and the content is correctly</li>
 </ol>
