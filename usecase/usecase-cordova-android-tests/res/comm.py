@@ -54,7 +54,7 @@ def setUp():
             CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
 
-def installCrosswalk(pkgmode):
+def installCrosswalk(pkgmode, pkgarch=None):
     if CROSSWALK_BRANCH == 'canary':
         username = commands.getoutput("echo $USER")
 
@@ -63,22 +63,28 @@ def installCrosswalk(pkgmode):
             pkg_mode_tmp = "core"
         xwalk_library_tmp = "xwalk_%s_library" % pkg_mode_tmp
 
+
         xwalk_library_path = "/home/%s/.m2/repository/org/xwalk/%s/%s/%s-%s" \
             % (username, xwalk_library_tmp, CROSSWALK_VERSION, xwalk_library_tmp, CROSSWALK_VERSION)
         repository_aar_path = "%s.aar" % (xwalk_library_path)
         repository_pom_path = "%s.pom" % (xwalk_library_path)
         if not os.path.exists(repository_aar_path) or not os.path.exists(repository_pom_path):
             aar_name = "crosswalk"
+            version_name = CROSSWALK_VERSION
+            classifier_tmp = ""
             if pkgmode == "shared":
                 aar_name = "crosswalk-shared"
+            elif pkgarch == "x86_64" or pkgarch == "arm64":
+               version_name = CROSSWALK_VERSION + "-64bit"
+               classifier_tmp = " -Dclassifier=64bit"
 
             wget_cmd = "wget https://download.01.org/crosswalk/releases/crosswalk/" \
                     "android/canary/%s/%s-%s.aar" % \
-                    (CROSSWALK_VERSION, aar_name, CROSSWALK_VERSION)
+                    (CROSSWALK_VERSION, aar_name, version_name)
             install_cmd = "mvn install:install-file -DgroupId=org.xwalk " \
                     "-DartifactId=%s -Dversion=%s -Dpackaging=aar " \
-                    "-Dfile=%s-%s.aar -DgeneratePom=true" % \
-                    (xwalk_library_tmp, CROSSWALK_VERSION, aar_name, CROSSWALK_VERSION)
+                    "-Dfile=%s-%s.aar -DgeneratePom=true%s" % \
+                    (xwalk_library_tmp, CROSSWALK_VERSION, aar_name, version_name, classifier_tmp)
             os.system(wget_cmd)
             os.system(install_cmd)
 
