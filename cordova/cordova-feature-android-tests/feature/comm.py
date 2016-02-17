@@ -252,26 +252,14 @@ def buildGoogleApp(appname, sourcecodepath, self):
     installWebviewPlugin(MODE, self)
 
     build_cmd = "cca build android"
+    if ARCH == "x86_64" or ARCH == "arm64":
+        build_cmd = "cca build android --xwalk64bit"
+
     buildstatus = commands.getstatusoutput(build_cmd)
     self.assertEquals(0, buildstatus[0])
-    os.chdir(
-        os.path.join(
-            tool_path,
-            appname,
-            "platforms",
-            "android",
-            "build",
-            "outputs",
-            "apk"))
-    result = commands.getstatusoutput("ls")
-    self.assertIn(".apk", result[1])
-    print result[1]
-    if "android" in result[1]:
-        self.assertIn("android", result[1])
-    else:
-        self.assertIn(appname, result[1])
+    checkApkExist(appname, self)
 
-def build(appname, isDebug, self):
+def build(appname, isDebug, self, isCopy=False, isMultipleApk=True):
     os.chdir(os.path.join(tool_path, appname))
     print "Build project %s ----------------> START" % appname
 
@@ -296,25 +284,44 @@ def build(appname, isDebug, self):
     self.assertEquals(0, buildstatus[0])
     print "\nBuild project %s ----------------> OK\n" % appname
     if CORDOVA_VERSION == "4.x":
-        os.chdir(
-            os.path.join(
-                tool_path,
-                appname,
-                "platforms",
-                "android",
-                "build",
-                "outputs",
-                "apk"))
+        checkApkExist(appname, self, isCopy, isMultipleApk)
     else:
         os.chdir(os.path.join(tool_path, appname, "bin"))
-    result = commands.getstatusoutput("ls")
-    self.assertIn(".apk", result[1])
-    print result[1]
-    if "android" in result[1]:
-        self.assertIn("android", result[1])
-    else:
-        self.assertIn(appname, result[1])
+        result = commands.getstatusoutput("ls")
+        self.assertIn(".apk", result[1])
+        print result[1]
+        if "android" in result[1]:
+            self.assertIn("android", result[1])
+        else:
+            self.assertIn(appname, result[1])
 
+def checkApkExist(appname, self, isCopy=False, isMultipleApk=True):
+    print "Check  %s Apk Exist ----------------> START" % appname
+    outputs_dir = os.path.join(
+                      tool_path,
+                      appname,
+                      "platforms",
+                      "android",
+                      "build",
+                      "outputs",
+                      "apk")
+    apk_name = "android-debug.apk"
+    if isMultipleApk == True:
+        apk_name_arch = "armv7"
+        if ARCH != "arm":
+            apk_name_arch = ARCH
+        apk_name = "android-%s-debug.apk" % apk_name_arch
+
+        if not os.path.exists(os.path.join(outputs_dir, apk_name)):
+            apk_name = "%s-%s-debug.apk" % (appname, apk_name_arch)
+    else:
+        if not os.path.exists(os.path.join(outputs_dir, apk_name)):
+            apk_name = "%s-debug.apk" % appname
+    self.assertTrue(os.path.exists(os.path.join(outputs_dir, apk_name)))
+    if isCopy == True:
+        self.assertTrue(do_copy(os.path.join(outputs_dir, apk_name), os.path.join(testapp_path, "%s.apk" % appname)))
+    
+    print "Check  %s Apk Exist ----------------> OK" % appname
 
 def run(appname, self):
     os.chdir(os.path.join(tool_path, appname))

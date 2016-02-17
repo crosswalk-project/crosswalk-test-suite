@@ -51,13 +51,7 @@ class TestAppMultipleApkFalse(unittest.TestCase):
             None,
             replace_index_list,
             self, None, "false")
-        comm.build(app_name, False, self)
-        apk_path = os.path.join(os.getcwd(), "android-debug.apk")
-        if not os.path.exists(apk_path):
-            apk_path = os.path.join(os.getcwd(), "%s-debug.apk" % app_name)
-        print apk_path
-        self.assertTrue(os.path.exists(apk_path))
-        comm.do_copy(apk_path, os.path.join(comm.testapp_path, "%s.apk" % app_name))
+        comm.build(app_name, False, self, True, False)
         comm.app_install(app_name, pkg_name, self)
         comm.app_launch(app_name, pkg_name, self)
         comm.app_uninstall(pkg_name, self)
