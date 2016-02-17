@@ -72,7 +72,7 @@ Where,
 
 ## Package and web application naming convention
 
-Tipically package name is in `<type>-<module>-<category>-tests` format.
+Typically package name is in `<type>-<module>-<category>-tests` format.
 
 - `<type>`:
   - `tct`: test suites leveraged from Tizen Compliance Tests.
@@ -99,7 +99,7 @@ Tipically package name is in `<type>-<module>-<category>-tests` format.
 
 ### Web application name after test suite packaging
 
-Web application name is the `name` field in `config.xml`, and `manifest.json`
+Web application name is the `name` field in `manifest.json`
 which is used for the application name showing on the screen after
 installation, for both test suite application and sub-test application.
 
@@ -107,7 +107,7 @@ The `<module>` above will be used as the web application name for each test
 suite. In case of duplicate names, `<module>-<category>` is to be used.
 
 To make life easy, keep the current being application names for sub-tests,
-e.g. widget test cases.
+e.g. use-case test cases.
 
 ## Test case naming convention
 
@@ -231,7 +231,6 @@ Specification coverage assertion should obey the following rules:
   - `section`: the 2nd part of [Appendix 2 WebAPI Component Name
     List](#Appendix-2-WebAPI-specification-name-list).
     - UI
-    - Widget
     - Content(documents,graphics,multimedia)
     - CSS3
     - Device/OSIntegration
@@ -358,10 +357,6 @@ documentation.
 - W3C API Specifications:Performance:Animation Timing Control
 - W3C API Specifications:Performance:Navigation Timing
 - W3C API Specifications:Location:Geolocation API
-- W3C API Specifications:Widget:Widget Packaging and XML Configuration
-- W3C API Specifications:Widget:Widget Interface
-- W3C API Specifications:Widget:XML Digital Signatures for Widgets
-- W3C API Specifications:Widget:Widgets Access Request Policy
 - Supplementary API Specifications:Typed Arrays - Khronos
 - Supplementary API Specifications:WebGL - Khronos
 - Supplementary API Specifications:Fullscreen API - Mozilla
@@ -455,7 +450,3 @@ Used by `component` field in `tests.full.xml` and `tests.xml` files.
 - WebAPI/Web Components/HTML Imports
 - WebAPI/Web Components/HTML Templates
 - WebAPI/Web Components/Shadow DOM
-- WebAPI/Widget/Widget Access Request Policy
-- WebAPI/Widget/Widget Interface
-- WebAPI/Widget/Widget Packaging and XML Configuration
-
