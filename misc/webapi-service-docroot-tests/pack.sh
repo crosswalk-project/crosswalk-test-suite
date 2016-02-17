@@ -50,16 +50,15 @@ rm -rf $dest_dir/$name-$version-$sub_version.$pack_type.zip
 rm -rf $SRC_ROOT/*.zip
 cp -arf $SRC_ROOT/* $BUILD_ROOT/
 
-if [ $pack_type == "cordova" ]; then
-    for list in $LIST;do
-        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST/opt/$core_name -s $SRC_ROOT/../../webapi/$list
-    done
-else
-    for list in $LIST;do
-        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST/opt/$core_name -s $SRC_ROOT/../../webapi/$list
-    done
+for list in $LIST;do
+    list_dir=`find $SRC_ROOT/../.. -type d -name $list`
+    if [ $pack_type == "cordova" ]; then
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST/opt/$core_name -s $list_dir
+    else
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST/opt/$core_name -s $list_dir
+    fi
+done
 
-fi
 
 ## creat testlist.json ##
 echo "[
