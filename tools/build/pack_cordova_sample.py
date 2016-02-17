@@ -742,10 +742,13 @@ def packGoogleApp(app_name=None):
         return False
 
     apk_name_arch = "armv7"
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        apk_name_arch = "x86"
+    if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch != "arm":
+        apk_name_arch = BUILD_PARAMETERS.pkgarch
 
     build_cmd = "cca build android"
+    if BUILD_PARAMETERS.pkgarch == "x86_64" or BUILD_PARAMETERS.pkgarch == "arm64":
+        build_cmd = "cca build android --xwalk64bit"
+
     if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT * 2):
         os.chdir(orig_dir)
         return False

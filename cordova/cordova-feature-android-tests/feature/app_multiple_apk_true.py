@@ -51,16 +51,7 @@ class TestAppMultipleApkTrue(unittest.TestCase):
             None,
             replace_index_list,
             self, None, "true")
-        comm.build(app_name, False, self)
-        apk_name_arch = "armv7"
-        if comm.ARCH == "x86":
-            apk_name_arch = "x86"
-        apk_path = os.path.join(os.getcwd(), "android-%s-debug.apk" % apk_name_arch)
-        if not os.path.exists(apk_path):
-            apk_path = os.path.join(os.getcwd(), "%s-%s-debug.apk" % (app_name, apk_name_arch))
-        print apk_path
-        self.assertTrue(os.path.exists(apk_path))
-        comm.do_copy(apk_path, os.path.join(comm.testapp_path, "%s.apk" % app_name))
+        comm.build(app_name, False, self, True)
         comm.app_install(app_name, pkg_name, self)
         comm.app_launch(app_name, pkg_name, self)
         comm.app_uninstall(pkg_name, self)
