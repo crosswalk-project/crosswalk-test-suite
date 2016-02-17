@@ -54,6 +54,7 @@
         "samples/ManifestCSP/res": {
           "apk-type": "MANIFEST",
           "copylist": {
+            "../../../res/media/w3c/movie_300.mp4": "resources/media/w3c/movie_300.mp4",
             "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/js/jquery.js"
           }
         },
@@ -159,7 +160,11 @@
       }
     },
     "apk-aio": {
-      "blacklist": []
+      "blacklist": ["*"],
+      "copylist": {
+        "./res": "res",
+        "./samples/ManifestCSP/res/resources": "res"
+      }
     },
     "apk-googleplay": {
       "blacklist": [],
