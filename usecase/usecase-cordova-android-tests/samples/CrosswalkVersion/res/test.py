@@ -62,14 +62,14 @@ pack_arch_tmp = "arm"
 if BUILD_PARAMETERS.pkgmode == "embedded":
     pkg_mode_tmp = "core"
 
-if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch != "arm":
-    apk_name_arch = BUILD_PARAMETERS.pkgarch
-    if BUILD_PARAMETERS.pkgarch == "x86":
-        pack_arch_tmp = "x86"
-    elif BUILD_PARAMETERS.pkgarch == "x86_64":
-        pack_arch_tmp = "x86 --xwalk64bit"
-    elif BUILD_PARAMETERS.pkgarch == "arm64":
-        pack_arch_tmp = "arm --xwalk64bit"
+    if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch != "arm":
+        apk_name_arch = BUILD_PARAMETERS.pkgarch
+        if BUILD_PARAMETERS.pkgarch == "x86":
+            pack_arch_tmp = "x86"
+        elif BUILD_PARAMETERS.pkgarch == "x86_64":
+            pack_arch_tmp = "x86 --xwalk64bit"
+        elif BUILD_PARAMETERS.pkgarch == "arm64":
+            pack_arch_tmp = "arm --xwalk64bit"
 
 VERSION_TYPES = []
 EXCEPTED_VERSIONS = []
@@ -94,7 +94,7 @@ elif comm.CROSSWALK_BRANCH == "canary":
             "xwalk_%s_library:%s" % (pkg_mode_tmp, comm.CROSSWALK_VERSION),
             "%s" % (comm.CROSSWALK_VERSION)]
     EXCEPTED_VERSIONS = [comm.CROSSWALK_VERSION, comm.CROSSWALK_VERSION, comm.CROSSWALK_VERSION]
-    comm.installCrosswalk(BUILD_PARAMETERS.pkgmode)
+    comm.installCrosswalk(BUILD_PARAMETERS.pkgmode, BUILD_PARAMETERS.pkgarch)
 else:
     print "CROSSWALK_BRANCH in VERSION file is unavailable"
     sys.exit(1)
