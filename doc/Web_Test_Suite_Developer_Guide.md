@@ -1,390 +1,307 @@
-# Web Test Suite DeveloperGuide
+# Web Test Suite Developer Guide
 
-## 1. Overview
+## Overview
 
-This document is intended for developers who contribute WebAPI test cases development.
+This document is intended for those who want to make test contributions to this
+repository, especially to the WebAPI, Runtime and Cordova test suites.
 
-You are supposed to have gained the following knowledge:
+Please formiliarize yourself with the following knowledge:
 
-- Where to download WebAPI test source codes and how to run them
-- How to download and run Testkit-lite
-- What is W3C test harness, which is called by Testkit-lite to support the execution of WebAPI tests
+- [Git and GitHub](https://help.github.com/).
+- [Testkit-lite](https://github.com/testkit/testkit-lite), a test execution
+  framework for test suites in this repository.
+- W3C [testharness.js](https://github.com/w3c/testharness.js), a framework for
+  writing low-level tests of browser functionality in javascript. It is called
+  by testkit-lite to support the test execution.
 
-    Note: Testkit-lite is a test execution framework. For details, see [https://github.com/testkit/testkit-lite](https://github.com/testkit/testkit-lite).
+## Test suite source layout
 
-## 2. Test Suite Source Layout
+The layout of test source code is designed to meet requirements of
+`testkit-lite`, `testharness.js` and Crosswalk Project for supporting different
+package formats for various platforms, such as Android, Windows, Linux (Deepin),
+iOS, etc.
 
-The layout of test source codes should:
+A typical test suite source layout looks like this:
 
-- Meet the requirements of Testkit-lite
-- Meet the requirements of W3C test harness
-- Meet project requirements, for example, support different package formats so that tests can be executed on various platforms
+```
+<package-name>
+  |- <test-case-sub-directory>
+  |- [resources]
+  |- [webrunner]
+  |- COPYING
+  |- icon.png
+  |- inst.*.py
+  |- README.md
+  |- suite.json
+  |- tests.full.xml
+  |- tests.xml
+  |- testcase.xsl
+  |- testresult.xsl
+  |- tests.css
+```
 
-The test suite source layout is detailed as follows:
+Where,
 
-<webapi-xxx-tests\>/
+- `<package-name>`: name of the test suite package, usually in
+  `<type>-<module>-<category>-tests` format. See the [package and web
+  application naming convention](#package-and-web-application-naming-convention)
+  section for details.
+- `<test-case-sub-directory>`: a serial of source files or directories for test
+  cases that are well organized by components or features to be tested. See the
+  [test case sub-directory naming convention](#test-case-sub-directory-naming-convention)
+  section for details.
+- `[resources]`: optional, [testharness.js](https://github.com/w3c/testharness.js)
+  test framework resources. The resources are built into test suite package if
+  specified in `suite.json`. See integrated source code
+  [here](./../tools/resources/testharness).
+- `[webrunner]`: a [web test runner](https://github.com/testkit/webrunner)
+  supporting `testkit-lite` to run the tests. See integrated source code
+  [here](./../tools/resources/webrunner).
+- `COPYING`: license and copying file.
+- `icon.png`: icon image for the test suite package as web application.
+- `inst.*.py`: scripts to install built test suite package.
+- `README.md`: a brief introduction of the test suite, and pre-/post-conditions
+  (optional).
+- `suite.json`: a package specification file, which provides the test suite
+  package's architecture in different package types. It will be parsed by the
+  pack tool (`pack.py`) when build web test suite package.
+- `tests.full.xml`, `tests.xml`: files to describe all test cases for this test
+  suite. See [Appendix 1](#appendix-1-testsfullxml-and-testsxml) for details.
+- `testcase.xsl`, `testresult.xsl`, `tests.css`: XSLT style for test case and
+  test result, used by `tests.full.xml`, `tests.xml`, etc.
 
-├── autogen
+## Package and web application naming convention
 
-├── [common]/
+Typically package name is in `<type>-<module>-<category>-tests` format.
 
-├── configure.ac
+- `<type>`:
+  - `tct`: test suites leveraged from Tizen Compliance Tests.
+  - `webapi`: test suites checking compliance with Crosswalk Web API
+    specifications.
+  - `embedding`: test suites checking compliance with Crosswalk Embedding API
+    specifications.
+  - `wrt`: test suites checking compliance with web runtime core specification.
+  - `cordova`: test suites checking cordova-plugin-crosswalk-webview.
+  - `usecase`: test suites verifying Crosswalk features from end user's
+    perspective.
+  - `stability`: test suite checking stability.
+- `<module>`: abbreviation of Web API specification or function component.
+- `<category>`: origination of the API specifications or features:
+  - `w3c`: standard specifications from W3C.
+  - `css3`: W3C CSS3 specifications.
+  - `html5`: W3C HTML5 specification.
+  - `nonw3c`: supplementary API specifications from other standard orgnizations
+    or browser engines other than W3C.
+  - `wrt`: Crosswalk runtime core specification.
+  - `andriod`: Crosswalk Project for Andriod specific features.
+  - `xwalk`: other Crosswalk Web APIs, or Crosswalk features common for any
+     platform.
 
-├── config.xml.crx
+### Web application name after test suite packaging
 
-├── config.xml.wgt
+Web application name is the `name` field in `manifest.json`
+which is used for the application name showing on the screen after
+installation, for both test suite application and sub-test application.
 
-├── COPYING
+The `<module>` above will be used as the web application name for each test
+suite. In case of duplicate names, `<module>-<category>` is to be used.
 
-├── icon.png
+To make life easy, keep the current being application names for sub-tests,
+e.g. use-case test cases.
 
-├── inst.sh.apk
-
-├── inst.sh.ivi
-
-├── inst.sh.wgt
-
-├── inst.sh.xpk
-
-├── Makefile.am
-
-├── manifest.json
-
-├── pack.sh
-
-├──[README]
-
-├── resources/
-
-├── testkit/
-
-├── testcase.xsl
-
-├── testresult.xsl
-
-├── tests.css
-
-├── tests.xml
-
-├── tests.full.xml
-
-├── <testcasefolder\>/
-
-├── <webapi-xxx-tests.spec\>
-
-├── [utils]/
-
-└── [data]/
-
-- <webapi-xxx-tests\>: name of WebAPI test package. The 'webapi-' prefix and the '-tests' suffix must be available, for example, webapi-shadowdom-w3c-tests, webapi-input-html5-tests.
-- Documents:
-  - README: an introduction of the test suite, and (optional) pre-/post-conditions.
-  - COPYING: license and copying file
-
-- Test-related files and folders:
-  - <testcasefolder\>/: a serial of source files or directories for test cases that are well organized by components or features to be tested, e.g. shadowdom/xxx, input/xxx
-  - full.xml & tests.xml: a mandatory file to describe all test cases for this test suite. For details, see "Appendix 2 Tests.full.xml and tests.xml."
-
-- W3C test harness support:
-  - [common]/: (optional) integrated from [https://github.com/w3c/web-platform-tests/tree/master/common](https://github.com/w3c/web-platform-tests/tree/master/common) to include common test functions
-  - resources/: integrated from [https://github.com/w3c/testharness.js](https://github.com/w3c/testharness.js) to include W3C test harness as an API test framework
-
-- Build/pack support:
-  - autogen, configure.ac, and Makefile.am
-  - pack.sh: script for generating a zip package
-  - inst.sh.apk: script for installing the apk package on Android mobile.
-  - inst.sh.ivi: script for installing the xpk package on Tizen IVI device.
-  - inst.sh.wgt: script for installing the wgt package on Tizen mobile.
-  - inst.sh.xpk: script for installing the xpk package on Tizen mobile.
-  - config.xml.crx: configuration file for creating a .crx extension
-  - config.xml.wgt: configuration file for creating a .wgt package
-  - icon.png: Widget/Extension icon
-  - manifest.json: manifest file for creating a .crx extension
-  - <webapi-xxx-tests.spec\>: specification file including version and configuration for setting suite signature; please set src\_file to keep the source code files in packaged test suite and put specific files to be kept in whitelist. For WebAPI specifications, the 'webapi-' prefix and the '-tests' suffix must be available, for example, webapi-input-html5-tests.spec.
-
-- Installation/execution support:
-  - testkit/: web test runner for executing WebAPI test suite. It is integrated from and updated with Testkit-lite. For details, see https://github.com/testkit/testkit-lite.
-
-- Misc:
-  - [utils]/: (optional) contains utilities and tools if any
-  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.)
-  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file.
-  - Test data must be publicly available.
-
-The following files and folders are mandatory in :
-
-- autogen
-- config.ac
-- config.xml.crx
-- config.xml.wgt
-- icon.png
-- inst.sh.apk
-- inst.sh.ivi
-- inst.sh.wgt
-- inst.sh.xpk
-- Makefile.am
-- manifest.json
-- pack.sh
-- resources/
-- testkit/
-- testcase.xsl
-- testresult.xsl
-- tests.css
-- tests.xml
-- tests.full.xml
-- <webapi-xxx-tests.spec\>
-
-## 3. Test Case Coding Style
-
-Refer to the `Coding_Style_Guide_CheatSheet.md`.
-
-## 4. Test Case Naming Convention
+## Test case naming convention
 
 **Template**
 
-[SpecShortName]_<WebAPIInterface\>_<ShortDescriptionForTestPurpose\>
+`[SpecShortName]_<WebAPIInterface>_<short_description_for_test_purpose>`
 
-A test case should be named as per the following conventions:
-
-- [SpecShortName] is optional, mostly for similar specifications, e.g. Selectors API Level 1, Selectors API Level 2
-- <WebAPIInterface\> and <ShortDescriptionForTestPurpose\>  are mandatory.
-- Use lowercase, except API name and constant defined in spec
-- Use descriptive names (e.g. ftp\_file\_send); Do not use numbers as tests name (e.g. \_001, \_002)
-- Use '\_' to connect words in file names (do not use @&- in case name, though W3C prefer '-' to '\_')
+- `[SpecShortName]` is optional, mostly for similar specifications,
+  e.g. Selectors API Level 1, Selectors API Level 2.
+- `<WebAPIInterface>` and `<short_description_for_test_purpose>` are mandatory.
+- Use lowercase, except API name and constant defined in specification.
+- Use descriptive names (e.g. `ftp_file_send`). Avoid numbers as tests name
+  (e.g. `_001`, `_002`).
+- Use `_` to connect words in file names; do not use `@&-` in case name, though
+  W3C prefer `-` to `_`.
 
 **Examples**
 
-bluetooth\_BluetoothAdapter\_discoverDevices\_exists.html
+- `bluetooth_BluetoothAdapter_discoverDevices_exists.html` or
+  `BluetoothAdapter_discoverDevices_exists.html`
+- `webaudio_cancelScheduledValues_exists.html`
 
-Or BluetoothAdapter\_discoverDevices\_exists.html
+## Test case sub-directory naming convention
 
-webaudio\_cancelScheduledValues\_exists.html
+- Allow only letter, digit, and hyphen `-` in test case directory name.
+- Always use lower-case letter with `-` if necessary.
+- Use specification short name for `<test-case-sub-directory>`, component,
+  for example, `audio`, `htmltemplates`.
 
-Or webaudio\_cancelScheduledValues\_exists.html
+## Test case coding style
 
-## 5. Test Case Folder Naming Convention
+See the [coding style guide cheatsheet](./Coding_Style_Guide_CheatSheet.md)
+documentation.
 
-A test case folder should be named as per the following conventions:
+## Test case classification
 
-- Allow only letter, digit, and hyphen in test case folder name.
-- For folder name, please also use lower-case with '-' if necessary.
-- Name <testcasefolder\> as a spec, component or sub-component, for example, style/, htmltemplates/.
-
-## 6. Test Case Classification (<testcase\> field in tests.xml)
+`<testcase\>` field in `tests.full.xml` files.
 
 **Template**
 
+```xml
 <testcase purpose="" type="" status="" component="" execution_type="" priority="" id=""\>
+```
 
-Test case created should be classified by the following rules:
+Test cases will be classified by the following rules:
 
-- Purpose: test assertion; should be unique in whole tests.xml (no duplicate test case).
-- Type: currently only support 'compliance'.
-- Status: test case status
-  - designed: test case is just designed but notready for review.
-  - ready: test case is ready for review.
-  - approved: test case is reviewed and qualified to be released; currently only use this status when merge tests into test suites.
+- `purpose`: test assertion; should be unique in whole `tests.xml` files in this
+  repository; (no duplicate test case).
+- `type`: currently only support `compliance` for web tests.
+- `status`: test case status.
+  - `designed`: test case is just designed but not ready for review.
+  - `ready`: test case is ready for review.
+  - `approved`: test case is reviewed and qualified to be released; currently
+    only use this status when merge tests into test suites.
+- `component`: should comply with the component name list. See [Appendix 2
+  WebAPI Component Name List](#Appendix-2-WebAPI-specification-name-list).
+- `execution_type`:
+  - `auto`: automation tests.
+  - `manual`: manual tests.
+- `priority`: test case priority.
+  - `P0`: use cases for features to be tested from end user point of view;
+    P0 tests will be used for sanity testing.
+  - `P1`: feature verification tests, API and its attribute presence and normal
+    usage; P0+P1 tests will be used for feature verification testing.
+  - `P2`: positive tests of extended feature tests, API parameter combination
+    tests.
+  - `P3`: negative tests of extended feature tests, API spec descriptive
+    statement tests, complicated use cases, stress tests; P0+P1+P2+P3 tests
+    will be used for full-pass testing.
+  - **Attribute and Method Coverage**: cover each attribute or method at least
+    once by using normal values to ensure the presence of all defined
+    attributes and methods. P0+P1 tests are full tests of Attribute and Method
+    Coverage.
+  - **Parameter Coverage**: a superset of Attribute & Method coverage, which
+    covers each parameter using minimum, maximum, normal, and error conditions
+    of each range of values, parameter combination for the APIs with more than
+    one parameter, and all return codes. P0+P1+P2 tests are full tests of
+    Parameter Coverage.
+  - **Statement Coverage**: a superset of parameter coverage, which covers
+    testable statement, including common usage, error code (exceptions),
+    code examples, and etc testable descriptive statements in each
+    specification. P0+P1+P2+P3 tests are full tests of Statement Coverage.
+- `id`: test case identification should be unique in whole tests.xml files
+  in this repository; no duplicate test case. It can be simply as test case
+  name without extension.
 
-- Component: should comply with the WebAPI component name list. For details see "Appendix 3 WebAPI Component Name List".
-- Execution\_type:
-  - auto:
-  - manual:
+## Specification coverage assertion rules
 
-- Priority: P0/P1/P2/P3
-  - P0: use cases for feature to be tested, API use cases; P0 tests will be used in sanity testing.
-  - P1: feature verification tests, API and its attribute presence and normal usage; P0+P1 tests will be used in feature verification testing.
-  - P2: positive tests of extended feature tests, API parameter combination tests.
-  - P3: negative tests of extended feature tests, API spec descriptive statement tests, complicated use cases, stress tests; P0+P1+P2+P3 tests will be used in full-pass testing.
-  - Attribute & Method Coverage - cover each attribute or method at least once by using normal values to ensure the presence of all defined attributes and methods. P0+P1 tests are full tests of Attribute & Method Coverage.
-  - Parameter Coverage - a superset of Attribute & Method coverage, which covers each parameter using minimum, maximum, normal, and error conditions of each range of values, parameter combination for the APIs with more than one parameter, and all return codes. P0+P1+P2 tests are full tests of Parameter Coverage.
-  - Statement Coverage - a superset of parameter coverage, which covers testable statement, including common usage, error code (exceptions), code examples, and etc testable descriptive statements in each specification document. P0+P1+P2+P3 tests are full tests of Statement Coverage.
-
-- Id: test case identification should be unique in whole tests.xml (no duplicate test case); can be simply as test case name without extension.
-
-**Example**
-
-<testcase purpose="Check if the Touch.screenY attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1" execution_type="auto" priority="P1" id="Touch_screenY_exist"\>
-
-## 7. Spec Coverage Assertion Rules (<specs\> field in tests.full.xml)
+`<specs\>` field in `tests.full.xml` files.
 
 **Template**
 
-    <specs>
-      <spec>
-        <spec_assertion element_type="" element_name="" interface="" specification="" section="" category=""/>
-        <spec_url></spec_url>
-        <spec_statement></spec_statement>
-      </spec>
-    </specs>
+```xml
+<specs>
+  <spec>
+    <spec_assertion element_type="" element_name="" interface="" specification="" section="" category=""/>
+    <spec_url></spec_url>
+    <spec_statement></spec_statement>
+  </spec>
+</specs>
 
-    <specs>
-      <spec>
-        <spec_assertion usage= "" interface="" specification="" section="" category=""/>
-        <spec_url></spec_url>
-        <spec_statement></spec_statement>
-      </spec>
-    </specs>
+<specs>
+  <spec>
+    <spec_assertion usage= "" interface="" specification="" section="" category=""/>
+    <spec_url></spec_url>
+    <spec_statement></spec_statement>
+  </spec>
+</specs>
+```
 
-Spec coverage assertion should obey the following rules:
+Specification coverage assertion should obey the following rules:
 
-- <spec_assertion\> field is mandatory.
-  - < element_type\>: 'attribute', 'method'; only need for P0/P1/P2 test cases.
-     - attribute:
-     - method:
-
-  - < element\_name\>: attribute/method name defined in <specification\>  comes together with < element\_type\>.
-  - < usage>: 'true'; only need for P3 test cases.
-  - <interface\>: interface name defined in <specification\>.
-  - <specification\>: web api specification; the 3rd part by ":" of "Appendix 2 WebAPI Spec Name List."
-  - <section\>: the 2nd part by ":" of "Appendix 2 WebAPI Spec Name List."
-     - Tizen
-     - UI
-     - Widget
-     - Content(documents,graphics,multimedia)
-     - CSS3
-     - Device/OSIntegration
-     - Network & Communication
-     - Storage
-     - Performance
-     - ExtraHTML5
-     - <category\>: the 1st part by ":" of "Appendix 2 WebAPI Spec Name List."
-         - Tizen Device API Specifications
-         - W3C HTML5 API Specifications
-         - Supplementary API Specifications
-- <spec_url\> is mandatory, URL to public spec section being tested.
-- <spec_statement\> is optional, statements in spec being tested. It must be copied from the specification document.
+- `spec_assertion` element is mandatory.
+  - `element_type`: `attribute` or `method`; only need for P0/P1/P2 test cases.
+  - `element_name`: attribute/method name defined in `specification` field
+    comes together with `element_type`.
+  - `usage`: `true` if P3 test cases based on statement.
+  - `interface`: interface name defined in `specification`.
+  - `specification`: standard specification; mostly the 3rd part of [Appendix 2
+    WebAPI Component Name List](#Appendix-2-WebAPI-specification-name-list)
+  - `section`: the 2nd part of [Appendix 2 WebAPI Component Name
+    List](#Appendix-2-WebAPI-specification-name-list).
+    - UI
+    - Content(documents,graphics,multimedia)
+    - CSS3
+    - Device/OSIntegration
+    - Network & Communication
+    - Storage
+    - Performance
+    - ExtraHTML5
+  - `category`: the 1st part of [Appendix 2 WebAPI Component Name
+    List](#Appendix-2-WebAPI-specification-name-list)
+    - W3C HTML5 API Specifications
+    - Supplementary API Specifications
+- `spec_url` is mandatory, an URL to public specification section being tested.
+- `spec_statement` is optional, statements in spec being tested.
+   It must be copied from the specification document.
 
 **Examples**
 
-    <specs>
-      <spec>
-        <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1" section="Device" category="Tizen W3C API Specifications"/>
-        <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
-        <spec_statement/>
-      </spec>
-    </specs>
+```xml
+<specs>
+  <spec>
+    <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1" section="Device" category="Tizen W3C API Specifications"/>
+    <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+    <spec_statement/>
+  </spec>
+</specs>
 
-    <specs>
-      <spec>
-        <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1" section="Device" category="Tizen W3C API Specifications"/>
-        <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
-        <spec_statement/>
-      </spec>
-     </specs>
+<specs>
+  <spec>
+    <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1" section="Device" category="Tizen W3C API Specifications"/>
+    <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+    <spec_statement/>
+  </spec>
+</specs>
+```
 
-## 8. How to Add New Test Suite to WebAPI
-To add a new suite to webapi, perform the following steps:
+## How to add a new test suite?
 
-1)Fork and clone the webtest project from
+The best method to add a new test suite is to copy a simliar existing test suite
+and then update related test scripts.
 
-https://github.com/crosswalk-project/webtest
+1. Fork this reposistory and clone your forked repository to local system, and
+   make a new branch. See http://testthewebforward.org/docs/configuration.html
+1. Copy a simliar existing test suite, e.g. `webapi-style-css3-tests` to the
+   place you want to make a new test suite, and rename it.
+1. Update `manifest.json`.
+1. Rename `<test-case-sub-directory>`.
+1. Create new test cases (see next section) and update `tests*.xml` files.
+1. Package the test suite and run the test cases.
+1. Submit your changes in a pull request.
 
-**Note** : you must sign up for the GitHub first.
+## How to contribute new cases?
 
-2)Copy a test suite to the spec under testing, for example, "webapi-style-css3-tests".
-
-3)Replace bluetooth with real test case folder name in Makefile.am:
-
-    commondir = resources testkit
-
-    SUBDIRS = style $(commondir)
-
-    docdir = $(prefix)/opt/webapi-style-css3-tests
-
-    dist\_doc\_DATA = COPYING README tests.xml tests.full.xml
-
-4)Replace bluetooth with the name of the real test suite and replace bluetooth with real test case folder name used in configure.ac:
-
-    AC\_INIT([webapi-style-css3-tests], [5.34.1.1], [zhiqiang.zhang@intel.com]) AM\_INIT\_AUTOMAKE([-Wall -Werror foreign])
-    AC\_CONFIG\_FILES([Makefile \
-    style/Makefile \
-    style/csswg/Makefile \
-    style/csswg/support/Makefile \
-    style/csswg/reference/Makefile \
-    resources/Makefile testkit/Makefile])
-    AC\_OUTPUT
-
-5)Update config.xml.crx:
-
-    <widget xmlns="http://www.w3.org/ns/widgets">
-    </widget>
-
-6)Update config.xml.wgt:
-
-    <widget id='http://tizen.org/test/webapi-style-css3-tests' xmlns='http://www.w3.org/ns/widgets' xmlns:tizen='http://tizen.org/ns/widgets'>
-      <access origin="*"/>
-      <icon src="icon.png" height="117" width="117"/>
-      <name>webapi-style-css3-tests</name>
-      <tizen:application id="css3styles.WebAPIcss3styleTests" package="css3styles" required_version="2.2"/>
-      <tizen:setting screen-orientation="landscape"/>
-    </widget>
-
-7)Update manifest.json:
-
-    {
-        "version": "0.0.1",
-        "name": "webapi-style-css3-tests",
-        "permissions": ["tabs", "unlimited_storage", "notifications", "http://*/*", "https://*/*"],
-        "description": "webapi-style-css3-tests",
-        "file_name": "manifest.json",
-        "app": {
-            "launch": {
-                "local_path": "index.html"
-            }
-        },
-        "icons": {
-            "128": "icon.png"
-        }
-    }
-
-8)Customize the .spec file based on the webapi-style-css3-tests.spec file.
-
-9)Add new cases to the test suite. For details, see chapter 9 "How to Contribute New Cases to Test Suite Package."
-
-## 9 How to Contribute New Cases to Test Suite Package
-
-To contribute new cases to test suite package, perform the following steps:
-
-1)Design new test case according to WebAPI Spec and add new case information to **tests.xml**. For details, see "Appendix 1 Tests.full.xml and tests.xml."
-
-- "Case name" should follow the test case naming convention. For details, see chapter 4 "Test Case Naming Convention".
-- "Specs" field should follow the Spec coverage assertion rules. For details, see chapter **Error! Reference source not found.** "Test Case Classification (<testcase\> field in tests.xml)".
-- "Component" field should comply with the WebAPI component name list. For details see "Appendix 3 WebAPI Component Name List".
-
-2)Develop test script by following the test case coding style and put it under <testcasefolder\>.
+1. Design new test case according to the specification and/or feature
+   requirement, and add new case information to `tests.full.xml`.
+1. Develop test script following the
+   [test case naming convention](#Test-case-naming-convention) and
+   [test case coding style](#test-case-coding-style), and put it under
+   `<test-case-sub-directory>`.
 
 Note:
 
 - Each test should have an entry HTML file.
-- The test script can be embedded into the HTML file or be used as separate JavaScript file.
-- For details on how to use W3C test harness, see [testharness.js API document](https://github.com/w3c/testharness.js/blob/master/docs/api.md).
-
-**Example**
-
-    <!DOCTYPE html>
-    <title>Audio Test: audio_MediaController_play_exists</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller">
-    <meta name="flags" content="">
-    <meta name="assert" content="Check if audio.MediaController.play exists">
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-    <div id="log"></div>
-    <audio id = "audio" src="" mediagroup="v"></audio>
-    <script type="text/javascript">
-      test(function (){
-        var v = document.getElementById("audio");
-        var controller = v.controller;
-        assert_true("play" in controller, "audio.MediaController.play exists");
-      }, document.title);
-    </script>
-
+- The test script can be embedded into the HTML file or be used as separated
+  JavaScript file.
 
 ## Appendix 1 `tests.full.xml` and `tests.xml`
 
-See [tests.xml definition and sample](./Tests_XML_Definition_and_Sample.md).
+See the [tests.xml definition and sample](./Tests_XML_Definition_and_Sample.md)
+documentation.
 
-## Appendix 2 WebAPI Spec Name List
+## Appendix 2 WebAPI specification name list
 
 - W3C API Specifications:DOM Forms:HTML5 Forms
 - W3C API Specifications:DOM Forms:Selectors API Level 1
@@ -440,18 +357,14 @@ See [tests.xml definition and sample](./Tests_XML_Definition_and_Sample.md).
 - W3C API Specifications:Performance:Animation Timing Control
 - W3C API Specifications:Performance:Navigation Timing
 - W3C API Specifications:Location:Geolocation API
-- W3C API Specifications:Widget:Widget Packaging and XML Configuration
-- W3C API Specifications:Widget:Widget Interface
-- W3C API Specifications:Widget:XML Digital Signatures for Widgets
-- W3C API Specifications:Widget:Widgets Access Request Policy
 - Supplementary API Specifications:Typed Arrays - Khronos
 - Supplementary API Specifications:WebGL - Khronos
 - Supplementary API Specifications:Fullscreen API - Mozilla
 - Supplementary API Specifications:viewport Metatag - Apple
 
-## Appendix 3 WebAPI Component Name List
+## Appendix 3 WebAPI component name list
 
-Used by "Component" field in `tests.full.xml` and `tests.xml` files.
+Used by `component` field in `tests.full.xml` and `tests.xml` files.
 
 - WebAPI/Communication/HTML5 The session history of browsing contexts
 - WebAPI/Communication/HTML5 Web Messaging
@@ -537,7 +450,3 @@ Used by "Component" field in `tests.full.xml` and `tests.xml` files.
 - WebAPI/Web Components/HTML Imports
 - WebAPI/Web Components/HTML Templates
 - WebAPI/Web Components/Shadow DOM
-- WebAPI/Widget/Widget Access Request Policy
-- WebAPI/Widget/Widget Interface
-- WebAPI/Widget/Widget Packaging and XML Configuration
-
