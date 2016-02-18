@@ -12,75 +12,35 @@
         "*"
       ],
       "copylist": {
-        "inst.apk.py": "inst.py",
-        "res/cordova-3.6": "res/cordova-version",
-        "samples/CordovaPackage3.6/res/test.py": "res/CordovaPackage/test.py",
-        "samples/Database/upstream/database_upstream_3.6.apk": "database_upstream.apk",
-        "samples/SharedModeLibraryDownload3.6/res/test.py": "res/SharedModeLibraryDownload/test.py",
-        "tests.xml": "tests.xml"
-      },
-      "subapp-list": {
-        ".": {
-          "app-name": "usecase-cordova-android-tests",
-          "copylist": {
-            "PACK-TOOL-ROOT/bootstrap-fw": ".",
-            "extra_plugins/cordova-admob-3.6": "PACK-TOOL-ROOT/extra_plugins/cordova-admob-3.6",
-            "extra_plugins/cordova-plugin-crosswalk-webview-tests": "PACK-TOOL-ROOT/extra_plugins/cordova-plugin-crosswalk-webview-tests",
-            "extra_plugins/cordova-screenshot-3.6": "PACK-TOOL-ROOT/extra_plugins/cordova-screenshot",
-            "samples/AdMob3.6": "samples/AdMob",
-            "samples/CordovaPackage3.6": "samples/CordovaPackage",
-            "samples/Database/index.3.6.html": "samples/Database/index.html",
-            "samples/SharedModeLibraryDownload3.6": "samples/SharedModeLibraryDownload",
-            "samples/StatusBar3.6": "samples/StatusBar",
-            "samples/cordova-incl.js": "cordova-incl.js",
-            "steps": "steps"
-          },
-          "install-path": "./"
-        },
-        "samples/Database/res/database_source": {
-          "app-name": "database",
-          "copylist": {
-            "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "./js/jquery.js"
-          },
-          "install-path": "./"
-        }
-      }
-    },
-    "cordova4.x": {
-      "blacklist": [
-        "*"
-      ],
-      "copylist": {
         "PACK-TOOL-ROOT/../VERSION": "tools/VERSION",
         "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "res/Database/database_source/js/jquery.js",
         "PACK-TOOL-ROOT/cordova_plugins/cordova-plugin-crosswalk-webview": "tools/cordova-plugin-crosswalk-webview",
         "README.md": "README.md",
         "inst.apk.py": "inst.py",
         "res/comm.py": "res/comm.py",
-        "res/cordova-4.x": "res/cordova-version",
         "res/pack-type": "res/pack-type",
         "samples/DefaultCrosswalkVersion/testapp/index.html": "res/DefaultCrosswalkVersion/index.html",
-        "samples/CordovaPackage4.x/res/test.py": "res/CordovaPackage/test.py",
+        "samples/CordovaPackage/res/test.py": "res/CordovaPackage/test.py",
         "samples/CrosswalkVersion/res": "res/CrosswalkVersion",
         "samples/Database/res": "res/Database",
-        "samples/SharedModeLibraryDownload4.x/res/test.py": "res/SharedModeLibraryDownload/test.py",
+        "samples/SharedModeLibraryDownload/res/test.py": "res/SharedModeLibraryDownload/test.py",
         "tests.xml": "tests.xml"
       },
       "subapp-list": {
         ".": {
           "app-name": "usecase-cordova-android-tests",
+          "blacklist": [
+            "extra_plugins",
+            "opt",
+            "*.zip",
+            "res"
+          ],
           "copylist": {
             "PACK-TOOL-ROOT/bootstrap-fw": ".",
-            "extra_plugins/cordova-admob-4.x": "PACK-TOOL-ROOT/extra_plugins/cordova-admob-4.x",
+            "extra_plugins/cordova-admob": "PACK-TOOL-ROOT/extra_plugins/cordova-admob",
             "extra_plugins/cordova-plugin-crosswalk-webview-tests": "PACK-TOOL-ROOT/extra_plugins/cordova-plugin-crosswalk-webview-tests",
-            "extra_plugins/cordova-screenshot-4.x": "PACK-TOOL-ROOT/extra_plugins/cordova-screenshot",
-            "samples/AdMob4.x": "samples/AdMob",
-            "samples/CordovaPackage4.x": "samples/CordovaPackage",
-            "samples/Database/index.4.x.html": "samples/Database/index.html",
-            "samples/SharedModeLibraryDownload4.x": "samples/SharedModeLibraryDownload",
-            "samples/StatusBar4.x": "samples/StatusBar",
-            "samples/cordova-incl.js": "cordova-incl.js",
-            "steps": "steps"
+            "extra_plugins/cordova-screenshot": "PACK-TOOL-ROOT/extra_plugins/cordova-screenshot",
+            "samples/cordova-incl.js": "cordova-incl.js"
           },
           "install-path": "./"
         },

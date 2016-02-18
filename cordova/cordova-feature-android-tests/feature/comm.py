@@ -48,7 +48,7 @@ testapp_path = "/tmp/cordova-sampleapp/"
 
 
 def setUp():
-    global ARCH, MODE, CORDOVA_VERSION, device, CROSSWALK_VERSION, CROSSWALK_BRANCH, PACK_TYPE
+    global ARCH, MODE, device, CROSSWALK_VERSION, CROSSWALK_BRANCH, PACK_TYPE
 
     device = os.environ.get('DEVICE_ID')
 
@@ -84,32 +84,25 @@ def setUp():
         sys.exit(1)
     f_mode.close()
 
-    f_version = open(const_path + "/../cordova-version", 'r')
-    if f_version.read().strip("\n\t") != "3.6":
-        CORDOVA_VERSION = "4.x"
+
+    f_pack_type = open(const_path + "/../pack-type", 'r')
+    pack_type_tmp = f_pack_type.read()
+    if pack_type_tmp.strip("\n\t") == "local":
+        PACK_TYPE = "local"
+    elif pack_type_tmp.strip("\n\t") == "npm":
+        PACK_TYPE = "npm"
     else:
-        CORDOVA_VERSION = "3.6"
-    f_version.close()
+        print (
+            " get pack type error, the content of pack-type should be 'local' or 'npm'\n")
+        sys.exit(1)
+    f_pack_type.close()
 
-    if CORDOVA_VERSION == "4.x":
-        f_pack_type = open(const_path + "/../pack-type", 'r')
-        pack_type_tmp = f_pack_type.read()
-        if pack_type_tmp.strip("\n\t") == "local":
-            PACK_TYPE = "local"
-        elif pack_type_tmp.strip("\n\t") == "npm":
-            PACK_TYPE = "npm"
-        else:
-            print (
-                " get pack type error, the content of pack-type should be 'local' or 'npm'\n")
-            sys.exit(1)
-        f_pack_type.close()
-
-        with open(const_path + "/../VERSION", "rt") as pkg_version_file:
-            pkg_version_raw = pkg_version_file.read()
-            pkg_version_file.close()
-            pkg_version_json = json.loads(pkg_version_raw)
-            CROSSWALK_VERSION = pkg_version_json["main-version"]
-            CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
+    with open(const_path + "/../VERSION", "rt") as pkg_version_file:
+        pkg_version_raw = pkg_version_file.read()
+        pkg_version_file.close()
+        pkg_version_json = json.loads(pkg_version_raw)
+        CROSSWALK_VERSION = pkg_version_json["main-version"]
+        CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
 def installWebviewPlugin(pkg_mode, self, multiple_apks = None):
     print "Install Crosswalk WebView Plugin --------------> START"
@@ -142,14 +135,7 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, ext
         print "Existing %s project, try to clean up..." % appname
         do_remove(glob.glob(os.path.join(tool_path, appname)))
     print "Create project %s ----------------> START" % appname
-    if CORDOVA_VERSION == "4.x":
-        cmd = "cordova create %s %s %s" % (appname, pkgname, appname)
-    else:
-        if mode == "shared":
-            cmd = "cordova/bin/create %s %s %s --xwalk-shared-library" % (
-                appname, pkgname, appname)
-        else:
-            cmd = "cordova/bin/create %s %s %s" % (appname, pkgname, appname)
+    cmd = "cordova create %s %s %s" % (appname, pkgname, appname)
     createstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, createstatus[0])
     print "\nGenerate project %s ----------------> OK\n" % appname
@@ -157,60 +143,31 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, ext
     self.assertIn(appname, result[1])
     project_root = os.path.join(tool_path, appname)
     os.chdir(project_root)
-    if CORDOVA_VERSION == "4.x":
+    if not replace_key(os.path.join(project_root, 'config.xml'),
+                       '<widget android-activityName="%s"' % appname, '<widget'):
+        print "replace key '<widget' failed."
+        return False
+    if not replace_key(os.path.join(project_root, 'config.xml'),
+                       '    <allow-navigation href="*" />\n</widget>', '</widget>'):
+        print "replace key '</widget>' failed."
+        return False
 
-        if not replace_key(os.path.join(project_root, 'config.xml'),
-                           '<widget android-activityName="%s"' % appname, '<widget'):
-            print "replace key '<widget' failed."
+    print "Add android platforms to this project --------------> START"
+    cordova_platform_cmd = "cordova platform add android"
+    platformstatus = commands.getstatusoutput(cordova_platform_cmd)
+    self.assertEquals(0, platformstatus[0])
+    installWebviewPlugin(mode, self, multiple_apks)
+
+    if replace_index_list is not None and len(replace_index_list) >= 2:
+        index_file_path = os.path.join(project_root, "www", "index.html")
+        key = replace_index_list[0]
+        content = replace_index_list[1]
+        if not replace_key(index_file_path, content, key):
+            print "replace key: " + key + " failed."
             return False
-        if not replace_key(os.path.join(project_root, 'config.xml'),
-                           '    <allow-navigation href="*" />\n</widget>', '</widget>'):
-            print "replace key '</widget>' failed."
-            return False
-
-        print "Add android platforms to this project --------------> START"
-        cordova_platform_cmd = "cordova platform add android"
-        platformstatus = commands.getstatusoutput(cordova_platform_cmd)
-        self.assertEquals(0, platformstatus[0])
-        installWebviewPlugin(mode, self, multiple_apks)
-
-        if replace_index_list is not None and len(replace_index_list) >= 2:
-            index_file_path = os.path.join(project_root, "www", "index.html")
-            key = replace_index_list[0]
-            content = replace_index_list[1]
-            if not replace_key(index_file_path, content, key):
-                print "replace key: " + key + " failed."
-                return False
-        if sourcecodepath is not None:
-            do_remove(glob.glob(os.path.join(project_root, "www")))
-            do_copy(sourcecodepath, os.path.join(tool_path, appname, "www"))
-    else:
-        if replace_index_list is not None and len(replace_index_list) >= 2:
-            index_file_path = os.path.join(
-                project_root,
-                "assets",
-                "www",
-                "index.html")
-            key = replace_index_list[0]
-            content = replace_index_list[1]
-            if not replace_key(index_file_path, content, key):
-                print "replace key: " + key + " failed."
-                return False
-
-        if sourcecodepath is not None:
-            do_copy(
-                sourcecodepath,
-                os.path.join(
-                    tool_path,
-                    appname,
-                    "assets",
-                    "www"))
-        if extra_plugin:
-            status_plugman_cmd = "plugman install --platform android --project . --plugin %s" % extra_plugin
-            installstatus = commands.getstatusoutput(status_plugman_cmd)
-            print "status_plugman_cmd=" + status_plugman_cmd
-            self.assertEquals(0, installstatus[0])
-
+    if sourcecodepath is not None:
+        do_remove(glob.glob(os.path.join(project_root, "www")))
+        do_copy(sourcecodepath, os.path.join(tool_path, appname, "www"))
 
 def buildGoogleApp(appname, sourcecodepath, self):
     os.chdir(tool_path)
@@ -263,37 +220,23 @@ def build(appname, isDebug, self, isCopy=False, isMultipleApk=True):
     os.chdir(os.path.join(tool_path, appname))
     print "Build project %s ----------------> START" % appname
 
-    if CORDOVA_VERSION == "4.x":
-        pack_arch_tmp = ARCH
-        if ARCH == "x86_64":
-            pack_arch_tmp = "x86 --xwalk64bit"
-        elif ARCH == "arm64":
-            pack_arch_tmp = "arm --xwalk64bit"
+    pack_arch_tmp = ARCH
+    if ARCH == "x86_64":
+        pack_arch_tmp = "x86 --xwalk64bit"
+    elif ARCH == "arm64":
+        pack_arch_tmp = "arm --xwalk64bit"
 
-        cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
-        if isDebug == True:
-            print "build debug app"
-            cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
-    else:
-        cmd = "./cordova/build"
-        if isDebug == True:
-            print "build debug app"
-            cmd = "./cordova/build --debug"
+    cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
+    if isDebug == True:
+        print "build debug app"
+        cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
+
     print cmd
     buildstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, buildstatus[0])
     print "\nBuild project %s ----------------> OK\n" % appname
-    if CORDOVA_VERSION == "4.x":
-        checkApkExist(appname, self, isCopy, isMultipleApk)
-    else:
-        os.chdir(os.path.join(tool_path, appname, "bin"))
-        result = commands.getstatusoutput("ls")
-        self.assertIn(".apk", result[1])
-        print result[1]
-        if "android" in result[1]:
-            self.assertIn("android", result[1])
-        else:
-            self.assertIn(appname, result[1])
+    checkApkExist(appname, self, isCopy, isMultipleApk)
+    
 
 def checkApkExist(appname, self, isCopy=False, isMultipleApk=True):
     print "Check  %s Apk Exist ----------------> START" % appname
@@ -326,10 +269,7 @@ def checkApkExist(appname, self, isCopy=False, isMultipleApk=True):
 def run(appname, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Run project %s ----------------> START" % appname
-    if CORDOVA_VERSION == "4.x":
-        cmd = "cordova run android"
-    else:
-        cmd = "./cordova/run"
+    cmd = "cordova run android"
     print cmd
     runstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, runstatus[0])

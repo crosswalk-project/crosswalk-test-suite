@@ -5,16 +5,10 @@ http://cordova.apache.org/docs/en/3.4.0/cordova_plugins_pluginapis.md.html#Plugi
 
 ## Pre-conditions
 
-### For cordova 3.6 build
-
-* Get cordova3.6_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/
-
-### For cordova 4.x build
-
 * Require Android API level 22
 * Require the latest Cordova CLI, and must >= 5.0.0, install with command: `$ sudo npm install cordova -g`
-* Get cordova4.x_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/
-* If Build Cordova 4.x App with Crosswalk Canary, need these as follows
+* Get cordova_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/
+* If Build Cordova App with Crosswalk Canary, need these as follows
 
 **Download canary crosswalk file**: 
 
@@ -42,7 +36,7 @@ http://cordova.apache.org/docs/en/3.4.0/cordova_plugins_pluginapis.md.html#Plugi
 
 4. update mode.txt if your run with 'shared' mode pkg
 
-5. for cordova 4.x, update pack-type if your want to install cordova-plugin-crosswalk-webview from 'npm'
+5. update pack-type if your want to install cordova-plugin-crosswalk-webview from 'npm'
 
 6. run test case
 

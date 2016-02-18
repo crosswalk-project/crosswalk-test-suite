@@ -21,37 +21,28 @@ plugin_tool = const_path + "/../tools/cordova-plugin-crosswalk-webview/"
 def setUp():
     global CROSSWALK_VERSION
     global CROSSWALK_BRANCH
-    global CORDOVA_VERSION
     global PACK_TYPE
     global LOG
     LOG = logging.getLogger("pack-tool")
 
-    f_version = open(const_path + "/cordova-version", 'r')
-    if f_version.read().strip("\n\t") != "3.6":
-        CORDOVA_VERSION = "4.x"
+    f_pack_type = open(const_path + "/pack-type", 'r')
+    pack_type_tmp = f_pack_type.read()
+    if pack_type_tmp.strip("\n\t") == "local":
+        PACK_TYPE = "local"
+    elif pack_type_tmp.strip("\n\t") == "npm":
+        PACK_TYPE = "npm"
     else:
-        CORDOVA_VERSION = "3.6"
-    f_version.close()
+        print (
+            " get pack type error, the content of pack-type should be 'local' or 'npm'\n")
+        sys.exit(1)
+    f_pack_type.close()
 
-    if CORDOVA_VERSION == "4.x":
-        f_pack_type = open(const_path + "/pack-type", 'r')
-        pack_type_tmp = f_pack_type.read()
-        if pack_type_tmp.strip("\n\t") == "local":
-            PACK_TYPE = "local"
-        elif pack_type_tmp.strip("\n\t") == "npm":
-            PACK_TYPE = "npm"
-        else:
-            print (
-                " get pack type error, the content of pack-type should be 'local' or 'npm'\n")
-            sys.exit(1)
-        f_pack_type.close()
-
-        with open("../../tools/VERSION", "rt") as pkg_version_file:
-            pkg_version_raw = pkg_version_file.read()
-            pkg_version_file.close()
-            pkg_version_json = json.loads(pkg_version_raw)
-            CROSSWALK_VERSION = pkg_version_json["main-version"]
-            CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
+    with open("../../tools/VERSION", "rt") as pkg_version_file:
+        pkg_version_raw = pkg_version_file.read()
+        pkg_version_file.close()
+        pkg_version_json = json.loads(pkg_version_raw)
+        CROSSWALK_VERSION = pkg_version_json["main-version"]
+        CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
 
 def installCrosswalk(pkgmode, pkgarch=None):
@@ -160,10 +151,7 @@ def removeWebviewPlugin():
 
 def build(appname, pkgarch="arm"):
     print "Build project %s ----------------> START" % appname
-    if CORDOVA_VERSION == "4.x":
-        cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pkgarch
-    else:
-        cmd = "./cordova/build"
+    cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pkgarch
     print cmd
     buildstatus = os.system(cmd)
     print "\nBuild project %s ----------------> OK\n" % appname
@@ -184,10 +172,7 @@ def checkApkRun(pkg_name):
 
 def run(app_name):
     print "Run project %s ----------------> START" % app_name
-    if CORDOVA_VERSION == "4.x":
-        cmd = "cordova run android"
-    else:
-        cmd = "./cordova/run"
+    cmd = "cordova run android"
     print cmd
     os.system(cmd)
     print "\nRun project %s ----------------> OK\n" % app_name
