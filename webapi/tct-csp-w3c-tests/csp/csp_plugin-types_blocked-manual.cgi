@@ -47,6 +47,6 @@ Authors:
   </head>
   <body>
     <p>Test passes if there is <strong>no blue</strong>.</p>
-    <object data="support/blue-100x100.png"/>
+    <object type="application/x-invalid-type" data="support/blue-100x100.png"/>
   </body>
 </html> '
