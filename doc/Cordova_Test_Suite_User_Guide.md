@@ -1,14 +1,14 @@
 # Cordova Test Suite User Guide
 
-## 1. Introduction
+## Introduction
 
-This document provides method to run Crosswalk based Cordova TestSuite. Currently the target platform is Android only. You can use the following method to run itwith testkit-lite. Testkit tool-chain includes 3 components:
+This document provides method to run Crosswalk based Cordova test suite. Currently the target platform is Android only. You can use the following method to run it with testkit-lite. Testkit tool-chain includes 3 components:
 
 - testkit-lite:  a command-line interface application deployed on Host
 - testkit-stub: a test stub application deployed on Device
 - tinyweb:  a web service application deployed on Device
 
-## 2. Cordova Web Testing Architecture
+## Cordova Web Testing Architecture
 
 - Cordova Web Testing on Android
 
@@ -26,7 +26,7 @@ Server side includes tinyweb, webrunner and TCs.
 
 Self contained test package which include all things - web runner, TCs.
 
-## 3. Install testkit-lite on Host
+## Install testkit-lite on Host
 
 - Deploy testkit-lite
 
@@ -41,299 +41,82 @@ Self contained test package which include all things - web runner, TCs.
   - Install testkit-lite from source code in GitHub
 
         ```
-        $ git clone git@github.com:testkit/testkit-lite.git
+        $ git clone https://github.com/testkit/testkit-lite
 
-        $ cd testkit-lite && sudo python setup.py install
+        $ cd testkit-lite
+
+        $ sudo python setup.py install
         ```
 
-## 4. Crosswalk based Cordova System Requirements
+## Crosswalk based Cordova System Requirements
 
-- Java JDK 1.5 or greater [http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-- Apache ANT 1.8.0 or greater [http://ant.apache.org/bindownload.cgi](http://ant.apache.org/bindownload.cgi)
-- Android SDK  [http://developer.android.com](http://developer.android.com)
-- Python 2.7 or greater  [https://www.python.org/download/](https://www.python.org/download/)
-- Node.js 0.10.24 or greater  [http://nodejs.org/download/](http://nodejs.org/download/)
+- Java JDK 1.5 or greater [http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+- Apache ANT 1.8.0 or greater [http://ant.apache.org/bindownload.cgi](http://ant.apache.org/bindownload.cgi).
+- Android SDK  [http://developer.android.com](http://developer.android.com).
+- Python 2.7 or greater  [https://www.python.org/download/](https://www.python.org/download/).
+- Node.js 0.10.24 or greater  [http://nodejs.org/download/](http://nodejs.org/download/).
+- Require npm  [https://www.npmjs.com/package/npm](https://www.npmjs.com/package/npm).
+- Require maven tool, you may need to set up maven proxy:  
+  ```export MAVEN_OPTS="-DsocksProxyHost=[proxy] –DsocksProxyPort=[port]```
+- Require Android API level 22.
 
-## 5. Crosswalk based Cordova Developer Tools
-From commit: dbf1468192e3e1bcb574bd33cecffe0ba04220ab, Cordova version 4.0 build use cli way.
+## Install Crosswalk Canary aar
+If you run the cordova test suite with Crosswalk Canary version, you need to download and install the Crosswalk Canary aar to the local maven repo:
+- For embedded mode 32-bit Crosswalk:
+  - Download Crosswalk Canary aar:  
+    ```$ wget https://download.01.org/Crosswalk/releases/Crosswalk/android/Canary/<Canary-version>/crosswalk-<Canary-version>.aar```
+  - Install Crosswalk Canary aar:  
+    ```$ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library -Dversion=<Canary-version> -Dpackaging=aar -Dfile=<Crosswalk-path>/crosswalk-<Canary-version>.aar -DgeneratePom=true```
 
-The Cordova developer tooling is split between general tooling and project level tooling.
+- For embedded mode 64-bit Crosswalk:
+  - Download Crosswalk Canary aar:  
+    ```$ wget https://download.01.org/Crosswalk/releases/Crosswalk/android/Canary/<Canary-version>/crosswalk-<Canary-version>-64bit.aar```
+  - Install Crosswalk Canary aar:  
+    ```$ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library -Dversion=<Canary-version> -Dpackaging=aar -Dfile=<Crosswalk-path>/crosswalk-<Canary-version>-64bit.aar -DgeneratePom=true -Dclassifier=64bit```
 
-- General Commands
+- For shared mode Crosswalk:
+  - Download Crosswalk Canary aar:  
+    ```$ wget https://download.01.org/Crosswalk/releases/Crosswalk/android/Canary/<Canary-version>/crosswalk-shared-<Canary-version>.aar```
+  - Install Crosswalk Canary aar:  
+    ```$ mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_shared_library -Dversion=<Canary-version> -Dpackaging=aar -Dfile=<Crosswalk-path>/crosswalk-shared-<Canary-version>.aar -DgeneratePom=true```
 
-    ./bin/create [path package activity]
+Notes:
+- Canary-version: the version of Crosswalk Canary, e.g. 18.46.472.0.
+- Crosswalk-path: the downloaded Crosswalk Canary file path.
 
-    create the ./example app or a cordova android project
+## Install Cordova Test Suite
 
-    ./bin/check\_reqs
+```
+$ unzip <package-name>-<version>.zip
 
-    checks that your environment is set up for cordova-android development
+$ cd opt/<test-suite>
 
-    ./bin/update [path]
+$ ./inst.py
+```
 
-    updates an existing cordova-android project to the version of the framework
+## Run Test
+### Cordova Features and Sample Apps
+There are two types(js, pyunit) of test cases in Cordova test suites.
+- js tests:
 
-- Project Commands
+  ```$ testkit-lite -f /path/to/tests.xml --e XWalkLauncher -comm androidmobile -o /path/to/result.xml```
 
-    ./cordova/clean
-
-    cleans the project
-
-    ./cordova/build
-
-    calls \`clean\` then compiles the project
-
-    ./cordova/log
-
-    stream device or emulate logs to stdout
-
-    ./cordova/run
-
-    calls \`build\` then deploys to a connected Android device. If no Android device is detected, will launch an emulator and deploy to it.
-
-    ./cordova/version
-
-    returns the cordova-android version of the current project
-
-## 6. Web Runtime and Web API Test on Crosswalk based Cordova
-
-- Deploy Android ADT bundle (Android SDK, IDE included) and Android NDK
-
-  - DeployAndroid ADT bundle by referring to below link [http://developer.android.com/sdk/installing/bundle.html](http://developer.android.com/sdk/installing/bundle.html)
-
-  - Deploy Android NDK by referring to below link [http://developer.android.com/tools/sdk/ndk/index.html](http://developer.android.com/tools/sdk/ndk/index.html)
-
-- Deploy adb Tool to Host
-
-  - Append Android SDK's tools and platform-tools directories to PATH environment
-
-        ```
-        $ export PATH=${PATH}:/path/to/adt-bundle-<version>/sdk/tools: /path/to/adt-bundle-<version>/sdk/platform-tools
-        ```
-
-- Download Crosswalk binaries from:
-
-    [https://download.01.org/crosswalk/releases/crosswalk/android/canary/&lt;version&gt;/&lt;arch&gt;/crosswalk-cordova-&lt;version&gt;-&lt;arch&gt;.zip]()
-
-    e.g.
-    [https://download.01.org/crosswalk/releases/crosswalk/android/canary/9.38.208.0/arm/crosswalk-cordova-9.38.208.0-arm.zip](https://download.01.org/crosswalk/releases/crosswalk/android/canary/9.38.208.0/arm/crosswalk-cordova-9.38.208.0-arm.zip)
-
-- Build Crosswalk based Cordova app:
-
-    * Unzip crosswalk-cordova-&lt;version&gt;-&lt;arch&gt;.zip
-
-        ```
-        $ unzip /path/to/crosswalk-cordova-<version>-<arch>.zip
-        ```
-
-    * `$ /path/to/crosswalk-cordova-<version>-<arch>/bin/create testapp com.example.testapp testapp`
-    * `$ cd testapp`
-    * Copy web source code (e.g. index.html with some contents) to assets/www
-    * `$ . /cordova/build`
-    * `$ . /cordova/run`
-
-
-- Set Permissions
-
-    Some HTML5 APIs which access devices require developers to set appropriate permissions in AndroidManifest.xml to work correctly. For example, if your app calls getUserMedia, it needs to add
-
-        <uses-permission android:name="android.permission.RECORD_AUDIO" />
-        <uses-permission android:name="android.permission.CAMERA" />
-
-    into AndroidManifest.xml in /path/to/testapp folder.
-
-The Cordova Mobile Spec test doesn't need testkit-lite etc., tools to run the test, but for Web Runtime and Web API tests, please run the following steps:
-
-- Deploy testkit-stub and launch it
-
-  - Make binary for testkit-stub from source code in GitHub
-
-        ```
-        $ git clone git@github.com:testkit/testkit-stub.git
-
-        $ cd testkit-stub/android/jni/ && /path/to/android-ndk-<version>/ndk-build
-        ```
-
-  - Import project testkit-stub to Android developer Tool by location testkit-stub/android
-
-  - Export the android project to APK and install APK to android device
-
-        ```
-        $ adb install /path/to/TestkitStub.apk
-        ```
-
-  - Launch testkit-stub by clicking the testkit-stub App icon in launcher
-
-- Deploy tinyweb and launch it
-
-  - Make binaries for tinyweb from source code in GitHub
-
-        ```
-        $ git clone git@github.com:testkit/tinyweb.git
-
-        $ cd tinyweb/android/native/jni/ && /path/to/ android-ndk-<version>/ndk-build
-        ```
-
-  - Copy tinyweb/android/native/libs/ to folder tinyweb/android/assets/system/libs/
-  - Import project tinyweb to Android developer Tool by location tinyweb /android
-  - Export the android project to APK and install APK to android device
-
-        ```
-        $ adb install /path/to/TinywebTestService.apk
-        ```
-
- - Launch tinyweb by clicking the tinyweb app icon in launcher
-
-- Pack test suite package
-
-    Please see **Web\_Test\_Suite\_Packaging\_Guide** , Chapter 3.1 "_Pack Web Test Suite Packages for Android_", detailed steps for Cordova test suites package are added.
-
-    Note: For Android device, the default APK package mode of Crosswalk based Cordova is embedded mode.
-
-- Install test suite on Android device
+- pyunit tests:
+  - Get cordova_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/
+  - Update opt/&lt;test-suite>/arch.txt if your run with 'x86' device
+  - Update opt/&lt;test-suite>/mode.txt if your run with 'shared' mode pkg
+  - Run the cordova cases:
 
     ```
-    $ unzip -o <test_suite_name>-<version>.apk.zip -d /path/to/
-
-    $ /path/to/opt/<test_suite_name>/inst.sh
+    $ testkit-lite -f [testprefix-path]/opt/cordova-feature-android-tests/tests.xml -A
+     -o [testprefix-path]/opt/cordova-feature-android-tests/result.xml --comm localhost
+     --testenvs "DEVICE_ID=Medfield3C6DFF2E;CONNECT_TYPE=adb" --testprefix=[testprefix-path]
     ```
+Notes:
+  - More environment requirements are documented in opt/&lt;test-suite>/README.md.
+  - DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00".
+  - Query device id by command "adb devices -l" in host.
 
-- Launch WRT test with lite
-
-    ```
-    $ testkit-lite -f /path/to/opt/<test_suite_name>/tests.xml --comm androidmobile
-    ```
-
-- Uninstall test suite
-
-    ```
-    $ /path/to/opt/<test_suite_name>/inst.sh -u
-    ```
-
-## 7. Cordova Mobile Spec Test on Crosswalk based Cordova
-
-- Build and run Cordova Mobile Spec test build (named as cordova\_mobile\_spec-debug.apk) on Android
-
-    * Download Crosswalk based Cordova binaries from:
-
-       [https://download.01.org/crosswalk/releases/crosswalk/android/canary/&lt;version&gt;/&lt;arch&gt;/crosswalk-cordova-&lt;version&gt;-&lt;arch&gt;.zip]()
-
-       e.g.
-       [https://download.01.org/crosswalk/releases/crosswalk/android/canary/9.38.208.0/arm/crosswalk-cordova-9.38.208.0-arm.zip](https://download.01.org/crosswalk/releases/crosswalk/android/canary/9.38.208.0/arm/crosswalk-cordova-9.38.208.0-arm.zip)
-
-    * Fetch Cordova Mobile Spec test cases:
-
-        ```
-        $ git clone https://github.com/apache/cordova-mobile-spec.git
-
-        $ cd cordova-mobile-spec
-
-        $ git checkout -b 3.6.0 3.6.0
-        ```
-
-    * Create mobile spec app:
-
-        ```
-        $ upzip /path/to/crosswalk-cordova-<version>-<arch>.zip
-
-        $ /path/to/crosswalk-cordova-<version>-<arch>/bin/create mobilespec
-        org.apache.mobilespec mobilespec
-
-        $ cd mobilespec
-
-        $ cp -r /path/to/cordova-mobile-spec/* assets/www (Please don't accept to overwrite the cordova.js)
-
-        $ cp -r /path/to/cordova-mobile-spec/config.xml res/xml/config.xml
-        ```
-
-    * Set up Cordova Mobile Spec plugins environment. Recommend to use plugman to install plugins. You need to have [node.js](http://nodejs.org/) installed. Then install plugman by:
-
-        ```
-        $ npm install -g plugman
-        ```
-
-    * Add Cordova Mobile Spec plugins for Crosswalk based Cordova, please refer to full supported plugin list:
-        [https://crosswalk-project.org/#wiki/Plugins-List-@-3.6.0-Supported-by-Crosswalk-Cordova-Android](https://crosswalk-project.org/#wiki/Plugins-List-@-3.6.0-Supported-by-Crosswalk-Cordova-Android)
-
-        ```
-        $ cd mobilespec
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-battery-status.git#r0.2.8
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git#r0.2.9
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-contacts.git#r0.2.10
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git#r0.2.9
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-motion.git#r0.2.7
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-device-orientation.git#r0.3.6
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git#r0.2.7
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-file.git#r1.1.0
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-file-transfer.git#r0.4.3
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-geolocation.git#r0.3.7
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-globalization.git#r0.2.7
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git#r0.4.0
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-media.git#r0.2.10
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-media-capture.git#r0.3.0
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-network-information.git#r0.2.8
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git#r0.3.0
-
-        $ plugman install --platform android --project ./ --plugin https://git-wip-us.apache.org/repos/asf/cordova-plugin-vibration.git#r0.3.8
-
-        $ plugman install --platform android --project ./ --plugin assets/www/cordova-plugin-whitelist
-        ```
-
-    * According to [Splash Screen API](http://docs.phonegap.com/en/3.0.0/cordova_splashscreen_splashscreen.md.html#Splashscreen) Spec, you may need to add following statement into the onCreate method of the class that extends DroidGap:
-
-            super.setIntegerProperty("splashscreen", R.drawable.splash);
-
-        in /path/to/mobilespec/src/org/apache/mobilespec/mobilespec.java
-
-        The .java file path maps to package activity etc., package parameters in step 6 "mobilespec org.apache.mobilespec mobilespec"
-
-            public void onCreate(Bundle savedInstanceState)
-
-            {
-
-              super.onCreate(savedInstanceState);
-
-              super.init();
-
-              super.setIntegerProperty("splashscreen", R.drawable.splash);
-
-              super.loadUrl(Config.getStartUrl());
-
-            }
-
-    * Connect the Android test device to host (adb enabled), build and run:
-
-        ```
-        $ cd /path/to/mobilespec
-
-        $ ./cordova/build
-        ```
-
-        Add "--debug" switch if "remote debugging" feature is needed to run the test
-
-        ```
-        $ ./cordova/build --debug
-
-        $ ./cordova/run
-        ```
-
-- The alternate way is copy test apk from /path/to/mobilespec/bin/mobile\_spec-debug.apk to device, install it.
-
-- Run Cordova API (Cordova Mobile Spec) test cases in app on test device.
+### Cordova API
+  - [Cordova Mobile Spec](https://github.com/apache/cordova-mobile-spec), is a set of automated & manual tests that test Cordova core functionality, we leverage it by adding Crosswalk WebView plugin in Mobile Spec for Cordova API testing. You need to get the "mobilespec.apk", install and run it following the instruction contained in the app, and then collect the result manually.
 
