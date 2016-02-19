@@ -43,42 +43,32 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-  <h4>Note</h4>
-  <ol>
-    <li>It's only for Cordova version 3.6</li>
-  </ol>
-  <h4>Preconditions</h4>
-  <ol>
-    <li>Make sure the adt eclipse has been installed</li>
-  </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>Get cordova source code and cd into the folder</li>
-    <ul>
-      <li>If check embedded mode project, use command: './bin/create helloworld com.example.helloworld helloworld' to create helloworld project</li>
-      <li>If check shared mode project, use command: './bin/create helloworld com.example.helloworld helloworld --xwalk-shared-library' to create helloworld project</li>
-    </ul>
-    <li>Open ADT by a menu entry to start it, or run the 'eclipse/eclipse' command from inside your Android SDK's root directory</li>
-    <li>In the File menu, choose Import....</li>
-    <li>In the Import dialog box, choose Android then Existing Android Code into Workspace. Click the Next button</li>
-    <li>Choose the directory for the generated project; for example, for the HelloWorld project</li>
-    <li>Click the Finish button to import the three projects(helloworld, helloworld-CordovaLib, xwalk_core_library)</li>
-    <li>Wait a minute and then check the error message of the import project</li>
-    <ul>
-      <li>If the error massage display 'The import org.apache.cordova cannot be resolved'</li>
-      <li>If the error massage display 'The import com.squareup.okhttp.OkHttpClient cannot be resolved'</li>
-    </ul>
-    <li>Build and Run</li>
-    <ul>
-      <li>Select the project, then Debug as > Android Application and check the Logcat message</li>
-      <li>Select the project, then Run as > Android Application and check the Console message</li>
-    </ul>
-    <li>Check the test device</li>
-    <li>You may need to turn off the automatic build option (uncheck Project > Build Automatically in Eclipse) so you can build the projects manually and in the correct order</li>
+    <li>Get cordova_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/</li>
+    <li>Install statusbar.apk</li>
+      <div>
+        $ adb install /tmp/cordova-sampleapp/statusbar.apk<br/>
+      </div>
+    <li>Launch and Run the app</li>
+    <li>Click the "Status Bar Show" button</li>
+    <li>Click the "Status Bar Hide" button</li>
+    <li>Exit the app</li>
   </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
+  <p>Purpose:</p>
+  <p>Verify the Cordova StatusBar plugin can work when app in fullscreen mode</p>
+  <p>Expected Results:</p>
+  <ol>
+    <li>The app can be installed successfully</li>
+    <li>The app can launch successfully</li>
+    <li>The app can run successfully</li>
+    <li>The app show the StatusBar after click the "Status Bar Show" button</li>
+    <li>The app hide the StatusBar after click the "Status Bar Hide" button</li>
+    <li>The app can exit successfully</li>
+  </ol>
 </div>

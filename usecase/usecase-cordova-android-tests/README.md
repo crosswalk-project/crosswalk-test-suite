@@ -14,21 +14,17 @@ It has these features:
 ## Pre-condition
 
 There are third-party plugins needed for cordova usecase:
-* AdMob3.6: https://github.com/floatinghotpot/cordova-plugin-admob
-* AdMob4.x: https://github.com/floatinghotpot/cordova-admob-pro
-* Screenshot4.x: https://github.com/gitawego/cordova-screenshot
-* Screenshot3.6: Get https://github.com/gitawego/cordova-screenshot and return to commit:6ac9f15316b680110f6c448798fabdb978698b44
+* AdMob: https://github.com/floatinghotpot/cordova-admob-pro
+* Screenshot: https://github.com/gitawego/cordova-screenshot
 
 Git clone these plugins in extra_plugins.
 
 For easy to be used in suite.json, need rename the plugins:
-* cordova-plugin-admob -> cordova-admob-3.6
-* cordova-admob-pro -> cordova-admob-4.x
-* For Cordova 3.6: cordova-screenshot -> cordova-screenshot-3.6
-* For Cordova 4.x: cordova-screenshot -> cordova-screenshot-4.x
+* cordova-admob-pro -> cordova-admob
+* cordova-screenshot -> cordova-screenshot
 
 ## Test Steps
-* For Cordova 4.x: update usecase-cordova-android-tests/res/pack-type if your want to install cordova-plugin-crosswalk-webview from 'npm'
+* update usecase-cordova-android-tests/res/pack-type if your want to install cordova-plugin-crosswalk-webview from 'npm'
 
 ## LICENSE
 

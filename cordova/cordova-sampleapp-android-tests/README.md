@@ -7,14 +7,6 @@ https://crosswalk-project.org/#wiki/Create-Sample-App-With-Crosswalk-Cordova-And
 
 * Get source code Sampleapp_sourcecode.zip from internal release link
 * Unzip Sampleapp_sourcecode.zip to /tmp/
-
-### For cordova 3.6 build
-
-* Get cordova3.6_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/
-* $adb install /tmp/cordova-sampleapp/gallery.apk
-
-### For cordova 4.x build
-
 * Require Android API level 22
 * Require the latest Cordova CLI, and must >= 5.0.0, install with command: `$ sudo npm install cordova -g`
 * Require cca 0.7.0, install with command: `sudo npm install cca@0.7.0 -g`
@@ -25,7 +17,7 @@ https://crosswalk-project.org/#wiki/Create-Sample-App-With-Crosswalk-Cordova-And
 1. Open the SDK manager (from command line, type "android");
 2. Under "Extras", Make sure you have "Android Support Repository" and "Google Repository" downloaded
 
-* Get cordova4.x_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/
+* Get cordova_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/
 * $adb install /tmp/cordova-sampleapp/gallery.apk
 * $adb install /tmp/cordova-sampleapp/CIRC.apk
 * $adb install /tmp/cordova-sampleapp/Eh.apk
@@ -37,7 +29,7 @@ https://crosswalk-project.org/#wiki/Create-Sample-App-With-Crosswalk-Cordova-And
   sudo npm -g install
   ```
 
-* If Build Cordova 4.x App with Crosswalk Canary, need these as follows
+* If Build Cordova App with Crosswalk Canary, need these as follows
 
 **Download canary crosswalk file**:
 
@@ -63,7 +55,7 @@ https://crosswalk-project.org/#wiki/Create-Sample-App-With-Crosswalk-Cordova-And
 
 4. update mode.txt if your run with 'shared' mode pkg
 
-5. for cordova 4.x, update pack-type if your want to install cordova-plugin-crosswalk-webview from 'npm'
+5. update pack-type if your want to install cordova-plugin-crosswalk-webview from 'npm'
 
 6. run test case
 
