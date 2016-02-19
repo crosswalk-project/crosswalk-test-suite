@@ -2,147 +2,16 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="usecase-apptools-tests">
-    <set name="Build Project" background="brand-primary" icon="glyphicon-asterisk" type="script">
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppToolsOptions" purpose="AppToolsOptions Test" type="compliance">
-        <description>
-          <pre_condition>Please refer to README file.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
-                Then run below commands under usecase-apptools-tests/tools/ directory: 
-                On Linux or OS X host:
-                  Shared Mode:
-                    $ crosswalk-app create org.test.foo --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
-                  Embedded Mode:
-                    $ crosswalk-app create org.test.foo --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
-                  Lite Mode:
-                    $ crosswalk-app create org.test.foo --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
-                  $ cd org.test.foo
-                  $ crosswalk-app build
-                On Windows host:
-                  Shared Mode:
-                    $ node %crosswalk-app% create org.test.foo --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
-                  Embedded Mode:
-                    $ node %crosswalk-app% create org.test.foo --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
-                  Lite Mode:
-                    $ node %crosswalk-app% create org.test.foo --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
-                  $ cd org.test.foo
-                  $ node %crosswalk-app% build
-              </step_desc>
-              <expected>Success to create/build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>
-                Shared Mode:
-                  Install shared mode foo app on your android device which is "arm" architecture
-                  Install shared mode foo app on your android device which is "x86" architecture
-                Embedded Mode or Lite Mode:
-                  Install arm foo app on your android device which is "arm" architecture
-                  Install x86 foo app on your android device which is "x86" architecture
-              </step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Check icon of foo app in your android device</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app in your android device</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
-            </step>
-            <step order="6">
-              <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="8">
-              <step_desc>Long press the icon of foo app to uninstall it</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppToolsOptions/index.html</test_script_entry>
-        </description>
+    <set name="Build Project" background="brand-primary" icon="glyphicon-asterisk">
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppToolsOptions" purpose="AppToolsOptions Test">
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_install_crosswalk_app" purpose="AppTools_install_crosswalk_app Test" type="compliance">
-        <description>
-          <pre_condition>On Linux or OS X host:
-              Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'.
-              Install crosswalk-app by run command:
-              $ sudo npm install -g crosswalk-app-tools
-            On Windows host:
-              Remove crosswalk-app environment.
-              Install crosswalk-app by run command:
-              $ npm install -g crosswalk-app-tools
-          </pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
-                Then run below commands under usecase-apptools-tests/tools/crosswalk-app-tools/ directory:
-                Shared Mode:
-                  $ crosswalk-app create org.test.foo --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
-                Embedded Mode:
-                  $ crosswalk-app create org.test.foo --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
-                Lite Mode:
-                  $ crosswalk-app create org.test.foo --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"
-                $ cd org.test.foo
-                $ crosswalk-app build
-              </step_desc>
-              <expected>Success to create/build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>
-                Shared Mode:
-                  Install shared mode foo app on your android device which is "arm" architecture
-                  Install shared mode foo app on your android device which is "x86" architecture
-                Embedded Mode or Lite Mode:
-                  Install arm foo app on your android device which is "arm" architecture
-                  Install x86 foo app on your android device which is "x86" architecture
-              </step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Check icon of foo app in your android device</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app in your android device</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
-            </step>
-            <step order="6">
-              <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="8">
-              <step_desc>Long press the icon of foo app to uninstall it</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="9">
-              <step_desc>On Linux or OS X host:
-                  Uninstall crosswalk-app by run command: $ sudo npm uninstall -g crosswalk-app-tools
-                  Set environment PATH or invoke with "crosswalk-app-tools/src/crosswalk-app" directory
-                On Windows host:
-                  Uninstall crosswalk-app by run command: $ npm uninstall -g crosswalk-app-tools
-                  Create 'crosswalk-app' env, invoke with 'crosswalk-app-tools/src/crosswalk-app' directory</step_desc>
-              <expected>Success to uninstall crosswalk-app and set the env</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_install_crosswalk_app/index.html</test_script_entry>
-        </description>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_install_crosswalk_app" purpose="AppTools_install_crosswalk_app Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppToolsHelpUsage" purpose="AppToolsHelpUsage Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="CrosswalkDownload" purpose="CrosswalkDownload Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="ManifestVersionName" purpose="ManifestVersionName Test">
       </testcase>
     </set>
   </suite>

@@ -47,6 +47,7 @@ import re
 from optparse import OptionParser
 import varshop
 import utils
+import platform
 
 global LOG
 LOG = utils.getLogger("build_android")
@@ -259,15 +260,27 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
             crosswalk_version_opt = CROSSWALK_VERSION
 
     if utils.safelyGetValue(build_json, "apk-type") == "MANIFEST":
-        pack_cmd = "crosswalk-pkg %s --crosswalk=%s " \
-                   "-p android --targets=\"%s\" %s %s" % (
-                       mode_opt, crosswalk_version_opt, arch_opt, common_opts,
-                       app_src)
+        if platform.system() == "Windows":
+          pack_cmd = "node %crosswalk-pkg% %s --crosswalk=%s " \
+                     "-p android --targets=\"%s\" %s %s" % (
+                         mode_opt, crosswalk_version_opt, arch_opt, common_opts,
+                         app_src)
+        else:
+          pack_cmd = "crosswalk-pkg %s --crosswalk=%s " \
+                     "-p android --targets=\"%s\" %s %s" % (
+                         mode_opt, crosswalk_version_opt, arch_opt, common_opts,
+                         app_src)
     else:
-        pack_cmd = "crosswalk-pkg %s --crosswalk=%s --manifest='%s' " \
-                   "-p android --targets=\"%s\" %s %s" % (
-                       mode_opt, crosswalk_version_opt, manifest_opt, arch_opt,
-                       common_opts, app_src)
+        if platform.system() == "Windows":
+          pack_cmd = "node %crosswalk-pkg% %s --crosswalk=%s --manifest='%s' " \
+                     "-p android --targets=\"%s\" %s %s" % (
+                         mode_opt, crosswalk_version_opt, manifest_opt, arch_opt,
+                         common_opts, app_src)
+        else:
+          pack_cmd = "crosswalk-pkg %s --crosswalk=%s --manifest='%s' " \
+                     "-p android --targets=\"%s\" %s %s" % (
+                         mode_opt, crosswalk_version_opt, manifest_opt, arch_opt,
+                         common_opts, app_src)
 
     orig_dir = os.getcwd()
     os.chdir(os.path.join(BUILD_ROOT))

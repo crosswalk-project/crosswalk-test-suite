@@ -17,10 +17,35 @@
       "copylist": {
         "README.md": "README.md",
         "samples-android": "samples",
+        "testapp": "testapp",
+        "inst.apk.py": "inst.apk.py",
         "tests.android.xml": "tests.xml",
         "tools": "tools"
       },
-      "pkg-app": {}
+      "subapp-list": {
+        ".": {
+          "app-name": "usecase-apptools-tests",
+          "apk-common-opts": "--enable-remote-debugging",
+          "blacklist": [
+            "*",
+            ".git"
+          ],
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "icon.png": "icon.png",
+            "testapp": "testapp",
+            "samples-android": "samples",
+            "steps": "steps",
+            "tests.android.xml": "tests.xml"
+          }
+        },
+        "samples-android/ManifestVersionName/res": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../../testapp/start_url/index.html": "index.html"
+          }
+        }
+      }
     },
     "deb": {
       "blacklist": [

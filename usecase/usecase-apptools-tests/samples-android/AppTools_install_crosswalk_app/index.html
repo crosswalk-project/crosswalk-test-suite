@@ -47,12 +47,12 @@ Authors:
   <ol>
     <li>
       On Linux or OS X host:<br/>
-      &nbsp; &nbsp; Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'.</br>
-      &nbsp; &nbsp; Install crosswalk-app by run command:</br>
+      &nbsp; &nbsp; Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-pkg'.</br>
+      &nbsp; &nbsp; Install crosswalk-app-tools by run command:</br>
       &nbsp; &nbsp; $ sudo npm install -g crosswalk-app-tools</br>
       On Windows host:<br/>
-      &nbsp; &nbsp; Remove crosswalk-app environment.</br>
-      &nbsp; &nbsp; Install crosswalk-app by run command:</br>
+      &nbsp; &nbsp; Remove crosswalk-pkg environment.</br>
+      &nbsp; &nbsp; Install crosswalk-app-tools by run command:</br>
       &nbsp; &nbsp; $ npm install -g crosswalk-app-tools
     </li>
   </ol>
@@ -60,14 +60,15 @@ Authors:
   <ol>
     <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</br>
       Then run below commands under usecase-apptools-tests/tools/ directory:</br>
-      Shared Mode: <br/>
-      &nbsp; &nbsp; $ crosswalk-app create org.test.foo --android-shared --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
-      Embedded Mode: <br/>
-      &nbsp; &nbsp; $ crosswalk-app create org.test.foo --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
-      Lite Mode: <br/>
-      &nbsp; &nbsp; $ crosswalk-app create org.test.foo --android-lite --android-crosswalk=canary --android-targets="armeabi-v7a/arm64-v8a x86/x86_64"</br>
+      New org.test.foo folder<br/>
       $ cd org.test.foo</br>
-      $ crosswalk-app build
+      Copy ../../testapp/start_url/index.html to current directory<br/>
+      Shared Mode: <br/>
+      &nbsp; &nbsp; $ crosswalk-pkg --manifest="org.test.foo" --android=shared --targets="armeabi-v7a/arm64-v8a x86/x86_64" ./</br>
+      Embedded Mode: <br/>
+      &nbsp; &nbsp; $ crosswalk-pkg --manifest="org.test.foo" --targets="armeabi-v7a/arm64-v8a x86/x86_64" ./</br>
+      Lite Mode: <br/>
+      &nbsp; &nbsp; $ crosswalk-pkg --manifest="org.test.foo" --android=lite --targets="armeabi-v7a/arm64-v8a x86/x86_64" ./</br>
     </li>
     <li>
       Shared Mode: <br/>
@@ -85,11 +86,11 @@ Authors:
     <li>Long press the icon of foo app to uninstall it</li>
     <li>
       On Linux or OS X host:<br/>
-      &nbsp; &nbsp; Uninstall crosswalk-app by run command: $ sudo npm uninstall -g crosswalk-app-tools<br/>
-      &nbsp; &nbsp; Set environment PATH or invoke with "crosswalk-app-tools/src/crosswalk-app" directory<br/>
+      &nbsp; &nbsp; Uninstall crosswalk-app-tools by run command: $ sudo npm uninstall -g crosswalk-app-tools<br/>
+      &nbsp; &nbsp; Set environment PATH or invoke with "crosswalk-app-tools/src/crosswalk-pkg" directory<br/>
       On Windows host:<br/>
-      &nbsp; &nbsp; Uninstall crosswalk-app by run command: $ npm uninstall -g crosswalk-app-tools<br/>
-      &nbsp; &nbsp; Create 'crosswalk-app' env, invoke with 'crosswalk-app-tools/src/crosswalk-app' directory
+      &nbsp; &nbsp; Uninstall crosswalk-app-tools by run command: $ npm uninstall -g crosswalk-app-tools<br/>
+      &nbsp; &nbsp; Create 'crosswalk-pkg' env, invoke with 'crosswalk-app-tools/src/crosswalk-pkg' directory
     </li>
   </ol>
 </div>
@@ -101,7 +102,7 @@ Authors:
   <p>Verifies foo app can run successfully</p>
   <p>Expected Result:</p>
   <ol>
-    <li>Create/Build org.test.foo successfully</li>
+    <li>Build org.test.foo successfully</li>
     <li>Install the foo app successfully</li>
     <li>Find the foo app successfully</li>
     <li>Launch the foo app successfully</li>
@@ -109,6 +110,6 @@ Authors:
     <li>Unistall the foo app successfully when the app running</li>
     <li>Stop the foo app successfully</li>
     <li>Unistall the foo app successfully</li>
-    <li>Uninstall crosswalk-app and set the env successfully</li>
+    <li>Uninstall crosswalk-pkg and set the env successfully</li>
   </ol>
 </div>

@@ -14,9 +14,9 @@ This test suite is for usecase-apptools-tests
 
   3.2 Run commands: cd crosswalk-app-tools, then run: npm install
 
-4. The main script is crosswalk-app-tools/src/crosswalk-app. Set environment PATH or invoke with directory
+4. The main script is crosswalk-app-tools/src/crosswalk-pkg. Set environment PATH or invoke with directory
 
-  (Note: On Windows, Need create 'crosswalk-app' env, invoke with 'crosswalk-app-tools/src/crosswalk-app' directory).
+  (Note: On Windows, Need create 'crosswalk-pkg' env, invoke with 'crosswalk-app-tools/src/crosswalk-pkg' directory).
 
 
 ## Precondition for AppTools on Android
