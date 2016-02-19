@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Permission_Undefined_Contacts</title>
+    <title>Crosswalk_WebApp_Certificate_Trusted_ReInstall</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,17 +41,29 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install webapp by typing "adb install permission_undefined_contacts_tests.apk".</li>
-      <li>Click app icon to launch the app.</li>
-      <li>Check the screen.</li>
+      <li>Install "security_url_certificate_tests" webapp.</li>
+      <li>Click app icon to launch the webapp.</li>
+      <li>Click the link of "Open website".</li>
+      <li>Click the button of "OK".</li>
+      <li>Uninstall the webapp.</li>
+      <li>Reinstall webapp by typing "adb install security_url_certificate_tests_0.1.apk".</li>
+      <li>Click app icon to launch the webapp.</li>
+      <li>Click the link of "Open website".</li>
+      <li>Click the button of "OK".</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
       <li>Webapp installed successfully, no error, no warning message.</li>
-      <li>The app launched successfully.</li>
-      <li>There is a "Pass" display.</li>
+      <li>Webapp launched successfully.</li>
+      <li>There will display Ssl Certification Error Alert.</li>
+      <li>There will display the website, and some textarea and buttons in screen.</li>
+      <li>Webapp uninstalled successfully.</li>
+      <li>Webapp reinstalled successfully, no error, no warning message.</li>
+      <li>Webapp launched successfully.</li>
+      <li>There will display Ssl Certification Error Alert.</li>
+      <li>There will display the website, and some textarea and buttons in screen.</li>
     </ol>
   </body>
 </html>
