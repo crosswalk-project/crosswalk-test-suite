@@ -54,7 +54,6 @@ TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
 PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes", "setUserAgent", "loadExtension"]
-CORDOVA_VERSIONS = ["3.6", "4.x"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm", "x86_64", "arm64"]
 CORDOVA_PACK_TYPES = ["npm", "local"]
@@ -321,87 +320,6 @@ def createIndexFile(index_file_path=None, hosted_app=None):
     LOG.info("Success to create index file %s" % index_file_path)
     return True
 
-def packMobileSpec(app_name=None):
-    pack_tool = os.path.join(BUILD_ROOT, "cordova")
-    if not os.path.exists(pack_tool):
-        if not doCopy(
-                os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova"),
-                pack_tool):
-            return False
-
-    orig_dir = os.getcwd()
-    os.chdir(pack_tool)
-    if BUILD_PARAMETERS.pkgmode == "shared":
-        pack_cmd = "bin/create mobilespec org.apache.mobilespec mobilespec --xwalk-shared-library"
-    else:
-        pack_cmd = "bin/create mobilespec org.apache.mobilespec mobilespec"
-
-    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
-    mobilespec_src = os.path.join(BUILD_ROOT, "mobilespec_src")
-    if not os.path.exists(mobilespec_src):
-        if not doCopy(
-                os.path.join(BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec_3.6", "mobilespec"),
-                mobilespec_src):
-            return False
-
-    if not doCopy(
-            os.path.join(pack_tool, "mobilespec", "CordovaLib"),
-            os.path.join(mobilespec_src, "platforms", "android", "CordovaLib")):
-        return False
-
-    if not doCopy(
-            os.path.join(pack_tool, "VERSION"),
-            os.path.join(mobilespec_src, "platforms", "android")):
-        return False
-
-    os.chdir(os.path.join(mobilespec_src, "platforms", "android"))
-
-    ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
-    updateproject_cmd = "android update project --subprojects --path . --target \"android-21\""
-    antdebug_cmd = "ant debug"
-    build_cmd = "cordova build android"
-    os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
-    if not doCMD(updateproject_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
-    os.chdir(
-        os.path.join(
-            mobilespec_src,
-            "platforms",
-            "android",
-            "CordovaLib"))
-    if not doCMD(antdebug_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
-    os.chdir(mobilespec_src)
-    if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
-
-    app_dir = os.path.join(mobilespec_src, "platforms", "android", "out")
-    cordova_tmp_path = os.path.join(
-        app_dir,
-        "%s-debug.apk" %
-        app_name)
-    cordova_tmp_path_spare = os.path.join(
-        app_dir,
-        "%s-debug-unaligned.apk" %
-        app_name)
-    if os.path.exists(cordova_tmp_path):
-        if not doCopy(cordova_tmp_path,
-                os.path.join(orig_dir, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
-    elif os.path.exists(cordova_tmp_path_spare):
-        if not doCopy(cordova_tmp_path_spare,
-                os.path.join(orig_dir, "%s.apk" % app_name)):
-            os.chdir(orig_dir)
-            return False
-    os.chdir(orig_dir)
-    return True
-
 def copySampleSource(app_name, target_path):
     source_path = ""
     if checkContains(app_name, "SPACEDODGE"):
@@ -420,130 +338,6 @@ def copySampleSource(app_name, target_path):
                 target_path):
             os.chdir(orig_dir)
         return False
-
-def packSampleApp(app_name=None):
-    pack_tool = os.path.join(BUILD_ROOT, "cordova")
-    if not os.path.exists(pack_tool):
-        if not doCopy(
-                os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova"),
-                pack_tool):
-            return False
-
-    orig_dir = os.getcwd()
-    os.chdir(pack_tool)
-    if BUILD_PARAMETERS.pkgmode == "shared":
-        pack_cmd = "bin/create " + app_name + " com.example." + \
-            app_name + " " + app_name + " --xwalk-shared-library"
-    else:
-        pack_cmd = "bin/create " + app_name + " com.example." + \
-            app_name + " " + app_name + " --shared"
-    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
-
-    copySampleSource(app_name, os.path.join(pack_tool, app_name, "assets", "www"))
-
-    if checkContains(app_name, "HELLOWORLD"):
-        if not replaceKey(os.path.join(pack_tool, app_name, "assets", "www", "index.html"),
-                          "<a href='http://www.intel.com'>Intel</a>\n</body>",
-                          "</body>"):
-            os.chdir(orig_dir)
-            return False
-
-    os.chdir(os.path.join(pack_tool, app_name))
-
-    if checkContains(app_name, "STATUSBAR"):
-        xml_path = os.path.join(pack_tool, app_name, "res", "xml")
-        replaceUserString(
-            xml_path,
-            'config.xml',
-            '</widget>',
-            '<preference name="Fullscreen" value="true" />\n</widget>')
-        replaceUserString(
-            xml_path,
-            'config.xml',
-            '</widget>',
-            '<preference name="disableImmersive" value="true" />\n</widget>')
-        createIndexFile(os.path.join(pack_tool, app_name, "assets", "www", "index.html"), "statusbar")
-
-        status_plugman_cmd = "plugman install --platform android --project . --plugin org.apache.cordova.statusbar@0.1.9"
-        if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT):
-            os.chdir(orig_dir)
-            return False
-
-    if checkContains(app_name, "PRIVATENOTES"):
-        status_plugman_cmd = "plugman install --platform android --project . --plugin https://github.com/01org/AppSecurityApi"
-        if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT * 5):
-            os.chdir(orig_dir)
-            return False
-
-    if BUILD_PARAMETERS.cordovaversion == "4.x":
-        if BUILD_PARAMETERS.pkgarch == "x86":
-            cordova_tmp_path = os.path.join(
-                BUILD_ROOT,
-                "cordova",
-                app_name,
-                "build",
-                "outputs",
-                "apk",
-                "%s-x86-debug.apk" %
-                app_name)
-        else:
-            cordova_tmp_path = os.path.join(
-                BUILD_ROOT,
-                "cordova",
-                app_name,
-                "build",
-                "outputs",
-                "apk",
-                "%s-armv7-debug.apk" %
-                app_name)
-
-        plugin_tool = os.path.join(
-            BUILD_ROOT,
-            "cordova_plugins",
-            "cordova-crosswalk-engine")
-        if not os.path.exists(plugin_tool):
-            if not doCopy(
-                    os.path.join(
-                        BUILD_PARAMETERS.pkgpacktools,
-                        "cordova_plugins",
-                        "cordova-crosswalk-engine"),
-                    plugin_tool):
-                return False
-            plugin_install_cmd = "plugman install --platform android --project " \
-                                 "./ --plugin %s" % plugin_tool
-            if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
-                os.chdir(orig_dir)
-                return False
-    else:
-        cordova_tmp_path = os.path.join(
-            BUILD_ROOT,
-            "cordova",
-            app_name,
-            "bin",
-            "%s-debug.apk" %
-            app_name)
-    pack_cmd = "./cordova/build"
-
-    if checkContains(app_name, "REMOTEDEBUGGING"):
-        pack_cmd = "./cordova/build --debug"
-
-    ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
-    os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
-
-    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-        pack_cmd = "ant debug"
-        if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-            os.chdir(orig_dir)
-            return False
-
-    if not doCopy(cordova_tmp_path,
-                  os.path.join(orig_dir, app_name + ".apk")):
-        os.chdir(orig_dir)
-        return False
-    os.chdir(orig_dir)
-    return True
 
 def installPlugins(plugin_tool, app_name):
     project_root = os.path.join(BUILD_ROOT, app_name)
@@ -760,13 +554,13 @@ def packGoogleApp(app_name=None):
     os.chdir(orig_dir)
     return True
 
-def packMobileSpec_cli(app_name=None):
+def packMobileSpec(app_name=None):
     project_root = os.path.join(BUILD_ROOT, app_name)
     output = commands.getoutput("cordova -v")
     output_version = int(output[0])
     if output_version < 5:
         LOG.error(
-            "Cordova 4.x build requires the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'")
+            "Cordova build requires the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'")
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
@@ -779,11 +573,11 @@ def packMobileSpec_cli(app_name=None):
         LOG.info(
             "cordova-plugin-crosswalk-webview not in crosswalk-test-suite/tools/cordova_plugins, so pack upstream pkg")
 
-    cordova_mobilespec_origin = os.path.join(BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec_4.x", "cordova-mobile-spec")
+    cordova_mobilespec_origin = os.path.join(BUILD_PARAMETERS.pkgpacktools, "mobilespec", "cordova-mobile-spec")
 
     cordova_coho = os.path.join(BUILD_ROOT, "cordova-coho")
     if not doCopy(os.path.join(
-            BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec_4.x", "cordova-coho"), cordova_coho):
+            BUILD_PARAMETERS.pkgpacktools, "mobilespec", "cordova-coho"), cordova_coho):
         return False
 
     orig_dir = os.getcwd()
@@ -793,7 +587,7 @@ def packMobileSpec_cli(app_name=None):
     os.chdir(cordova_mobilespec_origin)
     output2 = commands.getoutput("git pull").strip("\r\n")
     mobilespec_path = os.path.join(
-                BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec_4.x", "mobilespec")
+                BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec")
     excepted_pull_result = "Already up-to-date."
     if output1 == excepted_pull_result and output2 == excepted_pull_result and os.path.exists(mobilespec_path):
         if not doCopy(mobilespec_path, project_root):
@@ -905,7 +699,7 @@ def packSampleApp_cli(app_name=None):
     output_version = int(output[0])
     if output_version < 5:
         LOG.error(
-            "Cordova 4.x build requires the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'")
+            "Cordova build requires the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'")
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
@@ -1036,32 +830,17 @@ def packAPP(app_name=None):
     LOG.info("Packing %s" % (app_name))
 
     if checkContains(app_name, "MOBILESPEC"):
-        if BUILD_PARAMETERS.cordovaversion == "4.x":
-            if not BUILD_PARAMETERS.userpassword:
-                LOG.error("User password is required")
-                return False
-            if not packMobileSpec_cli(app_name):
-                return False
-        else:
-            if not packMobileSpec(app_name):
-                return False
+        if not BUILD_PARAMETERS.userpassword:
+            LOG.error("User password is required")
+            return False
+        if not packMobileSpec(app_name):
+            return False
     elif checkContains(app_name, "CIRC") or checkContains(app_name, "EH"):
-        if BUILD_PARAMETERS.cordovaversion == "4.x":
-            if not packGoogleApp(app_name):
-                return False
-        else:
-            LOG.error("%s is only for cordova 4.x" % app_name)
+        if not packGoogleApp(app_name):
             return False
     else:
-        if BUILD_PARAMETERS.cordovaversion == '4.x':
-            if not packSampleApp_cli(app_name):
-                return False
-        else:
-            if checkContains(app_name, "renamePkg"):
-                LOG.error("%s is only for cordova 4.x" % app_name)
-                return False
-            if not packSampleApp(app_name):
-                return False
+        if not packSampleApp_cli(app_name):
+            return False
 
     LOG.info("Success to pack APP: %s" % app_name)
     return True
@@ -1080,17 +859,13 @@ def main():
     LOG.addHandler(stream_handler)
 
     try:
-        usage = "Usage: ./pack_cordova_sample.py -n helloworld -m shared -a x86 --cordova-version 4.x"
+        usage = "Usage: ./pack_cordova_sample.py -n helloworld -m shared -a x86"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
             "-n",
             "--name",
             dest="pkgname",
             help="specify the pkg name, e.g. spacedodge, helloworld, remotedebugging, mobilespec ...")
-        opts_parser.add_option(
-            "--cordova-version",
-            dest="cordovaversion",
-            help="specify the cordova, e.g. 3.6, 4.x ...")
         opts_parser.add_option(
             "--tools",
             dest="pkgpacktools",
@@ -1115,7 +890,7 @@ def main():
             "-a",
             "--arch",
             dest="pkgarch",
-            help="specify the apk arch, not for cordova version 3.6, e.g. x86, arm")
+            help="specify the apk arch, e.g. x86, arm")
         opts_parser.add_option(
             "-p",
             "--password",
@@ -1187,14 +962,6 @@ def main():
                   PKG_NAMES)
         sys.exit(1)
 
-    if not BUILD_PARAMETERS.cordovaversion:
-        LOG.error("No cordova version provided, exit ...")
-        sys.exit(1)
-    elif not BUILD_PARAMETERS.cordovaversion in CORDOVA_VERSIONS:
-        LOG.error("Wrong cordova version, only support: %s, exit ..." %
-                  CORDOVA_VERSIONS)
-        sys.exit(1)
-
     if BUILD_PARAMETERS.pkgarch and not BUILD_PARAMETERS.pkgarch in PKG_ARCHS:
         LOG.error("Wrong pkg-arch, only support: %s, exit ..." %
                   PKG_ARCHS)
@@ -1205,18 +972,8 @@ def main():
                   PKG_MODES)
         sys.exit(1)
 
-    if BUILD_PARAMETERS.cordovaversion == \
-            '4.x' and BUILD_PARAMETERS.packtype and not BUILD_PARAMETERS.packtype in CORDOVA_PACK_TYPES:
+    if BUILD_PARAMETERS.packtype and not BUILD_PARAMETERS.packtype in CORDOVA_PACK_TYPES:
         LOG.error("cordova packtype can only be npm, local")
-        sys.exit(1)
-
-    if (BUILD_PARAMETERS.cordovaversion ==
-            '3.6' or not BUILD_PARAMETERS.cordovaversion) and BUILD_PARAMETERS.packtype:
-        LOG.error("cordova packtype is only for cordova version 4.x")
-        sys.exit(1)
-
-    if BUILD_PARAMETERS.cordovaversion == '3.6' and BUILD_PARAMETERS.pkgarch:
-        LOG.error("Command -a is not for cordova version 3.6")
         sys.exit(1)
 
     if not BUILD_PARAMETERS.pkgpacktools:
@@ -1240,12 +997,10 @@ def main():
         LOG.error("Fail to read config json file: %s, exit ..." % e)
         sys.exit(1)
 
-    global PKG_NAME, CORDOVA_VERSION
+    global PKG_NAME
     PKG_NAME = BUILD_PARAMETERS.pkgname
-    CORDOVA_VERSION = BUILD_PARAMETERS.cordovaversion
 
-    LOG.info("================= %s (cordova-%s) ================" %
-             (PKG_NAME, CORDOVA_VERSION))
+    LOG.info("================= %s ================" % PKG_NAME)
 
     if not prepareBuildRoot():
         exitHandler(1)

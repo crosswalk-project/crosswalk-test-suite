@@ -51,7 +51,7 @@ import utils
 global LOG
 LOG = utils.getLogger("build_cordova")
 
-def packCordova_cli(
+def packCordova(
         build_json=None, app_src=None, app_dest=None, app_name=None):
     BUILD_PARAMETERS = varshop.getValue("BUILD_PARAMETERS")
     BUILD_ROOT = varshop.getValue("BUILD_ROOT")
@@ -65,7 +65,7 @@ def packCordova_cli(
     output_version = int(output[0])
     if output_version < 5:
         LOG.error(
-            "Cordova 4.x build requires the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'")
+            "Cordova build requires the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'")
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
@@ -188,106 +188,6 @@ def packCordova_cli(
                     app_name)
     if not utils.doCopy(
             cordova_tmp_path, os.path.join(app_dest, "%s.apk" % app_name)):
-        os.chdir(orig_dir)
-        return False
-    os.chdir(orig_dir)
-    return True
-
-
-def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
-    BUILD_PARAMETERS = varshop.getValue("BUILD_PARAMETERS")
-    BUILD_ROOT = varshop.getValue("BUILD_ROOT")
-    DEFAULT_CMD_TIMEOUT= varshop.getValue("DEFAULT_CMD_TIMEOUT")
-    pack_tool = os.path.join(BUILD_ROOT, "cordova")
-    app_name = app_name.replace("-", "_")
-    if not os.path.exists(pack_tool):
-        if not utils.doCopy(
-                os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova"),
-                pack_tool):
-            return False
-
-    plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
-    plugin_source = os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins")
-    if not os.path.exists(plugin_tool):
-        if os.path.exists(plugin_source):
-            if not utils.doCopy(
-                    os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
-                    plugin_tool):
-                return False
-    extra_plugins = os.path.join(BUILD_ROOT, "extra_plugins")
-    if os.path.exists(extra_plugins):
-        if not utils.doCopy(extra_plugins, plugin_tool):
-            return False
-
-    orig_dir = os.getcwd()
-    os.chdir(pack_tool)
-
-    if BUILD_PARAMETERS.pkgmode == "shared":
-        pack_cmd = "bin/create %s org.xwalk.%s %s --xwalk-shared-library" % (
-            app_name, app_name, app_name)
-    else:
-        pack_cmd = "bin/create %s org.xwalk.%s %s --shared" % (
-            app_name, app_name, app_name)
-    if not utils.doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
-
-    os.chdir(os.path.join(pack_tool, app_name))
-    plugin_dirs = os.listdir(plugin_tool)
-    for i_dir in plugin_dirs:
-        i_plugin_dir = os.path.join(plugin_tool, i_dir)
-        plugin_install_cmd = "plugman install --platform android --project " \
-                             "./ --plugin %s" % i_plugin_dir
-        if not utils.doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
-            os.chdir(orig_dir)
-            return False
-    os.chdir(pack_tool)
-
-    if not utils.doCopy(app_src, os.path.join(pack_tool, app_name, "assets", "www")):
-        os.chdir(orig_dir)
-        return False
-    os.chdir(os.path.join(BUILD_ROOT, "cordova", app_name))
-    ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
-    os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
-    pack_cmd = "./cordova/build"
-
-    if BUILD_PARAMETERS.subversion == '4.x':
-        if BUILD_PARAMETERS.pkgarch == "x86":
-            cordova_tmp_path = os.path.join(
-                BUILD_ROOT,
-                "cordova",
-                app_name,
-                "build",
-                "outputs",
-                "apk",
-                "%s-x86-debug.apk" %
-                app_name)
-        else:
-            cordova_tmp_path = os.path.join(
-                BUILD_ROOT,
-                "cordova",
-                app_name,
-                "build",
-                "outputs",
-                "apk",
-                "%s-armv7-debug.apk" %
-                app_name)
-    else:
-        cordova_tmp_path = os.path.join(
-            BUILD_ROOT,
-            "cordova",
-            app_name,
-            "bin",
-            "%s-debug.apk" %
-            app_name)
-    if not utils.doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-        pack_cmd = "ant debug"
-        if not utils.doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-            os.chdir(orig_dir)
-            return False
-
-    if not utils.doCopy(cordova_tmp_path,
-                  os.path.join(app_dest, "%s.apk" % app_name)):
         os.chdir(orig_dir)
         return False
     os.chdir(orig_dir)
