@@ -38,9 +38,7 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-  setup(function(){
-    tizen.power.turnScreenOn();
-  }, {explicit_done: true, timeout: 2000});
+  setup({explicit_done: true, timeout: 2000});
   var run = false;
   on_event(window, "deviceorientation", function(event) {
     if(!run) {
@@ -76,10 +74,15 @@ Authors:
       test(function() {
         assert_equals(typeof event.gamma, "number", "Attribute gamma is type of");
       }, "Check if DeviceOrientationEvent.gamma is type of double");
+
       done();
+
+      if(t) {
+         clearTimeout(t);
+      }
     }
   });
-  setTimeout(function () {
+  var t = setTimeout(function () {
     test(function() {
       assert_unreached("Can not fire deviceorientation event");
     }, "Check if the DeviceOrientationEvent.absolute attribute exists");

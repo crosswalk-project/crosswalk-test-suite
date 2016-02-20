@@ -38,9 +38,7 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-  setup(function(){
-    tizen.power.turnScreenOn();
-  }, {explicit_done: true, timeout: 2000});
+  setup({explicit_done: true, timeout: 2000});
   var run = false;
   on_event(window, "deviceorientation", function(event) {
     if(!run) {
@@ -64,10 +62,15 @@ Authors:
         event.gamma = null;
         assert_not_equals(event.gamma, "null", "The DeviceOrientationEvent.gamma value");
       }, "Check if DeviceOrientationEvent.gamma is readonly");
+
       done();
+
+      if(t) {
+         clearTimeout(t);
+      }
     }
   });
-  setTimeout(function () {
+  var t = setTimeout(function () {
     test(function() {
       assert_unreached("Can not fire deviceorientation event");
     }, "Check if DeviceOrientationEvent.absolute is readonly");

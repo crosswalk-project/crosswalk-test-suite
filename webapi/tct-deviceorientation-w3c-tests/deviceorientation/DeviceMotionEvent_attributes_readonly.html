@@ -38,9 +38,7 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-  setup(function(){
-    tizen.power.turnScreenOn();
-  }, {explicit_done: true, timeout: 2000});
+  setup({explicit_done: true, timeout: 2000});
   var run = false;
   on_event(window, "devicemotion", function(event) {
     if(!run) {
@@ -60,10 +58,15 @@ Authors:
         event.rotationRate = null;
         assert_not_equals(event.rotationRate, "null", "The event.rotationRate value");
       }, "Check if DeviceMotionEvent.rotationRate is readonly");
+
       done();
+
+      if(t) {
+         clearTimeout(t);
+      }
     }
   });
-  setTimeout(function () {
+  var t = setTimeout(function () {
     test(function() {
       assert_unreached("Can not fire devicemotion event");
     }, "Check if DeviceMotionEvent.accelerationIncludingGravity is readonly");
