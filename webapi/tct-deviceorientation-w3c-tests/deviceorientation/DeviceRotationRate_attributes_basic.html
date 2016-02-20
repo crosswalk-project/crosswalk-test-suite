@@ -38,9 +38,7 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-  setup(function(){
-    tizen.power.turnScreenOn();
-  }, {explicit_done: true, timeout: 2000});
+  setup({explicit_done: true, timeout: 2000});
   var run = false;
   on_event(window, "devicemotion", function(event) {
     if(!run) {
@@ -52,8 +50,8 @@ Authors:
       }, "Check if the DeviceRotationRate.alpha is readonly");
 
       test(function() {
-        assert_equals(typeof event.rotationRate.beta, "number" , "The type of DeviceRotationRate.beta");
-      }, "Check if the type of DeviceRotationRate.beta is number");
+        assert_equals(event.rotationRate.beta, null, "The DeviceRotationRate.beta init value");
+      }, "Check if the type of DeviceRotationRate.beta init value is null");
 
       test(function() {
         event.rotationRate.beta = 10000;
@@ -61,8 +59,8 @@ Authors:
       }, "Check if the DeviceRotationRate.beta is readonly");
 
       test(function() {
-        assert_equals(typeof event.rotationRate.gamma, "number" , "The type of DeviceRotationRate.gamma");
-      }, "Check if the type of DeviceRotationRate.gamma is number");
+        assert_equals(event.rotationRate.gamma, null, "The DeviceRotationRate.gamma init value");
+      }, "Check if the type of DeviceRotationRate.gamma init value is null");
 
       test(function() {
         event.rotationRate.gamma = 10000;
@@ -70,21 +68,25 @@ Authors:
       }, "Check if the DeviceRotationRate.gamma is readonly");
 
       done();
+
+      if(t) {
+         clearTimeout(t);
+      }
     }
   });
-  setTimeout(function () {
+  var t = setTimeout(function () {
     test(function() {
       assert_unreached("Can not fire devicemotion event");
     }, "Check if the DeviceRotationRate.alpha is readonly");
     test(function() {
       assert_unreached("Can not fire devicemotion event");
-    }, "Check if the type of DeviceRotationRate.beta is number");
+    }, "Check if the DeviceRotationRate.beta init value is null");
     test(function() {
       assert_unreached("Can not fire devicemotion event");
     }, "Check if the DeviceRotationRate.beta is readonly");
     test(function() {
       assert_unreached("Can not fire devicemotion event");
-    }, "Check if the type of DeviceRotationRate.gamma is number");
+    }, "Check if the DeviceRotationRate.gamma init value is null");
     test(function() {
       assert_unreached("Can not fire devicemotion event");
     }, "Check if the DeviceRotationRate.gamma is readonly");

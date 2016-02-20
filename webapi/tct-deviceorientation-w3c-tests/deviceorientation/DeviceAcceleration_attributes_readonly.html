@@ -38,9 +38,7 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-  setup(function(){
-    tizen.power.turnScreenOn();
-  }, {explicit_done: true, timeout: 2000});
+  setup({explicit_done: true, timeout: 2000});
   var run = false;
   on_event(window, "devicemotion", function(event) {
     if(!run) {
@@ -62,9 +60,13 @@ Authors:
       }, "Check if the DeviceAccelerationt.z is readonly");
 
       done();
+
+      if(t) {
+         clearTimeout(t);
+      }
     }
   });
-  setTimeout(function () {
+  var t = setTimeout(function () {
     test(function() {
       assert_unreached("Can not fire devicemotion event");
     }, "Check if the DeviceAccelerationt.x is readonly");
