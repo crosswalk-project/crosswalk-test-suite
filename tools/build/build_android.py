@@ -258,6 +258,9 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
         else:
             crosswalk_version_opt = CROSSWALK_VERSION
 
+    #Only when building embedded mode apk, use arch_opt
+    arch_opt = "" if "shared" in mode_opt else arch_opt
+
     if utils.safelyGetValue(build_json, "apk-type") == "MANIFEST":
         pack_cmd = "crosswalk-pkg %s --crosswalk=%s " \
                    "-p android --targets=\"%s\" %s %s" % (
