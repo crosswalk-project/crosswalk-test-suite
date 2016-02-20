@@ -43,7 +43,7 @@ test(function () {
   var context = new AudioContext();
   assert_true("createConvolver" in context, "The context.createConvolver exists")
   var convolvernode = context.createConvolver();
-  convolvernode.buffer = context.createBuffer(4, 1024, 44000);
+  convolvernode.buffer = context.createBuffer(4, 1024, context.sampleRate);
   assert_equals(convolvernode.buffer.length, 1024, "The value of ConvolverNode.buffer.length");
 }, "Check if the ConvolverNode.buffer is AudioBuffer value");
 </script>

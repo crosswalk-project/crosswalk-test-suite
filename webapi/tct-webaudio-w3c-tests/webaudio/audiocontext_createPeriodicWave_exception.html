@@ -28,10 +28,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Tan, Shiyou <shiyoux.tan@intel.com>
         Cui, Jieqiong <jieqiongx.cui@intel.com>
+
 -->
 
 <meta charset="utf-8">
-<title>WebAudio Test: oscillatornode_PLAYING_STATE_type</title>
+<title>WebAudio Test: audiocontext_createPeriodicWave_exception</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://webaudio.github.io/web-audio-api/">
 <script src="../resources/testharness.js"></script>
@@ -41,8 +42,9 @@ Authors:
 <script>
 test(function () {
   var context = new AudioContext();
-  assert_true("createOscillator" in context, "The context.createOscillator exists");
-  var oscillatornode = context.createOscillator();
-  assert_equals(typeof oscillatornode.PLAYING_STATE, "number", "The type of OscillatorNode.PLAYING_STATE");
-}, "Check if the type of OscillatorNode.PLAYING_STATE is number");
+  assert_true("createPeriodicWave" in context, "createWaveTable method exist AudioContext interface");
+  assert_throws("IndexSizeError", function() {
+    context.createPeriodicWave(new Float32Array(8191), new Float32Array(8192));
+  }, "An IndexSizeError exception should be thrown when the real parameters' length is less than 8192");
+}, "Check if the real and imag parameters must be of type Float32Array of equal lengths greater than zero and greater than or equal to 8192 or an exception will be thrown");
 </script>

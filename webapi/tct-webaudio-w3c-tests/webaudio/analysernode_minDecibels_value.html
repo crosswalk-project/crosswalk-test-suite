@@ -43,7 +43,8 @@ Authors:
 test(function () {
   var context = new AudioContext();
   var analysernode = context.createAnalyser();
-  analysernode.minDecibels = 70.0;
-  assert_equals(analysernode.minDecibels, 70.0, "The AnalyserNode.minDecibels attribute value");
+  assert_equals(analysernode.minDecibels, -100.0, "AnalyserNode.minDecibels default value");
+  analysernode.minDecibels = -70.0;
+  assert_equals(analysernode.minDecibels, -70.0, "The AnalyserNode.minDecibels attribute value");
 }, "Check if AnalyserNode.minDecibels attribute value is float");
 </script>

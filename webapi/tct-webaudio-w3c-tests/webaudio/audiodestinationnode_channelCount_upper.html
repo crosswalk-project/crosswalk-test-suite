@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>WebAudio Test: audiobuffersourcenode_playbackState_initial_value</title>
+<title>WebAudio Test: audiodestinationnode_channelCount_upper</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://webaudio.github.io/web-audio-api/">
 <script src="../resources/testharness.js"></script>
@@ -41,7 +41,8 @@ Authors:
 <script>
 test(function () {
   var context = new AudioContext();
-  var buffersource = context.createBufferSource();
-  assert_equals(buffersource.playbackState, 0, "AudioBufferSourceNode.playbackState initial value");
-}, "Check if the AudioBufferSourceNode.playbackState initial value is 0");
+  assert_throws("IndexSizeError", function() {
+    context.destination.channelCount = context.destination.maxChannelCount+1;
+  }, "An IndexSizeError exception must be thrown when the value channelCount is greater than maxChannelCount");
+}, "Check if an exception will be thrown if AudioDestinationNode.channelCount value is not within the valid range");
 </script>

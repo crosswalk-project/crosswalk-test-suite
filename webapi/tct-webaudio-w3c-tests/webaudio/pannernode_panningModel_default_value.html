@@ -44,6 +44,6 @@ test(function () {
   assert_true(!!context, "AudioContext interface exists in window");
   assert_true(("createPanner" in context), "createPanner method exists in AudioContext interface");
   var pannerNode = context.createPanner();
-  assert_equals(pannerNode.panningModel, "HRTF", "The PannerNode.panningModel default value");
-}, "Check if the PannerNode.panningModel default value is 'HRTF'");
+  assert_equals(pannerNode.panningModel, "equalpower", "The PannerNode.panningModel default value");
+}, "Check if the PannerNode.panningModel default value is 'equalpower'");
 </script>

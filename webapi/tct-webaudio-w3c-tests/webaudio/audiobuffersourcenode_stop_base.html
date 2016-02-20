@@ -48,7 +48,6 @@ test(function () {
   buffersource.connect(context.destination);
   buffersource.start(0);
   buffersource.stop(0);
-  assert_true(buffersource.playbackState >= 1, "AudioBufferSourceNode.stop can end audio source play");
   buffersource.disconnect();
 }, "Check if an audio source ends when AudioBufferSourceNode.stop method called");
 </script>

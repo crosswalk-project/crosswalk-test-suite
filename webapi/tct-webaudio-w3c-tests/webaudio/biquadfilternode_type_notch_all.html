@@ -61,7 +61,7 @@ try {
   filter.getFrequencyResponse(fre, mag, pha);
   source.connect(filter);
   filter.connect(context.destination);
-  source.noteOn(0);
+  source.start(0);
 } catch(e) {
  res = false;
 }
@@ -79,6 +79,6 @@ test(function(){
   assert_true(res && result, "BiquadFilterNode notch filter allows all frequencies through");
   filter.disconnect();
   source.disconnect();
-  source.noteOff(0);
+  source.stop(0);
 }, "Check if BiquadFilterNode notch filter allows all frequencies through");
 </script>

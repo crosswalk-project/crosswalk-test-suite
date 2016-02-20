@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>WebAudio Test: audiodestinationnode_numberOfChannels_base</title>
+<title>WebAudio Test: audiodestinationnode_channelCount_base</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://webaudio.github.io/web-audio-api/">
 <script src="../resources/testharness.js"></script>
@@ -42,7 +42,7 @@ Authors:
 test(function () {
   var context = new AudioContext();
   var audioNode = context.destination;
-  audioNode.numberOfChannels = audioNode.maxNumberOfChannels;
-  assert_equals(audioNode.numberOfChannels, audioNode.maxNumberOfChannels, "the value of AudioContext.numberOfChannels");
-}, "Check if the AudioContext.numberOfChannels equals to AudioContext.maxNumberOfChannels");
+  audioNode.channelCount = audioNode.maxChannelCount;
+  assert_equals(audioNode.channelCount, audioNode.maxChannelCount, "the value of AudioContext.channelCount");
+}, "Check if the AudioContext.channelCount equals to AudioContext.maxChannelCount");
 </script>

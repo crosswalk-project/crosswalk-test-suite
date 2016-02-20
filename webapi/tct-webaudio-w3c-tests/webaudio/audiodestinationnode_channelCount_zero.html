@@ -26,12 +26,12 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Li, Hao <haox.li@intel.com>
+        Tan, Shiyou <shiyoux.tan@intel.com>
         Cui, Jieqiong <jieqiongx.cui@intel.com>
 -->
 
 <meta charset="utf-8">
-<title>WebAudio Test: audiobuffersourcenode_PLAYING_STATE_value</title>
+<title>WebAudio Test: audiodestinationnode_channelCount_zero</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://webaudio.github.io/web-audio-api/">
 <script src="../resources/testharness.js"></script>
@@ -41,7 +41,8 @@ Authors:
 <script>
 test(function () {
   var context = new AudioContext();
-  var source = context.createBufferSource();
-  assert_equals(source.PLAYING_STATE, 2, "AudioBufferSourceNode.PLAYING_STATE value");
-}, "Check if AudioBufferSourceNode.PLAYING_STATE value is 2");
+  assert_throws("NotSupportedError", function() {
+    context.destination.channelCount = 0;
+  }, "A NotSupportedError exception must be thrown when the value channelCount is zero");
+}, "Check if an exception will be thrown if AudioDestinationNode.channelCount value is set to 0");
 </script>
