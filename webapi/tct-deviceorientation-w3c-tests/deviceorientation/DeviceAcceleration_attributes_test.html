@@ -38,9 +38,7 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-  setup(function(){
-    tizen.power.turnScreenOn();
-  }, {explicit_done: true, timeout: 2000});
+  setup({explicit_done: true, timeout: 2000});
   var run = false;
   on_event(window, "devicemotion", function(event) {
     if(!run) {
@@ -51,46 +49,51 @@ Authors:
       }, "Check if the DeviceAccelerationt.x attribute exists");
 
       test(function() {
-        assert_equals(typeof event.acceleration.x, "number", "Attribute x is type of");
-      }, "Check if DeviceAcceleration.x is type of double");
+        assert_equals(event.acceleration.x, null, "Attribute x init value");
+      }, "Check if DeviceAcceleration.x init value is null");
 
       test(function() {
         assert_true("y" in acceleration, "Attribute y missing in Acceleration object");
       }, "Check if the DeviceAccelerationt.y attribute exists");
 
       test(function() {
-        assert_equals(typeof event.acceleration.y, "number", "Attribute y is type of");
-      }, "Check if DeviceAcceleration.y is type of double");
+        assert_equals(event.acceleration.y, null, "Attribute y init value");
+      }, "Check if DeviceAcceleration.y init value is null");
 
       test(function() {
         assert_true("z" in acceleration, "Attribute z missing in Acceleration object");
       }, "Check if the DeviceAccelerationt.z attribute exists");
 
       test(function() {
-        assert_equals(typeof event.acceleration.z, "number", "Attribute z is type of");
-      }, "Check if DeviceAcceleration.z is type of double");
+        assert_equals(event.acceleration.z, null, "Attribute z init value");
+      }, "Check if DeviceAcceleration.z init value is null");
+
       done();
+
+      if(t) {
+         clearTimeout(t);
+      }
     }
   });
-  setTimeout(function () {
+  var t = setTimeout(function () {
     test(function() {
       assert_unreached("Can not fire devicemotion event");
     }, "Check if the DeviceAccelerationt.x attribute exists");
     test(function() {
       assert_unreached("Can not fire devicemotion event");
-    }, "Check if DeviceAcceleration.x is type of double");
+    }, "Check if DeviceAcceleration.x init value is null");
     test(function() {
       assert_unreached("Can not fire devicemotion event");
     }, "Check if the DeviceAccelerationt.y attribute exists");
     test(function() {
       assert_unreached("Can not fire devicemotion event");
-    }, "Check if DeviceAcceleration.y is type of double");
+    }, "Check if DeviceAcceleration.y init value is null");
     test(function() {
       assert_unreached("Can not fire devicemotion event");
     }, "Check if the DeviceAccelerationt.z attribute exists");
     test(function() {
       assert_unreached("Can not fire devicemotion event");
-    }, "Check if DeviceAcceleration.z is type of double");
+    }, "Check if DeviceAcceleration.z init value is null");
     done();
   }, 1500)
 </script>
