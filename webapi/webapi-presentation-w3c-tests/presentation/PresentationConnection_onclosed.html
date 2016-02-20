@@ -27,38 +27,32 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>getAvailability</title>
+<title>PresentationConnection.onclosed</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation">
+<link rel="help" href="http://w3c.github.io/presentation-api/#interface-presentationconnection">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<div id="precondition">
-  <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
-</div>
 <div id="log"></div>
 <script>
-
-setup({ explicit_timeout: true })
-
-var presUrl = location.protocol + "//" + location.host
-            + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
-
 async_test(function(t) {
-  navigator.presentation.getAvailability(presUrl)
-  .then(function(availability) {
-    t.step(function() {
-      assert_true(availability instanceof Availability);
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  request.start()
+    .then(function(connection) {
+      assert_true(connection instanceof PresentationConnection);
+      connection.onclosed = t.step_func_done(function(evt) {
+        assert_true(evt instanceof PresentationConnectionClosedEvent);
+        assert_equals(evt.reason, "closed");
+        assert_equals(evt.message, "");
+      });
+      connection.onconnected = t.step_func(function() {
+        this.close();
+      });
+    })
+    .catch(function(ex) {
+      assert_unreached(ex.name + ":" + ex.message);
     });
-    t.done();
-  }, function(error) {
-    t.step(function() {
-      assert_unreached(error.name);
-    });
-    t.done();
-  });
-
-}, "navigator.presentation.getAvailability should return Availability Object")
-
+  }, "Check that onclosed event is fired when close() method is called.");
 </script>
 

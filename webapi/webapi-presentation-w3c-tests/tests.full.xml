@@ -3,197 +3,339 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="webapi-presentation-w3c-tests">
     <set name="presentation" type="js">
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="NavigatorPresentation_attributes_basic" priority="P1" purpose="Test checks that NavigatorPresentation interface basic attributes" status="approved" type="compliance" subcase="8">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="Presentation_basic" priority="P1" purpose="Test checks that Presentation API is present" status="approved" type="compliance" subcase="4">
         <description>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/NavigatorPresentation_attributes_basic.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/Presentation_basic.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="startSession" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="presentation" element_type="attribute" interface="Navigator" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#idl-def-presentationrequest</spec_url>
             <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Availability_basic" priority="P1" purpose="Test checks that Availability basic attribute" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="Presentation_defaultRequest" priority="P1" purpose="Test checks that defaultRequest returns the default presentation request" status="approved" type="compliance">
         <description>
           <pre_condition>
             Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/Availability_basic-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/Presentation_defaultRequest.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="onchange" element_type="method" interface="Availability" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-availability</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="defaultRequest" element_type="attribute" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#dom-presentation-defaultrequest</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_availability" priority="P3" purpose="Test checks that the value property of an Availability object to offer presentation only when there are available displays" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationRequest_start" priority="P1" purpose="Test checks that start method returns a new PresentationConnection" status="approved" type="compliance">
         <description>
           <pre_condition>
             Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/NavigatorPresentation_availability-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationRequest_start.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="getAvailability" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="start" element_type="method" interface="PresentationRequest" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#starting-a-presentation</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_getAvailability_basic" priority="P1" purpose="Test checks that navigator.presentation.getAvailability should return Availability Object" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationRequest_start_InvalidAccessError" priority="P3" purpose="Test checks that PresentationRequest.start() requires user gesture" status="approved" type="compliance">
         <description>
           <pre_condition>
             Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/NavigatorPresentation_getAvailability_basic-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationRequest_start_InvalidAccessError.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="getAvailability" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="start" element_type="method" interface="PresentationRequest" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#starting-a-presentation</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_joinSession" priority="P3" purpose="Test checks that we can call joinSession method for known session in the set of presentation" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationRequest_start_NotFoundError" priority="P3" purpose="Test checks that PresentationRequest.start() throws a 'NotFoundError' exception when no available presentation displays" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationRequest_start_NotFoundError.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="start" element_type="method" interface="PresentationRequest" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#starting-a-presentation</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationRequest_denied" priority="P3" purpose="Test checks that PresentationRequest.start() throws a AbortError exception when the user denies permission" status="approved" type="compliance">
         <description>
           <pre_condition>
             Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/NavigatorPresentation_joinSession-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationRequest_denied.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="joinSession" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="start" element_type="method" interface="PresentationRequest" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#starting-a-presentation</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_noavailable_presentationdisplay" priority="P3" purpose="Test checks that No available presentation displays will throw a DOMException named 'NotFoundError'" status="approved" type="compliance">
-        <description>
-          <pre_condition>
-            Turn off 'Simulate Secondary Display' by 'Setting' app.
-          </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/NavigatorPresentation_noavailable_presentationdisplay-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="W3C API Specifications" element_name="startSession" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#starting-a-presentation-session</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_ondefaultsessionstart" priority="P1" purpose="Test checks that Event defaultsessionstart is fired when the UA initiates a presentation on behalf of the page" status="approved" type="compliance">
-        <description>
-          <pre_condition>
-            1.Turn on 'Simulate Secondary Display' by 'Setting' app.
-            2. Connect to an available network;
-          </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/NavigatorPresentation_ondefaultsessionstart-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="W3C API Specifications" element_name="ondefaultsessionstart" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#ondefaultsessionstart</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="PresentationSession_state" priority="P3" purpose="Test checks that Session state value is 'connected' or 'disconnected'" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationRequest_reconnect" priority="P1" purpose="Test checks that PresentationRequest.reconnect() can reconnect the presentation displays with known presentationId" status="approved" type="compliance">
         <description>
           <pre_condition>
             Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationSession_state-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationRequest_reconnect.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="state" element_type="attribute" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="reconnect" element_type="method" interface="PresentationRequest" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#dom-presentationrequest-reconnect</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_startSession" priority="P1" purpose="Test checks that navigator.presentation.startSession should return PresentationSession Object" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationRequest_reconnect_TypeError" priority="P3" purpose="Test checks that PresentationRequest.reconnect() rejects with a 'TypeError' exception when missing argument" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationRequest_reconnect_TypeError.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="reconnect" element_type="method" interface="PresentationRequest" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#dom-presentationrequest-reconnect</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationRequest_reconnect_NotFoundError" priority="P3" purpose="Test checks that PresentationRequest.reconnect() rejects with a 'NotFoundError' exception when the known connection's state is terminated" status="approved" type="compliance">
         <description>
           <pre_condition>
             Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/NavigatorPresentation_startSession-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationRequest_reconnect_NotFoundError.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="startSession" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="reconnect" element_type="method" interface="PresentationRequest" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#dom-presentationrequest-reconnect</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="PresentationSession_basic" priority="P1" purpose="Test checks that PresentationSession basic attributes" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationRequest_onconnectionavailable" priority="P2" purpose="Test checks that onconnectionavailable is fired when the user agent starts a presentation successfully" status="approved" type="compliance">
         <description>
           <pre_condition>
             Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationSession_basic-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationRequest_onconnectionavailable.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="id" element_type="attribute" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="onconnectionavailable" element_type="attribute" interface="PresentationRequest" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#event-handlers</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="PresentationSession_send_arraybuffer" priority="P3" purpose="Test checks that when send message with type arraybuffer, then initialise event's data attribute to a new ArrayBuffer object whose contents are presentation message data" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationRequest_miss_argument" priority="P3" purpose="Test checks that onconnectionavailable is fired when the user agent starts a presentation successfully" status="approved" type="compliance">
         <description>
           <pre_condition>
             Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationSession_send_arraybuffer-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationRequest_miss_argument.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="send" element_type="method" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="url" element_type="attribute" interface="PresentationRequest" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#event-handlers</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="PresentationSession_send_blob" priority="P3" purpose="Test checks that when send message with type blob, then initialise event's data attribute to a new Blob object that represents presentation message data as its raw data" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationAvailability_basic" priority="P1" purpose="Test checks that the PresentationAvailability API is present" status="approved" type="compliance">
         <description>
           <pre_condition>
             Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationSession_send_blob-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationAvailability_basic.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="send" element_type="method" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="value" element_type="attribute" interface="PresentationAvailability" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationavailability</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_video" priority="P3" purpose="Test checks that an example of playing video on presentation displays" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Prensentation_availability" priority="P1" purpose="Test checks that user agent monitors availability of presentation displays" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1.Turn on 'Simulate Secondary Display' by 'Setting' app.
-            2.Connect to an available network.
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/Presentation_video-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/Prensentation_availability-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="startSession" element_type="method" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="value" element_type="attribute" interface="PresentationAvailability" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnection_basic" priority="P1" purpose="Test checks that PresentationConnection API is present" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnection_basic.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="send" element_type="method" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnection</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnection_send_string" priority="P1" purpose="Test checks that PresentationConnection can send string data" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnection_send_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="send" element_type="method" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnection</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnection_send_blob" priority="P1" purpose="Test checks that PresentationConnection can send blob data" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnection_send_blob.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="send" element_type="method" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnection</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnection_send_arraybuffer" priority="P1" purpose="Test checks that PresentationConnection can send arraybuffer data" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnection_send_arraybuffer.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="send" element_type="method" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnection</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnection_send_arraybufferview" priority="P1" purpose="Test checks that PresentationConnection can send arraybufferview data" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnection_send_arraybufferview.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="send" element_type="method" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnection</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnection_onconnected" priority="P1" purpose="Test checks that onconnected is fired when the user agent connect the presentationConnection to receiving browsing context successfully" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnection_onconnected.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="onconnected" element_type="attribute" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnection</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnection_onclosed" priority="P1" purpose="Test checks that onclosed event is fired when close() method is called" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnection_onclosed.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="onclosed" element_type="attribute" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnection</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnection_onmessage" priority="P1" purpose="Test checks that onmessage event is fired when user agent receive message through a PresentationConnection" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnection_onmessage.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="onmessage" element_type="attribute" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnection</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnection_onterminated" priority="P1" purpose="Test checks that onterminated eventhandler is fired when terminate() is called" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnection_onterminated.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="onterminated" element_type="attribute" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnection</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="PresentationConnectionAvailableEvent" priority="P1" purpose="Test checks that constructing connectionavailable event" status="approved" type="compliance" subcase="2">
+        <description>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-w3c-tests/presentation/PresentationConnectionAvailableEvent.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="connection" element_type="attribute" interface="PresentationConnection" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://w3c.github.io/presentation-api/#interface-presentationconnectionavailableevent</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>

@@ -27,43 +27,34 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Monitor the list of available presentation displays</title>
+<title>PresentationConnectionAvailableEvent</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation">
-<meta name="assert" content="Test checks that the value property of an Availability object to
-                             offer presentation only when there are available displays.">
-<body>
-  <div id="precondition">
-    <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
-  </div>
-  <p>Test passes if 'Cast' button can display.</p>
-  <button id="castBtn" style="display: none;">Cast</button>
-  <div id="log"></div>
-  <script>
-    var presUrl = location.protocol + "//" + location.host
-                + "/opt/webapi-presentation-w3c-tests/presentation/display/presentation.html";
-    var castBtn = document.getElementById("castBtn");
-    var log = document.getElementById("log");
-    
-    if(navigator.presentation) {
+<link rel="help" href="http://w3c.github.io/presentation-api/#interface-presentationconnectionavailableevent">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+test(function() {
+  var eventInit = { connection: null };
+  var evt = new PresentationConnectionAvailableEvent("connectionavailable", eventInit);
+  assert_equals(evt.type, "connectionavailable");
+  assert_equals(evt.connection, null);
+}, "Constructing connectionavailable event with connection:null");
 
-      var handleAvailabilityChange = function(available) {
-        castBtn.style.display = available ? "inline" : "none";
-      };
-
-      navigator.presentation.getAvailability(presUrl).then(function(availability) {
-        handleAvailabilityChange(availability.value);
-        availability.onchange = function() {
-          handleAvailabilityChange(this.value);
-        };
-      }).catch(function() {
-        handleAvailabilityChange(true);
-      });
-    } else {
-      log.innerHTML = "<font color='red'>Navigator does not implement presentation.</font>";
-    }
-
-  </script>
-</body>
+promise_test(function(t) {
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  return request.start()
+    .then(function(connection) {
+      var eventInit = { connection: connection };
+      var evt = new PresentationConnectionAvailableEvent("connectionavailable", eventInit);
+      assert_equals(evt.type, "connectionavailable");
+      assert_equals(evt.connection, connection);
+    })
+    .catch(function(ex) {
+      assert_unreached(ex.name + ":" + ex.message);
+    });
+}, "Constructing connectionavailable event with connection normal.");
+</script>
 

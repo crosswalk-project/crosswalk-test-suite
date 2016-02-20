@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -27,26 +27,29 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
+<title>PresentationAvailability basic attributes</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<div id="msg"></div>
-<img></img>
+<link rel="help" href="https://w3c.github.io/presentation-api/#interface-presentationavailability">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
 <script>
-  var img = document.querySelector("img");
+promise_test(function(t) {
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  return request.getAvailability()
+    .then(function(availability) {
+      assert_true(availability instanceof PresentationAvailability);
+      assert_true("value" in availability);
+      assert_true("onchange" in availability);
+      assert_equals(typeof(availability.value), "boolean");
+      assert_equals(typeof(availability.onchange), "object");
+    })
+    .catch(function(ex) {
+      assert_unreached(ex.name + ":" + ex.message);
+    });
+}, "Check that the PresentationAvailability API is present.");
 
-  navigator.presentation.getSession().then(function(session) {
-    session.onmessage = function(evt) {
-      var blob = evt.data;
-      img.src = URL.createObjectURL(blob);
-    }
-  });
-
-  //Crosswalk implement handler
-  /*
-  window.addEventListener("messagetoremote", function(evt) {
-      var blob = evt.data;
-      img.src = URL.createObjectURL(blob);
-  }, false);
-  */
 </script>
 

@@ -27,24 +27,38 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
+<title>PresentationConnection send blob data</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://w3c.github.io/presentation-api/#interface-presentationconnectionlist">
+<link rel="help" href="http://w3c.github.io/presentation-api/#interface-presentationconnection">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
 <script>
-  var addConnection = function(connection) {
-    connection.onconnected = function () {
-      this.onmessage = function (evt) {
-        this.send(evt.data);
-      };
-  };
-  navigator.receiver.connectionList
-    .then(function(list) {
-      list.onconnectionavailable = function(connections) {
-        addConnection(connections[connections.length-1]);
-      };
-      list.connections.map(function(connection) {
-        addConnection(connection);
+async_test(function(t) {
+  var url = "display/presentation.html";
+  var request = new PresentationRequest(url);
+  var datasize = 10;
+  var data = null;
+  request.start()
+    .then(function(connection) {
+      assert_true(connection instanceof PresentationConnection);
+      connection.onconnected = t.step_func(function() {
+        connection.BinaryType = "blob";
+        for (var i = 0; i < datasize; i++) {
+          data += String.fromCharCode(0);
+        }
+        var blob = new Blob([data]);
+        this.onmessage = t.step_func_done(function(evt) {
+          assert_true(evt.data instanceof Blob);
+          assert_equals(evt.data.size, datasize);
+        });
+        this.send(blob);
       });
+    })
+    .catch(function(ex) {
+      assert_unreached(ex.name + ":" + ex.message);
     });
+}, "Check that PresentationConnection can send blob data.");
 </script>
 

@@ -27,24 +27,19 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>defaultsessionstart event</title>
+<title>Presentation.defaultRequest</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="http://www.w3.org/TR/2015/WD-presentation-api-20150701/#ondefaultsessionstart">
-<link href="http://example.com/presentation.html" rel="default-presentation">
+<link rel="help" href="http://w3c.github.io/presentation-api/#dom-presentation-defaultrequest">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<div id="precondition">
-  <p>Turn on 'Simulate Secondary Display' by 'Setting' app.</p>
-  <p>Make sure connect to an available network.</p>
-</div>
 <div id="log"></div>
 <script>
-  setup({ explicit_timeout: true })
-  
-  navigator.presentation.ondefaultsessionstart = t.step_func(function (evt) {
-    assert_true(evt.session instanceof PresentationSession);
-    t.done();
-  }, "Event defaultsessionstart is fired when the UA initiates a presentation on behalf of the page");
+test(function() {
+  var defaultRequest = navigator.presentation.defaultRequest;
+  assert_equals(defaultRequest, null);
+  defaultRequest = new PresentationRequest("display/presentation.html");
+  assert_true(defaultRequest instanceof PresentationRequest);    
+}, "Check that defaultRequest returns the default presentation request.");
 </script>
 
