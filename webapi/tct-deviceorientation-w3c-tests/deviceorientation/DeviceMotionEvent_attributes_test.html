@@ -38,9 +38,7 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-  setup(function(){
-    tizen.power.turnScreenOn();
-  }, {explicit_done: true, timeout: 2000});
+  setup({explicit_done: true, timeout: 2000});
   var run = false;
   on_event(window, "devicemotion", function(event) {
     if(!run) {
@@ -72,10 +70,15 @@ Authors:
       test(function() {
         assert_equals(typeof event.rotationRate, "object", "Attribute rotationRate in DeviceMotionEvent of type");
       }, "Check if DeviceMotionEvent.rotationRate is type of DeviceRotationRate");
+
       done();
+
+      if(t) {
+         clearTimeout(t);
+      }
     }
   });
-  setTimeout(function () {
+  var t = setTimeout(function () {
     test(function() {
       assert_unreached("Can not fire devicemotion event");
     }, "Check if the DeviceMotionEvent.acceleration method exists");
