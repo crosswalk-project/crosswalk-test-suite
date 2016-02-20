@@ -61,7 +61,7 @@ try {
   filter.getFrequencyResponse(fre, mag, pha);
   source.connect(filter);
   filter.connect(context.destination);
-  source.noteOn(0);
+  source.start(0);
 } catch(e) {
  res = false;
 }
@@ -70,6 +70,6 @@ test(function(){
   assert_not_equals(mag[10], 0, "The mag[10] value");
   filter.disconnect();
   source.disconnect();
-  source.noteOff(0);
+  source.stop(0);
 }, "Check if BiquadFilterNode bandpass filter allows a range of frequencies to pass through");
 </script>

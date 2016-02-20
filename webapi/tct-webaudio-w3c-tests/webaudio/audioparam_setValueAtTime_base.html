@@ -47,6 +47,6 @@ test(function () {
   var audioParam = gainNode.gain;
   assert_true("setValueAtTime" in audioParam, "Check if AudioParam.setValueAtTime method exists");
   var setValueAtTime = audioParam.setValueAtTime(0.2, 0.1);
-  assert_equals(typeof setValueAtTime, "undefined", "The return type of setValueAtTime");
+  assert_equals(typeof setValueAtTime, "object", "The return type of setValueAtTime");
 }, "Check if AudioParam.setValueAtTime method executes well with two float parameters");
 </script>

@@ -45,8 +45,8 @@ try {
   var context = new AudioContext();
   var jsProcessor;
   var analyser;
-  assert_true("createJavaScriptNode" in context, "createJavaScriptNode method exists");
-  jsProcessor = context.createJavaScriptNode(256, 2, 2);
+  assert_true("createScriptProcessor" in context, "createScriptProcessor method exists");
+  jsProcessor = context.createScriptProcessor(256, 2, 2);
   jsProcessor.onaudioprocess = function (evt) {
     jsProcessor.onaudioprocess = null;
     jsProcessor.disconnect();

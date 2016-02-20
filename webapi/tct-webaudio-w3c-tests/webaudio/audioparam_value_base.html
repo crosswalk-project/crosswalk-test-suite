@@ -46,8 +46,6 @@ test(function () {
   assert_true("gain" in gainNode, "gain attribute exists in GainNode interface");
   var audioParam = gainNode.gain;
   assert_true("value" in audioParam, "Check if AudioParam.value attribute exists");
-  assert_true("minValue" in audioParam, "Check if AudioParam.minValue attribute exists");
-  audioParam.value = audioParam.minValue;
-  assert_equals(audioParam.value, audioParam.minValue, "The AudioParam.value");
-}, "Check if AudioParam.value attribute set AudioParam.minValue then AudioParam.value equals AudioParam.minValue");
+  assert_equals(audioParam.value, audioParam.defaultValue, "The AudioParam.value");
+}, "Check if AudioParam.value attribute is initialized to the defaultValue");
 </script>

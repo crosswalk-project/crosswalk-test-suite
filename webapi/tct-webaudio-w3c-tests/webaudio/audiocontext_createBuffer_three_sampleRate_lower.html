@@ -40,15 +40,10 @@ Authors:
 <div id="log"></div>
 <script>
 test(function () {
-  try {
-    var context = new AudioContext();
-    var flag = false;
-    assert_true("createBuffer" in context, "createBuffer method exist AudioContext interface");
-    var audioBuffer = context.createBuffer(10, 2, 22000);
-    flag = true;
-    assert_unreached("An exception will be thrown if the sampleRate is out-of-bounds");
-  } catch(e) {
-    assert_false(flag, "An exception will be thrown if the sampleRate is out-of-bounds");
-  }
+  var context = new AudioContext();
+  assert_true("createBuffer" in context, "createBuffer method exist AudioContext interface");
+  assert_throws("NotSupportedError", function() {
+    context.createBuffer(10, 2, 8191);
+  }, "A NotSupportedError exception will be thrown if the sampleRate is out-of-bounds");
 }, "Check if an exception will be thrown if the sampleRate is less than the range");
 </script>

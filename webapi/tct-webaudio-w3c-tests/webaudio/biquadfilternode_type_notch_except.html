@@ -71,13 +71,13 @@ try {
   filter1.getFrequencyResponse(fre1, mag1, pha1);
   source1.connect(filter1);
   filter1.connect(context1.destination);
-  source1.noteOn(0);
+  source1.start(0);
   filter2.type = "notch";
   filter2.frequency.value = 445.0;
   filter2.getFrequencyResponse(fre2, mag2, pha2);
   source2.connect(filter2);
   filter2.connect(context2.destination);
-  source2.noteOn(0);
+  source2.start(0);
 } catch(e) {
  res = false;
 }
@@ -85,9 +85,9 @@ test(function(){
   assert_true(res && mag1[5] < mag2[5] && mag1[15] > mag2[15], "BiquadFilterNode notch filter allows all frequencies through except for the notch applied");
   filter1.disconnect();
   source1.disconnect();
-  source1.noteOff(0);
+  source1.stop(0);
   filter2.disconnect();
   source2.disconnect();
-  source2.noteOff(0);
+  source2.stop(0);
 }, "Check if BiquadFilterNode notch filter allows all frequencies through except for the notch applied");
 </script>

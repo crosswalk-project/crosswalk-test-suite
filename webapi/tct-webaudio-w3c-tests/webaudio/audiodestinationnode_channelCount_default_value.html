@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>WebAudio Test: audiocontext_createDelayNode_no_argument</title>
+<title>WebAudio Test: audiodestinationnode_channelCount_default_value</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://webaudio.github.io/web-audio-api/">
 <script src="../resources/testharness.js"></script>
@@ -41,8 +41,6 @@ Authors:
 <script>
 test(function () {
   var context = new AudioContext();
-  assert_true("createDelayNode" in context, "createDelayNode method exist AudioContext interface");
-  var delayNode = context.createDelayNode();
-  assert_equals(delayNode.delayTime.maxValue, 1, "the AudioParam.maxValue value");
-}, "Check if the AudioParam.maxValue value is 1 if no set maxDelayTime parameter");
+  assert_equals(context.destination.channelCount, 2, "The default value of AudioDestinationNode.channelCount");
+}, "Check if AudioDestinationNode.channelCount attribute default value is 2");
 </script>

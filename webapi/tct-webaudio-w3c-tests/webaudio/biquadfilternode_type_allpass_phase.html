@@ -71,13 +71,13 @@ try {
   filter1.getFrequencyResponse(fre1, mag1, pha1);
   source1.connect(filter1);
   filter1.connect(context1.destination);
-  source1.noteOn(0);
+  source1.start(0);
   filter2.type = "allpass";
   filter2.frequency.value = 445.0;
   filter2.getFrequencyResponse(fre2, mag2, pha2);
   source2.connect(filter2);
   filter2.connect(context2.destination);
-  source2.noteOn(0);
+  source2.start(0);
 } catch(e) {
  res = false;
 }
@@ -87,9 +87,9 @@ test(function(){
   assert_not_equals(pha1[15], pha2[15], "The pha1[15] value");
   filter1.disconnect();
   source1.disconnect();
-  source1.noteOff(0);
+  source1.stop(0);
   filter2.disconnect();
   source2.disconnect();
-  source2.noteOff(0);
+  source2.stop(0);
 }, "Check if BiquadFilterNode allpass filter changes the phase relationship between the various frequencies");
 </script>
