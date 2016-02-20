@@ -1,0 +1,13 @@
+var step = '<p>Purpose:</p>'
+            +'<p>Verifies if remote debugging is enabled automatically for debug builds</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Install "remotedebugging" app successfully</li>'
+            +'<li>The "--enable-inspect" show up at the end of the Target entry</li>'
+            +'<li>Launch "remotedebugging" app successfully and there will be a popup menu "Inspect Element" on right-click</li>'
+            +'<li>Open the inspection page successfully</li>'
+            +'<li>Install "build_release" app successfully</li>'
+            +'<li>The "--enable-inspect" does not show up at the end of the Target entry</li>'
+            +'<li>Launch "build_release" app successfully and the popup menu will not be shown on right-click</li>'
+            +'<li>Unistall "remotedebugging" and "build_release" app successfully</li>'
+            +'</ol>';

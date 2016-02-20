@@ -3,276 +3,69 @@
 <test_definition>
   <suite name="usecase-apptools-tests">
     <set name="Build Project" background="brand-primary" icon="glyphicon-asterisk" type="script">
-      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="AppToolsOptions" purpose="AppToolsOptions Test">
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="AppToolsOptions" purpose="AppToolsOptions Test">
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="AppTools_install_crosswalk_app" purpose="AppTools_install_crosswalk_app Test">
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="AppTools_install_using_npm" purpose="AppTools_install_using_npm Test">
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="AppToolsHelpUsage" purpose="AppToolsHelpUsage Test">
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="AppToolsHelpUsage" purpose="AppToolsHelpUsage Test">
       </testcase>
       <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="CrosswalkDownload" purpose="CrosswalkDownload Test">
       </testcase>
       <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestVersionName" purpose="ManifestVersionName Test">
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_deb" platform="linux" priority="P0" purpose="AppTools_deb Test" status="approved" type="compliance">
-        <description>
-          <pre_condition>Please refer to README file.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it. Then run below commands under usecase-apptools-tests/tools/ directory: $ crosswalk-app create org.test.foo, $ cd org.test.foo, $ crosswalk-app build</step_desc>
-              <expected>Success to create/build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>Install foo app on depin</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Find foo app in depin</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app in depin</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the page</expected>
-            </step>
-            <step order="6">
-              <step_desc>Uninstall the app by typing "dpkg -P $pkgName" on the command line when the app running</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install and launch the foo app again. Close foo app via clicking the close button, and run command: $ ps -ef | grep foo |awk '{print $2}' |xargs -I% kill -9 %</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="8">
-              <step_desc>Uninstall foo app</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_deb/index.html</test_script_entry>
-        </description>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestKeepingScreenOn" purpose="ManifestKeepingScreenOn Test">
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_iOS" platform="ios" priority="P0" purpose="AppTools_iOS Test" status="approved" type="compliance">
-        <description>
-          <pre_condition>Please refer to README file.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it. Then run below commands under usecase-apptools-tests/tools/ directory: $ crosswalk-app create org.test.foo, $ cd org.test.foo, $ crosswalk-app build</step_desc>
-              <expected>Success to create/build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>Connect your iOS device to your iMac. Open iTunes->"Your Device"->Apps. Double click foo app. Click "Install" button of foo app on iTunes</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Click "Apply" button at the lower right corner of iTunes. Check icon of foo app in your iOS device</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app in your iOS device</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the page</expected>
-            </step>
-            <step order="6">
-              <step_desc>Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Long press the icon of foo app to uninstall it</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_iOS/index.html</test_script_entry>
-        </description>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestDisplay" purpose="ManifestDisplay Test" subcase="2">
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_install_using_npm" platform="ios" priority="P0" purpose="AppTools_install_using_npm Test" status="approved" type="compliance">
-        <description>
-          <pre_condition>Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'. Install crosswalk-app by run command: $ npm install -g crosswalk-app-tools, $ npm install -g crosswalk-app-tools-backend-ios</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
-                Then run below commands under usecase-apptools-tests/tools/ directory: 
-                $ crosswalk-app create org.test.foo
-                $ cd org.test.foo
-                $ crosswalk-app build
-              </step_desc>
-              <expected>Success to create/build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>Connect your iOS device to your iMac. Open iTunes->"Your Device"->Apps. Double click foo app. Click "Install" button of foo app on iTunes</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Click "Apply" button at the lower right corner of iTunes. Check icon of foo app in your iOS device</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app in your iOS device</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the page</expected>
-            </step>
-            <step order="6">
-              <step_desc>Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Long press the icon of foo app to uninstall it</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_iOS/index.html</test_script_entry>
-        </description>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="RemoteDebugging" purpose="RemoteDebugging Test">
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_windows" platform="windows" priority="P0" purpose="AppTools_windows Test" status="approved" type="compliance">
-        <description>
-          <pre_condition>Please refer to README file.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
-                Then run below commands under usecase-apptools-tests/tools/ directory: 
-                  $ node %crosswalk-app% create org.test.foo --platforms=windows --windows-crosswalk=path to xwalk win zip
-                  $ cd org.test.foo
-                  $ node %crosswalk-app% build
-              </step_desc>
-              <expected>Success to create/build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>Install foo app on windows</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Find foo app on windows</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app on windows</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
-            </step>
-            <step order="6">
-              <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install and launch the foo app again. Close foo app via clicking the close button, and kill foo app from Task Manager</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="8">
-              <step_desc>Uninstall foo app on windows</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_windows/index.html</test_script_entry>
-        </description>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestUsingBetterFittingSizeIcon" purpose="ManifestUsingBetterFittingSizeIcon Test">
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="Windows_Compatible" platform="windows" priority="P2" purpose="Windows_Compatible Test" status="approved" type="compliance">
-        <description>
-          <pre_condition>Please refer to README file.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
-                Then run below commands under usecase-apptools-tests/tools/ directory: 
-                  On Windows 10:
-                    New "org.test.foo" folder
-                    $ cd org.test.foo
-                    $ node ..\crosswalk-app-tools\src\crosswalk-pkg --platforms=windows --manifest="org.test.foo" --crosswalk="path to xwalk win zip"
-              </step_desc>
-              <expected>Success to build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>Install foo app on windows 8.1</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Find foo app on windows 8.1</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app on windows 8.1</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
-            </step>
-            <step order="6">
-              <step_desc>Uninstall the app when it is running</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install and launch the foo app again. Close foo app via clicking the close button, and kill foo app from Task Manager</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="8">
-              <step_desc>Uninstall foo app on windows 8.1</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/Windows_Compatible/index.html</test_script_entry>
-        </description>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestCheckWebAppName" purpose="ManifestCheckWebAppName Test">
       </testcase>
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="Remote_Debugging" platform="windows" priority="P1" purpose="Remote_Debugging Test" status="approved" type="compliance">
-        <description>
-          <pre_condition>Please refer to README file.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it
-                Then run below commands under usecase-apptools-tests/tools/ directory:
-                  $ node %crosswalk-app% create org.test.foo --platforms=windows --windows-crosswalk=path to xwalk win zip
-                  $ cd org.test.foo
-                  $ node %crosswalk-app% build
-              </step_desc>
-              <expected>Create/Build org.test.foo successfully</expected>
-            </step>
-            <step order="2">
-              <step_desc>Install foo app on windows</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Right-click app icon and open properties dialog</step_desc>
-              <expected>The "--enable-inspect" show up at the end of the Target entry</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch the app on Windows, right-click on the app</step_desc>
-              <expected>Launch the foo app successfully and there will be a popup menu "Inspect Element" on right-click</expected>
-            </step>
-            <step order="5">
-              <step_desc>Click "Inspect Element"</step_desc>
-              <expected>Open the inspection page successfully</expected>
-            </step>
-            <step order="6">
-              <step_desc>$ node %crosswalk-app% build release</step_desc>
-              <expected>Build org.test.foo successfully</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install the app on Windows</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="8">
-              <step_desc>Right-click app icon and open properties dialog</step_desc>
-              <expected>The "--enable-inspect" doesn't show up at the end of the Target entry</expected>
-            </step>
-            <step order="9">
-              <step_desc>Launch the app on Windows, right-click on the app</step_desc>
-              <expected>Launch the foo app successfully and the popup menu will not be shown on right-click</expected>
-            </step>
-            <step order="10">
-              <step_desc>Uninstall foo app on windows</step_desc>
-              <expected>Unistall the foo app successfully</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/Remote_Debugging/index.html</test_script_entry>
-        </description>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestCheckApkSize" purpose="ManifestCheckApkSize Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestCommandLine" purpose="ManifestCommandLine Test" subcase="3">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestOrientation" purpose="ManifestOrientation Test" subcase="8">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ContactExtension" purpose="ContactExtension Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestAnimatableView" purpose="ManifestAnimatableView Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestBackgroundColor" purpose="ManifestBackgroundColor Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="SplashScreen" purpose="SplashScreen Test" subcase="2">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="ManifestStartUrl" purpose="ManifestStartUrl Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="AntPathWithWhitespace" purpose="AntPathWithWhitespace Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="ManifestPermissions" purpose="ManifestPermissions Test" subcase="2">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="deb" priority="P0" id="ManifestDisplay" purpose="ManifestDisplay Test" subcase="4">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="ios" priority="P0" id="AppTools_install_using_npm" purpose="AppTools_install_using_npm Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="ios" priority="P0" id="BuildNoSDK" purpose="BuildNoSDK Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="ios" priority="P0" id="BuildRelease" purpose="BuildRelease Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="ios" priority="P0" id="ManifestDisplay" purpose="ManifestDisplay Test" subcase="2">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="windows" priority="P0" id="Windows_Compatible" purpose="Windows_Compatible Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="windows" priority="P0" id="Remote_Debugging" purpose="Remote_Debugging Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="windows" priority="P0" id="ManifestCheckVendor" purpose="ManifestCheckVendor Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="windows" priority="P0" id="ManifestVersionName" purpose="ManifestVersionName Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="windows" priority="P0" id="ManifestCommandLine" purpose="ManifestCommandLine Test" subcase="3">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="windows" priority="P0" id="ManifestDisplay" purpose="ManifestDisplay Test" subcase="2">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" type="functional_positive" status="approved" execution_type="manual" platform="windows" priority="P0" id="ManifestExtension" purpose="ManifestExtension Test">
       </testcase>
     </set>
   </suite>

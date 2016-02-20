@@ -80,7 +80,7 @@ def setUp():
     mode_type = mode.read().strip("\n\t")
     if mode_type == "embedded":
         MODE = ""
-        ANDROID_MODE = ""
+        ANDROID_MODE = "embedded"
     elif mode_type == "shared":
         MODE = " --android-shared"
         ANDROID_MODE = "shared"
