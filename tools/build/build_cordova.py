@@ -89,6 +89,15 @@ def packCordova(
         os.chdir(orig_dir)
         return False
 
+    version_opt = utils.safelyGetValue(build_json, "apk-version-opt")
+    if version_opt:
+        utils.replaceUserString(
+            project_root,
+            'config.xml',
+            'id="org.xwalk.%s" version="0.0.1"' % app_name,
+            'id="org.xwalk.%s" version="%s"' %
+            (app_name, version_opt))
+
     # Set activity name as app_name
     utils.replaceUserString(
         project_root,
