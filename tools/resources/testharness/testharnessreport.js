@@ -1,4 +1,6 @@
-/*global add_completion_callback, setup */
+/* global add_completion_callback */
+/* global setup */
+
 /*
  * This file is intended for vendors to implement
  * code needed to integrate testharness.js tests with their own test systems.
@@ -22,8 +24,6 @@
  * For more documentation about the callback functions and the
  * parameters they are called with see testharness.js
  */
-
-
 
 var metadata_generator = {
 
@@ -219,10 +219,14 @@ var metadata_generator = {
      * Metadata is in pretty-printed JSON format
      */
     generateSource: function() {
+        /* "\/" is used instead of a plain forward slash so that the contents
+        of testharnessreport.js can (for convenience) be copy-pasted into a
+        script tag without issue. Otherwise, the HTML parser would think that
+        the script ended in the middle of that string literal. */
         var source =
             '<script id="metadata_cache">/*\n' +
             this.jsonifyObject(this.currentMetadata, '') + '\n' +
-            '*/</script>\n';
+            '*/<\/script>\n';
         return source;
     },
 
@@ -385,13 +389,20 @@ function dump_test_results(tests, status) {
     var test_results = tests.map(function(x) {
         return {name:x.name, status:x.status, message:x.message, stack:x.stack}
     });
-    data = {test:window.location.href,
-            tests:test_results,
-            status: status.status,
-            message: status.message,
-            stack: status.stack};
+    var data = {test:window.location.href,
+                tests:test_results,
+                status: status.status,
+                message: status.message,
+                stack: status.stack};
     results_element.textContent = JSON.stringify(data);
-    document.documentElement.lastChild.appendChild(results_element);
+
+    // To avoid a HierarchyRequestError with XML documents, ensure that 'results_element'
+    // is inserted at a location that results in a valid document.
+    var parent = document.body
+        ? document.body                 // <body> is required in XHTML documents
+        : document.documentElement;     // fallback for optional <body> in HTML5, SVG, etc.
+
+    parent.appendChild(results_element);
 }
 
 metadata_generator.setup();
