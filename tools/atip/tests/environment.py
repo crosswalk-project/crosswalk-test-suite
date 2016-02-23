@@ -31,7 +31,6 @@ import os
 import sys
 import json
 from atip import environment as atipenv
-from set_env import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -99,7 +98,6 @@ def before_all(context):
     context.web = None
     context.android = None
     context.apps = {}
-    set_env_variables()
     context.bdd_config = load_default_config()
     if not context.bdd_config:
         sys.exit(1)
