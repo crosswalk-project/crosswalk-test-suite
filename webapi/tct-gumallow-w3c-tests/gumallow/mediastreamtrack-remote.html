@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>MediaStreamTrack.remote</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://w3c.github.io/mediacapture-main/getusermedia.html#widl-MediaStreamTrack-remote">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<p class="instructions">When prompted, accept to share your audio and video stream.</p>
+<h1 class="instructions">Description</h1>
+<p class="instructions">This test checks that distinct mediastream tracks have distinct ids.</p>
+<div id="log"></div>
+<script src="w3c/vendor-prefix.js"
+        data-prefixed-objects='[{"ancestors":["navigator"], "name":"getUserMedia"},
+                                {"ancestors":["window"], "name":"RTCPeerConnection"}]'></script>
+<script>
+
+async_test(function(t) {
+  navigator.getUserMedia({
+    video: true,
+    audio: true
+  }, t.step_func(function(stream) {
+    var audioTrack = stream.getAudioTracks()[0];
+    var videoTrack = stream.getVideoTracks()[0];
+    assert_false(audioTrack.remote, "The remote attribute is false");
+    assert_false(videoTrack.remote, "The remote attribute is false");
+    t.done();
+  }), t.step_func(function(error) {
+    t.unreached_func("Access to audio and video stream get error: " + error.message);
+  }));
+}, "Check that remote attribute return false when the MediaStreamTrack is sourced by locally");
+
+async_test(function(t) {
+  var gFirstConnection = null;
+  var gSecondConnection = null;
+
+  function getUserMediaCallback(localStream) {
+    gFirstConnection = new RTCPeerConnection(null);
+    gFirstConnection.onicecandidate = onIceCandidateToFirst;
+    gFirstConnection.addStream(localStream);
+    gFirstConnection.createOffer(onOfferCreated, fail);
+  }
+
+  var onOfferCreated = t.step_func(function(offer) {
+    gFirstConnection.setLocalDescription(offer);
+    receiveCall(offer);
+  });
+
+  function receiveCall(offer) {
+    gSecondConnection = new RTCPeerConnection(null);
+    gSecondConnection.onicecandidate = onIceCandidateToSecond;
+    gSecondConnection.onaddstream = onRemoteStream;
+    gSecondConnection.setRemoteDescription(offer);
+    gSecondConnection.createAnswer(onAnswerCreated, fail);
+  }
+
+  var onAnswerCreated = t.step_func(function(answer) {
+    gSecondConnection.setLocalDescription(answer);
+    gFirstConnection.setRemoteDescription(answer);
+  });
+
+  var onIceCandidateToFirst = t.step_func(function(event) {
+    if(event.candidate) {
+      gSecondConnection.addIceCandidate(event.candidate);
+    }
+  });
+
+  var onIceCandidateToSecond = t.step_func(function(event) {
+    if(event.candidate) {
+      gFirstConnection.addIceCandidate(event.candidate);
+    }
+  });
+
+  var onRemoteStream = t.step_func(function(event) {
+    var mediaStream = event.stream;
+    var audioTrack = mediaStream.getAudioTracks()[0];
+    var videoTrack = mediaStream.getVideoTracks()[0];
+    assert_true(audioTrack.remote, "The audio track's remote is true");
+    assert_true(videoTrack.remote, "The video track's remote is true");
+    t.done();
+  });
+
+  var fail = t.step_func(function(error) {
+    t.unreached_func("Got failure: " + error.message);
+  });
+
+  navigator.getUserMedia({
+    video: true,
+    audio: true
+  }, t.step_func(getUserMediaCallback), t.step_func(function(error) {
+    t.unreached_func("Access to audio and video stream get error: " + error.message);
+  }));
+}, "Check that remote attribute return true when the MediaStreamTrack is sourced by remotely")
+
+</script>
+
