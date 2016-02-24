@@ -658,6 +658,14 @@ policies and contribution forms [3].
         object.addEventListener(event, callback, false);
     }
 
+    function step_timeout(f, t) {
+        var outer_this = this;
+        var args = Array.prototype.slice.call(arguments, 2);
+        return setTimeout(function() {
+            f.apply(outer_this, args);
+        }, t * tests.timeout_multiplier);
+    }
+
     expose(test, 'test');
     expose(async_test, 'async_test');
     expose(promise_test, 'promise_test');
@@ -666,6 +674,7 @@ policies and contribution forms [3].
     expose(setup, 'setup');
     expose(done, 'done');
     expose(on_event, 'on_event');
+    expose(step_timeout, 'step_timeout');
 
     /*
      * Return a string truncated to the given length, with ... added at the end
@@ -688,10 +697,17 @@ policies and contribution forms [3].
         // instanceof doesn't work if the node is from another window (like an
         // iframe's contentWindow):
         // http://www.w3.org/Bugs/Public/show_bug.cgi?id=12295
-        if ("nodeType" in object &&
-            "nodeName" in object &&
-            "nodeValue" in object &&
-            "childNodes" in object) {
+        try {
+            var has_node_properties = ("nodeType" in object &&
+                                       "nodeName" in object &&
+                                       "nodeValue" in object &&
+                                       "childNodes" in object);
+        } catch (e) {
+            // We're probably cross-origin, which means we aren't a node
+            return false;
+        }
+
+        if (has_node_properties) {
             try {
                 object.nodeType;
             } catch (e) {
@@ -809,7 +825,12 @@ policies and contribution forms [3].
 
         /* falls through */
         default:
-            return typeof val + ' "' + truncate(String(val), 60) + '"';
+            try {
+                return typeof val + ' "' + truncate(String(val), 60) + '"';
+            } catch(e) {
+                return ("[stringifying object threw " + String(e) +
+                        " with type " + String(typeof e) + "]");
+            }
         }
     }
     expose(format_value, "format_value");
@@ -1097,7 +1118,7 @@ policies and contribution forms [3].
     function _assert_inherits(name) {
         return function (object, property_name, description)
         {
-            assert(typeof object === "object",
+            assert(typeof object === "object" || typeof object === "function",
                    name, description,
                    "provided value is not an object");
 
@@ -1167,6 +1188,7 @@ policies and contribution forms [3].
                 NO_MODIFICATION_ALLOWED_ERR: 'NoModificationAllowedError',
                 NOT_FOUND_ERR: 'NotFoundError',
                 NOT_SUPPORTED_ERR: 'NotSupportedError',
+                INUSE_ATTRIBUTE_ERR: 'InUseAttributeError',
                 INVALID_STATE_ERR: 'InvalidStateError',
                 SYNTAX_ERR: 'SyntaxError',
                 INVALID_MODIFICATION_ERR: 'InvalidModificationError',
@@ -1193,6 +1215,7 @@ policies and contribution forms [3].
                 NoModificationAllowedError: 7,
                 NotFoundError: 8,
                 NotSupportedError: 9,
+                InUseAttributeError: 10,
                 InvalidStateError: 11,
                 SyntaxError: 12,
                 InvalidModificationError: 13,
@@ -1421,6 +1444,14 @@ policies and contribution forms [3].
             assert_unreached(description);
         });
     };
+
+    Test.prototype.step_timeout = function(f, timeout) {
+        var test_this = this;
+        var args = Array.prototype.slice.call(arguments, 2);
+        return setTimeout(this.step_func(function() {
+            return f.apply(test_this, args);
+        }), timeout * tests.timeout_multiplier);
+    }
 
     Test.prototype.add_cleanup = function(callback) {
         this.cleanup_callbacks.push(callback);
@@ -2429,7 +2460,7 @@ policies and contribution forms [3].
 
         // Create a pattern to match stack frames originating within testharness.js.  These include the
         // script URL, followed by the line/col (e.g., '/resources/testharness.js:120:21').
-        var re = new RegExp(get_script_url() + ":\\d+:\\d+");
+        var re = new RegExp((get_script_url() || "\\btestharness.js") + ":\\d+:\\d+");
 
         // Some browsers include a preamble that specifies the type of the error object.  Skip this by
         // advancing until we find the first stack frame originating from testharness.js.
@@ -2542,6 +2573,10 @@ policies and contribution forms [3].
     /** Returns the 'src' URL of the first <script> tag in the page to include the file 'testharness.js'. */
     function get_script_url()
     {
+        if (!('document' in self)) {
+            return undefined;
+        }
+
         var scripts = document.getElementsByTagName("script");
         for (var i = 0; i < scripts.length; i++) {
             var src;
