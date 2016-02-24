@@ -9,8 +9,11 @@ This test suite is for testing sampleapp-windows-tests specification
 
 
 ## Pre-condition
-Copy sourcecode of sampleapp named "HangOnMan", "HexGL", "MemoryGame", "simd-mandelbrot" and "SysApps_DeviceCapabilities" to the "res" directory before pack this suite
-
+- Copy sourcecode of sampleapp named "HangOnMan", "HexGL", "MemoryGame", "simd-mandelbrot" to the "res" directory before pack this suite.
+  - "HangOnMan" is from https://github.com/crosswalk-project/crosswalk-demos/tree/master/HangOnMan
+  - "HexGL" is from https://github.com/BKcore/HexGL
+  - "MemoryGame" is from https://github.com/crosswalk-project/crosswalk-demos/tree/master/MemoryGame
+  - "simd-mandelbrot" is from https://github.com/crosswalk-project/crosswalk-samples/tree/master/simd-mandelbrot
 
 ## LICENSE
 
