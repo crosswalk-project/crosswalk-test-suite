@@ -26,30 +26,26 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Shen,Lin <linx.a.shen@intel.com>
+           IVAN CHEN <yufeix.chen@intel.com>
+           Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Crosswalk_Manifest_Icon_ValueNull</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-  </head>
-  <body>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Install webapp by typing "adb install manifest_icon_valuenull_tests.apk".</li>
-      <li>Check the icon of webapp in Launcher screen.</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>Webapp is installed successfully, no error, no warning message.</li>
-      <li>The icon of webapp displayed normarlly.</li>
-    </ol>
-  </body>
-</html>
+<meta charset='utf-8'>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<p>
+<strong>Test steps:</strong>
+</p>
+<ol>
+<li>Packaging app by using apptools, e.g. "crosswalk-pkg -c /path/to/crosswalk**.zip -t x86 /path/to/testapp/manifest_negative_nullvalue_csp".</li>
+<li>Install webapp</li>
+<li>Launch webapp by click app icon</li>
+</ol>
+<p>
+<strong>Expected Output:</strong>
+</p>
+<ol>
+<li>The app should be packed successfully</li>
+<li>The webapp installed successfully</li>
+<li>The webapp no crash,and show "Fail" in interface</li>
+</ol>
