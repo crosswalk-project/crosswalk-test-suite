@@ -9,6 +9,7 @@ This test suite is for sampleapp-ios-tests
 ## Authors:
 
 * Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Qiu, Zhong <zhongx.qiu@intel.com>
 
 ## LICENSE
 
