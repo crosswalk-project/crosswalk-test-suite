@@ -12,7 +12,11 @@ Feature: web-system-app
     And I click view "description=Add"
    Then I should see view "className=android.view.View^^^description=123"
    Then I should see view "className=android.view.View^^^description=Intel"
-    And switch to "indexdb"
+    And I press "home" hardware key
+    And I press "recent" hardware key
+    And I save relative view "className=android.widget.ImageView" on the "right" side of view "text=IndexDB" to object "indexdb_app"
+    And I swipe saved object "indexdb_app" to "left"
+    And I click app icon "text=IndexDB" in all apps
     And I wait 2 seconds
    Then I should see view "className=android.view.View^^^description=123"
    Then I should see view "className=android.view.View^^^description=Intel"
