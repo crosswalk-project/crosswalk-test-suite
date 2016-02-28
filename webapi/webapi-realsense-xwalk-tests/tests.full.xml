@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="W3C/HTML5 APIs" name="webapi-realsense-xwalk-tests">
+    <set name="realsense" type="js">
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="realsense" priority="P1" purpose="Test checks that RealSense is present" status="approved" type="compliance" subcase="3">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/realsense.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="realsense" element_type="attribute" interface="Window" section="RealSense APIs" specification="RealSense"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/scene-perception.html</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="scene_perception" priority="P1" purpose="Test checks that Scene Perception is present" status="approved" type="compliance" subcase="52">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/scene_perception.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="init" element_type="attribute" interface="ScenePerception" section="Scene Perception APIs" specification="Screen Presentation"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/scene-perception.html</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="enhanced_photography" priority="P1" purpose="Test checks that depth enabled photography is present" status="approved" type="compliance" subcase="58">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/enhanced_photography.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="init" element_type="method" interface="DepthMask" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="face" priority="P1" purpose="Test checks that face is present" status="approved" type="compliance" subcase="32">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/face.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="start" element_type="method" interface="FaceModule" section="Face APIs" specification="Face"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/face.html</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
