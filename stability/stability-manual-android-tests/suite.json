@@ -20,8 +20,6 @@
         "inst.apk.py": "inst.py",
         "sysmon-chrome.sh": "sysmon-chrome.sh",
         "testapp/README.md": "testapp/README.md",
-        "testapp/cross_arm.apk": "testapp/cross_arm.apk",
-        "testapp/cross_intel.apk": "testapp/cross_intel.apk",
         "tests.full.xml": "tests.full.xml",
         "tests.xml": "tests.xml",
         "testscripts": "testscripts"
@@ -32,6 +30,10 @@
         }
       },
       "subapp-list": {
+        "testapp/crossfuzz": {
+          "apk-type": "MANIFEST",
+          "install-path": "testapp"
+        },
         "testapp/downloadtest": {
           "apk-common-opts": "--enable-remote-debugging",
           "apk-type": "MANIFEST",
