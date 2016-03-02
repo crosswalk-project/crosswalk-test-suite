@@ -828,3 +828,14 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load method
 * ResourceClient interface: shouldInterceptLoadRequest method
+
+
+
+### 81. The [XWalkViewWithClearSslPreferencesAsync](misc/XWalkViewWithClearSslPreferencesAsync.java) sample check XWalkView can clear ssl preferences, include:
+
+* XWalkView can clear ssl preferences
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, clearSslPreferences method
+* ResourceClient interface: onReceivedSslError method
