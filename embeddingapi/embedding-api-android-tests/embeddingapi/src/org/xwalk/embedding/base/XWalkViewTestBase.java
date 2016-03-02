@@ -46,6 +46,8 @@ import android.test.MoreAsserts;
 import android.util.Log;
 import android.util.Pair;
 import android.graphics.Bitmap;
+import android.net.http.SslError;
+import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
 
 public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActivity> {
@@ -83,6 +85,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected MainActivity mainActivity;
     protected TestWebServer mWebServer;
     protected XWalkCookieManager mCookieManager;
+    protected boolean mAllowSslError = true;
     protected final TestHelperBridge mTestHelperBridge = new TestHelperBridge();
 
     private String mUrls[]=new String[3];
@@ -600,6 +603,13 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         public TestXWalkResourceClient() {
             super(mTestHelperBridge,mXWalkView);
         }
+
+        @Override
+        public void onReceivedSslError(XWalkView view,
+                ValueCallback<Boolean> callback, SslError error) {
+            callback.onReceiveValue(mAllowSslError);
+            mTestHelperBridge.onReceivedSsl();
+        }
     }
 
     protected void loadUrlSync(final String url) throws Exception {
@@ -1081,6 +1091,19 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             @Override
             public Bitmap call() throws Exception {
                 return mXWalkView.getFavicon();
+            }
+        });
+    }
+
+    protected void setAllowSslError(boolean allow) {
+        mAllowSslError = allow;
+    }
+
+    protected void clearSslPreferences() throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.clearSslPreferences();
             }
         });
     }
