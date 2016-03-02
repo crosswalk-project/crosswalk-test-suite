@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            + '<p>Test Purpose: </p>'
+            + '<p>Verify fingerprint authentication feature can work well.</p>'
+            + '<p>Test Steps:</p>'
+            + '<p>Click the "Authenticate with fingerprint" button</p>'
+            + '<p>Put your finger on the fingerprint sensor</p>'
+            + '<p>Expected Result: </p>'
+            + '<p>It will firstly notice your with the text "Please put your finger on the sensor"</p>'
+            + '<p>The notice text becomes "Authentication passed!"</p>'
+          +'</font>';
