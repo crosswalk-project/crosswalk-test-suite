@@ -26,32 +26,40 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Yun, Liu<yunx.liu@intel.com>
+        Liu, Yun <yunx.liu@intel.com>
 
 -->
 
-<meta charset="utf-8">
-<title>Display_Standalone</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<body>
-  <p>
-    <strong>Test steps:</strong>
-  </p>
-  <ol>
-    <li>Build a sample app: <br/>
-        $ crosswalk-app create com.example.hello <br/>
-        $ cd com.example.hello <br/>
-        Set "display" to "standalone" in app/manifest.json file <br/>
-        $ crosswalk-app build <br/>
-        Install hello app on deepin <br/>
-        Launch hello app on deepin
-    </li>
-  </ol>
-  <p>
-    <strong>Expected Results:</strong>
-  </p>
-  <ol>
-    <li>Web app could be launched with standalone</li>
-  </ol>
-</body>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/tests.js"></script>
 
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <h4>Precondition</h4>
+  <ol>
+    <li>Please refer to README file</li>
+  </ol>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Launch the web app named "starturl_http"</li>
+  </ol>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Purpose:</p>
+  <p>Validate if app can be started with http</p>
+  <p>Expected Result:</p>
+  <ol>
+    <li>Baidu Home is opened</li>
+  </ol>
+</div>
