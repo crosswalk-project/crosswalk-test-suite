@@ -839,3 +839,14 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, clearSslPreferences method
 * ResourceClient interface: onReceivedSslError method
+
+
+
+### 82. The [XWalkViewWithThemeColorAsync](misc/XWalkViewWithThemeColorAsync.java) sample demonstrates XWalkView can support theme-color meta tag by setting ENABLE_THEME_COLOR, include:
+
+* XWalkView can set style value
+* XWalkView can get style value
+
+This usecase covers following interface and methods:
+
+* XWalkPreferences interface: getBooleanValue, setValue
