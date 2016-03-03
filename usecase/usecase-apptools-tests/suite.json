@@ -18,14 +18,13 @@
         "README.md": "README.md",
         "samples-android": "samples",
         "testapp": "testapp",
-        "inst.apk.py": "inst.apk.py",
+        "inst.apk.py": "inst.py",
         "tests.android.xml": "tests.xml",
         "tools": "tools"
       },
       "subapp-list": {
         ".": {
           "app-name": "usecase-apptools-tests",
-          "apk-common-opts": "--enable-remote-debugging",
           "blacklist": [
             "*",
             ".git"
@@ -39,11 +38,151 @@
             "tests.android.xml": "tests.xml"
           }
         },
-        "samples-android/ManifestVersionName/res": {
+        "testapp/basicapp": {
           "apk-type": "MANIFEST",
           "copylist": {
-            "../../../testapp/start_url/index.html": "index.html"
+            "../start_url/index.html": "index.html"
           }
+        },
+        "testapp/manifestversionname": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestkeepingscreenon": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestdisplay/fullscreen": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestdisplay/standalone": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/remotedebugging": {
+          "apk-common-opt": "--enable-remote-debugging",
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestusingbetterfittingsizeicon": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestwebp": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestcommandline/enableremotedebugging": {
+          "apk-common-opt": "--enable-remote-debugging",
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestcommandline/disablewebgl": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifestcommandline/enablewebgl": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifestorientation/any": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestorientation/natural": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestorientation/portrait": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestorientation/portraitprimary": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestorientation/portraitsecondary": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestorientation/landscape": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestorientation/landscapeprimary": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestorientation/landscapesecondary": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/contactextension": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifestanimatableview/disableanimatableview": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestanimatableview/enableanimatableview": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestbackgroundcolor": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/customicon": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/starturlhttp": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifestpermissions/disablecamera": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifestpermissions/enablecamera": {
+          "apk-type": "MANIFEST"
         }
       }
     },
