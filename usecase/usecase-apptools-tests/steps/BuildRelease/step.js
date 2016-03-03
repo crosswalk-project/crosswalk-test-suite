@@ -1,0 +1,11 @@
+var step = '<p>Purpose:</p>'
+            +'<p>Verifies "apptoolsoptions" app can run successfully</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Find the "apptoolsoptions" app successfully</li>'
+            +'<li>Launch the "apptoolsoptions" app successfully</li>'
+            +'<li>You can see "This is a Crosswalk Sample Application" on the device</li>'
+            +'<li>Unistall the "apptoolsoptions" app successfully when the app running</li>'
+            +'<li>Stop the "apptoolsoptions" app successfully</li>'
+            +'<li>Unistall the "apptoolsoptions" app successfully</li>'
+            +'</ol>';

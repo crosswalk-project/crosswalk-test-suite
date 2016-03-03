@@ -45,15 +45,19 @@ Authors:
 <div class="content">
   <h4>Precondition</h4>
   <ol>
-    <li>Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'. Install crosswalk-app by run command: $ npm install -g crosswalk-app-tools, $ npm install -g crosswalk-app-tools-backend-ios</li>
+    <li>Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-pkg'.</br>
+        Install AppTools and iOS backend by run command:</br>
+        &nbsp; &nbsp; $ npm install -g crosswalk-app-tools</br>
+        &nbsp; &nbsp; $ npm install -g crosswalk-app-tools-backend-ios
+    </li>
   </ol>
   <h4>Test Steps</h4>
   <ol>
     <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</br>
       Then run below commands under usecase-apptools-tests/tools/ directory:</br>
-      $ crosswalk-app create org.test.foo</br>
+      New org.test.foo folder<br/>
       $ cd org.test.foo</br>
-      $ crosswalk-app build
+      $ crosswalk-pkg --platforms=ios --manifest="org.test.foo" ./
     </li>
     <li>Connect your iOS device to your iMac, Open iTunes->"Your Device"->Apps</br>
       Double click foo app. Click "Install" button of foo app on iTunes
@@ -63,6 +67,12 @@ Authors:
     <li>Check the homepage of foo app</li>
     <li>Close foo app via clicking the home button, and kill foo app from Task Manager</li>
     <li>Long press the icon of foo app to uninstall it</li>
+    <li>
+      Uninstall AppTools and iOS backend by run command:<br/>
+      &nbsp; &nbsp; $ sudo npm uninstall -g crosswalk-app-tools<br/>
+      &nbsp; &nbsp; $ sudo npm uninstall -g crosswalk-app-tools-backend-ios<br/>
+      Set environment PATH or invoke with "crosswalk-app-tools/src/crosswalk-pkg" directory
+    </li>
   </ol>
 </div>
 <div class="footer">
@@ -80,5 +90,6 @@ Authors:
     <li>You can see "This is a Crosswalk Sample Application" on the page</li>
     <li>Stop the foo app successfully</li>
     <li>Unistall the foo app successfully</li>
+    <li>Uninstall AppTools and set the env successfully</li>
   </ol>
 </div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Liu, Yun <yunx.liu@intel.com>
+
+-->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/tests.js"></script>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <h4>Precondition</h4>
+  <ol>
+    <li>Please refer to README file</li>
+  </ol>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Find "basicapp" app in depin</li>
+    <li>Launch "basicapp" app in depin</li>
+    <li>Check the homepage of "basicapp" app</li>
+    <li>Uninstall the app by typing "dpkg -P $pkgName" on the command line when the app running</li>
+    <li>Install and launch the "basicapp" app again. Close "basicapp" app via clicking the close button, and run command: $ ps -ef | grep basicapp |awk '{print $2}' |xargs -I% kill -9 %</li>
+    <li>Uninstall "basicapp" app</li>
+  </ol>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Purpose:</p>
+  <p>Verifies "basicapp" app can run successfully</p>
+  <p>Expected Result:</p>
+  <ol>
+    <li>Find the "basicapp" app successfully</li>
+    <li>Launch the "basicapp" app successfully</li>
+    <li>You can see "This is a Crosswalk Sample Application" on the page</li>
+    <li>Unistall the "basicapp" app successfully when the app running</li>
+    <li>Stop the "basicapp" app successfully</li>
+    <li>Unistall the "basicapp" app successfully</li>
+  </ol>
+</div>
