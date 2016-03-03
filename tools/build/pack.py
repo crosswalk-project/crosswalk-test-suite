@@ -35,6 +35,7 @@ import sys
 import json
 import subprocess
 import commands
+import platform
 from optparse import OptionParser
 
 import build_android
@@ -47,7 +48,10 @@ import varshop
 import utils
 
 reload(sys)
-sys.setdefaultencoding('utf8')
+if platform.system() == "Windows":
+    sys.setdefaultencoding('gbk')
+else:
+    sys.setdefaultencoding('utf8')
 
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
