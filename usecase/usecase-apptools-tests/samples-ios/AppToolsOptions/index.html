@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2014 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -45,15 +45,17 @@ Authors:
 <div class="content">
   <h4>Precondition</h4>
   <ol>
-    <li>Please refer to README file</li>
+    <li>Please refer to README file</br>
+        Make sure the UUID of your iOS device is registered by developer account
+    </li>
   </ol>
   <h4>Test Steps</h4>
   <ol>
     <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</br>
       Then run below commands under usecase-apptools-tests/tools/ directory:</br>
-      $ crosswalk-app create org.test.foo</br>
+      New org.test.foo folder<br/>
       $ cd org.test.foo</br>
-      $ crosswalk-app build
+      $ crosswalk-pkg --platforms=ios --manifest="org.test.foo" ./
     </li>
     <li>Connect your iOS device to your iMac, Open iTunes->"Your Device"->Apps</br>
       Double click foo app. Click "Install" button of foo app on iTunes
@@ -73,7 +75,7 @@ Authors:
   <p>Verifies foo app can run successfully</p>
   <p>Expected Result:</p>
   <ol>
-    <li>Create/Build org.test.foo successfully</li>
+    <li>Build org.test.foo successfully</li>
     <li>Install the foo app successfully</li>
     <li>Find the foo app successfully</li>
     <li>Launch the foo app successfully</li>
