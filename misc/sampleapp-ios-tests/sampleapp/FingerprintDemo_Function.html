@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,44 +24,38 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Zhong, Qiu <zhongx.qiu@intel.com>
-
 -->
 
 <meta charset="utf-8">
-<title>InAppPurchaseDemo_Build</title>
+<title>FingerprintDemo_Function</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Qiu Zhong" href="mailto:zhongx.qiu@intel.com">
 <body>
   <p>
-    <strong>Precondition:</strong>
-  </p>
-  <ol>
-    <li>Apple Mac OS X system</li>
-    <li>Xcode 7.1+ installed</li>
-    <li>Valid Apple Developer Account configured correctly in Xcode</li>
-    <li>CocoaPods dependency manager for Xcode project installed</li>
-  </ol>
+    <strong>Pre-condition</strong>
+    <p>
+      Before run the FingerprintDemo, please first set a touch ID lock for an iOS device.<br />
+    </p>
   <p>
     <strong>Test steps:</strong>
   </p>
   <ol>
-    <li>Clone the <strong>crosswalk-samples</strong> repository:<br />
-      <pre>$ git clone https://github.com/crosswalk-project/crosswalk-samples.git
-      </pre>
+    <li>Build the project, please refer to <a href="FingerprintDemo_Build.html">Build FingerprintDemo project</a>
     </li>
-    <li>Run the following commands to build the project:<br/>
-      <pre>$ cd crosswalk-samples/in-app-purchase/iOS<br />$ pod install<br />$ open InAppPurchaseDemo.xcworkspace
-      </pre>
-    </li>
-    <li>Select the project "InAppPurchaseDemo" --&gt; set the active scheme --&gt; InAppPurchaseDemo --&gt; &lt;iOS Device&gt; -- &gt; Product --&gt; Build</li>
+    <li>Connect the iOS device to the Mac OS X system. In Xcode, select <strong>Product</strong> --&gt <strong>Run</strong> to launch the app on the iOS device</li>
+    <li>Check the UI of app FingerprintDemo</li>
+    <li>Click <strong>Authenticate with fingerprint</strong> button</li>
+    <li>Put your finger on the touch ID sensor of the iOS device</li>
   </ol>
   <p>
     <strong>Expected Results:</strong>
   </p>
   <ol>
-    <li>Open the app named "Xcode" and display one project named like "InAppPurchaseDemo" on the left</li>
-    <li>Display message "Build Succeeded"</li>
+    <li>Message <strong>Build Succeeded</strong> displays on Xcode</li>
+    <li>An app named <strong>FingerprintDemo</strong> launches successfully, and no error message, no crash</li>
+    <li>There is a button <strong>Authenticate with fingerprint</strong> on the app UI</li>
+    <li>A dialog popups to ask your put your finger on the touch ID sensor</li>
+    <li>The dialog disappears and a new line text <strong>Autentication passed!</strong> appears below the button.</li>
+    </li>
   </ol>
 </body>
