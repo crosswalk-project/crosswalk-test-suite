@@ -101,11 +101,11 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
         else:
             common_opts += " -r "
     #workaround for XWALK-4042
-    common_opts = common_opts.replace(' -r ','')
+    #common_opts = common_opts.replace(' -r ','')
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-ext-opt")
     if tmp_opt:
-        ext_opt = [os.path.join(BUILD_ROOT_SRC, tmp_opt)]
+        ext_opt = tmp_opt
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-version-opt")
     if tmp_opt:
@@ -259,20 +259,10 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
                 os.chdir(orig_dir)
                 return False
 
-        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows -m  %s %s" \
-            % (crosswalk_app_tools, CROSSWALK_VERSION, manifest_opt, app_src)
-
-        #if os.path.exists(os.path.join(app_src, "icon.ico")):
-        #    build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows -m " \
-        #            "\"{\"\"\"icons\"\"\": [{\"\"sizes\"\": \"\"72x72\"\",\"\"src\"\": \"\"icon.ico\"\"}], \"\"\"name\"\"\": \"\"\"%s\"\"\", " \
-        #            "\"\"\"xwalk_package_id\"\"\": \"\"\"%s\"\"\"}\" %s" % (crosswalk_app_tools, CROSSWALK_VERSION, app_name, pkg_name, app_src)
-
-        #else:
-        #    build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows -m " \
-        #            "\"{\"\"\"name\"\"\": \"\"\"%s\"\"\", " \
-        #            "\"\"\"xwalk_package_id\"\"\": \"\"\"%s\"\"\"}\" %s" % (crosswalk_app_tools, CROSSWALK_VERSION, app_name, pkg_name, app_src)
+        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows -m  %s %s %s" \
+            % (crosswalk_app_tools, CROSSWALK_VERSION, manifest_opt, common_opts, app_src)
     else:
-        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows %s" % (crosswalk_app_tools, CROSSWALK_VERSION, app_src)
+        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows %s %s" % (crosswalk_app_tools, CROSSWALK_VERSION, common_opts, app_src)
 
 
     print build_cmd
