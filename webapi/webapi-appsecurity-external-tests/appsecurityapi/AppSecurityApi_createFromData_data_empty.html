@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Zhu, YongyongX <yongyongx.zhu@intel.com>
+
+-->
+
+<meta charset='utf-8'>
+<title>Secure Data Test: AppSecurityApi_createFromData_data_empty</title>
+<link rel="author" title="Intel" href="http://www.intel.com/">
+<link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="../../../cordova.js"></script>
+<script src="js/appSecurityApi_XW.js"></script>
+<div id="log"></div>
+<script type="text/javascript">
+
+var error_code_bad_data = 7
+setTimeout(function() { test(); }, 500);
+
+
+function test() {
+  async_test(function(t) {
+    //the pin number secure data instance.
+    var extraKeySD = null;
+    try{
+      intel.security.secureData.createFromData(
+        function(instanceID) {
+          t.step(function() {
+            assert_unreached("createFromData should fail");
+          });
+          t.done();
+        },
+        function(errorObj) {
+          t.step(function() {
+            assert_equals(errorObj.code, error_code_bad_data, "Check if bad data, tag or or extra key length provided");
+          });
+          t.done();
+        },
+        {'data': '', 'noRead': true, 'noStore': true}
+      );
+    } catch (e){
+      assert_true(false, "Exception: {" + e.message + "}");
+    }
+  }, document.title);
+}
+
+</script>
+
