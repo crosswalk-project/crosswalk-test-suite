@@ -849,3 +849,15 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkPreferences interface: getBooleanValue, setValue
+
+
+
+### 83. The [XWalkViewWithShouldInterceptLoadRequest](client/XWalkViewWithShouldInterceptLoadRequest.java) sample demonstrates XWalkResourceClient API shouldInterceptLoadRequest can work, include:
+
+* XWalkView can set resource client
+* shouldInterceptLoadRequest can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setResourceClient methods
+* ResourceClient interface: shouldInterceptLoadRequest method
