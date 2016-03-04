@@ -26,31 +26,29 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-             IVAN CHEN <yufeix.chen@intel.com>
+    IVAN CHEN <yufeix.chen@intel.com>
+    Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
-<meta charset='utf-8'>
-<title>Crosswalk_CopyAndPaste_SelectOneChar_Copy</title>
+<title>Crosswalk_UseChromeBlacklist_WebGLSupport_ARM</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <p>
 <strong>Test steps:</strong>
 </p>
 <ol>
-<li>Launch app "web_support_copyandpaste_tests"</li>
-<li>Long press text in "Select fields" field.</li>
-<li>Select one charset, such as "O"</li>
-<li>Click "copy" button</li>
-<li>Long press "Paste fields" input box</li>
-<li>Click "paste"</li>
+<li>Install one Chrome binay(could be chrome 32)</li>
+<li>For android: Open "chrome://gpu" and verfiy WebGL is enable or not</li>
+  * For windows: Open "http://get.webgl.org/" and verfiy WebGL is enable or not
+<li>Launch app "use_chrome_blacklist_tests"</li>
+<li>Click "Click me to access WebGL"</li>
 </ol>
 <p>
 <strong>Expected Output:</strong>
 </p>
 <ol>
-<li>The web app launched successfully.</li>
-<li>The charest is selected</li>
-<li>Function button is hidden and interface display normal</li>
-<li>Popup function button, including paste and so on</li>
-<li>Text is pasted into "Paste fields" field and the content correctly.</li>
+<li>The chrome installed successfully</li>
+<li>The interface dispaly normal</li>
+<li>The webapp launched successfully</li>
+<li>The result is same as step2, show "Your browser supports WebGL"</li>
 </ol>

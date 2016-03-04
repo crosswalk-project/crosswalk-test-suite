@@ -27,25 +27,44 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
              IVAN CHEN <yufeix.chen@intel.com>
+             Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
 <meta charset='utf-8'>
-<title>Crosswalk_CopyAndPaste_Copy_PhoneNumber</title>
+<title>Crosswalk_CopyAndPaste_Copy_SeveralCopies</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <p>
 <strong>Test steps:</strong>
 </p>
 <ol>
-<li>Launch webapp "web_support_copyandpaste_tests"</li>
-<li>Launch app by icon or command</li>
-<li>Long press text in "Select Phone" field.</li>
+<li>Launch app "web_support_copyandpaste_tests"</li>
+<li>Copy some charsets in "Select fields" field</li>
+<li>Enter the HomeScreen</li>
+<li>Launch app "web_support_pasted_tests"</li>
+<li>Paste the text content to the "Paste fields" input box</li>
+<li>Launch app "web_support_copyandpaste_tests"</li>
+<li>Copy some charset in the "Select fields" field</li>
+<li>Enter the HomeScreen</li>
+<li>For android, launch native app "Message" by icon and compose a new message</li>
+  * For windows, new a text document and open it with "Notepad"
+<li>Paste the text content</li>
+  * Note: Copy/Paste option could be launched by long press or hotkey Ctrl+C/Ctrl+V
+<li>Repeat many times step1-step10</li>
 </ol>
 <p>
 <strong>Expected Output:</strong>
 </p>
 <ol>
-<li>The web app launched successfully.</li>
-<li>* If not support copy, interface display normal and webApp,crosswalk and OS shouldn't crash</li>
-    * If support copy, should copy and paste photo successfully
+<li>The web app "web_support_copyandpaste_tests" is launched successfully</li>
+<li>Copy the text successfully and interface display normal</li>
+<li>Back to HomeScreen</li>
+<li>The web app "web_support_pasted_tests" is launched successfully</li>
+<li>Text is pasted into the "Paste fields" field and the content is correctly</li>
+<li>The web app "web_support_copyandpaste_tests" is launched successfully.</li>
+<li>Copy the text successfully and interface display normal</li>
+<li>Back to HomeScreen</li>
+<li>The app is launched successfully</li>
+<li>Text is pasted correctly</li>
+<li>WebApp,crosswalk and OS shouldn't crash.</li>
 </ol>

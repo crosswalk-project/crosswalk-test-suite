@@ -26,32 +26,36 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-             IVAN CHEN <yufeix.chen@intel.com>
+    Shen,Lin <linx.a.shen@intel.com>
 
 -->
 
-<meta charset='utf-8'>
-<title>Crosswalk_CopyAndPaste_Selected_Copy</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<p>
-<strong>Test steps:</strong>
-</p>
-<ol>
-<li>Launch app "web_support_copyandpaste_tests"</li>
-<li>Long press text in "Select fields" field.</li>
-<li>Select some charset</li>
-<li>Click "copy" button</li>
-<li>Long press "Paste fields" input box</li>
-<li>Click "paste"</li>
-</ol>
-<p>
-<strong>Expected Output:</strong>
-</p>
-<ol>
-<li>The web app launched successfully.</li>
-<li>Popup function buttons,including copy and so on</li>
-<li>The charest is selected</li>
-<li>Function button is hidden and interface display normal</li>
-<li>Popup function button, including paste and so on</li>
-<li>Text is pasted into "Paste fields" field and the content correctly.</li>
-</ol>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Crosswalk_WebApp_VKB_Rotation</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+  </head>
+  <body>
+    <p>
+      <strong>Test steps:</strong>
+    </p>
+    <ol>
+      <li>Launch webapp "web_support_copyandpaste_tests"</li>
+      <li>Click input box</li>
+      <li>Click characters on keyboard</li>
+      <li>Change the rotation between landscape and portrait</li>
+      <li>Continue to input characters in VKB during rotation changed</li>
+    </ol>
+    <p>
+      <strong>Expected Output:</strong>
+    </p>
+    <ol>
+      <li>App could be launched successfully</li>
+      <li>Popup keyboard when click input box</li>
+      <li>Characters could be displayed in the input box and correctly</li>
+      <li>VKB rotation changed between landscape and portrait accordingly</li>
+      <li>Characters could be displayed in the input box and correctly after rotation change</li>
+    </ol>
+  </body>
+</html>
