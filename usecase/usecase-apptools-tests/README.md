@@ -8,9 +8,9 @@ This test suite is for usecase-apptools-tests
 
 2. Install nodeunit: sudo npm install nodeunit -g
 
-3. Download crosswalk-app-tools to usecase-apptools-tests/tools, then install npm
+3. Download crosswalk-app-tools, then install npm
 
-  3.1 cd tools, then download source code from https://github.com/crosswalk-project/crosswalk-app-tools
+  3.1 Download source code from https://github.com/crosswalk-project/crosswalk-app-tools
 
   3.2 Run commands: cd crosswalk-app-tools, then run: npm install
 
@@ -29,13 +29,13 @@ This test suite is for usecase-apptools-tests
 
   3.1 export ANDROID_HOME=$(dirname $(dirname $(which android)))
 
-  3.2 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-sampleapp-tests/tools
+  3.2 Set CROSSWALK_APP_TOOLS_CACHE_DIR env
 
 4. Environment variable configuration on Windows:
 
   4.1 Set ANDORID_HOME env
 
-  4.2 Set CROSSWALK_APP_TOOLS_CACHE_DIR env to /path/to/opt/apptools-sampleapp-tests/tools
+  4.2 Set CROSSWALK_APP_TOOLS_CACHE_DIR env
 
 
 ## Precondition for AppTools on Windows

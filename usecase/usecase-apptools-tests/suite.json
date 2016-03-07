@@ -262,10 +262,86 @@
       "copylist": {
         "README.md": "README.md",
         "samples-windows": "samples",
+        "testapp": "testapp",
         "tests.windows.xml": "tests.xml",
         "tools": "tools"
       },
-      "pkg-app": {}
+      "subapp-list": {
+        ".": {
+          "app-name": "usecaseapptoolstests",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "testapp": "testapp",
+            "samples-windows": "samples",
+            "steps": "steps",
+            "tests.windows.xml": "tests.xml"
+
+          }
+        },
+        "testapp/basicapp": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/buildrelease": {
+          "apk-common-opt": "-r",
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/remotedebugging": {
+          "apk-common-opt": "--enable-remote-debugging",
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/vendorcustom": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestversionname": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestcommandline/enableremotedebugging": {
+          "apk-common-opt": "--enable-remote-debugging",
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestcommandline/disablewebgl": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifestcommandline/enablewebgl": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifestdisplay/fullscreen": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestdisplay/standalone": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/starturlhttp": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifestextension": {
+          "apk-type": "MANIFEST"
+        }
+      }
     }
   },
   "pkg-name": "usecase-apptools-tests"
