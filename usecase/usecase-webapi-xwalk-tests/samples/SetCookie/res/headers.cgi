@@ -25,15 +25,13 @@
 #NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-echo "Connection: Keep-Alive"
-echo "Content-Encoding: gzip"
-echo "Content-Length: 1449"
-echo "Content-Type: text/html"
-echo "Date: Sat, 26 Dec 2015 08:10:10 GMT"
-echo "Last-Modified: Fri, 25 Dec 2015 07:05:59 GMT"
 echo "Server: Mongoose/1.3 (Linux)"
-echo "Set-Cookie: theme=light"
-echo "Set-Cookie: user_session=abc123; expires=Sat, 09-Jan-2016 23:59:59 GMT; path=/"
+echo "Date: 26 Dec 2015 08:10:10 GMT"
+echo "Last-Modified: Fri, 25 Dec 2015 07:05:59 GMT"
+echo "Content-Type: text/plain"
 echo "Vary: Accept-Encoding"
+echo "Set-Cookie: user_session=abc123; expires=Fri, 13 Mar 2016 08:59:12 GMT; path=/"
+echo "Set-Cookie: theme=light"
+echo "Expires: Fri, 04 Mar 2016 02:36:44 GMT"
 echo
 echo "TEST"

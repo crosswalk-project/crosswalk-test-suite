@@ -32,9 +32,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
 <body onload="oninit()">
   <ul>
-    <li>Content-Length:<span id="clength" style="color:green;"></span></li>
     <li>Content-Type:<span id="ctype" style="color:green;"></span></li>
     <li>Date:<span id="date" style="color:green;"></span></li>
+    <li>Expires:<span id="expires" style="color:green;"></span></li>
     <li>Last-Modified:<span id="lmodified" style="color:green;"></span></li>
     <li>Server:<span id="server" style="color:green;"></span></li>
     <li>Set-Cookie:<span id="cookie" style="color:green;"></span></li>
@@ -42,9 +42,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
   <script>
     function oninit() {
-      var txtCLength = document.getElementById("clength");
       var txtType = document.getElementById("ctype");
       var txtDate = document.getElementById("date");
+      var txtExpires = document.getElementById("expires");
       var txtLModified = document.getElementById("lmodified");
       var txtServer = document.getElementById("server");
       var txtCookie = document.getElementById("cookie");
@@ -53,7 +53,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       var url = "http://127.0.0.1:8081/opt/usecase-webapi-xwalk-tests/res/setcookie/headers.cgi";
       request.onreadystatechange = function() {
         if(request.readyState == 4) {
-          txtCLength.textContent = request.getResponseHeader("Content-Length");
+          txtExpires.textContent = request.getResponseHeader("Expires");
           txtType.textContent = request.getResponseHeader("Content-Type");
           txtDate.textContent = request.getResponseHeader("Date");
           txtLModified.textContent = request.getResponseHeader("Last-Modified");
