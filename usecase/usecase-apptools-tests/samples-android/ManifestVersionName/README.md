@@ -2,4 +2,4 @@
 
 This sample demonstrates App-tools feature basic functionalities, include:
 
-* Project can be built with native crosswalk-pkg
+* VersionName is from manifest version code

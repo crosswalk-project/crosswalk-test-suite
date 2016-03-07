@@ -1,0 +1,13 @@
+var step = '<p>Purpose:</p>'
+            +'<p>Verifies app of Windows 10 could be launched on Windows 8.1</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Build org.test.foo successfully</li>'
+            +'<li>Install the foo app successfully</li>'
+            +'<li>Find the foo app successfully</li>'
+            +'<li>Launch the foo app successfully</li>'
+            +'<li>You can see "This is a Crosswalk Sample Application" on the device</li>'
+            +'<li>Unistall the foo app successfully when the app running</li>'
+            +'<li>Stop the foo app successfully</li>'
+            +'<li>Unistall the foo app successfully</li>'
+            +'</ol>';
