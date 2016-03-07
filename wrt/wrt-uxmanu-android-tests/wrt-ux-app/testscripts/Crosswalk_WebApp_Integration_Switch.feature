@@ -7,8 +7,7 @@ Feature: wrt-ux-app
     And launch "wrt-ux-app"
    Then I should see title "test"
     And I press "recent" hardware key
-    And I save relative view "className=android.widget.ImageView" on the "right" side of view "text=touch_gesture_click" to object "touch_app"
-    And I click saved object "touch_app"
+    And I click view "description=touch_gesture_click"
    Then I should see view "description=W3C" in 30 seconds
     And I wait 5 seconds
     And I click view "description=Participate"
