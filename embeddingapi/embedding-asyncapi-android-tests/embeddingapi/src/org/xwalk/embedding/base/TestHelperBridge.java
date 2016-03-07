@@ -50,6 +50,7 @@ public class TestHelperBridge {
     private final OnJsConfirmHelper mOnJsConfirmHelper;
     private final OnJsPromptHelper mOnJsPromptHelper;
     private final OnReceivedResponseHeadersHelper mOnReceivedResponseHeadersHelper;
+    private final ShouldInterceptLoadRequestHelper2 mShouldInterceptLoadRequestHelper2;
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -80,7 +81,7 @@ public class TestHelperBridge {
         mOnJsConfirmHelper = new OnJsConfirmHelper();
         mOnJsPromptHelper = new OnJsPromptHelper();
         mOnReceivedResponseHeadersHelper = new OnReceivedResponseHeadersHelper();
-
+        mShouldInterceptLoadRequestHelper2 = new ShouldInterceptLoadRequestHelper2();
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -89,8 +90,18 @@ public class TestHelperBridge {
         return response;
     }
 
+    public XWalkWebResourceResponse shouldInterceptLoadRequest2(String url) {
+        XWalkWebResourceResponse response = mShouldInterceptLoadRequestHelper2.getReturnValue(url);
+        mShouldInterceptLoadRequestHelper2.notifyCalled(url);
+        return response;
+    }
+
     public ShouldInterceptLoadRequestHelper getShouldInterceptLoadRequestHelper() {
         return mShouldInterceptLoadRequestHelper;
+    }
+
+    public ShouldInterceptLoadRequestHelper2 getShouldInterceptLoadRequestHelper2() {
+        return mShouldInterceptLoadRequestHelper2;
     }
 
     public OnProgressChangedHelper getOnProgressChangedHelper() {

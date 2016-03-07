@@ -36,6 +36,7 @@ import org.xwalk.core.XWalkNavigationItem;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkSettings;
 import org.xwalk.embedding.MainActivity;
+import org.xwalk.core.XWalkWebResourceResponse;
 
 import com.test.server.ActivityInstrumentationTestCase2;
 
@@ -83,6 +84,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected XWalkView mRestoreXWalkView;
     protected MainActivity mainActivity;
     protected TestWebServer mWebServer;
+	protected TestXWalkResourceClient mTestXWalkResourceClient;
     protected boolean mAllowSslError = true;
     protected XWalkCookieManager mCookieManager;
     protected final TestHelperBridge mTestHelperBridge = new TestHelperBridge();
@@ -127,7 +129,8 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 mRestoreXWalkView = new XWalkView(getActivity(), getActivity());
                 mXWalkView = mainActivity.getXWalkView();
                 mXWalkView.setUIClient(new TestXWalkUIClient());
-                mXWalkView.setResourceClient(new TestXWalkResourceClient());
+                mTestXWalkResourceClient = new TestXWalkResourceClient();
+                mXWalkView.setResourceClient(mTestXWalkResourceClient);
             }
         });
     }
@@ -1075,5 +1078,13 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 mXWalkView.clearSslPreferences();
             }
         });
+    }
+
+    protected XWalkWebResourceResponse stringToWebResourceResponse2(String input) throws Throwable {
+        final String mimeType = "text/html";
+        final String encoding = "UTF-8";
+
+        return mTestXWalkResourceClient.createXWalkWebResourceResponse(
+                mimeType, encoding, new ByteArrayInputStream(input.getBytes(encoding)));
     }
 }

@@ -47,6 +47,12 @@ public class TestXWalkResourceClientBase extends XWalkResourceClient{
     }
 
     @Override
+    public XWalkWebResourceResponse shouldInterceptLoadRequest(XWalkView view,
+            XWalkWebResourceRequest request) {
+        return mInnerContentsClient.shouldInterceptLoadRequest2(request.getUrl().toString());
+    }
+
+    @Override
     public boolean shouldOverrideUrlLoading(XWalkView view, String url) {
         return mInnerContentsClient.shouldOverrideUrlLoading(url);
     }
