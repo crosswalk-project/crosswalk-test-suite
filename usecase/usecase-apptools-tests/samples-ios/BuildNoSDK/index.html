@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset="utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/main.css">
 <script src="../../js/jquery-2.1.3.min.js"></script>
@@ -45,33 +45,24 @@ Authors:
 <div class="content">
   <h4>Precondition</h4>
   <ol>
-    <li>Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-pkg'.</br>
-        Install AppTools and iOS backend by run command:</br>
-        &nbsp; &nbsp; $ npm install -g crosswalk-app-tools</br>
-        &nbsp; &nbsp; $ npm install -g crosswalk-app-tools-backend-ios
+    <li>Please refer to README file</br>
+        Make sure the UUID of your iOS device is registered by developer account
     </li>
   </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</br>
-      Then run below commands under usecase-apptools-tests/tools/ directory:</br>
-      New org.test.foo folder<br/>
-      $ cd org.test.foo</br>
-      $ crosswalk-pkg --platforms=ios --manifest="org.test.foo" ./
+    <li>Rename SDK root directory with below commands: <br/>
+        $ sdkroot=`xcrun --show-sdk-platform-path`<br/>
+        $ sudo mv $sdkroot $sdkroot"_bat"
     </li>
-    <li>Connect your iOS device to your iMac, Open iTunes->"Your Device"->Apps</br>
-      Double click foo app. Click "Install" button of foo app on iTunes
-    </li>
-    <li>Click "Apply" button at the lower right corner of iTunes. Check icon of foo app in your iOS device</li>
-    <li>Launch foo app in your iOS device</li>
-    <li>Check the homepage of foo app</li>
-    <li>Close foo app via clicking the home button, and kill foo app from Task Manager</li>
-    <li>Long press the icon of foo app to uninstall it</li>
     <li>
-      Uninstall AppTools and iOS backend by run command:<br/>
-      &nbsp; &nbsp; $ sudo npm uninstall -g crosswalk-app-tools<br/>
-      &nbsp; &nbsp; $ sudo npm uninstall -g crosswalk-app-tools-backend-ios<br/>
-      Set environment PATH or invoke with "crosswalk-app-tools/src/crosswalk-pkg" directory
+        New com.example.nosdk folder<br/>
+        $ cd com.example.nosdk</br>
+        $ crosswalk-pkg --platforms=ios --manifest="com.example.nosdk" ./
+    </li>
+    <li>
+        Rename back SDK root directory with below command: <br/>
+        $ sudo mv $sdkroot"_bat" $sdkroot 
     </li>
   </ol>
 </div>
@@ -80,16 +71,11 @@ Authors:
 </div>
 <div class="modal fade" id="popup_info">
   <p>Purpose:</p>
-  <p>Verifies foo app can run successfully</p>
+  <p>Validate the App Tool will build fail if there's no SDK</p>
   <p>Expected Result:</p>
   <ol>
-    <li>Create/Build org.test.foo successfully</li>
-    <li>Install the foo app successfully</li>
-    <li>Find the foo app successfully</li>
-    <li>Launch the foo app successfully</li>
-    <li>You can see "This is a Crosswalk Sample Application" on the page</li>
-    <li>Stop the foo app successfully</li>
-    <li>Unistall the foo app successfully</li>
-    <li>Uninstall AppTools and set the env successfully</li>
+    <li>Rename SDK root directory successfully</li>
+    <li>Build app failed</li>
+    <li>Rename back SDK root directory successfully</li>
   </ol>
 </div>

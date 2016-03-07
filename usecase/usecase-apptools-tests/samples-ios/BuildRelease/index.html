@@ -45,10 +45,8 @@ Authors:
 <div class="content">
   <h4>Precondition</h4>
   <ol>
-    <li>Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-pkg'.</br>
-        Install AppTools and iOS backend by run command:</br>
-        &nbsp; &nbsp; $ npm install -g crosswalk-app-tools</br>
-        &nbsp; &nbsp; $ npm install -g crosswalk-app-tools-backend-ios
+    <li>Please refer to README file</br>
+        Make sure the UUID of your iOS device is registered by developer account
     </li>
   </ol>
   <h4>Test Steps</h4>
@@ -57,7 +55,7 @@ Authors:
       Then run below commands under usecase-apptools-tests/tools/ directory:</br>
       New org.test.foo folder<br/>
       $ cd org.test.foo</br>
-      $ crosswalk-pkg --platforms=ios --manifest="org.test.foo" ./
+      $ crosswalk-pkg --platforms=ios --manifest="org.test.foo" --release ./
     </li>
     <li>Connect your iOS device to your iMac, Open iTunes->"Your Device"->Apps</br>
       Double click foo app. Click "Install" button of foo app on iTunes
@@ -67,12 +65,6 @@ Authors:
     <li>Check the homepage of foo app</li>
     <li>Close foo app via clicking the home button, and kill foo app from Task Manager</li>
     <li>Long press the icon of foo app to uninstall it</li>
-    <li>
-      Uninstall AppTools and iOS backend by run command:<br/>
-      &nbsp; &nbsp; $ sudo npm uninstall -g crosswalk-app-tools<br/>
-      &nbsp; &nbsp; $ sudo npm uninstall -g crosswalk-app-tools-backend-ios<br/>
-      Set environment PATH or invoke with "crosswalk-app-tools/src/crosswalk-pkg" directory
-    </li>
   </ol>
 </div>
 <div class="footer">
@@ -83,13 +75,12 @@ Authors:
   <p>Verifies foo app can run successfully</p>
   <p>Expected Result:</p>
   <ol>
-    <li>Create/Build org.test.foo successfully</li>
+    <li>Build org.test.foo successfully</li>
     <li>Install the foo app successfully</li>
     <li>Find the foo app successfully</li>
     <li>Launch the foo app successfully</li>
     <li>You can see "This is a Crosswalk Sample Application" on the page</li>
     <li>Stop the foo app successfully</li>
     <li>Unistall the foo app successfully</li>
-    <li>Uninstall AppTools and set the env successfully</li>
   </ol>
 </div>
