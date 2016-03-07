@@ -192,11 +192,57 @@
       ],
       "copylist": {
         "README.md": "README.md",
+        "inst.deb.py": "inst.py",
         "samples-deb": "samples",
+        "testapp": "testapp",
         "tests.deb.xml": "tests.xml",
         "tools": "tools"
       },
-      "pkg-app": {}
+      "subapp-list": {
+        ".": {
+          "app-name": "usecaseapptoolstests",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "testapp": "testapp",
+            "samples-deb": "samples",
+            "steps": "steps",
+            "tests.deb.xml": "tests.xml"
+          }
+        },
+        "testapp/basicapp": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestdisplay/fullscreen": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestdisplay/standalone": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestdisplay/browser": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/manifestdisplay/minimalui": {
+          "apk-type": "MANIFEST",
+          "copylist": {
+            "../../start_url/index.html": "index.html"
+          }
+        },
+        "testapp/starturlhttp": {
+          "apk-type": "MANIFEST"
+        }
+      }
     },
     "ios": {
       "blacklist": [

@@ -3,45 +3,13 @@
 <test_definition>
   <suite name="usecase-apptools-tests">
     <set name="Build Project" background="brand-primary" icon="glyphicon-asterisk" type="script">
-      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_deb" purpose="AppTools_deb Test" type="compliance">
-        <description>
-          <pre_condition>Please refer to README file.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it. Then run below commands under usecase-apptools-tests/tools/ directory: $ crosswalk-app create org.test.foo, $ cd org.test.foo, $ crosswalk-app build</step_desc>
-              <expected>Success to create/build org.test.foo</expected>
-            </step>
-            <step order="2">
-              <step_desc>Install foo app on depin</step_desc>
-              <expected>Success to install foo app</expected>
-            </step>
-            <step order="3">
-              <step_desc>Find foo app in depin</step_desc>
-              <expected>Success to find foo app</expected>
-            </step>
-            <step order="4">
-              <step_desc>Launch foo app in depin</step_desc>
-              <expected>Success to launch foo app</expected>
-            </step>
-            <step order="5">
-              <step_desc>Check the homepage of foo app</step_desc>
-              <expected>You can see "This is a Crosswalk Sample Application" on the page</expected>
-            </step>
-            <step order="6">
-              <step_desc>Uninstall the app by typing "dpkg -P $pkgName" on the command line when the app running</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-            <step order="7">
-              <step_desc>Install and launch the foo app again. Close foo app via clicking the close button, and run command: $ ps -ef | grep foo |awk '{print $2}' |xargs -I% kill -9 %</step_desc>
-              <expected>Success to stop foo app</expected>
-            </step>
-            <step order="8">
-              <step_desc>Uninstall foo app</step_desc>
-              <expected>Success to uninstall foo app</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_deb/index.html</test_script_entry>
-        </description>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppToolsOptions" purpose="AppToolsOptions Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppToolsHelpUsage" purpose="AppToolsHelpUsage Test">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="ManifestDisplay" purpose="ManifestDisplay Test" subcase="4">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="ManifestStartUrl" purpose="ManifestStartUrl Test">
       </testcase>
     </set>
   </suite>
