@@ -16,6 +16,7 @@ import android.graphics.BitmapFactory;
 
 import org.apache.http.Header;
 import org.apache.http.HttpRequest;
+import org.chromium.content.browser.test.util.CallbackHelper;
 
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import org.xwalk.embedding.util.CommonResources;
@@ -196,5 +197,30 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             e.printStackTrace();
             assertFalse(true);
         }
+    }
+
+    private static class ClearClientCertCallbackHelper extends CallbackHelper
+                                    implements Runnable {
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            notifyCalled();
+        }
+    }
+
+    @SmallTest
+    public void testClearClientCertPreference() throws Throwable {
+        final ClearClientCertCallbackHelper callbackHelper = new ClearClientCertCallbackHelper();
+        int currentCallCount = callbackHelper.getCallCount();
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // Make sure calling clearClientCertPreferences with null callback does not
+                // cause a crash.
+                getXWalkView().clearClientCertPreferences(null);
+                getXWalkView().clearClientCertPreferences(callbackHelper);
+            }
+        });
+        callbackHelper.waitForCallback(currentCallCount);
     }
 }
