@@ -862,3 +862,14 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, setResourceClient methods
 * ResourceClient interface: shouldInterceptLoadRequest method
+
+
+
+### 84. The [XWalkViewWithClearClientCertPreferencesAsync](basic/XWalkViewWithClearClientCertPreferencesAsync.java) sample demonstrates XWalkView can clear client certificate preferences, include:
+
+* XWalkView can clear client certificate preferences
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, clearClientCertPreferences methods
+* ResourceClient interface: onReceivedClientCertRequest method
