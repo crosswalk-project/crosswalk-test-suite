@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2014 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,50 +24,49 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Liu,Yun <yunx.liu@intel.com>
-
 -->
 
 <meta charset="utf-8">
-<title>IAP Test: IAPProduct</title>
+<title>WebAPI: IAP</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="https://crosswalk-project.org/#wiki/A-Possible-Web-IDL-for-IAP">
+<link rel="author" title="Zhong Qiu" href="mailto:zhongx.qiu@intel.com">
+<link rel="help" href="http://www.w3.org/TR/IAP-api/">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="options.js"></script>
 <div id="log"></div>
-<script>
+<script>  
+  at1 = async_test("Check if the navigator.iap.init works well");
+  at2 = async_test("Check if the second navigator.iap.init raise an InvalidStateError");
 
-setup({explicit_done: true});
+  init_promise = navigator.iap.init(options);
 
-var key = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAilsT4AI9UxDvQFhromcryUC5iF4uTO4PN3eRaiZteCeZwFlYTsl+9CzQlcp7JiNFPSgnYKM4QKsfsTRL4DP/oH5vOpSv6qA3GVlOUjKbOjDJlSjvQfXUSwuoLuUYwFZW7AwpPdD5aJytVjqVtIv3o1ZhHATkLyy4O6/kl0HXCAIUmTmfJdwnxHoqPcI0BDWR1qXf/Y+S+fItIFoqaZaCuVQQBqw9zLlt9oJVqq0C4C9fG+ZZFCAwSQi3xb9qMuF5EaPw0oJL/uKNvbcRRkPDo/ud/e3/rabHP0d0g5erwbwlRiu/R62Ds9bs5hIbPLWRGyiHj8Rw3tiIfi/3zrWIcQIDAQAB';
-iap.init(key);
+  at1.step(function() {  
+    init_promise.then(
+      at1.step_func(function() {
+        assert_not_equals(navigator.iap, null, "nagivator.iap is not null.");
+        assert_true(init_promise instanceof Promise, "navigator.iap.init returns a promise");
+        at1.done();
 
-iap.queryProductDetails(["gas", "yearly", "premium"]).then(
-function(products) {
-  [
-    //attributes of the IAPProduct interface
-    ["string", "id"],
-    ["string", "price"],
-    ["string", "title"],
-    ["string", "type"],
-    ["string", "description"]
-  ].forEach(function(attr) {
-    var type = attr[0];
-    var name = attr[1];
+        at2.step(function() {
+          navigator.iap.init(options).then(
+            at2.step_func(function() {
+              assert_unreached("Here should neve be reached!");
+              at2.done();
+            }),
+            at2.step_func(function(error) {
+              assert_equals(error.name, "InvalidStateError", "If the iap has already been initialized, return a Promise rejected with a DOMException named 'InvalidStateError'");
+              at2.done();
+            })
+          );
+        });                
+      }),
 
-    test(function () {
-      assert_true(name in products[0], name + " attribute in IAPProduct");
-      assert_equals(typeof products[0][name], type, name + " attribute of type");
-    }, "Check if IAPProduct." + name + " exists and type of " + type);
-
-    test(function () {
-      assert_not_equals(products[0][name], null, name + " attribute of IAPProduct");
-    }, "Check if IAPProduct." + name + " is valid");
+      at1.step_func(function(error) {
+        assert_unreached("IAP initlialization failed");
+        at2.done();
+      })
+    );
   });
-  done();
-},
-function(error) {});
-
 </script>
+

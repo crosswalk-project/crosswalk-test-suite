@@ -1,56 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite category="W3C/HTML5 APIs" name="webapi-iap-xwalk-tests">
+  <suite category="W3C/HTML5 APIs" name="iapdemo">
     <set name="iap" type="js">
-      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap" priority="P1" purpose="Test Navigator iap" status="approved" type="compliance" subcase="2">
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap" priority="P1" purpose="Test Navigator iap" status="approved" type="compliance" subcase="23">
         <description>
-          <test_script_entry>/opt/webapi-iap-xwalk-tests/iap/Navigator_iap.html</test_script_entry>
+          <test_script_entry>/iap/Navigator_iap.html</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion category="W3C API Specifications" element_name="iap" element_type="property" interface="Navigator" section="Networking" specification="IAP"/>
-            <spec_url>https://crosswalk-project.org/#wiki/A-Possible-Web-IDL-for-IAP</spec_url>
+            <spec_url>https://github.com/crosswalk-project/ios-extensions-crosswalk/blob/master/extensions/InAppPurchase/spec/iap.html</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="InAppPurchase" priority="P1" purpose="Test InAppPurchase interface" status="approved" type="compliance" subcase="6">
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_init" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="2">
         <description>
-          <test_script_entry>/opt/webapi-iap-xwalk-tests/iap/InAppPurchase.html</test_script_entry>
+          <test_script_entry>/iap/Navigator_iap_init_undefined.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="queryProductDetails" element_type="method" interface="InAppPurchase" section="Networking" specification="IAP"/>
-            <spec_url>https://crosswalk-project.org/#wiki/A-Possible-Web-IDL-for-IAP</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="iap" element_type="property" interface="Navigator" section="Networking" specification="IAP"/>
+            <spec_url>https://github.com/crosswalk-project/ios-extensions-crosswalk/blob/master/extensions/InAppPurchase/spec/iap.html</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="IAPProduct" priority="P1" purpose="Test IAPProduct interface" status="approved" type="compliance" subcase="10">
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_init_unsupported" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="1">
         <description>
-          <test_script_entry>/opt/webapi-iap-xwalk-tests/iap/IAPProduct.html</test_script_entry>
+          <test_script_entry>/iap/Navigator_iap_init_unsupported.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="id" element_type="property" interface="IAPProduct" section="Networking" specification="IAP"/>
-            <spec_url>https://crosswalk-project.org/#wiki/A-Possible-Web-IDL-for-IAP</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="iap" element_type="property" interface="Navigator" section="Networking" specification="IAP"/>
+            <spec_url>https://github.com/crosswalk-project/ios-extensions-crosswalk/blob/master/extensions/InAppPurchase/spec/iap.html</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="IAPTransactionDetails" priority="P1" purpose="Test IAPTransactionDetails interface" status="approved" type="compliance" subcase="12">
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_init_unsupported" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="1">
         <description>
-          <test_script_entry>/opt/webapi-iap-xwalk-tests/iap/IAPTransactionDetails.html</test_script_entry>
+          <test_script_entry>/iap/Navigator_iap_init_unsupported.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="orderId" element_type="property" interface="IAPTransactionDetails" section="Networking" specification="IAP"/>
-            <spec_url>https://crosswalk-project.org/#wiki/A-Possible-Web-IDL-for-IAP</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="iap" element_type="property" interface="Navigator" section="Networking" specification="IAP"/>
+            <spec_url>https://github.com/crosswalk-project/ios-extensions-crosswalk/blob/master/extensions/InAppPurchase/spec/iap.html</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_init_error" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="1">
+        <description>
+          <test_script_entry>/iap/Navigator_iap_init_error.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="iap" element_type="property" interface="Navigator" section="Networking" specification="IAP"/>
+            <spec_url>https://github.com/crosswalk-project/ios-extensions-crosswalk/blob/master/extensions/InAppPurchase/spec/iap.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_queryProductsInfo" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="6">
+        <description>
+          <test_script_entry>/iap/Navigator_iap_queryProductsInfo.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="iap" element_type="property" interface="Navigator" section="Networking" specification="IAP"/>
+            <spec_url>https://github.com/crosswalk-project/ios-extensions-crosswalk/blob/master/extensions/InAppPurchase/spec/iap.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>        
     </set>
   </suite>
 </test_definition>

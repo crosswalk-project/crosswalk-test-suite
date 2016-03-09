@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2014 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,46 +24,39 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Liu,Yun <yunx.liu@intel.com>
-
 -->
 
 <meta charset="utf-8">
-<title>IAP Test: IAPTransactionDetails</title>
+<title>WebAPI: IAP</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="https://crosswalk-project.org/#wiki/A-Possible-Web-IDL-for-IAP">
+<link rel="author" title="Zhong Qiu" href="mailto:zhongx.qiu@intel.com">
+<link rel="help" href="http://www.w3.org/TR/IAP-api/">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="options.js"></script>
 <div id="log"></div>
-<script>
+<script>  
 
-setup({explicit_done: true});
+  var wrong_options = {};
+  wrong_options.debug = options.debug;
+  wrong_options.channel = undefined;
+  wrong_options.key = options.key;
+  if (options.channel == "XiaoMi") {
+    wrong_options.id = options.id;
+  }
 
-var key = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAilsT4AI9UxDvQFhromcryUC5iF4uTO4PN3eRaiZteCeZwFlYTsl+9CzQlcp7JiNFPSgnYKM4QKsfsTRL4DP/oH5vOpSv6qA3GVlOUjKbOjDJlSjvQfXUSwuoLuUYwFZW7AwpPdD5aJytVjqVtIv3o1ZhHATkLyy4O6/kl0HXCAIUmTmfJdwnxHoqPcI0BDWR1qXf/Y+S+fItIFoqaZaCuVQQBqw9zLlt9oJVqq0C4C9fG+ZZFCAwSQi3xb9qMuF5EaPw0oJL/uKNvbcRRkPDo/ud/e3/rabHP0d0g5erwbwlRiu/R62Ds9bs5hIbPLWRGyiHj8Rw3tiIfi/3zrWIcQIDAQAB';
-iap.init(key);
-
-iap.buy("gas").then(
-function(transaction) {
-  [
-    //attributes of the IAPTransactionDetails interface
-    ["orderId"], ["packageName"], ["productId"],
-    ["purchaseTime"], ["purchaseState"], ["token"]
-  ].forEach(function(attr) {
-    var name = attr[0];
-
-    test(function () {
-      assert_true(name in transaction, name + " attribute in IAPTransactionDetails");
-      assert_equals(typeof transaction[name], "string", name + " attribute of type");
-    }, "Check if IAPTransactionDetails." + name + " exists and type of " + string);
-
-    test(function () {
-      assert_not_equals(transaction[name], null, name + " attribute of IAPTransactionDetails");
-    }, "Check if IAPTransactionDetails." + name + " is valid");
+  var at1 = async_test("Check if raise an InvalidAccessError if channel is undefined", {timeout: 5000});  
+  var wrong_init_promise = navigator.iap.init(wrong_options);
+  at1.step(function() {
+    wrong_init_promise.then(
+      at1.step_func(function() {
+        assert_unreached("Here should never be reached!");
+        at1.done();
+      }),
+      at1.step_func(function(e) {
+        at1.done();
+      })
+    );
   });
-  done();
-},
-function(error) {});
-
 </script>
+

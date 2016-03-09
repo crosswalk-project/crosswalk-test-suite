@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2014 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -24,29 +24,63 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        Liu,Yun <yunx.liu@intel.com>
-
 -->
 
-<html>
-<head>
 <meta charset="utf-8">
-<title>IAP Test: Navigator - iap</title>
+<title>WebAPI: IAP</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="https://crosswalk-project.org/#wiki/A-Possible-Web-IDL-for-IAP">
+<link rel="author" title="Zhong Qiu" href="mailto:zhongx.qiu@intel.com">
+<link rel="help" href="http://www.w3.org/TR/IAP-api/">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
 
-test(function () {
-  assert_equals(typeof iap, "object", "iap attribute of type");
-}, "Check if readonly Navigator.iap exists and type of object");
+  test(function () {
+    assert_true("navigator" in window, "window has a navigator property");
+  }, "Check if window has a navigator property");
 
-test(function () {
-  assert_not_equals(iap, "undefined", "iap attribute of PerformanceEntry");
-}, "Check if PerformanceEntry.iap is valid");
+  test(function () {
+    assert_true("iap" in navigator, "navigator has a iap property");
+    assert_own_property(navigator, "iap", "navigator has own property iap");
+  }, "Check if navigator has a iap property");
 
+  test(function() {
+    assert_readonly(navigator, "iap", "navigator has readonly property iap");
+  }, "Check if navigator has readonly property iap");
+
+  test(function () {
+    assert_equals(typeof navigator.iap, "object", "iap attribute of type");
+  }, "Check if readonly navigator.iap exists and type of object");
+
+  test(function () {
+    assert_not_equals(navigator.iap, undefined, "iap attribute of Navigator");
+  }, "Check if navigator.iap is valid");
+
+  [
+    ["function", "init"],
+    ["function", "queryProductsInfo"],
+    ["function", "purchase"],
+    ["function", "getReceipt"],
+    ["function", "validateReceipt"],
+    ["function", "restore"]
+  ].forEach(function(attr) {
+    var type = attr[0];
+    var name = attr[1];
+
+    test(function() {
+      assert_true(name in navigator.iap, name + " attribute in navigator.iap");
+      assert_own_property(navigator.iap, name, "navigator.iap has own property " + name);
+    }, "Check if navigator.iap." + name + " exists.");
+
+    test(function() {
+      assert_equals(typeof navigator.iap[name], type, name + " attribute of type");
+      assert_true(navigator.iap[name] instanceof Function, name + " is an instanceof Function");
+    }, "Check if the type of nagivator.iap." + name + " is " + type);
+
+    test(function() {
+      assert_not_equals(navigator.iap[name], null, name + " is not null");
+      assert_not_equals(navigator.iap[name], undefined, name + " is not undefined");
+    }, "Check if navigator.iap." + name + " is valid");
+  });
 </script>

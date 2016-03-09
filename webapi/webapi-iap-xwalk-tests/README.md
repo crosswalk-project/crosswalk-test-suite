@@ -16,10 +16,19 @@ And one needs also to copy the `iap.js` and `iap.json` files to
 `webapi-iap-xwalk-tests/iap` from
 [crosswalk-android-extensions/iap](https://github.com/crosswalk-project/crosswalk-android-extensions/tree/master/iap).
 
+Please login an account for Google Play or Xiaomi Store and make sure you can purchase products before the test. 
+Specially for Google Play, please make sure 
+1. You can connect to Google Play server
+2. Your credit card had been bound to your Google account.
+3. You Google account must be added to the testing group of iapdemo app in the Google Play Developer Console.
+
+All the test cases are required to test on the Android 4.4.2 system.
+
 ## Authors
 
 * Liu, Yun <yunx.liu@intel.com>
 * Wang, Chunyan <chunyanx.wang@intel.com>
+* Qiu, Zhong <zhongx.qiu@intel.com>
 
 ## LICENSE
 
