@@ -1,0 +1,58 @@
+{
+    "pkg-blacklist": [
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "suite.json",
+        "inst.apk.py"
+    ],
+    "pkg-list": {
+        "cordova": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.apk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "blacklist": [],
+                "copylist": {
+                    "extra_plugins/AppSecurityApi": "PACK-TOOL-ROOT/extra_plugins/AppSecurityApi",
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            }
+        },
+        "msi": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "apk-ext-opt": ["opt/webapi-appsecurity-external-tests/windows_crosswalk"],
+                "blacklist": [],
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                    "windows_crosswalk/appSecurityApi_XW.js": "appsecurityapi/js/appSecurityApi_XW.js"
+                }
+            }
+        },
+        "cordova-aio": {
+            "blacklist": [],
+            "copylist": {
+                "PACK-TOOL-ROOT/resources/testharness": "resources",
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+            }
+        }
+    },
+    "pkg-name": "webapi-appsecurity-external-tests"
+}

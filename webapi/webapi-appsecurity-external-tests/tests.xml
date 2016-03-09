@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Cordova Features" name="webapi-appsecurity-external-tests">
+    <set name="AppSecurityApi" type="js">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromData_no_optional" purpose="Test checks if the createFromData can pass without optional parameter">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromData_no_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromData_all_optional" purpose="Test checks if the createFromData can pass with all optional parameters">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromData_all_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromData_noStore_false" purpose="Test checks if the createFromData can fail with extraKey data's noStore is false">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromData_noStore_false.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromData_noRead_false" purpose="Test checks if the createFromData can fail with extraKey data's noRead is false">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromData_noRead_false.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromData_data_below" purpose="Test checks if the createFromData can fail with extraKey data's length is below 4">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromData_data_below.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromData_data_empty" purpose="Test checks if the createFromData can fail with data is empty">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromData_data_empty.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromSealedData_no_optional" purpose="Test checks if the createFromSealedData can pass without optional parameter">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromSealedData_no_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromSealedData_all_optional" purpose="Test checks if the createFromSealedData can pass with all optional parameters">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromSealedData_all_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromSealedData_noStore_false" purpose="Test checks if the createFromSealedData can fail with extraKey data's noStore is false">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromSealedData_noStore_false.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromSealedData_noRead_false" purpose="Test checks if the createFromSealedData can fail with extraKey data's noRead is false">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromSealedData_noRead_false.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromSealedData_data_below" purpose="Test checks if the createFromSealedData can fail with extraKey data's length is below 4">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromSealedData_data_below.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromSealedData_invalid_instanceID" purpose="Test checks if the createFromSealedData can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_createFromSealedData_invalid_instanceID.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getData_correct_instance" purpose="Test checks if the getData can pass with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getData_correct_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getData_invalid_instance" purpose="Test checks if the getData can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getData_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getSealedData_correct_instance" purpose="Test checks if the getSealedData can pass with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getSealedData_correct_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getSealedData_invalid_instance" purpose="Test checks if the getSealedData can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getSealedData_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getTag_correct_instance" purpose="Test checks if the getTag can pass with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getTag_correct_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getTag_invalid_instance" purpose="Test checks if the getTag can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getTag_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getPolicy_appAccessControl" purpose="Test checks if the getPolicy can get appAccessControl with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getPolicy_appAccessControl.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getPolicy_deviceLocality" purpose="Test checks if the getPolicy can get deviceLocality with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getPolicy_deviceLocality.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getPolicy_sensitivityLevel" purpose="Test checks if the getPolicy can get sensitivityLevel with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getPolicy_sensitivityLevel.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getPolicy_noStore" purpose="Test checks if the getPolicy can get noStore with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getPolicy_noStore.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getPolicy_noRead" purpose="Test checks if the getPolicy can get noRead with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getPolicy_noRead.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getPolicy_invalid_instance" purpose="Test checks if the getPolicy can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getPolicy_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getOwners_correct_instance" purpose="Test checks if the getOwners can pass with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getOwners_correct_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getOwners_invalid_instance" purpose="Test checks if the getOwners can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getOwners_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getCreator_correct_instance" purpose="Test checks if the getCreator can pass with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getCreator_correct_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getCreator_invalid_instance" purpose="Test checks if the getCreator can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getCreator_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getWebOwners_correct_instance" purpose="Test checks if the getWebOwners can pass with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getWebOwners_correct_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_getWebOwners_invalid_instance" purpose="Test checks if the getWebOwners can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_getWebOwners_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_changeExtraKey_all_optional" purpose="Test checks if the changeExtraKey can pass with correct arguments">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_changeExtraKey_all_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_changeExtraKey_invalid_instanceID" purpose="Test checks if the changeExtraKey can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_changeExtraKey_invalid_instanceID.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_changeExtraKey_data_below" purpose="Test checks if the changeExtraKey can fail with extraKey data's length is below 4">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_changeExtraKey_data_below.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_changeExtraKey_noStore_false" purpose="Test checks if the changeExtraKey can fail with extraKey data's noStore is false">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_changeExtraKey_noStore_false.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_changeExtraKey_noRead_false" purpose="Test checks if the changeExtraKey can fail with extraKey data's noRead is false">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_changeExtraKey_noRead_false.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_destroy_correct_instance" purpose="Test checks if the destroy can pass with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_destroy_correct_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_destroy_invalid_instance" purpose="Test checks if the destroy can fail with invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_destroy_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_write_no_optional" purpose="Test checks if the write can pass without optional parameter">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_write_no_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_write_all_optional" purpose="Test checks if the write can pass with all optional parameters">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_write_all_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_write_invalid_instance" purpose="Test checks if the write can pass without invalid instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_write_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_read_no_optional" purpose="Test checks if the read can pass without optional parameter">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_read_no_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_read_all_optional" purpose="Test checks if the read can pass with all optional parameters">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_read_all_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_read_integrity_detected" purpose="Test checks if the read can fail because of integrity etected">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_read_integrity_detected.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_read_noStore_false" purpose="Test checks if the read can fail with extraKey data's nostore is false">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_read_noStore_false.html</test_script_entry> 
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_read_noRead_false" purpose="Test checks if the read can fail with extraKey data's noRead is false">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_read_noRead_false.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_read_invalid_id" purpose="Test checks if the read can fail with invalid id">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_read_invalid_id.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_delete_all_optional" purpose="Test checks if the delete can pass with all optional parameters">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_delete_all_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_delete_no_optional" purpose="Test checks if the delete can pass without optional parameter">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_delete_no_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_delete_invalid_id" purpose="Test checks if the delete can fail with invalid id">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_delete_invalid_id.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_open_no_optional" purpose="Test checks if the open can pass without optional parameter">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_open_no_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_open_DELETE" purpose="Test checks if the open can pass with method is DELETE">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_open_DELETE.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_open_GET" purpose="Test checks if the open can pass with method is GET">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_open_GET.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_open_HEAD" purpose="Test checks if the open can pass with method is HEAD">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_open_HEAD.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_open_OPTIONS" purpose="Test checks if the open can pass with method is OPTIONS">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_open_OPTIONS.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_open_POST" purpose="Test checks if the open can pass with method is POST">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_open_POST.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_open_PUT" purpose="Test checks if the open can pass with method is PUT">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_open_PUT.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_open_invalid_method" purpose="Test checks if the open can pass with invalid method">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_open_invalid_method.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_open_bad_url" purpose="Test checks if the open can fail with bad url">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_open_bad_url.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setURL_correct_parameters" purpose="Test checks if the setURL can pass with correct parameters">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setURL_correct_parameters.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setURL_bad_url" purpose="Test checks if the setURL can fail with bad url">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setURL_bad_url.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setURL_invalid_instance" purpose="Test checks if the setURL can pass with invalid instance">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setURL_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setMethod_DELETE" purpose="Test checks if the setMethod can pass with DELETE method">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setMethod_DELETE.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setMethod_GET" purpose="Test checks if the setMethod can pass with GET method">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setMethod_GET.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setMethod_HEAD" purpose="Test checks if the setMethod can pass with HEAD method">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setMethod_HEAD.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setMethod_OPTIONS" purpose="Test checks if the setMethod can pass with OPTIONS method">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setMethod_OPTIONS.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setMethod_POST" purpose="Test checks if the setMethod can pass with POST method">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setMethod_POST.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setMethod_PUT" purpose="Test checks if the setMethod can pass with PUT method">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setMethod_PUT.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setMethod_invalid_method" purpose="Test checks if the setMethod can fail with invalid method">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setMethod_invalid_method.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setMethod_invalid_instance" purpose="Test checks if the setMethod can fail with invalid instance">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setMethod_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setHeaders_no_optional" purpose="Test checks if the setHeaders can pass without optional parameter">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setHeaders_no_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setHeaders_all_optional" purpose="Test checks if the setHeaders can pass with all optional parameters">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setHeaders_all_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setHeaders_invalid_instance" purpose="Test checks if the setHeaders can fail with invalid instance">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_setHeaders_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_no_optional" purpose="Test checks if the sendRequest can pass without optional parameter">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_sendRequest_no_optional.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_invalid_id" purpose="Test checks if the sendRequest can pass with invalid instance">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_sendRequest_invalid_id.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_JSON" purpose="Test checks if the sendRequest can pass with requestFormat is JSON">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_sendRequest_JSON.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_JSON_PLAINTEXT" purpose="Test checks if the sendRequest can pass with requestFormat is JSON and the Format of secureDataDescriptors is GENERIC_SECURE_DATA_PLAINTEXT_UNDECORATED">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_sendRequest_JSON_PLAINTEXT.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_JSON_SEALED_DATA" purpose="Test checks if the sendRequest can pass with requestFormat is JSON and the Format of secureDataDescriptors is SECURE_DATA_SEALED_DATA_UNDECORATED">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_sendRequest_JSON_SEALED_DATA.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_GENERIC" purpose="Test checks if the sendRequest can pass with requestFormat is GENERIC">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_sendRequest_GENERIC.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_GENERIC_PLAINTEXT" purpose="Test checks if the sendRequest can pass with requestFormat is GENERIC and the Format of secureDataDescriptors is GENERIC_SECURE_DATA_PLAINTEXT_UNDECORATED">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_sendRequest_GENERIC_PLAINTEXT.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_GENERIC_SEALED_DATA" purpose="Test checks if the sendRequest can pass with requestFormat is GENERIC and the Format of secureDataDescriptors is SECURE_DATA_SEALED_DATA_UNDECORATED">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_sendRequest_GENERIC_SEALED_DATA.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_destroySecureTransport_correct_instance" purpose="Test checks if the secureTransport.destroy can pass with correct instanceID">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_destroySecureTransport_correct_instance.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_destroySecureTransport_invalid_instance" purpose="Test checks if the secureTransport.destroy can fail with invalid instance">
+        <description>
+          <test_script_entry>/opt/webapi-appsecurity-external-tests/appsecurityapi/AppSecurityApi_destroySecureTransport_invalid_instance.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
