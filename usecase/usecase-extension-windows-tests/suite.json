@@ -1,32 +1,54 @@
 {
   "pkg-blacklist": [
-        "config.xml",
-        "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
-        "icon.png",
-        "manifest.json",
-        "suite.json",
-        "inst.*"
-    ],
-    "pkg-list": {
-        "msi": {
-            "blacklist": [
-                "*"
-            ],
-            "copylist": {
-                "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "xwalk-echo-app": "xwalk-echo-app"
-            },
-            "pkg-app": {
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
-            }
+    "pack.py",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "*-py",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "msi": {
+      "blacklist": [
+        "*",
+        ".git"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "subapp-list": {
+        ".": {
+	  "blacklist": [
+            "opt",
+            "*.zip"
+          ],
+          "apk-common-opts": "--enable-remote-debugging",
+          "app-name": "usecase-extension-windows-tests",
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "tests.xml": "tests.xml"
+          }
+        },
+        "xwalk-echo-app-Cpp": {
+          "app-dir": "xwalk-echo-app",
+          "app-name": "xwalk-echo-app-Cpp",
+          "apk-ext-opt": ["extension/extension_Cpp"],
+          "copylist": {
+            "../icon.ico": "icon.ico"
+          }
+        },
+        "xwalk-echo-app-Csharp": {
+          "app-dir": "xwalk-echo-app",
+          "app-name": "xwalk-echo-app-Csharp",
+          "apk-ext-opt": ["extension/extension_Csharp","extension/extension_Csharp_bridge"],
+          "copylist": {
+            "../icon.ico": "icon.ico"
+          }
         }
-    },
-    "pkg-name": "usecase-extension-windows-tests"
+      }
+    }
+  },
+  "pkg-name": "usecase-extension-windows-tests"
 }
