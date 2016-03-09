@@ -96,8 +96,8 @@ def main():
         if not uninstPKGs():
             sys.exit(1)
     else:
-        if not initEnv():
-            sys.exit(1)
+        #if not initEnv():
+            #sys.exit(1)
         if not instPKGs():
             sys.exit(1)
 
