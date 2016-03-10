@@ -80,5 +80,28 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(len(permission_attributes), 4)
         self.assertIn("android.permission.CAMERA", name)
 
+    def test_third_app_permission(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --keep --crosswalk=" + comm.crosswalkzip + " " + comm.ConstPath + "/../testapp/third_app_permission/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        projectDir = output[0].split(" * " + os.linesep)[-1].split(' ')[-1].strip(os.linesep)
+        root = ElementTree.parse(projectDir + "/prj/android/AndroidManifest.xml").getroot()
+        permission_attributes = root.findall('uses-permission')
+        name = []
+        for x in permission_attributes:
+            name.append(x.attrib.items()[0][1])
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertEquals(len(permission_attributes), 6)
+        self.assertIn("android.permission.GET_TASKS", name)
+        self.assertIn("android.permission.GET_ACCOUNTS", name)
+        self.assertIn("com.xiaomi.sdk.permissions.PAYMENT", name)
+
+
 if __name__ == '__main__':
     unittest.main()
