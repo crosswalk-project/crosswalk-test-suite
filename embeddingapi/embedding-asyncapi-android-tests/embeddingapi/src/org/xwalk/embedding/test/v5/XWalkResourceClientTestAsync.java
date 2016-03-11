@@ -5,6 +5,7 @@
 package org.xwalk.embedding.test.v5;
 
 
+import org.xwalk.core.ClientCertRequest;
 import org.xwalk.core.ClientCertRequestHandler;
 import org.xwalk.embedding.base.OnDocumentLoadedInFrameHelper;
 import org.xwalk.embedding.base.OnReceivedClientCertRequestHelper;
@@ -32,17 +33,24 @@ public class XWalkResourceClientTestAsync extends XWalkViewTestBase {
 
     @MediumTest
     public void testClientCertRequest() throws Throwable {
-    	OnReceivedClientCertRequestHelper mOnReceivedClientCertRequestHelper = mTestHelperBridge.getOnReceivedClientCertRequestHelper();
-    	final String url = "https://egov.privasphere.com/";
-    	int onReceivedClientCertRequestCallCount = mOnReceivedClientCertRequestHelper.getCallCount();
-    	try {
-    	    loadUrlAsync(url);
-    	    mOnReceivedClientCertRequestHelper.waitForCallback(onReceivedClientCertRequestCallCount);
-    	    assertEquals(ClientCertRequestHandler.class.getName(), mOnReceivedClientCertRequestHelper.getHandler().getClass().getName());
+        OnReceivedClientCertRequestHelper mOnReceivedClientCertRequestHelper = mTestHelperBridge.getOnReceivedClientCertRequestHelper();
+        final String url = "https://egov.privasphere.com/";
+        int onReceivedClientCertRequestCallCount = mOnReceivedClientCertRequestHelper.getCallCount();
+        try {
+            loadUrlAsync(url);
+            mOnReceivedClientCertRequestHelper.waitForCallback(onReceivedClientCertRequestCallCount);
+            ClientCertRequest request = mOnReceivedClientCertRequestHelper.getHandler();
+            assertEquals(ClientCertRequestHandler.class.getName(), request.getClass().getName());
+            // Following parameters just for host: "egov.privasphere.com".
+            assertEquals("egov.privasphere.com", request.getHost());
+            assertEquals(443, request.getPort());
+            assertEquals("RSA", request.getKeyTypes()[0]);
+            assertEquals("ECDSA", request.getKeyTypes()[1]);
+            assertNull(request.getPrincipals());
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
-    	}
+        }
     }
     @SmallTest
     public void testOnReceivedHttpAuthRequest() {
