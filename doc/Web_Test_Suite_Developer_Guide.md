@@ -96,6 +96,7 @@ Typically package name is in `<type>-<module>-<category>-tests` format.
   - `andriod`: Crosswalk Project for Andriod specific features.
   - `xwalk`: other Crosswalk Web APIs, or Crosswalk features common for any
      platform.
+  - `external`: Crosswalk external APIs, such as App Security API.
 
 ### Web application name after test suite packaging
 
@@ -396,6 +397,7 @@ Used by `component` field in `tests.full.xml` and `tests.xml` files.
 - WebAPI/DOM, Forms and Styles/Media Queries
 - WebAPI/DOM, Forms and Styles/Selectors API Level 1
 - WebAPI/DOM, Forms and Styles/Selectors API Level 2
+- WebAPI/EXTERNAL/App Security API
 - WebAPI/Graphics/HTML5 SVG
 - WebAPI/Graphics/HTML5 The canvas element
 - WebAPI/JavaScript/Promises
