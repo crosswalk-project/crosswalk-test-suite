@@ -13,6 +13,7 @@ import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkView;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -43,8 +44,11 @@ public class XWalkViewWithOnReceivedLoadErrorAsync extends Activity implements X
             // TODO Auto-generated method stub
             Log.d(TAG, "ClientCert Request:" + handler);
             super.onReceivedClientCertRequest(view, handler);
-            mTextView.setText(mTextView.getText().toString() + "ClientCert Request: " + handler
-            		+ "\n");
+            String request = "ClientCert Request Host: " + handler.getHost() + "\n"
+                           + "ClientCert Request Port: " + handler.getPort() + "\n"
+                           + "ClientCert Request KeyTypes: " + handler.getKeyTypes()[0] + " " + handler.getKeyTypes()[1] + "\n"
+                           + "ClientCert Request Principals: " + handler.getPrincipals() + "\n";
+            mTextView.setText(mTextView.getText().toString() + request);
         }
     }
 
@@ -87,6 +91,7 @@ public class XWalkViewWithOnReceivedLoadErrorAsync extends Activity implements X
         setContentView(R.layout.version_layout);
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         mTextView = (TextView) findViewById(R.id.text1);
+        mTextView.setTextColor(Color.GREEN);
         mTextView.setText("XWalkView is handling a Bad SSL client certificate request. The load website is "
         		+ BAD_SSL_WEBSITE + "\n\n");
 
