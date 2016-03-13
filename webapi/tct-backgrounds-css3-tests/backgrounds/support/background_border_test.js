@@ -52,9 +52,16 @@ function headProp(s) {
 }
 
 function getfilename(path) {
-    var indexlast = path.lastIndexOf("/");
-    var indexlast1 = path.lastIndexOf("\"");
-    var indexlast2 = path.lastIndexOf(")");
-    indexlast1 = indexlast1 > indexlast2?indexlast1:indexlast2;
-    return path.substring(indexlast + 1,indexlast1);
+    var filenames = [];
+    var regex = /\(\"(.+?)\"\)/g;
+    while(file = regex.exec(path)) {
+        var indexlast = file[1].lastIndexOf("/");
+        var filename = file[1].substring(indexlast+1);
+        filenames.push(filename);
+    }
+    if(filenames.length > 1) {
+        return filenames;
+    } else {
+        return filenames[0];
+    }
 }
