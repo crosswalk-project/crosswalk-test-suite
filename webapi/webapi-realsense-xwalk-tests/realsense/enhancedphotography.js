@@ -30,6 +30,7 @@ var depthRefocus;
 var measurement;
 var motionEffect;
 var paster;
+var photoCapture;
 var photoUtils;
 var segmentation;
 var xdmUtils;
@@ -129,6 +130,77 @@ tests.forEach(function(item) {
    assert_own_property(paster, item[0]);
    assert_equals(item[1], item[2]);
   }, "Check that Paster has implement " + item[0] + " method");
+});
+
+navigator.getUserMedia({ video: true }, function getUserMediaSuccess(stream) {
+  test(function() {
+    photoCapture = new realsense.DepthEnabledPhotography.PhotoCapture(stream);
+  }, "Check that construct photoCapture with MediaStream");
+
+  test(function() {
+    assert_true(photoCapture instanceof EventTarget, "photoCapture instance of EventTarget");
+  }, "Check that photoCapture instance of EventTarget");
+
+  tests = [
+    ["getDepthImage", typeof photoCapture.getDepthImage, "function"],
+    ["takePhoto", typeof photoCapture.takePhoto, "function"],
+    ["previewStream", typeof photoCapture.previewStream, "object"]
+  ];
+
+  tests.forEach(function(item) {
+    test(function() {
+     assert_own_property(photoCapture, item[0]);
+     assert_equals(item[1], item[2]);
+    }, "Check that PhotoCapture has implement " + item[0] + " method");
+  });
+
+  test(function() {
+    assert_own_property(photoCapture, "onerror");
+  }, "Check that PhotoCapture has implement onerror");
+
+  test(function() {
+    assert_own_property(photoCapture, "ondepthquality");
+  }, "Check that PhotoCapture has implement ondepthquality");
+
+  test(function () {
+    assert_readonly(photoCapture, "previewStream", "previewStream is readonly");
+  }, "Check that previewStream is readonly");
+
+  promise_test(function() {
+    photoCapture.getDepthImage()
+      .then(function(image) {
+        assert_true(image instanceof Image);
+        // Image interface
+        assert_own_property(image, "format", "image has format property");
+        assert_own_property(image, "data", "image has data property");
+        assert_own_property(image, "height", "image has height property");
+        assert_own_property(image, "width", "image has width property");
+        assert_readonly(image, "format", "format is readonly");
+        assert_readonly(image, "data", "data is readonly");
+        assert_readonly(image, "height", "height is readonly");
+        assert_readonly(image, "width", "width is readonly");
+        assert_equals(typeof image.format, "object", "format is type of object");
+        assert_equals(typeof image.data, "ArrayBuffer", "data is type of ArrayBuffer");
+        assert_equals(typeof image.height, "number", "height is type of number");
+        assert_equals(typeof image.width, "number", "width is type of number");
+      })
+      .catch(function(ex) {
+        assert_unreached("get unexpected error: " + ex.error);
+      });
+  }, "Check that getDepthImage() returns a promise with the latest available depth image");
+
+  promise_test(function() {
+    photoCapture.takePhoto()
+      .then(function(photo) {
+        assert_true(photo instanceof Photo);
+      })
+      .catch(function(ex) {
+        assert_unreached("get unexpected error: " + ex.error);
+      });
+  }, "Check that takePhoto() returns a promise with the photo instance");
+
+}, function(ex) {
+  assert_unreached("Access to audio and video stream get error: " + ex.message);
 });
 
 test(function() {

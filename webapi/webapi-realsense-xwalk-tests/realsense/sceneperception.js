@@ -168,22 +168,18 @@ test(function() {
 
 test(function() {
   assert_own_property(sp, "onchecking");
-  assert_equals(typeof sp.onchecking, "object", "sp.stop is object type");
 }, "Check that onchecking exists");
 
 test(function() {
   assert_own_property(sp, "onerror");
-  assert_equals(typeof sp.onerror, "object", "sp.stop is object type");
 }, "Check that onerror exists");
 
 test(function() {
   assert_own_property(sp, "onmeshupdated");
-  assert_equals(typeof sp.onmeshupdated, "object", "sp.onmeshupdated is object type");
 }, "Check that onmeshupdated exists");
 
 test(function() {
   assert_own_property(sp, "onsampleprocessed");
-  assert_equals(typeof sp.onsampleprocessed, "object", "sp.onsampleprocessed is object type");
 }, "Check that onsampleprocessed exists");
 
 async_test(function(t) {
@@ -262,8 +258,7 @@ promise_test(function() {
       assert_unreached("unreached here when region is null");
     })
     .catch(function(ex) {
-      //assert_equals(ex.name, "Error");
-      assert_equals(ex.error, "param_unsupported");	
+      assert_equals(ex.error, "param_unsupported");
     });
 }, "Check that getSurfaceVoxels should reject with a SPError when region is null");
 

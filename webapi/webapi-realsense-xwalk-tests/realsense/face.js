@@ -26,7 +26,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 var fm;
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
 
 test(function() {
   assert_own_property(realsense, "Face", "realsense should expose Face");
@@ -54,7 +53,7 @@ async_test(function(t) {
 
     test(function() {
       assert_equals(typeof fm.configuration, "object");
-      assert_true(fm.configuration instanceof FaceConfiguration);
+      assert_class_string(fm.configuration, "FaceConfiguration");
     }, "Check that configuration is type of FaceConfiguration object");
 
     test(function() {
@@ -67,32 +66,28 @@ async_test(function(t) {
 
     test(function() {
       assert_equals(typeof fm.recognition, "object");
-      assert_true(fm.recognition instanceof Recognition);
+      assert_class_string(fm.recognition, "Recognition");
     }, "Check that recognition is type of Recognition object");
 
     test(function() {
       assert_equals(typeof fm.previewStream, "object");
-      assert_true(fm.previewStream instanceof MediaStream);
+      assert_class_string(fm.previewStream, "MediaStream");
     }, "Check that previewStream is type of MediaStream object");
 
     test(function() {
       assert_own_property(fm, "onready");
-      assert_equals(typeof fm.onready, "object");
     }, "Check that fm.onready exists");
 
     test(function() {
       assert_own_property(fm, "onended");
-      assert_equals(typeof fm.onended, "object");
     }, "Check that fm.onended exists");
 
     test(function() {
       assert_own_property(fm, "onerror");
-      assert_equals(typeof fm.onerror, "object");
     }, "Check that fm.onerror exists");
 
     test(function() {
       assert_own_property(fm, "onprocessedsample");
-      assert_equals(typeof fm.onprocessedsample, "object");
     }, "Check that onprocessedsample exists");
 
     test(function() {
@@ -124,13 +119,24 @@ async_test(function(t) {
       "fm.recognition.unregisterUserByID is type of function");
     }, "Check that unregisterUserByID method exists");
 
+  promise_test(function() {
+      return fm.getProcessedSample(false, false)
+        .then(function() {
+          assert_unreached("unreached here when parameters are null");
+        })
+        .catch(function(ex) {
+          assert_equals(ex.error, "exec_failed");
+        });
+    }, "Check that fm.getProcessedSample should throw FaceError " +
+       "when face module doesn't start");
+
     promise_test(function() {
       return fm.recognition.registerUserByFaceID()
         .then(function() {
           assert_unreached("unreached here when miss faceId parameter");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "param_unsupported");
+          assert_equals(ex.error, "exec_failed");
         });
     }, "Check that recognition.registerUserByFaceID should throw FaceError " +
        "when missing faceId argument");
@@ -141,7 +147,7 @@ async_test(function(t) {
           assert_unreached("unreached here when faceId is null");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "param_unsupported");
+          assert_equals(ex.error, "exec_failed");
         });
     }, "Check that recognition.registerUserByFaceID should throw FaceError " +
        "when faceId is null");
@@ -152,7 +158,7 @@ async_test(function(t) {
           assert_unreached("unreached here when miss faceId parameter");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "param_unsupported");
+          assert_equals(ex.error, "exec_failed");
         });
     }, "Check that recognition.unregisterUserByID should throw FaceError " +
        "when missing userId argument");
@@ -163,7 +169,7 @@ async_test(function(t) {
           assert_unreached("unreached here when userId is null");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "param_unsupported");
+          assert_equals(ex.error, "exec_failed");
         });
     }, "Check that recognition.unregisterUserByID should throw FaceError " +
        "when userId is null");
@@ -211,15 +217,25 @@ async_test(function(t) {
     }, "Check that recognition.set should throw FaceError " +
        "when userId is null");
 
-    async_test(function(test) {
-      fm.start()
-        .then(function() {
-          test.done();
-        })
-        .catch(function(ex) {
-          assert_unreached("unreached here, get an error: " + ex.message);
-        });
-    }, "Check that start face module successfully");
+  promise_test(function() {
+    var config = {
+      mode: "color",
+      recognition: {enable: true},
+      strategy: "left_right"
+    };
+    return fm.configuration.set(config)
+      .then(function() {
+        return fm.configuration.get();
+      })
+      .then(function (configData) {
+        assert_equals(configData.mode, "color", "configData.mode is color");
+        assert_true(configData.recognition.enable, "configData.recognition.enable is true");
+        assert_equals(configData.strategy, "left_right", "configData.strategy is left_right");
+      })
+      .catch(function(ex) {
+        assert_unreached("unreached here, get an error: " + ex.message);
+      });
+    }, "Check that set and get configuration values");
 
     promise_test(function() {
       return fm.configuration.getDefaults()
@@ -235,15 +251,7 @@ async_test(function(t) {
         });
     }, "Check that Get configuration default values");
 
-    async_test(function(test) {
-      fm.stop()
-        .then(function() {
-          test.done();
-        })
-        .catch(function(ex) {
-          assert_unreached("unreached here, get an error: " + ex.message);
-        });
-    }, "Check that stop face module running successfully");
+    t.done();
 
   }, function(ex) {
     assert_unreached("Access to audio and video stream get error: " + ex.message);
