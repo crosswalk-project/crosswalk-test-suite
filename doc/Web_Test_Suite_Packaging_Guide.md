@@ -93,6 +93,7 @@ Options:
   -v, --version         show this tool's version
   --pkg-version=PKGVERSION
                         specify the pkg version, e.g. 0.0.0.1
+  --resource-only       only restore resources to project root
 ```
 
 With this script, you could :
