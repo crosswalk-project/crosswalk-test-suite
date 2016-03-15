@@ -46,7 +46,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk + " " + comm.ConstPath + "/../testapp/xwalk_echo_extension/"
         (return_code, output) = comm.getstatusoutput(cmd)
-        os.remove(comm.ConstPath + "/../testapp/extension_permission/contactextension/XWalkExtensionHooks.js")
+        os.remove(comm.ConstPath + "/../testapp/xwalk_echo_extension/extension/echo_extension/XWalkExtensionHooks.js")
         comm.clear("org.xwalk.test")
         preline = output[0].index('prePackage windows')
         pkgline = output[0].index('Package:')
