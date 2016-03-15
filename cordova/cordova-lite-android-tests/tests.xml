@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Cordova Features" name="cordova-lite-android-tests">
+    <set name="Lite_auto" type="pyunit">
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Project_Create" purpose="Validate Crosswalk Cordova WebApp project could be created successful">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_create.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Project_Build" purpose="Validate Crosswalk Cordova WebApp Project could be built successful">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_build.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Project_Run" purpose="Validate Crosswalk Cordova app project could be installed and runing on device">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_run.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Install" purpose="Validate Cordova WebApp could be installed successfully">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_install.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Launch" purpose="Validate Cordova WebApp could be launched successfully">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_launch.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Close" purpose="Validate Cordova WebApp could be closed successfully">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_close.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Uninstall" purpose="Validate Cordova WebApp could be uninstalled successfully">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_uninstall.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="app_multiple_apk_false" purpose="Validate Cordova App could pack one global apk when xwalkMultipleApk is false">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/app_multiple_apk_false.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="app_multiple_apk_true" purpose="Validate Cordova App could pack arm or x86 apk when xwalkMultipleApk is true">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/app_multiple_apk_true.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="sample_release" purpose="Validate Crosswalk Cordova release app could be built, install, launched, stoped, uninstalled successful">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/sample_release.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="mode_lite" purpose="Validate Crosswalk Cordova support to modify the mode to lite in the config.xml">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/mode_lite.py</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="Lite_manual" type="js">
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_SetBackgroundColor" purpose="Validate Crosswalk Cordova app page background color can be configured when build this app">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_SetBackgroundColor.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_SetUserAgent" purpose="Validate Crosswalk Cordova app can configure the userAgent value">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_SetUserAgent.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_XwalkCommandLine" purpose="Validate the CROSSWALK_ANDROID_COMMANDLINE config feature">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_XwalkCommandLine.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_SigningRelease" purpose="Validate the release app could be signed successful">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_SigningRelease.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_CrosswalkVersion" purpose="Validate the variable crosswalk version configuration feature">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_CrosswalkVersion.html </test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
