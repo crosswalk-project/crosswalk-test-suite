@@ -2,15 +2,16 @@ This test suite comes from
 https://github.com/w3c/web-platform-tests(commit 944356fc3e50ed67bd94895d43cf5212aba1594b)
 with modification below:
 
-1. eventsource-constructor-url-multi-window.htm
--          source = new self[0].EventSource("resources/message.php")
-+          source = new self[0].EventSource("message.cgi")
+resources/message.py
 
-2. Update ".php" postfix to ".cgi" in tests
++    # XSS filter
++    body = body.replace("&", "&amp;") # Must be done first!
++    body = body.replace("<", "&lt;")
++    body = body.replace(">", "&gt;")
++    body = body.replace('"', "&quot;")
++    body = body.replace("'", "&#x27;")
++    body = body.replace("/", "&#x2f;")
 
-3. Copy php files to cgi folder with some modfication to support cgi
-
-4. Add try catch in python script
 
 These tests are copyright by W3C and/or the author listed in the test
 file. The tests are dual-licensed under the W3C Test Suite License:
