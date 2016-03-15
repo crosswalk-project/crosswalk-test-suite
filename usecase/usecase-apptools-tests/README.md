@@ -4,7 +4,7 @@ This test suite is for usecase-apptools-tests
 
 ## Common Precondition
 
-1. The node.js must be functional
+1. Install node(>=0.12)
 
 2. Install nodeunit: sudo npm install nodeunit -g
 
