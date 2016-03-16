@@ -102,7 +102,7 @@ def check_repo(repo):
 
 def statistics(repo):
     os.chdir(repo)
-    cmd = "git log --pretty=format:'%H' "
+    cmd = "git log --pretty=format:'%h' "
     if PARAMETERS.since:
         cmd = cmd + "--since '%s' " % PARAMETERS.since
     if PARAMETERS.until:
@@ -114,20 +114,23 @@ def statistics(repo):
     for line in output:
         commitlog = os.popen("git log %s --stat -1 " % line)
         logarr = list(commitlog)
-        #eg. Merge pull request
+        #eg. Merge pull request, ingnore this.
         if "Merge:" in str(logarr[1]):
-            continue                
+            continue
         #eg. Author: Li Hao <haox.li@intel.com>\n
         commit_author = logarr[1].strip("\n").split("Author:")[1].strip()
         #eg. Date:   Thu Jan 21 15:49:13 2016 +0800\n
         timearr = logarr[2].strip("\n").split("Date:")[1].strip().split()
         #eg. Jan-21-2016
         commit_date = str(timearr[1]) + "-" + str(timearr[2]) + "-" + str(timearr[4])
+
+        commit_summary = logarr[4].strip("\n").strip()
+
         #eg. Impacted tests(approved): new 0, update 1, delete 0
         test_new = ""
         test_update = ""
         test_delete = ""
-        for ut in logarr[3:-1]:
+        for ut in logarr[5:-1]:
             utstr = ut.lower()
             if utstr.find("new") > -1 and utstr.find("update") > -1 and utstr.find("delete") > -1:
                 impactedtest = utstr.strip("\n").split(":")[1].strip().split(",")
@@ -155,7 +158,7 @@ def statistics(repo):
                 commit_code_insertion = change_value
             elif change.find("deletion") > -1:
                 commit_code_deletion = change_value
-        commitarr = [line, commit_author, commit_date, test_new, test_update, test_delete, commit_file_changed, commit_code_insertion, commit_code_deletion]
+        commitarr = [line, commit_summary, commit_author, commit_date, test_new, test_update, test_delete, commit_file_changed, commit_code_insertion, commit_code_deletion]
         WORK_STAT_SHEET.append(commitarr)
         print commitarr
 
@@ -163,8 +166,9 @@ def make_csv(commit_data, csv_path):
     LOG.info("General: %s" % csv_path)
     writer = csv.writer(file(csv_path, 'wb'))
     writer.writerow(['Commit Id',
+                     'Summary',
                      'Author',
-                     'Date',
+                     'Submit Date',
                      'New Case',
                      'Update Case',
                      'Delete Case',
@@ -180,7 +184,8 @@ def make_csv(commit_data, csv_path):
                          commit[5],
                          commit[6],
                          commit[7],
-                         commit[8]])
+                         commit[8],
+                         commit[9]])
 
 
 def main():
@@ -196,23 +201,24 @@ def main():
     ROOT_DIR = os.getcwd()
 
     try:
-        usage = "Usage: ./git_stat.py -r <repo path> [-s <since>] [-u <until>] [-a <author>] [-o <output>]"
+        # Statistics merged commits between [since] and [until]
+        usage = "Usage: ./git_stat.py -r <repository path> [-s <since>] [-u <until>] [-a <author>] [-o <output>]"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
             "-r",
             "--repo",
             dest="repo",
-            help="Git repo which need stat")
+            help="Git repository which need statistics")
         opts_parser.add_option(
             "-s",
             "--since",
             dest="since",
-            help="Show commits after the date")
+            help="Show commits merged after the date")
         opts_parser.add_option(
             "-u",
             "--until",
             dest="until",
-            help="Show commits before the date")
+            help="Show commits merged before the date")
         opts_parser.add_option(
             "-a",
             "--author",
@@ -230,7 +236,11 @@ def main():
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args(sys.argv[1:])
 
-        #check_repo(PARAMETERS.repo)
+        if not PARAMETERS.repo:
+            LOG.error(">>>> No git repositories provided, exit ... ")
+            sys.exit(0)
+
+        check_repo(PARAMETERS.repo)
         statistics(PARAMETERS.repo)
         csv_file = ""
         if not PARAMETERS.output:
