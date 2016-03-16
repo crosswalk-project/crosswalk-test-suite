@@ -53,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes", "setUserAgent", "loadExtension"]
+PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes", "setUserAgent", "loadExtension", "sampleRelease"]
 PKG_MODES = ["shared", "embedded", "lite"]
 PKG_ARCHS = ["x86", "arm", "x86_64", "arm64"]
 CORDOVA_PACK_TYPES = ["npm", "local"]
@@ -362,8 +362,6 @@ def installPlugins(plugin_tool, app_name):
                     plugin_crosswalk_source = webview_plugin_name
 
                 version_parameter = "XWALK_VERSION"
-                if BUILD_PARAMETERS.pkgmode == "lite":
-                    version_parameter = "XWALK_LITE_VERSION"
                 install_variable_cmd = "--variable XWALK_MODE=\"%s\" --variable %s=\"%s\"" \
                         % (BUILD_PARAMETERS.pkgmode, version_parameter, xwalk_version)
 
@@ -397,18 +395,24 @@ def buildCordovaCliApk(app_name, orig_dir):
 
     pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp 
 
+    cmd_mode = ""
+    apk_name_mode = "debug"
     if checkContains(app_name, "REMOTEDEBUGGING"):
-        pack_cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
+        cmd_mode = "--debug"
+    if checkContains(app_name, "SAMPLERELEASE"):
+        cmd_mode = "--release"
+        apk_name_mode = "release-unsigned"
+    pack_cmd = "cordova build android %s -- --gradleArg=-PcdvBuildArch=%s" % (cmd_mode, pack_arch_tmp)
 
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT * 5):
         os.chdir(orig_dir)
         return False
 
-    if not copyCordovaCliApk(app_name, orig_dir, apk_name_arch):
+    if not copyCordovaCliApk(app_name, orig_dir, apk_name_arch, apk_name_mode):
         os.chdir(orig_dir)
         return False
 
-def copyCordovaCliApk(app_name, orig_dir, apk_name_arch="armv7"):
+def copyCordovaCliApk(app_name, orig_dir, apk_name_arch="armv7", apk_name_mode="debug"):
     project_root = os.path.join(BUILD_ROOT, app_name)
     outputs_dir = os.path.join(
         project_root,
@@ -420,23 +424,23 @@ def copyCordovaCliApk(app_name, orig_dir, apk_name_arch="armv7"):
 
     cordova_tmp_path = os.path.join(
         outputs_dir,
-        "android-%s-debug.apk" %
-        apk_name_arch)
+        "android-%s-%s.apk" %
+        (apk_name_arch, apk_name_mode))
 
     if not os.path.exists(cordova_tmp_path):
         cordova_tmp_path = os.path.join(
             outputs_dir,
-            "%s-%s-debug.apk" %
-            (app_name, apk_name_arch))
+            "%s-%s-%s.apk" %
+            (app_name, apk_name_arch, apk_name_mode))
         if not os.path.exists(cordova_tmp_path):
             cordova_tmp_path = os.path.join(
                 outputs_dir,
-                "android-debug.apk")
+                "android-%s.apk" % apk_name_mode)
             if not os.path.exists(cordova_tmp_path):
                 cordova_tmp_path = os.path.join(
                     outputs_dir,
-                    "%s-debug.apk" %
-                    app_name)
+                    "%s-%s.apk" %
+                    (app_name, apk_name_mode))
     if not doCopy(
             cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
         os.chdir(orig_dir)
