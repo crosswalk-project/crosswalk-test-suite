@@ -1,0 +1,41 @@
+{
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "suite.json",
+    "inst.apk.py"
+  ],
+  "pkg-list": {
+    "cordova-aio": {
+      "blacklist": []
+    },
+    "cordova": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/../VERSION": "VERSION",
+        "PACK-TOOL-ROOT/cordova_plugins/cordova-plugin-crosswalk-webview": "tools/cordova-plugin-crosswalk-webview",
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "README.md": "README.md",
+        "arch.txt": "arch.txt",
+        "inst.apk.py": "inst.py",
+        "mode.txt": "mode.txt",
+        "pack-type": "pack-type",
+        "tests.xml": "tests.xml",
+        "lite": "lite",
+        "res": "res"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    }
+  },
+  "pkg-name": "cordova-lite-android-tests"
+}

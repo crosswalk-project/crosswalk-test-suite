@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Cordova Features" name="cordova-lite-android-tests">
+    <set name="Lite_auto" type="pyunit">
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Project_Create" priority="P0" purpose="Validate Crosswalk Cordova WebApp project could be created successful" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_create.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Project_Build" priority="P0" purpose="Validate Crosswalk Cordova WebApp Project could be builded successful" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_build.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Project_Run" priority="P0" purpose="Validate Crosswalk Cordova app project could be installed and runing on device" status="approved" type="Functional">
+        <description>
+           <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_run.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Install" priority="P0" purpose="Validate Cordova WebApp could be installed successfully" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_install.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Launch" priority="P0" purpose="Validate Cordova WebApp could be launched successfully" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_launch.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Close" priority="P0" purpose="Validate Cordova WebApp could be closed successfully" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_close.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="Crosswalk_Cordova_WebApp_Uninstall" priority="P0" purpose="Validate Cordova WebApp could be uninstalled successfully" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/webapp_uninstall.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="app_multiple_apk_false" priority="P0" purpose="Validate Cordova App could pack one global apk when xwalkMultipleApk is false" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/app_multiple_apk_false.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="app_multiple_apk_true" priority="P0" purpose="Validate Cordova App could pack arm or x86 apk when xwalkMultipleApk is true" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/app_multiple_apk_true.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="sample_release" priority="P0" purpose="Validate Crosswalk Cordova release app could be built, install, launched, stoped, uninstalled successful" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/sample_release.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="auto" id="mode_lite" priority="P0" purpose="Validate Crosswalk Cordova support to modify the mode to lite in the config.xml" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/mode_lite.py</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="Lite_manual" type="js">
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_SetBackgroundColor" priority="P0" purpose="Validate Crosswalk Cordova app page background color can be configured when build this app" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_SetBackgroundColor.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_SetUserAgent" priority="P0" purpose="Validate Crosswalk Cordova app can configure the userAgent value" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_SetUserAgent.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_SigningRelease" priority="P0" purpose="Validate the release app could be signed successful" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_SigningRelease.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_XwalkCommandLine" priority="P0" purpose="Validate the CROSSWALK_ANDROID_COMMANDLINE config feature" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_XwalkCommandLine.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/Lite" execution_type="manual" id="Crosswalk_Cordova_CrosswalkVersion" priority="P0" purpose="Validate the variable crosswalk version configuration feature" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-lite-android-tests/lite/Crosswalk_Cordova_CrosswalkVersion.html </test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
