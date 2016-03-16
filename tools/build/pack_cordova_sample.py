@@ -54,7 +54,7 @@ TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
 PKG_NAMES = ["spacedodge", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "setBackgroundColor", "xwalkCommandLine", "privateNotes", "setUserAgent", "loadExtension"]
-PKG_MODES = ["shared", "embedded"]
+PKG_MODES = ["shared", "embedded", "lite"]
 PKG_ARCHS = ["x86", "arm", "x86_64", "arm64"]
 CORDOVA_PACK_TYPES = ["npm", "local"]
 CROSSWALK_VERSION = ""
@@ -341,9 +341,10 @@ def copySampleSource(app_name, target_path):
 
 def installPlugins(plugin_tool, app_name):
     project_root = os.path.join(BUILD_ROOT, app_name)
-    pkg_mode_tmp = "shared"
-    if BUILD_PARAMETERS.pkgmode == "embedded":
-        pkg_mode_tmp = "core"
+
+    pkg_mode_tmp = "core"
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        pkg_mode_tmp = "shared"
 
     xwalk_version = "%s" % CROSSWALK_VERSION
     if CROSSWALK_BRANCH == "beta":
@@ -359,8 +360,12 @@ def installPlugins(plugin_tool, app_name):
             if i_dir == webview_plugin_name:
                 if BUILD_PARAMETERS.packtype == "npm":
                     plugin_crosswalk_source = webview_plugin_name
-                install_variable_cmd = "--variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"%s\"" \
-                        % (BUILD_PARAMETERS.pkgmode, xwalk_version)
+
+                version_parameter = "XWALK_VERSION"
+                if BUILD_PARAMETERS.pkgmode == "lite":
+                    version_parameter = "XWALK_LITE_VERSION"
+                install_variable_cmd = "--variable XWALK_MODE=\"%s\" --variable %s=\"%s\"" \
+                        % (BUILD_PARAMETERS.pkgmode, version_parameter, xwalk_version)
 
                 if checkContains(app_name, "xwalkCommandLine"):
                     install_variable_cmd = install_variable_cmd + " --variable XWALK_COMMANDLINE" \

@@ -124,9 +124,9 @@ def packCordova(
         os.chdir(orig_dir)
         return False
 
-    pkg_mode_tmp = "shared"
-    if BUILD_PARAMETERS.pkgmode == "embedded":
-        pkg_mode_tmp = "core"
+    pkg_mode_tmp = "core"
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        pkg_mode_tmp = "shared"
 
     xwalk_version = "%s" % CROSSWALK_VERSION
     if CROSSWALK_BRANCH == "beta":
@@ -141,8 +141,13 @@ def packCordova(
         if i_dir == webview_plugin_name:
             if BUILD_PARAMETERS.packtype == "npm":
                 plugin_crosswalk_source = webview_plugin_name
-            install_variable_cmd = "--variable XWALK_MODE=\"%s\" --variable XWALK_VERSION=\"%s\"" \
-                    % (BUILD_PARAMETERS.pkgmode, xwalk_version)
+
+            version_parameter = "XWALK_VERSION"
+            if BUILD_PARAMETERS.pkgmode == "lite":
+                version_parameter = "XWALK_LITE_VERSION"
+
+            install_variable_cmd = "--variable XWALK_MODE=\"%s\" --variable %s=\"%s\"" \
+                    % (BUILD_PARAMETERS.pkgmode, version_parameter, xwalk_version)
 
         plugin_install_cmd = "cordova plugin add %s %s" % (plugin_crosswalk_source, install_variable_cmd)
         if not utils.doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
