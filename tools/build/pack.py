@@ -229,6 +229,13 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
                 'EmbeddingApiTestUnit',
                 "EmbeddingApiTestUnit" +
                 app_version)
+            if app_version != "v6":
+                utils.replaceUserString(
+                    app_src,
+                    'AndroidManifest.xml',
+                    '<provider android:name=\"org.xwalk.embedding.base.TestContentProvider\"' +
+                    ' android:authorities=\"org.xwalk.embedding.base.TestContentProvider\" />',
+                    "")
             main_dest = os.path.join(app_src, "src/org/xwalk/embedding")
             utils.replaceUserString(
                 main_dest,
@@ -257,7 +264,7 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
             return False
     elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "ios"):
         if not build_ios.packIOS(build_json, app_src, app_dest, app_name):
-            return False            
+            return False
     else:
         LOG.error("Got wrong pkg type: %s" % BUILD_PARAMETERS.pkgtype)
         return False
