@@ -143,8 +143,6 @@ def packCordova(
                 plugin_crosswalk_source = webview_plugin_name
 
             version_parameter = "XWALK_VERSION"
-            if BUILD_PARAMETERS.pkgmode == "lite":
-                version_parameter = "XWALK_LITE_VERSION"
 
             install_variable_cmd = "--variable XWALK_MODE=\"%s\" --variable %s=\"%s\"" \
                     % (BUILD_PARAMETERS.pkgmode, version_parameter, xwalk_version)
