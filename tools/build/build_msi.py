@@ -71,6 +71,7 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
                      "arm": "armeabi-v7a",
                      "arm64": "arm64-v8a"}
 
+    windows_opt = ""
     ext_opt = []
     cmd_opt = ""
     url_opt = ""
@@ -88,6 +89,17 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
     webp_opt = ""
     shortName_opt = ""
     permissions_opt = []
+
+    tmp_opt = utils.safelyGetValue(build_json, "google-api-key")
+    if tmp_opt:
+        source_keys_file = os.path.join(BUILD_PARAMETERS.pkgpacktools, "resources", "keys", "crosswalk-app-tools-keys.json")
+        userName = os.getenv("USERNAME")
+        dest_keys_file = "C:\\Users\\%s\\.crosswalk-app-tools-keys.json" % userName
+        if not utils.doCopy(
+                source_keys_file,
+                dest_keys_file):
+            return False
+        windows_opt = "-w google-api-key:%s" % tmp_opt
 
     common_opts = utils.safelyGetValue(build_json, "apk-common-opts")
     if common_opts is None:
@@ -259,10 +271,10 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
                 os.chdir(orig_dir)
                 return False
 
-        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows -m  %s %s %s" \
-            % (crosswalk_app_tools, CROSSWALK_VERSION, manifest_opt, common_opts, app_src)
+        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows -m  %s %s %s %s" \
+            % (crosswalk_app_tools, CROSSWALK_VERSION, manifest_opt, common_opts, windows_opt, app_src)
     else:
-        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows %s %s" % (crosswalk_app_tools, CROSSWALK_VERSION, common_opts, app_src)
+        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows %s %s %s" % (crosswalk_app_tools, CROSSWALK_VERSION, common_opts, windows_opt, app_src)
 
 
     print build_cmd
