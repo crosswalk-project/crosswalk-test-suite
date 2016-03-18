@@ -9,7 +9,7 @@
     "inst.*"
   ],
   "pkg-list": {
-    "apk,cordova,msi": {
+    "apk,cordova": {
       "blacklist": [
         "*"
       ],
@@ -38,6 +38,60 @@
         "testapp/diskcachesize_no": {
           "apk-type": "MANIFEST"
         },
+        "testapp/manifest_icon_117pixel_tests": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifest_icon_69pixel_tests": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifest_icon_null_tests": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifest_icon_valuenull_tests": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifest_minimal_manifest_tests": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/manifest_negative_nullvalue_version": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/xwalk_hosts_matchpatterns": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/xwalk_hosts_matchpatternsmiddle": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/xwalk_hosts_matchpatternstail": {
+          "apk-type": "MANIFEST"
+        },
+        "testapp/xwalk_hosts_value": {
+          "apk-type": "MANIFEST"
+        }
+      }
+    },
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "testapp": "testapp",
+        "tests.full.xml": "tests.full.xml",
+        "tests.windows.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [
+          "*"
+        ],
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "rtcoremanu": "rtcoremanu",
+          "tests.windows.xml": "tests.xml"
+        }
+      },
+      "subapp-list": {
         "testapp/manifest_icon_117pixel_tests": {
           "apk-type": "MANIFEST"
         },

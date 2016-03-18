@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Crosswalk WRT" name="wrt-securitymanu-tests">
+    <set name="security" type="js">
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Field_Geolocation" purpose="Validate if enable the 'Geolocation' permission">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure test on ARM device.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/Crosswalk_Permission_Field_Geolocation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Media_Src_None" purpose="Validate if enable 'none' value of csp directives: media-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/Crosswalk_WebApp_CSP_Media_Src_None.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Media_Src_Value" purpose="Validate if enable csp directives: media-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/Crosswalk_WebApp_CSP_Media_Src_Value.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="security-bdd" type="js" ui-auto="bdd">
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Connect_Src_None" purpose="Validate if enable 'none' value of csp directives: connect-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Connect_Src_None.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Connect_Src_None.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Connect_Src_Value" purpose="Validate if enable csp directives: connect-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Connect_Src_Value.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Connect_Src_Value.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Frame_Src_None" purpose="Validate if enable 'none' value of csp directives: frame-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Frame_Src_None.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Frame_Src_None.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Frame_Src_Value" purpose="Validate if enable csp directives: frame-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Frame_Src_Value.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Frame_Src_Value.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Style_Src_None" purpose="Validate if enable 'none' value of csp directives: style-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Style_Src_None.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Style_Src_None.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Style_Src_Value" purpose="Validate if enable csp directives: style-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Style_Src_Value.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Style_Src_Value.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Script_Src_None" purpose="Validate if enable 'none' value of csp directives: script-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Script_Src_None.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Script_Src_None.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Script_Src_Self" purpose="Validate if enable 'self' value of csp directives: script-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Script_Src_Self.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Script_Src_Self.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Script_Src_Unsafe" purpose="Validate if enable csp directives: script-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Script_Src_Unsafe.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Script_Src_Unsafe.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Undefined_Geolocation" purpose="Validate if unsupported the related API when undefined the 'Geolocation' permission">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure test on ARM device.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_Permission_Undefined_Geolocation.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_Permission_Undefined_Geolocation.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Img_Src_None" purpose="Validate if enable 'none' value of csp directives: img-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Img_Src_None.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Img_Src_None.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Img_Src_Value" purpose="Validate if enable csp directives: img-src in Crosswalk">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_CSP_Img_Src_Value.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Img_Src_Value.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_Certificate_Trusted" purpose="Validate if support accept the untrused security certificate website">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure the device connected to network.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_Certificate_Trusted.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_Certificate_Trusted.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_Certificate_Untrusted" purpose="Validate if support refuse the untrused security certificate website">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure the device connected to network.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_Certificate_Untrusted.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_Certificate_Untrusted.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_Certificate_Trusted_ReOpen" purpose="Validate if support accept the reopend untrused security certificate website">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure the device connected to network.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_Certificate_Trusted_ReOpen.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_Certificate_Trusted_ReOpen.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_Certificate_Untrusted_ReOpen" purpose="Validate if support refuse the reopened untrused security certificate website">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure the device connected to network.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_Certificate_Untrusted_ReOpen.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_Certificate_Untrusted_ReOpen.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_Certificate_Trusted_ReInstall" purpose="Validate if support accept the reinstalled untrused security certificate website">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure the device connected to network.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_Certificate_Trusted_ReInstall.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_Certificate_Trusted_ReInstall.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_Certificate_Untrusted_ReInstall" purpose="Validate if support refuse the reinstalled untrused security certificate website">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure the device connected to network.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-tests/securitymanu/bdd/Crosswalk_WebApp_Certificate_Untrusted_ReInstall.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-tests/wrt-security-app/testscripts/Crosswalk_WebApp_Certificate_Untrusted_ReInstall.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
