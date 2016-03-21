@@ -103,7 +103,7 @@ def pack(cmd, appname, self):
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, packstatus[0])
     print "\nGenerate APK %s ----------------> OK\n" % appname
-    apk_file = commands.getstatusoutput("ls %s| grep %s| grep %s" % (build_app_dest, appname.lower(), ARCH))[1]
+    apk_file = commands.getstatusoutput("ls %s| grep %s" % (build_app_dest, appname.lower()))[1]
     self.assertTrue(apk_file.endswith(".apk"))
     os.chdir("../..")
 
