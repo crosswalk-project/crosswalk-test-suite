@@ -39,6 +39,9 @@ class TestWebAppUpdate(unittest.TestCase):
     def test_update(self):
         app_name = "testapp"
         pkg_name = "org.xwalk." + app_name
+        if comm.checkInstalled(pkg_name):
+            comm.app_uninstall(app_name, pkg_name, self)
+
         comm.app_install(app_name, pkg_name, self)
         comm.app_install(app_name, pkg_name, self)
 
