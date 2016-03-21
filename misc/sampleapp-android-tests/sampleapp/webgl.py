@@ -58,8 +58,7 @@ class Webgl(unittest.TestCase):
         comm.pack(cmd, app_name.lower(), self)
 
     def test_2_install(self):
-        # Workaround for XWALK-6016: Build x86 and arm together, add arch filter 
-        apk_file = commands.getstatusoutput("ls %s| grep %s| grep %s" % (comm.build_app_dest, app_name.lower(), comm.ARCH))[1]
+        apk_file = commands.getstatusoutput("ls %s| grep %s" % (comm.build_app_dest, app_name.lower()))[1]
         if apk_file.endswith(".apk"):
             global testapp
             testapp = TestApp(comm.device, comm.build_app_dest + apk_file, package_name, active_name)
