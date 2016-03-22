@@ -46,6 +46,7 @@ import build_deb
 import build_msi
 import varshop
 import utils
+import resource_only
 
 reload(sys)
 if platform.system() == "Windows":
@@ -464,6 +465,11 @@ def main():
             dest="bnotdebug",
             action="store_true",
             help="specify the packed pkg is not debug mode")
+        opts_parser.add_option(
+            "--resource-only",
+            dest="resourceonly",
+            action="store_true",
+            help="only restore resources to project root")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
@@ -533,6 +539,11 @@ def main():
         LOG.error("Wrong pkg type, only support: %s, exit ..." %
                   PKG_TYPES)
         sys.exit(1)
+
+    if BUILD_PARAMETERS.resourceonly:
+        LOG.info("Starting copy resource only")
+        resource_only.copy_resource(BUILD_PARAMETERS.pkgtype)
+        sys.exit(0)
 
     if BUILD_PARAMETERS.pkgtype == "apk" or \
        BUILD_PARAMETERS.pkgtype == "apk-aio":
