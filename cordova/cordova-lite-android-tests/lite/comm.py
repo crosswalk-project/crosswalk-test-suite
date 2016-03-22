@@ -38,6 +38,7 @@ import glob
 import fnmatch
 import re
 import json
+from os.path import join, getsize
 reload(sys)
 sys.setdefaultencoding("utf-8")
 script_path = os.path.realpath(__file__)
@@ -105,6 +106,15 @@ def setUp():
         pkg_version_json = json.loads(pkg_version_raw)
         CROSSWALK_VERSION = pkg_version_json["main-version"]
         CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
+
+def checkFileSize(file_path, min_size, max_size, self):
+    print "Check file size from %s --------------> START" % file_path
+    size = getsize(file_path)/1024/1024
+    print "this file is %s MB" % size
+    self.assertTrue(size > min_size)
+    self.assertTrue(size < max_size)
+    print "Check file size from %s --------------> OK" % file_path
+
 
 def installWebviewPlugin(pkg_mode, self, multiple_apks = None):
     print "Install Crosswalk WebView Plugin --------------> START"
