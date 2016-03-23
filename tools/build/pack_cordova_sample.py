@@ -814,6 +814,11 @@ def packSampleApp_cli(app_name=None):
             'config.xml',
             '</widget>',
             '    <preference name="xwalkUserAgent" value="Custom UA" />\n</widget>')
+        replaceUserString(
+            project_root,
+            'config.xml',
+            '</widget>',
+            '    <preference name="AppendUserAgent" value="Test" />\n</widget>')
 
     if not installPlugins(plugin_tool, app_name):
         os.chdir(orig_dir)
