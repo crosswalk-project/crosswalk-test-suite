@@ -872,3 +872,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, clearClientCertPreferences methods
 * ResourceClient interface: onReceivedClientCertRequest method
+
+
+
+### 85. The [XWalkViewWithSetBackgroundColor](basic/XWalkViewWithSetBackgroundColor.java) sample check XWalkView can set background color without delay, include:
+
+* XWalkView can set background color without delay
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setBackgroundColor method
