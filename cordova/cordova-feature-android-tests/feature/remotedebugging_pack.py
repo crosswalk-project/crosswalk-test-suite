@@ -41,7 +41,7 @@ class TestRemoteDebuggingAppBuild(unittest.TestCase):
         app_name = "remotedebugging"
         pkg_name = " com.example." + app_name.lower()
         comm.create(app_name, pkg_name, comm.MODE, None, None, self)
-        comm.build(app_name, True, self)
+        comm.build(app_name, 1, self)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 #
-# Copyright (c) 2015 Intel Corporation.
+# Copyright (c) 2016 Intel Corporation.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -38,6 +38,7 @@ import glob
 import fnmatch
 import re
 import json
+from os.path import join, getsize
 reload(sys)
 sys.setdefaultencoding("utf-8")
 script_path = os.path.realpath(__file__)
@@ -78,9 +79,11 @@ def setUp():
         MODE = "shared"
     elif mode_tmp.strip("\n\t") == "embedded":
         MODE = "embedded"
+    elif mode_tmp.strip("\n\t") == "lite":
+        MODE = "lite"
     else:
         print (
-            " get mode error, the content of mode.txt should be 'shared' or 'embedded'\n")
+            " get mode error, the content of mode.txt should be 'shared' or 'embedded' or 'lite'\n")
         sys.exit(1)
     f_mode.close()
 
@@ -104,11 +107,20 @@ def setUp():
         CROSSWALK_VERSION = pkg_version_json["main-version"]
         CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
+def checkFileSize(file_path, min_size, max_size, self):
+    print "Check file size from %s --------------> START" % file_path
+    size = getsize(file_path)/1024/1024
+    print "this file is %s MB" % size
+    self.assertTrue(size > min_size)
+    self.assertTrue(size < max_size)
+    print "Check file size from %s --------------> OK" % file_path
+
+
 def installWebviewPlugin(pkg_mode, self, multiple_apks = None):
     print "Install Crosswalk WebView Plugin --------------> START"
-    pkg_mode_tmp = "shared"
-    if pkg_mode == "embedded":
-        pkg_mode_tmp = "core"
+    pkg_mode_tmp = "core"
+    if pkg_mode == "shared":
+        pkg_mode_tmp = "shared"
 
     xwalk_version = "%s" % CROSSWALK_VERSION
     if CROSSWALK_BRANCH == "beta":
@@ -122,7 +134,7 @@ def installWebviewPlugin(pkg_mode, self, multiple_apks = None):
                 " --variable XWALK_VERSION=\"%s\"" % (plugin_crosswalk_source, pkg_mode, xwalk_version)
 
     if multiple_apks is not None:
-        plugin_install_cmd = plugin_install_cmd + " --variable xwalkMultipleApk=\"%s\"" % multiple_apks
+        plugin_install_cmd = plugin_install_cmd + " --variable XWALKMULTIPLEAPK=\"%s\"" % multiple_apks
 
     print plugin_install_cmd
 
@@ -226,19 +238,26 @@ def build(appname, isDebug, self, isCopy=False, isMultipleApk=True):
     elif ARCH == "arm64":
         pack_arch_tmp = "arm --xwalk64bit"
 
-    cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
-    if isDebug == True:
+    cmd_mode = ""
+    apk_name_mode = "debug"
+    if isDebug == 1:
         print "build debug app"
-        cmd = "cordova build android --debug -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
+        cmd_mode = "--debug"
+    elif isDebug == -1:
+        print "build release app"
+        cmd_mode = "--release"
+        apk_name_mode = "release-unsigned"
+
+    cmd = "cordova build android %s -- --gradleArg=-PcdvBuildArch=%s" % (cmd_mode, pack_arch_tmp)
 
     print cmd
     buildstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, buildstatus[0])
     print "\nBuild project %s ----------------> OK\n" % appname
-    checkApkExist(appname, self, isCopy, isMultipleApk)
+    checkApkExist(appname, self, isCopy, isMultipleApk, apk_name_mode)
     
 
-def checkApkExist(appname, self, isCopy=False, isMultipleApk=True):
+def checkApkExist(appname, self, isCopy=False, isMultipleApk=True, apk_name_mode="debug"):
     print "Check  %s Apk Exist ----------------> START" % appname
     outputs_dir = os.path.join(
                       tool_path,
@@ -248,18 +267,18 @@ def checkApkExist(appname, self, isCopy=False, isMultipleApk=True):
                       "build",
                       "outputs",
                       "apk")
-    apk_name = "android-debug.apk"
+    apk_name = "android-%s.apk" % apk_name_mode
     if isMultipleApk == True:
         apk_name_arch = "armv7"
         if ARCH != "arm":
             apk_name_arch = ARCH
-        apk_name = "android-%s-debug.apk" % apk_name_arch
+        apk_name = "android-%s-%s.apk" % (apk_name_arch, apk_name_mode)
 
         if not os.path.exists(os.path.join(outputs_dir, apk_name)):
-            apk_name = "%s-%s-debug.apk" % (appname, apk_name_arch)
+            apk_name = "%s-%s-%s.apk" % (appname, apk_name_arch, apk_name_mode)
     else:
         if not os.path.exists(os.path.join(outputs_dir, apk_name)):
-            apk_name = "%s-debug.apk" % appname
+            apk_name = "%s-%s.apk" % (appname, apk_name_mode)
     self.assertTrue(os.path.exists(os.path.join(outputs_dir, apk_name)))
     if isCopy == True:
         self.assertTrue(do_copy(os.path.join(outputs_dir, apk_name), os.path.join(testapp_path, "%s.apk" % appname)))
@@ -289,7 +308,6 @@ def app_install(appname, pkgname, self):
     self.assertEquals(0, inststatus[0])
     print "Install APK ----------------> OK"
     self.assertTrue(check_app_installed(pkgname, self))
-
 
 def checkContains(origin_str=None, key_str=None):
     if origin_str.upper().find(key_str.upper()) >= 0:

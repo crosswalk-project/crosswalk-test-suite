@@ -51,11 +51,12 @@ class TestAppMultipleApkTrue(unittest.TestCase):
             None,
             replace_index_list,
             self, None, "true")
-        comm.build(app_name, False, self, True)
+        comm.build(app_name, 0, self, True)
+        comm.checkFileSize(os.path.join(comm.testapp_path, "%s.apk" % app_name), 20, 30, self)
         comm.app_install(app_name, pkg_name, self)
         comm.app_launch(app_name, pkg_name, self)
-        comm.app_uninstall(pkg_name, self)
         comm.app_stop(pkg_name, self)
+        comm.app_uninstall(pkg_name, self)
 
 if __name__ == '__main__':
     unittest.main()
