@@ -51,38 +51,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.1")
         self.assertEquals(data['xwalk_app_version'].strip(os.linesep), appVersion)
 
-    def test_display_fullscreen(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["display"] = "fullscreen"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
-
-    def test_multiple_icons(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["icons"] = [{"src":"icon.png","sizes":"72x72"},{"src": "../../../icon/icon.gif","sizes": "82x82"},{"src": "../../../icon/icon.jpg","sizes": "97x97"},{"src": "../../../icon/icon.bmp","sizes": "117x117"}]
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.run(self)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
-
     def test_name_normal(self):
         comm.setUp()
         comm.create(self)

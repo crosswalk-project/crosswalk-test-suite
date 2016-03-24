@@ -415,7 +415,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            'crosswalk-pkg --platforms="windows android" --crosswalk=19.48.495.0 ' + comm.ConstPath + "/../testapp/create_package_basic/"
+            'crosswalk-pkg --platforms="windows android" --crosswalk=19.49.514.1 ' + comm.ConstPath + "/../testapp/create_package_basic/"
         os.system(cmd)
         apks = os.listdir(os.getcwd())
         apkLength = 0
