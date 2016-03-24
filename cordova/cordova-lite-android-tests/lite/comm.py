@@ -130,10 +130,8 @@ def installWebviewPlugin(pkg_mode, self, multiple_apks = None):
     if PACK_TYPE == "npm":
         plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
 
-    version_parameter = "XWALK_VERSION"
-
     plugin_install_cmd = "cordova plugin add %s --variable XWALK_MODE=\"%s\"" \
-                " --variable %s=\"%s\"" % (plugin_crosswalk_source, pkg_mode, version_parameter, xwalk_version)
+                " --variable XWALK_VERSION=\"%s\"" % (plugin_crosswalk_source, pkg_mode, xwalk_version)
 
     if multiple_apks is not None:
         plugin_install_cmd = plugin_install_cmd + " --variable XWALKMULTIPLEAPK=\"%s\"" % multiple_apks

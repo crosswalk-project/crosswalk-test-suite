@@ -51,7 +51,7 @@ class TestWebAppBuild(unittest.TestCase):
             None,
             replace_index_list,
             self)
-        comm.build(app_name, False, self)
+        comm.build(app_name, 0, self)
 
 
 if __name__ == '__main__':
