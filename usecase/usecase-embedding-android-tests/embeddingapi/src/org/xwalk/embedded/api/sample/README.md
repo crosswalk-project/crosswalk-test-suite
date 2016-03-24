@@ -885,6 +885,15 @@ This usecase covers following interface and methods:
 
 
 
+### 86. The [XWalkViewWithNewLoad](basic/XWalkViewWithNewLoad.java) sample check XWalkView's new interface: load URL with specified HTTP headers, include:
+
+* XWalkView can load url with specified HTTP headers
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load method
+
+
 
 ### 87. The [XWalkViewWithComputeScroll](extended/XWalkViewWithComputeScroll.java) sample check XWalkView can computeHorizontalScrollOffset, computeHorizontalScrollRange, computeVerticalScrollOffset, computeVerticalScrollRange and computeVerticalScrollExtent, include:
 
