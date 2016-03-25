@@ -27,13 +27,40 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Tests Crosswalk Project Extensions for Depth Enabled Photography</title>
+<meta name="timeout" content="long">
+<title>Get the number of cameras</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">
+<link rel="help" href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#idl-def-Photo">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/adapter.js"></script>
+<script src="support/common.js"></script>
 
 <div id="log"></div>
-<script src="enhancedphotography.js"></script>
+<script>
+async_test(function(t) {
+  function getNumberOfCameras(photo) {
+    photo.queryNumberOfCameras().then(t.step_func(function(number) {
+      assert_greater_than(number, 0, "camera number is greater than zero");
+      t.done();
+    }));
+  }
+
+  function successCallback(photo) {
+    t.step(function() {
+      getNumberOfCameras(photo);
+    });
+  }
+
+  function errorCallback(ex) {
+    t.step(function() {
+      assert_unreached(ex.message);
+    });
+  }
+
+  getStream(successCallback, errorCallback);
+
+}, "Check that queryNumberOfCameras() method gets the number of cameras");
+</script>
+

@@ -27,13 +27,34 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Tests Crosswalk Project Extensions for Depth Enabled Photography</title>
+<title>Get the container photo image</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
+<link rel="help" href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#idl-def-Photo">
+<meta name="assert" content="Test checks that queryContainerImage() can get the container photo image.">
 <script src="support/adapter.js"></script>
+<script src="support/common.js"></script>
+<body>
+  <p>Test passes if there is a capture photo showed.</p>
+  <canvas id="img"></canvas>
+  <div id="log" style="color: red;"></div>
+  <script>
+    var imgCanvas = document.getElementById("img");
+    var imgContext = imgCanvas.getContext("2d");
+    var msg = document.getElementById("log");
 
-<div id="log"></div>
-<script src="enhancedphotography.js"></script>
+    function successCallback(photo) {
+      getContainerImage(photo, function(image) {
+        fillCanvas(image);
+      }, errorCallback);
+    }
+
+    function errorCallback(ex) {
+      msg.textContent = ex.message;
+    }
+
+    getStream(successCallback, errorCallback);
+
+  </script>
+</body>
+

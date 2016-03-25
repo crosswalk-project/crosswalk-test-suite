@@ -87,6 +87,11 @@ test(function() {
 }, "Check that getVertices() exists");
 
 test(function() {
+  assert_own_property(sp, "getVolumePreview");
+  assert_equals(typeof sp.getVolumePreview, "function", "sp.getVolumePreview is function type");
+}, "Check that getVolumePreview() exists");
+
+test(function() {
   assert_own_property(sp, "getNormals");
   assert_equals(typeof sp.getNormals, "function", "sp.getNormals is function type");
 }, "Check that getNormals() exists");
@@ -105,6 +110,11 @@ test(function() {
   assert_own_property(sp, "getVoxelSize");
   assert_equals(typeof sp.getVoxelSize, "function", "sp.getVoxelSize is function type");
 }, "Check that getVoxelSize() exists");
+
+test(function() {
+  assert_own_property(sp, "getInternalCameraIntrinsics");
+  assert_equals(typeof sp.getInternalCameraIntrinsics, "function", "sp.getInternalCameraIntrinsics is function type");
+}, "Check that getInternalCameraIntrinsics() exists");
 
 test(function() {
   assert_own_property(sp, "getMeshingThresholds");

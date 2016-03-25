@@ -27,13 +27,40 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Tests Crosswalk Project Extensions for Depth Enabled Photography</title>
+<meta name="timeout" content="long">
+<title>Reset the container photo image</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">
+<link rel="help" href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/adapter.js"></script>
+<script src="support/common.js"></script>
 
 <div id="log"></div>
-<script src="enhancedphotography.js"></script>
+<script>
+async_test(function(t) {
+  function resetContainerImage(photo) {
+    photo.resetContainerImage().then(t.step_func(function() {
+      t.done();
+    }));
+  }
+
+  function successCallback(photo) {
+    t.step(function() {
+      resetContainerImage(photo);
+    });
+  }
+
+  function errorCallback(ex) {
+    t.step(function() {
+      assert_unreached(ex.message);
+    });
+  }
+
+  getStream(successCallback, errorCallback);
+
+}, "Check that resetContainerImage() copies the camera[0] unedited color image to" +
+   "be the container image of the photo instance.");
+</script>
+

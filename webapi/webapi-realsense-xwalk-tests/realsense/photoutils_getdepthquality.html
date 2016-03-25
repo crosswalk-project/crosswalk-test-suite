@@ -27,13 +27,43 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Tests Crosswalk Project Extensions for Depth Enabled Photography</title>
+<meta name="timeout" content="long">
+<title>Get depth map quality</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">
+<link rel="help" href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photoutils">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/adapter.js"></script>
+<script src="support/common.js"></script>
 
 <div id="log"></div>
-<script src="enhancedphotography.js"></script>
+<script>
+async_test(function(t) {
+  function successCallback(photo) {
+    t.step(function() {
+      photoDepthQuality(photo);
+    });
+  }
+
+  function photoDepthQuality(photo) {
+    photoUtils.getDepthQuality(photo).then(function(quality) {
+      t.step(function() {
+        var depthQualities = ["bad", "fair", "good"];
+        assert_greater_than(depthQualities.indexOf(quality), -1);
+      });
+      t.done();
+    }, errorCallback);
+  }
+
+  function errorCallback(ex) {
+    t.step(function() {
+      assert_unreached(ex.message);
+    });
+  }
+
+  getStream(successCallback, errorCallback);
+
+}, "Check that getDepthQuality() method returns the depth map quality");
+</script>
+

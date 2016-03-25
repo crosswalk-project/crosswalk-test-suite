@@ -27,13 +27,56 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Tests Crosswalk Project Extensions for Depth Enabled Photography</title>
+<title>Get color image</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
+<link rel="help" href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#idl-def-Photo">
+<meta name="assert" content="Test checks that queryImage() gets the color image from camera device.">
 <script src="support/adapter.js"></script>
+<script src="support/common.js"></script>
+<body>
+  <input type="button" value="queryImage" onclick="queryImage()"/>
+  <ol class="instructions">
+    <li>
+      Open the page, there is a capture photo showed after some seconds
+    </li>
+    <li>
+      Click the "queryImage" button, the status shows: "query Image success"
+    </li>
+    <li>
+      If the above two steps are all true the test case pass, otherwise it fail.
+    </li>
+  </ol>
+  <canvas id="img"></canvas>
+  <div id="log" style="color: red;"></div>
+  <script>
+    var imgCanvas = document.getElementById("img");
+    var imgContext = imgCanvas.getContext("2d");
+    var msg = document.getElementById("log");
+    var currentPhoto;
 
-<div id="log"></div>
-<script src="enhancedphotography.js"></script>
+    function queryImage() {
+      if(currentPhoto) {
+        currentPhoto.queryImage().then(function(image) {
+          fillCanvas(image);
+          msg.textContent = "query Image success";
+        });
+      }
+    }
+
+    function successCallback(photo) {
+      currentPhoto = photo;
+      getContainerImage(photo, function(image) {
+        fillCanvas(image);
+      }, errorCallback);
+    }
+
+    function errorCallback(ex) {
+      msg.textContent = ex.message;
+    }
+
+    getStream(successCallback, errorCallback);
+
+  </script>
+</body>
+
