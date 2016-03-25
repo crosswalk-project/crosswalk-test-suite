@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
@@ -1117,5 +1118,14 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 
         return mTestXWalkResourceClient.createXWalkWebResourceResponse(
                 mimeType, encoding, new ByteArrayInputStream(input.getBytes(encoding)));
+    }
+
+    protected void loadUrlWithHeaders(final String url, final Map<String, String> headers) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.load(url, null, headers);
+            }
+        });
     }
 }

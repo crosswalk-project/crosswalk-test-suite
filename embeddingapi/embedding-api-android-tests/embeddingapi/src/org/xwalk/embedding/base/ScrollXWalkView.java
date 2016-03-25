@@ -33,7 +33,7 @@ public class ScrollXWalkView extends XWalkView {
     public void setOnMeasureListener(OnMeasureListener listener){
         this.mOnMeasureListener = listener;
     }
-    
+
     private OverScrollModeListener mOverScrollModeListener;
 
     public interface OverScrollModeListener{
@@ -42,41 +42,27 @@ public class ScrollXWalkView extends XWalkView {
 
     public void setOverScrollModeListener(OverScrollModeListener listener){
         this.mOverScrollModeListener = listener;
-    }    
+    }
 
-	@Override
-	protected int computeHorizontalScrollOffset() {
-		// TODO Auto-generated method stub
-		Log.i(TAG, "computeHorizontalScrollOffset is invoked");
-		return super.computeHorizontalScrollOffset();
-	}
-
-	@Override
-	protected int computeVerticalScrollRange() {
-		// TODO Auto-generated method stub
-		Log.i(TAG, "computeVerticalScrollRange is invoked");
-		return super.computeVerticalScrollRange();
-	}
-
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		// TODO Auto-generated method stub
-		Log.i(TAG, "onMeasure is invoked, widthMeasureSpec:" + widthMeasureSpec + " heightMeasureSpec:" + heightMeasureSpec);
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        // TODO Auto-generated method stub
+        Log.i(TAG, "onMeasure is invoked, widthMeasureSpec:" + widthMeasureSpec + " heightMeasureSpec:" + heightMeasureSpec);
         if(null != mOnMeasureListener) {
             mOnMeasureListener.informOnMeasure("onMeasure is invoked");
         }
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-	}
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
 
-	@Override
-	public void setOverScrollMode(int overScrollMode) {
-		// TODO Auto-generated method stub
-		Log.i(TAG, "setOverScrollMode is invoked, overScrollMode is " + overScrollMode);
+    @Override
+    public void setOverScrollMode(int overScrollMode) {
+        // TODO Auto-generated method stub
+        Log.i(TAG, "setOverScrollMode is invoked, overScrollMode is " + overScrollMode);
         if(null != mOverScrollModeListener) {
             mOverScrollModeListener.informOverScrollMode("setOverScrollMode is invoked");
         }
-		super.setOverScrollMode(overScrollMode);
-	}
-    
+        super.setOverScrollMode(overScrollMode);
+    }
+
 }
 

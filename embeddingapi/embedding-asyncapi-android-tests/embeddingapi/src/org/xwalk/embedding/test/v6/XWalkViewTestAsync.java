@@ -5,6 +5,8 @@
 package org.xwalk.embedding.test.v6;
 
 
+import java.util.HashMap;
+import java.util.Map;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Locale;
@@ -222,5 +224,24 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
             }
         });
         callbackHelper.waitForCallback(currentCallCount);
+    }
+
+    @SmallTest
+    public void testNewLoadWithHeaders() {
+        try {
+            Map<String,String> extraHeaders = new HashMap<String, String>();
+            extraHeaders.put("Accept-Encoding", "utf-8");
+            extraHeaders.put("Accept-Language", "zh-cn");
+            extraHeaders.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
+            extraHeaders.put("Referer", "http://www.google.com");
+
+            loadUrlWithHeaders("http://www.huawei.com", extraHeaders);
+
+            assertTrue(true);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            assertFalse(true);
+        }
     }
 }
