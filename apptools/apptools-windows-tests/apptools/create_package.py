@@ -170,22 +170,26 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         (return_code, output) = comm.getstatusoutput(cmd)
         version = comm.check_crosswalk_version(self, "stable")
         crosswalk = 'crosswalk-{}.zip'.format(version)
+        crosswalk64 = 'crosswalk64-{}.zip'.format(version)
         apks = os.listdir(os.getcwd())
         apkLength = 0
         for i in range(len(apks)):
             if apks[i].endswith(".msi"):
                 apkLength = apkLength + 1
-        comm.clear("org.xwalk.test")
         if not comm.cachedir:
             namelist = os.listdir(os.getcwd())
         else:
             newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
             os.chdir(newcachedir)
             namelist = os.listdir(os.getcwd())
+        crosswalkexist = 1
+        if crosswalk not in namelist and crosswalk64 not in namelist:
+            crosswalkexist = 0
+        comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
         self.assertIn("stable", output[0])
         self.assertIn(version, output[0])
-        self.assertIn(crosswalk, namelist)
+        self.assertEquals(crosswalkexist, 1)
         self.assertEquals(apkLength, 1)
 
     def test_create_package_reading_manifest(self):
@@ -265,22 +269,26 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         (return_code, output) = comm.getstatusoutput(cmd)
         version = comm.check_crosswalk_version(self, "canary")
         crosswalk = 'crosswalk-{}.zip'.format(version)
+        crosswalk64 = 'crosswalk64-{}.zip'.format(version)
         apks = os.listdir(os.getcwd())
         apkLength = 0
         for i in range(len(apks)):
             if apks[i].endswith(".msi"):
                 apkLength = apkLength + 1
-        comm.clear("org.xwalk.test")
         if not comm.cachedir:
             namelist = os.listdir(os.getcwd())
         else:
             newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
             os.chdir(newcachedir)
             namelist = os.listdir(os.getcwd())
+        crosswalkexist = 1
+        if crosswalk not in namelist and crosswalk64 not in namelist:
+            crosswalkexist = 0
+        comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
         self.assertIn("canary", output[0])
         self.assertIn(version, output[0])
-        self.assertIn(crosswalk, namelist)
+        self.assertEquals(crosswalkexist, 1)
         self.assertEquals(apkLength, 1)
 
     def test_create_package_m(self):

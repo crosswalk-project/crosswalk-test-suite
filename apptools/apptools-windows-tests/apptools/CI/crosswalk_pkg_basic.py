@@ -98,46 +98,59 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         (return_code, output) = comm.getstatusoutput(cmd)
         version = comm.check_crosswalk_version(self, "canary")
         crosswalk = 'crosswalk-{}.zip'.format(version)
+        crosswalk64 = 'crosswalk64-{}.zip'.format(version)
         apks = os.listdir(os.getcwd())
         apkLength = 0
         for i in range(len(apks)):
             if apks[i].endswith(".msi"):
                 apkLength = apkLength + 1
-        comm.clear("org.xwalk.test")
         if not comm.cachedir:
             namelist = os.listdir(os.getcwd())
         else:
             newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
             os.chdir(newcachedir)
             namelist = os.listdir(os.getcwd())
+        crosswalkexist = 1
+        if crosswalk not in namelist and crosswalk64 not in namelist:
+            crosswalkexist = 0
+        comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
         self.assertIn("canary", output[0])
         self.assertIn(version, output[0])
-        self.assertIn(crosswalk, namelist)
+        self.assertEquals(crosswalkexist, 1)
         self.assertEquals(apkLength, 1)
 
     def test_crosswalk_version(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         comm.clear("org.xwalk.test")
-        if os.path.exists("crosswalk-17.45.426.0.zip"):
-            os.remove("crosswalk-17.45.426.0.zip")
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
         cmd = comm.HOST_PREFIX + comm.PackTools + \
-            "crosswalk-pkg --platforms=windows --crosswalk=17.45.426.0 " + comm.ConstPath + "/../testapp/create_package_basic/"
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.crosswalkversion + " " + comm.ConstPath + "/../testapp/create_package_basic/"
         (return_code, output) = comm.getstatusoutput(cmd)
+        crosswalk = 'crosswalk-{}.zip'.format(comm.crosswalkversion)
+        crosswalk64 = 'crosswalk64-{}.zip'.format(comm.crosswalkversion)
         apks = os.listdir(os.getcwd())
         apkLength = 0
         for i in range(len(apks)):
             if apks[i].endswith(".msi"):
                 apkLength = apkLength + 1
+        if not comm.cachedir:
+            namelist = os.listdir(os.getcwd())
+        else:
+            newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
+            os.chdir(newcachedir)
+            namelist = os.listdir(os.getcwd())
+        crosswalkexist = 1
+        if crosswalk not in namelist and crosswalk64 not in namelist:
+            crosswalkexist = 0
         comm.clear("org.xwalk.test")
-        namelist = os.listdir(os.getcwd())
         self.assertEquals(return_code, 0)
-        self.assertIn("crosswalk-17.45.426.0.zip", namelist)
-        self.assertIn("17.45.426.0", output[0])
+        self.assertIn(crosswalkversion, output[0])
+        self.assertEquals(crosswalkexist, 1)
         self.assertEquals(apkLength, 1)
+
 
     def test_crosswalk_to_build(self):
         comm.setUp()

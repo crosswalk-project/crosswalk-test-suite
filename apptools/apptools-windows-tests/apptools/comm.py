@@ -44,7 +44,7 @@ DEFAULT_CMD_TIMEOUT = 600
 
 
 def setUp():
-    global XwalkPath, windowsCrosswalk, PackTools, HOST_PREFIX, SHELL_FLAG, cachedir
+    global XwalkPath, windowsCrosswalk, PackTools, HOST_PREFIX, SHELL_FLAG, cachedir, crosswalkversion
 
     cachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
     HOST_PREFIX = "node "
@@ -60,12 +60,13 @@ def setUp():
         sys.exit(1)
     if not cachedir:        
         for i in range(len(os.listdir(XwalkPath))):
-            if os.listdir(XwalkPath)[i].endswith(".zip"):
+            if os.listdir(XwalkPath)[i].startswith("crosswalk") and os.listdir(XwalkPath)[i].endswith(".zip"):
                 windowsCrosswalk = os.listdir(XwalkPath)[i]
     else:
         for i in range(len(os.listdir(cachedir))):
-            if os.listdir(cachedir)[i].endswith(".zip"):
+            if os.listdir(XwalkPath)[i].startswith("crosswalk") and os.listdir(cachedir)[i].endswith(".zip"):
                 windowsCrosswalk = os.listdir(cachedir)[i]
+    crosswalkversion = windowsCrosswalk[windowsCrosswalk.index("-") + 1:windowsCrosswalk.index(".zip")].strip()
     if not windowsCrosswalk:
         print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
         sys.exit(1)
