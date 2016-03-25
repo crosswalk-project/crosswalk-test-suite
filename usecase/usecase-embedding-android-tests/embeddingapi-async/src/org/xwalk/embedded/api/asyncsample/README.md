@@ -883,3 +883,14 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, setBackgroundColor method
+
+
+
+
+### 87. The [XWalkViewWithComputeScrollAsync](extended/XWalkViewWithComputeScrollAsync.java) sample check XWalkView can computeHorizontalScrollOffset, computeHorizontalScrollRange, computeVerticalScrollOffset, computeVerticalScrollRange and computeVerticalScrollExtent, include:
+
+* XWalkView can computeHorizontalScrollOffset, computeHorizontalScrollRange, computeVerticalScrollOffset, computeVerticalScrollRange and computeVerticalScrollExtent
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, computeHorizontalScrollOffset, computeHorizontalScrollRange, computeVerticalScrollOffset, computeVerticalScrollRange and computeVerticalScrollExtent methods
