@@ -29,7 +29,7 @@ public class XWalkViewWithOnReceivedHttpAuthRequest extends XWalkActivity{
         mess.append("Test Purpose: \n\n")
             .append("Verifies OnReceivedHttpAuthRequest API can be invoked in XWalkResourceClient.\n\n")
             .append("Expected Result:\n\n")
-            .append("Test passes if the host name will be shown and it is 'httpbin.org'");
+            .append("Test passes if the host name and isFirstAttempt will be shown and it is 'httpbin.org' and 'true'");
         new AlertDialog.Builder(this)
             .setTitle("Info")
             .setMessage(mess.toString())
@@ -46,7 +46,11 @@ public class XWalkViewWithOnReceivedHttpAuthRequest extends XWalkActivity{
                     XWalkHttpAuthHandler handler, String host, String realm) {
                 // TODO Auto-generated method stub
                 super.onReceivedHttpAuthRequest(view, handler, host, realm);
-                mTextView.setText(host);
+                String isFirst = " isFirstAttempt is ";
+                if (handler != null) {
+                    isFirst += handler.isFirstAttempt();
+                }
+                mTextView.setText(host + isFirst);
             }
         });
     }
