@@ -38,12 +38,13 @@ import fnmatch
 import re
 import json
 import subprocess
+import time
 reload(sys)
 sys.setdefaultencoding("utf-8")
 script_path = os.path.realpath(__file__)
 const_path = os.path.dirname(script_path)
 tool_path = const_path + "/../tools/"
-testapp_path = "/tmp/windows-sampleapp/"
+testapp_path = "C:\\stub\\packages"
 
 #msiexec /i C:\\packages\\opt\\tct-backgrounds-css3-tests\\tct-backgrounds-css3-tests.msi /qn /quiet
 LOCAL_INSTALL_CMD = "msiexec /i %s /qn /quiet"
@@ -86,37 +87,29 @@ def doCMD(cmd):
 
 def app_install(appname, pkgname, self):
     print "Install MSI ----------------> START"
-    testapp_path = os.getcwd()
     app_path = os.path.join(testapp_path, "%s.msi" % appname)
     if not os.path.exists(app_path):
         print "Error: No app: %s found in directory: %s" % (appname, testapp_path)
 
-    action_status = False
     cmd_inst = LOCAL_INSTALL_CMD % app_path
+    print "cmd_inst: %s" % cmd_inst
     (return_code, output) = doCMD(cmd_inst)
-    if checkInstalled(pkgname):
-        action_status = True
-    self.assertTrue(action_status)
-    print cmd_inst
+    self.assertEquals(0, return_code)
+    self.assertTrue(checkInstalled(pkgname))
     print "Install MSI ----------------> OK"
 
 def app_uninstall(appname, pkgname, self):
     print "Uninstall MSI ----------------> START"
 
-    testapp_path = os.getcwd()
     app_path = os.path.join(testapp_path, "%s.msi" % appname)
     if not os.path.exists(app_path):
         print "Error: No app: %s found in directory: %s" % (appname, testapp_path)
 
-    action_status = False
-    if not checkInstalled(pkgname):
-        app_install(appname, pkgname, self)
     cmd_uninst = LOCAL_UNINSTALL_CMD % app_path
+    print "cmd_uninst: %s" % cmd_uninst
     (return_code, output) = doCMD(cmd_uninst)
-    if not checkInstalled(pkgname):
-        action_status = True
-    self.assertTrue(action_status)
-    print cmd_uninst
+    self.assertEquals(0, return_code)
+    self.assertFalse(checkInstalled(pkgname))
     print "Uninstall MSI ----------------> OK"
 
 
@@ -132,9 +125,11 @@ def check_app_launched():
 def app_launch(appname, pkgname, self):
     print "Launch APP ----------------> START"
     cmd_launch = LAUNCH_CMD % (appname, appname, appname)
-    print cmd_launch
+    print "cmd_launch: %s" % cmd_launch
     subprocess.Popen(
         cmd_launch, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+
+    time.sleep(1)
     self.assertTrue(check_app_launched())
     print "Launch APP ----------------> OK"
 
@@ -163,59 +158,3 @@ def replace_key(file_path, content, key):
     print "Replace value ----------------> OK"
     return True
 
-
-def do_remove(target_file_list=None):
-    for i_file in target_file_list:
-        print "Removing %s" % i_file
-        try:
-            if os.path.isdir(i_file):
-                shutil.rmtree(i_file)
-            else:
-                os.remove(i_file)
-        except Exception as e:
-            print "Fail to remove file %s: %s" % (i_file, e)
-            return False
-    return True
-
-def do_copy(src_item=None, dest_item=None):
-    print "Copying %s to %s" % (src_item, dest_item)
-    try:
-        if os.path.isdir(src_item):
-            overwriteCopy(src_item, dest_item, symlinks=True)
-        else:
-            if not os.path.exists(os.path.dirname(dest_item)):
-                print "Create non-existent dir: %s" % os.path.dirname(dest_item)
-                os.makedirs(os.path.dirname(dest_item))
-            shutil.copy2(src_item, dest_item)
-    except Exception as e:
-        print "Fail to copy file %s: %s" % (src_item, e)
-        return False
-
-    return True
-
-
-def overwriteCopy(src, dest, symlinks=False, ignore=None):
-    if not os.path.exists(dest):
-        os.makedirs(dest)
-        shutil.copystat(src, dest)
-    sub_list = os.listdir(src)
-    if ignore:
-        excl = ignore(src, sub_list)
-        sub_list = [x for x in sub_list if x not in excl]
-    for i_sub in sub_list:
-        s_path = os.path.join(src, i_sub)
-        d_path = os.path.join(dest, i_sub)
-        if symlinks and os.path.islink(s_path):
-            if os.path.lexists(d_path):
-                os.remove(d_path)
-            os.symlink(os.readlink(s_path), d_path)
-            try:
-                s_path_s = os.lstat(s_path)
-                s_path_mode = stat.S_IMODE(s_path_s.st_mode)
-                os.lchmod(d_path, s_path_mode)
-            except Exception:
-                pass
-        elif os.path.isdir(s_path):
-            overwriteCopy(s_path, d_path, symlinks, ignore)
-        else:
-            shutil.copy2(s_path, d_path)

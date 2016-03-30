@@ -34,11 +34,14 @@ import commands
 import comm
 
 
-class TestWebAppInstall(unittest.TestCase):
+class TestWebAppUnInstall(unittest.TestCase):
 
     def test_uninstall(self):
         app_name = "testapp"
         pkg_name = "org.xwalk." + app_name
+
+        if not comm.checkInstalled(pkg_name):
+            comm.app_install(app_name, pkg_name, self)
         comm.app_uninstall(app_name, pkg_name, self)
 
 if __name__ == '__main__':

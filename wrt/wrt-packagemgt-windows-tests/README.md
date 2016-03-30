@@ -8,7 +8,7 @@ This test suite is for testing wrt-packagemgt-tests specification
 
 2. cd [testprefix-path]/opt/wrt-packagemgt-tests/
 
-3. ./inst.py -i
+3. ./inst.py -i (If you install the msi file by manual double click, you need to copy testapp.msi to C:\stub\packages\testapp.msi)
 
 4. run test case
 
