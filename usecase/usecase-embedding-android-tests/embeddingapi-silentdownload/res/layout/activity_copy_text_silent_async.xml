@@ -4,12 +4,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="org.xwalk.embedded.api.silentdownloadwithlzma.XWalkLayoutWithSilentDownload">
+    tools:context="org.xwalk.embedded.api.silentdownload.XWalkCopyTextWithSilentDownload">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Currently, for shared mode APK, user will be prompted to download and install the XWalkRuntimeLib.apk when the runtime APK had not been installed yet. Now the crosswalk runtime APK will be downloaded from developer\'s specific server in the background at the first launch of App and the core libraries/resources will be extracted to App\'s private folder and be loaded to system like a plugin. This case tests xwalkview loads a webpage"
+        android:text="When we want to copy some text from the current page, we just grab the words and the top task bar will show. This case checks if proper task bar is shown if not when we use crosswalk silent download mode."
         android:id="@+id/textView" />
 
     <org.xwalk.core.XWalkView
