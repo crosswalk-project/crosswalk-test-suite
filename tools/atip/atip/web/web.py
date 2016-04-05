@@ -684,20 +684,23 @@ class WebAPP(common.APP):
     # Check if 2 files content are the same
     def check_md5_file_same(self, file_name):
         try:
-            result_path = self.baseline_path + "/" + file_name + ".md5"
-            fp_result = open(result_path, "r")
-            str_result = fp_result.read()
-            fp_result.close()
-            baseline_path = self.baseline_path + \
-                "/" + file_name + "_baseline.md5"
-            fp_baseline = open(baseline_path, "r")
-            str_baseline = fp_baseline.read()
-            fp_baseline.close()
-            index = cmp(str_result, str_baseline)
-            if not index:
+            if self.test_type == "result":
+                result_path = self.baseline_path + "/" + file_name + ".md5"
+                fp_result = open(result_path, "r")
+                str_result = fp_result.read()
+                fp_result.close()
+                baseline_path = self.baseline_path + \
+                    "/" + file_name + "_baseline.md5"
+                fp_baseline = open(baseline_path, "r")
+                str_baseline = fp_baseline.read()
+                fp_baseline.close()
+                index = cmp(str_result, str_baseline)
+                if not index:
+                    return True
+                else:
+                    return False
+            elif self.test_type == "baseline":
                 return True
-            else:
-                return False
         except Exception as e:
             print "Check md5 file failed: %s" % e
             return False
