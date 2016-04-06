@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_createFromSealedData_no_optional</title>
+<title>Secure Data Test: AppSecurityApi_createFromSealedData_invalid_instanceID</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -85,7 +85,7 @@ function test() {
               });
               t.done();
             },
-            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': extraKey, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ''}
+            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': extraKey, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': []}
           );
         },
         function(errorObj) {

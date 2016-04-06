@@ -50,7 +50,7 @@ function test() {
           intel.security.secureData.getWebOwners(
             function(webOwners){
               t.step(function() {
-                assert_equals(webOwners, 'webOwners1');
+                assert_equals(webOwners[0], "webOwners1");
               });
               t.done();
             },
@@ -69,7 +69,7 @@ function test() {
           });
           t.done();
         },
-        {'data': 'plaintext data', 'tag': 'Test', 'extraKey': 0, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': 'webOwners1'}
+        {'data': 'plaintext data', 'tag': 'Test', 'extraKey': 0, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ["webOwners1"]}
       );
     } catch (e){
       assert_true(false, "Exception: {" + e.message + "}");
