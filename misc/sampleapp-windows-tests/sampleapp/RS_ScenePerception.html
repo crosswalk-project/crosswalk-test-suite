@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset='utf-8'>
+<title>RS_ScenePerception</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<body>
+  <p>
+    <strong>Test steps:</strong>
+  </p>
+  <ol>
+    <li>
+      Click "Scene Perception" border,
+      open a new window with title "RealSense Scene Perception Sample".
+   </li>
+    <li>
+      Click "init" button in the new window,
+      wait until the two borders on the left have contents filled.
+    </li>
+    <li>
+      Click "Toggle Reconstruction" button twice,
+      check if the first time, the Reconstruction is false(true),
+      then the second time the Reconstruction should be true(false).
+    </li>
+    <li>Click "StartSP" button.</li>
+    <li>
+      Move the R200 camera until there is three-dimensional position line
+      showed in Meshing Reconstruction.
+    </li>
+    <li>
+      Continue moving the camera until the observed environment is added
+      to Meshing Reconstruction.</li>
+    <li>
+      Click "Volume Preview" radio button, check if there is volume image.
+    </li>
+    <li>
+      Click "StopSP" button,
+      check if the Meshing Reconstruction and Volume Preview
+      doesn't have any changes no matter how to move the camera.
+    </li>
+    <li>
+      Click "Save Mesh" button,
+      check if there is a file path append on the above "Saved Mesh"
+      (eg: /documents/savedMesh_2016_2_14_15_54_9_613.obj),
+      and the file is saved in Documents directory.
+    </li>
+    <li>
+      Click "Reset" button,
+      check if the Volume Preview and Meshing Reconstruction are both cleared.
+    </li>
+    <li>
+      Click "destroy" button, check if all buttons are disabled expect "init" button.
+    </li>
+  </ol>
+  <p>
+    <strong>Expected Output:</strong>
+  </p>
+  <ol>
+    <li>All the steps are passed.</li>
+  </ol>
+</body>
+
