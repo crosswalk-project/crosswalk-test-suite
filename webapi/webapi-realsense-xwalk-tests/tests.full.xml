@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite category="W3C/HTML5 APIs" name="webapi-realsense-xwalk-tests">
+  <suite category="RealSense JS APIs" name="webapi-realsense-xwalk-tests">
     <set name="realsense" type="js" extension="xwalk-extensions">
       <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="realsense" priority="P1" purpose="Test checks that RealSense is present" status="approved" type="compliance" subcase="3">
         <description>
@@ -15,7 +15,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="scene_perception" priority="P1" purpose="Test checks that Scene Perception is present" status="approved" type="compliance" subcase="52">
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="scene_perception" priority="P1" purpose="Test checks that Scene Perception is present" status="approved" type="compliance" subcase="54" onload_delay="10">
         <description>
           <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/scene_perception.html</test_script_entry>
         </description>
@@ -27,7 +27,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="enhanced_photography" priority="P1" purpose="Test checks that depth enabled photography is present" status="approved" type="compliance" subcase="68">
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="enhanced_photography" priority="P1" purpose="Test checks that depth enabled photography is present" status="approved" type="compliance" subcase="68" onload_delay="10">
         <description>
           <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/enhanced_photography.html</test_script_entry>
         </description>
@@ -39,7 +39,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="face" priority="P1" purpose="Test checks that face is present" status="approved" type="compliance" subcase="32">
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="face" priority="P1" purpose="Test checks that face is present" status="approved" type="compliance" subcase="32" onload_delay="10">
         <description>
           <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/face.html</test_script_entry>
         </description>
@@ -47,6 +47,222 @@
           <spec>
             <spec_assertion category="W3C API Specifications" element_name="start" element_type="method" interface="FaceModule" section="Face APIs" specification="Face"/>
             <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/face.html</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photo_checksignature" priority="P2" purpose="Test checks that checkSignature() returns false the container image is modified" status="approved" type="compliance" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_checksignature.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="checkSignature" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_clone" priority="P2" purpose="Test checks that clone() method creates a new Photo instance and copies the content of this photo to the new photo" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_clone-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="clone" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querycameraperspectivemodel" priority="P2" purpose="Test checks that queryCameraPerspectiveModel() method gets the specified camera perspective model parameters" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querycameraperspectivemodel-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="queryCameraPerspectiveModel" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querycamerapose" priority="P2" purpose="Test checks that queryCameraPose() method gets camera pose information" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querycamerapose-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="queryCameraPose" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querycameravendorinfo" priority="P2" purpose="Test checks that queryCameraVendorInfo() method can get camera vendor information" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querycameravendorinfo-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="queryCameraVendorInfo" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querycontainerimage" priority="P2" purpose="Test checks that queryContainerImage() gets the container photo image" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querycontainerimage-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="queryContainerImage" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querydevicevendorinfo" priority="P2" purpose="Test checks that queryDeviceVendorInfo() method can get the specified device vendor information" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querydevicevendorinfo-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="queryDeviceVendorInfo" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_queryimage" priority="P2" purpose="Test checks that queryImage() gets the color image from camera device" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_queryimage-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="queryImage" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photo_querynumberofcameras" priority="P2" purpose="Test checks that queryNumberOfCameras() method gets the number of cameras" status="approved" type="compliance" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querynumberofcameras.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="queryNumberOfCameras" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_queryrawdepth" priority="P2" purpose="Test checks that queryRawDepth() gets the raw depth image of the photo" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_queryrawdepth-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="queryRawDepth" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photo_resetcontainerimage" priority="P2" purpose="Test checks that resetContainerImage() copies the camera[0] unedited color image to be the container image of the photo instance" status="approved" type="compliance" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_resetcontainerimage.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="resetContainerImage" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photo_queryxdmrevision" priority="P2" purpose="Test checks that queryXDMRevision() gets the XDM file revision" status="approved" type="compliance" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_queryxdmrevision.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="queryXDMRevision" element_type="method" interface="Photo" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_photorotate" priority="P2" purpose="Test checks that the photo is rotated 90 degree" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_photorotate-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="photoRotate" element_type="method" interface="PhotoUtils" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photoutils</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_colorresize" priority="P2" purpose="Test checks that resizing photo's color image to 800px width" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_colorresize-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="colorResize" element_type="method" interface="PhotoUtils" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photoutils</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_commonfov" priority="P2" purpose="Test checks that commonFOV() returns the new photo instance" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_commonfov-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="commonFOV" element_type="method" interface="PhotoUtils" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photoutils</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_depthresize" priority="P2" purpose="Test checks that resizing the photo's depth map to to 640px width" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_depthresize-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="depthResize" element_type="method" interface="PhotoUtils" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photoutils</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_enhancedepth" priority="P2" purpose="Test checks that enhancing the depth map image with high quality" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_enhancedepth-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="enhanceDepth" element_type="method" interface="PhotoUtils" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photoutils</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photoutils_getdepthquality" priority="P2" purpose="Test checks that getDepthQuality() method returns the depth map quality" status="approved" type="compliance" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_getdepthquality.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="getDepthQuality" element_type="method" interface="PhotoUtils" section="Depth Enabled Photography APIs" specification="Depth Enabled Photography"/>
+            <spec_url>https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photoutils</spec_url>
             <spec_statement />
           </spec>
         </specs>

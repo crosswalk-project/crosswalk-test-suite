@@ -1,26 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite category="W3C/HTML5 APIs" name="webapi-realsense-xwalk-tests">
+  <suite category="RealSense JS APIs" name="webapi-realsense-xwalk-tests">
     <set name="realsense" type="js" extension="xwalk-extensions">
       <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="realsense" purpose="Test checks that RealSense is present" subcase="3">
         <description>
           <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/realsense.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="scene_perception" purpose="Test checks that Scene Perception is present" subcase="52">
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="scene_perception" purpose="Test checks that Scene Perception is present" subcase="54" onload_delay="10">
         <description>
           <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/scene_perception.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="enhanced_photography" purpose="Test checks that depth enabled photography is present" subcase="68">
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="enhanced_photography" purpose="Test checks that depth enabled photography is present" subcase="68" onload_delay="10">
         <description>
           <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/enhanced_photography.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="face" purpose="Test checks that face is present" subcase="32">
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="face" purpose="Test checks that face is present" subcase="32" onload_delay="10">
         <description>
           <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/face.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photo_checksignature" purpose="Test checks that checkSignature() returns false the container image is modified" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_checksignature.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_clone" purpose="Test checks that clone() method creates a new Photo instance and copies the content of this photo to the new photo">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_clone-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querycameraperspectivemodel" purpose="Test checks that queryCameraPerspectiveModel() method gets the specified camera perspective model parameters">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querycameraperspectivemodel-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querycamerapose" purpose="Test checks that queryCameraPose() method gets camera pose information">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querycamerapose-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querycameravendorinfo" purpose="Test checks that queryCameraVendorInfo() method can get camera vendor information">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querycameravendorinfo-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querycontainerimage" purpose="Test checks that queryContainerImage() gets the container photo image">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querycontainerimage-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_querydevicevendorinfo" purpose="Test checks that queryDeviceVendorInfo() method can get the specified device vendor information">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querydevicevendorinfo-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_queryimage" purpose="Test checks that queryImage() gets the color image from camera device">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_queryimage-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photo_querynumberofcameras" purpose="Test checks that queryNumberOfCameras() method gets the number of cameras" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_querynumberofcameras.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photo_queryrawdepth" purpose="Test checks that queryRawDepth() gets the raw depth image of the photo">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_queryrawdepth-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photo_resetcontainerimage" purpose="Test checks that resetContainerImage() copies the camera[0] unedited color image to be the container image of the photo instance" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_resetcontainerimage.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photo_queryxdmrevision" purpose="Test checks that queryXDMRevision() gets the XDM file revision" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photo_queryxdmrevision.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_photorotate" purpose="Test checks that the photo is rotated 90 degree">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_photorotate-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_colorresize" purpose="Test checks that resizing photo's color image to 800px width">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_colorresize-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_commonfov" purpose="Test checks that commonFOV() returns the new photo instance">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_commonfov-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_depthresize" purpose="Test checks that resizing the photo's depth map to to 640px width">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_depthresize-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="manual" id="photoutils_enhancedepth" purpose="Test checks that enhancing the depth map image with high quality">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_enhancedepth-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/RealSense" execution_type="auto" id="photoutils_getdepthquality" purpose="Test checks that getDepthQuality() method returns the depth map quality" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-realsense-xwalk-tests/realsense/photoutils_getdepthquality.html</test_script_entry>
         </description>
       </testcase>
     </set>

@@ -27,13 +27,59 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Tests Crosswalk Project Extensions for Depth Enabled Photography</title>
+<title>Photo rotate 90 degree</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
+<link rel="help" href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photoutils">
+<meta name="assert" content="Test checks that the photo is rotated 90 degree.">
 <script src="support/adapter.js"></script>
+<script src="support/common.js"></script>
+<body>
+  <input type="button" id="btnRotate" value="Rotate" onclick="rotatePhoto()"/>
+  <ol class="instructions">
+    <li>
+      Open the page, there is a capture photo showed
+    </li>
+    <li>
+      Click the "Rotate" button, the photo is rotated 90 degree.
+    </li>
+    <li>
+      If the above two steps are all true the test case pass, otherwise it fail.
+    </li>
+  </ol>
+  <canvas id="img"></canvas>
+  <div id="log" style="color: red;"></div>
+  <script>
+    var btnRotate = document.getElementById("btnRotate");
+    var imgCanvas = document.getElementById("img");
+    var imgContext = imgCanvas.getContext("2d");
+    var msg = document.getElementById("log");
+    var currentPhoto;
 
-<div id="log"></div>
-<script src="enhancedphotography.js"></script>
+    function rotatePhoto() {
+      if(photoUtils && currentPhoto) {
+        photoUtils.photoRotate(currentPhoto, 90.0).then(function(rotatedPhoto) {
+          getContainerImage(rotatedPhoto,
+            fillCanvas,
+            errorCallback);
+        })
+        .catch(errorCallback);
+      }
+    }
+
+    function successCallback(photo) {
+      currentPhoto = photo;
+      getContainerImage(photo, function(image) {
+        fillCanvas(image);
+      }, errorCallback);
+    }
+
+    function errorCallback(ex) {
+      msg.textContent = ex.message;
+    }
+
+    getStream(successCallback, errorCallback);
+
+  </script>
+</body>
+

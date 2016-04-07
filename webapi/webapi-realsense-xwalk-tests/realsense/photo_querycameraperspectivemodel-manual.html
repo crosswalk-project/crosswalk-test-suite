@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Get camera perspective model parameters</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="http://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#idl-def-Photo">
+<meta name="assert" content="Test checks that queryCameraPerspectiveModel() method gets the specified camera perspective model parameters.">
+<script src="support/adapter.js"></script>
+<script src="support/common.js"></script>
+<body>
+  <p>Test passes if there is a capture photo showed and the PerspectiveCameraModel can get values.</p>
+  <div>
+    <div>
+      <span>PerspectiveCameraModel</span>
+      <div>
+        <b>model:</b>
+        <span id="model"></span>
+      </div>
+      <div>
+        <b>focalLength:</b>
+        <span id="focalLength"></span>
+      </div>
+      <div>
+        <b>principalPoint:</b>
+        <span id="principalPoint"></span>
+      </div>
+      <div>
+        <b>skew:</b>
+        <span id="skew"></span>
+      </div>
+      <div>
+        <b>radialDistortion:</b>
+        <span id="radialDistortion"></span>
+      </div>
+      <div>
+        <b>tangentialDistortion:</b>
+        <span id="tangentialDistortion"></span>
+      </div>
+    </div>
+    <div>
+      <canvas id="img"></canvas>
+    </div>
+  </div>
+  <div id="log" style="color: red;"></div>
+  <script>
+    var imgCanvas = document.getElementById("img");
+    var imgContext = imgCanvas.getContext("2d");
+    var msg = document.getElementById("log");
+    var txtModel = document.getElementById("model");
+    var txtFocalLength = document.getElementById("focalLength");
+    var txtPrincipal = document.getElementById("principalPoint");
+    var txtSkew = document.getElementById("skew");
+    var txtRadial = document.getElementById("radialDistortion");
+    var txtTangential = document.getElementById("tangentialDistortion");
+
+    function getPerCameraModel(photo) {
+      photo.queryCameraPerspectiveModel(0).then(function(pcModel) {
+        txtModel.textContent = pcModel.model;
+        txtFocalLength.textContent = getPoint(pcModel.focalLength);
+        txtPrincipal.textContent = getPoint(pcModel.principalPoint);
+        txtSkew.textContent = pcModel.skew;
+        txtRadial.textContent = getRadialDistortion(pcModel.radialDistortion);
+        txtTangential.textContent = getTangentialDistortion(pcModel.tangentialDistortion);
+      });
+    }
+
+    function getPoint(point) {
+      return "(" + point.x + "," + point.y + ")";
+    }
+
+    function getRadialDistortion(value) {
+      return "[" + value.k1 + "," + value.k2 + "," + value.k3 + "]";
+    }
+
+    function getTangentialDistortion(value) {
+      return "[" + value.p1 + "," + value.p2 + "]";
+    }
+
+    function successCallback(photo) {
+      getContainerImage(photo, function(image) {
+        fillCanvas(image);
+      }, errorCallback);
+      getPerCameraModel(photo);
+    }
+
+    function errorCallback(ex) {
+      msg.textContent = ex.message;
+    }
+
+    getStream(successCallback, errorCallback);
+
+  </script>
+</body>
+
