@@ -988,6 +988,18 @@
           </spec>
         </specs>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Audio API" execution_type="auto" id="audiocontext_decodeAudioData" priority="P1" purpose="Check if decodeAudioData method returns a Promise" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_decodeAudioData.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="sampleRate" element_type="attribute" interface="AudioContext" section="Media" specification="Web Audio API" />
+            <spec_url>http://webaudio.github.io/web-audio-api/#widl-BaseAudioContext-decodeAudioData-Promise-AudioBuffer--ArrayBuffer-audioData-DecodeSuccessCallback-successCallback-DecodeErrorCallback-errorCallback</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Audio API" execution_type="auto" id="audiocontext_destination_exists" priority="P1" purpose="Check if AudioContext.destination attribute exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_destination_exists.html</test_script_entry>
@@ -1092,6 +1104,18 @@
           <spec>
             <spec_assertion category="Tizen W3C API Specifications" element_name="sampleRate" element_type="attribute" interface="AudioContext" section="Media" specification="Web Audio API" />
             <spec_url>https://webaudio.github.io/web-audio-api/#AudioContext</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Audio API" execution_type="auto" id="audiocontext_createIIRFilter" priority="P1" purpose="Check that the attributes of IIRFilterNode" status="approved" type="compliance" subcase="3">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createIIRFilter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="createIIRFilter" element_type="method" interface="AudioContext" section="Media" specification="Web Audio API" />
+            <spec_url>http://webaudio.github.io/web-audio-api/#idl-def-IIRFilterNode</spec_url>
             <spec_statement />
           </spec>
         </specs>
@@ -2077,6 +2101,18 @@
         <specs>
           <spec>
             <spec_assertion category="Tizen W3C API Specifications" element_name="startRendering" element_type="method" interface="OfflineAudioContext" section="Media" specification="Web Audio API" />
+            <spec_url>https://webaudio.github.io/web-audio-api/#idl-def-OfflineAudioContext</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Audio API" execution_type="auto" id="offlineaudiocontext_suspend_and_resume" priority="P1" purpose="Check if an audio context can be suspended and resumed" status="approved" type="compliance" subcase="4">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/offlineaudiocontext_suspend_and_resume.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="suspend" element_type="method" interface="OfflineAudioContext" section="Media" specification="Web Audio API" />
             <spec_url>https://webaudio.github.io/web-audio-api/#idl-def-OfflineAudioContext</spec_url>
             <spec_statement />
           </spec>
