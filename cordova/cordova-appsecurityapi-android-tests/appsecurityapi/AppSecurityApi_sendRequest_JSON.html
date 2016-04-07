@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_sendRequest_JSON</title>
+<title>Secure Data Test: AppSecurityApi_sendRequest_GENERIC</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -40,7 +40,7 @@ Authors:
 <div id="log"></div>
 <script type="text/javascript">
 
-setTimeout(function() { test(); }, 500);
+setTimeout(function() { test(); }, 1000);
 
 function test() {
   async_test(function(t) {
@@ -54,7 +54,7 @@ function test() {
                   intel.security.secureTransport.open(
                     function(secureTransportInstanceID){
                       var request = {'username': 'John Smith', 'password': ''};
-                      var requestDescriptors = [{'Path': 'password', 'Type': 'String', 'Handle': passwordSecureDataInstanceID, 'Format': 'SECURE_DATA_PLAINTEXT_UNDECORATED'}];
+                      var requestDescriptors = [];
                       intel.security.secureTransport.sendRequest(
                         function(response){
                           t.step(function() {

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_delete_no_optional</title>
+<title>Secure Data Test: AppSecurityApi_sendRequest_JSON_SEALED_DATA</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -40,42 +40,55 @@ Authors:
 <div id="log"></div>
 <script type="text/javascript">
 
-setTimeout(function() { test(); }, 500);
+setTimeout(function() { test(); }, 1000);
+
 function test() {
   async_test(function(t) {
     try{
-      extraKey = null;
       intel.security.secureData.createFromData(
         function(instanceID) {
-          extraKey = instanceID
-          intel.security.secureData.createFromData(
-            function(instanceID) {
-              intel.security.secureStorage.write(
+          intel.security.secureStorage.write(
 	        function() {
-                  intel.security.secureStorage.delete(
-                    function() {
-                      t.step(function() {
-                        assert_true(true, 'success to delete the data');
-                      });
-                      t.done();
+              intel.security.secureStorage.read(
+                function(passwordSecureDataInstanceID) {
+                  intel.security.secureTransport.open(
+                    function(secureTransportInstanceID){
+                      var request = {'username':'John Smith', 'password':''};
+                      var requestDescriptors = [{'Location': 'body', 'Path': 'password', 'Type': 'String', 'InstanceID': passwordSecureDataInstanceID, 'Format': 'SECURE_DATA_SEALED_DATA_UNDECORATED'}];
+
+                      intel.security.secureTransport.sendRequest(
+                        function(response){
+                          t.step(function() {
+                            assert_not_equals(response.responseBody, null);
+                          });
+                          t.done();
+                        },
+                        function(errorObj){
+                          t.step(function() {
+                            assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+                          });
+                          t.done();
+                        },
+                        {'instanceID':secureTransportInstanceID, 'requestBody':JSON.stringify(request), 'requestFormat':'JSON', 'secureDataDescriptors':requestDescriptors}
+                      );
                     },
-                    function(errorObj) {
+                    function(errorObj){
                       t.step(function() {
                         assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
                       });
                       t.done();
                     },
-                    {'id': 'id1'}
+                    {'url': 'https://crosswalk-project.org', 'method':'PUT'}
                   );
                 },
-	        function(errorObj) {
+                function(errorObj) {
                   t.step(function() {
                     assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
                   });
                   t.done();
                 },
-	        {'id': 'id1', 'instanceID': instanceID}
-	      );
+                {'id': 'id1'}
+              );
             },
             function(errorObj) {
               t.step(function() {
@@ -83,7 +96,7 @@ function test() {
               });
               t.done();
             },
-            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': extraKey, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': []}
+            {'id': 'id1', 'instanceID': instanceID}
           );
         },
         function(errorObj) {
@@ -92,7 +105,7 @@ function test() {
           });
           t.done();
         },
-        {'data': 'test1', 'noRead': true, 'noStore': true}
+        {'data': 'plaintext data'}
       );
     } catch (e) {
       assert_true(false, "Exception: {" + e.message + "}");
