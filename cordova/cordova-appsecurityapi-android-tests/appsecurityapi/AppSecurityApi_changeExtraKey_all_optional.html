@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_createFromSealedData_all_optional</title>
+<title>Secure Data Test: AppSecurityApi_changeExtraKey_all_optional</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -49,31 +49,46 @@ function test() {
       intel.security.secureData.createFromData(
         function(instanceID) {
           newExtraKeyInstanceID = instanceID
+
           intel.security.secureData.createFromData(
             function(instanceID) {
-              intel.security.secureData.changeExtraKey(
-                function() {
-                  t.step(function() {
-                    assert_true(true, 'success to change the extra key');
-                  });
-                  t.done();
-                },
-                function(errorObj) {
-                  t.step(function() {
-                    assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
-                  });
-                  t.done();
-                },
-                {'instanceID': instanceID, 'extraKey': 0 }
-              );
+              newInstanceID = instanceID;
+
+			  intel.security.secureData.createFromData(
+				function(instanceID) {
+				  intel.security.secureData.changeExtraKey(
+					function() {
+					  t.step(function() {
+						assert_true(true, 'success to change the extra key');
+					  });
+					  t.done();
+					},
+					function(errorObj) {
+					  t.step(function() {
+						assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
+					  });
+					  t.done();
+					},
+					{'instanceID': instanceID, 'extraKey': newInstanceID}
+				  );
+				},
+				function(errorObj) {
+				  t.step(function() {
+					assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
+				  });
+				  t.done();
+				},
+				{'data': 'plaintext data', 'tag': 'Test', 'extraKey': newExtraKeyInstanceID, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': []}
+			  );
+
             },
             function(errorObj) {
               t.step(function() {
-                assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
-              });
-              t.done();
+              assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+            });
+            t.done();
             },
-            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': newExtraKeyInstanceID, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': ''}
+            {'data': 'test2', 'noRead': true, 'noStore': true}
           );
         },
         function(errorObj) {
