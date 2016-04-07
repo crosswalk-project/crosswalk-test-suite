@@ -3,7 +3,7 @@
 <test_definition>
   <suite category="Cordova Features" name="cordova-appsecurityapi-android-tests">
     <set name="AppSecurityApi" type="js">
-      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromData_no_optional" purpose="Test checks if the createFromData can pass without optional parameter">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_createFromData_no_optional" onload_delay="10" purpose="Test checks if the createFromData can pass without optional parameter">
         <description>
           <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_createFromData_no_optional.html</test_script_entry>
         </description>
@@ -348,22 +348,22 @@
           <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_setMethod_invalid_instance.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setHeaderValue_no_optional" purpose="Test checks if the setHeaderValue can pass without optional parameter">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setHeaders_no_optional" purpose="Test checks if the setHeaders can pass without optional parameter">
         <description>
-          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_setHeaderValue_no_optional.html</test_script_entry>
+          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_setHeaders_no_optional.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setHeaderValue_all_optional" purpose="Test checks if the setHeaderValue can pass with all optional parameters">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setHeaders_all_optional" purpose="Test checks if the setHeaders can pass with all optional parameters">
         <description>
-          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_setHeaderValue_all_optional.html</test_script_entry>
+          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_setHeaders_all_optional.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setHeaderValue_invalid_instance" purpose="Test checks if the setHeaderValue can fail with invalid instance">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_setHeaders_invalid_instance" purpose="Test checks if the setHeaders can fail with invalid instance">
         <description>
-          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_setHeaderValue_invalid_instance.html</test_script_entry>
+          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_setHeaders_invalid_instance.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_no_optional" purpose="Test checks if the sendRequest can pass without optional parameter">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_no_optional" onload_delay="10" purpose="Test checks if the sendRequest can pass without optional parameter">
         <description>
           <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_sendRequest_no_optional.html</test_script_entry>
         </description>
@@ -373,22 +373,42 @@
           <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_sendRequest_invalid_id.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_JSON" purpose="Test checks if the sendRequest can pass with requestFormat is JSON">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_JSON" onload_delay="10" purpose="Test checks if the sendRequest can pass with requestFormat is JSON">
         <description>
           <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_sendRequest_JSON.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_GENERIC" purpose="Test checks if the sendRequest can pass with requestFormat is GENERIC">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_JSON_PLAINTEXT" onload_delay="10" purpose="Test checks if the sendRequest can pass with requestFormat is JSON and the Format of secureDataDescriptors is GENERIC_SECURE_DATA_PLAINTEXT_UNDECORATED">
+        <description>
+          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_sendRequest_JSON_PLAINTEXT.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_JSON_SEALED_DATA" onload_delay="10" purpose="Test checks if the sendRequest can pass with requestFormat is JSON and the Format of secureDataDescriptors is SECURE_DATA_SEALED_DATA_UNDECORATED">
+        <description>
+          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_sendRequest_JSON_SEALED_DATA.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_GENERIC" onload_delay="10" purpose="Test checks if the sendRequest can pass with requestFormat is GENERIC">
         <description>
           <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_sendRequest_GENERIC.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_destroySecureTransport_correct_instance" purpose="Test checks if the secureTransport.destroy can pass with correct instanceID">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_GENERIC_PLAINTEXT" onload_delay="10" purpose="Test checks if the sendRequest can pass with requestFormat is GENERIC and the Format of secureDataDescriptors is GENERIC_SECURE_DATA_PLAINTEXT_UNDECORATED">
+        <description>
+          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_sendRequest_GENERIC_PLAINTEXT.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_sendRequest_GENERIC_SEALED_DATA" onload_delay="10" purpose="Test checks if the sendRequest can pass with requestFormat is GENERIC and the Format of secureDataDescriptors is SECURE_DATA_SEALED_DATA_UNDECORATED">
+        <description>
+          <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_sendRequest_GENERIC_SEALED_DATA.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_destroySecureTransport_correct_instance" onload_delay="10" purpose="Test checks if the secureTransport.destroy can pass with correct instanceID">
         <description>
           <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_destroySecureTransport_correct_instance.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_destroySecureTransport_invalid_instance" purpose="Test checks if the secureTransport.destroy can fail with invalid instance">
+      <testcase component="Cordova Features/AppSecurityApi" execution_type="auto" id="AppSecurityApi_destroySecureTransport_invalid_instance" onload_delay="10" purpose="Test checks if the secureTransport.destroy can fail with invalid instance">
         <description>
           <test_script_entry>/opt/cordova-appsecurityapi-android-tests/appsecurityapi/AppSecurityApi_destroySecureTransport_invalid_instance.html</test_script_entry>
         </description>

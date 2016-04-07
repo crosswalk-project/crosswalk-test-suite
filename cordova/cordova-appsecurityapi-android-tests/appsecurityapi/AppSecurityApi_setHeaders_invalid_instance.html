@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>Secure Data Test: AppSecurityApi_delete_no_optional</title>
+<title>Secure Data Test: AppSecurityApi_setHeaders_invalid_instance</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="https://software.intel.com/en-us/app-security-api/api">
 <script src="../resources/testharness.js"></script>
@@ -40,64 +40,31 @@ Authors:
 <div id="log"></div>
 <script type="text/javascript">
 
+var error_code_invalid_instance = 9
 setTimeout(function() { test(); }, 500);
+
 function test() {
   async_test(function(t) {
     try{
-      extraKey = null;
-      intel.security.secureData.createFromData(
-        function(instanceID) {
-          extraKey = instanceID
-          intel.security.secureData.createFromData(
-            function(instanceID) {
-              intel.security.secureStorage.write(
-	        function() {
-                  intel.security.secureStorage.delete(
-                    function() {
-                      t.step(function() {
-                        assert_true(true, 'success to delete the data');
-                      });
-                      t.done();
-                    },
-                    function(errorObj) {
-                      t.step(function() {
-                        assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-                      });
-                      t.done();
-                    },
-                    {'id': 'id1'}
-                  );
-                },
-	        function(errorObj) {
-                  t.step(function() {
-                    assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-                  });
-                  t.done();
-                },
-	        {'id': 'id1', 'instanceID': instanceID}
-	      );
-            },
-            function(errorObj) {
-              t.step(function() {
-                assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-              });
-              t.done();
-            },
-            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': extraKey, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': []}
-          );
-        },
-        function(errorObj) {
+      intel.security.secureTransport.setHeaders(
+        function(){
           t.step(function() {
-            assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+            assert_unreached("setHeaderValue should fail");
           });
           t.done();
         },
-        {'data': 'test1', 'noRead': true, 'noStore': true}
+        function(errorObj){
+          t.step(function() {
+            assert_equals(errorObj.code, error_code_invalid_instance);
+          });
+          t.done();
+        },
+        {'instanceID':1234, 'key': 'myKey', 'value': 'myValue'}
       );
-    } catch (e) {
+    } catch (e){
       assert_true(false, "Exception: {" + e.message + "}");
     }
   }, document.title);
 }
-</script>
 
+</script>
