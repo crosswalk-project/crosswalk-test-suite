@@ -1,4 +1,8 @@
 var photoUtils = realsense.DepthEnabledPhotography.PhotoUtils;
+var measurement = new realsense.DepthEnabledPhotography.Measurement();
+var xdmUtils = realsense.DepthEnabledPhotography.XDMUtils;
+var motionEffect = new realsense.DepthEnabledPhotography.MotionEffect();
+var imgData;
 
 function getStream(successCallback, errorCallback) {
   navigator.getUserMedia({ video: true }, function getSuccessCallback(stream) {
@@ -21,7 +25,7 @@ function fillCanvas(image) {
   imgCanvas.width = image.width;
   imgCanvas.height = image.height;
   imgContext.clearRect(0, 0, image.width, image.height);
-  var imgData = imgContext.createImageData(image.width, image.height);
+  imgData = imgContext.createImageData(image.width, image.height);
   imgData.data.set(image.data);
   imgContext.putImageData(imgData, 0, 0);
 }
@@ -64,5 +68,17 @@ function ConvertDepthToRGBUsingHistogram(
       rgbImage[l * 4 + 3] = 255;
     }
   }
+}
+
+function covertDateToString () {
+  var date = new Date();
+  var dateString =
+      date.getFullYear() +
+      ('0' + (date.getMonth() + 1)).slice(-2) +
+      ('0' + date.getDate()).slice(-2) +
+      ('0' + date.getHours()).slice(-2) +
+      ('0' + date.getMinutes()).slice(-2) +
+      ('0' + date.getSeconds()).slice(-2);
+  return dateString; 	
 }
 

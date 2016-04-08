@@ -27,74 +27,50 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Get the container photo image</title>
+<title>Load a photo with XDM format</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo">
-<meta name="assert" content="Test checks that clone() method creates a new Photo instance and copies the content of this photo to the new photo.">
+<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#xdmutils">
+<meta name="assert" content="Test checks that loadXDM() reads the photo content from blob data.">
 <script src="support/adapter.js"></script>
 <script src="support/common.js"></script>
 <body>
-  <input type="button" value="clonePhoto" onclick="photoClone()"/>
-  <ol class="instructions">
-    <li>
-      Open the page, there is a capture photo showed
-    </li>
-    <li>
-      Click the "clonePhoto" button, the clone photo is same with the capture one
-    </li>
-    <li>
-      If the above two steps are all true the test case pass, otherwise it fail.<br>
-    </li>
-  </ol>
-  <div>
-    <b>Capture Photo:</b>
-    <div>
-      <canvas id="img"></canvas>
-    </div>
-    <span>Clone Photo:</span>
-    <div>
-      <canvas id="cloneImg"></canvas>
-    </div>
-  </div>
-  <div id="log"></div>
+  <input type="file" id="photoChooser" onchange="loadXDMPhoto()"/>
+  <p>Test passes if there is a photo showed after upload a XDM photo.</p>
+  <canvas id="img"></canvas>
+  <div id="log" style="color: red;"></div>
   <script>
     var imgCanvas = document.getElementById("img");
     var imgContext = imgCanvas.getContext("2d");
-    var imgCloneCanvas = document.getElementById("cloneImg");
-    var imgCloneContext = imgCloneCanvas.getContext("2d");
     var msg = document.getElementById("log");
-    var currentPhoto;
 
-    function photoClone() {
-      currentPhoto.clone().then(function(newPhoto) {
-        getContainerImage(newPhoto, function(image) {
-          fillCloneCanvas(image);
+    function loadXDM(file) {
+      xdmUtils.loadXDM(file).then(function(photo) {
+        getContainerImage(photo, function(image) {
+          fillCanvas(image);
         }, errorCallback);
-      });
-    }
-
-    function fillCloneCanvas(image) {
-      imgCloneCanvas.width = image.width;
-      imgCloneCanvas.height = image.height;	
-      imgCloneContext.clearRect(0, 0, image.width, image.height);
-      var imgData = imgCloneContext.createImageData(image.width, image.height);
-      imgData.data.set(image.data);
-      imgCloneContext.putImageData(imgData, 0, 0);
-    }
-
-    function successCallback(photo) {
-      currentPhoto = photo;
-      getContainerImage(photo, function(image) {
-        fillCanvas(image);
-      }, errorCallback);
+      })
+      .catch(errorCallback);
     }
 
     function errorCallback(ex) {
       msg.textContent = ex.message;
     }
 
-    getStream(successCallback, errorCallback);
+    function loadXDMPhoto() {
+      var file = document.getElementById("photoChooser").files[0];
+      if(file) {
+        xdmUtils.isXDM(file).then(function(success) {
+          if(success) {
+            loadXDM(file);
+          } else {
+            msg.textContent = "It is not a XDM file."
+          }
+        })
+        .catch(errorCallback);
+      }
+    }
 
   </script>
 </body>
+

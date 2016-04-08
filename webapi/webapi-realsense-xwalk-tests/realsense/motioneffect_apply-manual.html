@@ -27,60 +27,48 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Get the container photo image</title>
+<title>Move a photo</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo">
-<meta name="assert" content="Test checks that clone() method creates a new Photo instance and copies the content of this photo to the new photo.">
+<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#motioneffect">
+<meta name="assert" content="Test checks that move right and zoom out a photo.">
 <script src="support/adapter.js"></script>
 <script src="support/common.js"></script>
 <body>
-  <input type="button" value="clonePhoto" onclick="photoClone()"/>
+  <input type="button" value="motion" onclick="movePhoto()"/>
   <ol class="instructions">
     <li>
       Open the page, there is a capture photo showed
     </li>
     <li>
-      Click the "clonePhoto" button, the clone photo is same with the capture one
+      Click the "motion" button, the photo is moved to right and zoomed out
     </li>
     <li>
-      If the above two steps are all true the test case pass, otherwise it fail.<br>
+      If the above two steps are all true the test case pass, otherwise it fail.
     </li>
   </ol>
-  <div>
-    <b>Capture Photo:</b>
-    <div>
-      <canvas id="img"></canvas>
-    </div>
-    <span>Clone Photo:</span>
-    <div>
-      <canvas id="cloneImg"></canvas>
-    </div>
-  </div>
-  <div id="log"></div>
+  <canvas id="img"></canvas>
+  <div id="log" style="color: red;"></div>
   <script>
     var imgCanvas = document.getElementById("img");
     var imgContext = imgCanvas.getContext("2d");
-    var imgCloneCanvas = document.getElementById("cloneImg");
-    var imgCloneContext = imgCloneCanvas.getContext("2d");
     var msg = document.getElementById("log");
     var currentPhoto;
+    var motion = { horizontal: 0.1, vertical: 0, distance:0 };
+    var rotation = { pitch: 0, roll: 0, yaw:0 };
+    var zoom = -0.1;
 
-    function photoClone() {
-      currentPhoto.clone().then(function(newPhoto) {
-        getContainerImage(newPhoto, function(image) {
-          fillCloneCanvas(image);
-        }, errorCallback);
-      });
-    }
-
-    function fillCloneCanvas(image) {
-      imgCloneCanvas.width = image.width;
-      imgCloneCanvas.height = image.height;	
-      imgCloneContext.clearRect(0, 0, image.width, image.height);
-      var imgData = imgCloneContext.createImageData(image.width, image.height);
-      imgData.data.set(image.data);
-      imgCloneContext.putImageData(imgData, 0, 0);
+    function movePhoto() {
+      if(motionEffect && currentPhoto) {
+        motionEffect.init(currentPhoto).then(function() {
+          motionEffect.apply(motion, rotation, zoom).then(function(image) {
+            imgData.data.set(image.data);
+            imgContext.putImageData(imgData, 0, 0);
+          })
+          .catch(errorCallback);
+        })
+        .catch(errorCallback);
+      }
     }
 
     function successCallback(photo) {
@@ -98,3 +86,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
   </script>
 </body>
+
