@@ -122,7 +122,7 @@ def installWebviewPlugin(pkg_mode, self, multiple_apks = None):
                 " --variable XWALK_VERSION=\"%s\"" % (plugin_crosswalk_source, pkg_mode, xwalk_version)
 
     if multiple_apks is not None:
-        plugin_install_cmd = plugin_install_cmd + " --variable xwalkMultipleApk=\"%s\"" % multiple_apks
+        plugin_install_cmd = plugin_install_cmd + " --variable XWALKMULTIPLEAPK=\"%s\"" % multiple_apks
 
     print plugin_install_cmd
 
