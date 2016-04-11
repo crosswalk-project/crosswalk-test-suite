@@ -268,7 +268,7 @@ def checkApkExist(appname, self, isCopy=False, isMultipleApk=True, apk_name_mode
                       "outputs",
                       "apk")
     apk_name = "android-%s.apk" % apk_name_mode
-    if isMultipleApk == True:
+    if isMultipleApk == True and MODE == "embedded":
         apk_name_arch = "armv7"
         if ARCH != "arm":
             apk_name_arch = ARCH
