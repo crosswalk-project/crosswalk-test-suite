@@ -17,7 +17,7 @@ try:
         "-m",
         "--mode",
         dest="pkgmode",
-        help="specify the apk mode, not for cordova version 4.0, e.g. shared, embedded")
+        help="specify the apk mode, e.g. shared, embedded")
     opts_parser.add_option(
         "-a",
         "--arch",
@@ -57,13 +57,13 @@ if comm.CROSSWALK_BRANCH == "stable" or comm.CROSSWALK_BRANCH == "beta":
     latestVersion = comm.getLatestCrosswalkVersion(comm.CROSSWALK_BRANCH, main_version)
 
 pkg_mode_tmp = "shared"
-apk_name_arch = "armv7"
+apk_name_arch = "-"
 pack_arch_tmp = "arm"
 if BUILD_PARAMETERS.pkgmode == "embedded":
     pkg_mode_tmp = "core"
-
+    apk_name_arch = "-armv7-"
     if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch != "arm":
-        apk_name_arch = BUILD_PARAMETERS.pkgarch
+        apk_name_arch = "-%s-" % BUILD_PARAMETERS.pkgarch
         if BUILD_PARAMETERS.pkgarch == "x86":
             pack_arch_tmp = "x86"
         elif BUILD_PARAMETERS.pkgarch == "x86_64":
@@ -115,9 +115,10 @@ for version_tmp in VERSION_TYPES:
     comm.build(app_name, pack_arch_tmp)
 
     apk_source = os.path.join(project_path, "platforms", "android", 
-            "build", "outputs", "apk", "android-%s-debug.apk" % apk_name_arch)
+            "build", "outputs", "apk", "android%sdebug.apk" % apk_name_arch)
     apk_dest = os.path.join(current_path_tmp, "CrosswalkVersion_%s_%d.apk" % (comm.CROSSWALK_BRANCH, count))
-    comm.doCopy(apk_source, apk_dest)
+    if not comm.doCopy(apk_source, apk_dest):
+        sys.exit(1)
 
     count = count + 1
     comm.removeWebviewPlugin()
@@ -126,8 +127,10 @@ for version_tmp in VERSION_TYPES:
     os.system('sed -i "s/<preference name=\\"xwalkVersion\\" value=\\".*/<preference name=\\"xwalkVersion\\"' \
             ' value=\\"%s\\" \/>/g" config.xml' % version_tmp)
     comm.build(app_name, pack_arch_tmp)
-    os.system('cp platforms/android/build/outputs/apk/android-%s-debug.apk ../CrosswalkVersion_%s_%d.apk' 
-        % (apk_name_arch, comm.CROSSWALK_BRANCH, count))
+    apk_dest = os.path.join(current_path_tmp, "CrosswalkVersion_%s_%d.apk" % (comm.CROSSWALK_BRANCH, count))
+    if not comm.doCopy(apk_source, apk_dest):
+        sys.exit(1)
+
     count = count + 1
     comm.removeWebviewPlugin()
     index = index + 1
