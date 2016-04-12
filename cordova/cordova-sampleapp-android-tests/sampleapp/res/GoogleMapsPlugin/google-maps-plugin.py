@@ -53,16 +53,19 @@ def buildHelloMap(key):
     os.chdir(build_src)
     os.system('cordova platform add android')
 
+    xwalk_lib_type = "core"
     pkg_mode = ""
-    if MODE is not None:
-        pkg_mode = "--variable XWALK_MODE=\"%s\"" % MODE
+    if MODE == "shared":
+        xwalk_lib_type = "shared"
+        pkg_mode = "--variable XWALK_MODE=shared"
 
     xwalk_version = ""
     if CROSSWALK_VERSION is not None and CROSSWALK_BRANCH is not None:
         if "beta" in CROSSWALK_BRANCH:
-            xwalk_version = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+            xwalk_version = "--variable XWALK_VERSION=\"org.xwalk:xwalk_%s_library_beta:%s\"" % (xwalk_lib_type, CROSSWALK_VERSION)
         else:
-            xwalk_version = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library:%s\"" % CROSSWALK_VERSION
+            xwalk_version = "--variable XWALK_VERSION=\"org.xwalk:xwalk_%s_library:%s\"" % (xwalk_lib_type, CROSSWALK_VERSION)
+
     os.system('cordova plugin add %s/../../../tools/cordova-plugin-crosswalk-webview %s %s' % (SCRIPT_DIR, pkg_mode, xwalk_version))
     os.system('cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="%s"' % key)
     shutil.copyfile(SCRIPT_DIR + '/index.html', build_src  + '/www/index.html')
