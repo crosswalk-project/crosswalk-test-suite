@@ -52,7 +52,10 @@ class TestAppMultipleApkFalse(unittest.TestCase):
             replace_index_list,
             self, None, "false")
         comm.build(app_name, 0, self, True, False)
-        comm.checkFileSize(os.path.join(comm.testapp_path, "%s.apk" % app_name), 40, 50, self)
+        if comm.MODE == "embedded":
+            comm.checkFileSize(os.path.join(comm.testapp_path, "%s.apk" % app_name), 40, 50, self)
+        else:
+            comm.checkFileSize(os.path.join(comm.testapp_path, "%s.apk" % app_name), 1, 5, self)
         comm.app_install(app_name, pkg_name, self)
         comm.app_launch(app_name, pkg_name, self)
         comm.app_stop(pkg_name, self)
