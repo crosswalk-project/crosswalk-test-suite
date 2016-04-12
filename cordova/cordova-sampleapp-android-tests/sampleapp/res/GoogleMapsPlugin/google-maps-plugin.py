@@ -34,6 +34,7 @@ import sys
 import shutil
 import time
 import glob
+import json
 from optparse import OptionParser, make_option
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -51,7 +52,18 @@ def buildHelloMap(key):
     os.system('cordova create HelloMap com.example.hellomap HelloMap')
     os.chdir(build_src)
     os.system('cordova platform add android')
-    os.system('cordova plugin add %s/../../tools/cordova-plugin-crosswalk-webview' % SCRIPT_DIR)
+
+    pkg_mode = ""
+    if MODE is not None:
+        pkg_mode = "--variable XWALK_MODE=\"%s\"" % MODE
+
+    xwalk_version = ""
+    if CROSSWALK_VERSION is not None and CROSSWALK_BRANCH is not None:
+        if "beta" in CROSSWALK_BRANCH:
+            xwalk_version = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+        else:
+            xwalk_version = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library:%s\"" % CROSSWALK_VERSION
+    os.system('cordova plugin add %s/../../../tools/cordova-plugin-crosswalk-webview %s %s' % (SCRIPT_DIR, pkg_mode, xwalk_version))
     os.system('cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="%s"' % key)
     shutil.copyfile(SCRIPT_DIR + '/index.html', build_src  + '/www/index.html')
     # Update android:theme="@android:style/Theme.Black.NoTitleBar" to android:theme="@android:style/Theme.Translucent.NoTitleBar" in AndroidManifest.xml
@@ -95,8 +107,16 @@ def buildHelloMap(key):
         file = open(googlemapjava, 'w')
         file.writelines(lines)
         file.close()
-        
-    os.system('cordova build android')
+
+    pack_arch = ""
+    if ARCH == "x86_64":
+        pack_arch = "x86 --xwalk64bit"
+    elif ARCH == "arm64":
+        pack_arch = "arm --xwalk64bit"
+    else:
+        pack_arch = ARCH
+
+    os.system('cordova build android -- --gradleArg=-PcdvBuildArch=%s' % pack_arch)
     time.sleep(5)
     files = glob.glob(os.path.join(build_src + "/platforms/android/build/outputs/apk", "*-debug.apk"))
     if len(files) == 0:
@@ -120,6 +140,20 @@ def main():
         if not BUILD_PARAMETERS.key:
             print("Google Maps API key is missing.")
             sys.exit(1)
+
+        global ARCH, MODE, CROSSWALK_VERSION, CROSSWALK_BRANCH
+        f_arch = open(SCRIPT_DIR + "/../../../arch.txt", 'r')
+        arch_tmp = f_arch.read()
+        ARCH = arch_tmp.strip("\n\t").strip()
+        f_mode = open(SCRIPT_DIR + "/../../../mode.txt", 'r')
+        mode_tmp = f_mode.read()
+        MODE = mode_tmp.strip("\n\t").strip()
+        with open(SCRIPT_DIR + "/../../../VERSION") as version_file:
+            version_str = version_file.read()
+            version_file.close()
+            version_conf = json.loads(version_str)
+            CROSSWALK_VERSION = version_conf.get("main-version").strip()
+            CROSSWALK_BRANCH = version_conf.get("crosswalk-branch").strip()
 
         buildHelloMap(BUILD_PARAMETERS.key)
 
