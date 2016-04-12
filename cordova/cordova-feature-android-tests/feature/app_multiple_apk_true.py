@@ -54,8 +54,8 @@ class TestAppMultipleApkTrue(unittest.TestCase):
         comm.build(app_name, False, self, True)
         comm.app_install(app_name, pkg_name, self)
         comm.app_launch(app_name, pkg_name, self)
-        comm.app_uninstall(pkg_name, self)
         comm.app_stop(pkg_name, self)
+        comm.app_uninstall(pkg_name, self)
 
 if __name__ == '__main__':
     unittest.main()
