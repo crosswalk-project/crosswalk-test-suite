@@ -27,60 +27,54 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Get the container photo image</title>
+<title>Save a photo with XDM format</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
-<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#photo">
-<meta name="assert" content="Test checks that clone() method creates a new Photo instance and copies the content of this photo to the new photo.">
+<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#xdmutils">
+<meta name="assert" content="Test checks that saveXDM() writes the photo content to blob data.">
 <script src="support/adapter.js"></script>
 <script src="support/common.js"></script>
 <body>
-  <input type="button" value="clonePhoto" onclick="photoClone()"/>
+  <input type="button" value="saveXDM" onclick="savePhoto()"/>
   <ol class="instructions">
     <li>
       Open the page, there is a capture photo showed
     </li>
     <li>
-      Click the "clonePhoto" button, the clone photo is same with the capture one
+      Click any "saveXDM" button, the photo is saved in System Pictures directory
     </li>
     <li>
-      If the above two steps are all true the test case pass, otherwise it fail.<br>
+      If the above two steps are all true the test case pass, otherwise it fail.
     </li>
   </ol>
-  <div>
-    <b>Capture Photo:</b>
-    <div>
-      <canvas id="img"></canvas>
-    </div>
-    <span>Clone Photo:</span>
-    <div>
-      <canvas id="cloneImg"></canvas>
-    </div>
-  </div>
-  <div id="log"></div>
+  <canvas id="img"></canvas>
+  <div id="log" style="color:#F00;"></div>
   <script>
     var imgCanvas = document.getElementById("img");
     var imgContext = imgCanvas.getContext("2d");
-    var imgCloneCanvas = document.getElementById("cloneImg");
-    var imgCloneContext = imgCloneCanvas.getContext("2d");
     var msg = document.getElementById("log");
     var currentPhoto;
 
-    function photoClone() {
-      currentPhoto.clone().then(function(newPhoto) {
-        getContainerImage(newPhoto, function(image) {
-          fillCloneCanvas(image);
-        }, errorCallback);
-      });
-    }
-
-    function fillCloneCanvas(image) {
-      imgCloneCanvas.width = image.width;
-      imgCloneCanvas.height = image.height;	
-      imgCloneContext.clearRect(0, 0, image.width, image.height);
-      var imgData = imgCloneContext.createImageData(image.width, image.height);
-      imgData.data.set(image.data);
-      imgCloneContext.putImageData(imgData, 0, 0);
+    function savePhoto() {
+      if(xdmUtils && currentPhoto) {
+        xdmUtils.saveXDM(currentPhoto)
+          .then(function(blob) {
+            xwalk.experimental.native_file_system.requestNativeFileSystem('pictures',
+              function(fs) {
+                var fileName = "/pictures/savePhoto_" + covertDateToString() + ".jpg"
+                fs.root.getFile(fileName, { create: true }, function(entry) {
+                  entry.createWriter(function(writer) {
+                    writer.onwriteend = function(e) {
+                      msg.textContent = "The photo is saved to " + fileName;
+                    };
+                    writer.onerror = errorCallback;
+                    writer.write(blob);
+                  }, errorCallback);
+                }, errorCallback);
+              });
+          })
+          .catch(errorCallback);
+      } 
     }
 
     function successCallback(photo) {
@@ -98,3 +92,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
   </script>
 </body>
+

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Measure the distance between the two points</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="help" href="https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html#measurement">
+<meta name="assert" content="Test checks that get the distance from the start point to the end point.">
+<script src="support/adapter.js"></script>
+<script src="support/common.js"></script>
+<body>
+  <p>Test passes if it can get distance after click two points of the capture photo.</p>
+  <div>
+    <span id="distance"></span>
+    <div>
+      <canvas id="img" width="640" height="480"></canvas>
+    </div>
+  </div>
+  <div id="log" style="color: red;"></div>
+  <script>
+    var imgCanvas = document.getElementById("img");
+    var imgContext = imgCanvas.getContext("2d");
+    var msg = document.getElementById("log");
+    var txtDistance = document.getElementById("distance");
+    var currentPhoto;
+    var isStarted = false;
+    var startPoint;
+
+    imgCanvas.addEventListener("click", function(evt) {
+      if(isStarted) {
+        var endPoint = getPointOnCanvas(evt);
+        drawLine(imgContext, startPoint, endPoint);
+        drawCircular(imgContext, endPoint, 2);
+        if(measurement && currentPhoto) {
+          measurement.measureDistance(currentPhoto, startPoint, endPoint)
+            .then(function(data) {
+              txtDistance.textContent = "Distance between: "
+                                      + getDiscValue(startPoint, endPoint, data.distance);
+            })
+            .catch(errorCallback);
+        }
+      } else {
+        startPoint = getPointOnCanvas(evt);
+        isStarted = true;
+        drawCircular(imgContext, startPoint, 2);
+      }
+    }, false);
+
+    function getPointOnCanvas(evt) {
+      var x = (evt.clientX - imgCanvas.offsetLeft) * imgCanvas.width / imgCanvas.scrollWidth;
+      var y = (evt.clientY - imgCanvas.offsetTop) * imgCanvas.height / imgCanvas.scrollHeight;
+      x = parseInt(x);
+      y = parseInt(y);
+      return { x: x, y: y };
+    }
+
+    function drawLine(context, start, end) {
+      context.beginPath();
+      context.moveTo(start.x, start.y);
+      context.lineTo(end.x, end.y);
+      context.strokeStyle = "green";
+      context.lineWidth = 2;
+      context.stroke();
+      context.closePath();
+    }
+	
+    function drawCircular(context, p, r) {
+      context.beginPath();
+      context.arc(p.x, p.y, r, 0, 360, false);
+      context.fillStyle = "red";
+      context.fill();
+      context.closePath();
+    }
+
+    function getDiscValue(start, end, disc) {
+      return convertPointToString(start) + " - "
+             + convertPointToString(end) + " = "
+             + parseInt(disc) + " mm";	
+    }	
+	
+    function convertPointToString(point) {
+      return "(" + point.x + ", " + point.y + ")";
+    }
+
+    function successCallback(photo) {
+      currentPhoto = photo;
+      getContainerImage(photo, function(image) {
+        imgContext.clearRect(0, 0, imgCanvas.width, imgCanvas.height);
+        var imgData = imgContext.createImageData(image.width, image.height);
+        imgData.data.set(image.data);
+        imgContext.putImageData(imgData, 0, 0);
+      }, errorCallback);
+    }
+
+    function errorCallback(ex) {
+      msg.textContent = ex.message;
+    }
+
+    getStream(successCallback, errorCallback);
+
+  </script>
+</body>
+
