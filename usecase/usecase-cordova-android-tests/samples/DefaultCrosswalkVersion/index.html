@@ -57,9 +57,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <li>Config project<br/>
         $ cordova platform add android<br/>
         $ cordova plugin add https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview<br/>
-        (For npm release testing, plugin should be https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview/tree/release-testing)</li>
+        (1. For npm release testing, plugin should be https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview/tree/release-testing)<br/>
+        (2. For shared mode, need add "--variable XWALK_MODE=shared" after cordova-plugin-crosswalk-webview)</li>
     <li>Build test app<br/>
-        $ cordova build</li>
+        $ cordova build android</li>
     <li>Find test app in foo/platforms/android/build/outputs/apk</li>
     <li>Install correct version apk for test device</li>
  </li>
