@@ -37,67 +37,39 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="../../../cordova.js"></script>
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 <div id="log"></div>
 <script type="text/javascript">
 
 setTimeout(function() { test(); }, 500);
+
 function test() {
   async_test(function(t) {
-    try{
-      extraKey = null;
-      intel.security.secureData.createFromData(
-        function(instanceID) {
-          extraKey = instanceID
-          intel.security.secureData.createFromData(
-            function(instanceID) {
-              intel.security.secureStorage.write(
-	        function() {
-                  intel.security.secureStorage.read(
-                    function(instanceID) {
-                      t.step(function() {
-                        assert_not_equals(instanceID, null);
-                      });
-                      t.done();
-                    },
-                    function(errorObj) {
-                      t.step(function() {
-                        assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-                      });
-                      t.done();
-                    },
-                    {'id': 'id1', 'storageType': 0, 'extraKey': extraKey}
-                  );
-                },
-	        function(errorObj) {
-                  t.step(function() {
-                    assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-                  });
-                  t.done();
-                },
-	        {'id': 'id1', 'instanceID': instanceID}
-	      );
-            },
-            function(errorObj) {
-              t.step(function() {
-                assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-              });
-              t.done();
-            },
-            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': extraKey, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': []}
-          );
-        },
-        function(errorObj) {
-          t.step(function() {
-            assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-          });
-          t.done();
-        },
-        {'data': 'test1', 'noRead': true, 'noStore': true}
-      );
-    } catch (e) {
-      assert_true(false, "Exception: {" + e.message + "}");
-    }
+    extraKey = null;
+    intel.security.secureData.createFromData({'data': 'test1', 'noRead': true, 'noStore': true})
+    .then(function(instanceID) {
+      extraKey = instanceID;
+      return intel.security.secureData.createFromData({'data': 'plaintext data', 'tag': 'Test', 'extraKey': extraKey, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': []});
+    })
+    .then(function(instanceID) {
+      return intel.security.secureStorage.write({'id': 'id1', 'instanceID': instanceID});
+    })
+    .then(function(instanceID) {
+      return intel.security.secureStorage.read({'id': 'id1', 'storageType': 0, 'extraKey': extraKey});
+    })
+    .then(function(instanceID) {
+      t.step(function() {
+        assert_not_equals(instanceID, null);
+      });
+      t.done();
+    })
+    .catch(function (errorObj) {
+      t.step(function() {
+        assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+      });
+      t.done();
+    });
   }, document.title);
 }
 </script>

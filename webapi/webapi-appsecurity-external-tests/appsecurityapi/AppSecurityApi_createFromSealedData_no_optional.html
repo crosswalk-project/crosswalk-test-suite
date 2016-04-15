@@ -37,7 +37,8 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="../../../cordova.js"></script>
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 <div id="log"></div>
 <script type="text/javascript">
 
@@ -45,47 +46,23 @@ setTimeout(function() { test(); }, 500);
 
 function test() {
   async_test(function(t) {
-    try{
-      intel.security.secureData.createFromData(
-        function(instanceID) {
-          intel.security.secureData.getSealedData(
-            function(sealedData){
-              intel.security.secureData.createFromSealedData(
-                function(instanceID) {
-                  t.step(function() {
-                    assert_not_equals(instanceID, null);
-                  });
-                  t.done();
-                },
-                function(errorObj) {
-                  t.step(function() {
-                    assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
-                  });
-                  t.done();
-                },
-                {'sealedData': sealedData}
-              );
-            },
-            function(errorObj){
-              t.step(function() {
-                assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
-              });
-              t.done();
-            },
-            instanceID
-          );
-        },
-        function(errorObj) {
-          t.step(function() {
-            assert_true(false, 'fail:code = ' + errorObj.code + ', message = ' + errorObj.message);
-          });
-          t.done();
-        },
-        {'data': 'plaintext data', 'tag': 'Test'}
-      );
-    } catch (e){
-      assert_true(false, "Exception: {" + e.message + "}");
-    }
+    intel.security.secureData.createFromData({'data': 'plaintext data', 'tag': 'Test'})
+    .then(intel.security.secureData.getSealedData)
+    .then(function(sealedData) {
+      return intel.security.secureData.createFromSealedData({'sealedData': sealedData});
+    })
+    .then(function(instanceID) {
+      t.step(function() {
+        assert_not_equals(instanceID, null);
+      });
+      t.done();
+    })
+    .catch(function (errorObj) {
+      t.step(function() {
+        assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+      });
+      t.done();
+    });
   }, document.title);
 }
 </script>

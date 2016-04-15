@@ -37,7 +37,8 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="../../../cordova.js"></script>
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 <div id="log"></div>
 <script type="text/javascript">
 
@@ -45,72 +46,35 @@ setTimeout(function() { test(); }, 1000);
 
 function test() {
   async_test(function(t) {
-    try{
-      intel.security.secureData.createFromData(
-        function(instanceID) {
-          intel.security.secureStorage.write(
-	        function() {
-              intel.security.secureStorage.read(
-                function(passwordSecureDataInstanceID) {
-                  intel.security.secureTransport.open(
-                    function(secureTransportInstanceID){
-                      var request = {'username':'John Smith', 'password':''};
-                      var requestDescriptors = [{'Location': 'body', 'Path': 'password', 'Type': 'String', 'InstanceID': passwordSecureDataInstanceID, 'Format': 'SECURE_DATA_SEALED_DATA_UNDECORATED'}];
-
-                      intel.security.secureTransport.sendRequest(
-                        function(response){
-                          t.step(function() {
-                            assert_not_equals(response.responseBody, null);
-                          });
-                          t.done();
-                        },
-                        function(errorObj){
-                          t.step(function() {
-                            assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-                          });
-                          t.done();
-                        },
-                        {'instanceID':secureTransportInstanceID, 'requestBody':JSON.stringify(request), 'requestFormat':'JSON', 'secureDataDescriptors':requestDescriptors}
-                      );
-                    },
-                    function(errorObj){
-                      t.step(function() {
-                        assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-                      });
-                      t.done();
-                    },
-                    {'url': 'https://crosswalk-project.org', 'method':'PUT'}
-                  );
-                },
-                function(errorObj) {
-                  t.step(function() {
-                    assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-                  });
-                  t.done();
-                },
-                {'id': 'id1'}
-              );
-            },
-            function(errorObj) {
-              t.step(function() {
-                assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-              });
-              t.done();
-            },
-            {'id': 'id1', 'instanceID': instanceID}
-          );
-        },
-        function(errorObj) {
-          t.step(function() {
-            assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-          });
-          t.done();
-        },
-        {'data': 'plaintext data'}
-      );
-    } catch (e) {
-      assert_true(false, "Exception: {" + e.message + "}");
-    }
+    passwordSecureDataInstanceID = null;
+    intel.security.secureData.createFromData({'data': 'plaintext data'})
+    .then(function(instanceID) {
+      return intel.security.secureStorage.write({'id': 'id1', 'instanceID': instanceID});
+    })
+    .then(function() {
+      return intel.security.secureStorage.read({'id': 'id1'});
+    })
+    .then(function(instanceID) {
+      passwordSecureDataInstanceID = instanceID;
+      return intel.security.secureTransport.open({'url': 'https://crosswalk-project.org', 'method':'PUT'});
+    })
+    .then(function(secureTransportInstanceID) {
+    var request = {'username':'John Smith', 'password':''};
+    var requestDescriptors = [{'Location': 'body', 'Path': 'password', 'Type': 'String', 'InstanceID': passwordSecureDataInstanceID, 'Format': 'SECURE_DATA_SEALED_DATA_UNDECORATED'}];
+      return intel.security.secureTransport.sendRequest({'instanceID':secureTransportInstanceID, 'requestBody':JSON.stringify(request), 'requestFormat':'JSON', 'secureDataDescriptors':requestDescriptors});
+    })
+    .then(function(response) {
+      t.step(function() {
+        assert_not_equals(response.responseBody, null);
+      });
+      t.done();
+    })
+    .catch(function (errorObj) {
+      t.step(function() {
+        assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
+      });
+      t.done();
+    });
   }, document.title);
 }
 </script>
