@@ -277,7 +277,7 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
 def createIndexFile(index_file_path=None, hosted_app=None):
     try:
         if hosted_app:
-            index_url = "http://127.0.0.1/opt/%s/webrunner/index.html?" \
+            index_url = "http://127.0.0.1:8080/opt/%s/webrunner/index.html?" \
                 "testsuite=../tests.xml&testprefix=../../.." % PKG_NAME
         else:
             index_url = "opt/%s/webrunner/index.html?testsuite=../tests.xml" \

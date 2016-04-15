@@ -253,9 +253,9 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     orig_dir = os.getcwd()
     if not os.path.exists(
-           os.path.join(BUILD_ROOT, "crosswalk-%s.zip" % CROSSWALK_VERSION)):
-        if not utils.doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk-%s.zip" % CROSSWALK_VERSION),
-                      os.path.join(BUILD_ROOT, "crosswalk-%s.zip" % CROSSWALK_VERSION)):
+           os.path.join(BUILD_ROOT, "crosswalk64-%s.zip" % CROSSWALK_VERSION)):
+        if not utils.doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk64-%s.zip" % CROSSWALK_VERSION),
+                      os.path.join(BUILD_ROOT, "crosswalk64-%s.zip" % CROSSWALK_VERSION)):
             return False
 
     os.chdir(BUILD_ROOT)
@@ -271,10 +271,10 @@ def packMsi(build_json=None, app_src=None, app_dest=None, app_name=None):
                 os.chdir(orig_dir)
                 return False
 
-        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows -m  %s %s %s %s" \
+        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk64-%s.zip --platforms=windows -m  %s %s %s %s" \
             % (crosswalk_app_tools, CROSSWALK_VERSION, manifest_opt, common_opts, windows_opt, app_src)
     else:
-        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk-%s.zip --platforms=windows %s %s %s" % (crosswalk_app_tools, CROSSWALK_VERSION, common_opts, windows_opt, app_src)
+        build_cmd = "node %s/src/crosswalk-pkg -c crosswalk64-%s.zip --platforms=windows %s %s %s" % (crosswalk_app_tools, CROSSWALK_VERSION, common_opts, windows_opt, app_src)
 
 
     print build_cmd
