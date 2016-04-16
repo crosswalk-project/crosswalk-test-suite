@@ -30,10 +30,6 @@ test(function () {
 }, "Check that window supports realsense");
 
 test(function () {
-  assert_readonly(window, "realsense", "realsense is not readonly");
-}, "Check that realsense is readonly");
-
-test(function () {
   assert_equals(typeof realsense, "object", "realsense is not object");
   assert_not_equals(realsense, null, "realsense is null");
 }, "Check that realsense is type of object");
