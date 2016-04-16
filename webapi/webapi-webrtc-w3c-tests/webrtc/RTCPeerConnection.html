@@ -44,7 +44,7 @@ Authors:
     <div id="log"></div>
     <script>
 
-      var t = async_test("Check If the candidate parameter is malformed will throw a SyntaxError exception");
+      var t = async_test("Check If the candidate parameter is malformed will throw a TypeError exception");
       var t1 = async_test("Check if the setting of RTCPeerConnection.createDTMFSender is normally", {timeout: 5000});
 
       var pc;
@@ -65,7 +65,7 @@ Authors:
       });
 
       t.step(function () {
-        assert_throws("TypeMismatchError", function () {
+        assert_throws(new TypeError(), function () {
           pc1.addIceCandidate("", function () {}, function () {});
         },"the candidate parameter is malformed throw a exception");
         t.done();

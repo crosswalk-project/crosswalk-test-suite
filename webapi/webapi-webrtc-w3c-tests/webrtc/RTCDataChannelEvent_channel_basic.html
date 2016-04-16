@@ -41,17 +41,32 @@ Authors:
 <script>
 
 var t = async_test("Check if the readonly attribute channel of RTCDataChannelEvent exists and type of RTCDataChannel");
-setup({timeout: 20000});
 
 var pc1_offer;
 var pc2_answer;
-var pc1;
-if (typeof RTCPeerConnection != "undefined") {
-  pc1 = new RTCPeerConnection(null, null);
-} else {
-  pc1 = new webkitRTCPeerConnection(null, null);
-}
-var pc2;
+
+var pc1 = new RTCPeerConnection(null);
+var pc2 = new RTCPeerConnection(null);
+var sendChannel = pc1.createDataChannel("This is pc1");
+
+pc2.ondatachannel = t.step_func(function (event) {
+  assert_true("channel" in event, "channel attribute in RTCDataChannelEvent");
+  assert_class_string(event.channel, "RTCDataChannel", "channel attribute of type");
+  assert_readonly(event, "channel", "expect attribute channel cannot be changed but");
+  t.done();
+});
+
+pc1.onicecandidate = t.step_func(function(evt) {
+  if(evt.candidate) {
+    pc2.addIceCandidate(event.candidate);
+  }
+});
+
+pc2.onicecandidate = t.step_func(function(evt) {
+  if(evt.candidate) {
+    pc1.addIceCandidate(event.candidate);
+  }
+});
 
 function requestSucceeded1 (offer) {
   pc1_offer = offer;
@@ -66,17 +81,6 @@ function requestFailed1 () {
 }
 
 function requestSucceeded2 () {
-  if (typeof RTCPeerConnection != "undefined") {
-    pc2 = new RTCPeerConnection(null, null);
-  } else {
-    pc2 = new webkitRTCPeerConnection(null, null);
-  }
-  pc2.ondatachannel = t.step_func(function (event) {
-    assert_true("channel" in event, "channel attribute in RTCDataChannelEvent");
-    assert_equals(Object.prototype.toString.call(event.channel), "[object RTCDataChannel]", "channel attribute of type");
-    assert_readonly(event, "channel", "expect attribute channel cannot be changed but");
-    t.done();
-  });
   pc2.setRemoteDescription(pc1_offer, requestSucceeded3, requestFailed3);
 }
 
@@ -125,10 +129,7 @@ function requestFailed5 () {
   t.done();
 }
 
-
-pc1.createDataChannel("This is pc1");
 pc1.createOffer(requestSucceeded1, requestFailed1);
-
 
 </script>
 
