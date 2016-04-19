@@ -297,6 +297,10 @@ def i_visit_url(context, url):
                 <td>Swipe object to some direction</td>
         </tr>
         <tr>
+                <td></td>
+                <td>Swipe page to some direction by coordinates</td>
+        </tr>
+        <tr>
                 <td>Watcher Management</td>
                 <td>Register watcher</td>
         </tr>
@@ -397,6 +401,7 @@ def i_visit_url(context, url):
 ```
 @step(u'I launch "{app_name}" with "{apk_pkg_name}" and "{apk_activity_name}" on android')
 @step(u'I click app icon "{params_kw}" in all apps')
+@step(u'I close app "{app_name}" from task manager')
 @step(u'I scroll to end')
 @step(u'I fling "{orientation}" goto "{direction}"')
 @step(u'I swipe view "{params_kw}" to "{orientation}"')

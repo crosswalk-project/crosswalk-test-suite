@@ -10,8 +10,9 @@ Feature: web-system-app
    Then I expect the content "Get localStorage value: test" in the dumped xml
     And I press "home" hardware key
     And I press "recent" hardware key
-    And I swipe view "description=LocalStorage" to "left"
+    And I close app "LocalStorage" from task manager
    Then I should not see view "description=Set LocalStorage"
+    And I press "home" hardware key
     And I execute command "adb shell am start -n org.xwalk.localstorage/.LocalstorageActivity"
     And I wait for 3 seconds
     And I click view "description=Get LocalStorage"

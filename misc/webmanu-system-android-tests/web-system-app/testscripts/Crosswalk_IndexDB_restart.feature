@@ -14,7 +14,7 @@ Feature: web-system-app
    Then I should see view "className=android.view.View^^^description=Intel"
     And I press "home" hardware key
     And I press "recent" hardware key
-    And I swipe view "description=IndexDB" to "left"
+    And I close app "IndexDB" from task manager
     And I click app icon "text=IndexDB" in all apps
     And I wait 2 seconds
    Then I should see view "className=android.view.View^^^description=123"

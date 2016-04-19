@@ -3,7 +3,6 @@ Feature: web-system-app
   When launch "filereader"
     And I wait for 2 seconds
     And I click view "description=select file"
-   Then I should see view "text=File Manager"
     And I click view "text=File Manager"
    Then I should see view "text=filereadertest.docx"
     And I click view "text=filereadertest.docx"
@@ -13,7 +12,7 @@ Feature: web-system-app
    Then I should see "This new content comes from FileWriter" in "filePreview" area
     And I press "home" hardware key
     And I press "recent" hardware key
-    And I swipe view "description=FileReader" to "left"
+    And I close app "FileReader" from task manager
     And I launch "filereader" with "org.xwalk.filereader" and "FilereaderActivity" on android
     And I wait for 2 seconds
     And I click view "description=read written file"

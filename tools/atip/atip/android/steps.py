@@ -87,6 +87,9 @@ def register_watcher_when2(context, watcher_name, when_text1, when_text2, click_
 @step(u'I should see view "{params_kw}"')
 def select_view_by(context, params_kw):
     ob = context.android.selectObjectBy(params_kw)
+    if ob.exists == False:
+        context.android.flingToEnd()
+        ob = context.android.selectObjectBy(params_kw)
     assert ob.exists
 
 
@@ -130,9 +133,12 @@ def select_relative_noneobject(context, params_kw1, position, params_kw2):
 
 @step(u'I click view "{params_kw}"')
 def click_view(context, params_kw):
+    # On Xiaomi Pad2, File Manager is name as "File Explorer"
+    if params_kw == "text=File Manager" and context.android.productName == "latte":
+	params_kw = "text=File Explorer"
     ob = context.android.selectObjectBy(params_kw)
     assert ob.exists
-    assert context.android.clickObject(ob)
+    assert context.android.clickObject(ob[0])
 
 
 # get the saved ui object from key and if exists then click it.
@@ -260,6 +266,11 @@ def swipe_to(context, key, orientation):
     assert ob.exists
     assert context.android.swipeTo(ob, orientation)
 
+# close app from task manager with swiping action
+# app_name should be the app name shown on the task manager
+@step(u'I close app "{app_name}" from task manager')
+def close_app_from_task_manager(context, app_name):
+    context.android.closeAppFromTaskManager(app_name)
 
 # save the finding ui object process with its UiSelector
 @step(u'I save process of finding view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')

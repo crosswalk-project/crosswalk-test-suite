@@ -39,7 +39,7 @@ DEFAULT_PARAMETER_KEYS = ["text", "textContains", "textMatches", "textStartsWith
                 "resourceId", "resourceIdMatches", "className", "packageName", "index"]
 OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName",
                 "selected", "enabled", "className"]
-PRODUCTS_NAME = {"nexus7": "razor", "memo8": "CN_K011", "nexus4": "occam", "nexus5": "hammerhead", "zte": "V975", "ecs2-8a": "cloudpad"}
+PRODUCTS_NAME = {"nexus7": "razor", "memo8": "CN_K011", "nexus4": "occam", "nexus5": "hammerhead", "zte": "V975", "ecs2-8a": "cloudpad", "xiaomipad2": "latte"}
 
 class Android(common.APP):
 
@@ -78,6 +78,7 @@ class Android(common.APP):
             self.androidVersion = int(androidVersion[1:2])
         except Exception as e:
             print("Fail to get android version: %s" % e)
+
 
     def launch_app(self):
         cmd = self.adb + \
@@ -128,6 +129,7 @@ class Android(common.APP):
         except Exception as e:
             return False
 
+
     def selectItem(self, text):
         obj = None
         settings = self.selectObjectBy("text=Settings")
@@ -138,6 +140,7 @@ class Android(common.APP):
             obj = self.d(className="android.widget.ListView", resourceId="android:id/list") \
                       .child_by_text(text, className="android.widget.LinearLayout")
         return self.clickObject(obj)
+
 
     def selectSwitchChild(self, child_name, turnon, default_cls="android.widget.Switch"):
         try:
@@ -153,6 +156,7 @@ class Android(common.APP):
         except Exception as e:
             return False
 
+
     def selectToggle(self, turnon, default_cls='android.widget.Switch'):
         gps_switch = self.selectObjectBy("className=%s" % default_cls)
         if gps_switch.exists:
@@ -162,6 +166,7 @@ class Android(common.APP):
                     self.clickObject(g)
             return True
         return False
+
 
     def selectQuickSetting(self, child_name, turnon):
         self.openQuickSettings()
@@ -176,6 +181,7 @@ class Android(common.APP):
                 return True
         return False
 
+
     def backToActiveApp(self):
         while True:
             settings = self.selectObjectBy("text=Settings")
@@ -184,6 +190,7 @@ class Android(common.APP):
             else:
                 break
         self.pressKeyBy("back")
+
 
     def wifiOperate(self, turnon):
         if self.openSettings():
@@ -207,6 +214,7 @@ class Android(common.APP):
             self.backToActiveApp()
             return rtn
         return False
+
 
     def airplaneModeOperate(self, turnon):
         if self.openSettings():
@@ -234,6 +242,7 @@ class Android(common.APP):
             return rtn
         return False
 
+
     def gpsOperate(self, turnon):
         if self.openSettings():
             rtn = False
@@ -251,6 +260,7 @@ class Android(common.APP):
             return rtn
         return False
 
+
     def modifyGPSSwitch(self, child_name, turnon):
         if self.selectItem(child_name):
             if self.productName == PRODUCTS_NAME["zte"]:
@@ -264,6 +274,7 @@ class Android(common.APP):
                 return True
         return False
 
+
     def switchLanguage(self, language):
         if self.openSettings():
             if self.selectItem(u'Language \u0026 input'):
@@ -272,6 +283,7 @@ class Android(common.APP):
                     self.backToActiveApp()
                     return rtn
         return False
+
 
     def checkCurrentApp(self):
         currentPackageName = self.d.info["currentPackageName"]
@@ -480,21 +492,60 @@ class Android(common.APP):
         return False
 
 
+    #use coordinates to swipe the page
+    def swipeBy(self, direction, steps=10):
+        displaySizeDpX = self.d.info["displaySizeDpX"]
+        displaySizeDpY = self.d.info["displaySizeDpY"]
+        if direction == "left":
+            return self.d.swipe(displaySizeDpX, displaySizeDpY, 0, displaySizeDpY, steps=steps)
+        elif direction == "right":
+            return self.d.swipe(displaySizeDpX, displaySizeDpY, 2*displaySizeDpX, displaySizeDpY, steps=steps)
+        elif direction == "up":
+            return self.d.swipe(displaySizeDpX, displaySizeDpY, displaySizeDpX, 2*displaySizeDpY, steps=steps)
+        elif direction == "down":
+            return self.d.swipe(displaySizeDpX, displaySizeDpY, 2*displaySizeDpX, 2*displaySizeDpY, steps=steps)
+        else:
+            return False
+
+
+    def closeAppFromTaskManager(self, app_name):
+        params_kw = "description=" + app_name
+        direction = "left"
+        # swiping up to close app is only for Xiaomi Pad2
+        # app name is shown as text attribute on task manager from Xiaomi Pad2
+        if self.productName == PRODUCTS_NAME["xiaomipad2"]:
+            params_kw = "text=" + app_name
+            direction = "up"
+        ob = self.selectObjectBy(params_kw)
+        assert ob.exists
+        #swipeTo does not work well on Xiaomi Pad2
+        if self.productName == PRODUCTS_NAME["xiaomipad2"]:
+            text_bounds = self.d(text=app_name).info["visibleBounds"]
+            self.d.swipe(text_bounds["left"], text_bounds["top"], text_bounds["left"], 0)
+        else:
+            assert self.swipeTo(ob, direction)
+        assert ob.exists == False
+
+
     def selectAppIconInAllApps(self, params_str):
-        max_fling_num = 5
+        max_fling_num = 10
         self.d.orientation = "n"
         self.d.press.home()
-        all_apps = self.selectObjectBy("description=Apps")
-        if all_apps.exists:
-            self.clickObject(all_apps)
-            if self.productName != PRODUCTS_NAME["memo8"]:
-                self.d(scrollable=True).fling.horiz.toBeginning()
-            for i in range(max_fling_num):
-                app = self.selectObjectBy(params_str)
-                if app.exists:
-                    self.clickObject(app)
-                    return True
-                self.d(scrollable=True).fling.horiz.forward()
+        # no Apps button on Xiaomi Pad2
+        if self.productName != PRODUCTS_NAME["xiaomipad2"]:
+            all_apps = self.selectObjectBy("description=Apps")
+            if all_apps.exists:
+                self.clickObject(all_apps)
+                if self.productName != PRODUCTS_NAME["memo8"]:
+                    self.d(scrollable=True).fling.horiz.toBeginning()
+            return False
+        for i in range(max_fling_num):
+            app = self.selectObjectBy(params_str)
+            if app.exists:
+                self.clickObject(app)
+                return True
+            #self.flingBy("horiz", "forward")
+            self.swipeBy("left")
         return False
 
 

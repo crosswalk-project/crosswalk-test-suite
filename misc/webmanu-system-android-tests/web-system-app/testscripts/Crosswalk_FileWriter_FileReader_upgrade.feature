@@ -3,7 +3,6 @@ Feature: web-system-app
   When launch "filereader"
     And I wait for 2 seconds
     And I click view "description=select file"
-   Then I should see view "text=File Manager"
     And I click view "text=File Manager"
    Then I should see view "text=filereadertest.docx"
     And I click view "text=filereadertest.docx"
