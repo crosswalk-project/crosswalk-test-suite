@@ -120,7 +120,6 @@ def create(appname, pkgname, self):
         '{pkg_name}', pkgname):
         self.assertTrue(False, "replace pkgname for %s.java failed" % appname)
 
-
 def build_ant(appname, self):
     android_project_path = os.path.join(tool_path, appname)
     os.chdir(android_project_path)
@@ -282,7 +281,7 @@ def build_maven(appname, pkgname, isLocal, self):
             os.path.join(android_project_path, "%s.apk" % appname)):
             self.assertTrue(False, "Copy apk failed")
 
-def build_gradle(appname, isLocal, isAll, self):
+def build_gradle(appname, isLocal, isAll, self, withLibphonenumber = False):
     android_project_path = os.path.join(tool_path, appname)
     os.chdir(android_project_path)
 
@@ -294,6 +293,17 @@ def build_gradle(appname, isLocal, isAll, self):
     if not replaceUserString(android_project_path, 'build.gradle',
         '{crosswalk.version}', CROSSWALK_VERSION):
         self.assertTrue(False, "replace crosswalk version for build.gradle failed")
+
+    if withLibphonenumber == False:
+        if not replaceUserString(android_project_path, 'build.gradle',
+            '{libphonenumber}',
+            ''):
+            self.assertTrue(False, "replace {libphonenumber} for build.gradle failed")
+    else:
+        if not replaceUserString(android_project_path, 'build.gradle',
+            '{libphonenumber}',
+            'compile \'com.googlecode.libphonenumber:libphonenumber:7.3.0\''):
+            self.assertTrue(False, "replace {libphonenumber} for build.gradle failed")
 
     if isLocal == True:
         if not replaceUserString(android_project_path, 'build.gradle',
