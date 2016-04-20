@@ -11,13 +11,15 @@ There are extra plugins needed for packing this suite:
 
 Create extra_plugins directory in webapi-appsecurity-external-tests
 
-Git clone https://github.com/01org/AppSecurityApi.git in extra_plugins directory
+Git clone https://github.com/AppSecurityApi/com-intel-security-cordova-plugin in extra_plugins directory
 
 For Windows:
 
-Copy windows_crosswalk from https://github.com/01org/AppSecurityApi to the current directory
+Git clone https://github.com/AppSecurityApi/com-intel-security-crosswalk-extension to the current directory
 
 ## Pre-condition before testing
+
+Require available network to access https://crosswalk-project.org
 
 For Windows:
 
@@ -27,7 +29,8 @@ Need to install "Visual C++ Redistributable" for Visual Studio 2015 on the syste
 To improve the compatibility of this test suite for Windows and Cordova Android, the case page code contains these code: 
 ```
 <script src="../../../cordova.js"></script> 
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 ```
 
 The
@@ -40,7 +43,8 @@ is only for cordova android app, it's unuseful for windows app
 The
 
 ```
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 ```
 is only for windows app, it's unuseful for cordova android app
 , they can work on the corresponding platform.

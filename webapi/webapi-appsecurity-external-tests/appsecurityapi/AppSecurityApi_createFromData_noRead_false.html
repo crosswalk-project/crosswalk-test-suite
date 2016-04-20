@@ -37,7 +37,8 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="../../../cordova.js"></script>
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 <div id="log"></div>
 <script type="text/javascript">
 
@@ -48,39 +49,24 @@ function test() {
   async_test(function(t) {
     //the pin number secure data instance.
     var extraKeySD = null;
-    try{
-      intel.security.secureData.createFromData(
-        function(instanceID) {
-          extraKeySD = instanceID;
-          intel.security.secureData.createFromData(
-            function(instanceID) {
-              t.step(function() {
-                assert_unreached("createFromData should fail");
-              });
-              t.done();
-            },
-            function(errorObj) {
-              t.step(function() {
-                assert_equals(errorObj.code, error_code_policy_violation, "Check if policy violation detected");
-              });
-              t.done();
-            },
-            {'data': 'plaintext data', 'tag': 'Test', 'extraKey': extraKeySD, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': []}
-          );
-        },
-        function(errorObj) {
-          t.step(function() {
-            assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-          });
-          t.done();
-        },
-        {'data': 'test1', 'noRead': false, 'noStore': true}
-      );
-    } catch (e){
-      assert_true(false, "Exception: {" + e.message + "}");
-    }
+    intel.security.secureData.createFromData({'data': 'test1', 'noRead': false, 'noStore': true})
+    .then(function(instanceID) {
+      extraKeySD = instanceID;
+      return intel.security.secureData.createFromData({'data': 'plaintext data', 'tag': 'Test', 'extraKey': extraKeySD, 'appAccessControl': 0, 'deviceLocality': 0, 'sensitivityLevel': 0, 'noStore': false, 'noRead': false, 'creator': 0, 'owners': [0], 'webOwners': []});
+    })
+    .then(function(instanceID) {
+      t.step(function() {
+        assert_unreached("createFromData should fail");
+      });
+      t.done();
+    })
+    .catch(function (errorObj) {
+      t.step(function() {
+        assert_equals(errorObj.code, error_code_policy_violation, "Check if policy violation detected");
+      });
+      t.done();
+    });
   }, document.title);
 }
-
 </script>
 

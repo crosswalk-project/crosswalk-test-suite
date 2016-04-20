@@ -37,33 +37,29 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="../../../cordova.js"></script>
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 <div id="log"></div>
 <script type="text/javascript">
 
 var error_code_system_error = 1
 setTimeout(function() { test(); }, 500);
+
 function test() {
   async_test(function(t) {
-    try{
-      intel.security.secureStorage.delete(
-        function() {
-          t.step(function() {
-            assert_unreached("read should fail");
-          });
-          t.done();
-        },
-        function(errorObj) {
-          t.step(function() {
-            assert_equals(errorObj.code, error_code_system_error);
-          });
-          t.done();
-        },
-        {'id': 'id2', 'storageType': 0}
-      );
-    } catch (e) {
-      assert_true(false, "Exception: {" + e.message + "}");
-    }
+    intel.security.secureStorage.delete({'id': 'id2', 'storageType': 0})
+    .then(function() {
+      t.step(function() {
+        assert_unreached("read should fail");
+      });
+      t.done();
+    })
+    .catch(function (errorObj) {
+      t.step(function() {
+        assert_equals(errorObj.code, error_code_system_error);
+      });
+      t.done();
+    });
   }, document.title);
 }
 </script>

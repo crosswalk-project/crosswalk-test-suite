@@ -37,7 +37,8 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="../../../cordova.js"></script>
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 <div id="log"></div>
 <script type="text/javascript">
 
@@ -47,25 +48,19 @@ var error_code_bad_url = 29
 
 function test() {
   async_test(function(t) {
-    try{
-      intel.security.secureTransport.open(
-        function(instanceID) {
-          t.step(function() {
-            assert_unreached("open should fail");
-          });
-          t.done();
-        },
-        function(errorObj) {
-          t.step(function() {
-            assert_equals(errorObj.code, error_code_bad_url);
-          });
-          t.done();
-        },
-        {'url': '123', 'method': 'GET', 'serverKey': '', 'timeout': 1000}
-      );
-    } catch (e) {
-      assert_true(false, "Exception: {" + e.message + "}");
-    }
+    intel.security.secureTransport.open({'url': '123', 'method': 'GET', 'serverKey': '', 'timeout': 1000})
+    .then(function(instanceID) {
+      t.step(function() {
+        assert_unreached("open should fail");
+      });
+      t.done();
+    })
+    .catch(function (errorObj) {
+      t.step(function() {
+        assert_equals(errorObj.code, error_code_bad_url);
+      });
+      t.done();
+    });
   }, document.title);
 }
 </script>

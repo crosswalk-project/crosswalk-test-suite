@@ -37,44 +37,32 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="../../../cordova.js"></script>
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 <div id="log"></div>
 <script type="text/javascript">
 
 var error_code_system_error = 1
 setTimeout(function() { test(); }, 500);
+
 function test() {
   async_test(function(t) {
-    try{
-      intel.security.secureData.createFromData(
-        function(instanceID) {
-          intel.security.secureStorage.read(
-            function(instanceID) {
-              t.step(function() {
-                assert_unreached("read should fail");
-              });
-              t.done();
-            },
-            function(errorObj) {
-              t.step(function() {
-                assert_equals(errorObj.code, error_code_system_error);
-              });
-              t.done();
-            },
-            {'id': 'id2', 'storageType': 0, 'extraKey': instanceID}
-          );
-        },
-        function(errorObj) {
-          t.step(function() {
-            assert_true(false, 'fail: code = ' + errorObj.code + ', message = ' + errorObj.message);
-          });
-          t.done();
-        },
-        {'data': 'test1', 'noRead': true, 'noStore': true}
-      );
-    } catch (e) {
-      assert_true(false, "Exception: {" + e.message + "}");
-    }
+    intel.security.secureData.createFromData({'data': 'test1', 'noRead': true, 'noStore': true})
+    .then(function(instanceID) {
+      return intel.security.secureStorage.read({'id': 'id2', 'storageType': 0, 'extraKey': instanceID});
+    })
+    .then(function(instanceID) {
+      t.step(function() {
+        assert_unreached("read should fail");
+      });
+      t.done();
+    })
+    .catch(function (errorObj) {
+      t.step(function() {
+        assert_equals(errorObj.code, error_code_system_error);
+      });
+      t.done();
+    });
   }, document.title);
 }
 </script>

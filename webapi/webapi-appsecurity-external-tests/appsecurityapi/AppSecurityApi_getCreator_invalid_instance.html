@@ -37,7 +37,8 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="../../../cordova.js"></script>
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 <div id="log"></div>
 <script type="text/javascript">
 
@@ -46,26 +47,19 @@ setTimeout(function() { test(); }, 500);
 
 function test() {
   async_test(function(t) {
-    try{
-      intel.security.secureData.getCreator(
-        function(creator){
-          t.step(function() {
-            assert_unreached("getCreator should fail");
-          });
-          t.done();
-        },
-        function(errorObj){
-          t.step(function() {
-            assert_equals(errorObj.code, error_code_invalid_instance);
-          });
-          t.done();
-        },
-        1234
-      );
-    } catch (e){
-      assert_true(false, "Exception: {" + e.message + "}");
-    }
+    intel.security.secureData.getCreator(1234)
+    .then(function(creator) {
+      t.step(function() {
+        assert_unreached("getCreator should fail");
+      });
+      t.done();
+    })
+    .catch(function (errorObj) {
+      t.step(function() {
+        assert_equals(errorObj.code, error_code_invalid_instance);
+      });
+      t.done();
+    });
   }, document.title);
 }
-
 </script>

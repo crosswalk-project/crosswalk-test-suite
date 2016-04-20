@@ -37,7 +37,8 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="../../../cordova.js"></script>
-<script src="js/appSecurityApi_XW.js"></script>
+<script src="js/appSecurityApi.js"></script>
+<script src="js/q.js"></script>
 <div id="log"></div>
 <script type="text/javascript">
 
@@ -47,25 +48,19 @@ var error_code_invalid_instance = 9
 
 function test() {
   async_test(function(t) {
-    try{
-      intel.security.secureTransport.setURL(
-        function() {
-          t.step(function() {
-            assert_unreached("setURL should fail");
-          });
-          t.done();
-        },
-        function(errorObj) {
-          t.step(function() {
-            assert_equals(errorObj.code, error_code_invalid_instance);
-          });
-          t.done();
-        },
-        {'instanceID': 1234, 'url': 'https://software.intel.com'}
-      );
-    } catch (e) {
-      assert_true(false, "Exception: {" + e.message + "}");
-    }
+    intel.security.secureTransport.setURL({'instanceID': 1234, 'url': 'https://software.intel.com'})
+    .then(function() {
+      t.step(function() {
+        assert_unreached("setURL should fail");
+      });
+      t.done();
+    })
+    .catch(function (errorObj) {
+      t.step(function() {
+        assert_equals(errorObj.code, error_code_invalid_instance);
+      });
+      t.done();
+    });
   }, document.title);
 }
 </script>
