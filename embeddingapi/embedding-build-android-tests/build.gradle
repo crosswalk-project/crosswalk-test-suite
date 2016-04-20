@@ -16,12 +16,16 @@ repositories {
     maven {
         url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2'
     }
+    maven {
+        url 'http://repo1.maven.org/maven2'
+    }
 }
 
 ext.multiarch=false
 
 dependencies {
     compile 'org.xwalk:xwalk_core_library_beta:{crosswalk.version}'
+    {libphonenumber}
 }
 apply from: 'libraries.gradle'
 
