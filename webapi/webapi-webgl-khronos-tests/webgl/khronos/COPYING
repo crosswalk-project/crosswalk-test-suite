@@ -1,0 +1,119 @@
+All test cases in this folder and subfolder resources/ come from
+https://github.com/KhronosGroup/WebGL/tree/master/conformance-suites/1.0.3
+with modification:
+
+unit.css
+-.ok {
+ +.pass {
+
+unit.js
+ var __testLog__;
+  var __backlog__ = [];
+  
+ +var caseName = null;
+ +var subcaseIndex = 0;
+ +
+ +function KhronosUnitTest(name) {
+ +  this.name = name;
+ +  this.status = null;
+ +  this.message = null;
+ +}
+ +
+ +var khronosUnitTests = [];
+ +var khronosUnitTestMsg = null;
+ +
+ +function Status() {
+ +  this.status = null;
+ +  this.message = null;
+ +}
+ +
+ +var statusObj = new Status();
+ +statusObj.status = 0;
+ +
+Object.toSource = function(a, seen){
+    if (a == null) return "null";
+    if (typeof a == 'boolean') return a ? "true" : "false";
+      __testLog__ = document.createElement('div');
+      __testSuccess__ = true;
+      try {
+ +      caseName = i;
+ +      subcaseIndex = 1;
+ +
+        doTestNotify (i);
+        var args = setup_args;
+        if (Tests.setup != null)
+  }
+  
+  function testFailed(assertName, name) {
+ +  var kutest = new KhronosUnitTest(caseName + "/" + subcaseIndex);
+ +  kutest.status = 1;
+ +  kutest.message = name;
+ +  khronosUnitTests.push(kutest);
+ +  subcaseIndex += 1;
+ +
+    var d = document.createElement('div');
+    var h = document.createElement('h3');
+    var d1 = document.createElement("span");
+  }
+function testPassed(assertName, name) {
+ +  var kutest = new KhronosUnitTest(caseName + "/" + subcaseIndex);
+ +  kutest.status = 0;
+ +  kutest.message = name;
+ +  khronosUnitTests.push(kutest);
+ +  subcaseIndex += 1;
+ +
+    var d = document.createElement('div');
+    var h = document.createElement('h3');
+    var d1 = document.createElement("span");
+    h.appendChild(document.createTextNode(
+        name==null ? assertName : name + " (in " + assertName + ")"));
+    d.appendChild(h);
+ +  kutest.message = name==null ? assertName : name + " (in " + assertName + ")";
+    var args = []
+    for (var i=2; i<arguments.length; i++) {
+      var a = arguments[i];
+      var p = document.createElement('p');
+      p.style.whiteSpace = 'pre';
+      p.textContent = (a == null) ? "null" :
+                      (typeof a == 'boolean' || typeof a == 'string') ? a : Object.toSource(a);
+ +    kutest.message += "\n" + p.textContent;
+      args.push(p.textContent);
+      d.appendChild(p);
+    }
+  function printTestStatus(testsRun) {
+    var status = document.getElementById('test-status');
+    if (testsRun) {
+ -    status.className = checkTestSuccess() ? 'ok' : 'fail';
+ +    status.className = checkTestSuccess() ? 'pass' : 'fail';
+      status.textContent = checkTestSuccess() ? "PASS" : "FAIL";
+    } else {
+      status.className = 'fail';
+     status.textContent = "NO TESTS FOUND";
+   }
+ }
+
+
+These tests are copyright by the Khronos Group under MIT License:
+https://www.khronos.org/registry/webgl/sdk/tests/test-guidelines.md
+
+Copyright (c) 2012 The Khronos Group Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and/or associated documentation files (the
+"Materials"), to deal in the Materials without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Materials, and to
+permit persons to whom the Materials are furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Materials.
+
+THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
+
