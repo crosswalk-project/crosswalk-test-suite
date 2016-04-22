@@ -75,5 +75,31 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertIn("target windows", output[0])
         self.assertNotIn("target android", output[0])
 
+    def test_without_platforms(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg ../../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        msiLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".msi"):
+                msiLength = msiLength + 1
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertEquals(apkLength, 2)
+        self.assertEquals(msiLength, 0)
+        self.assertNotIn("target windows", output[0])
+        self.assertIn("target android", output[0])
+
 if __name__ == '__main__':
     unittest.main()
