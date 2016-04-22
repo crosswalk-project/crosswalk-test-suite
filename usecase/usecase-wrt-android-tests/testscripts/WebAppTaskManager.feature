@@ -4,7 +4,7 @@ Feature: Usecase WRT
    Then I should see title "xwalk_hosts_value_tests"
     And I press "home" hardware key
    Then I press "recent" hardware key
-    And I swipe view "description=webappxwalkhost" to "left"
+    And I close app "webappxwalkhost" from task manager
     And I wait 2 seconds
     And I should not see view "description=webappxwalkhost"
     And I press "home" hardware key
