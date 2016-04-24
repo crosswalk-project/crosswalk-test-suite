@@ -1,0 +1,12 @@
+var step = '<p>Purpose:</p>'
+            +'<p>Verify that onalert is fired when there is an alert happened.</p>'
+            + '<p>Test Steps: </p>'
+              + '<ol>'
+                + '<li>Click the "Get" button</li>'
+                + '<li>Track faces from the closest to the furthest, wait until the status shows faceId</li>'
+              + '</ol>'
+            +'<p>Expected Result:</p>'
+              +'<ol>'
+                +'<li>All checkbox are checked after click "Get" button</li>'
+                +'<li>Alert status shows that "Alert event is fired." and it can get a faceId and alert type</li>'
+              +'</ol>';
