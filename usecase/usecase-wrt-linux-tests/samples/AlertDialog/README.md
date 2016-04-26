@@ -1,9 +1,8 @@
 ## Usecase Design
 
-This sample demonstrates Web Notification feature basic functionalities, include:
+This sample demonstrates popup alert/confirm/prompt dialog functionalities, include:
 
-* Notification constructor, requestPermission/permission and onclose
 
 ## Spec Link
 
-https://crosswalk-project.org/jira/browse/XWALK-4061
+BUG=XWALK-5819
