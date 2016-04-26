@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Runtime Test: ALert Dialog</title>
+    <!--script src="js/main.js"></script-->
+  </head>
+  <body>
+    <button id="alert">alert("Hello")</button>
+    <button id="confirm">confirm("Hello")</button>
+    <button id="prompt">prompt("Hello")</button>
+
+    <script>
+        document.querySelector('#alert').addEventListener('click', event => {
+        alert('Hello');
+       });
+	document.querySelector('#confirm').addEventListener('click', event => {
+        confirm('Hello');
+       });
+	document.querySelector('#prompt').addEventListener('click', event => {
+	prompt('Hello');
+       });
+    </script>
+
+    <style>
+       button { display: block; margin-bottom: 6px; }
+    </style>
+
+  </body>
+</html>
