@@ -11,6 +11,6 @@ This test suite is for checking compliance with WebGL (Khronos) specification:
 
 ## LICENSE
 
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 Except as noted, this software is licensed under BSD-3-Clause License.
 Please see the COPYING file for the BSD-3-Clause License.
