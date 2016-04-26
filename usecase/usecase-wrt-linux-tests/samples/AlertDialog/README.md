@@ -1,6 +1,6 @@
 ## Usecase Design
 
-This sample demonstrates popup alert/confirm/prompt dialog functionalities, include:
+This sample demonstrates popup alert/confirm/prompt dialog functionalities.
 
 
 ## Spec Link

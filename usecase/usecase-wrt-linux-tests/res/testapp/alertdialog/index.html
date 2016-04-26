@@ -33,6 +33,9 @@ Authors:
   <head>
     <meta charset="utf-8">
     <title>Runtime Test: ALert Dialog</title>
+    <style>
+      button { display: block; margin-bottom: 6px; }
+    </style>
   </head>
   <body>
     <button id="alert">alert("Hello")</button>
@@ -40,17 +43,14 @@ Authors:
     <button id="prompt">prompt("Hello")</button>
     <script>
       document.querySelector('#alert').addEventListener('click', event => {
-      alert('Hello');
+        alert('Hello');
       });
       document.querySelector('#confirm').addEventListener('click', event => {
-      confirm('Hello');
+        confirm('Hello');
       });
       document.querySelector('#prompt').addEventListener('click', event => {
-      prompt('Hello');
+        prompt('Hello');
       });
     </script>
-    <style>
-      button { display: block; margin-bottom: 6px; }
-    </style>
   </body>
 </html>
