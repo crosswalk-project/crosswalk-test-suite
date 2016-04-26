@@ -7,7 +7,6 @@ This test suite is for checking compliance with WebGL (Khronos) specification:
 
 ## Authors
 
-* Zhang, Zhiqiang <zhiqiang.zhang@intel.com>
 * Ren, Chenglei <chenglei.ren@intel.com>
 
 ## LICENSE
