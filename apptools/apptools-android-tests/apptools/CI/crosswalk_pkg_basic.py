@@ -38,11 +38,6 @@ import sys
 sys.path.append("../")
 import comm
 
-x86Length = 0
-x86_64Length = 0
-armLength = 0
-arm_64Length = 0
-apkLength = 0
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
@@ -303,6 +298,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + ' --targets="armeabi-v7a x86" ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
+        x86Length = 0
+        x86_64Length = 0
+        armLength = 0
+        arm_64Length = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -345,6 +344,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + ' --targets="a x" -c canary ' + comm.ConstPath + "/../testapp/create_package_basic/"
         return_code = os.system(cmd)
         apks = os.listdir(os.getcwd())
+        x86Length = 0
+        x86_64Length = 0
+        armLength = 0
+        arm_64Length = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
