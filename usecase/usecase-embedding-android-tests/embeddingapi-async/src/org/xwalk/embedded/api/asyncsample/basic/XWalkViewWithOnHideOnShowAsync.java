@@ -44,7 +44,7 @@ public class XWalkViewWithOnHideOnShowAsync extends Activity implements XWalkIni
     public final void onXWalkInitCompleted() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-        .append("Verifies XWalkView can hide and show.\n\n")
+        .append("Verifies XWalkView can hide and show.(Also need to check it in Android TV)\n\n")
         .append("Test  Step:\n\n")
         .append("1. Play the video in the page, then click home key.\n")
         .append("2. Click the 'EmbeddedAPISamples' app again.\n\n")
