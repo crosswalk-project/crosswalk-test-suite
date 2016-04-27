@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite category="W3C/HTML5 APIs" name="webapi-iap-xwalk-tests">
+  <suite category="W3C/HTML5 APIs" name="iapdemo">
     <set name="iap" type="js">
-      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap" purpose="Test Navigator iap" subcase="2">
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap" purpose="Test Navigator iap" subcase="23">
         <description>
-          <test_script_entry>/opt/webapi-iap-xwalk-tests/iap/Navigator_iap.html</test_script_entry>
+          <test_script_entry>/iap/Navigator_iap.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="InAppPurchase" purpose="Test InAppPurchase interface" subcase="6">
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_init" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="2">
         <description>
-          <test_script_entry>/opt/webapi-iap-xwalk-tests/iap/InAppPurchase.html</test_script_entry>
+          <test_script_entry>/iap/Navigator_iap_init.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="IAPProduct" purpose="Test IAPProduct interface" subcase="10">
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_init_undefined" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="1">
         <description>
-          <test_script_entry>/opt/webapi-iap-xwalk-tests/iap/IAPProduct.html</test_script_entry>
+          <test_script_entry>/iap/Navigator_iap_init_undefined.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="IAPTransactionDetails" purpose="Test IAPTransactionDetails interface" subcase="12">
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_init_unsupported" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="1">
         <description>
-          <test_script_entry>/opt/webapi-iap-xwalk-tests/iap/IAPTransactionDetails.html</test_script_entry>
+          <test_script_entry>/iap/Navigator_iap_init_unsupported.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_init_error" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="1">
+        <description>
+          <test_script_entry>/iap/Navigator_iap_init_error.html</test_script_entry>
+        </description>
+      </testcase>       
+    <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_queryProductsInfo" priority="P1" purpose="Test Navigator iap queryProductsInfo method" status="approved" type="compliance" subcase="6">
+        <description>
+          <test_script_entry>/iap/Navigator_iap_queryProductsInfo.html</test_script_entry>
         </description>
       </testcase>
     </set>

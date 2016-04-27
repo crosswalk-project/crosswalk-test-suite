@@ -14,17 +14,48 @@
         "*"
       ],
       "copylist": {
+        "google/iapdemo.keystore": "iapdemo.keystore",
         "inst.apk.py": "inst.py",
         "tests.full.xml": "tests.full.xml",
         "tests.xml": "tests.xml"
       },
-      "pkg-app": {
-        "apk-type": "MANIFEST",
-        "copylist": {
-          "PACK-TOOL-ROOT/resources/testharness": "resources",
-          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+      "subapp-list": {
+        "google": {
+          "apk-common-opts": "--enable-remote-debugging",
+          "apk-type": "MANIFEST",
+          "blacklist": [
+            "*",
+            ".git"
+          ],
+          "copylist": {            
+            "manifest.json": "manifest.json",
+            "../index.html": "index.html",
+            "../tests.xml": "tests.xml",
+            "../iap": "iap",          
+            "options.js": "iap/options.js",
+            "PACK-TOOL-ROOT/resources/testharness": "resources",
+            "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+          }                 
+        },
+        "xiaomi": {
+          "apk-common-opts": "--enable-remote-debugging",        
+          "apk-type": "MANIFEST",
+          "blacklist": [
+            "*",
+            ".git"
+          ],
+          "copylist": {
+            "manifest.json": "manifest.json",
+            "../index.html": "index.html",
+            "../tests.xml": "tests.xml",            
+            "../iap": "iap",
+            "options.js": "iap/options.js",
+            "PACK-TOOL-ROOT/resources/testharness": "resources",
+            "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+          }                     
         }
       }
+
     },
     "apk-aio, cordova-aio": {
       "blacklist": [],

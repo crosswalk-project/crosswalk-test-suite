@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>WebAPI: IAP</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Zhong Qiu" href="mailto:zhongx.qiu@intel.com">
+<link rel="help" href="http://www.w3.org/TR/IAP-api/">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="options.js"></script>
+<div id="log"></div>
+<script>
+  var at = async_test("Check if queryProductsInfo method works well", {timeout: 10000});
+  if (options.channel == "Google") {    
+    navigator.iap.init(options).then(function() {
+
+      at.step(function() {
+        var productsId  = ["org.xwalk.apple"];
+        navigator.iap.queryProductsInfo(productsId).then(function(products) {
+
+          assert_true(products instanceof Array, "The returned products info should be an array");
+
+          test(function() {
+            assert_true("description" in products[0], "product object has member description");
+            assert_own_property(products[0], "description", "products object has own property description");
+            assert_equals(typeof products[0].description, "string", "description property should be a string");
+          }, "Check the description property");
+
+          test(function() {
+            assert_true("price" in products[0], "product object has member price");
+            assert_own_property(products[0], "price", "products object has own property price");
+            assert_equals(typeof products[0].price, "number", "price property should be a number");
+          }, "Check the price property");
+
+          test(function() {
+            assert_true("productId" in products[0], "product object has member productId");
+            assert_own_property(products[0], "productId", "products object has own property productId");
+            assert_equals(typeof products[0].productId, "string", "productId property should be a string");
+          }, "Check the productId property");
+
+          test(function() {
+            assert_true("title" in products[0], "product object has member title");
+            assert_own_property(products[0], "title", "products object has own property title");
+            assert_equals(typeof products[0].title, "string", "title property should be a string");
+          }, "Check the title property");     
+
+          test(function() {
+            assert_true("currencyCode" in products[0], "product object has member currencyCode");
+            assert_own_property(products[0], "currencyCode", "products object has own property currencyCode");
+            assert_equals(typeof products[0].currencyCode, "string", "currencyCode property should be a string");
+          }, "Check the currencyCode property");
+
+          at.done();
+        }).catch(function(e) {
+          assert_unreached("Should not be here, otherwise queryProductsInfo failed!");
+          at.done();
+        }); // navigator.iap.queryProdcutsInfo ends
+      }); // at.step ends
+    }).catch(function(e) {
+      assert_unreached("Should not be here, otherwise init failed!");
+      at.done();
+    }); // navigator.iap.init ends
+  } else if (options.channel == "Xiaomi") {
+    navigator.iap.init(options).then(function() {
+      at.step(function() {
+        navigator.iap.queryProductsInfo("com.demo_1").then(
+          at.step_func(function() {
+            assert_unreached("IAP API on Xiaomi Store does not support queryProductsInfo!");
+            at.done();
+          }),
+          at.step_func(function(e) {
+            at.done();
+          })
+        );
+      });
+    }).catch(function(e) {
+    });
+  }
+</script>
