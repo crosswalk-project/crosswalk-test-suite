@@ -524,7 +524,6 @@ class Android(common.APP):
             self.d.swipe(text_bounds["left"], text_bounds["top"], text_bounds["left"], 0)
         else:
             assert self.swipeTo(ob, direction)
-        assert ob.exists == False
 
 
     def selectAppIconInAllApps(self, params_str):
