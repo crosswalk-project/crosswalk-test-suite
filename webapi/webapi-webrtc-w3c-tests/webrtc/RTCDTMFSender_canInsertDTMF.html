@@ -44,15 +44,37 @@ Authors:
     <div id="log"></div>
     <script>
 
-      var t = async_test(document.title, {timeout: 5000});
+      var t = async_test(document.title);
 
       var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
-      var pc;
+      var pc1;
+      var pc2;
+      var localStream;
       if (typeof RTCPeerConnection != "undefined") {
-        pc = new RTCPeerConnection(configuration);
+        pc1 = new RTCPeerConnection(configuration);
+        pc2 = new RTCPeerConnection(configuration);
       } else {
-        pc = new webkitRTCPeerConnection(configuration);
+        pc1 = new webkitRTCPeerConnection(configuration);
+        pc2 = new webkitRTCPeerConnection(configuration);
       }
+
+      pc1.onicecandidate = t.step_func(function(evt) {
+        if(evt.candidate) {
+          pc2.addIceCandidate(event.candidate);
+        }
+      });
+
+      pc2.onicecandidate = t.step_func(function(evt) {
+        if(evt.candidate) {
+          pc1.addIceCandidate(event.candidate);
+        }
+      });
+
+      pc2.onaddstream = t.step_func(function(e) {
+        var dtmfsender = pc1.createDTMFSender(localStream.getAudioTracks()[0]);
+        assert_equals(dtmfsender.canInsertDTMF, true, "the value of RTCDTMFSender.canInsertDTMF");
+        t.done();
+      });
 
       t.step(function () {
         if (typeof (navigator.getUserMedia) != "undefined") {
@@ -63,10 +85,32 @@ Authors:
       });
 
       function gotStream(stream) {
-        pc.addStream(stream);
-        RTCDTMFSender = pc.createDTMFSender(stream.getAudioTracks()[0]);
+        localStream = stream;
+        pc1.addStream(stream);
+        pc1.createOffer(requestSucceeded1, requestFailed1);
+      }
+
+      function requestSucceeded1 (desc) {
+        pc1.setLocalDescription(desc);
+        pc2.setRemoteDescription(desc);
+        pc2.createAnswer(requestSucceeded2, requestFailed2);
+      }
+
+      function requestFailed1 () {
         t.step(function () {
-          assert_equals(RTCDTMFSender.canInsertDTMF, true, "the value of RTCDTMFSender.canInsertDTMF");
+          assert_unreached("requestFailed1 was called");
+        });
+        t.done();
+      }
+
+      function requestSucceeded2(desc) {
+        pc2.setLocalDescription(desc);
+        pc1.setRemoteDescription(desc);
+      }
+
+      function requestFailed2 () {
+        t.step(function () {
+          assert_unreached("requestFailed2 was called");
         });
         t.done();
       }

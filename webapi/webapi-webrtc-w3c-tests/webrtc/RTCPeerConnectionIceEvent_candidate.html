@@ -47,9 +47,9 @@ Authors:
 
       var pc;
       if (typeof RTCPeerConnection != "undefined") {
-        pc = new RTCPeerConnection(null, null);
+        pc = new RTCPeerConnection(null);
       } else {
-        pc = new webkitRTCPeerConnection(null, null);
+        pc = new webkitRTCPeerConnection(null);
       }
       var signalingChannel = pc.createDataChannel("label1");
 
@@ -62,9 +62,7 @@ Authors:
       });
 
       function localDescCreated(desc) {
-        pc.setLocalDescription(desc, function () {
-          signalingChannel.send(JSON.stringify({"sdp": pc.localDescription}));
-        }, logError);
+        pc.setLocalDescription(desc, function () {}, logError);
       }
 
       function logError (error) {

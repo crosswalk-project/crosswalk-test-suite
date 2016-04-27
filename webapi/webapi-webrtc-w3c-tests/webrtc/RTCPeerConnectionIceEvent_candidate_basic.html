@@ -44,16 +44,16 @@ var t = async_test("Check if the readonly attribute candidate of RTCPeerConnecti
 
 var pc;
 if (typeof RTCPeerConnection != "undefined") {
-  pc = new RTCPeerConnection(null, null);
+  pc = new RTCPeerConnection(null);
 } else {
-  pc = new webkitRTCPeerConnection(null, null);
+  pc = new webkitRTCPeerConnection(null);
 }
-var signalingChannel = pc.createDataChannel("label1");
+pc.createDataChannel("label1");
 
 t.step(function () {
   pc.onicecandidate = t.step_func(function (eve) {
     assert_true("candidate" in eve, "candidate attribute in RTCPeerConnectionIceEvent");
-    assert_equals(Object.prototype.toString.call(eve.candidate), "[object RTCIceCandidate]", "candidate attribute of type");
+    assert_class_string(eve.candidate, "RTCIceCandidate", "candidate attribute of type");
     assert_readonly(eve, "candidate", "expect attribute candidate cannot be changed but");
     t.done();
   });
@@ -62,7 +62,6 @@ t.step(function () {
 
 function localDescCreated(desc) {
   pc.setLocalDescription(desc, function () {
-    signalingChannel.send(JSON.stringify({"sdp": pc.localDescription}));
   }, logError);
 }
 
