@@ -75,5 +75,31 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertIn("target deb", packstatus[1])
         self.assertNotIn("target android", packstatus[1])
 
+    def test_without_platforms(self):
+        comm.setUp()
+        os.chdir(comm.TEMP_DATA_PATH)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
+        os.mkdir(comm.TEST_PROJECT_COMM)
+        os.chdir(comm.TEST_PROJECT_COMM)
+        cmd = 'crosswalk-pkg ' + comm.SCRIPT_DIR_NAME + "/../testapp/create_package_basic/"
+        packstatus = commands.getstatusoutput(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        debLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".apk") and "x86" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".apk") and "arm" in apks[i]:
+                apkLength = apkLength + 1
+            if apks[i].endswith(".deb"):
+                debLength = debLength + 1
+        comm.run(self)
+        comm.cleanTempData(comm.TEST_PROJECT_COMM)
+        self.assertEquals(packstatus[0], 0)
+        self.assertEquals(apkLength, 2)
+        self.assertEquals(debLength, 0)
+        self.assertNotIn("target deb", packstatus[1])
+        self.assertIn("target android", packstatus[1])
+
 if __name__ == '__main__':
     unittest.main()
