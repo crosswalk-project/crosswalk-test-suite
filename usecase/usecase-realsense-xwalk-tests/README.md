@@ -21,7 +21,7 @@ This test suite is for testing Crosswalk Project Extensions for Intel® RealSens
   Please refer [Web_Test_Suite_Packaging_Guide](https://github.com/crosswalk-project/crosswalk-test-suite/blob/master/doc/Web_Test_Suite_Packaging_Guide.md)
   for Windows part.
 
-   Please make sure Crosswalk Project for Windows is 19.48.498.0 or later, the version of
+   Please make sure Crosswalk Project for Windows is 19.49.514.1 or later, the version of
    crosswalk-app-tools is above 0.10.0:
    
    ```bat
@@ -34,7 +34,7 @@ This test suite is for testing Crosswalk Project Extensions for Intel® RealSens
 
 ## Build for Windows
 
-1. Download and unzip [latest realsense_extensions(.zip)](https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v19.6.0/realsense_extensions_v19.6.0.zip).
+1. Download and unzip [latest realsense_extensions(.zip)](https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v19.6.1/realsense_extensions_v19.6.1.zip).
 
    The content of realsense_extensions looks like:
 
