@@ -1,0 +1,38 @@
+{
+  "pkg-blacklist": [
+    "pack.py",
+    "icon.png",
+    "manifest.json",
+    "suite.json",
+    "*-py",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "msi": {
+      "blacklist": [
+        "*",
+        ".git"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "subapp-list": {
+        ".": {
+          "apk-type": "MANIFEST",
+          "google-api-key": "test",
+          "apk-common-opts": "--enable-remote-debugging",
+          "app-name": "usecase-realsense-xwalk-tests",
+          "copylist": {
+            "realsense_extensions": "realsense_extensions",
+              "PACK-TOOL-ROOT/bootstrap-fw": ".",
+              "steps": "steps",
+              "tests.xml": "tests.xml"
+            }
+        }
+      }
+    }
+  },
+  "pkg-name": "usecase-realsense-xwalk-tests"
+}
