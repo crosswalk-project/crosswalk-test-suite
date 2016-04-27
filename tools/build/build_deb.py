@@ -58,6 +58,9 @@ def packDeb(build_json=None, app_src=None, app_dest=None, app_name=None):
     DEFAULT_CMD_TIMEOUT= varshop.getValue("DEFAULT_CMD_TIMEOUT")
     app_name = app_name.replace("-", "_")
 
+    if '_' in app_name:
+        app_name = app_name.replace('_', '')
+
     files = glob.glob(os.path.join(BUILD_ROOT, "*.deb"))
     if files:
         if not utils.doRemove(files):
