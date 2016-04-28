@@ -55,6 +55,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -98,6 +99,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -141,6 +143,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -184,6 +187,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -227,6 +231,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -276,6 +281,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -315,6 +321,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -354,6 +361,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -393,6 +401,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -432,6 +441,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -471,6 +481,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -510,6 +521,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
@@ -549,6 +561,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         x86_64Length = 0
         armLength = 0
         arm_64Length = 0
+        apkLength = 0
         if comm.MODE != " --android-shared":
             for i in range(len(apks)):
                 if apks[i].endswith(".apk") and "x86" in apks[i]:
