@@ -49,7 +49,6 @@ def setUp():
 
     device_x86 = ""
     device_arm = ""
-    cachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
     Skip_Emulator = os.environ.get('SKIP_EMULATOR')
 
     fp = open(ConstPath + "/../arch.txt", 'r')
@@ -313,14 +312,10 @@ def check_crosswalk_version(self, channel):
         version = aEle['href'].strip('/')
         if re.search('[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*', version):
             break
+    if BIT == "64":
+        version += '-64bit'
     print "-----------" + version
     crosswalk = 'crosswalk-{}.zip'.format(version)
-    if not cachedir:
-        namelist = os.listdir(os.getcwd())
-    else:
-        newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
-        os.chdir(newcachedir)
-        namelist = os.listdir(os.getcwd())
-        os.chdir(XwalkPath + 'org.xwalk.test')
-    self.assertIn(crosswalk, namelist)
+    crosswalk_dir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR', '')
+    self.assertTrue(os.path.isfile(os.path.join(crosswalk_dir, crosswalk)))
     return version
