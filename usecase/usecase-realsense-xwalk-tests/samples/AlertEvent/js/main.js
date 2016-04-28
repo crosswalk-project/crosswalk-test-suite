@@ -69,8 +69,8 @@ function setConfig() {
   recognitionConf.enable = true;
 
   var faceConf = {};
-  faceConf.mode = "color_depth";
-  faceConf.strategy = "closest_farthest";
+  faceConf.mode = "color-depth";
+  faceConf.strategy = "closest-farthest";
   faceConf.alert = alertConf;
   faceConf.detection = detectionConf;
   faceConf.landmarks = landmarksConf;
@@ -129,8 +129,10 @@ function initFaceModule(stream) {
       if(processedSample.faces != null) {
         for (var i = 0; i < processedSample.faces.length; i++) {
           var face = processedSample.faces[i];
-          msg.textContent = "current faceId: " + face.faceId +
-                            ", userId: " + face.recognition.userId;					
+          if(face.recognition) {
+            msg.textContent = "current faceId: " + face.faceId +
+                              ", userId: " + face.recognition.userId;
+          }				
         }
       }
     })
