@@ -67,7 +67,7 @@ do
         ls -l $suite/ |grep '^d' |grep  -v 'webrunner' |awk  '{print $NF}' | xargs -I% cp -rf $work/$suite/% /tmp/tests/$suiteFile
     else
         suiteFilePy=${suiteFile}-py
-        if [ $suite = "tct-webgl-nonw3c-tests" ];then
+        if [ $suite = "webapi-webgl-khronos-tests" ];then
             mkdir -p /tmp/tests/$suiteFile
             cp -rf $PWD/$suite/$suiteFile/* /tmp/tests/$suiteFile
             cp -rf $PWD/$suite/$suiteFilePy/* /tmp/tests/$suiteFile
