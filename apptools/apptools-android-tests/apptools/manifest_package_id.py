@@ -52,20 +52,5 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertNotEquals(return_code, 0)
 
-    def test_no_packageID(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict.pop("xwalk_package_id")
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        return_code = os.system(buildcmd)
-        comm.clear("org.xwalk.test")
-        self.assertNotEquals(return_code, 0)
-
 if __name__ == '__main__':
     unittest.main()
