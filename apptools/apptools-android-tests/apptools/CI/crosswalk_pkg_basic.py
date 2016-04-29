@@ -42,6 +42,7 @@ import comm
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def invokeCrosswalkPkg(self, params=None):
         params = params or []
         cmdline = []
@@ -68,7 +69,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             '--targets=' + comm.BIT,
             comm.ConstPath + '/../testapp/create_package_basic/',
         ])
-        version = comm.check_crosswalk_version(self, "stable")
         apks = os.listdir(os.getcwd())
         apkLength = 0
         if comm.MODE != " --android-shared":
@@ -93,6 +93,41 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertIn("target android", output)
         self.assertNotIn("candle", output)
         self.assertNotIn("light", output)
+
+    def test_default_channel(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        output = self.invokeCrosswalkPkg([
+            '--platforms=android',
+            '--android=' + comm.ANDROID_MODE,
+            '--targets=' + comm.BIT,
+            comm.ConstPath + '/../testapp/create_package_basic/',
+        ])
+        version = comm.check_crosswalk_version(self, "stable")
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        if comm.MODE != " --android-shared":
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "x86" in apks[i]:
+                    if comm.BIT == "64":
+                        self.assertIn("64", apks[i])
+                    apkLength = apkLength + 1
+                if apks[i].endswith(".apk") and "arm" in apks[i]:
+                    if comm.BIT == "64":
+                        self.assertIn("64", apks[i])
+                    apkLength = apkLength + 1
+            self.assertEquals(apkLength, 2)
+        else:
+            for i in range(len(apks)):
+                if apks[i].endswith(".apk") and "shared" in apks[i]:
+                    apkLength = apkLength + 1
+                    appVersion = apks[i].split('-')[1]
+            self.assertEquals(apkLength, 1)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
         self.assertIn(version, output)
 
     def test_crosswalk_release(self):
@@ -331,13 +366,22 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         os.mkdir("org.xwalk.test")
         os.chdir('org.xwalk.test')
-        self.invokeCrosswalkPkg([
-            '--platforms=android',
-            '--android=' + comm.ANDROID_MODE,
-            '--crosswalk=' + comm.crosswalkzip,
-            '--targets=' + comm.BIT,
-            comm.ConstPath + '/../testapp/create_package_basic/',
-        ])
+        if comm.BIT == "64":
+            self.invokeCrosswalkPkg([
+                '--platforms=android',
+                '--android=' + comm.ANDROID_MODE,
+                '--crosswalk=' + comm.crosswalkzip,
+                '--targets=arm64-v8a x86_64',
+                comm.ConstPath + '/../testapp/create_package_basic/',
+            ])
+        else:
+            self.invokeCrosswalkPkg([
+                '--platforms=android',
+                '--android=' + comm.ANDROID_MODE,
+                '--crosswalk=' + comm.crosswalkzip,
+                '--targets=armeabi-v7a x86',
+                comm.ConstPath + '/../testapp/create_package_basic/',
+            ])
         apks = os.listdir(os.getcwd())
         x86Length = 0
         x86_64Length = 0
