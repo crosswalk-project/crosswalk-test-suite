@@ -51,14 +51,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             data['version'].strip(os.linesep),
             output[0].strip(os.linesep))
 
-    def test_build_normal(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        comm.build(self, buildcmd)
-        comm.clear("org.xwalk.test")
-
     def test_check_host_windows(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)

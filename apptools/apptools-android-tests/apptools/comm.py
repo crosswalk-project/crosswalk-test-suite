@@ -238,7 +238,7 @@ def run(self):
     if device_arm or device_x86:
         apks = os.listdir(os.getcwd())
         for apk in apks:
-            if ARCH_ARM != "" and ("arm" in apk or "shared" in apk):
+            if "release" not in apk and ARCH_ARM != "" and ("arm" in apk or "shared" in apk):
                 return_inst_code_arm = os.system('adb -s ' + device_arm + ' install -r ' + apk)
                 (return_pm_code_arm, pmstatus_arm) = getstatusoutput(
                     'adb -s ' +
@@ -259,7 +259,7 @@ def run(self):
                 self.assertNotEquals("Error", launstatus_arm[0])
                 self.assertEquals(return_stop_code_arm, 0)
                 self.assertNotEquals("Success", uninstatus_arm)
-            if ARCH_X86 != "" and ("x86" in apk or "shared" in apk):
+            if "release" not in apk and ARCH_X86 != "" and ("x86" in apk or "shared" in apk):
                 return_inst_code_x86 = os.system('adb -s ' + device_x86 + ' install -r ' + apk)
                 (return_pm_code_x86, pmstatus_x86) = getstatusoutput(
                     'adb -s ' +

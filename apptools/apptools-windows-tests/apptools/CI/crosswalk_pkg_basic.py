@@ -84,7 +84,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertIn("candle", output[0])
         self.assertIn("light", output[0])
         self.assertNotIn("target android", output[0])
-        self.assertNotIn("armeabi-v7a,x86", output[0])
         self.assertEquals(apkLength, 1)
 
     def test_crosswalk_canary(self):
@@ -147,7 +146,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             crosswalkexist = 0
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
-        self.assertIn(crosswalkversion, output[0])
+        self.assertIn(comm.crosswalkversion, output[0])
         self.assertEquals(crosswalkexist, 1)
         self.assertEquals(apkLength, 1)
 

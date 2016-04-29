@@ -36,6 +36,14 @@ import shutil
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
+    def test_build_normal(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        comm.build(self, buildcmd)
+        comm.clear("org.xwalk.test")
+
     def test_build_path_normal(self):
         comm.setUp()
         comm.create(self)

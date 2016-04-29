@@ -39,21 +39,6 @@ import comm
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_display_fullscreen(self):
-        comm.setUp()
-        comm.create(self)
-        os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
-        jsons = jsonfile.read()
-        jsonfile.close()
-        jsonDict = json.loads(jsons)
-        jsonDict["display"] = "fullscreen"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
-        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
-        buildstatus = os.system(buildcmd)
-        comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus, 0)
-
     def test_packageID_normal(self):
         comm.setUp()
         comm.create(self)
