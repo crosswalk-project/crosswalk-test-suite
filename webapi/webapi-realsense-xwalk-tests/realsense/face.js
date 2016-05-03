@@ -120,14 +120,16 @@ async_test(function(t) {
     }, "Check that unregisterUserByID method exists");
 
   promise_test(function() {
-      return fm.getProcessedSample(false, false)
-        .then(function() {
-          assert_unreached("unreached here when parameters are null");
-        })
-        .catch(function(ex) {
-          assert_equals(ex.error, "exec_failed");
-        });
-    }, "Check that fm.getProcessedSample should throw FaceError " +
+    return fm.getProcessedSample(false, false)
+      .then(function() {
+        assert_unreached("unreached here when parameters are null");
+      })
+      .catch(function(ex) {
+        assert_true(ex instanceof DOMException, "throw a DOMException");
+        assert_equals(ex.code, 11);
+        assert_equals(ex.name, "InvalidStateError");
+      });
+    }, "Check that fm.getProcessedSample should reject with InvalidStateError exception" +
        "when face module doesn't start");
 
     promise_test(function() {
@@ -136,10 +138,11 @@ async_test(function(t) {
           assert_unreached("unreached here when miss faceId parameter");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "exec_failed");
+          assert_true(ex instanceof DOMException, "throw a DOMException");
+          assert_equals(ex.code, 11);
+          assert_equals(ex.name, "InvalidStateError");
         });
-    }, "Check that recognition.registerUserByFaceID should throw FaceError " +
-       "when missing faceId argument");
+    }, "Check that fm.recognition.registerUserByFaceID() should reject with InvalidStateError exception");
 
     promise_test(function() {
       return fm.recognition.registerUserByFaceID(null)
@@ -147,10 +150,11 @@ async_test(function(t) {
           assert_unreached("unreached here when faceId is null");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "exec_failed");
+          assert_true(ex instanceof DOMException, "throw a DOMException");
+          assert_equals(ex.code, 11);
+          assert_equals(ex.name, "InvalidStateError");
         });
-    }, "Check that recognition.registerUserByFaceID should throw FaceError " +
-       "when faceId is null");
+    }, "Check that fm.recognition.registerUserByFaceID(null) should reject with InvalidStateError exception");
 
     promise_test(function() {
       return fm.recognition.unregisterUserByID()
@@ -158,10 +162,11 @@ async_test(function(t) {
           assert_unreached("unreached here when miss faceId parameter");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "exec_failed");
+          assert_true(ex instanceof DOMException, "throw a DOMException");
+          assert_equals(ex.code, 11);
+          assert_equals(ex.name, "InvalidStateError");
         });
-    }, "Check that recognition.unregisterUserByID should throw FaceError " +
-       "when missing userId argument");
+    }, "Check that fm.recognition.unregisterUserByID() should reject with InvalidStateError exception");
 
     promise_test(function() {
       return fm.recognition.unregisterUserByID(null)
@@ -169,10 +174,11 @@ async_test(function(t) {
           assert_unreached("unreached here when userId is null");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "exec_failed");
+          assert_true(ex instanceof DOMException, "throw a DOMException");
+          assert_equals(ex.code, 11);
+          assert_equals(ex.name, "InvalidStateError");
         });
-    }, "Check that recognition.unregisterUserByID should throw FaceError " +
-       "when userId is null");
+    }, "Check that fm.recognition.unregisterUserByID(null) should reject with InvalidStateError exception");
 
     test(function() {
       assert_own_property(fm.configuration, "set",
@@ -201,36 +207,38 @@ async_test(function(t) {
           assert_unreached("unreached here when miss faceId parameter");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "param_unsupported");
+          assert_true(ex instanceof DOMException, "throw a DOMException");
+          assert_equals(ex.code, 15);
+          assert_equals(ex.name, "InvalidAccessError");
         });
-    }, "Check that recognition.set should throw FaceError " +
-       "when missing userId argument");
+    }, "Check that fm.configuration.set() should reject with InvalidAccessError exception");
 
     promise_test(function() {
-      return fm.configuration.set()
+      return fm.configuration.set(null)
         .then(function() {
           assert_unreached("unreached here when userId is null");
         })
         .catch(function(ex) {
-          assert_equals(ex.error, "param_unsupported");
+          assert_true(ex instanceof DOMException, "throw a DOMException");
+          assert_equals(ex.code, 15);
+          assert_equals(ex.name, "InvalidAccessError");
         });
-    }, "Check that recognition.set should throw FaceError " +
-       "when userId is null");
+    }, "Check that fm.configuration.set(null) should reject with InvalidAccessError exception");
 
   promise_test(function() {
     var config = {
-      mode: "color",
+      mode: "color-depth",
       recognition: {enable: true},
-      strategy: "left_right"
+      strategy: "left-right"
     };
     return fm.configuration.set(config)
       .then(function() {
         return fm.configuration.get();
       })
       .then(function (configData) {
-        assert_equals(configData.mode, "color", "configData.mode is color");
+        assert_equals(configData.mode, "color-depth", "configData.mode is color-depth");
         assert_true(configData.recognition.enable, "configData.recognition.enable is true");
-        assert_equals(configData.strategy, "left_right", "configData.strategy is left_right");
+        assert_equals(configData.strategy, "left-right", "configData.strategy is left-right");
       })
       .catch(function(ex) {
         assert_unreached("unreached here, get an error: " + ex.message);

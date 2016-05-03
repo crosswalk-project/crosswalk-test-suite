@@ -265,28 +265,20 @@ tests.forEach(function(item) {
 });
 
 tests = [
-  [function() { depthMask.init(); },
-    "DepthMask.init throw TypeError when missing argument"],
-  [function() { depthMask.init(null); },
-    "DepthMask.init throw TypeError when photo parameter is null"],
-  [function() { depthRefocus.init(); },
-    "DepthRefocus.init throw TypeError when missing argument"],
-  [function() { depthRefocus.init(null); },
-    "DepthRefocus.init throw TypeError when focusPoint parameter is null"],
-  [function() { motionEffect.init(); },
-    "MotionEffect.init throw TypeError when missing argument"],
-  [function() { motionEffect.init(null); },
-    "MotionEffect.init throw TypeError when focusPoint parameter is null"],
-  [function() { xdmUtils.saveXDM(); },
-    "XDMUtils.saveXDM throw TypeError when missing argument"],
-  [function() { xdmUtils.saveXDM(null); },
-    "XDMUtils.saveXDM throw TypeError when blob parameter is null"]
+  function() { depthMask.init(); },
+  function() { depthMask.init(null); },
+  function() { depthRefocus.init(); },
+  function() { depthRefocus.init(null); },
+  function() { motionEffect.init(); },
+  function() { motionEffect.init(null); },
+  function() { xdmUtils.saveXDM(); },
+  function() { xdmUtils.saveXDM(null); },
 ];
 
-tests.forEach(function(item) {
+tests.forEach(function(func) {
   test(function() {
-    assert_throws(new TypeError(), item[0]);
-  }, "Check that " + item[1]);
+    assert_throws(new TypeError(), func);
+  }, "Check that " + func + " should reject with TypeError exception");
 });
 
 promise_test(function() {
@@ -297,7 +289,7 @@ promise_test(function() {
     .catch(function(ex) {
       assert_equals(ex.name, "TypeError")
     });
-}, "Check that XDMUtils.isXDM throw TypeError when missing argument");
+}, "Check that xdmUtils.isXDM() should reject with TypeError exception");
 
 promise_test(function() {
   return xdmUtils.isXDM(null)
@@ -307,7 +299,7 @@ promise_test(function() {
   .catch(function(ex) {
       assert_equals(ex.name, "TypeError")
   });
-}, "Check that XDMUtils.isXDM throw TypeError blob is null");
+}, "Check that xdmUtils.isXDM(null) should reject with TypeError exception");
 
 promise_test(function() {
   return xdmUtils.loadXDM()
@@ -317,7 +309,7 @@ promise_test(function() {
     .catch(function(ex) {
       assert_equals(ex.name, "TypeError")
     });
-}, "Check that XDMUtils.loadXDM throw TypeError when missing argument");
+}, "Check that xdmUtils.loadXDM() should reject with TypeError exception");
 
 promise_test(function() {
   return xdmUtils.loadXDM(null)
@@ -327,7 +319,7 @@ promise_test(function() {
     .catch(function(ex) {
       assert_equals(ex.name, "TypeError")
     });
-}, "Check that XDMUtils.loadXDM throw TypeError when blob is null");
+}, "Check that xdmUtils.loadXDM(null) should reject with TypeError exception");
 
 promise_test(function() {
   return depthMask.computeFromCoordinate()
@@ -335,9 +327,11 @@ promise_test(function() {
       assert_unreached("unreached here when miss coordinate argument");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported")
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that DepthMask.computeFromCoordinate throw DEPError when missing argument");
+}, "Check that depthMask.computeFromCoordinate() should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return depthMask.computeFromCoordinate(null)
@@ -345,9 +339,11 @@ promise_test(function() {
       assert_unreached("unreached here when coordinate is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported")
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that DepthMask.computeFromCoordinate throw DEPError when coordinate is null");
+}, "Check that depthMask.computeFromCoordinate(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return depthMask.computeFromThreshold()
@@ -355,9 +351,11 @@ promise_test(function() {
       assert_unreached("unreached here when miss depthThreshold argument");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported")
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that DepthMask.computeFromThreshold throw DEPError when missing argument");
+}, "Check that depthMask.computeFromThreshold() should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return depthMask.computeFromThreshold(null)
@@ -365,9 +363,11 @@ promise_test(function() {
       assert_unreached("unreached here when depthThreshold is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported")
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that DepthMask.computeFromThreshold throw DEPError when depthThreshold is null");
+}, "Check that depthMask.computeFromThreshold(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return depthRefocus.apply()
@@ -375,9 +375,11 @@ promise_test(function() {
       assert_unreached("unreached here when miss focusPoint argument");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported")
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that depthRefocus.apply throw DEPError when missing argument");
+}, "Check that depthRefocus.apply() should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return depthRefocus.apply(null)
@@ -385,9 +387,11 @@ promise_test(function() {
       assert_unreached("unreached here when focusPoint is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported")
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that depthRefocus.apply throw DEPError when focusPoint is null");
+}, "Check that depthRefocus.apply(null) should reject with InvalidAccessError exception");
 
 promise_test(function(t) {
   var blob = new Blob(["TEST"]);

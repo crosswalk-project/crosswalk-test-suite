@@ -228,9 +228,11 @@ promise_test(function() {
       assert_unreached("unreached here when miss enable parameter");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");	
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that enableReconstruction should throw a SPError when miss enable parameter");
+}, "Check that sp.enableReconstruction() should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.enableReconstruction(null)
@@ -238,9 +240,11 @@ promise_test(function() {
       assert_unreached("unreached here when enable is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that enableReconstruction should reject with a SPError when enable is null");
+}, "Check that sp.enableReconstruction(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.enableRelocalization()
@@ -248,9 +252,11 @@ promise_test(function() {
       assert_unreached("unreached here when miss enable parameter");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that enableRelocalization should reject with a SPError when miss enable parameter");
+}, "Check that enableRelocalization should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.enableRelocalization(null)
@@ -258,9 +264,11 @@ promise_test(function() {
       assert_unreached("unreached here when enable is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that enableRelocalization should reject with a SPError when enable is null");
+}, "Check that sp.enableRelocalization(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.getSurfaceVoxels(null)
@@ -268,9 +276,11 @@ promise_test(function() {
       assert_unreached("unreached here when region is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that getSurfaceVoxels should reject with a SPError when region is null");
+}, "Check that sp.getSurfaceVoxels(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.queryVolumePreview(null)
@@ -278,9 +288,11 @@ promise_test(function() {
       assert_unreached("unreached here when cameraPose is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that queryVolumePreview should reject with a SPError when cameraPose is null");
+}, "Check that sp.queryVolumePreview(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.saveMesh(null)
@@ -288,9 +300,11 @@ promise_test(function() {
       assert_unreached("unreached here when info is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that saveMesh should reject with a SPError when info is null");
+}, "Check that sp.saveMesh(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.setCameraPose()
@@ -298,9 +312,11 @@ promise_test(function() {
       assert_unreached("unreached here when miss cameraPose parameter");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that setCameraPose should reject with a SPError when miss cameraPose parameter");
+}, "Check that sp.setCameraPose() should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.setCameraPose(null)
@@ -308,9 +324,11 @@ promise_test(function() {
       assert_unreached("unreached here when cameraPose is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");	
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that setCameraPose should throw a Error exception when cameraPose is null");
+}, "Check that sp.setCameraPose(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.setMeshingRegion()
@@ -318,9 +336,11 @@ promise_test(function() {
       assert_unreached("unreached here when miss region parameter");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that setMeshingRegion should reject with a SPError when miss region parameter");
+}, "Check that sp.setMeshingRegion() should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.setMeshingRegion(null)
@@ -328,9 +348,11 @@ promise_test(function() {
       assert_unreached("unreached here when region is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that setMeshingRegion should reject with a SPError when region is null");
+}, "Check that sp.setMeshingRegion(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.setMeshingResolution()
@@ -338,9 +360,11 @@ promise_test(function() {
       assert_unreached("unreached here when miss resolution parameter");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");	
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that setMeshingResolution should reject with a SPError when miss resolution parameter");
+}, "Check that sp.setMeshingResolution() should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.setMeshingResolution(null)
@@ -348,9 +372,11 @@ promise_test(function() {
       assert_unreached("unreached here when resolution is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that setMeshingResolution should reject with a SPError when resolution is null");
+}, "Check that sp.setMeshingResolution(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.configureSurfaceVoxelsData()
@@ -358,9 +384,11 @@ promise_test(function() {
       assert_unreached("unreached here when miss config parameter");
     })
     .catch(function(ex) {
-      assert_equals(ex.error, "param_unsupported");
+      assert_true(ex instanceof DOMException, "throw a DOMException");
+      assert_equals(ex.code, 15);
+      assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that configureSurfaceVoxelsData should reject with a SPError when miss config parameter");
+}, "Check that sp.configureSurfaceVoxelsData() should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.configureSurfaceVoxelsData(null)
@@ -368,9 +396,11 @@ promise_test(function() {
     assert_unreached("unreached here when config is null");
   })
   .catch(function(ex) {
-    assert_equals(ex.error, "param_unsupported");
+    assert_true(ex instanceof DOMException, "throw a DOMException");
+    assert_equals(ex.code, 15);
+    assert_equals(ex.name, "InvalidAccessError");
   });
-}, "Check that configureSurfaceVoxelsData should reject with a SPError when config is null");
+}, "Check that sp.configureSurfaceVoxelsData(null) should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.stop()
