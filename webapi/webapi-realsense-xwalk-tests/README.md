@@ -6,6 +6,7 @@ This test suite is for checking RealSense support in Crosswalk Project:
 * https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/depth-enabled-photography.html
 * https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/scene-perception.html
 * https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/face.html
+* https://crosswalk-project.github.io/realsense-extensions-crosswalk/spec/hand-tracking.html
 
 ## Pre-Condition
 
@@ -26,8 +27,8 @@ This test suite is for checking RealSense support in Crosswalk Project:
   Please refer [Web_Test_Suite_Packaging_Guide](https://github.com/crosswalk-project/crosswalk-test-suite/blob/master/doc/Web_Test_Suite_Packaging_Guide.md)
   for Windows part.
 
-   Please make sure Crosswalk Project for Windows is 18.48.475.0 or later, the version of
-   crosswalk-app-tools is above 0.10.0:
+   Please make sure Crosswalk Project for Windows is 19.49.514.1 or later, the version of
+   crosswalk-app-tools is above 0.10.3:
    
    ```bat
    crosswalk-pkg -v
@@ -39,7 +40,7 @@ This test suite is for checking RealSense support in Crosswalk Project:
 
 ## Build for Windows
 
-1. Download and unzip [latest realsense_extensions(.zip)](https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v19.6.0/realsense_extensions_v19.6.0.zip).
+1. Download and unzip [latest realsense_extensions(.zip)](https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v19.6.1/realsense_extensions_v19.6.1.zip).
 
    The content of realsense_extensions looks like:
 
@@ -50,9 +51,15 @@ This test suite is for checking RealSense support in Crosswalk Project:
         ├── face
         │   ├── face.dll
         │   └── XWalkExtensionHooks.js
+        ├── hand
+        │   ├── hand.dll
+        │   └── XWalkExtensionHooks.js
         └── scene_perception
             ├── scene_perception.dll
             └── XWalkExtensionHooks.js
+
+  Or you can use npm install RealSense extensions, please refer [XWALK-6344](https://crosswalk-project.org/jira/browse/XWALK-6344),
+  and update suite.json file to copy node_modules.
 
 2. Copy all the sub directories of realsense_extensions to the realsense_extensions directory of
    webapi-realsense-xwalk-tests test suite.
