@@ -44,7 +44,7 @@ sys.setdefaultencoding('utf-8')
 SCRIPT_PATH = os.path.realpath(__file__)
 CONST_PATH = os.path.dirname(SCRIPT_PATH)
 DEST_DIR = "/work/webapi/ww/ww43/crosswalk-test-suite/webapi/webapi-webgl-khronos-tests/webgl/khronos"
-ORIGIN_DIR = "/work/webapi/ww/ww43/KhronosGroup/WebGL/conformance-suites/1.0.2"
+ORIGIN_DIR = "/work/webapi/ww/ww43/KhronosGroup/WebGL/conformance-suites/1.0.3"
 ORIGIN_TMP= ORIGIN_DIR + "_tmp"
 
 global LOG
