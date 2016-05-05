@@ -25,6 +25,7 @@
 #
 # Authors:
 #         Yang, Yunlong <yunlongx.yang@intel.com>
+#         Lin, Wanming <wanming.lin@intel.com>
 
 import os
 import sys
@@ -116,18 +117,23 @@ class Android(common.APP):
 
 
     def openSettings(self):
-        self.doCMD(self.adb + " am force-stop com.android.settings")
-        settings_cmd = self.adb + \
-                    " am start -n " + \
-                    "com.android.settings/.Settings"
-        try:
-            (return_code, output) = self.doCMD(settings_cmd)
-            if return_code == 0:
-                if self.d.info["currentPackageName"] == "com.android.settings":
-                    return True
-            return False
-        except Exception as e:
-            return False
+        #Open settings via command line does not work on Xiaomi Pad2
+        if self.productName == PRODUCTS_NAME["xiaomipad2"]:
+            return self.selectAppIconInAllApps("text=Settings")
+        else:
+            self.doCMD(self.adb + " am force-stop com.android.settings")
+            settings_cmd = self.adb + \
+                        " am start -n " + \
+                        "com.android.settings/.Settings"
+            try:
+                (return_code, output) = self.doCMD(settings_cmd)
+                if return_code == 0:
+                    if self.d.info["currentPackageName"] == "com.android.settings":
+                        return True
+                return False
+            except Exception as e:
+                return False
+
 
 
     def selectItem(self, text):
@@ -164,6 +170,7 @@ class Android(common.APP):
                 state = self.getObjectInfo(g, "checked")
                 if (not state and turnon) or (state and not turnon):
                     self.clickObject(g)
+                    time.sleep(2)
             return True
         return False
 
@@ -183,13 +190,18 @@ class Android(common.APP):
 
 
     def backToActiveApp(self):
-        while True:
-            settings = self.selectObjectBy("text=Settings")
-            if not settings.exists:
-                self.pressKeyBy("back")
-            else:
-                break
-        self.pressKeyBy("back")
+        # Back key cann't return to active app in Xiaomi Pad2, click the first app in Task Manager instead
+        if self.productName == PRODUCTS_NAME["xiaomipad2"]:
+            self.pressKeyBy("recent")
+            self.d.click(self.d.info["displaySizeDpX"], self.d.info["displaySizeDpY"])
+        else:
+            while True:
+                settings = self.selectObjectBy("text=Settings")
+                if not settings.exists:
+                    self.pressKeyBy("back")
+                else:
+                    break
+            self.pressKeyBy("back")
 
 
     def wifiOperate(self, turnon):
@@ -203,6 +215,9 @@ class Android(common.APP):
                         rtn = self.selectToggle(turnon)
                 else:
                     rtn = self.selectSwitchChild(u'Wi\u2011Fi', turnon)
+            elif self.productName == PRODUCTS_NAME["xiaomipad2"]:
+                self.d(text="WLAN").click()
+                rtn = self.selectToggle(turnon, "android.widget.CheckBox")
             elif self.productName == PRODUCTS_NAME["memo8"]:
                 if self.selectItem(u'WLAN'):
                     rtn = self.selectToggle(turnon)
@@ -233,6 +248,9 @@ class Android(common.APP):
                         rtn = self.selectSwitchChild(u'Airplane mode', turnon)
                     else:
                         rtn = self.selectSwitchChild(u'Airplane mode', turnon, "android.widget.CheckBox")
+            elif self.productName == PRODUCTS_NAME["xiaomipad2"]:
+                self.d(text="More").click()
+                rtn = self.selectToggle(turnon, "android.widget.CheckBox")
             elif self.productName == PRODUCTS_NAME["zte"]:
                 rtn = self.selectSwitchChild(u'Airplane mode', turnon)
             elif self.productName == PRODUCTS_NAME["ecs2-8a"]:
@@ -248,6 +266,12 @@ class Android(common.APP):
             rtn = False
             if self.productName == PRODUCTS_NAME["nexus7"]:
                 rtn = self.modifyGPSSwitch("Location access", turnon)
+            elif self.productName == PRODUCTS_NAME["xiaomipad2"]:
+                self.d(text="Additional settings").click()
+                self.d(text="Privacy").click()
+                self.swipeBy("up")
+                self.d(text="Location").click()
+                rtn = self.modifyGPSSwitch("Location access", turnon)
             elif self.productName == PRODUCTS_NAME["nexus5"] \
                 or self.productName == PRODUCTS_NAME["nexus4"] \
                 or self.productName == PRODUCTS_NAME["memo8"] \
@@ -262,7 +286,9 @@ class Android(common.APP):
 
 
     def modifyGPSSwitch(self, child_name, turnon):
-        if self.selectItem(child_name):
+        if self.productName == PRODUCTS_NAME["xiaomipad2"]:
+            return self.selectToggle(turnon, "android.widget.CheckBox")
+        elif self.selectItem(child_name):
             if self.productName == PRODUCTS_NAME["zte"]:
                 return self.selectToggle(turnon, "android.widget.CheckBox")
             else:
@@ -501,9 +527,9 @@ class Android(common.APP):
         elif direction == "right":
             return self.d.swipe(displaySizeDpX, displaySizeDpY, 2*displaySizeDpX, displaySizeDpY, steps=steps)
         elif direction == "up":
-            return self.d.swipe(displaySizeDpX, displaySizeDpY, displaySizeDpX, 2*displaySizeDpY, steps=steps)
+            return self.d.swipe(displaySizeDpX, displaySizeDpY, displaySizeDpX, 0, steps=steps)
         elif direction == "down":
-            return self.d.swipe(displaySizeDpX, displaySizeDpY, 2*displaySizeDpX, 2*displaySizeDpY, steps=steps)
+            return self.d.swipe(displaySizeDpX, displaySizeDpY, displaySizeDpX, 2*displaySizeDpY, steps=steps)
         else:
             return False
 
