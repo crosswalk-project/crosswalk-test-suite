@@ -44,6 +44,6 @@ public class WebViewWithPlayVideoActivity extends Activity {
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebChromeClient(new WebChromeClient());
 
-        mWebView.loadUrl("http://www.iandevlin.com/html5/webvtt-example.html");
+        mWebView.loadUrl("https://www.w3.org/2010/05/video/mediaevents.html");
     }
 }

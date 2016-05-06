@@ -26,7 +26,7 @@ public class XWalkViewWithOnHideOnShow extends XWalkActivity {
     protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-        .append("Verifies XWalkView can hide and show.\n\n")
+        .append("Verifies XWalkView can hide and show.(Also need to test it in Android TV)\n\n")
         .append("Test  Step:\n\n")
         .append("1. Play the video in the page, then click home key.\n")
         .append("2. Click the 'EmbeddedAPISamples' app again.\n\n")
@@ -41,6 +41,6 @@ public class XWalkViewWithOnHideOnShow extends XWalkActivity {
 
         // The web page below will display a video.
         // When home button is pressed, the activity will be in background, and the video will be paused.
-        mXWalkView.load("http://www.iandevlin.com/html5/webvtt-example.html", null);
+        mXWalkView.load("https://www.w3.org/2010/05/video/mediaevents.html", null);
     }
 }
