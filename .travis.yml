@@ -1,0 +1,9 @@
+sudo: required
+language: python
+python:
+  - "2.7"
+
+before_script:
+  - sudo pip2 install html5lib
+
+script: python ./lint.py
