@@ -1,0 +1,10 @@
+sudo: required
+language: python
+python:
+  - "2.7"
+
+before_script:
+  - ls /usr/local/bin/
+  - pip install html5lib
+
+script: python ./lint.py
