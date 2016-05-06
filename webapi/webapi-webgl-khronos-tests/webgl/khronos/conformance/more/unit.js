@@ -58,7 +58,7 @@ Tests = {
   autorun : true,
   message : null,
   delay : 0,
-
+  autoinit: true,
   startUnit : function(){ return []; },
   setup : function() { return arguments; },
   teardown : function() {},
@@ -975,9 +975,11 @@ function initTests() {
 }
 
 window.addEventListener('load', function(){
+  if (Tests.autoinit) {
   // let the browser hopefully finish updating the gl canvas surfaces if we are given a delay
   if (Tests.delay)
     setTimeout(initTests, Tests.delay);
   else
     initTests()
+  }
 }, false);
