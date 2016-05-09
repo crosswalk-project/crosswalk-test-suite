@@ -48,6 +48,7 @@ import android.test.MoreAsserts;
 import android.util.Log;
 import android.util.Pair;
 import android.graphics.Bitmap;
+import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
@@ -86,6 +87,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected XWalkView mRestoreXWalkView;
     protected MainActivity mainActivity;
     protected TestWebServer mWebServer;
+    protected TestWebServer mWebServerSsl;
     protected TestXWalkResourceClient mTestXWalkResourceClient;
     protected XWalkCookieManager mCookieManager;
     protected boolean mAllowSslError = true;
@@ -125,6 +127,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         super.setUp();
         mainActivity = (MainActivity) getActivity();
         mWebServer = TestWebServer.start();
+        mWebServerSsl = TestWebServer.startSsl();
         while(!mainActivity.isXWalkReady()) {
             try{
                 waitForTimerFinish(200);
@@ -553,6 +556,9 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected void tearDown() throws Exception {
         if (mWebServer != null) {
             mWebServer.shutdown();
+        }
+        if (mWebServerSsl != null) {
+            mWebServerSsl.shutdown();
         }
         if(mainActivity != null)
         {
@@ -1125,6 +1131,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             @Override
             public void run() {
                 mXWalkView.load(url, null, headers);
+            }
+        });
+    }
+
+    protected SslCertificate getCertificateOnUiThread() throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<SslCertificate>() {
+            @Override
+            public SslCertificate call() throws Exception {
+                return mXWalkView.getCertificate();
             }
         });
     }
