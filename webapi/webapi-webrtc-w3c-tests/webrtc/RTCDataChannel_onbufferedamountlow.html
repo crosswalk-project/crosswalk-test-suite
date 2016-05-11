@@ -42,7 +42,7 @@ async_test(function(t) {
   var remoteConnection = new RTCPeerConnection(null);
   var sendChannel = localConnection.createDataChannel("sendDataChannel");
   var receiveChannel;
-  
+
   assert_equals(sendChannel.bufferedAmountLowThreshold, 0);
   assert_equals(typeof sendChannel.bufferedAmountLowThreshold, "number");
 

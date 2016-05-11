@@ -50,13 +50,13 @@ Authors:
 setup({timeout: 60000});
 
 async_test(function (t) {
-    
+
     onError = t.step_func(function (error) {
         assert_unreached("startPoll() error callback was invoked: " + error.name + " msg: " + error.message);
         t.done();
     });
 
-    onSuccess = function () { 
+    onSuccess = function () {
        //After NFC manager start polling, then NFC tag can be detected.
     }
 

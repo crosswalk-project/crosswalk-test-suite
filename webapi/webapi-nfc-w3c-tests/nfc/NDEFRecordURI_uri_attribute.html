@@ -49,7 +49,7 @@ Authors:
 test(function () {
     var record;
     record = new NDEFRecordURI("http://www.w3.org/TR/nfc/");
-    
+
     assert_own_property(record, "uri", "NDEFRecordURI.uri attribute exists");
     assert_equals(typeof record.uri, "string", "NDEFRecordURI.uri attribute of type");
     assert_equals(record.uri, "http://www.w3.org/TR/nfc/", "record.uri init value");

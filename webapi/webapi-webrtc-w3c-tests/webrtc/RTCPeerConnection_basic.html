@@ -104,7 +104,7 @@ setup(function () {
         assert_readonly(pc, name, "expect attribute " + name + " cannot be changed but");
       }
     case "function":
-      assert_equals(typeof pc[name], type, name + " attribute of type");      
+      assert_equals(typeof pc[name], type, name + " attribute of type");
       break;
     case "rtcIdentityAssertion":
       assert_equals(Object.prototype.toString.call(pc[name]), "[object RTCIdentityAssertion]", name + " attribute of type");

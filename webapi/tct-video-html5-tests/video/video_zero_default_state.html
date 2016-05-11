@@ -39,14 +39,14 @@ Authors:
     <meta name="assert" content="Check if the 'src' IDL attribute of media elements reflects the content attribute (relative URI)"/>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
-	<script src="../common/media.js"></script>
+    <script src="../common/media.js"></script>
   </head>
   <body>
     <div id="log"></div>
     <video id="m">Your browser does not support media elements.</video>
     <script>
-		    var media = document.getElementById("m");
-		    media.src = getVideoURI('media/movie_5');
+        var media = document.getElementById("m");
+        media.src = getVideoURI('media/movie_5');
         test(function(){
             assert_true(media.paused, "the media.paused is true");
         }, document.title);

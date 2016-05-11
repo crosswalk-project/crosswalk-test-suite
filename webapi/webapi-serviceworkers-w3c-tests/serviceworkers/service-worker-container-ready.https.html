@@ -59,7 +59,7 @@ promise_test(function(t) {
       assert_equals(r.waiting, null);
       assert_true(r.active instanceof frame.contentWindow.ServiceWorker);
       assert_equals(r.active.scriptURL, normalizeURL(scriptURL));
-      frame.remove();  
+      frame.remove();
       return service_worker_unregister_and_done(t, scope);
     })
     .catch(unreached_rejection(t));
