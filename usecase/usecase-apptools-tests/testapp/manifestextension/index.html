@@ -62,7 +62,7 @@ function testAsyncEcho(){
     var d = new Date().toString();
     var expected = "From dll async:" + d;
     var msg = echo.echo(d, function(msg){
-	  div.innerHTML = div.innerHTML + msg + "<br/>";
+      div.innerHTML = div.innerHTML + msg + "<br/>";
       if (msg === expected) {
         div.innerHTML = div.innerHTML + "Async echo <font color=green>passed</font>.<br/>";
         document.title = "Pass";
