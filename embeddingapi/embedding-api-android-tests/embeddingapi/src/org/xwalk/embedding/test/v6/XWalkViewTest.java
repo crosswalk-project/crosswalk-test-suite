@@ -24,9 +24,9 @@ import org.xwalk.embedding.base.XWalkViewTestBase;
 import org.xwalk.embedding.util.CommonResources;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.SystemClock;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.test.suitebuilder.annotation.MediumTest;
-import android.util.Pair;
 import android.view.WindowManager;
 
 @SuppressLint("NewApi")
@@ -240,6 +240,47 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(true);
         } catch (Exception e) {
             // TODO Auto-generated catch block
+            e.printStackTrace();
+            assertFalse(true);
+        }
+    }
+
+    @SmallTest
+    public void testLocalWithSslGetCertificate() {
+        try {
+            final String pagePath = "/hello.html";
+            final String pageUrl =
+            		mWebServerSsl.setResponse(pagePath, "<html><body>hello world</body></html>", null);
+            assertNull(getCertificateOnUiThread());
+            loadUrlSync(pageUrl);
+            assertNotNull(getCertificateOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertFalse(true);
+        }
+    }
+
+    @SmallTest
+    public void testWebsiteWithSslGetCertificate() {
+        try {
+            final String pageUrl = "https://www.baidu.com";
+            assertNull(getCertificateOnUiThread());
+            loadUrlSync(pageUrl);
+            assertNotNull(getCertificateOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertFalse(true);
+        }
+    }
+
+    @SmallTest
+    public void testWebsiteNoSslGetCertificate() {
+        try {
+            final String pageUrl = "http://www.baidu.com";
+            assertNull(getCertificateOnUiThread());
+            loadUrlSync(pageUrl);
+            assertNull(getCertificateOnUiThread());
+        } catch (Exception e) {
             e.printStackTrace();
             assertFalse(true);
         }
