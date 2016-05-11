@@ -5,15 +5,15 @@
 <!--
 
   Author: Michal Zalewski <lcamtuf@google.com>
- 
+
   Copyright 2010, 2011 by Google Inc. All Rights Reserved.
- 
+
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
- 
+
     http://www.apache.org/licenses/LICENSE-2.0
- 
+
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,43 +30,43 @@
    especially when running it from file:  /. This is achieved by minimizing
    the risk of DOM crawl desynchronization by resyncing the PRNG when
    returning from a particular recursion level, and after shuffling arrays.
-   
+
    Important advice on setting up the fuzzer to get useful results:
-   
+
    1) wget -r -np the entire http:  lcamtuf.coredump.cx/cross_fuzz/
       directory to a location in file:  /
-   
+
    2) In your test setup, set the home page to about:blank, disable safe
       browsing, configure the browser to purge the cache on exit, disable
       pop-up blocking, proxy autodetection, update checking, and eliminate
       other factors that may be introducing nondeterministic latency.
-  
+
       For MSIE, you also need to do:
-  
+
       diff -u cross_fuzz_randomized_20100729_seed.html cross_fuzz_msie_randomized_seed.html
-  
+
       ...and apply the resulting patch to this file.
-  
+
       For MSIE and WebKit browsers, you also need to make a configuration
       change to allow file:  / access from JavaScript; or - less preferably -
       set up a local web server instead. Advice on how to do this is not
       provided here.
-   
+
    3) Start the fuzzer inside a browser in the "private" browsing mode if
       possible (so that the influence of cache is minimized). Pick a random
       32-bit seed for every fuzzing cycle.
-      
+
       When done, navigate to the fuzzer via:
-   
+
       file:  /wherever_you_put_it/cross_fuzz_randomized_20110105_seed.html#1234
-    
+
       ...where 1234 is your selected seed.
-   
+
    4) Collect seed and crash signature pairs when repeating step #3. For each
       crash, pick a seed that resulted in that crash in the shortest amount
       of time. Use this seed to reproduce the fault for debugging. If it
       does not reproduce, use the second shortest time, etc.
-   
+
    Happy fuzzing!
 
 */
@@ -99,7 +99,7 @@ var interesting_vals = [
   4500000000, 2200000000, -2200000000, -4500000000
 ];
 
-var object_blacklist = { 
+var object_blacklist = {
 
   /* Properties */
 
@@ -169,8 +169,8 @@ function LOG(message) {
   log_box.scrollTop = log_box.scrollHeight;
   if(message != "")
   {
-	log_box.rows += 1;
-	console.log(message_data);
+    log_box.rows += 1;
+    console.log(message_data);
   }
 }
 
@@ -242,7 +242,7 @@ function new_targets() {
     default:
       t1 = window.open('targets/target2.html', 't1');
       LOG('Target 1: HTML');
-  
+
   }
 
   switch (R(4)) {
@@ -260,7 +260,7 @@ function new_targets() {
     default:
       t2 = window.open('targets/target2.html', 't2');
       LOG('Target 2: HTML');
-  
+
   }
 
   try { t1.opener = null; } catch (e) { }
@@ -278,14 +278,14 @@ function trash_target(target) {
 
     switch (R(3)) {
 
-      case 0: 
+      case 0:
         LOG('Clobbering target with document.write()');
         target.document.write('Hi mom!');
         break;
 
       case 1:
         LOG('Clobbering target with document.body.innerHTML');
-        target.document.body.innerHTML = 'Hi mom'; 
+        target.document.body.innerHTML = 'Hi mom';
         break;
 
       case 2:
@@ -320,7 +320,7 @@ function maybe_add_ref(obj, add_set) {
     LOG('+++ Adding reference ' + obj + ' (' + add_set.length + ') +++');
 
     if (add_set.length > MAX_REFS)
-      add_set[R(MAX_REFS)] = obj; 
+      add_set[R(MAX_REFS)] = obj;
     else
       add_set.push(obj);
 
@@ -374,7 +374,7 @@ function crawl_properties(path, target, level, add_set) {
     var name = members[num];
     var cur_value = null;
 
-    if (name == '0' || 
+    if (name == '0' ||
         (object_blacklist[name] != undefined && level >= object_blacklist[name])) {
 //      LOG('Skipping: ' + path + '.' + name);
       continue;
@@ -465,8 +465,8 @@ function tweak_properties(path, target, level, use_set) {
 
     try {
       orig_value = eval('target.' + name);
-    } catch (e) { 
-      continue; 
+    } catch (e) {
+      continue;
     }
 
     /* Leave functions alone!!! */
@@ -560,8 +560,8 @@ function call_methods(path, target, level, ret_level, use_set, add_set) {
 
     try {
       cur_value = eval('target.' + name);
-    } catch (e) { 
-      continue; 
+    } catch (e) {
+      continue;
     }
 
     if (cur_value == null) continue;
@@ -599,12 +599,12 @@ function call_methods(path, target, level, ret_level, use_set, add_set) {
         if (typeof ret_value != 'function') maybe_add_ref(ret_value, add_set);
 
         /* Recurse into returned objects. */
- 
+
         if (typeof ret_value == 'object' && cur_fan < FAN_LIMIT) {
 
           cur_fan++;
           call_methods(path + '.[ret:' + name + ']' , ret_value, level, ret_level + 1, use_set, add_set);
-          tweak_properties(path + '.[ret:' + name + ']' , ret_value, level + ret_level + 1, use_set); 
+          tweak_properties(path + '.[ret:' + name + ']' , ret_value, level + ret_level + 1, use_set);
 
 //          LOG('-- BACK TO METHOD CRAWL (' + level + '): ' + path + ' --');
 
@@ -718,7 +718,7 @@ function event_loop() {
       break;
 
   }
- 
+
   state = (state + 1) % 10;
 
   LOG('### State ' + state + ' ###');
@@ -726,7 +726,7 @@ function event_loop() {
   setTimeout('try { event_loop() } catch (e) { alert(e); }', 10);
 
   init_genrand(ret_seed);
-	
+
   document.cookie ="seed=" + document.getElementById("stats").value + ";log=" + document.getElementById("results").value + "; expires=Thu, 18 Dec 2050 12:00:00 UTC";
 }
 
@@ -765,7 +765,7 @@ function run_tests() {
 
 function stop()
 {
-	t1 = null;
+    t1 = null;
 }
 
 </script>
@@ -786,6 +786,6 @@ Reference count: <span id="stats"></span>
 
 </body>
 </html>
-    
+
 
 
