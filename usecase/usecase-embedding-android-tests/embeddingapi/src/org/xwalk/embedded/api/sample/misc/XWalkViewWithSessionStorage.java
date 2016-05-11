@@ -11,11 +11,14 @@ import org.xwalk.core.XWalkView;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 
 public class XWalkViewWithSessionStorage extends XWalkActivity {
     private XWalkView mXWalkView;
-
+    private Button mRestoreBtn;
+    private Bundle mStoredBundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,7 @@ public class XWalkViewWithSessionStorage extends XWalkActivity {
         .append("Test  Step:\n")
         .append("1. Turn on android system auto rotate setting.\n")
         .append("2. Load the page and you get 'myname: null'.\n")
-        .append("3. Rotate the screen.\n")
+        .append("3. Rotate the screen and click the button.\n")
         .append("4. The 'myname: ' value should be changed to 'jack'.\n")
         .append("Expected Result:\n\n")
         .append("Test passes if sessionStorage value changed to 'jack' when screen rotates.");
@@ -40,22 +43,26 @@ public class XWalkViewWithSessionStorage extends XWalkActivity {
         .setMessage(mess.toString())
         .setPositiveButton("confirm" ,  null )
         .show();
-
+        mRestoreBtn = (Button) findViewById(R.id.restore_btn);
+        mRestoreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mXWalkView != null) {
+                    mXWalkView.restoreState(mStoredBundle);
+                }
+            }
+        });
         mXWalkView.load("file:///android_asset/session_storage_test.html", null);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onRestoreInstanceState(savedInstanceState);
-        if (mXWalkView != null) {
-            mXWalkView.restoreState(savedInstanceState);
-        }
+        mStoredBundle = savedInstanceState;
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        // TODO Auto-generated method stub
         super.onSaveInstanceState(outState);
         if (mXWalkView != null) {
             mXWalkView.saveState(outState);
