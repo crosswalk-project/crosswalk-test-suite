@@ -18,7 +18,6 @@ repo_root = os.path.dirname(os.path.dirname(lint_root))
 
 def git(command, *args):
     args = list(args)
-
     proc_kwargs = {"cwd": repo_root}
     command_line = ["git", command] + args
 
@@ -41,8 +40,8 @@ def iter_files(flag=False, floder=""):
             os.chdir(repo_root)
             for pardir, subdir, files in os.walk(repo_root):
                 for item in subdir + files:
-                    if not os.path.isdir(os.path.join(pardir, item)[os.path.join(pardir, item).index("crosswalk-test-suite/") + 21:]):
-                        yield os.path.join(pardir, item)[os.path.join(pardir, item).index("crosswalk-test-suite/") + 21:]
+                    if not os.path.isdir(os.path.join(pardir, item).split(repo_root)[1]):
+                        yield os.path.join(pardir, item).split(repo_root + "/")[1]
             os.chdir(lint_root)
         else:
             for item in git("diff", "--name-status", "HEAD~1").strip().split("\n"):
@@ -223,12 +222,17 @@ def output_error_count(error_count):
 
 
 def main():
+    global repo_root
     error_count = defaultdict(int)
 
     parser = OptionParser()
     parser.add_option('-p', '--pull', dest="pull_request", action='store_true', default=False)
     parser.add_option("-d", '--dir', dest="dir", help="specify the checking dir, e.g. tools")
+    parser.add_option("-r", '--repo', dest="repo", help="specify the repo, e.g. crosswalk-test-suite")
     options, args = parser.parse_args()
+    if options.repo == "" or options.repo == None:
+        options.repo = "crosswalk-test-suite"
+    repo_root = repo_root.replace("crosswalk-test-suite", options.repo)
 
     def run_lint(path, fn, *args):
         errors = whitelist_errors(path, fn(path, *args))
