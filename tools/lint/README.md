@@ -16,9 +16,10 @@ you must either [fix all lint errors](#fixing-lint-errors), or you must
 
 ## Usage of lint tool
 
-1. If check all crosswalk-test-suite:</br>
+1. If check other repos, can specify the repo name with `-r`, default
+is crosswalk-test-suite:</br>
 <code>
-./tools/lint/lint.py
+./tools/lint/lint.py -r demo-express
 </code>
 1. If check submitted pull request:</br>
 <code>
