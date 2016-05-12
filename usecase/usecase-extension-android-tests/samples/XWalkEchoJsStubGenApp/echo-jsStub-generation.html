@@ -15,7 +15,7 @@
         extEcho.getPrefixPromise().then(function(p){
             pp3.innerText = p;
         }).catch(function() {console.log("rejected.")});
-        
+
         pp4.innerText = extEcho.echo("Hello World!");
         // Test the writable prefix property.
         // Change writable property in JavaScript and see if it updated in Java side.
@@ -38,7 +38,7 @@
           document.body.appendChild(document.createElement("br"));
         };
         // Set handlers.
-        extEcho.onclick = onHandler; 
+        extEcho.onclick = onHandler;
         extEcho.onupdatePrefix = onHandler;
         extEcho.onnewStudent = onHandler;
         extEcho.addEventListener("click", addHandler);
@@ -58,7 +58,7 @@
         // Trigger the event in JavaScript side.
         extEcho.dispatchEvent("click", {"data": "triggered click evnt by JavaScript"});
         // Replace the onXXX handler point
-        extEcho.onclick = null; 
+        extEcho.onclick = null;
         extEcho.onupdatePrefix = function(){};
         // Test events triggered by Java side.
         extEcho.testEvent();
