@@ -64,7 +64,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         }, errorCallback);
       }
     }
-	
+
     function fillCanvasUsingDepthImage(image) {
       imgCanvas.width = image.width;
       imgCanvas.height = image.height;
@@ -73,7 +73,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       ConvertDepthToRGBUsingHistogram(
         image, [255, 255, 255], [0, 0, 0], imgData.data);
       imgContext.putImageData(imgData, 0, 0);
-    }	
+    }
 
     function successCallback(photo) {
       currentPhoto = photo;

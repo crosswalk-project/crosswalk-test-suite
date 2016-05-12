@@ -35,7 +35,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <script src="../resources/testharnessreport.js"></script>
 <script src="options.js"></script>
 <div id="log"></div>
-<script>  
+<script>
 
   var wrong_options = {};
   wrong_options.debug = options.debug;
@@ -45,7 +45,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     wrong_options.id = options.id;
   }
 
-  var at1 = async_test("Check if raise an InvalidAccessError if channel is undefined", {timeout: 5000});  
+  var at1 = async_test("Check if raise an InvalidAccessError if channel is undefined", {timeout: 5000});
   var wrong_init_promise = navigator.iap.init(wrong_options);
   at1.step(function() {
     wrong_init_promise.then(

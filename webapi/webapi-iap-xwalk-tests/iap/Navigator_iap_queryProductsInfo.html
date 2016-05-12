@@ -37,7 +37,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div id="log"></div>
 <script>
   var at = async_test("Check if queryProductsInfo method works well", {timeout: 10000});
-  if (options.channel == "Google") {    
+  if (options.channel == "Google") {
     navigator.iap.init(options).then(function() {
 
       at.step(function() {
@@ -68,7 +68,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             assert_true("title" in products[0], "product object has member title");
             assert_own_property(products[0], "title", "products object has own property title");
             assert_equals(typeof products[0].title, "string", "title property should be a string");
-          }, "Check the title property");     
+          }, "Check the title property");
 
           test(function() {
             assert_true("currencyCode" in products[0], "product object has member currencyCode");

@@ -35,13 +35,13 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <script src="../resources/testharnessreport.js"></script>
 <script src="options.js"></script>
 <div id="log"></div>
-<script>  
+<script>
   at1 = async_test("Check if the navigator.iap.init works well");
   at2 = async_test("Check if the second navigator.iap.init raise an InvalidStateError");
 
   init_promise = navigator.iap.init(options);
 
-  at1.step(function() {  
+  at1.step(function() {
     init_promise.then(
       at1.step_func(function() {
         assert_not_equals(navigator.iap, null, "nagivator.iap is not null.");
@@ -59,7 +59,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
               at2.done();
             })
           );
-        });                
+        });
       }),
 
       at1.step_func(function(error) {

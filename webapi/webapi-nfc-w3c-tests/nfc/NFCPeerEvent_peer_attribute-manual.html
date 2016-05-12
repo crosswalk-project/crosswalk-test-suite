@@ -68,8 +68,8 @@ async_test(function (t) {
         t.done();
     }
 
-    navigator.nfc.startPoll().then(onSuccess, onError); 
-    navigator.nfc.addEventListener('peerfound', peerFound);    
+    navigator.nfc.startPoll().then(onSuccess, onError);
+    navigator.nfc.addEventListener('peerfound', peerFound);
 }, document.title, {timeout: 60000});
 </script>
 

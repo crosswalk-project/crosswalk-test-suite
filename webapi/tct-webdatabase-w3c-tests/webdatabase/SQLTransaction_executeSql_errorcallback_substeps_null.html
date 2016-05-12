@@ -46,12 +46,12 @@ async_test(function (t1) {
   // create 1024b database on the phone
   var db = openDatabase (dbname, '1.0', 'database for websql test', 1024);
   db.transaction(function (tx) {
-      tx.executeSql("CREATE TABLE test_table(col_int, col_str, col_float);");
+    tx.executeSql("CREATE TABLE test_table(col_int, col_str, col_float);");
   });
   db.transaction(function(t) {
   t.executeSql(null, null, null,function(t, e) {
     // this makes sure, if the error happens, the next sql will be executed if return false.
-		return false;
+    return false;
   });
   t.executeSql("INSERT INTO test_table VALUES (10000,'check_skip_record',0.0);",null, t1.step_func(function() {
     t1.done();
