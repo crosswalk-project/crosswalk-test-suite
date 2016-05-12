@@ -116,7 +116,7 @@ Authors:
 
         for (var i=0; i<products.length; i++) {
           html += "<li>" + products[i] + "</li>";
-        }        
+        }
 
         html += "</ul>";
 
@@ -142,12 +142,12 @@ Authors:
                 "<p>PurchaseState: " + result["purchaseState"] + "</p>" +
                 "</li>";
         html += "</ul>";
-        document.getElementById("result").innerHTML = "Purchase success! " + html; 
+        document.getElementById("result").innerHTML = "Purchase success! " + html;
       }).catch(function(e) {
         document.getElementById("result").innerHTML = "Purchase failed: " + e.name;
       });
     }
-        
+
     function purchasetestWrong() {
       navigator.iap.purchase({ "count": 1, "userInfo": "This is a test."}).then(function(result) {
         document.getElementById("result").innerHTML = "WRONG!!!!! Purchase succeeded.";
@@ -162,7 +162,7 @@ Authors:
                             count: 1,
                            "userInfo": "Buy an orange!"};
       navigator.iap.purchase(queryProducts).then(function(result) {
-        document.getElementById("result").innerHTML = "Wrong!!! Purchase success! " + html; 
+        document.getElementById("result").innerHTML = "Wrong!!! Purchase success! " + html;
       }).catch(function(e) {
         document.getElementById("result").innerHTML = "Purchase failed(InvalidStateError is expected!): " + e.name;
       });
@@ -176,8 +176,8 @@ Authors:
                  "<div class='iapDiv'>" +
                  "<input class='iapButton' type='button' value='Get Receipt' onclick=getReceipt() />" +
                  "<input class='iapButton' type='button' value='Restore' onclick=restore() />" +
-                 "<input class='iapButton' type='button' value='Test Purchase' onclick=purchasetest() />" + 
-                 "<input class='iapButton' type='button' value='Purchase Wrong' onclick=purchasetestWrong() />"; 
+                 "<input class='iapButton' type='button' value='Test Purchase' onclick=purchasetest() />" +
+                 "<input class='iapButton' type='button' value='Purchase Wrong' onclick=purchasetestWrong() />";
 
       if (channel == "XiaoMi") {
         html += "<input class='iapButton' type='button' value='Purchase com.demo_1' onclick=purchase('com.demo_1') />";
