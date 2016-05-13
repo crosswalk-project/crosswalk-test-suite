@@ -39,22 +39,20 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <ol>
     <li>Install the usecase apk 'iapdemo_release.apk' and launch it</li>
     <li>Select Google Play store</li>
-    <li>Click the "Test Purchase" and purchase the product</li>
+    <li>Click the "Purchase Wrong" and purchase the product</li>
   </ol>
   <h2>Expected Result:</h2>
   <ol>
     <li>IAP Google Play could be launched successfully</li>
     <li>Info "Initialization succeeded" was displayed</li>
-    <li>Info "Purchase success!" and the purchase result were displayed</b>
-         ProductID, PackageName and PurchaseTIme are defined. The others are undefined
-    </li>
+    <li>Info "Purchase failed(InvalidAccessError is expected!): InvalidAccessError" was displayed</li>
   </ol>
 </div>
- 
+
 <div class="footer">
   <div id="footer"></div>
 </div>
  
 <div class="modal fade" id="popup_info">
-  <p>Test the Google Play IAP puchase function and the purchase result</p>
+  <p>Test the Google Play IAP puchase function when the productID is undefined</p>
 </div>
