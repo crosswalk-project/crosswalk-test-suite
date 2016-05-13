@@ -24,9 +24,17 @@ All the test cases are required to test on the Android 4.4.2 system.
 * Liu, Yun <yunx.liu@intel.com>
 * Wang, Chunyan <chunyanx.wang@intel.com>
 * Qiu, Zhong <zhongx.qiu@intel.com>
+* He, YUe <yue.he@intel.com>
 
 ## LICENSE
 
-Copyright (c) 2014 Intel Corporation.
+Copyright (c) 2016 Intel Corporation.
 Except as noted, this software is licensed under BSD-3-Clause License.
 Please see the COPYING file for the BSD-3-Clause License.
+
+## Sign the Google Play IAP apk
+
+The Google Play IAP purchase api need signed apk to test.
+After pack the apk, use the following commands to sign and align:
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore iapdemo.keystore iapdemo.apk  iapdemo
+zipalign -v 4 iapdemo.apk iapdemo_release.apk
