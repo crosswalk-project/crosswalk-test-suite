@@ -1,5 +1,5 @@
 <!--
-Copyright (c) 2014 Intel Corporation. All rights reserved.
+Copyright (c) 2016 Intel Corporation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -30,6 +30,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Wang, Minggang <minggang.wang@intel.com>
         Qiu, Zhong <zhongx.qiu@intel.com>
+        He, Yue <yue.he@intel.com>
 -->
 <html>
   <head>
@@ -125,6 +126,48 @@ Authors:
       });
     }
 
+    function purchasetest() {
+      var orangeProductsId = "org.xwalk.orange";
+      var queryProducts = {"productId": orangeProductsId,
+                            count: 1,
+                           "userInfo": "Buy an orange!"};
+      navigator.iap.purchase(queryProducts).then(function(result) {
+        var html = "<ul>";
+        html += "<li>" +
+                "<p>ProductID: " + result["productId"] + "</p>" +
+                "<p>TransactionID: " + result["transactionId"] + "</p>" +
+                "<p>PurductReceipt: " + result["productReceipt"] + "</p>" +
+                "<p>PackageName: " + result["packageName"] + "</p>" +
+                "<p>PurchaseTime: " + result["purchaseTime"] + "</p>" +
+                "<p>PurchaseState: " + result["purchaseState"] + "</p>" +
+                "</li>";
+        html += "</ul>";
+        document.getElementById("result").innerHTML = "Purchase success! " + html;
+      }).catch(function(e) {
+        document.getElementById("result").innerHTML = "Purchase failed: " + e.name;
+      });
+    }
+
+    function purchasetestWrong() {
+      navigator.iap.purchase({ "count": 1, "userInfo": "This is a test."}).then(function(result) {
+        document.getElementById("result").innerHTML = "WRONG!!!!! Purchase succeeded.";
+      }).catch(function(e) {
+        document.getElementById("result").innerHTML = "Purchase failed(InvalidAccessError is expected!): " + e.name;
+      });
+    }
+
+    function purchaseWoInit() {
+      var orangeProductsId = "org.xwalk.orange";
+      var queryProducts = {"productId": orangeProductsId,
+                            count: 1,
+                           "userInfo": "Buy an orange!"};
+      navigator.iap.purchase(queryProducts).then(function(result) {
+        document.getElementById("result").innerHTML = "Wrong!!! Purchase success! " + html;
+      }).catch(function(e) {
+        document.getElementById("result").innerHTML = "Purchase failed(InvalidStateError is expected!): " + e.name;
+      });
+    }
+
     function init(channel) {
       var html = "<div id='iapDiv'>" +
                  "<input class='iapButton' type='button' value='Query Products' onclick=query() />" +
@@ -132,7 +175,9 @@ Authors:
                  "</div>" +
                  "<div class='iapDiv'>" +
                  "<input class='iapButton' type='button' value='Get Receipt' onclick=getReceipt() />" +
-                 "<input class='iapButton' type='button' value='Restore' onclick=restore() />";
+                 "<input class='iapButton' type='button' value='Restore' onclick=restore() />" +
+                 "<input class='iapButton' type='button' value='Test Purchase' onclick=purchasetest() />" +
+                 "<input class='iapButton' type='button' value='Purchase Wrong' onclick=purchasetestWrong() />";
 
       if (channel == "XiaoMi") {
         html += "<input class='iapButton' type='button' value='Purchase com.demo_1' onclick=purchase('com.demo_1') />";
@@ -164,9 +209,9 @@ Authors:
 
       document.getElementById("notice").innerHTML = notice;
         navigator.iap.init(options).then(function() {
-          document.getElementById("result").innerHTML += "Intialization succeeded.";
+          document.getElementById("result").innerHTML = "Intialization succeeded.";
         }).catch(function(e) {
-          document.getElementById("result").innerHTML += "Intialization failed: " + e.name;
+          document.getElementById("result").innerHTML = "Intialization failed: " + e.name;
         });
     }
   </script>
@@ -182,6 +227,10 @@ Authors:
           </div>
           <div align="middle">
             <input class='iapButton' type='button' value='XiaoMi Store' onclick=init("XiaoMi") />
+          </div>
+        <p>For the Google Play purchase test.</p>
+          <div align="middle">
+            <input class='iapButton' type='button' value='Google Play Purchase' onclick=purchaseWoInit() />
           </div>
       </div>
       <div id="notice"></div>
