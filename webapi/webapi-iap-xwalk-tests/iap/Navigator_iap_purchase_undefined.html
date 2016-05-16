@@ -32,47 +32,32 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <link rel="author" title="He Yue" href="mailto:yue.he@intel.com">
 <link rel="help" href="http://www.w3.org/TR/IAP-api/">
 <script src="options.js"></script>
-<meta name="assert" content="Test checks that IAP purchase result">
+<meta name="assert" content="Test checks that IAP purchase when productID is undefined">
 <div class="content">
   <h2>Test Steps:</h2>
   <ol>
-    <li>Click the "Purchase Result" and purchase the product</li>
+    <li>Click the "Purchase Wrong" and purchase the product</li>
   </ol>
   <h2>Expected Result:</h2>
   <ol>
-    <li>Info "Intialization succeeded" was displayed.</br>
-        Info "Purchase success!" was displayed.</br>
-        In Google Play: the purchase result were displayed:
-        ProductID, PackageName and PurchaseTime are defined, the others are undefined.
-    </li>
+    <li>Info "Intialization succeeded" was displayed</br>
+        Info "Purchase failed(InvalidAccessError is expected!): InvalidAccessError" was displayed</li>
   </ol>
   <div align="middle">
-    <input class='iapButton' type='button' value='Purchase Result' onclick="purchasetest()" />
+    <input class='iapButton' type='button' value='Purchase Wrong' onclick="purchasetestWrong()" />
   </div>
   <div id="result" style="width:100%; height:100px; word-wrap: break-word; word-break: normal;"></div>
 </div>
 <script type='text/javascript'>
-  function purchasetest() {
+  function purchasetestWrong() {
     var html = "</div>";
     if (options.channel == "Google") {
       navigator.iap.init(options).then(function() {
         document.getElementById("result").innerHTML = "Intialization succeeded.";
-          var orangeProductsId = "org.xwalk.orange";
-          var queryProductsorg = {"productId": orangeProductsId,
-                                   count: 1,
-                                  "userInfo": "Buy an orange!"};
-          navigator.iap.purchase(queryProductsorg).then(function(result) {
-            var html = "<li>" +
-                       "<p>ProductID: " + result["productId"] + "</p>" +
-                       "<p>TransactionID: " + result["transactionId"] + "</p>" +
-                       "<p>PurductReceipt: " + result["productReceipt"] + "</p>" +
-                       "<p>PackageName: " + result["packageName"] + "</p>" +
-                       "<p>PurchaseTime: " + result["purchaseTime"] + "</p>" +
-                       "<p>PurchaseState: " + result["purchaseState"] + "</p>" +
-                       "</li>";
-            document.getElementById("result").innerHTML += "Purchase success! " + html;
-          }).catch(function(e) {
-            document.getElementById("result").innerHTML += "Purchase failed: " + e.name;
+        navigator.iap.purchase({ "count": 1, "userInfo": "This is a test."}).then(function(result) {
+          document.getElementById("result").innerHTML += "WRONG!!!!! Purchase succeeded.";
+        }).catch(function(e) {
+          document.getElementById("result").innerHTML += "Purchase failed(InvalidAccessError is expected!):" + e.name;
         });
       }).catch(function(e) {
         document.getElementById("result").innerHTML = "Intialization failed: " + e.name;
@@ -80,17 +65,16 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     }else if (options.channel == "XiaoMi") {
       navigator.iap.init(options).then(function() {
         document.getElementById("result").innerHTML = "Intialization succeeded.";
-          navigator.iap.purchase({"productId": "com.demo_1", "count": 1, "userInfo": "This is a test."}).then(function(result) {
-            document.getElementById("result").innerHTML += "Purchase success! ";
-          }).catch(function(e) {
-            document.getElementById("result").innerHTML += "Purchase failed: " + e.name;
+          navigator.iap.purchase({ "count": 1, "userInfo": "This is a test."}).then(function(result) {
+            document.getElementById("result").innerHTML += "WRONG!!!!! Purchase succeeded.";
+        }).catch(function(e) {
+            document.getElementById("result").innerHTML += "Purchase failed(InvalidAccessError is expected!):" + e.name;
         });
       }).catch(function(e) {
-          document.getElementById("result").innerHTML = "Intialization failed: " + e.name;
+        document.getElementById("result").innerHTML = "Intialization failed: " + e.name;
       });
     }
   }
-
 </script>
 <div class="footer">
   <div id="footer"></div>
