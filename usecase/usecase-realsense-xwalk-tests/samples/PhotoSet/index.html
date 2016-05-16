@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/tests.js"></script>
+<script src="../../res/adapter.js"></script>
+<script src="js/main.js"></script>
+<style>
+  video {
+    width: 320px;
+    height: 240px;
+  }
+
+  button {
+    margin-bottom: 5px;
+  }
+</style>
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <h4>This sample demonstrates set image to the container photo image.</h4>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="thumbnail">
+        <video id="preview" autoplay></video>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="thumbnail">
+        <canvas id="imgPreview" width="320" height="240"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="status">
+    Status:<span id="log"></span><br/>
+  </div>
+  <div>
+    <button id="takePhoto" type="button" class="btn btn-default btn-lg btn-block">Take Photo</button>
+    <button id="setContainerImage" type="button" class="btn btn-default btn-lg btn-block">Set Container Image</button>
+    <button id="setColorImage" type="button" class="btn btn-default btn-lg btn-block">Set Color Image</button>
+    <button id="setDepthImage" type="button" class="btn btn-default btn-lg btn-block">Set Depth Image</button>
+    <button id="setRawDepthImage" type="button" class="btn btn-default btn-lg btn-block">Set Raw Depth Image</button>
+  </div>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Set image to container photo/color/depth image.</p>
+</div>
