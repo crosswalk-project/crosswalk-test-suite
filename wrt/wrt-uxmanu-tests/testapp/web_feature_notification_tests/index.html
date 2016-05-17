@@ -52,6 +52,7 @@ Authors:
                 window.webkitNotifications.requestPermission();
             }
         } else if (typeof Notification != "undefined") {
+            Notification.requestPermission()
             notification = new Notification("New Email Received", {body: "content msg"});
         }
         return notification;
@@ -59,12 +60,6 @@ Authors:
 
     function showNotification() {
         var notification = getNotification();
-        if (notification) {
-            notification.onshow = function () {
-                setTimeout(notification.cancel(), 1500);
-            };
-            notification.show();
-        }
     }
   </script>
 </body>
