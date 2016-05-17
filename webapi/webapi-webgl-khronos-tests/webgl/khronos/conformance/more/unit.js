@@ -80,7 +80,6 @@ function KhronosUnitTest(name) {
 }
 
 var khronosUnitTests = [];
-var khronosUnitTestMsg = null;
 
 function Status() {
   this.status = null;
@@ -936,9 +935,31 @@ function reportTestResultsToHarness(success, msg) {
 
 function notifyFinishedToHarness() {
   if (window.parent.completion_callback) {
-    window.parent.completion_callback(khronosUnitTests, statusObj);
+    var notifyResult = [];
+    var caseName = document.title;
+    if (caseName.length === 0) {
+      fileName = window.location.href;
+      arrUrl  = window.location.href.split('/');
+      caseName = arrUrl[arrUrl.length-1].split('\.')[0];
+    }
+    var ktestNotify = new KhronosUnitTest(caseName);
+    ktestNotify.status = 0;
+    var msg = "[Message]";
+    for (var i=0;i<khronosUnitTests.length;i++) {
+      var kt = khronosUnitTests[i] ;
+      var ktStatus = kt.status;
+      if (ktStatus===1) {
+        ktestNotify.status = 1;
+        msg += "[assert]fail[message]*FAIL " + kt.message + "\n";
+      }
+      else {
+        msg += "[assert]pass[message]*PASS " + kt.message + "\n";
+      }
+    }
+    ktestNotify.message = msg;
+    notifyResult.push(ktestNotify);
+    window.parent.completion_callback(notifyResult, statusObj);
   }
-
   if (window.parent.webglTestHarness) {
     window.parent.webglTestHarness.notifyFinished(window.location.pathname);
   }
