@@ -36,6 +36,7 @@ import urllib2
 import subprocess
 import time
 import re
+import zipfile
 from bs4 import BeautifulSoup
 
 SCRIPT_PATH = os.path.realpath(__file__)
@@ -64,7 +65,7 @@ def setUp():
                 windowsCrosswalk = os.listdir(XwalkPath)[i]
     else:
         for i in range(len(os.listdir(cachedir))):
-            if os.listdir(XwalkPath)[i].startswith("crosswalk") and os.listdir(cachedir)[i].endswith(".zip"):
+            if os.listdir(cachedir)[i].startswith("crosswalk") and os.listdir(cachedir)[i].endswith(".zip"):
                 windowsCrosswalk = os.listdir(cachedir)[i]
     crosswalkversion = windowsCrosswalk[windowsCrosswalk.index("-") + 1:windowsCrosswalk.index(".zip")].strip()
     if not windowsCrosswalk:
@@ -72,6 +73,7 @@ def setUp():
         sys.exit(1)
 
 def getstatusoutput(cmd, time_out=DEFAULT_CMD_TIMEOUT):
+    print cmd
     pre_time = time.time()
     output = []
     cmd_return_code = 1
@@ -145,3 +147,27 @@ def check_crosswalk_version(self, channel):
         if re.search('[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*', version):
             break
     return version
+
+
+def unzip_dir(zipfilename, unzipdirname):
+    fullzipfilename = os.path.abspath(zipfilename)
+    fullunzipdirname = os.path.abspath(unzipdirname)
+    print "Start to unzip file %s to folder %s ..." % (zipfilename, unzipdirname)
+    #Check input ...
+    if not os.path.exists(fullzipfilename):
+        print "Dir/File %s is not exist,.." % fullzipfilename
+        return
+    #Start extract files ...
+    srcZip = zipfile.ZipFile(fullzipfilename, "r")
+    for eachfile in srcZip.namelist():
+        if not eachfile.endswith('/'):
+            print "Unzip file %s ..." % eachfile
+            eachfilename = os.path.join(fullunzipdirname, eachfile)
+            eachdirname = os.path.dirname(eachfilename)
+            if not os.path.exists(eachdirname):
+                os.makedirs(eachdirname)
+            f = file(eachfilename, 'wb')
+           f.write(srcZip.read(eachfile))
+           f.close()
+    srcZip.close()
+    print "Unzip file succeed!"

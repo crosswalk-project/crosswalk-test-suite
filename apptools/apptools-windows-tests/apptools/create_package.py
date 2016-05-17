@@ -467,5 +467,29 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(return_code, 0)
         self.assertEquals(apkLength, 1)
 
+    def test_create_package_release_without_argument(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        comm.unzip_dir(comm.XwalkPath + comm.windowsCrosswalk, comm.XwalkPath)
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk.replace('.zip', '') + " -r " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        apks = os.listdir(os.getcwd())
+        apkLength = 0
+        for i in range(len(apks)):
+            if apks[i].endswith(".msi"):
+                apkLength = apkLength + 1
+        self.assertEquals(return_code, 0)
+        self.assertEquals(apkLength, 1)
+	cmd = "msiexec /a %s TARGETDIR=%s" % (apks[0], os.path.join(os.path.abspath(comm.XwalkPath), "test-app"))
+        (return_code, output) = comm.getstatusoutput(cmd)
+        self.assertEquals(return_code, 0)
+	self.assertTrue(os.path.isdir(os.path.join(os.path.abspath(comm.XwalkPath), "test-app", "org.xwalk.test", "locales")))
+        comm.clear("org.xwalk.test")
+        comm.clear("test-app")
+
 if __name__ == '__main__':
     unittest.main()
