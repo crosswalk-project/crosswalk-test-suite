@@ -40,7 +40,7 @@ def iter_files(flag=False, floder=""):
             os.chdir(repo_root)
             for pardir, subdir, files in os.walk(repo_root):
                 for item in subdir + files:
-                    if not os.path.isdir(os.path.join(pardir, item).split(repo_root)[1]):
+                    if not os.path.isdir(os.path.join(pardir, item)):
                         yield os.path.join(pardir, item).split(repo_root + "/")[1]
             os.chdir(lint_root)
         else:
