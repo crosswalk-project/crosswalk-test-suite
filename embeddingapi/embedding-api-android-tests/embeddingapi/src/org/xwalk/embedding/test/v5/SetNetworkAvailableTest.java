@@ -25,7 +25,7 @@ public class SetNetworkAvailableTest extends XWalkViewTestBase {
                 @Override
                 public void run() {
                     // Forcing to trigger 'offline' event.
-                	mXWalkView.setNetworkAvailable(false);
+                    mXWalkView.setNetworkAvailable(false);
                 }
             });
 
@@ -41,7 +41,7 @@ public class SetNetworkAvailableTest extends XWalkViewTestBase {
                 @Override
                 public void run() {
                     // Forcing to trigger 'online' event.
-                	mXWalkView.setNetworkAvailable(true);
+                    mXWalkView.setNetworkAvailable(true);
                 }
             });
 
@@ -59,7 +59,7 @@ public class SetNetworkAvailableTest extends XWalkViewTestBase {
                  @Override
                  public void run() {
                      // Forcing to trigger 'online' event.
-                	 mXWalkView.setNetworkAvailable(true);
+                     mXWalkView.setNetworkAvailable(true);
                  }
              });
 
@@ -75,7 +75,7 @@ public class SetNetworkAvailableTest extends XWalkViewTestBase {
                 @Override
                 public void run() {
                     // Forcing to trigger 'offline' event.
-                	mXWalkView.setNetworkAvailable(false);
+                    mXWalkView.setNetworkAvailable(false);
                 }
             });
 
@@ -88,5 +88,5 @@ public class SetNetworkAvailableTest extends XWalkViewTestBase {
             assertEquals("offline:false", getTitleOnUiThread());
         }
     }
-    
+
 }

@@ -250,7 +250,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
         try {
             final String pagePath = "/hello.html";
             final String pageUrl =
-            		mWebServerSsl.setResponse(pagePath, "<html><body>hello world</body></html>", null);
+                    mWebServerSsl.setResponse(pagePath, "<html><body>hello world</body></html>", null);
             assertNull(getCertificateOnUiThread());
             loadUrlSync(pageUrl);
             assertNotNull(getCertificateOnUiThread());

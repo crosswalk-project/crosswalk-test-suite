@@ -79,7 +79,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
 
                 @Override
                 public void run() {
-                	mXWalkView.setBackgroundColor(Color.RED);
+                    mXWalkView.setBackgroundColor(Color.RED);
                 }
             });
             assertTrue(true);
@@ -96,7 +96,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
 
                 @Override
                 public void run() {
-                	mXWalkView.setBackgroundColor(Color.parseColor("#00FF00"));
+                    mXWalkView.setBackgroundColor(Color.parseColor("#00FF00"));
                 }
             });
             assertTrue(true);
@@ -113,7 +113,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
 
                 @Override
                 public void run() {
-                	mXWalkView.setBackgroundColor(0);
+                    mXWalkView.setBackgroundColor(0);
                 }
             });
             assertTrue(true);
@@ -130,8 +130,8 @@ public class XWalkViewTest extends XWalkViewTestBase {
 
                 @Override
                 public void run() {
-                	mXWalkView.setZOrderOnTop(true);
-                	mXWalkView.setBackgroundColor(0);
+                    mXWalkView.setZOrderOnTop(true);
+                    mXWalkView.setBackgroundColor(0);
                 }
             });
             assertTrue(true);
@@ -144,10 +144,10 @@ public class XWalkViewTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnCanZoomInAndOut() {
         try {
-        	final float mPageMinimumScale = 0.5f;
-        	String url = "file:///android_asset/zoom.html";
-        	assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
-        	loadUrlSync(url);
+            final float mPageMinimumScale = 0.5f;
+            String url = "file:///android_asset/zoom.html";
+            assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
+            loadUrlSync(url);
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
                 public Boolean call() throws Exception {
@@ -164,20 +164,20 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(false);
             e.printStackTrace();
         } catch (Throwable e) {
-			// TODO: handle exception
+            // TODO: handle exception
             assertTrue(false);
             e.printStackTrace();
-		}
+        }
     }
 
     @SmallTest
     public void testOnZoomByLimited() {
         try {
-        	final float MAXIMUM_SCALE = 2.0f;
-        	final float mPageMinimumScale = 0.5f;
-        	String url = "file:///android_asset/zoom.html";
-        	assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
-        	loadUrlSync(url);
+            final float MAXIMUM_SCALE = 2.0f;
+            final float mPageMinimumScale = 0.5f;
+            String url = "file:///android_asset/zoom.html";
+            assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
+            loadUrlSync(url);
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
                 public Boolean call() throws Exception {
@@ -212,19 +212,19 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(false);
             e.printStackTrace();
         } catch (Throwable e) {
-			// TODO: handle exception
+            // TODO: handle exception
             assertTrue(false);
             e.printStackTrace();
-		}
+        }
     }
 
     @SmallTest
     public void testOnZoomInAndOut() {
         try {
-        	final float mPageMinimumScale = 0.5f;
-        	String url = "file:///android_asset/zoom.html";
-        	assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
-        	loadUrlSync(url);
+            final float mPageMinimumScale = 0.5f;
+            String url = "file:///android_asset/zoom.html";
+            assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
+            loadUrlSync(url);
             pollOnUiThread(new Callable<Boolean>() {
                 @Override
                 public Boolean call() throws Exception {
@@ -248,10 +248,10 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(false);
             e.printStackTrace();
         } catch (Throwable e) {
-			// TODO: handle exception
+            // TODO: handle exception
             assertTrue(false);
             e.printStackTrace();
-		}
+        }
     }
 
     @SmallTest

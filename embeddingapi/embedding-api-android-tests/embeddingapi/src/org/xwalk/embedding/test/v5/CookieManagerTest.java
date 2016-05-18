@@ -26,7 +26,7 @@ public class CookieManagerTest extends XWalkViewTestBase {
 
         mCookieManager = new XWalkCookieManager();
     }
-    
+
     @SmallTest
     public void testAllowFileSchemeCookies() throws Throwable {
         mCookieManager.setAcceptFileSchemeCookies(true);
@@ -83,7 +83,7 @@ public class CookieManagerTest extends XWalkViewTestBase {
 
             // Clean up all cookies.
             mCookieManager.removeAllCookie();
-        } finally { 
+        } finally {
         }
     }
 
@@ -182,7 +182,7 @@ public class CookieManagerTest extends XWalkViewTestBase {
             }
         }));
     }
-    
+
     @MediumTest
     public void testSetCookie() throws Exception {
         // Enable cookie.
@@ -190,14 +190,14 @@ public class CookieManagerTest extends XWalkViewTestBase {
         assertTrue(mCookieManager.acceptCookie());
         mCookieManager.removeAllCookie();
         assertFalse(mCookieManager.hasCookies());
-        
+
         String url = "http://www.example.com";
         String cookie = "name=test";
         mCookieManager.setCookie(url, cookie);
         assertEquals(cookie, mCookieManager.getCookie(url));
         assertTrue(mCookieManager.hasCookies());
-    }    
-    
+    }
+
     @MediumTest
     public void testRemoveAllCookies() throws Exception {
         // Enable cookie.
@@ -205,15 +205,15 @@ public class CookieManagerTest extends XWalkViewTestBase {
         assertTrue(mCookieManager.acceptCookie());
         mCookieManager.removeAllCookie();
         assertFalse(mCookieManager.hasCookies());
-        
+
         String url = "http://www.example.com";
         String cookie = "name=test";
         mCookieManager.setCookie(url, cookie);
         assertTrue(mCookieManager.hasCookies());
         mCookieManager.removeAllCookie();
         assertFalse(mCookieManager.hasCookies());
-    }    
-    
+    }
+
     @MediumTest
     public void testRemoveSessionCookies() throws Exception {
         // Enable cookie.
@@ -221,7 +221,7 @@ public class CookieManagerTest extends XWalkViewTestBase {
         assertTrue(mCookieManager.acceptCookie());
         mCookieManager.removeAllCookie();
         assertFalse(mCookieManager.hasCookies());
-    	
+
         final String url = "http://www.example.com";
         final String sessionCookie = "cookie1=peter";
         final String normalCookie = "cookie2=sue";
@@ -234,8 +234,8 @@ public class CookieManagerTest extends XWalkViewTestBase {
         String allCookies = mCookieManager.getCookie(url);
         assertFalse(allCookies.contains(sessionCookie));
         assertTrue(allCookies.contains(normalCookie));
-    }    
-    
+    }
+
     @MediumTest
     public void testExpiredCookiesAreNotSet() throws Exception {
         // Enable cookie.
@@ -243,14 +243,14 @@ public class CookieManagerTest extends XWalkViewTestBase {
         assertTrue(mCookieManager.acceptCookie());
         mCookieManager.removeAllCookie();
         assertFalse(mCookieManager.hasCookies());
-    	
+
         final String url = "http://www.example.com";
         final String cookie = "cookie1=peter";
 
         mCookieManager.setCookie(url, makeExpiringCookie(cookie, -1));
         assertNull(mCookieManager.getCookie(url));
-    }    
-    
+    }
+
     @MediumTest
     public void testCookiesExpire() throws Exception {
         // Enable cookie.
@@ -258,7 +258,7 @@ public class CookieManagerTest extends XWalkViewTestBase {
         assertTrue(mCookieManager.acceptCookie());
         mCookieManager.removeAllCookie();
         assertFalse(mCookieManager.hasCookies());
-    	
+
         final String url = "http://www.example.com";
         final String cookie = "cookie1=peter";
 
@@ -273,9 +273,9 @@ public class CookieManagerTest extends XWalkViewTestBase {
             public boolean isSatisfied() {
                 return !mCookieManager.hasCookies();
             }
-        }));        
-    }    
-    
+        }));
+    }
+
     @MediumTest
     public void testAcceptFileSchemeCookies() throws Throwable {
         mCookieManager.setAcceptFileSchemeCookies(true);
@@ -286,6 +286,6 @@ public class CookieManagerTest extends XWalkViewTestBase {
     public void testRejectFileSchemeCookies() throws Throwable {
         mCookieManager.setAcceptFileSchemeCookies(false);
         assertFalse(fileURLCanSetCookie("2"));
-    }    
- 
+    }
+
 }
