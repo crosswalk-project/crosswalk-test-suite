@@ -179,7 +179,7 @@ public class TestHelperBridge {
     }
 
     public void onScaleChanged(float oldScale, float newScale) {
-    	mOnScaleChangedHelper.notifyCalled(oldScale, newScale);
+        mOnScaleChangedHelper.notifyCalled(oldScale, newScale);
     }
 
     public OnRequestFocusHelper getOnRequestFocusHelper() {
@@ -267,7 +267,7 @@ public class TestHelperBridge {
     }
 
     public OnDownloadStartHelper getOnDownloadStartHelper() {
-    	return mOnDownloadStartHelper;
+        return mOnDownloadStartHelper;
     }
 
     public void onDownloadStart(String url, String userAgent,
@@ -285,11 +285,11 @@ public class TestHelperBridge {
     }
 
     public OnReceivedClientCertRequestHelper getOnReceivedClientCertRequestHelper() {
-    	return mOnReceivedClientCertRequestHelper;
+        return mOnReceivedClientCertRequestHelper;
     }
 
     public void onReceivedClientCertRequest(XWalkView view, ClientCertRequest handler) {
-    	mOnReceivedClientCertRequestHelper.notifyCalled(handler);
+        mOnReceivedClientCertRequestHelper.notifyCalled(handler);
     }
     public OnReceivedHttpAuthRequestHelper getOnReceivedHttpAuthRequestHelper() {
         return mOnReceivedHttpAuthRequestHelper;

@@ -866,16 +866,16 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             public void run() {
                 mXWalkView.setDownloadListener(new XWalkDownloadListener(getActivity()) {
 
-					@Override
-					public void onDownloadStart(String url, String userAgent,
-			                String contentDisposition, String mimetype, long contentLength) {
-						// TODO Auto-generated method stub
-			            mTestHelperBridge.onDownloadStart(url, userAgent, contentDisposition,
-			                    mimetype, contentLength);
-					}
-				});
-	    }
-	});
+                    @Override
+                    public void onDownloadStart(String url, String userAgent,
+                            String contentDisposition, String mimetype, long contentLength) {
+                        // TODO Auto-generated method stub
+                        mTestHelperBridge.onDownloadStart(url, userAgent, contentDisposition,
+                                mimetype, contentLength);
+                    }
+                });
+        }
+    });
     }
 
     protected boolean canZoomInOnUiThread() throws Exception {
@@ -897,7 +897,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     }
 
     protected void zoomInOnUiThreadAndWait() throws Throwable {
-    	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
+        final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
         final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
         assertTrue(runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
             @Override
@@ -915,7 +915,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     }
 
     protected void zoomOutOnUiThreadAndWait() throws Throwable {
-    	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
+        final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
         final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
         assertTrue(runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
             @Override
@@ -933,7 +933,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     }
 
     protected void zoomByOnUiThreadAndWait(final float delta) throws Throwable {
-    	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
+        final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
         final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getNewScale() * (float)dipScale;
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
@@ -959,17 +959,17 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         });
     }
 
-	protected void setUserAgent(final String userAgent) {
-	    getInstrumentation().runOnMainSync(new Runnable() {
-	        @Override
-	        public void run() {
-	            mXWalkView.setUserAgentString(userAgent);
-	        }
-	    });
-	}
+    protected void setUserAgent(final String userAgent) {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.setUserAgentString(userAgent);
+            }
+        });
+    }
 
-	protected String getUserAgent() throws Exception {
-	    return runTestOnUiThreadAndGetResult(new Callable<String>() {
+    protected String getUserAgent() throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
             public String call() throws Exception {
                 return mXWalkView.getUserAgentString();

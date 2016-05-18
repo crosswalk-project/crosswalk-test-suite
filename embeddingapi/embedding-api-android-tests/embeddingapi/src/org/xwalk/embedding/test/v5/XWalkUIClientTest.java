@@ -206,7 +206,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
 
     @SmallTest
     public void testOnDownloadStart() throws Throwable {
-    	OnDownloadStartHelper mDownloadStartHelper = mTestHelperBridge.getOnDownloadStartHelper();
+        OnDownloadStartHelper mDownloadStartHelper = mTestHelperBridge.getOnDownloadStartHelper();
         final String data = "download data";
         final String contentDisposition = "attachment;filename=\"download.txt\"";
         final String mimeType = "text/plain";
@@ -232,9 +232,9 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
             assertEquals(data.length(), mDownloadStartHelper.getContentLength());
             assertEquals(userAgent, mDownloadStartHelper.getUserAgent());
         } catch (Exception e) {
-	    // TODO Auto-generated catch block
+        // TODO Auto-generated catch block
             assertFalse(true);
-	    e.printStackTrace();
-	}
+        e.printStackTrace();
+    }
     }
 }

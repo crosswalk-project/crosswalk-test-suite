@@ -206,11 +206,11 @@ public class XWalkUIClientTestAsync extends XWalkViewTestBase {
 
     @SmallTest
     public void testOnDownloadStart() throws Throwable {
-    	OnDownloadStartHelper mDownloadStartHelper = mTestHelperBridge.getOnDownloadStartHelper();
+        OnDownloadStartHelper mDownloadStartHelper = mTestHelperBridge.getOnDownloadStartHelper();
         final String data = "download data";
         final String contentDisposition = "attachment;filename=\"download.txt\"";
         final String mimeType = "text/plain";
-        final String userAgent = "Chrome/44.0.2403.81 Crosswalk/15.44.376.0 Mobile Safari/537.36";        
+        final String userAgent = "Chrome/44.0.2403.81 Crosswalk/15.44.376.0 Mobile Safari/537.36";
 
         List<Pair<String, String>> downloadHeaders = new ArrayList<Pair<String, String>>();
         downloadHeaders.add(Pair.create("Content-Disposition", contentDisposition));
@@ -230,11 +230,11 @@ public class XWalkUIClientTestAsync extends XWalkViewTestBase {
             assertEquals(contentDisposition, mDownloadStartHelper.getContentDisposition());
             assertEquals(mimeType, mDownloadStartHelper.getMimeType());
             assertEquals(data.length(), mDownloadStartHelper.getContentLength());
-            assertEquals(userAgent, mDownloadStartHelper.getUserAgent());            
+            assertEquals(userAgent, mDownloadStartHelper.getUserAgent());
         } catch (Exception e) {
-	    // TODO Auto-generated catch block
+        // TODO Auto-generated catch block
             assertFalse(true);
-	    e.printStackTrace();
-	}
+        e.printStackTrace();
+    }
     }
 }

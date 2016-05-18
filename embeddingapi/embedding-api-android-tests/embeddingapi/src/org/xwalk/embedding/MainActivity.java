@@ -68,6 +68,6 @@ public class MainActivity extends XWalkActivity  {
 
     @Override
     public boolean isXWalkReady() {
-	    return super.isXWalkReady();
+        return super.isXWalkReady();
     }
 }

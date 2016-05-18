@@ -261,8 +261,8 @@ public class XWalkExtensionTest extends XWalkViewTestBase {
     @SmallTest
     @Feature({"ExtensionEcho"})
     public void testOnSyncMessage() {
-    	try {
-    	    ExtensionEcho echo = new ExtensionEcho();
+        try {
+            ExtensionEcho echo = new ExtensionEcho();
             loadAssetFile("echoSync.html");
             assertEquals(PASS_STRING, getTitleOnUiThread());
         } catch (Exception e) {

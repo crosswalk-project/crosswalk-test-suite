@@ -67,11 +67,11 @@ public class TestXWalkResourceClientBase extends XWalkResourceClient{
         mInnerContentsClient.onDocumentLoadedInFrame(frameId);
     }
 
-	@Override
-	public void onReceivedClientCertRequest(XWalkView view,
-			ClientCertRequest handler) {
-		mInnerContentsClient.onReceivedClientCertRequest(view, handler);
-	}
+    @Override
+    public void onReceivedClientCertRequest(XWalkView view,
+            ClientCertRequest handler) {
+        mInnerContentsClient.onReceivedClientCertRequest(view, handler);
+    }
 
     @Override
     public void onReceivedHttpAuthRequest(XWalkView view,
