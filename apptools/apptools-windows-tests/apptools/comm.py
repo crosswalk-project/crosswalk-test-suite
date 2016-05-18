@@ -167,7 +167,7 @@ def unzip_dir(zipfilename, unzipdirname):
             if not os.path.exists(eachdirname):
                 os.makedirs(eachdirname)
             f = file(eachfilename, 'wb')
-           f.write(srcZip.read(eachfile))
-           f.close()
+            f.write(srcZip.read(eachfile))
+            f.close()
     srcZip.close()
     print "Unzip file succeed!"
