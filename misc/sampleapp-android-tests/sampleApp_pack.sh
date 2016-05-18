@@ -23,7 +23,7 @@
 #               Releated: https://crosswalk-project.org/jira/browse/XWALK-4663
 #   2015-09-07: Add the building of crosswalk-samples/extensions-android
 #   2015-09-23: Change the samples reference from crosswalk-samples.
-#	              tizen-apis and gallery, sysapps removed.
+#               tizen-apis and gallery, sysapps removed.
 #               Releated: https://crosswalk-project.org/jira/browse/XWALK-4685
 #   2015-12-03: Replace make_apk.py by app tools
 #               Releated: https://crosswalk-project.org/jira/browse/XWALK-5737

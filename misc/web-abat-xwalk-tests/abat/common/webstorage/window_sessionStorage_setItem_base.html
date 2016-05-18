@@ -44,39 +44,39 @@
   <body>
     <div id="log"></div>
     <script type="text/javascript">
-	    var t = async_test(document.title);
-	    var store_list = new Array("key0", "value0", "key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4");
+            var t = async_test(document.title);
+            var store_list = new Array("key0", "value0", "key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4");
 
-	    function RunTest() {
-	        try
-	        {
-		        if(!("sessionStorage" in window))
-		            FailTest("sessionStorage is not in window");
-		        var store = window.sessionStorage;
-		        store.clear();
-		        for (var i=0; i<store_list.length; i++) {
-		            if (i != 0) {
-			            if((i%2) == 1) {
-			                store.setItem(store_list[i-1], store_list[i]);
-			                var avalue = store.getItem(store_list[(i-1)]);
-			                if(!(avalue === store_list[(i)]))
-			                    FailTest("get item incorrectly");
-			                if(!(store.length == parseInt(i/2+1)))
-			                    FailTest("length is not correct");
-			            }
-		            }
-		        }
+            function RunTest() {
+                try
+                {
+                        if(!("sessionStorage" in window))
+                            FailTest("sessionStorage is not in window");
+                        var store = window.sessionStorage;
+                        store.clear();
+                        for (var i=0; i<store_list.length; i++) {
+                            if (i != 0) {
+                                    if((i%2) == 1) {
+                                        store.setItem(store_list[i-1], store_list[i]);
+                                        var avalue = store.getItem(store_list[(i-1)]);
+                                        if(!(avalue === store_list[(i)]))
+                                            FailTest("get item incorrectly");
+                                        if(!(store.length == parseInt(i/2+1)))
+                                            FailTest("length is not correct");
+                                    }
+                            }
+                        }
 
-		        PassTest();
-	        }
-	        catch (ex)
-	        {
-		        FailTest("{Exception code: " + ex.code + "}");
-	        }
-	    }
-	    Initialize();
-	    RunTest();
-	    Deinitialize();
+                        PassTest();
+                }
+                catch (ex)
+                {
+                        FailTest("{Exception code: " + ex.code + "}");
+                }
+            }
+            Initialize();
+            RunTest();
+            Deinitialize();
 
     </script>
   </body>
