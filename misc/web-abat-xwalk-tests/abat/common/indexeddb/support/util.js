@@ -85,7 +85,7 @@
         });
         t.done();
     }
-	function open_request_error(event) {
-		assert_unreached("Open request error: " + event.target.error.name);
-	}
+    function open_request_error(event) {
+        assert_unreached("Open request error: " + event.target.error.name);
+    }
     initial();

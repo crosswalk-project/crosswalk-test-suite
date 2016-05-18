@@ -28,7 +28,7 @@ Date                        Author                        Description
 */
 function check(func,obj) {
     for(tmp in obj){
-	switch(tmp){
+        switch(tmp){
             case func:
               return true;
               break;

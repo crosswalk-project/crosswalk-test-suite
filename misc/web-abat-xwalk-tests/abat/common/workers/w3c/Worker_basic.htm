@@ -12,12 +12,12 @@
     var EVENT = "message";
     var FileName = './support/WorkerBasic.js';
     var ExpectedResult = "Pass";
-                  
+
     var worker = new Worker(FileName);
-    
+
     test(function()
     {
-        assert_equals(worker.toString(), "[object Worker]") 
+        assert_equals(worker.toString(), "[object Worker]")
     }, "Test Description: Web Workers Basic Test 1: Worker constructor.");
 
     var t = async_test("Test Description: Web Workers Basic Test 2: MessageEvent.data.");
@@ -31,7 +31,7 @@
     worker.postMessage("start");
 
     var t2 = async_test("Test Description: Web Workers Basic Test 3: MessageEvent.type.");
-                  
+
     var worker2 = new Worker(FileName);
 
     worker2.addEventListener(EVENT, t2.step_func(function(evt)
