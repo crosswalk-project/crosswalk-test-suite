@@ -90,7 +90,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             self.assertEquals(apkLength, 1)
         comm.run(self)
         comm.clear("org.xwalk.test")
-        self.assertIn("target android", output)
+        self.assertIn("Loading 'android' platform backend", output)
         self.assertNotIn("candle", output)
         self.assertNotIn("light", output)
 

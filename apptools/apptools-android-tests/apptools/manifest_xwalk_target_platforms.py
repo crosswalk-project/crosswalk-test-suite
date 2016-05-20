@@ -66,8 +66,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
-        self.assertIn("target android", output[0])
-        self.assertNotIn("target windows", output[0])
+        self.assertIn("Loading 'android' platform backend", output[0])
+        self.assertNotIn("Loading 'windows' platform backend", output[0])
 
     def test_without_platforms(self):
         comm.setUp()
@@ -100,7 +100,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
-        self.assertIn("target android", output[0])
+        self.assertIn("Loading 'android' platform backend", output[0])
 
     def test_with_target_platforms(self):
         comm.setUp()
@@ -133,7 +133,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(return_code, 0)
-        self.assertIn("target android", output[0])
+        self.assertIn("Loading 'android' platform backend", output[0])
 
 if __name__ == '__main__':
     unittest.main()

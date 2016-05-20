@@ -52,7 +52,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(packstatus[0], 0)
         self.assertEquals(ipaLength, 1)
         self.assertIn("target ios", packstatus[1])
-        self.assertNotIn("target android", packstatus[1])
+        self.assertNotIn("Loading 'android' platform backend", packstatus[1])
 
     def test_update_target_platforms(self):
         comm.setUp()
@@ -71,7 +71,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(packstatus[0], 0)
         self.assertEquals(ipaLength, 1)
         self.assertIn("target ios", packstatus[1])
-        self.assertNotIn("target android", packstatus[1])
+        self.assertNotIn("Loading 'android' platform backend", packstatus[1])
 
     def test_without_platforms(self):
         comm.setUp()
@@ -96,7 +96,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(apkLength, 2)
         self.assertEquals(ipaLength, 0)
         self.assertNotIn("target ios", packstatus[1])
-        self.assertIn("target android", packstatus[1])
+        self.assertIn("Loading 'android' platform backend", packstatus[1])
 
 if __name__ == '__main__':
     unittest.main()

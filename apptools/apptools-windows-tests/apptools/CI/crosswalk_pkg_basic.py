@@ -83,7 +83,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(return_code, 0)
         self.assertIn("candle", output[0])
         self.assertIn("light", output[0])
-        self.assertNotIn("target android", output[0])
+        self.assertNotIn("Loading 'android' platform backend", output[0])
         self.assertEquals(apkLength, 1)
 
     def test_crosswalk_canary(self):
