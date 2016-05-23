@@ -18,9 +18,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
 
 public class MainActivity extends Activity implements XWalkInitializer.XWalkInitListener  {
 
+	private LinearLayout mLinearLayout;
     protected XWalkView mXWalkView;
     protected XWalkInitializer mXWalkInitializer;
 
@@ -54,6 +58,7 @@ public class MainActivity extends Activity implements XWalkInitializer.XWalkInit
         mXWalkInitializer = new XWalkInitializer(this, this);
         mXWalkInitializer.initAsync();
         setContentView(R.layout.xwview_layout);
+        mLinearLayout = (LinearLayout) findViewById(R.id.mLinearLayout);
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
     }
 
@@ -83,5 +88,11 @@ public class MainActivity extends Activity implements XWalkInitializer.XWalkInit
         KeyguardManager keyguardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
         KeyguardLock keyguardLock = keyguardManager.newKeyguardLock("");
         keyguardLock.disableKeyguard();
+    }
+
+    public void addView(View view) {
+        view.setLayoutParams(new LinearLayout.LayoutParams(
+                LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1f));
+        mLinearLayout.addView(view);
     }
 }
