@@ -40,7 +40,7 @@ This test suite is for checking RealSense support in Crosswalk Project:
 
 ## Build for Windows
 
-1. Download and unzip [latest realsense_extensions(.zip)](https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v19.6.1/realsense_extensions_v19.6.1.zip).
+1. Download and unzip [latest realsense_extensions(.zip)](https://github.com/crosswalk-project/realsense-extensions-crosswalk/releases/download/v19.6.2/realsense_extensions_v19.6.2.zip).
 
    The content of realsense_extensions looks like:
 
