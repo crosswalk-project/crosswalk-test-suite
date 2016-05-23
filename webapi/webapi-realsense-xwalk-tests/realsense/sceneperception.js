@@ -256,7 +256,7 @@ promise_test(function() {
       assert_equals(ex.code, 15);
       assert_equals(ex.name, "InvalidAccessError");
     });
-}, "Check that enableRelocalization should reject with InvalidAccessError exception");
+}, "Check that sp.enableRelocalization() should reject with InvalidAccessError exception");
 
 promise_test(function() {
   return sp.enableRelocalization(null)

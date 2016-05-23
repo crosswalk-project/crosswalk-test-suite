@@ -129,7 +129,7 @@ async_test(function(t) {
         assert_equals(ex.code, 11);
         assert_equals(ex.name, "InvalidStateError");
       });
-    }, "Check that fm.getProcessedSample should reject with InvalidStateError exception" +
+    }, "Check that fm.getProcessedSample should reject with InvalidStateError exception " +
        "when face module doesn't start");
 
     promise_test(function() {
