@@ -51,6 +51,7 @@ public class TestHelperBridge {
     private final OnJsPromptHelper mOnJsPromptHelper;
     private final OnReceivedResponseHeadersHelper mOnReceivedResponseHeadersHelper;
     private final ShouldInterceptLoadRequestHelper2 mShouldInterceptLoadRequestHelper2;
+    private final OnFindResultReceivedHelper mOnFindResultReceivedHelper;
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -82,6 +83,7 @@ public class TestHelperBridge {
         mOnJsPromptHelper = new OnJsPromptHelper();
         mOnReceivedResponseHeadersHelper = new OnReceivedResponseHeadersHelper();
         mShouldInterceptLoadRequestHelper2 = new ShouldInterceptLoadRequestHelper2();
+        mOnFindResultReceivedHelper = new OnFindResultReceivedHelper();
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -334,5 +336,15 @@ public class TestHelperBridge {
                     XWalkWebResourceRequest request,
                     XWalkWebResourceResponse response) {
         mOnReceivedResponseHeadersHelper.notifyCalled(request, response);
+    }
+
+    public OnFindResultReceivedHelper getOnFindResultReceivedHelper() {
+        return mOnFindResultReceivedHelper;
+    }
+
+    public void onFindResultReceived(int activeMatchOrdinal, int numberOfMatches,
+            boolean isDoneCounting) {
+        mOnFindResultReceivedHelper.notifyCalled(activeMatchOrdinal, numberOfMatches,
+                isDoneCounting);
     }
 }
