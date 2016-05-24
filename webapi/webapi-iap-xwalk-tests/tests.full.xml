@@ -63,9 +63,45 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_queryProductsInfo" priority="P1" purpose="Test Navigator iap init method" status="approved" type="compliance" subcase="6">
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_queryProductsInfo" priority="P1" purpose="Test Navigator iap query method" status="approved" type="compliance" subcase="6">
         <description>
           <test_script_entry>/iap/Navigator_iap_queryProductsInfo.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="iap" element_type="property" interface="Navigator" section="Networking" specification="IAP"/>
+            <spec_url>https://github.com/crosswalk-project/ios-extensions-crosswalk/blob/master/extensions/InAppPurchase/spec/iap.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>        
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_queryProductsInfo_invalidstate" priority="P1" purpose="Test Navigator iap query method if iap not init" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/iap/Navigator_iap_queryProductsInfo_invalidstate.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="iap" element_type="property" interface="Navigator" section="Networking" specification="IAP"/>
+            <spec_url>https://github.com/crosswalk-project/ios-extensions-crosswalk/blob/master/extensions/InAppPurchase/spec/iap.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>        
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_queryProductsInfo_opererror" priority="P1" purpose="Test Navigator iap query method with the wrong productID" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/iap/Navigator_iap_queryProductsInfo_opererror.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="iap" element_type="property" interface="Navigator" section="Networking" specification="IAP"/>
+            <spec_url>https://github.com/crosswalk-project/ios-extensions-crosswalk/blob/master/extensions/InAppPurchase/spec/iap.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>        
+      <testcase component="Crosswalk APIs/Experimental/InApp Payment API" execution_type="auto" id="Navigator_iap_queryProductsInfo_invalidaccess" priority="P1" purpose="Test Navigator iap query method when the productId is undefine" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/iap/Navigator_iap_queryProductsInfo_invalidaccess.html</test_script_entry>
         </description>
         <specs>
           <spec>
