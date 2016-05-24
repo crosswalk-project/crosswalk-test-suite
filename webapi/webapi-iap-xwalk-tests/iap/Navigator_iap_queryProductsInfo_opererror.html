@@ -36,7 +36,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <script src="options.js"></script>
 <div id="log"></div>
 <script>
-  var at = async_test("Check if queryProductsInfo throw OperationError when the productId is undefine", {timeout: 10000});
+  var at = async_test("Check if queryProductsInfo throw OperationError with the wrong productId", {timeout: 10000});
   if (options.channel == "Google") {
     navigator.iap.init(options).then(function() {
       at.step(function() {
