@@ -285,4 +285,17 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertFalse(true);
         }
     }
+
+    @SmallTest
+    public void testProxySettingsChanged() {
+        try {
+            String url = "https://www.google.com";
+            proxySettingsChanged();
+            loadUrlSync(url);
+            assertEquals(url, getUrlOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertFalse(true);
+        }
+    }
 }
