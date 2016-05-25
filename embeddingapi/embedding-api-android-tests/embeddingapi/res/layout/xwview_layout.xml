@@ -6,16 +6,27 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xwalk="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<org.xwalk.core.XWalkView xmlns:android="http://schemas.android.com/apk/res/android"
+<org.xwalk.core.XWalkView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/xwalkview"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent">
+
+</org.xwalk.core.XWalkView>
+
+<org.xwalk.core.XWalkView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/xwalkviewTexture"
+    android:layout_width="0px"
+    android:layout_height="0px"
+    xwalk:animatable="true" >
 
 </org.xwalk.core.XWalkView>
 

@@ -3,12 +3,14 @@
 // found in the LICENSE file.
 
 package org.xwalk.embedding.test.v7;
+import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 import org.xwalk.embedding.base.OnFindResultReceivedHelper;
 import java.util.concurrent.Callable;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.view.animation.Animation;
 
 @SuppressLint("NewApi")
 public class XWalkViewTest extends XWalkViewTestBase {
@@ -166,6 +168,26 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(false);
             e.printStackTrace();
         } catch (Throwable e) {
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testGetCompositingSurfaceTypeSurface() {
+        try {
+            assertEquals(SURFACE_VIEW, getBackendTypeOnUiThread(mXWalkView));
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testGetCompositingSurfaceTypeTexture() {
+        try {
+            assertEquals(TEXTURE_VIEW, getBackendTypeOnUiThread(mXWalkViewTexture));
+        } catch (Exception e) {
+            e.printStackTrace();
             assertTrue(false);
         }
     }
