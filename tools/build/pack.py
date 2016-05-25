@@ -385,6 +385,9 @@ def buildPKG(build_json=None):
     if not buildSRC(BUILD_ROOT_SRC, BUILD_ROOT_PKG, build_json):
         return False
 
+    if BUILD_PARAMETERS.docrootonly:
+        return True
+
     if "subapp-list" in build_json:
         for i_sub_app in build_json["subapp-list"].keys():
             if not buildSubAPP(
@@ -477,6 +480,12 @@ def main():
             dest="resourceonly",
             action="store_true",
             help="only restore resources to project root")
+        opts_parser.add_option(
+            "--docroot-only",
+            dest = "docrootonly",
+            action = "store_true",
+            default = False,
+            help = "pack docroot only for webtestingservice")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
