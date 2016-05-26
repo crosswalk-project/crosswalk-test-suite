@@ -52,13 +52,14 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <h4>Test Steps</h4>
   <ol>
     <li>Create cordova project<br/>
-        $ cordova create foo</li>
+        $ cordova create foo org.xwalk.foo foo</li>
     <li>Copy [test-package]/res/DefaultCrosswalkVersion/index.html to foo/www</li>
     <li>Config project<br/>
+        $ cd foo<br/>
         $ cordova platform add android<br/>
         $ cordova plugin add https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview<br/>
-        (1. For npm release testing, plugin should be https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview/tree/release-testing)<br/>
-        (2. For shared mode, need add "--variable XWALK_MODE=shared" after cordova-plugin-crosswalk-webview)</li>
+        (1. For npm release testing, plugin should be https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview#release-testing)<br/>
+        (2. No need build shared mode for default version, only for embedded mode)</li>
     <li>Build test app<br/>
         $ cordova build android</li>
     <li>Find test app in foo/platforms/android/build/outputs/apk</li>
