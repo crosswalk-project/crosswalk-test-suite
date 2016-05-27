@@ -36,33 +36,37 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <script src="options.js"></script>
 <div id="log"></div>
 <script>
-  var at = async_test("Check if queryProductsInfo throw OperationError with the wrong productId", {timeout: 10000});
+  var t = async_test("Check if queryProductsInfo throw OperationError with the wrong productId", {timeout: 10000});
   if (options.channel == "Google") {
     navigator.iap.init(options).then(function() {
-      at.step(function() {
-        var productsId  = ["org.apple"];
-        navigator.iap.queryProductsInfo(productsId).then(function(products) {
-          assert_unreached("Here should neve be reached!");
-          at.done();
-        }).catch(function(e) {
+      var productsId  = ["org.apple"];
+      navigator.iap.queryProductsInfo(productsId).then(function(products) {
+        t.step(function() {
+          assert_unreached("Here should neve be reached! Query return with wrong productId");
+          t.done();
+        });
+      }).catch(function(e) {
+        t.step(function() {
           assert_equals(e.name, "OperationError", "an error occurs during query raises an OperationError");
-          at.done();
-        }); // navigator.iap.queryProdcutsInfo ends
-      }); // at.step ends
+          t.done();
+        });
+      }); // navigator.iap.queryProdcutsInfo ends
     }).catch(function(e) {
-      assert_unreached("Should not be here, otherwise init failed!");
-      at.done();
+      t.step(function() {
+        assert_unreached("Should not be here, otherwise init failed!");
+        t.done();
+      });
     }); // navigator.iap.init ends
   } else if (options.channel == "XiaoMi") {
     navigator.iap.init(options).then(function() {
-      at.step(function() {
-        navigator.iap.queryProductsInfo("com.demo").then(
-          at.step_func(function() {
+      t.step(function() {
+        navigator.iap.queryProductsInfo("com.demo_1").then(
+          t.step_func(function() {
             assert_unreached("IAP API on Xiaomi Store does not support queryProductsInfo!");
-            at.done();
+            t.done();
           }),
-          at.step_func(function(e) {
-            at.done();
+          t.step_func(function(e) {
+            t.done();
           })
         );
       });
