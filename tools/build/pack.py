@@ -465,7 +465,8 @@ def main():
         opts_parser.add_option(
             "--pkg-version",
             dest="pkgversion",
-            help="specify the pkg version, e.g. 0.0.0.1")
+            help="specify the crosswalk version, e.g. 18.48.477.13 " \
+                 "or the absolute path of the specific crosswalk binary")
         opts_parser.add_option(
             "--pack-type",
             dest="packtype",
