@@ -33,13 +33,13 @@ do
 done
 
 main_version=$(cat ../../VERSION | awk 'NR==2')
-for((i=1;i<=4;i++)) 
+for((i=1;i<=4;i++))
 do
     crosswalk_version=$(echo $main_version|cut -d "\"" -f$i)
 done
 
 crosswalk_branch_tmp=$(cat ../../VERSION | awk 'NR==3')
-for((i=1;i<=4;i++)) 
+for((i=1;i<=4;i++))
 do
     crosswalk_branch=$(echo $crosswalk_branch_tmp|cut -d "\"" -f$i)
 done
@@ -120,13 +120,13 @@ if [ $pack_type == "apk" ]; then
     #cd $BUILD_ROOT/crosswalk
     cd $BUILD_ROOT
     #python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$pack_mode --arch=$arch --enable-remote-debugging
-    crosswalk-pkg --android=$pack_mode --crosswalk=$crosswalk_version --manifest=''\{\"name\":\"$appname\"\,\"xwalk_package_id\":\"org.xwalk."$appname"\",\"start_url\":\"index.html\"\}'' -p android --targets=$arch $BUILD_DEST
+    crosswalk-pkg --android=$pack_mode --crosswalk=$crosswalk_version --manifest=''\{\"name\":\"$appname\",\"xwalk_package_id\":\"org.xwalk."$appname"\",\"start_url\":\"index.html\",\"xwalk_android_permissions\":[\"WRITE_EXTERNAL_STORAGE\"]\}'' -p android --targets=$arch $BUILD_DEST
     if [ $? -ne 0 ];then
         echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         clean_workspace
         exit 1
     fi
-    
+
     ## creat zip package ##
     mv $BUILD_ROOT/*.apk $BUILD_DEST/opt/$name/
     mv $BUILD_DEST/opt/$name/org.xwalk.webapi_noneservice_tests*.apk $BUILD_DEST/opt/$name/$appname.apk
@@ -166,7 +166,7 @@ elif [ $pack_type == "cordova" ]; then
             fi
             echo $version_cmd
             echo $plugin_crosswalk_source
-            cordova plugin add $plugin_crosswalk_source $version_cmd --variable XWALK_MODE="$pack_mode" 
+            cordova plugin add $plugin_crosswalk_source $version_cmd --variable XWALK_MODE="$pack_mode"
         else
             cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
         fi

@@ -165,7 +165,12 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-permissions-opt")
     if tmp_opt:
-        permissions_opt = [tmp_opt]
+        if isinstance(tmp_opt, basestring):
+            permissions_opt = [tmp_opt]
+        elif isinstance(tmp_opt, list):
+            permissions_opt = [per_opt for per_opt in tmp_opt]
+        else:
+            raise TypeError("apk-permissions-opt must be a string or a list!")
 
     tmp_opt = utils.safelyGetValue(build_json, "apk-mode-opt")
     if tmp_opt:
@@ -240,7 +245,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     if shortName_opt:
         manifest_opt["short_name"] = shortName_opt
     if permissions_opt:
-        manifest_opt["xwalk_android_permissions"] = permissions_opt 
+        manifest_opt["xwalk_android_permissions"] = permissions_opt
 
     manifest_opt = json.JSONEncoder().encode(manifest_opt)
 
