@@ -44,6 +44,7 @@ import build_embeddingapi
 import build_extension
 import build_deb
 import build_msi
+import build_ios
 import varshop
 import utils
 import resource_only
