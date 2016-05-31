@@ -38,7 +38,7 @@ void main (void)
 
 	color = gtf_Color;
 	gl_Position = gtf_ModelViewProjectionMatrix * gtf_Vertex;
-	
+
 	dotClip[0] = dot(userClipPlanes[0], gl_Position);
 	dotClip[1] = dot(userClipPlanes[1], gl_Position);
 }
