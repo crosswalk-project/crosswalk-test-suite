@@ -113,7 +113,7 @@ try {
 
     // Testing valid & invalid values for the parameters.
     var originValid = [0, imageHeight / 2];
-    var regionForOriginValid = [imageWidth, imageHeight / 2]; 
+    var regionForOriginValid = [imageWidth, imageHeight / 2];
     shouldThrowExceptionName("webCLCommandQueue.enqueueWriteImage(webCLImage, true, originValid, region, hostRowPitch, hostPtr);", "INVALID_VALUE");
     shouldBeUndefined("webCLCommandQueue.enqueueWriteImage(webCLImage, true, originValid, regionForOriginValid, hostRowPitch, hostPtr);");
     var originInvalid = [];
@@ -151,7 +151,7 @@ try {
     var regionForHostRowPitch = [imageWidth, 1];
     shouldThrowExceptionName("webCLCommandQueue.enqueueWriteImage(webCLImage, true, origin, region, hostRowPitchValid, hostPtr);", "INVALID_VALUE");
     shouldBeUndefined("webCLCommandQueue.enqueueWriteImage(webCLImage, true, origin, regionForHostRowPitch, hostRowPitchValid, hostPtr);");
-    
+
     //  Fetching a image format with channelType of more than 1 byte, to provide invalid value for hostRowPitch.
     var supportedImageFormats = webCLContext.getSupportedImageFormats(webcl.MEM_READ_WRITE);
     for(i = 0; i < supportedImageFormats.length; i++) {
