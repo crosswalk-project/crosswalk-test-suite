@@ -1143,4 +1143,13 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
+
+    protected void proxySettingsChanged() throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.proxySettingsChanged(host, port, pacUrl, null);
+            }
+        });
+    }
 }
