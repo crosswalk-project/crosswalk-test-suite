@@ -467,7 +467,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertEquals(return_code, 0)
         self.assertEquals(apkLength, 1)
 
-    def test_create_package_release_without_argument(self):
+    def test_create_package_release_without_argument_check_locale(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         comm.clear("org.xwalk.test")
