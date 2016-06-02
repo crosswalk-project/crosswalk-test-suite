@@ -18,6 +18,7 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,6 +33,7 @@ import org.chromium.ui.gfx.DeviceDisplayInfo;
 import org.xwalk.core.JavascriptInterface;
 import org.xwalk.core.XWalkCookieManager;
 import org.xwalk.core.XWalkDownloadListener;
+import org.xwalk.core.XWalkFindListener;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
 import org.xwalk.core.XWalkView;
@@ -58,6 +60,9 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     public XWalkViewTestBase(Class<MainActivity> activityClass) {
         super(activityClass);
     }
+
+    protected static final int FIND_ALL = 3;
+    protected static final int FIND = 2;
 
     protected final static String PASS_STRING = "Pass";
 
@@ -466,6 +471,24 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 throw new IOException("skipping negative number of bytes");
             return 0;
         }
+    }
+
+    class TestXWalkFindListener extends XWalkFindListener {
+        @Override
+        public void onFindResultReceived(int activeMatchOrdinal, int numberOfMatches,
+                boolean isDoneCounting) {
+            mTestHelperBridge.onFindResultReceived(activeMatchOrdinal, numberOfMatches,
+    	        isDoneCounting);
+    	}
+    }
+
+    protected void setFindListener() {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                getXWalkView().setFindListener(new TestXWalkFindListener());
+            }
+        });
     }
 
     protected void goBackSync(final int n) throws Throwable {
@@ -1142,5 +1165,35 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 return mXWalkView.getCertificate();
             }
         });
+    }
+
+    protected void findAllAsync(final String text) {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.findAllAsync(text);
+            }
+        });
+    }
+
+    protected void findAllSync(CallbackHelper mOnFindResultReceivedHelper, int count, final String text) throws InterruptedException, TimeoutException {
+    	int currentCallCount = mOnFindResultReceivedHelper.getCallCount();
+    	findAllAsync(text);
+        mOnFindResultReceivedHelper.waitForCallback(currentCallCount, count);
+    }
+
+    protected void findNextAsync(final boolean forward) {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.findNext(forward);
+            }
+        });
+    }
+
+    protected void findNextSync(CallbackHelper mOnFindResultReceivedHelper, int count, final boolean bool) throws InterruptedException, TimeoutException {
+    	int currentCallCount = mOnFindResultReceivedHelper.getCallCount();
+    	findNextAsync(bool);
+        mOnFindResultReceivedHelper.waitForCallback(currentCallCount, count);
     }
 }
