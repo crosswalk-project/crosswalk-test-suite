@@ -18,9 +18,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
 
 public class MainActivity extends XWalkActivity  {
 
+	private LinearLayout mLinearLayout;
     protected XWalkView mXWalkView;
 
     public XWalkView getXWalkView()
@@ -32,6 +36,7 @@ public class MainActivity extends XWalkActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xwview_layout);
+        mLinearLayout = (LinearLayout) findViewById(R.id.mLinearLayout);
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
     }
 
@@ -69,5 +74,11 @@ public class MainActivity extends XWalkActivity  {
     @Override
     public boolean isXWalkReady() {
         return super.isXWalkReady();
+    }
+
+    public void addView(View view) {
+        view.setLayoutParams(new LinearLayout.LayoutParams(
+                LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1f));
+        mLinearLayout.addView(view);
     }
 }

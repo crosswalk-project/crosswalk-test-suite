@@ -4,6 +4,7 @@
 
 package org.xwalk.embedding.base;
 
+import org.chromium.content.browser.test.util.CallbackHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageFinishedHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageStartedHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnReceivedErrorHelper;
@@ -14,7 +15,10 @@ import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkWebResourceRequest;
 import org.xwalk.core.XWalkWebResourceResponse;
 
+
 import android.net.Uri;
+import android.net.http.SslError;
+import android.view.KeyEvent;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
 
@@ -84,6 +88,9 @@ public class TestHelperBridge {
         mOnReceivedResponseHeadersHelper = new OnReceivedResponseHeadersHelper();
         mShouldInterceptLoadRequestHelper2 = new ShouldInterceptLoadRequestHelper2();
         mOnFindResultReceivedHelper = new OnFindResultReceivedHelper();
+        mOnJavascriptModalDialogHelper = new OnJavascriptModalDialogHelper();
+        mOverrideOrUnhandledKeyEventHelper = new OverrideOrUnhandledKeyEventHelper();
+        mOnReceivedSslErrorHelper = new CallbackHelper();
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -339,6 +346,7 @@ public class TestHelperBridge {
         mOnReceivedResponseHeadersHelper.notifyCalled(request, response);
     }
 
+
     public OnFindResultReceivedHelper getOnFindResultReceivedHelper() {
         return mOnFindResultReceivedHelper;
     }
@@ -347,5 +355,61 @@ public class TestHelperBridge {
             boolean isDoneCounting) {
         mOnFindResultReceivedHelper.notifyCalled(activeMatchOrdinal, numberOfMatches,
                 isDoneCounting);
+    }
+
+
+    private final OnJavascriptModalDialogHelper mOnJavascriptModalDialogHelper;
+    private final OverrideOrUnhandledKeyEventHelper mOverrideOrUnhandledKeyEventHelper;
+
+    public class OnJavascriptModalDialogHelper extends CallbackHelper {
+        private String mMessage;
+
+        public String getMessage() {
+            assert getCallCount() > 0;
+            return mMessage;
+        }
+
+        public void notifyCalled(String message) {
+            mMessage = message;
+            notifyCalled();
+        }
+    }
+    
+    public class OverrideOrUnhandledKeyEventHelper extends CallbackHelper {
+        private KeyEvent mEvent;
+
+        public KeyEvent getKeyEvent() {
+            assert getCallCount() > 0;
+            return mEvent;
+        }
+
+        public void notifyCalled(KeyEvent event) {
+            mEvent = event;
+            notifyCalled();
+        }
+    }
+
+    public boolean onJavascriptModalDialog(String message) {
+        mOnJavascriptModalDialogHelper.notifyCalled(message);
+        return true;
+    }
+
+    public OverrideOrUnhandledKeyEventHelper getOverrideOrUnhandledKeyEventHelper() {
+        return mOverrideOrUnhandledKeyEventHelper;
+    }
+
+    public boolean overrideOrUnhandledKeyEvent(KeyEvent event) {
+        mOverrideOrUnhandledKeyEventHelper.notifyCalled(event);
+        return true;
+    }
+
+    private final CallbackHelper mOnReceivedSslErrorHelper;
+
+    public CallbackHelper getOnReceivedSslErrorHelper() {
+        return mOnReceivedSslErrorHelper;
+    }
+
+    public void onReceivedSslError(ValueCallback<Boolean> callback, SslError error) {
+        mOnReceivedSslErrorHelper.notifyCalled();
     }
 }

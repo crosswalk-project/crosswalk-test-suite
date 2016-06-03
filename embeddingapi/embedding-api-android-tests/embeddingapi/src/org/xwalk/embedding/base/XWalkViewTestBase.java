@@ -20,6 +20,7 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -30,16 +31,23 @@ import org.chromium.content.browser.test.util.Criteria;
 import org.chromium.content.browser.test.util.CriteriaHelper;
 import org.chromium.net.test.util.TestWebServer;
 import org.chromium.ui.gfx.DeviceDisplayInfo;
+import org.xwalk.core.ClientCertRequest;
 import org.xwalk.core.JavascriptInterface;
 import org.xwalk.core.XWalkCookieManager;
 import org.xwalk.core.XWalkDownloadListener;
 import org.xwalk.core.XWalkFindListener;
+import org.xwalk.core.XWalkHttpAuthHandler;
+import org.xwalk.core.XWalkJavascriptResult;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
+import org.xwalk.core.XWalkResourceClient;
+import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkSettings;
+import org.xwalk.core.XWalkWebResourceRequest;
 import org.xwalk.embedding.MainActivity;
 import org.xwalk.core.XWalkWebResourceResponse;
+
 
 import com.test.server.ActivityInstrumentationTestCase2;
 
@@ -49,7 +57,9 @@ import android.os.Bundle;
 import android.test.MoreAsserts;
 import android.util.Log;
 import android.util.Pair;
+import android.view.KeyEvent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.webkit.ValueCallback;
@@ -1191,9 +1201,312 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         });
     }
 
+    protected void runPerViewSettingsTest(XWalkSettingsTestHelper<?> helper0,
+            XWalkSettingsTestHelper<?> helper1) throws Throwable {
+        helper0.ensureSettingHasInitialValue();
+        helper1.ensureSettingHasInitialValue();
+        helper1.setAlteredSettingValue();
+        helper0.ensureSettingHasInitialValue();
+        helper1.ensureSettingHasAlteredValue();
+
+        helper1.setInitialSettingValue();
+        helper0.ensureSettingHasInitialValue();
+        helper1.ensureSettingHasInitialValue();
+
+        helper0.setAlteredSettingValue();
+        helper0.ensureSettingHasAlteredValue();
+        helper1.ensureSettingHasInitialValue();
+
+        helper0.setInitialSettingValue();
+        helper0.ensureSettingHasInitialValue();
+        helper1.ensureSettingHasInitialValue();
+
+        helper0.setAlteredSettingValue();
+        helper0.ensureSettingHasAlteredValue();
+        helper1.ensureSettingHasInitialValue();
+
+        helper1.setAlteredSettingValue();
+        helper0.ensureSettingHasAlteredValue();
+        helper1.ensureSettingHasAlteredValue();
+
+        helper0.setInitialSettingValue();
+        helper0.ensureSettingHasInitialValue();
+        helper1.ensureSettingHasAlteredValue();
+
+        helper1.setInitialSettingValue();
+        helper0.ensureSettingHasInitialValue();
+        helper1.ensureSettingHasInitialValue();
+    }
+
+    protected XWalkView createXWalkViewContainerOnMainSync(
+            final Context context,
+            final XWalkUIClient uiClient,
+            final XWalkResourceClient resourceClient) throws Exception {
+        final AtomicReference<XWalkView> xWalkViewContainer =
+                new AtomicReference<XWalkView>();
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                xWalkViewContainer.set(new XWalkView(context, getActivity()));
+                getActivity().addView(xWalkViewContainer.get());
+                xWalkViewContainer.get().setUIClient(uiClient);
+                xWalkViewContainer.get().setResourceClient(resourceClient);
+            }
+        });
+
+        return xWalkViewContainer.get();
+    }
+
+    public static class ViewPair {
+        private final XWalkView view0;
+        private final TestHelperBridge bridge0;
+        private final XWalkView view1;
+        private final TestHelperBridge bridge1;
+
+        ViewPair(XWalkView view0, TestHelperBridge bridge0,
+                XWalkView view1, TestHelperBridge bridge1) {
+            this.view0 = view0;
+            this.bridge0 = bridge0;
+            this.view1 = view1;
+            this.bridge1 = bridge1;
+        }
+
+        public XWalkView getView0() {
+            return view0;
+        }
+
+        public TestHelperBridge getBridge0() {
+            return bridge0;
+        }
+
+        public XWalkView getView1() {
+            return view1;
+        }
+
+        public TestHelperBridge getBridge1() {
+            return bridge1;
+        }
+    }
+
+    protected ViewPair createViews() throws Throwable {
+        TestHelperBridge helperBridge0 = new TestHelperBridge();
+        TestHelperBridge helperBridge1 = new TestHelperBridge();
+        TestXWalkUIClientBase uiClient0 = new TestXWalkUIClientBase(helperBridge0, mXWalkView, callbackCalled);
+        TestXWalkUIClientBase uiClient1 = new TestXWalkUIClientBase(helperBridge1, mXWalkView, callbackCalled);
+        TestXWalkResourceClientBase  resourceClient0=
+                new TestXWalkResourceClientBase(helperBridge0, mXWalkView);
+        TestXWalkResourceClientBase resourceClient1 =
+                new TestXWalkResourceClientBase(helperBridge1, mXWalkView);
+        ViewPair viewPair =
+                createViewsOnMainSync(helperBridge0, helperBridge1, uiClient0, uiClient1,
+                        resourceClient0, resourceClient1, getActivity());
+
+        return viewPair;
+    }
+
+    protected ViewPair createViewsOnMainSync(final TestHelperBridge helperBridge0,
+                                             final TestHelperBridge helperBridge1,
+                                             final XWalkUIClient uiClient0,
+                                             final XWalkUIClient uiClient1,
+                                             final XWalkResourceClient resourceClient0,
+                                             final XWalkResourceClient resourceClient1,
+                                             final Context context) throws Throwable {
+        final XWalkView walkView0 = createXWalkViewContainerOnMainSync(context,
+                uiClient0, resourceClient0);
+        final XWalkView walkView1 = createXWalkViewContainerOnMainSync(context,
+                uiClient1, resourceClient1);
+        final AtomicReference<ViewPair> viewPair = new AtomicReference<ViewPair>();
+
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                viewPair.set(new ViewPair(walkView0, helperBridge0, walkView1, helperBridge1));
+            }
+        });
+
+        return viewPair.get();
+    }
+
+    protected void loadDataAsyncWithXWalkView(final String data,
+            final XWalkView view) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                view.load(null, data);
+            }
+        });
+    }
+
     protected void findNextSync(CallbackHelper mOnFindResultReceivedHelper, int count, final boolean bool) throws InterruptedException, TimeoutException {
     	int currentCallCount = mOnFindResultReceivedHelper.getCallCount();
     	findNextAsync(bool);
         mOnFindResultReceivedHelper.waitForCallback(currentCallCount, count);
+    }
+
+    protected void loadDataSyncWithXWalkView(final String data,
+            final XWalkView view, final TestHelperBridge bridge) throws Exception {
+        CallbackHelper pageFinishedHelper = bridge.getOnPageFinishedHelper();
+        int currentCallCount = pageFinishedHelper.getCallCount();
+        loadDataAsyncWithXWalkView(data, view);
+        pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                TimeUnit.SECONDS);
+    }
+
+    protected void setUseWideViewPortOnUiThreadByXWalkView(final boolean value,
+            final XWalkView view) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                view.getSettings().setUseWideViewPort(value);
+            }
+        });
+    }
+
+    abstract class XWalkSettingsTestHelper<T> {
+        protected final XWalkView mXWalkViewForHelper;
+        protected final XWalkSettings mXWalkSettingsForHelper;
+
+        XWalkSettingsTestHelper(XWalkView view) throws Throwable {
+            mXWalkViewForHelper = view;
+            mXWalkSettingsForHelper = getXWalkSettingsOnUiThreadByXWalkView(view);
+        }
+
+        void ensureSettingHasAlteredValue() throws Throwable {
+            ensureSettingHasValue(getAlteredValue());
+        }
+
+        void ensureSettingHasInitialValue() throws Throwable {
+            ensureSettingHasValue(getInitialValue());
+        }
+
+        void setAlteredSettingValue() throws Throwable {
+            setCurrentValue(getAlteredValue());
+        }
+
+        void setInitialSettingValue() throws Throwable {
+            setCurrentValue(getInitialValue());
+        }
+
+        protected abstract T getAlteredValue();
+
+        protected abstract T getInitialValue();
+
+        protected abstract T getCurrentValue();
+
+        protected abstract void setCurrentValue(T value) throws Throwable;
+
+        protected abstract void doEnsureSettingHasValue(T value) throws Throwable;
+
+        private void ensureSettingHasValue(T value) throws Throwable {
+            assertEquals(value, getCurrentValue());
+            doEnsureSettingHasValue(value);
+        }
+    }
+
+    private static final boolean ENABLED = true;	
+    private static final boolean DISABLED = false;
+
+
+    private float getScaleFactorByXWalkViewAndHelperBridge(final XWalkView view,
+            final TestHelperBridge bridge) {
+        final float newScale = bridge.getOnScaleChangedHelper().getNewScale();
+        // If new scale is 0.0f, it means the page does not zoom,
+        // return the default scale factior: 1.0f.
+        if (Float.compare(newScale, 0.0f) == 0) return 1.0f;
+        return newScale / (float) DeviceDisplayInfo.create(view.getContext()).getDIPScale();
+    }
+
+    protected void setLoadWithOverviewModeOnUiThreadByXWalkView(
+            final boolean value, final XWalkView view) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                view.getSettings().setLoadWithOverviewMode(value);
+            }
+        });
+    }
+
+    protected boolean getLoadWithOverviewModeOnUiThreadByXWalkView(
+            final XWalkView view) throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return view.getSettings().getLoadWithOverviewMode();
+            }
+        });
+    }
+
+    public class XWalkSettingsLoadWithOverviewModeTestHelper extends XWalkSettingsTestHelper<Boolean> {
+        private static final float DEFAULT_PAGE_SCALE = 1.0f;
+        private final boolean mWithViewPortTag;
+        private boolean mExpectScaleChange;
+        private int mOnScaleChangedCallCount;
+        XWalkView mView;
+        TestHelperBridge mBridge;
+
+        public XWalkSettingsLoadWithOverviewModeTestHelper(
+                XWalkView view,
+                TestHelperBridge bridge,
+                boolean withViewPortTag) throws Throwable {
+            super(view);
+            mView = view;
+            mBridge = bridge;
+            mWithViewPortTag = withViewPortTag;
+            setUseWideViewPortOnUiThreadByXWalkView(true, view);
+        }
+
+        @Override
+        protected Boolean getAlteredValue() {
+            return ENABLED;
+        }
+
+        @Override
+        protected Boolean getInitialValue() {
+            return DISABLED;
+        }
+
+        @Override
+        protected Boolean getCurrentValue() {
+            try {
+                return getLoadWithOverviewModeOnUiThreadByXWalkView(mView);
+            } catch (Exception e) {
+                return false;
+            }
+        }
+
+        @Override
+        protected void setCurrentValue(Boolean value) {
+            try {
+                mExpectScaleChange = getLoadWithOverviewModeOnUiThreadByXWalkView(mView) != value;
+                if (mExpectScaleChange)
+                    mOnScaleChangedCallCount = mBridge.getOnScaleChangedHelper().getCallCount();
+                setLoadWithOverviewModeOnUiThreadByXWalkView(value, mView);
+            } catch (Exception e) {
+            }
+        }
+
+        @Override
+        protected void doEnsureSettingHasValue(Boolean value) throws Throwable {
+            loadDataSyncWithXWalkView(getData(), mView, mBridge);
+            if (mExpectScaleChange) {
+                mBridge.getOnScaleChangedHelper().waitForCallback(mOnScaleChangedCallCount);
+                mExpectScaleChange = false;
+            }
+
+            float currentScale = getScaleFactorByXWalkViewAndHelperBridge(mView, mBridge);
+            if (value) {
+                assertTrue("Expected: " + currentScale + " < " + DEFAULT_PAGE_SCALE,
+                        currentScale < DEFAULT_PAGE_SCALE);
+            } else {
+                assertEquals(DEFAULT_PAGE_SCALE, currentScale);
+            }
+        }
+
+        private String getData() {
+            return "<html><head>"
+                    + (mWithViewPortTag ? "<meta name='viewport' content='width=3000' />" : "")
+                    + "</head>"
+                    + "<body></body></html>";
+        }
     }
 }
