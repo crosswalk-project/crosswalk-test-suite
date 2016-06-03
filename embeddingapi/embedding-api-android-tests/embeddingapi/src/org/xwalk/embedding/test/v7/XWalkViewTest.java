@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 package org.xwalk.embedding.test.v7;
+import org.xwalk.core.XWalkView;
 import org.xwalk.embedding.base.OnFindResultReceivedHelper;
 import java.util.concurrent.Callable;
 import org.xwalk.embedding.base.XWalkViewTestBase;
@@ -100,6 +101,71 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(result);
         } catch (Throwable e) {
             e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testRemoveJavascriptInterface() {
+        try {
+            final String name = "add_js_interface.html";
+            addJavascriptInterface();
+            loadAssetFile(name);
+            assertEquals(mExpectedStr, getTitleOnUiThread());
+            removeJavascriptInterface();
+            reloadSync(XWalkView.RELOAD_NORMAL);
+            assertEquals(mDefaultTitle, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testRemoveJavascriptInterfaceWithUrl() {
+        try {
+            final String url = "file:///android_asset/add_js_interface.html";
+            addJavascriptInterface();
+            loadUrlSync(url);
+            assertEquals(mExpectedStr, getTitleOnUiThread());
+            removeJavascriptInterface();
+            reloadSync(XWalkView.RELOAD_NORMAL);
+            assertEquals(mDefaultTitle, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testRemoveJavascriptInterfaceWithAnnotation() {
+        try {
+            final String name = "index.html";
+            final String xwalkStr = "\"xwalk\"";
+            String result;
+            addJavascriptInterface();
+            loadAssetFile(name);
+
+            result = executeJavaScriptAndWaitForResult("testInterface.getText()");
+            assertEquals(xwalkStr, result);
+
+            raisesExceptionAndSetTitle("testInterface.getTextWithoutAnnotation()");
+            String title = getTitleOnUiThread();
+            assertEquals(mExpectedStr, title);
+
+            removeJavascriptInterface();
+            reloadSync(XWalkView.RELOAD_NORMAL);
+
+            result = executeJavaScriptAndWaitForResult("testInterface.getText()");
+            assertEquals("null", result);
+
+            raisesExceptionAndSetTitle("testInterface.getTextWithoutAnnotation()");
+            title = getTitleOnUiThread();
+            assertEquals("error", title);
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
             assertTrue(false);
         }
     }

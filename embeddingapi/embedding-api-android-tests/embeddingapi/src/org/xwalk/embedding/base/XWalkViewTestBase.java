@@ -91,6 +91,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected static final String REDIRECT_TARGET_PATH = "/redirect_target.html";
     protected static final String TITLE = "TITLE";
     protected final String mExpectedStr = "xwalk";
+    protected final String mDefaultTitle = "Add JS Interface";
     protected static final String DATA_URL = "data:text/html,<div/>";
 
     protected final static int WAIT_TIMEOUT_SECONDS = 15;
@@ -627,12 +628,21 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         });
     }
 
+    protected void removeJavascriptInterface() {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                getXWalkView().removeJavascriptInterface("testInterface");
+            }
+        });
+    }
+
     protected void raisesExceptionAndSetTitle(String script) throws Throwable {
         executeJavaScriptAndWaitForResult("try { var title = " +
                                           script + ";" +
                                           "  document.title = title;" +
                                           "} catch (exception) {" +
-                                          "  document.title = \"xwalk\";" +
+                                          "  document.title = \"error\";" +
                                           "}");
     }
 

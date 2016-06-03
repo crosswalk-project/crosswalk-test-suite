@@ -23,7 +23,6 @@ import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.test.suitebuilder.annotation.SmallTest;
