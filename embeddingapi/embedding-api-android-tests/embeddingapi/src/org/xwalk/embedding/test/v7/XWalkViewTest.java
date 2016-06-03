@@ -3,9 +3,8 @@
 // found in the LICENSE file.
 
 package org.xwalk.embedding.test.v7;
-
-
 import org.xwalk.embedding.base.OnFindResultReceivedHelper;
+import java.util.concurrent.Callable;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
 import android.test.suitebuilder.annotation.SmallTest;
@@ -23,16 +22,16 @@ public class XWalkViewTest extends XWalkViewTestBase {
     public void testFindAllAsync() {
         try {
             String fileContent = getFileContent("find.html");
-			loadDataSync(null, fileContent, "text/html", false);
-			OnFindResultReceivedHelper mOnFindResultReceivedHelper = mTestHelperBridge.getOnFindResultReceivedHelper();
-	        findAllSync(mOnFindResultReceivedHelper, FIND_ALL, "Find");
-	        assertEquals(0, mOnFindResultReceivedHelper.getIndex());
-	        assertEquals(3, mOnFindResultReceivedHelper.getMatches());
-	        assertTrue(mOnFindResultReceivedHelper.isDone());
-		} catch (Exception e) {
-			assertFalse(true);
-			e.printStackTrace();
-		}
+            loadDataSync(null, fileContent, "text/html", false);
+            OnFindResultReceivedHelper mOnFindResultReceivedHelper = mTestHelperBridge.getOnFindResultReceivedHelper();
+            findAllSync(mOnFindResultReceivedHelper, FIND_ALL, "Find");
+            assertEquals(0, mOnFindResultReceivedHelper.getIndex());
+            assertEquals(3, mOnFindResultReceivedHelper.getMatches());
+            assertTrue(mOnFindResultReceivedHelper.isDone());
+        } catch (Exception e) {
+            assertFalse(true);
+            e.printStackTrace();
+        }
     }
 
     @SmallTest
@@ -40,16 +39,34 @@ public class XWalkViewTest extends XWalkViewTestBase {
         try {
             String fileContent = getFileContent("find.html");
             loadDataSync(null, fileContent, "text/html", false);
-        	OnFindResultReceivedHelper mOnFindResultReceivedHelper = mTestHelperBridge.getOnFindResultReceivedHelper();
-        	findAllSync(mOnFindResultReceivedHelper, FIND_ALL, "Find");
-        	findNextSync(mOnFindResultReceivedHelper, FIND, true);
+            OnFindResultReceivedHelper mOnFindResultReceivedHelper = mTestHelperBridge.getOnFindResultReceivedHelper();
+            findAllSync(mOnFindResultReceivedHelper, FIND_ALL, "Find");
+            findNextSync(mOnFindResultReceivedHelper, FIND, true);
             assertEquals(1, mOnFindResultReceivedHelper.getIndex());
             assertEquals(3, mOnFindResultReceivedHelper.getMatches());
             assertTrue(mOnFindResultReceivedHelper.isDone());
-		} catch (Exception e) {
-			assertFalse(true);
-			e.printStackTrace();
-		}
+        } catch (Exception e) {
+            assertFalse(true);
+            e.printStackTrace();
+        }
+    }
+
+    @SmallTest
+    public void testGetContentHeightWithLocalUrl() {
+        try {
+            String url = "file:///android_asset/index.html";
+            loadUrlSync(url);
+            boolean result = pollOnUiThread(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return mXWalkView.getContentHeight() != 0;
+                }
+            });
+            assertTrue(result);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
     }
 
     @SmallTest
@@ -57,16 +74,33 @@ public class XWalkViewTest extends XWalkViewTestBase {
         try {
             String fileContent = getFileContent("find.html");
             loadDataSync(null, fileContent, "text/html", false);
-        	OnFindResultReceivedHelper mOnFindResultReceivedHelper = mTestHelperBridge.getOnFindResultReceivedHelper();
-        	findAllSync(mOnFindResultReceivedHelper, FIND_ALL, "Find");
-        	findNextSync(mOnFindResultReceivedHelper, FIND, false);
-        	findNextSync(mOnFindResultReceivedHelper, FIND, false);
+            OnFindResultReceivedHelper mOnFindResultReceivedHelper = mTestHelperBridge.getOnFindResultReceivedHelper();
+            findAllSync(mOnFindResultReceivedHelper, FIND_ALL, "Find");
+            findNextSync(mOnFindResultReceivedHelper, FIND, false);
+            findNextSync(mOnFindResultReceivedHelper, FIND, false);
             assertEquals(1, mOnFindResultReceivedHelper.getIndex());
             assertEquals(3, mOnFindResultReceivedHelper.getMatches());
             assertTrue(mOnFindResultReceivedHelper.isDone());
-		} catch (Exception e) {
-			assertFalse(true);
-			e.printStackTrace();
-		}
+        } catch (Exception e) {
+            assertFalse(true);
+            e.printStackTrace();
+        }
+    }
+
+    public void testGetContentHeightWithRemoteUrl() {
+        try {
+            String url = "https://www.baidu.com";
+            loadUrlSync(url);
+            boolean result = pollOnUiThread(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return mXWalkView.getContentHeight() != 0;
+                }
+            });
+            assertTrue(result);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
     }
 }
