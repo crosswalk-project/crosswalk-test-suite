@@ -414,5 +414,72 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         self.assertIn("contactextension.js", os.listdir(projectDir + "/prj/android/assets/xwalk-extensions/contactextension/"))
         self.assertIn("contactextension.json", os.listdir(projectDir + "/prj/android/assets/xwalk-extensions/contactextension/"))
 
+    def test_create_package_skip_dummy_using_s_option(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " -s --crosswalk=" + comm.crosswalkzip + " " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Skipping host setup check", output[0])
+
+    def test_create_package_skip_dummy_using_skip_check_option(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --skip-check --crosswalk=" + comm.crosswalkzip + " " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Skipping host setup check", output[0])
+
+    def test_create_package_skip_dummy_default_in_subprocess(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + " " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Skipping host setup check", output[0])
+
+    def test_create_package_skip_dummy_no(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " -s no --crosswalk=" + comm.crosswalkzip + " " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Checking host setup", output[0])
+
+    def test_create_package_default_non_interactive(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=android --android=" + comm.ANDROID_MODE + " --crosswalk=" + comm.crosswalkzip + " " + comm.ConstPath + "/../testapp/create_package_basic/ > 1.log 2>&1"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        cmd = "cat 1.log"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        comm.clear("1.log")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Skipping host setup check", output[0])
 if __name__ == '__main__':
     unittest.main()
