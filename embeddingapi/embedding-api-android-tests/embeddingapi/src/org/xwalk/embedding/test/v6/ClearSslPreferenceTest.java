@@ -4,7 +4,6 @@
 
 package org.xwalk.embedding.test.v6;
 
-import org.chromium.net.test.util.TestWebServer;
 import org.xwalk.embedding.base.OnReceivedSslHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
@@ -13,14 +12,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 
 @SuppressLint("NewApi")
 public class ClearSslPreferenceTest extends XWalkViewTestBase {
-    private TestWebServer mWebServer;
-
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
-
-        mWebServer = TestWebServer.startSsl();
-    }
 
     @SmallTest
     // If the user allows the ssl error, the same ssl error will not trigger
@@ -29,7 +20,7 @@ public class ClearSslPreferenceTest extends XWalkViewTestBase {
     public void testSslPreferences() throws Throwable {
         final String pagePath = "/hello.html";
         final String pageUrl =
-                mWebServer.setResponse(pagePath, "<html><body>hello world</body></html>", null);
+                mWebServerSsl.setResponse(pagePath, "<html><body>hello world</body></html>", null);
         final OnReceivedSslHelper onReceivedSslErrorHelper =
                 mTestHelperBridge.getOnReceivedSslHelper();
         int onSslErrorCallCount = onReceivedSslErrorHelper.getCallCount();
@@ -37,7 +28,7 @@ public class ClearSslPreferenceTest extends XWalkViewTestBase {
         loadUrlSync(pageUrl);
 
         assertEquals(onSslErrorCallCount + 1, onReceivedSslErrorHelper.getCallCount());
-        assertEquals(1, mWebServer.getRequestCount(pagePath));
+        assertEquals(1, mWebServerSsl.getRequestCount(pagePath));
 
         // Now load the page again. This time, we expect no ssl error, because
         // user's decision should be remembered.
