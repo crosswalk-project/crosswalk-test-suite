@@ -171,4 +171,24 @@ public class XWalkViewTestAsnyc extends XWalkViewTestBase {
             assertTrue(false);
         }
     }
+
+    @SmallTest
+    public void testGetCompositingSurfaceTypeSurface() {
+        try {
+            assertEquals(SURFACE_VIEW, getBackendTypeOnUiThread(mXWalkView));
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testGetCompositingSurfaceTypeTexture() {
+        try {
+            assertEquals(TEXTURE_VIEW, getBackendTypeOnUiThread(mXWalkViewTexture));
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
 }

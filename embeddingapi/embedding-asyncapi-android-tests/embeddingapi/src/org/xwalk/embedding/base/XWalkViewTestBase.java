@@ -90,6 +90,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     private final static int CHECK_INTERVAL = 100;
 
     protected XWalkView mXWalkView;
+    protected XWalkView mXWalkViewTexture;
     protected XWalkView mRestoreXWalkView;
     protected MainActivity mainActivity;
     protected TestWebServer mWebServer;
@@ -139,6 +140,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             public void run() {
                 mRestoreXWalkView = new XWalkView(getActivity(), getActivity());
                 mXWalkView = mainActivity.getXWalkView();
+                mXWalkViewTexture = mainActivity.getXWalkViewTexture();
                 mXWalkView.setUIClient(new TestXWalkUIClient());
                 mTestXWalkResourceClient = new TestXWalkResourceClient();
                 mXWalkView.setResourceClient(mTestXWalkResourceClient);
@@ -476,7 +478,6 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-
 
     protected void goForwardSync(final int n) throws Throwable {
         runTestWaitPageFinished(new Runnable(){
@@ -1481,5 +1482,17 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                     + "</head>"
                     + "<body></body></html>";
         }
+    }
+
+    public static final String SURFACE_VIEW = "SurfaceView";
+    public static final String TEXTURE_VIEW = "TextureView";
+
+    protected String getBackendTypeOnUiThread(final XWalkView view) throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return view.getCompositingSurfaceType();
+            }
+        });
     }
 }

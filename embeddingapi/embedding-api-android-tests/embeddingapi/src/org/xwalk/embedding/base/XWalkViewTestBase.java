@@ -31,20 +31,16 @@ import org.chromium.content.browser.test.util.Criteria;
 import org.chromium.content.browser.test.util.CriteriaHelper;
 import org.chromium.net.test.util.TestWebServer;
 import org.chromium.ui.gfx.DeviceDisplayInfo;
-import org.xwalk.core.ClientCertRequest;
 import org.xwalk.core.JavascriptInterface;
 import org.xwalk.core.XWalkCookieManager;
 import org.xwalk.core.XWalkDownloadListener;
 import org.xwalk.core.XWalkFindListener;
-import org.xwalk.core.XWalkHttpAuthHandler;
-import org.xwalk.core.XWalkJavascriptResult;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkSettings;
-import org.xwalk.core.XWalkWebResourceRequest;
 import org.xwalk.embedding.MainActivity;
 import org.xwalk.core.XWalkWebResourceResponse;
 
@@ -57,9 +53,7 @@ import android.os.Bundle;
 import android.test.MoreAsserts;
 import android.util.Log;
 import android.util.Pair;
-import android.view.KeyEvent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.webkit.ValueCallback;
@@ -100,6 +94,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     private Timer mTimer = new Timer();
 
     protected XWalkView mXWalkView;
+    protected XWalkView mXWalkViewTexture;
     protected XWalkView mRestoreXWalkView;
     protected MainActivity mainActivity;
     protected TestWebServer mWebServer;
@@ -154,6 +149,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             public void run() {
                 mRestoreXWalkView = new XWalkView(getActivity(), getActivity());
                 mXWalkView = mainActivity.getXWalkView();
+                mXWalkViewTexture = mainActivity.getXWalkViewTexture();
                 mXWalkView.setUIClient(new TestXWalkUIClient());
                 mTestXWalkResourceClient = new TestXWalkResourceClient();
                 mXWalkView.setResourceClient(mTestXWalkResourceClient);
@@ -1518,5 +1514,17 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                     + "</head>"
                     + "<body></body></html>";
         }
+    }
+
+    public static final String SURFACE_VIEW = "SurfaceView";
+    public static final String TEXTURE_VIEW = "TextureView";
+
+    protected String getBackendTypeOnUiThread(final XWalkView view) throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return view.getCompositingSurfaceType();
+            }
+        });
     }
 }

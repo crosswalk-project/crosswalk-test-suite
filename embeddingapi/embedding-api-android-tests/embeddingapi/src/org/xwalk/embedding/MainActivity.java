@@ -24,12 +24,18 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends XWalkActivity  {
 
-	private LinearLayout mLinearLayout;
+    private LinearLayout mLinearLayout;
     protected XWalkView mXWalkView;
+    protected XWalkView mXWalkViewTexture;
 
     public XWalkView getXWalkView()
     {
         return mXWalkView;
+    }
+
+    public XWalkView getXWalkViewTexture()
+    {
+        return mXWalkViewTexture;
     }
 
     @Override
@@ -38,6 +44,7 @@ public class MainActivity extends XWalkActivity  {
         setContentView(R.layout.xwview_layout);
         mLinearLayout = (LinearLayout) findViewById(R.id.mLinearLayout);
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
+        mXWalkViewTexture = (XWalkView) findViewById(R.id.xwalkviewTexture);
     }
 
     public Context getContent() {
