@@ -491,5 +491,74 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         comm.clear("test-app")
 
+    def test_create_package_skip_dummy_using_s_option(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows -s --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk.replace('.zip', '') + " -r " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Skipping host setup check", output[0])
+
+    def test_create_package_skip_dummy_using_skip_check_option(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --skip-check --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk.replace('.zip', '') + " -r " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Skipping host setup check", output[0])
+
+    def test_create_package_skip_dummy_default_in_subprocess(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk.replace('.zip', '') + " -r " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Skipping host setup check", output[0])
+
+    def test_create_package_skip_dummy_no(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows -s no --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk.replace('.zip', '') + " -r " + comm.ConstPath + "/../testapp/create_package_basic/"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Checking host setup", output[0])
+
+    def test_create_package_default_non_interactive(self):
+        comm.setUp()
+        os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
+        os.mkdir("org.xwalk.test")
+        os.chdir('org.xwalk.test')
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
+            "crosswalk-pkg --platforms=windows --crosswalk=" + comm.XwalkPath + comm.windowsCrosswalk.replace('.zip', '') + " -r " + comm.ConstPath + "/../testapp/create_package_basic/ > 1.log 2>&1"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        self.assertEquals(return_code, 0)
+        cmd = "type 1.log"
+        (return_code, output) = comm.getstatusoutput(cmd)
+        comm.clear("org.xwalk.test")
+        comm.clear("1.log")
+        self.assertEquals(return_code, 0)
+        self.assertIn("Skipping host setup check", output[0])
+
 if __name__ == '__main__':
     unittest.main()
