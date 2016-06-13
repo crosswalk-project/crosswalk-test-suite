@@ -17,10 +17,11 @@ public class XWalkViewWithScrollChanged extends XWalkActivity implements ScrollC
     protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-                .append("Verifies onTouchEvent work in XWalkView.\n\n")
+                .append("Verifies onScrollChanged work in XWalkView.\n\n")
                 .append("Expected Result:\n\n")
                 .append("Test passes if the the message\n\n" +
-                        "'onTouchEvent is invoked; Action is UP/DOWN/MOVE' ");
+                        "'onScrollChanged is invoked' and it's parameter list is shown after you scroll the page");
+
         new  AlertDialog.Builder(this)
                 .setTitle("Info")
                 .setMessage(mess.toString())
