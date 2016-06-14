@@ -276,7 +276,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
     @SmallTest
     public void testWebsiteNoSslGetCertificate() {
         try {
-            final String pageUrl = "http://www.baidu.com";
+            final String pageUrl = "http://www.iciba.com";
             assertNull(getCertificateOnUiThread());
             loadUrlSync(pageUrl);
             assertNull(getCertificateOnUiThread());
