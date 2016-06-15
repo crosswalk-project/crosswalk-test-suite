@@ -1,0 +1,23 @@
+This test suite comes from
+https://chromium.googlesource.com/chromium/src.git 
+with modification:
+
+canvas-createImageBitmap-recursive.html
+
+  -<script src="../../resources/js-test.js"></script>
+  +<script src="./resources/js-test.js"></script>
+
+canvas-createImageBitmap-blob-in-workers.html
+canvas-createImageBitmap-from-canvas-toBlob.html
+
+  -<script src="../../../../resources/js-test.js"></script>
+  +<script src="./resources/js-test.js"></script>
+
+canvas-createImageBitmap-blob-in-workers.html
+
+  -var worker = new Worker('../../../../fast/canvas/resources/canvas-createImageBitmap-blob-in-workers.js');
+  +var worker = new Worker('./resources/canvas-createImageBitmap-blob-in-workers.js');
+
+These tests are copyright by chromium and/or the author listed in the test
+file. The tests are dual-licensed under the License:
+https://src.chromium.org/viewvc/chrome/trunk/src/LICENSE
