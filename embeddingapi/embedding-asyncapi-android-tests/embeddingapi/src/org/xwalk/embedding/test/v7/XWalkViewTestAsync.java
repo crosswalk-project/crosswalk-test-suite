@@ -13,7 +13,7 @@ import android.annotation.SuppressLint;
 import android.test.suitebuilder.annotation.SmallTest;
 
 @SuppressLint("NewApi")
-public class XWalkViewTestAsnyc extends XWalkViewTestBase {
+public class XWalkViewTestAsync extends XWalkViewTestBase {
 
     @Override
     public void setUp() throws Exception {
