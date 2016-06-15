@@ -620,8 +620,10 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         @Override
         public void onReceivedSslError(XWalkView view,
                 ValueCallback<Boolean> callback, SslError error) {
-            callback.onReceiveValue(mAllowSslError);
-            mTestHelperBridge.onReceivedSsl();
+            if(error.getUrl().endsWith("html")){
+                callback.onReceiveValue(mAllowSslError);
+                mTestHelperBridge.onReceivedSsl();
+            }
         }
     }
 
