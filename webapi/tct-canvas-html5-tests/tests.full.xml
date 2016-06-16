@@ -9754,6 +9754,39 @@
           </spec>
         </specs>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_createImageBitmap_blob_in_workers" priority="P2" purpose="Test race condition for createImageBitmap from blob in workers and main" status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/WebKit/canvas-createImageBitmap-blob-in-workers.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="fillText" element_type="method" interface="CanvasRenderingContext2D" section="Graphics" specification="HTML5 The canvas element"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-2dcontext-20120329/#dom-context-2d-filltext</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_createImageBitmap_from_canvas_toBlob" priority="P2" purpose="Tests that createImageBitmap from a canvas.toBlob object should have the same pixel data as the blob" status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/WebKit/canvas-createImageBitmap-from-canvas-toBlob.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="fillText" element_type="method" interface="CanvasRenderingContext2D" section="Graphics" specification="HTML5 The canvas element"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-2dcontext-20120329/#dom-context-2d-filltext</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_createImageBitmap_recursive" priority="P2" purpose="Ensure correct behavior of drawImage with ImageBitmaps constructed from ImageBitmaps that are constructed from images (not pinned to memory) and canvases (pinned to memory)" status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/WebKit/canvas-createImageBitmap-recursive.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="fillText" element_type="method" interface="CanvasRenderingContext2D" section="Graphics" specification="HTML5 The canvas element"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-2dcontext-20120329/#dom-context-2d-filltext</spec_url>
+          </spec>
+        </specs>
+      </testcase>
     </set>
     <set name="Canvas-ref" type="ref" ui-auto="wd">
       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="manual" id="canvas_complexshapes_arcto_001" priority="P2" purpose="Check the arcTo method of CanvasRenderingContext2D interface." status="approved" type="compliance">
