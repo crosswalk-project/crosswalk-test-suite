@@ -4321,6 +4321,21 @@
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/toBlob.png.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_createImageBitmap_blob_in_workers" purpose="Test race condition for createImageBitmap from blob in workers and main">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/WebKit/canvas-createImageBitmap-blob-in-workers.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_createImageBitmap_from_canvas_toBlob" purpose="Tests that createImageBitmap from a canvas.toBlob object should have the same pixel data as the blob">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/WebKit/canvas-createImageBitmap-from-canvas-toBlob.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_createImageBitmap_recursive" purpose="Ensure correct behavior of drawImage with ImageBitmaps constructed from ImageBitmaps that are constructed from images (not pinned to memory) and canvases (pinned to memory)">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/WebKit/canvas-createImageBitmap-recursive.html</test_script_entry>
+        </description>
+      </testcase>
     </set>
     <set name="Canvas-ref" type="ref" ui-auto="wd">
       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="manual" id="canvas_complexshapes_arcto_001" purpose="Check the arcTo method of CanvasRenderingContext2D interface.">
