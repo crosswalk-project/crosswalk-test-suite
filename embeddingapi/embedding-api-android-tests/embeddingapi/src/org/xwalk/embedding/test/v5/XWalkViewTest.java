@@ -13,7 +13,6 @@ import android.graphics.Color;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.test.suitebuilder.annotation.MediumTest;
 import android.util.Pair;
 
 
@@ -146,16 +145,10 @@ public class XWalkViewTest extends XWalkViewTestBase {
         try {
             final float mPageMinimumScale = 0.5f;
             String url = "file:///android_asset/zoom.html";
+            setUseWideViewPortOnUiThreadByXWalkView(true, mXWalkView);
             assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
             loadUrlSync(url);
-            pollOnUiThread(new Callable<Boolean>() {
-                @Override
-                public Boolean call() throws Exception {
-                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getNewScale();
-                }
-            });
-
-            Thread.sleep(500);
+            waitForScaleToBecome(mPageMinimumScale);
 
             assertTrue("Should be able to zoom in", canZoomInOnUiThread());
             assertFalse("Should not be able to zoom out", canZoomOutOnUiThread());
@@ -164,7 +157,6 @@ public class XWalkViewTest extends XWalkViewTestBase {
             assertTrue(false);
             e.printStackTrace();
         } catch (Throwable e) {
-            // TODO: handle exception
             assertTrue(false);
             e.printStackTrace();
         }

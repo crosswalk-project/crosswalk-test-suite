@@ -523,7 +523,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                     return false;
                 }
             }
-        });
+        }, WAIT_TIMEOUT_MS, CHECK_INTERVAL);
     }
 
     protected void checkHistoryItemList(XWalkView restoreXWalkView) throws Throwable {
@@ -1494,6 +1494,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             @Override
             public String call() throws Exception {
                 return view.getCompositingSurfaceType();
+            }
+        });
+    }
+
+    protected void waitForScaleToBecome(final float expectedScale) throws Throwable {
+    	pollOnUiThread(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return expectedScale == getPixelScale();
             }
         });
     }
