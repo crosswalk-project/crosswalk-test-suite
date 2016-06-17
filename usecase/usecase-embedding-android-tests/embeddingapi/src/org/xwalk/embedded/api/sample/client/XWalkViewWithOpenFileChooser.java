@@ -69,12 +69,16 @@ public class XWalkViewWithOpenFileChooser extends XWalkActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        // TODO Auto-generated method stub
-        if (mUploadMessage == null) return;
-        Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
-        mUploadMessage.onReceiveValue(result);
-        mUploadMessage = null;
+        Uri result = null;
+        if (intent != null) {
+            result = intent.getData();
+        }
+        if (mUploadMessage != null){
+            mUploadMessage.onReceiveValue(result);
+            mUploadMessage = null;
+        }
 
+        if (result == null) return;
         Bitmap bm = null;
         ContentResolver resolver = getContentResolver();
         try {
@@ -82,10 +86,8 @@ public class XWalkViewWithOpenFileChooser extends XWalkActivity {
             mImageView.setImageBitmap(bm);
             bm = null;
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
