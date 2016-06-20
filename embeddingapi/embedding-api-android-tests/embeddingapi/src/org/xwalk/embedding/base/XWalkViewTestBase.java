@@ -1529,4 +1529,13 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
+
+    protected void setQuirksMode(final boolean value) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.getSettings().setSupportQuirksMode(value);
+            }
+        });
+    }
 }

@@ -22,6 +22,7 @@ import org.chromium.content.browser.test.util.CallbackHelper;
 
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import org.xwalk.embedding.util.CommonResources;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.test.suitebuilder.annotation.SmallTest;
@@ -106,7 +107,7 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
 
     @SmallTest
     public void testSetInitialScale2() throws Throwable {
-
+    	setQuirksMode(false);
         WindowManager wm = (WindowManager) getInstrumentation().getTargetContext()
                 .getSystemService(Context.WINDOW_SERVICE);
         Point screenSize = new Point();
@@ -117,13 +118,14 @@ public class XWalkViewTestAsync extends XWalkViewTestBase {
         final String page = "<html><body>"
                 + "<p style='height:" + height + "px;width:" + width + "px'>"
                 + "testSetInitialScale</p></body></html>";
+        
         final float defaultScaleFactor = 0;
-        final float defaultScale = 0.5f;
-        final float scaleFactor = 0.25f;
+        final float defaultScale = getInstrumentation().getTargetContext(
+                ).getResources().getDisplayMetrics().density;
 
         assertEquals(defaultScaleFactor, getScaleFactor(), .01f);
         loadDataSync(null, page, "text/html", false);
-        assertEquals(scaleFactor, getScaleFactor(), .01f);
+        assertEquals(defaultScale, getPixelScale(), .01f);
 
         int onScaleChangedCallCount = mTestHelperBridge.getOnScaleChangedHelper().getCallCount();
         setInitialScale(60);
