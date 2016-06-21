@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.xwalk.embedding.test"
+    package="org.xwalk.embedding.asynctest"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -21,17 +21,17 @@
 
       <instrumentation
         android:name="android.test.InstrumentationTestRunner"
-        android:targetPackage="org.xwalk.embedding.test" />
+        android:targetPackage="org.xwalk.embedding.asynctest" />
 
       <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:label="EmbeddingApiTestUnit"
+        android:label="EmbeddingApiAsynctestUnit"
         android:name="org.xwalk.core.XWalkApplication" >
 
        <activity
             android:name="org.xwalk.embedding.MainActivity"
-            android:label="EmbeddingApiTestUnit_Main" >
+            android:label="EmbeddingApiAsynctestUnit_Main" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <provider android:name="org.xwalk.embedding.base.TestContentProvider" android:authorities="org.xwalk.embedding.base.TestContentProvider" />
+        <provider android:name="org.xwalk.embedding.base.AsynctestContentProvider" android:authorities="org.xwalk.embedding.base.AsynctestContentProvider" />
 
         <uses-library android:name="android.test.runner" />
     </application>

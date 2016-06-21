@@ -228,8 +228,20 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
             utils.replaceUserString(
                 app_src,
                 'AndroidManifest.xml',
+                'org.xwalk.embedding.asynctest',
+                "org.xwalk.embedding.asynctest." +
+                app_version)
+            utils.replaceUserString(
+                app_src,
+                'AndroidManifest.xml',
                 'EmbeddingApiTestUnit',
                 "EmbeddingApiTestUnit" +
+                app_version)
+            utils.replaceUserString(
+                app_src,
+                'AndroidManifest.xml',
+                'EmbeddingApiAsynctestUnit',
+                "EmbeddingApiAsynctestUnit" +
                 app_version)
             if app_version != "v6":
                 utils.replaceUserString(
@@ -238,12 +250,24 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
                     '<provider android:name=\"org.xwalk.embedding.base.TestContentProvider\"' +
                     ' android:authorities=\"org.xwalk.embedding.base.TestContentProvider\" />',
                     "")
+                utils.replaceUserString(
+                    app_src,
+                    'AndroidManifest.xml',
+                    '<provider android:name=\"org.xwalk.embedding.base.AsynctestContentProvider\"' +
+                    ' android:authorities=\"org.xwalk.embedding.base.AsynctestContentProvider\" />',
+                    "")
             main_dest = os.path.join(app_src, "src/org/xwalk/embedding")
             utils.replaceUserString(
                 main_dest,
                 'MainActivity.java',
                 'org.xwalk.embedding.test',
                 "org.xwalk.embedding.test." +
+                app_version)
+            utils.replaceUserString(
+                main_dest,
+                'MainActivity.java',
+                'org.xwalk.embedding.asynctest',
+                "org.xwalk.embedding.asynctest." +
                 app_version)
         if BUILD_PARAMETERS.packtype and utils.checkContains(
                 BUILD_PARAMETERS.packtype, "GRADLE"):
