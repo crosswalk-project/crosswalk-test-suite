@@ -250,12 +250,6 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
                     '<provider android:name=\"org.xwalk.embedding.base.TestContentProvider\"' +
                     ' android:authorities=\"org.xwalk.embedding.base.TestContentProvider\" />',
                     "")
-                utils.replaceUserString(
-                    app_src,
-                    'AndroidManifest.xml',
-                    '<provider android:name=\"org.xwalk.embedding.base.AsynctestContentProvider\"' +
-                    ' android:authorities=\"org.xwalk.embedding.base.AsynctestContentProvider\" />',
-                    "")
             main_dest = os.path.join(app_src, "src/org/xwalk/embedding")
             utils.replaceUserString(
                 main_dest,

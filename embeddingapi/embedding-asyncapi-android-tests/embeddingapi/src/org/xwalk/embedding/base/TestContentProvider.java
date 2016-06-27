@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // Note: if you move this class, make sure you have also updated AndroidManifest.xml
-public class AsynctestContentProvider extends ContentProvider {
+public class TestContentProvider extends ContentProvider {
     private static final String AUTHORITY =
             "org.xwalk.embedding.base.TestContentProvider";
     private static final String CONTENT_SCHEME = "content://";
@@ -54,7 +54,7 @@ public class AsynctestContentProvider extends ContentProvider {
         context.getContentResolver().query(uri, null, null, null, null);
     }
 
-    public AsynctestContentProvider() {
+    public TestContentProvider() {
         super();
         mResourceRequestCount = new HashMap<String, Integer>();
     }
