@@ -41,7 +41,7 @@ def uninstPKGs():
             if file.endswith(".apk"):
                 index_start = str(file).index("_")
                 index_end = str(file).index(".")
-                cmd = "%s -s %s uninstall org.xwalk.embedding.test.%s" % (
+                cmd = "%s -s %s uninstall org.xwalk.embedding.asynctest.%s" % (
                     ADB_CMD, PARAMETERS.device, str(file)[index_start + 1: index_end])
                 (return_code, output) = doCMD(cmd)
                 for line in output:
