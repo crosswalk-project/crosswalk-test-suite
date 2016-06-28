@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Li, Hao" href="mailto:haox.li@intel.com">
+<link rel="help" href="https://crosswalk-project.org/jira/browse/XWALK-6235">
+<style type="text/css">
+  table.gridtable {
+	  border-width: 1px;
+	  border-color: #666666;
+	  border-collapse: collapse;
+  }
+  table.gridtable th {
+	  border-width: 1px;
+	  border-style: solid;
+	  border-color: #666666;
+	  background-color: #dedede;
+  }
+  table.gridtable td {
+	  border-width: 1px;
+	  border-style: solid;
+	  border-color: #666666;
+  }
+</style>
+<div>
+  <p>
+    <strong>Test that 32bit Crosswalk app with shared mode is installed in 64-bit device, the device
+            will consider the app is for first primary instruction set what the device supports. 
+            If the installed Crosswalk runtime library is 32-bit, the app will fail to load.</strong>
+  </p>
+  <p>
+    <strong>Test steps:</strong>
+  </p>
+  <table class="gridtable">
+    <tr>
+      <td colspan="3">
+         Note: Crosswalk(Vn) is Crosswalk stable version.
+      </td>
+    </tr>
+    <tr>
+      <th>Number</th><th>Demo Crosswalk Version</th><th>Crosswalk Runtime Lib Version</th>
+    </tr>
+    <tr>
+       <td>1</td><td>32bit Crosswalk(Vn)</td><td>32bit Crosswalk(Vn)</td>
+    </tr>
+    <tr>
+      <td>2</td><td>32bit Crosswalk(Vn)</td><td>32bit Crosswalk(Vn-1)</td>
+    </tr>
+    <tr>
+      <td>3</td><td>32bit Crosswalk(Vn)</td><td>32bit Crosswalk(Vn-2)</td>
+    </tr>
+    <tr>
+      <td>4</td><td>32bit Crosswalk(Vn-1)</td><td>32bit Crosswalk(Vn)</td>
+    </tr>
+    <tr>
+      <td>5</td><td>32bit Crosswalk(Vn-2)</td><td>32bit Crosswalk(Vn)</td>
+    </tr>
+  </table>
+  <ol>
+    <li>Build "demo" app with 32-bit Crosswalk library following the table:<br/>
+        $ crosswalk-pkg --crosswalk=[crosswalk-version] --platform=android --android=shared --targets=[arch] /path/to/testapps/demo</li>
+    <li>Install the built "demo" to 64-bit device(32-bit crosswalk runtime library installed following the table), and launch it.</li>
+    <li>Uninstall the installed app</li>
+  </ol>
+  <p>
+    <strong>Expected Output:</strong>
+  </p>
+  <ol>
+    <li>The apk named like "demo" is built successfully.</li>
+    <li>The app named like "Demo V0.1" fail to launch.</li>
+    <li>The app is uninstalled successfully.</li>
+  </ol>
+</div>

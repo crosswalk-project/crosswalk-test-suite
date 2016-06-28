@@ -58,6 +58,26 @@
           <test_script_entry>/opt/crosswalk-compatibility-android-tests/compatibility/upgrade_shared2embedded_aVn-1Vn_bVnVn.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Crosswalk Sample Apps/Compatibility" execution_type="manual" id="dynamicswitch_32bit-arm_embedded_in_64bit-ia_no_runtime" priority="P3" purpose="Test that 32-bit Crosswalk app with embedded mode for ARM can dynamic switch to load shared library instead of its embedded library in 64-bit IA device with no installed Crosswalk runtime library." status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/crosswalk-compatibility-android-tests/compatibility/dynamicswitch_32bit-arm_embedded_in_64bit-ia_no_runtime.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Sample Apps/Compatibility" execution_type="manual" id="dynamicswitch_32bit-arm_embedded_in_64bit-ia_with_runtime" priority="P3" purpose="Test that 32-bit Crosswalk app with embedded mode for ARM fail to load and report 'Mismatch of CPU Architecture' in 64-bit IA device with 64-bit Crosswalk runtime library installed before." status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/crosswalk-compatibility-android-tests/compatibility/dynamicswitch_32bit-arm_embedded_in_64bit-ia_with_runtime.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Sample Apps/Compatibility" execution_type="manual" id="sharedmode_32bit_shared_in_64bit_with_64bit_runtime" priority="P3" purpose="Test that 32bit Crosswalk app with shared mode is installed in 64-bit device, the device will consider the app is for first primary instruction set what the device supports. For the 64-bit device, it still determines the app is for 64-bit." status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/crosswalk-compatibility-android-tests/compatibility/sharedmode_32bit_shared_in_64bit_with_64bit_runtime.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Sample Apps/Compatibility" execution_type="manual" id="sharedmode_32bit_shared_in_64bit_with_32bit_runtime" priority="P3" purpose="Test that 32bit Crosswalk app with shared mode is installed in 64-bit device, the device will consider the app is for first primary instruction set what the device supports. If the installed Crosswalk runtime library is 32-bit, the app will fail to load." status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/crosswalk-compatibility-android-tests/compatibility/sharedmode_32bit_shared_in_64bit_with_32bit_runtime.html</test_script_entry>
+        </description>
+      </testcase>
     </set>
   </suite>
 </test_definition>
