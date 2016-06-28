@@ -26,7 +26,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="author" title="Wang, Hongjuan" href="mailto:hongjuanx.wang@intel.com">
 <link rel="author" title="Li, Hao" href="mailto:haox.li@intel.com">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/main.css">
@@ -58,12 +57,13 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="content">
   <div>
     <p>
-      <strong>Test that Crosswalk shared mode app can get matched Crosswalk runtime library from Google Play store.</strong>
+      <strong>Test that a separate 64-bit Crosswalk APK support in Google Play store</strong>
     </p>
     <p>
       <strong>Pre-condition:</strong>
     </p>
     <ol>
+      <li>A 64bit IA device.</li>
       <li>Uninstall pre-installed Crosswalk runtime library.</li>
       <li>Google Play store or other PRC store are installed.</li>
     </ol>
@@ -75,22 +75,20 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <th>Device Architecture</th><th>App Mode</th><th>Expected Crosswalk installed via Google Play Store</th><th>Expected Crosswalk installed via PRC Store</th>
       </tr>
       <tr>
-         <td>ARM 32bit</td><td>Shared</td><td>org.xwalk.core</td><td>org.xwalk.core</td>
+         <td>IA 64bit</td><td>32bit-ARM-embedded</td><td>org.xwalk.core</td><td>org.xwalk.core.ia</td>
       </tr>
       <tr>
-         <td>ARM 64bit</td><td>Shared</td><td>org.xwalk.core64</td><td>org.xwalk.core64</td>
-      </tr>
-      <tr>
-         <td>IA 32bit</td><td>Shared</td><td>org.xwalk.core</td><td>org.xwalk.core.ia</td>
-      </tr>
-      <tr>
-         <td>IA 64bit</td><td>Shared</td><td>org.xwalk.core64</td><td>org.xwalk.core64.ia</td>
+         <td>IA 64bit</td><td>32bit-ARM-embedded + Shared</td><td>org.xwalk.core + org.xwalk.core64</td><td>org.xwalk.core.ia + org.xwalk.core64.ia</td>
       </tr>
     </table>
     <ol>
-      <li>Find(or Build) a Crosswalk shared mode apk, install it to test devices following the table, and launch it.</li>
+      <li>Find(or Build) a Crosswalk 32 bit ARM apk in embedded mode, install it to 64 bit IA device, and launch it.</li>
       <li>Get Crosswalk via Google Play store or other PRC store.</li>
-      <li>Launch the app again.</li>
+      <li>Launch the embedded app again.</li>
+      <li>Check installed Crosswalk runtime library by command line.</li>
+      <li>Find(or Build) a Crosswalk shared apk, install it to the device, and launch it.</li>
+      <li>Get Crosswalk via Google Play store or other PRC store.</li>
+      <li>Launch the shared app again.</li>
       <li>Check installed Crosswalk runtime library by command line.</li>
       <li>Uninstall the installed Crosswalk runtime library.</li>
     </ol>
@@ -99,7 +97,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </p>
     <ol>
       <li>Building shared mode apk:<br/>
-          $ crosswalk-pkg --crosswalk=[crosswalk-version] --platform=android --android=shared --targets=arm /path/to/testapps/demo</li>
+          $ crosswalk-pkg --crosswalk=[crosswalk-version] --platform=android --android=[shared|embedded] --targets=[arm|x86] /path/to/testapps/demo</li>
       <li>Finding installed Crosswalk runtime library:<br/>
           $ adb shell dumpsys|grep org.xwalk.core</li>
     </ol>
