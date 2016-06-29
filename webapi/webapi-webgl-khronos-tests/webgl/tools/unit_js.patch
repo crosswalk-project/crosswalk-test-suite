@@ -1,0 +1,222 @@
+--- unit.orig.js	2015-06-18 23:26:41
++++ unit.js	2016-06-17 14:46:34	
+@@ -59,7 +59,6 @@ Tests = {
+   message : null,
+   delay : 0,
+   autoinit: true,
+-
+   startUnit : function(){ return []; },
+   setup : function() { return arguments; },
+   teardown : function() {},
+@@ -71,6 +70,25 @@ var __testFailCount__ = 0;
+ var __testLog__;
+ var __backlog__ = [];
+ 
++var caseName = null;
++var subcaseIndex = 0;
++
++function KhronosUnitTest(name) {
++  this.name = name;
++  this.status = null;
++  this.message = null;
++}
++
++var khronosUnitTests = [];
++
++function Status() {
++  this.status = null;
++  this.message = null;
++}
++
++var statusObj = new Status();
++statusObj.status = 0;
++
+ Object.toSource = function(a, seen){
+   if (a == null) return "null";
+   if (typeof a == 'boolean') return a ? "true" : "false";
+@@ -167,6 +185,9 @@ function runTests() {
+     __testLog__ = document.createElement('div');
+     __testSuccess__ = true;
+     try {
++      caseName = i;
++      subcaseIndex = 1;
++
+       doTestNotify (i);
+       var args = setup_args;
+       if (Tests.setup != null)
+@@ -207,7 +228,7 @@ function runTests() {
+ }
+ 
+ function doTestNotify(name) {
+-  //try {
++  //try {
+   //  var xhr = new XMLHttpRequest();
+   //  xhr.open("GET", "http://localhost:8888/"+name, true);
+   //  xhr.send(null);
+@@ -215,6 +236,12 @@ function doTestNotify(name) {
+ }
+ 
+ function testFailed(assertName, name) {
++  var kutest = new KhronosUnitTest(caseName + "/" + subcaseIndex);
++  kutest.status = 1;
++  kutest.message = name;
++  khronosUnitTests.push(kutest);
++  subcaseIndex += 1;
++
+   var d = document.createElement('div');
+   var h = document.createElement('h3');
+   var d1 = document.createElement("span");
+@@ -240,6 +267,12 @@ function testFailed(assertName, name) {
+ }
+ 
+ function testPassed(assertName, name) {
++  var kutest = new KhronosUnitTest(caseName + "/" + subcaseIndex);
++  kutest.status = 0;
++  kutest.message = name;
++  khronosUnitTests.push(kutest);
++  subcaseIndex += 1;
++
+   var d = document.createElement('div');
+   var h = document.createElement('h3');
+   var d1 = document.createElement("span");
+@@ -249,6 +282,7 @@ function testPassed(assertName, name) {
+   h.appendChild(document.createTextNode(
+       name==null ? assertName : name + " (in " + assertName + ")"));
+   d.appendChild(h);
++  kutest.message = name==null ? assertName : name + " (in " + assertName + ")";
+   var args = []
+   for (var i=2; i<arguments.length; i++) {
+     var a = arguments[i];
+@@ -256,6 +290,7 @@ function testPassed(assertName, name) {
+     p.style.whiteSpace = 'pre';
+     p.textContent = (a == null) ? "null" :
+                     (typeof a == 'boolean' || typeof a == 'string') ? a : Object.toSource(a);
++    kutest.message += "\n" + p.textContent;
+     args.push(p.textContent);
+     d.appendChild(p);
+   }
+@@ -291,7 +326,7 @@ function log(msg) {
+ function printTestStatus(testsRun) {
+   var status = document.getElementById('test-status');
+   if (testsRun) {
+-    status.className = checkTestSuccess() ? 'ok' : 'fail';
++    status.className = checkTestSuccess() ? 'pass' : 'fail';
+     status.textContent = checkTestSuccess() ? "PASS" : "FAIL";
+   } else {
+     status.className = 'fail';
+@@ -392,35 +427,35 @@ function assertArrayEquals(name, v, p) {
+ }
+ 
+ function assertArrayEqualsWithEpsilon(name, v, p, l) {
+-  if (l == null) { l = p; p = v; v = name; name = null; }
+-  if (!v) {
+-    testFailed("assertArrayEqualsWithEpsilon: first array undefined", name, v, p);
+-    return false;
+-  }
+-  if (!p) {
+-    testFailed("assertArrayEqualsWithEpsilon: second array undefined", name, v, p);
+-    return false;
+-  }
+-  if (!l) {
+-    testFailed("assertArrayEqualsWithEpsilon: limit array undefined", name, v, p);
+-    return false;
+-  }
+-  if (v.length != p.length) {
+-    testFailed("assertArrayEqualsWithEpsilon", name, v, p, l);
+-    return false;
+-  }
+-  if (v.length != l.length) {
+-    testFailed("assertArrayEqualsWithEpsilon", name, v, p, l);
+-    return false;
+-  }
+-  for (var ii = 0; ii < v.length; ++ii) {
+-    if (Math.abs(v[ii]- p[ii])>l[ii]) {
+-      testFailed("assertArrayEqualsWithEpsilon", name, v, p, l);
+-      return false;
+-    }
+-  }
+-  testPassed("assertArrayEqualsWithEpsilon", name, v, p, l);
+-  return true;
++if (l == null) { l = p; p = v; v = name; name = null; }
++if (!v) {
++testFailed("assertArrayEqualsWithEpsilon: first array undefined", name, v, p);
++return false;
++}
++if (!p) {
++testFailed("assertArrayEqualsWithEpsilon: second array undefined", name, v, p);
++return false;
++}
++if (!l) {
++testFailed("assertArrayEqualsWithEpsilon: limit array undefined", name, v, p);
++return false;
++}
++if (v.length != p.length) {
++testFailed("assertArrayEqualsWithEpsilon", name, v, p, l);
++return false;
++}
++if (v.length != l.length) {
++testFailed("assertArrayEqualsWithEpsilon", name, v, p, l);
++return false;
++}
++for (var ii = 0; ii < v.length; ++ii) {
++if (Math.abs(v[ii]- p[ii])>l[ii]) {
++testFailed("assertArrayEqualsWithEpsilon", name, v, p, l);
++return false;
++}
++}
++testPassed("assertArrayEqualsWithEpsilon", name, v, p, l);
++return true;
+ }
+ 
+ function assertNotEquals(name, v, p) {
+@@ -899,6 +934,32 @@ function reportTestResultsToHarness(success, msg) {
+ }
+ 
+ function notifyFinishedToHarness() {
++  if (window.parent.completion_callback) {
++    var notifyResult = [];
++    var caseName = document.title;
++    if (caseName.length === 0) {
++      fileName = window.location.href;
++      arrUrl  = window.location.href.split('/');
++      caseName = arrUrl[arrUrl.length-1].split('\.')[0];
++    }
++    var ktestNotify = new KhronosUnitTest(caseName);
++    ktestNotify.status = 0;
++    var msg = "[Message]";
++    for (var i=0;i<khronosUnitTests.length;i++) {
++      var kt = khronosUnitTests[i] ;
++      var ktStatus = kt.status;
++      if (ktStatus===1) {
++        ktestNotify.status = 1;
++        msg += "[assert]fail[message]*FAIL " + kt.message + "\n";
++      }
++      else {
++        msg += "[assert]pass[message]*PASS " + kt.message + "\n";
++      }
++    }
++    ktestNotify.message = msg;
++    notifyResult.push(ktestNotify);
++    window.parent.completion_callback(notifyResult, statusObj);
++  }
+   if (window.parent.webglTestHarness) {
+     window.parent.webglTestHarness.notifyFinished(window.location.pathname);
+   }
+@@ -936,11 +997,10 @@ function initTests() {
+ 
+ window.addEventListener('load', function(){
+   if (Tests.autoinit) {
+-    // let the browser hopefully finish updating the gl canvas surfaces if we are given a delay
+-    if (Tests.delay)
+-      setTimeout(initTests, Tests.delay);
+-    else
+-      initTests()
++  // let the browser hopefully finish updating the gl canvas surfaces if we are given a delay
++  if (Tests.delay)
++    setTimeout(initTests, Tests.delay);
++  else
++    initTests()
+   }
+ }, false);
+-
+ 
