@@ -45,7 +45,7 @@ var kernel_arg_values = [
     [256, 4294967295, 4294967296, 0, -1], // UInt
     [[0, 5000], [50, 10], [2147483647, 2147483647], [2147483648, 2147483648], [-2147483648, -2147483648], [-2147483649, -2147483649]], // Long
     [[0, 1898989], [90, 10], [4294967295, 4294967295], [4294967296, 4294967296], [0, 0], [-1, -1]], // ULong
-    [676767.6875, 3.4E+38, 3.4E+39, 1.2E-38, 1.2E-39], // Float
+    [676767.6875, 3.4E+38, 3.4E+38, 1.2E-38, 1.2E-39], // Float
     [21345678.123454321, 1.8E+308, 1.8E+309, 2.2E-308, 2.2E-309] // Double
 ];
 
@@ -64,7 +64,7 @@ var kernel_arg_expected_values = [
 
 /* Generic function to run a "kernel" which copies the input values "inputArray" into a output buffer.
    Later verify the values read from the output buffer into a "resultArray" against "expectedArray". */
-var runAndTest = function(commandqueue, kernel, inputArray, resultArray, expectedArray)
+var runAndTest = function(commandqueue, kernel, inputArray, resultArray, expectedArray, length)
 {
     try {
         var kernelName = kernel.getInfo(webcl.KERNEL_FUNCTION_NAME);
@@ -77,7 +77,7 @@ var runAndTest = function(commandqueue, kernel, inputArray, resultArray, expecte
         var output = wtu.createBuffer(webCLContext, webcl.MEM_WRITE_ONLY, inputArray.BYTES_PER_ELEMENT * resultArray.length);
         wtu.setArg(kernel, 0, input);
         wtu.setArg(kernel, 1, output);
-        wtu.setArg(kernel, 2, new Uint32Array([inputArray.length]));
+        wtu.setArg(kernel, 2, new Uint32Array([length]));
 
         var globalWorkSize = [1024];
         wtu.enqueueNDRangeKernel(commandqueue, kernel, globalWorkSize.length, null, globalWorkSize, null);
@@ -106,43 +106,46 @@ try {
     var wtu = WebCLTestUtils;
     webCLPlatform = wtu.getPlatform();
     webCLDevices = wtu.getDevices(webCLPlatform);
+    var deviceFP64 = wtu.select_FP64_device(webCLDevices);
+    if(deviceFP64)
+        webCLDevices=[deviceFP64];
 
     webCLContext = wtu.createContext();
     webCLCommandQueue = wtu.createCommandQueue(webCLContext);
 
     var kernelSource = wtu.readKernel("../../../resources/kernels/setArg_basic_functionality.cl");
     webCLProgram = wtu.createProgram(webCLContext, kernelSource);
-    wtu.build(webCLProgram, webCLDevices);
+    wtu.build(webCLProgram, webCLDevices, deviceFP64==null ? "" : "-DENABLE_FP64");
 
     webCLKernel = webCLProgram.createKernel("kernelChar");
     var inputArray = new Int8Array(kernel_arg_values[0]);
     var results = new Int8Array(kernel_arg_values[0].length);
-    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[0]);
+    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[0], inputArray.length);
 
     webCLKernel = webCLProgram.createKernel("kernelUChar");
     inputArray = new Uint8Array(kernel_arg_values[1]);
     results = new Uint8Array(kernel_arg_values[1].length);
-    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[1]);
+    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[1], inputArray.length);
 
     webCLKernel = webCLProgram.createKernel("kernelShort");
     inputArray = new Int16Array(kernel_arg_values[2]);
     results = new Int16Array(kernel_arg_values[2].length);
-    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[2]);
+    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[2], inputArray.length);
 
     webCLKernel = webCLProgram.createKernel("kernelUShort");
     inputArray = new Uint16Array(kernel_arg_values[3]);
     results = new Uint16Array(kernel_arg_values[3].length);
-    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[3]);
+    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[3], inputArray.length);
 
     webCLKernel = webCLProgram.createKernel("kernelInt");
     inputArray = new Int32Array(kernel_arg_values[4]);
     results = new Int32Array(kernel_arg_values[4].length);
-    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[4]);
+    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[4], inputArray.length);
 
     webCLKernel = webCLProgram.createKernel("kernelUInt");
     inputArray = new Uint32Array(kernel_arg_values[5]);
     results = new Uint32Array(kernel_arg_values[5].length);
-    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[5]);
+    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[5], inputArray.length);
 
     // Since Int64Aray is not supoprted by WebKit need to use 2 Int32 elements.
     // So copy the input into a Int32Array of length * 2 size and pass it as input.
@@ -157,7 +160,7 @@ try {
     }
     results = new Int32Array(values.length * 2);
     webCLKernel = webCLProgram.createKernel("kernelLong");
-    runAndTest(webCLCommandQueue, webCLKernel, input, results, expectedValues);
+    runAndTest(webCLCommandQueue, webCLKernel, input, results, expectedValues, values.length);
 
     values = kernel_arg_values[7];
     input = new Uint32Array(values.length * 2);
@@ -171,18 +174,19 @@ try {
     results = new Uint32Array(values.length * 2);
 
     webCLKernel = webCLProgram.createKernel("kernelULong");
-    runAndTest(webCLCommandQueue, webCLKernel, input, results, expectedValues);
+    runAndTest(webCLCommandQueue, webCLKernel, input, results, expectedValues, values.length);
 
     webCLKernel = webCLProgram.createKernel("kernelFloat");
     inputArray = new Float32Array(kernel_arg_values[8]);
     results = new Float32Array(kernel_arg_values[8].length);
-    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[8]);
+    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[8], inputArray.length);
 
-    webCLKernel = webCLProgram.createKernel("kernelDouble");
-    inputArray = new Float64Array(kernel_arg_values[9]);
-    results = new Float64Array(kernel_arg_values[9].length);
-    runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[9]);
-
+    if (deviceFP64) {
+        webCLKernel = webCLProgram.createKernel("kernelDouble");
+        inputArray = new Float64Array(kernel_arg_values[9]);
+        results = new Float64Array(kernel_arg_values[9].length);
+        runAndTest(webCLCommandQueue, webCLKernel, inputArray, results, kernel_arg_expected_values[9], inputArray.length);
+    }
 } catch (e) {
     testFailed("WebCLKernel setArg() basic type throws exception: " + e.message);
 }
