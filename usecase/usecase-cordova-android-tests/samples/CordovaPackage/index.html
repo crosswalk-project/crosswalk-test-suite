@@ -45,29 +45,20 @@ Authors:
 <div class="content">
   <h4>Preconditions</h4>
   <ol>
-    <li>Require npm</li>
-    <li>Require plugman
-      <div>
-        $ sudo npm install plugman ­-g<br/>
-        Please make sure the version of plugman is >= 0.22.17, Use "plugman ­-v" common to check it<br/>
-      </div>
-    </li>
     <li>Require maven tool, you may need to set up maven proxy: export MAVEN_OPTS="-DsocksProxyHost=[proxy] –DsocksProxyPort=[port]</li>
     <li>Connect the android device to the host</li>
   </ol>
-
   <h4>Test Steps</h4>
   <ol>
-    <li>Enter 'usecase-cordova-android-tests/res/CordovaPackage' directory</li>
-    <li>Run the python script:<br/>
+    <li>Enter 'usecase-cordova-android-tests/res/CordovaPackage' directory, run the python script:<br/>
       <div>
-        For embedded mode: $ python test.py -m embedded<br/>
+        For embedded mode: $ python test.py -m embedded -a [arch]<br/>
         For shared mode: $ python test.py -m shared<br/>
       </div>
     </li>
     <li>Check the command output</li>
     <li>Check the app on the device</li>
-    <li>Quick press back button to exit 'hello' app after the app launch</li>
+    <li>Quick press back button to exit app after the app launch</li>
     <li>Uninstall the app</li>
   </ol>
 </div>
