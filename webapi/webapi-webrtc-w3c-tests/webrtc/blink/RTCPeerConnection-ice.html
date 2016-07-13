@@ -26,11 +26,6 @@ function onIceChange2() {
   }
 }
 
-function addIceCandidateSuccess() {
-  pc.oniceconnectionstatechange = onIceChange2;
-  pc.close();
-}
-
 function addIceCandidateFailure() {
   t.step(function () {
     assert_unreached("addIceCandidateFailue was called");
@@ -42,18 +37,11 @@ function onIceChange1() {
   if (pc.iceConnectionState === "completed") {
     iceCandidate = new RTCIceCandidate({candidate:"nano nano"});
 
-    t.step(function () {
-      assert_throws(" SyntaxError", function () {
-        pc.addIceCandidate(null, null, null);
-      }, "addIceCandidate threw exception");
-      assert_throws(" SyntaxError", function () {
-        pc.addIceCandidate(iceCandidate, null, null);
-      }, "addIceCandidate threw exception");
-      assert_throws(" SyntaxError", function () {
-        pc.addIceCandidate(iceCandidate, addIceCandidateSuccess, null);
-      }, "addIceCandidate threw exception");
-      pc.addIceCandidate(iceCandidate, addIceCandidateSuccess, addIceCandidateFailure);
-    });
+    pc.addIceCandidate(iceCandidate)
+    .then(function() {
+      pc.oniceconnectionstatechange = onIceChange2;
+      pc.close();
+    }).catch(addIceCandidateFailure);
   }
 }
 

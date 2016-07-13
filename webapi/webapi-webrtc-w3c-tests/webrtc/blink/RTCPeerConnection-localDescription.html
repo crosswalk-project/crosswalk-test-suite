@@ -17,12 +17,27 @@ var t = async_test(document.title);
 
 var pc = null;
 var pc2 = null;
-var pc1_offer;
+var atStep = "Create offer at one";
 
 function requestSucceeded1 (offer) {
-  pc1_offer = offer;
   t.step(function() {
-    pc.setLocalDescription(offer, requestSucceeded2, requestFailed2);
+    atStep = 'Set local description at one';
+    pc.setLocalDescription(offer)
+    .then(function() {
+      if (typeof RTCPeerConnection != "undefined") {
+        pc2 = new RTCPeerConnection(null, null);
+      } else {
+        pc2 = new webkitRTCPeerConnection(null, null);
+      }
+      atStep = 'Set remote description at two';
+      return pc2.setRemoteDescription(offer);
+    }).then(function() {
+      atStep = 'Create answer at two';
+      pc2.createAnswer(requestSucceeded2, requestFailed2);
+    }).catch(t.step_func(function(e) {
+      assert_unreached('Error ' + e.name + ': ' + e.message +
+                       ' happened at step ' + atStep);
+    }));
   });
 }
 
@@ -33,55 +48,27 @@ function requestFailed1 () {
   t.done();
 }
 
-function requestSucceeded2() {
-  if (typeof RTCPeerConnection != "undefined") {
-    pc2 = new RTCPeerConnection(null, null);
-  } else {
-    pc2 = new webkitRTCPeerConnection(null, null);
-  }
-  pc2.setRemoteDescription(pc1_offer, requestSucceeded3, requestFailed3);
-}
-
-function requestFailed2() {
-  t.step(function () {
-    assert_unreached("requestFailed2 was called");
-  });
-  t.done();
-}
-
-function requestSucceeded3 () {
-  pc2.createAnswer(requestSucceeded4, requestFailed4);
-}
-
-function requestFailed3 () {
-    t.step(function () {
-      assert_unreached("requestFailed3 was called");
-    });
-    t.done();
-}
-
-function requestSucceeded4 (answer) {
+function requestSucceeded2 (answer) {
   t.step(function() {
-    pc2.setLocalDescription(answer, t.step_func(function (ev) {
+    atStep = 'Set local description at two';
+    pc2.setLocalDescription(answer)
+    .then(function() {
       t.done();
-    }), requestFailed5);
+    }).catch(t.step_func(function(e) {
+      assert_equals(pc.localDescription.type, "offer");
+      assert_equals(pc.localDescription.sdp, "local");
+      pc.close();
+      assert_equals(pc.localDescription.type, "offer");
+      assert_equals(pc.localDescription.sdp, "local");
+      assert_unreached('Error ' + e.name + ': ' + e.message +
+                       ' happened at step ' + atStep);
+    }));
   });
 }
 
-function requestFailed4 () {
+function requestFailed2 () {
   t.step(function () {
     assert_unreached("requestFailed4 was called");
-  });
-  t.done();
-}
-
-function requestFailed5() {
-  t.step(function () {
-    assert_equals(pc.localDescription.type, "offer");
-    assert_equals(pc.localDescription.sdp, "local");
-    pc.close();
-    assert_equals(pc.localDescription.type, "offer");
-    assert_equals(pc.localDescription.sdp, "local");
   });
   t.done();
 }

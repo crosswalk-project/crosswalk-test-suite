@@ -15,6 +15,7 @@ https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fas
 
 var t = async_test(document.title);
 
+var atStep = "Create offer at one";
 var pc;
 var pc2;
 if (typeof RTCPeerConnection != "undefined") {
@@ -24,39 +25,12 @@ if (typeof RTCPeerConnection != "undefined") {
   pc = new webkitRTCPeerConnection(null, null);
   pc2 = new webkitRTCPeerConnection(null, null);
 }
-var pc1_offer;
 
-function requestFailed4(reason) {
+function requestFailed2(reason) {
   t.step(function () {
     assert_unreached("createAnswer request failed");
   });
   t.done();
-}
-
-function requestFailed3(reason) {
-  t.step(function () {
-    assert_unreached("setRemoteDescription request failed");
-  });
-  t.done();
-}
-
-function requestSucceeded3() {
-  t.step(function () {
-    pc2.createAnswer(t.step_func(function (eve) {
-      t.done();
-    }), requestFailed4);
-  });
-}
-
-function requestFailed2(sd) {
-  t.step(function () {
-    assert_unreached("createOffer request failed");
-  });
-  t.done();
-}
-
-function requestSucceeded2() {
-  pc2.setRemoteDescription(pc1_offer, requestSucceeded3, requestFailed3);
 }
 
 function requestFailed1(sd) {
@@ -67,8 +41,22 @@ function requestFailed1(sd) {
 }
 
 function requestSucceeded1(offer) {
-  pc1_offer = offer;
-  pc.setLocalDescription(offer, requestSucceeded2, requestFailed2);
+  t.step(function () {
+    atStep = 'Set local description at one';
+    pc.setLocalDescription(offer)
+    .then(function() {
+      atStep = 'Set remote description at two';
+      return pc2.setRemoteDescription(offer);
+    }).then(function() {
+      atStep = 'Create answer at two';
+      pc2.createAnswer(t.step_func(function (eve) {
+        t.done();
+      }), requestFailed2);
+    }).catch(t.step_func(function(e) {
+      assert_unreached('Error ' + e.name + ': ' + e.message +
+                       ' happened at step ' + atStep);
+    }));
+  });
 }
 
 pc.createOffer(requestSucceeded1, requestFailed1);
