@@ -62,7 +62,9 @@ Authors:
       });
 
       function localDescCreated(desc) {
-        pc.setLocalDescription(desc, function () {}, logError);
+        pc.setLocalDescription(desc)
+        .then(function() {
+        }).catch(logError);
       }
 
       function logError (error) {
