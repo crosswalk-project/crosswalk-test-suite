@@ -53,13 +53,13 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if validates that all of the BatteryManager attributes exist and are set to correct values, with corresponding events fired, when the charger is plugged in." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-plugging-in-manual">
+      <testcase purpose="Check if validates that onchargingchange and charging attributes exist and are set to correct values, with corresponding events fired, when the charger is plugged in." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-plugging-in-charging-manual">
         <description>
           <pre_condition>
             1. The device is unplugged from the charger before this test is run.
             2. The battery must not be full or reach full capacity during the time the test is run.
           </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-plugging-in-manual.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-plugging-in-charging-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -69,13 +69,109 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if that all of the BatteryManager attributes exist and are set to correct values, with corresponding events fired, when the charger is unplugged." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-unplugging-manual">
+      <testcase purpose="Check if validates that onchargingtimechange and chargingTime attributes exist and are set to correct values, with corresponding events fired, when the charger is plugged in." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-plugging-in-chargingTime-manual">
+        <description>
+          <pre_condition>
+            1. The device is unplugged from the charger before this test is run.
+            2. The battery must not be full or reach full capacity during the time the test is run.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-plugging-in-chargingTime-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="level" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if validates that ondischargingtimechange and dischargingTime attributes exist and are set to correct values, with corresponding events fired, when the charger is plugged in." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-plugging-in-dischargingTime-manual">
+        <description>
+          <pre_condition>
+            1. The device is unplugged from the charger before this test is run.
+            2. The battery must not be full or reach full capacity during the time the test is run.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-plugging-in-dischargingTime-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="level" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if validates that onlevelchange and level attributes exist and are set to correct values, with corresponding events fired, when the charger is plugged in." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-plugging-in-level-manual">
+        <description>
+          <pre_condition>
+            1. The device is unplugged from the charger before this test is run.
+            2. The battery must not be full or reach full capacity during the time the test is run.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-plugging-in-level-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="level" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if that onchargingchange and charging attributes exist and are set to correct values, with corresponding events fired, when the charger is unplugged." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-unplugging-charging-manual">
         <description>
           <pre_condition>
             1. The device is plugged in to the charger before this test is run.
             2. The battery must not be full or reach full capacity during the time the test is run.
           </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-unplugging-manual.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-unplugging-charging-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="charging" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if that onchargingtimechange and chargingTime attributes exist and are set to correct values, with corresponding events fired, when the charger is unplugged." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-unplugging-chargingTime-manual">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery must not be full or reach full capacity during the time the test is run.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-unplugging-chargingTime-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="charging" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if that ondischargingtimechange and dischargingTime attributes exist and are set to correct values, with corresponding events fired, when the charger is unplugged." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-unplugging-dischargingTime-manual">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery must not be full or reach full capacity during the time the test is run.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-unplugging-dischargingTime-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="charging" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if that onlevelchange and level attributes exist and are set to correct values, with corresponding events fired, when the charger is unplugged." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-unplugging-level-manual">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery must not be full or reach full capacity during the time the test is run.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-unplugging-level-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -105,6 +201,18 @@
           <spec>
             <spec_assertion element_type="attribute" element_name="getBattery()" interface="Navigator" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-navigator-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test iframe has a different Navigator object" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P2" id="battery-promise-iframe" subcase="3">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-promise-iframe.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="getBattery()" interface="Navigator" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://w3c.github.io/battery/#dom-navigator</spec_url>
             <spec_statement/>
           </spec>
         </specs>
