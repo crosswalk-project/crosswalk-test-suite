@@ -563,7 +563,6 @@ class Android(common.APP):
                 self.clickObject(all_apps)
                 if self.productName != PRODUCTS_NAME["memo8"]:
                     self.d(scrollable=True).fling.horiz.toBeginning()
-            return False
         for i in range(max_fling_num):
             app = self.selectObjectBy(params_str)
             if app.exists:
