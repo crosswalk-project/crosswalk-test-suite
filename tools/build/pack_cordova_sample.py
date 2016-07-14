@@ -393,7 +393,7 @@ def buildCordovaCliApk(app_name, orig_dir):
         elif BUILD_PARAMETERS.pkgarch == "arm64":
             pack_arch_tmp = "arm --xwalk64bit"
 
-    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp 
+    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s --minSdkVersion=16" % pack_arch_tmp
 
     cmd_mode = ""
     apk_name_mode = "debug"
@@ -402,7 +402,7 @@ def buildCordovaCliApk(app_name, orig_dir):
     if checkContains(app_name, "SAMPLERELEASE"):
         cmd_mode = "--release"
         apk_name_mode = "release-unsigned"
-    pack_cmd = "cordova build android %s -- --gradleArg=-PcdvBuildArch=%s" % (cmd_mode, pack_arch_tmp)
+    pack_cmd = "cordova build android %s -- --gradleArg=-PcdvBuildArch=%s --minSdkVersion=16" % (cmd_mode, pack_arch_tmp)
 
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT * 5):
         os.chdir(orig_dir)
