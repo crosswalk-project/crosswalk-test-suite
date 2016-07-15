@@ -248,7 +248,7 @@ def build(appname, isDebug, self, isCopy=False, isMultipleApk=True):
         cmd_mode = "--release"
         apk_name_mode = "release-unsigned"
 
-    cmd = "cordova build android %s -- --gradleArg=-PcdvBuildArch=%s" % (cmd_mode, pack_arch_tmp)
+    cmd = "cordova build android %s -- --gradleArg=-PcdvBuildArch=%s --minSdkVersion=16" % (cmd_mode, pack_arch_tmp)
 
     print cmd
     buildstatus = commands.getstatusoutput(cmd)
