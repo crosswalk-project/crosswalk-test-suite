@@ -141,6 +141,17 @@ def click_view(context, params_kw):
     assert context.android.clickObject(ob[0])
 
 
+@step(u'I click app "{app_name}" from task manager')
+def click_app_from_task_manager(context, app_name):
+    kw_prefix = "description="
+    # On Xiaomi Pad2, app should be clicked by text
+    if context.android.productName == "latte":
+        kw_prefix = "text="
+    ob = context.android.selectObjectBy(kw_prefix + app_name)
+    assert ob.exists
+    assert context.android.clickObject(ob[0])
+
+
 # get the saved ui object from key and if exists then click it.
 @step(u'I click saved object "{key}"')
 def click_object(context, key):
