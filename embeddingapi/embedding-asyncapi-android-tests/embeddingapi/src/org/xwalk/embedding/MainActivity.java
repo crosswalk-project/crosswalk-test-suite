@@ -8,7 +8,7 @@ package org.xwalk.embedding;
 import org.xwalk.core.XWalkInitializer;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
-import org.xwalk.embedding.test.R;
+import org.xwalk.embedding.asynctest.R;
 
 import android.app.Activity;
 import android.app.KeyguardManager;
