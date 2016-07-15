@@ -17,7 +17,7 @@ import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnRece
 
 import org.xwalk.embedding.base.OnLoadStartedHelper;
 import org.xwalk.embedding.base.ShouldInterceptLoadRequestHelper2;
-import org.xwalk.embedding.base.AsynctestContentProvider;
+import org.xwalk.embedding.base.TestContentProvider;
 import org.xwalk.embedding.base.TestXWalkResourceClientBase;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import org.xwalk.embedding.util.CommonResources;
@@ -376,13 +376,13 @@ public class ShouldInterceptLoadRequestTestAsync extends XWalkViewTestBase {
  @Feature({"ShouldInterceptLoadRequest"})
  public void testNotCalledForExistingContentUrl() throws Throwable {
      final String contentResourceName = "target";
-     final String existingContentUrl = AsynctestContentProvider.createContentUrl(contentResourceName);
-     AsynctestContentProvider.resetResourceRequestCount(
+     final String existingContentUrl = TestContentProvider.createContentUrl(contentResourceName);
+     TestContentProvider.resetResourceRequestCount(
              getInstrumentation().getTargetContext(), contentResourceName);
 
      notCalledForUrlTemplate(existingContentUrl);
 
-     int contentRequestCount = AsynctestContentProvider.getResourceRequestCount(
+     int contentRequestCount = TestContentProvider.getResourceRequestCount(
              getInstrumentation().getTargetContext(), contentResourceName);
      assertEquals(1, contentRequestCount);
  }
