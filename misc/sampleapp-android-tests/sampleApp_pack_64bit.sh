@@ -31,7 +31,7 @@
 
 ################################################################################
 #
-#  This script aims to pack the Crosswalk sample apks.
+#  This script aims to pack 64bit Crosswalk sample apks.
 #  Pre-condition:
 #    1. Set CROSSWALK_APP_TOOLS_CACHE_DIR
 #       $ export CROSSWALK_APP_TOOLS_CACHE_DIR=[local-path]
@@ -52,7 +52,7 @@ ROOT_DIR=$(cd $(dirname $0); pwd)
 CROSSWALK=""
 CROSSWALK_VERSION=""
 MODE="embedded"
-ARCH="x86"
+ARCH="x86_64"
 PKG_TOOLS="crosswalk-pkg"
 
 OFFICIAL_RELEASE_FLAG=false
@@ -103,8 +103,8 @@ init_opts() {
         echo ">>>> Fail to get crosswalk version "
         exit 1
     fi
-    if [ -f ${CROSSWALK_APP_TOOLS_CACHE_DIR}/crosswalk-${CROSSWALK_VERSION}.zip ]; then
-        CROSSWALK=${CROSSWALK_APP_TOOLS_CACHE_DIR}/crosswalk-${CROSSWALK_VERSION}.zip
+    if [ -f ${CROSSWALK_APP_TOOLS_CACHE_DIR}/crosswalk-${CROSSWALK_VERSION}-64bit.zip ]; then
+        CROSSWALK=${CROSSWALK_APP_TOOLS_CACHE_DIR}/crosswalk-${CROSSWALK_VERSION}-64bit.zip
     else
         CROSSWALK=$CROSSWALK_VERSION
     fi
@@ -216,7 +216,7 @@ update_sampeapp_config() {
         cp -fv $CROSSWALK ${ROOT_DIR}/crosswalk-samples/extensions-android/xwalk-echo-extension-src/lib/crosswalk.zip
         unzip -q ${ROOT_DIR}/crosswalk-samples/extensions-android/xwalk-echo-extension-src/lib/crosswalk.zip -d ${ROOT_DIR}/crosswalk-samples/extensions-android/xwalk-echo-extension-src/lib/
     fi
-    sed -i "s|15.44.384.13|${CROSSWALK_VERSION}|" ${ROOT_DIR}/crosswalk-samples/extensions-android/xwalk-echo-extension-src/build.xml
+    sed -i "s|15.44.384.13|${CROSSWALK_VERSION}-64bit|" ${ROOT_DIR}/crosswalk-samples/extensions-android/xwalk-echo-extension-src/build.xml
 
     # space-dodge-game: change package id of other version space-dodge-game, to void same apk name.
     sed -i "s/Space Dodge/Space Dodge2/g" ${ROOT_DIR}/crosswalk-samples/space-dodge-game/manifest-orientation-resize/manifest.json
@@ -305,8 +305,8 @@ build_apk() {
     set +e
 
     cd ${ROOT_DIR}
-    if [ ${arch} == "armeabi-v7a" ]; then
-        friendly_arch="arm"
+    if [ ${arch} == "arm64-v8a" ]; then
+        friendly_arch="arm64"
     else
         friendly_arch=${arch}
     fi
@@ -316,10 +316,11 @@ build_apk() {
 
 
 build_release_package() {
-    build_apk embedded x86
-    build_apk embedded armeabi-v7a
+    build_apk embedded x86_64
+    build_apk embedded arm64-v8a
     # the arch does not effect shared mode.
     build_apk shared x86_64
+
 
     echo "SampleApp sourcecode and binary for release has been updated !!!"
     echo "You can check it here : http://otcqa.sh.intel.com/qa-auto/live/Xwalk-testsuites/Sampleapp_SourceCode_And_Binary/"
