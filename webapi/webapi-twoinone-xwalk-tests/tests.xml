@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="TwoInOne JS APIs" name="webapi-twoinone-xwalk-tests">
+    <set extension="xwalk-extensions" name="twoinone" type="js">
+      <testcase component="Crosswalk APIs/Experimental/TwoInOne" execution_type="auto" id="twoinone" onload_delay="10" purpose="Test checks the basic existence and value type attributes of twoinone interface." subcase="10">
+        <description>
+          <test_script_entry>/opt/webapi-twoinone-xwalk-tests/twoinone/twoinone_basic.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/TwoInOne" execution_type="manual" id="twoinone_monitorKeyboard" purpose="Test checks that twoinone can get the status monitorKeyboard.">
+        <description>
+          <test_script_entry>/opt/webapi-twoinone-xwalk-tests/twoinone/twoinone_monitorKeyboard-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/TwoInOne" execution_type="manual" id="twoinone_haveKeyboard" purpose="Test checks that twoinone can get the status of haveKeyboard.">
+        <description>
+          <test_script_entry>/opt/webapi-twoinone-xwalk-tests/twoinone/twoinone_haveKeyboard-manual.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
