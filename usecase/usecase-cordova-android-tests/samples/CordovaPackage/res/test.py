@@ -133,7 +133,7 @@ if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgmode == "embedded":
 
 
 os.system("cordova build android %s %s" % (pack_arch_opt, min_sdk_version))
-os.system("cordova run android %s" % pack_arch_opt)
+os.system("cordova run android %s %s" % (pack_arch_opt, min_sdk_version))
 
 comm.checkApkExist("./platforms/android/build/outputs/apk/*.apk")
 comm.checkApkRun(pkg_name)

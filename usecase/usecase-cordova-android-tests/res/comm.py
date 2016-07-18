@@ -201,7 +201,7 @@ def checkApkRun(pkg_name):
 
 def run(app_name):
     print "Run project %s ----------------> START" % app_name
-    cmd = "cordova run android"
+    cmd = "cordova run android -- --minSdkVersion=16"
     print cmd
     os.system(cmd)
     print "\nRun project %s ----------------> OK\n" % app_name

@@ -288,7 +288,7 @@ def checkApkExist(appname, self, isCopy=False, isMultipleApk=True, apk_name_mode
 def run(appname, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Run project %s ----------------> START" % appname
-    cmd = "cordova run android"
+    cmd = "cordova run android -- --minSdkVersion=16"
     print cmd
     runstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, runstatus[0])
