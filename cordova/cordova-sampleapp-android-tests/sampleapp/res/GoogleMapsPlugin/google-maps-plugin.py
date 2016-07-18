@@ -119,7 +119,7 @@ def buildHelloMap(key):
     else:
         pack_arch = ARCH
 
-    os.system('cordova build android -- --gradleArg=-PcdvBuildArch=%s' % pack_arch)
+    os.system('cordova build android -- --gradleArg=-PcdvBuildArch=%s --minSdkVersion=16' % pack_arch)
     time.sleep(5)
     files = glob.glob(os.path.join(build_src + "/platforms/android/build/outputs/apk", "*-debug.apk"))
     if len(files) == 0:
