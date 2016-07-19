@@ -116,7 +116,7 @@ def checkFileSize(file_path, min_size, max_size, self):
     print "Check file size from %s --------------> OK" % file_path
 
 
-def installWebviewPlugin(pkg_mode, self, multiple_apks = None):
+def installWebviewPlugin(pkg_mode, self, multiple_apks = None, cordova_cmd = "cordova"):
     print "Install Crosswalk WebView Plugin --------------> START"
     pkg_mode_tmp = "core"
     if pkg_mode == "shared":
@@ -130,8 +130,8 @@ def installWebviewPlugin(pkg_mode, self, multiple_apks = None):
     if PACK_TYPE == "npm":
         plugin_crosswalk_source = "cordova-plugin-crosswalk-webview"
 
-    plugin_install_cmd = "cordova plugin add %s --variable XWALK_MODE=\"%s\"" \
-                " --variable XWALK_VERSION=\"%s\"" % (plugin_crosswalk_source, pkg_mode, xwalk_version)
+    plugin_install_cmd = "%s plugin add %s --variable XWALK_MODE=\"%s\"" \
+                " --variable XWALK_VERSION=\"%s\"" % (cordova_cmd, plugin_crosswalk_source, pkg_mode, xwalk_version)
 
     if multiple_apks is not None:
         plugin_install_cmd = plugin_install_cmd + " --variable XWALKMULTIPLEAPK=\"%s\"" % multiple_apks
@@ -214,15 +214,21 @@ def buildGoogleApp(appname, sourcecodepath, self):
     self.assertEquals(0, addstatus[0])
 
     print "uninstall webview default plugin from this project --------------> START"
-    plugin_uninstall_webview = "cordova plugin remove cordova-plugin-crosswalk-webview"
+    plugin_uninstall_webview = "cca plugin remove cordova-plugin-crosswalk-webview"
     uninstallStatus = commands.getstatusoutput(plugin_uninstall_webview)
     self.assertEquals(0, uninstallStatus[0])
 
-    installWebviewPlugin(MODE, self)
+    installWebviewPlugin(MODE, self, cordova_cmd = "cca")
 
     build_cmd = "cca build android"
     if ARCH == "x86_64" or ARCH == "arm64":
         build_cmd = "cca build android --xwalk64bit"
+
+    library_type_dic = {"embedded": "core", "shared": "shared"}
+    library_suffix_dic = {"beta": "_beta", "canary": "", "stable": ""}
+    xw_library_name = "org.xwalk:xwalk_%s_library%s" % (library_type_dic[MODE], library_suffix_dic[CROSSWALK_BRANCH])
+    xw_specific_v = "crosswalk@%s:%s" % (xw_library_name, CROSSWALK_VERSION)
+    build_cmd += " --webview=%s --android-minSdkVersion=16" % xw_specific_v
 
     buildstatus = commands.getstatusoutput(build_cmd)
     self.assertEquals(0, buildstatus[0])
