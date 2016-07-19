@@ -1,0 +1,12 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies that all invalid SSL certificates and MITM request will be denied by Crosswalk.</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>The apk is installed and launched.</li>'
+            +'<li>The baidu.com is allowed to access and anr.io is denied with "Request was denied for security" message.</li>'
+            +'<li>The mitmproxy start with 8080 port.</li>'
+            +'<li>The test device can connect to the network and mitmproxy get the test device connection information in event log.</li>'
+            +'<li>Both baidu.com and anr.io are denied with "Request was denied for security" message.</li>'
+            +'</ol>'
+          +'</font>';
