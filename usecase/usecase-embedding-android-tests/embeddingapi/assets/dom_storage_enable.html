@@ -1,0 +1,18 @@
+<html>
+    <body>
+        DOM Storage API: <span id="result"></span>
+        <script>
+            var logDiv = document.getElementById("result");
+            try {
+                var lstorage = window.localStorage;
+                if(window.localStorage == "undefined" || window.localStorage == null){
+                    logDiv.innerHTML = "Disabled";
+                }else{
+                    logDiv.innerHTML = "Enabled";
+                }
+            }catch(e) {
+                logDiv.innerHTML = e;
+            }
+        </script>
+    </body>
+</html>
