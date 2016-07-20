@@ -339,7 +339,7 @@ def copySampleSource(app_name, target_path):
             os.chdir(orig_dir)
         return False
 
-def installPlugins(plugin_tool, app_name):
+def installPlugins(plugin_tool, app_name, cordova_cmd = 'cordova'):
     project_root = os.path.join(BUILD_ROOT, app_name)
 
     pkg_mode_tmp = "core"
@@ -375,7 +375,7 @@ def installPlugins(plugin_tool, app_name):
                         os.chdir(orig_dir)
                         return False
 
-            plugin_install_cmd = "cordova plugin add %s %s" % (plugin_crosswalk_source, install_variable_cmd)
+            plugin_install_cmd = "%s plugin add %s %s" % (cordova_cmd, plugin_crosswalk_source, install_variable_cmd)
             if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
                 os.chdir(orig_dir)
                 return False
@@ -540,7 +540,7 @@ def packGoogleApp(app_name=None):
         os.chdir(orig_dir)
         return False
 
-    if not installPlugins(plugin_tool, app_name):
+    if not installPlugins(plugin_tool, app_name, cordova_cmd = "cca"):
         os.chdir(orig_dir)
         return False
 
@@ -548,9 +548,17 @@ def packGoogleApp(app_name=None):
     if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch != "arm":
         apk_name_arch = BUILD_PARAMETERS.pkgarch
 
-    build_cmd = "cca build android --android-minSdkVersion=16"
+    pkg_mode_tmp = "core"
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        pkg_mode_tmp = "shared"
+
+    xwalk_version = "%s" % CROSSWALK_VERSION
+    if CROSSWALK_BRANCH == "beta":
+        xwalk_version = "org.xwalk:xwalk_%s_library_beta:%s" % (pkg_mode_tmp, CROSSWALK_VERSION)
+
+    build_cmd = 'cca build android --android-minSdkVersion=16 --webview="crosswalk@%s"' % (xwalk_version)
     if BUILD_PARAMETERS.pkgarch == "x86_64" or BUILD_PARAMETERS.pkgarch == "arm64":
-        build_cmd = "cca build android --xwalk64bit --android-minSdkVersion=16"
+        build_cmd = 'cca build android --xwalk64bit --android-minSdkVersion=16 --webview="crosswalk@%s"' % (xwalk_version)
 
     if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT * 2):
         os.chdir(orig_dir)
