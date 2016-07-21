@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Battery Test: battery-plugging-in-level</title>
+<meta name="flags" content="interact">
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<style>
+  #note {
+    background-color: #fef1b5;
+    border: solid 1px #cdab2d;
+    padding: 5px;
+    margin: 15px;
+    display: block;
+  }
+</style>
+
+<h2>Description</h2>
+<p>
+  This test validates that onlevelchange and level attributes exist and
+  are set to correct values, with corresponding events fired,
+  when the charger is plugged in.
+</p>
+
+<h2>Preconditions</h2>
+<ol>
+  <li>
+    The device is unplugged from the charger before this test is run.
+  </li>
+  <li>
+    The battery must not be full or reach full capacity before the time the test is run.
+  </li>
+</ol>
+
+<div id="note">
+  <ol>
+    <li>
+      Plug in the charger and wait for all the tests to complete.
+    </li>
+    <li>
+      The tests may take long time since the definition of how
+      often the levelchange event is fired is left to the implementation.
+    </li>
+  </ol>
+</div>
+
+<div id="log"></div>
+
+<script>
+
+(function() {
+
+  setup({ explicit_timeout: true });
+
+  var onlevelchange_test = async_test(
+      'When the device is plugged in and the battery level is updated, ' +
+      'must set the level attribute\'s value and fire a levelchange event.');
+
+  var batterySuccess = function (battery) {
+    battery.onlevelchange = onlevelchange_test.step_func(function () {
+      assert_greater_than(battery.level, 0);
+      assert_less_than_equal(battery.level, 1.0);
+      onlevelchange_test.done();
+    });
+  };
+
+  var batteryFailure = function (error) {
+    onlevelchange_test.step(function () {
+      assert_unreached(error.message);
+     });
+    onlevelchange_test.done();
+  };
+
+  navigator.getBattery().then(batterySuccess, batteryFailure);
+
+})();
+
+</script>
