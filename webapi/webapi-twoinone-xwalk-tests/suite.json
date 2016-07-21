@@ -1,0 +1,32 @@
+{
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "msi": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/inst/inst.msi.py": "inst.py",
+        "tests.xml": "tests.xml"
+      },
+	  "pkg-app": {
+  	    "apk-type": "MANIFEST",
+        "copylist": {
+          "twoinone_extensions": "../../twoinone_extensions",
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "icon.png": "icon.ico"
+        }
+      }
+    }
+  },
+  "pkg-name": "webapi-twoinone-xwalk-tests"
+}

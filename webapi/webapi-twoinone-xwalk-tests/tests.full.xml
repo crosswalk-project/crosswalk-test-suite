@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="TwoInOne JS APIs" name="webapi-twoinone-xwalk-tests">
+    <set name="twoinone" type="js" extension="xwalk-extensions">
+      <testcase component="Crosswalk APIs/Experimental/TwoInOne" execution_type="auto" id="twoinone" priority="P1" purpose="Test checks the basic existence and value type attributes of twoinone interface." status="approved" type="compliance" subcase="10" onload_delay="10">
+        <description>
+          <test_script_entry>/opt/webapi-twoinone-xwalk-tests/twoinone/twoinone_basic.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="twoinone" element_type="method" interface="twoinone" section="TwoInOne APIs" specification="twoinone"/>
+            <spec_url>https://github.com/crosswalk-project/crosswalk-extensions-twoinone/blob/master/twoinone-windows/XWalkExtensionApi.js</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/TwoInOne" execution_type="manual" id="twoinone_monitorKeyboard" priority="P1" purpose="Test checks that twoinone can get the status monitorKeyboard." status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-twoinone-xwalk-tests/twoinone/twoinone_monitorKeyboard-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="twoinone" element_type="method" interface="twoinone" section="TwoInOne APIs" specification="twoinone"/>
+            <spec_url>https://github.com/crosswalk-project/crosswalk-extensions-twoinone/blob/master/twoinone-windows/XWalkExtensionApi.js</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/TwoInOne" execution_type="manual" id="twoinone_haveKeyboard" priority="P1" purpose="Test checks that twoinone can get the status of haveKeyboard." status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-twoinone-xwalk-tests/twoinone/twoinone_haveKeyboard-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="twoinone" element_type="method" interface="twoinone" section="TwoInOne APIs" specification="twoinone"/>
+            <spec_url>https://github.com/crosswalk-project/crosswalk-extensions-twoinone/blob/master/twoinone-windows/XWalkExtensionApi.js</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
