@@ -31,6 +31,7 @@
 # Authors:
 #    You, Yi <yi.you@intel.com>
 #    Zhang, Zhiqiang <zhiqiang.zhang@intel.com>
+#    Lin, Wanming <wanming.lin@intel.com>
 
 
 # How to use:
@@ -221,6 +222,31 @@ echo " "
 echo "Start scanning files for License, please waiting..."
 start_sec=$(date -d this-day +%s)
 
+# Intel: OBL BSD License
+# HEADER:  'Copyright (c) * Intel Corporation.'
+# COPYING: 'Intel'
+echo " "
+echo "Scanning Intel OBL BSD License" | tee -a ./counter.log
+INTEL_OBL_BSD_Header=$(grep -rli "Copyright .* Intel Corporation" "$src_path" | xargs grep -Li "General Public License" | grep -v "COPYING")
+scanHeader "$INTEL_OBL_BSD_Header" "$dest_IntelBSD_folder"
+
+# Crosswalk: BSD 3-Clause License
+# https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE
+# HEADER: 'BSD-style license', 'Intel'
+echo " "
+echo "Scanning Crosswalk BSD 3-Clause License" | tee -a ./counter.log
+CHROME_BSD_Header=$(grep -rli "BSD-style license" "$src_path" | xargs grep -li "Intel")
+scanHeader "$CHROME_BSD_Header" "$dest_IntelBSD_folder"
+
+# Intel: GPL 2.0
+# HEADER:  'Copyright (c) 2012 Intel Corporation.' with 'General Public License'
+# FILE:  <testsuite>/testkit/web/index.html, <testsuite>/testkit/web/testrunner.js
+echo " "
+echo "Scanning Intel GPLv2 License Header" | tee -a ./counter.log
+INTEL_GPLV2_Header=$(grep -E -rli "General Public License|GPL Version 2 license" "$src_path" | grep -Ev "COPYING|jquery*")
+scanHeader "$INTEL_GPLV2_Header" "$dest_IntelGPLv2_folder"
+
+
 # Samsung: Apache License 2.0
 # HEADER:  'Copyright (c) 2013 Samsung Electronics Co., Ltd.' with 'Apache License'
 echo " "
@@ -271,30 +297,6 @@ echo "Scanning Chrome BSD 3-Clause License" | tee -a ./counter.log
 CHROME_BSD_Header=$(grep -rli "BSD-style license" "$src_path" | xargs grep -li "Chromium Authors")
 scanHeader "$CHROME_BSD_Header" "$dest_Chrome_folder"
 
-# Crosswalk: BSD 3-Clause License
-# https://github.com/crosswalk-project/crosswalk/blob/master/LICENSE
-# HEADER: 'BSD-style license', 'Intel'
-echo " "
-echo "Scanning Crosswalk BSD 3-Clause License" | tee -a ./counter.log
-CHROME_BSD_Header=$(grep -rli "BSD-style license" "$src_path" | xargs grep -li "Intel")
-scanHeader "$CHROME_BSD_Header" "$dest_IntelBSD_folder"
-
-# Intel: GPL 2.0
-# HEADER:  'Copyright (c) 2012 Intel Corporation.' with 'General Public License'
-# FILE:  <testsuite>/testkit/web/index.html, <testsuite>/testkit/web/testrunner.js
-echo " "
-echo "Scanning Intel GPLv2 License Header" | tee -a ./counter.log
-INTEL_GPLV2_Header=$(grep -E -rli "General Public License|GPL Version 2 license" "$src_path" | grep -Ev "COPYING|jquery*")
-scanHeader "$INTEL_GPLV2_Header" "$dest_IntelGPLv2_folder"
-
-# Intel: OBL BSD License
-# HEADER:  'Copyright (c) 2012 Intel Corporation.' or 'Copyright (c) 2013 Intel Corporation.'
-# COPYING: 'Intel'
-echo " "
-echo "Scanning Intel OBL BSD License" | tee -a ./counter.log
-INTEL_OBL_BSD_Header=$(grep -rli "Copyright .* Intel Corporation" "$src_path" | xargs grep -Li "General Public License" | grep -v "COPYING")
-scanHeader "$INTEL_OBL_BSD_Header" "$dest_IntelBSD_folder"
-
 # SIMD: Zlib License
 # https://github.com/johnmccutchan/ecmascript_simd/blob/master/LICENSE.txt
 # HEADER: 'commercial applications'
@@ -323,14 +325,13 @@ clearEmptyDir
 
 ##
 # Intel GPLv2 License from testkit-lite
-# pack.sh
 # testcase.xsl
 # testresult.xsl
 # tests.css
 moveTestkite()
 {
   count=1
-  files_from_testkit=$(find "$src_path" -type f -name "pack.sh" -o -type f -name "testcase.xsl" -o -type f -name "testresult.xsl" -o -type f -name "tests.css")
+  files_from_testkit=$(find "$src_path" -o -type f -name "testcase.xsl" -o -type f -name "testresult.xsl" -o -type f -name "tests.css")
   for ft in $files_from_testkit; do
     echo -n "$count executing: $ft -"
     makeMove "$ft" "$dest_IntelGPLv2_folder"
@@ -360,12 +361,20 @@ moveTestkite()
 moveTestScripts()
 {
   count=1
-  files_by_intel=$(find "$src_path" -type f -name "autogen" -o -type f -name "configure.ac" -o -type f -name "config.xml*" -o -type f -name "icon.png" -o -type f -name "inst.sh*" -o -type f -name "Makefile.*" -o -type f -name "manifest.json" -o -type f -name "tests*xml*" -o -type f -name "*.spec" -o -type f -name "subtestresult.xml")
+  files_by_intel=$(find "$src_path" -type f -name "autogen" -o -type f -name "configure.ac" -o -type f -name "config.xml*" -o -type f -name "icon.png" -o -type f -name "inst.sh*" -o -type f -name "Makefile.*" -o -type f -name "manifest.json" -o -type f -name "tests*xml*" -o -type f -name "*.spec" -o -type f -name "subtestresult.xml" -o -type f -name "suite.json" -o -type f -name "*.md5" -o -type f -name "*.feature" -o -type f -name "spec.json" -o -type f -name "subcase.json")
   for fm in $files_by_intel; do
     echo -n "$count executing: $fm -"
     makeMove "$fm" "$dest_IntelBSD_folder"
     count=$((count+1))
   done
+
+  files=$(ls "$src_path/doc")
+  for fm in $files; do
+    echo -n "$count executing: $fm -"
+    makeMove "$fm" "$dest_IntelBSD_folder"
+    count=$((count+1))
+  done
+
   echo "(MANUAL SET) moveTestScripts.*: $((count-1)) files been written." | tee -a ./counter.log
   echo " "
 }
@@ -481,7 +490,7 @@ findCopying()
 
     if [[ "$Flora_Inside" -gt "0" ]]; then
       isMulti=$((isMulti + 1))
-      arguments_list[$isMulti]="$FLORA_KEY"
+      arguments_list[$isMulti]="$FLORA_KEY"icon.png
     fi
 
     if [[ "$INTEL_GPLV2_Inside" -gt "0" ]]; then
@@ -890,21 +899,30 @@ moveManualIndentification()
 {
   count=1
 
-  # Intel: BSD 3-Clause License
-  files=$(find "$src_path" -type f -name "*100x100.png" -o -type f -name "pass.png" -o -type f -name "fail.png" -o -type f -name "config.xml*" -o -type f -name "*.changes" -o -type f -name "*.pdf" -o -type f -name "preconfigure.json" -o -type f -name "tct-testconfig.ini" -o -type f -name "testlist.json" -o -type f -name "flowser.png" -o -type f -name "LICENSE.BSD-3" -o -type f -name "LICENSE" -o -type f -name "COPYING" -o -type f -name "icon-128.png")
+  # Intel: BSD 3-Clause License(By file)
+  files=$(find "$src_path" -type f -name "*100x100.png" -o -type f -name "*100x100.jpg" -o -type f -name "pass.png" -o -type f -name "fail.png" -o -type f -name "config.xml*" -o -type f -name "*.changes" -o -type f -name "*.pdf" -o -type f -name "preconfigure.json" -o -type f -name "tct-testconfig.ini" -o -type f -name "testlist.json" -o -type f -name "flowser.png" -o -type f -name "LICENSE.BSD-3" -o -type f -name "LICENSE" -o -type f -name "COPYING" -o -type f -name "icon-128.png" -o -type f -name "README.md" -o -type f -name "VERSION" -o -type f -name "OWNERS" -o -type f -name "crosswalk.png" -o -type f -name "icon.*" -o -type f -name "crosswalk.ico" -o -type f -name "*_baseline.png" -o -type f -name "ad.json" -o -type f -name "green-256x256.*")
   for f in $files; do
     echo -n "$count executing: $f -"
     makeMove "$f" "$dest_IntelBSD_folder"
     count=$((count+1))
   done
-
-  # Intel: GPLv2 License
-  files=$(find "$src_path" -type f -name "back_top.png" -o -type f -name "application.js")
+  # txt file in apptools folder
+  files=$(find "$src_path/apptools" -type f -name "*.txt")
   for f in $files; do
     echo -n "$count executing: $f -"
-    makeMove "$f" "$dest_IntelGPLv2_folder"
+    makeMove "$f" "$dest_IntelBSD_folder"
     count=$((count+1))
   done
+  
+
+#  # Intel: GPLv2 License
+### Comment by Wanming, not sure why these two type of files are GPLv2 ###
+#  files=$(find "$src_path" -type f -name "back_top.png" -o -type f -name "application.js")
+#  for f in $files; do
+#    echo -n "$count executing: $f -"
+#    makeMove "$f" "$dest_IntelGPLv2_folder"
+#    count=$((count+1))
+#  done
 
   # JQuery: MIT License
   files=$(find "$src_path" -type f -name "ajax-loader.gif" -o -type f -name "icons*black.png" -o -type f -name "icons*white.png" -o -type f -name "slider.tooltip.js" -o -type f -name "jqueryprogressbar.js")
@@ -955,7 +973,7 @@ moveManualIndentification()
   done
 
   # CC BY
-  files=$(find "$src_path" -type f -name "LICENSE.CC-BY-3.0" -o -type f -name "Test*" -o -type f -name "*_wgt" -o -type f -name "audio.*" -o -type f -name "image.*" -o -type f -name "video.*" -o -type f -name "icon[AV].png" -o -type f -name "noti*png" -o -type f -name "noti*wav" -o -type f -name "*tizen*png" -o -type f -name "*tizen*jp*g" -o -type f -name "*tizen*mp*" -o -type f -name "*xpk_generator*")
+  files=$(find "$src_path" -type f -name "LICENSE.CC-BY-3.0" -o -type f -name "*_wgt" -o -type f -name "icon[AV].png" -o -type f -name "noti*png" -o -type f -name "noti*wav" -o -type f -name "*tizen*png" -o -type f -name "*tizen*jp*g" -o -type f -name "*tizen*mp*" -o -type f -name "*xpk_generator*")
   for f in $files; do
     echo -n "$count executing: $f -"
     makeMove "$f" "$dest_CCBY_folder"
@@ -977,12 +995,12 @@ clearEmptyDir
 # Rest files subject to Default License
 moveDefault()
 {
-  echo "Moving Unknown-License Files to : $dest_IntelBSD_folder" | tee -a ./counter.log
+  echo "Moving Unknown-License Files to : $dest_Unknown_folder" | tee -a ./counter.log
   count=1
   leftFile=$(find "$src_path" -type f)
   for un_file in $leftFile; do
     echo -n "$count Moving Unknown:" "$un_file -"
-    makeMove "$un_file" "$dest_IntelBSD_folder"
+    makeMove "$un_file" "$dest_Unknown_folder"
     count=$((count+1))
   done
   echo "Unknown License: $((count-1)) files been written." | tee -a ./counter.log

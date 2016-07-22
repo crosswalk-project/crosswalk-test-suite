@@ -146,7 +146,7 @@ def deleteAPK(testapp):
         return False
 
 def cleanWork():
-    cmd = "rm -rf %s" % (appsrc + "/*.temp.3gp")
+    cmd = "rm -rf %s" % (appsrc + "/*.temp.mp4")
     (return_code, output) = doCMD(cmd)
     cmd = "rm -rf %s" % (approot)
     (return_code, output) = doCMD(cmd)
@@ -161,9 +161,9 @@ def makeLowDisk():
         cmd = "mkdir %s" % approot
         (return_code, output) = doCMD(cmd)
     
-    vediofile = appsrc + "/video.3gp"
-    vediosize = getFileSize(vediofile)
-    if vediosize <= 0:
+    videofile = appsrc + "/res/w3c/movie_300.mp4"
+    videosize = getFileSize(videofile)
+    if videosize <= 0:
         print "-->> Lack pre-condition resource files"
         return False
 
@@ -175,28 +175,28 @@ def makeLowDisk():
         freesize = getFreeDiskSize(device)
         if (freesize >= 1024) and not tmpreadystate[0]:
             # make app size: 500M
-            count = int((500 - vediosize)/vediosize)
+            count = int((500 - videosize)/videosize)
             for i in range(count):
-                cmd = "cp %s %s " % (vediofile, appsrc + "/video" + str(i) +".temp.3gp")
+                cmd = "cp %s %s " % (videofile, appsrc + "/video" + str(i) +".temp.mp4")
                 (return_code, output) = doCMD(cmd)
             tmpreadystate[0]  = True
 
         elif (freesize >= 512) and (freesize < 1024) and not tmpreadystate[1]:
             # clean appsrc
             if tmpreadystate[0]:
-                cmd = "rm -rf %s/*.temp.3gp" % (appsrc)
+                cmd = "rm -rf %s/*.temp.mp4" % (appsrc)
                 (return_code, output) = doCMD(cmd)
             (return_code, output) = doCMD(cmd)
             # make app size: 100M
-            count = int((100 - vediosize)/vediosize)
+            count = int((100 - videosize)/videosize)
             for i in range(count):
-                cmd = "cp %s %s " % (vediofile, appsrc + "/video" + str(i) +".temp.3gp")
+                cmd = "cp %s %s " % (videofile, appsrc + "/video" + str(i) +".temp.mp4")
                 (return_code, output) = doCMD(cmd)
             tmpreadystate[1]  = True
 
         elif (freesize < 512) and not tmpreadystate[2]:
             # clean appsrc
-            cmd = "rm -rf %s/*.temp.3gp" % (appsrc)
+            cmd = "rm -rf %s/*.temp.mp4" % (appsrc)
             (return_code, output) = doCMD(cmd)
             tmpreadystate[2] = True
 
