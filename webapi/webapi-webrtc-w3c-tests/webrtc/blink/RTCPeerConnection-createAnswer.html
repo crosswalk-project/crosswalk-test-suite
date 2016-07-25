@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Test converted from blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream/RTCPeerConnection-createAnswer.html
+-->
+
+<meta charset=utf-8>
+<title>WebRTC Test: RTCPeerConnection createAnswer</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-createAnswer-void-RTCSessionDescriptionCallback-successCallback-RTCPeerConnectionErrorCallback-failureCallback-MediaConstraints-constraints">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var t = async_test(document.title);
+
+var atStep = "Create offer at one";
+var pc;
+var pc2;
+if (typeof RTCPeerConnection != "undefined") {
+  pc = new RTCPeerConnection(null, null);
+  pc2 = new RTCPeerConnection(null, null);
+} else {
+  pc = new webkitRTCPeerConnection(null, null);
+  pc2 = new webkitRTCPeerConnection(null, null);
+}
+
+t.step(function () {
+  pc.createOffer()
+  .then(function(offer) {
+    atStep = 'Set local description at one';
+    return pc.setLocalDescription(offer);
+  })
+  .then(function() {
+    atStep = 'Set remote description at two';
+    return pc2.setRemoteDescription(pc.localDescription);
+  })
+  .then(function() {
+    atStep = 'Create answer at two';
+    return pc2.createAnswer();
+  })
+  .then(function() {
+    t.done();
+  })
+  .catch(t.step_func(function(e) {
+    assert_unreached('Error ' + e.name + ': ' + e.message +
+                     ' happened at step ' + atStep);
+  }));
+});
+
+</script>
+

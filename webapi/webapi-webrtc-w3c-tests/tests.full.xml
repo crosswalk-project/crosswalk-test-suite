@@ -15,18 +15,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCSdpError_sdpLineNumber_basic" priority="P1" purpose="Check if the readonly attribute sdpLineNumber of RTCSdpError exists and type of number" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSdpError_sdpLineNumber_basic.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="W3C API Specifications" element_name="sdpLineNumber" element_type="property" interface="RTCSdpError" section="Networking" specification="WebRTC"/>
-            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcsdperror</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCSessionDescription_basic" priority="P1" purpose="Test RTCSessionDescription interface" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSessionDescription_basic.html</test_script_entry>
@@ -365,6 +353,30 @@
           </spec>
         </specs>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-createAnswer" priority="P2" purpose="Check if RTCPeerConnection createAnswer" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-createAnswer.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="createAnswer" element_type="method" interface="RTCPeerConnection" section="Networking" specification="WebRTC"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-createAnswer-void-RTCSessionDescriptionCallback-successCallback-RTCPeerConnectionErrorCallback-failureCallback-MediaConstraints-constraints</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-createOffer" priority="P2" purpose="Check if RTCPeerConnection createOffer" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-createOffer.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="createOffer" element_type="method" interface="RTCPeerConnection" section="Networking" specification="WebRTC"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-createOffer-void-RTCSessionDescriptionCallback-successCallback-RTCPeerConnectionErrorCallback-failureCallback-MediaConstraints-constraints</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel" priority="P1" purpose="Test RTCPeerConnection datachannel" status="approved" type="compliance" onload_delay="10" subcase="7">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html</test_script_entry>
@@ -385,6 +397,42 @@
           <spec>
             <spec_assertion category="W3C API Specifications" element_name="RTCDTMFSender" element_type="method" interface="RTCPeerConnection" section="Networking" specification="WebRTC"/>
             <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcdtmfsender</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-ice" priority="P2" purpose="Check if the method addIceCandidate of RTCPeerConnection" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-ice.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="addIceCandidate" element_type="method" interface="RTCPeerConnection" section="Networking" specification="WebRTC"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcpeerconnection-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-localDescription" priority="P2" purpose="Check if the method localDescription of RTCPeerConnection" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-localDescription.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="localDescription" element_type="method" interface="RTCPeerConnection" section="Networking" specification="WebRTC"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-setLocalDescription-void-RTCSessionDescription-description-VoidFunction-successCallback-RTCPeerConnectionErrorCallback-failureCallback</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-remoteDescription" priority="P2" purpose="Check if the method remoteDescription of RTCPeerConnection" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-remoteDescription.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C API Specifications" element_name="remoteDescription" element_type="method" interface="RTCPeerConnection" section="Networking" specification="WebRTC"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-setRemoteDescription-void-RTCSessionDescription-description-VoidFunction-successCallback-RTCPeerConnectionErrorCallback-failureCallback</spec_url>
             <spec_statement/>
           </spec>
         </specs>

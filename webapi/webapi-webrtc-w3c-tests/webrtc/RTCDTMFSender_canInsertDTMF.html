@@ -50,6 +50,7 @@ Authors:
       var pc1;
       var pc2;
       var localStream;
+      var atStep = 'Create offer';
       if (typeof RTCPeerConnection != "undefined") {
         pc1 = new RTCPeerConnection(configuration);
         pc2 = new RTCPeerConnection(configuration);
@@ -87,32 +88,22 @@ Authors:
       function gotStream(stream) {
         localStream = stream;
         pc1.addStream(stream);
-        pc1.createOffer(requestSucceeded1, requestFailed1);
-      }
-
-      function requestSucceeded1 (desc) {
-        pc1.setLocalDescription(desc);
-        pc2.setRemoteDescription(desc);
-        pc2.createAnswer(requestSucceeded2, requestFailed2);
-      }
-
-      function requestFailed1 () {
-        t.step(function () {
-          assert_unreached("requestFailed1 was called");
-        });
-        t.done();
-      }
-
-      function requestSucceeded2(desc) {
-        pc2.setLocalDescription(desc);
-        pc1.setRemoteDescription(desc);
-      }
-
-      function requestFailed2 () {
-        t.step(function () {
-          assert_unreached("requestFailed2 was called");
-        });
-        t.done();
+        pc1.createOffer()
+        .then(function(offer) {
+          atStep = 'Create offer';
+          pc1.setLocalDescription(offer);
+          pc2.setRemoteDescription(offer);
+          return pc2.createAnswer()
+        })
+        .then(function(answer) {
+          atStep = 'Create answer';
+          pc2.setLocalDescription(answer);
+          pc1.setRemoteDescription(answer);
+        })
+        .catch(t.step_func(function(e) {
+          assert_unreached('Error ' + e.name + ': ' + e.message +
+                           ' happened at step ' + atStep);
+        }));
       }
 
       function error() {
