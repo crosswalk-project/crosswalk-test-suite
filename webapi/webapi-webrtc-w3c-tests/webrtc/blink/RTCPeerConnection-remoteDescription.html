@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<meta charset=utf-8>
+<title>WebRTC Test: RTCPeerConnection remoteDescription</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-setRemoteDescription-void-RTCSessionDescription-description-VoidFunction-successCallback-RTCPeerConnectionErrorCallback-failureCallback">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var atStep = "Create offer at one";
+var pc = null;
+var t = async_test(document.title);
+
+t.step(function () {
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null, null);
+  } else {
+    pc = new webkitRTCPeerConnection(null, null);
+  }
+  pc.createOffer()
+  .then(function(offer) {
+    atStep = 'Set local description at one';
+    pc.setLocalDescription(offer)
+  })
+  .then(function() {
+    if (typeof RTCPeerConnection != "undefined") {
+      pc2 = new RTCPeerConnection(null, null);
+    } else {
+      pc2 = new webkitRTCPeerConnection(null, null);
+    }
+    atStep = 'Set remote description at two';
+    return pc2.setRemoteDescription(pc.localDescription);
+  }).then(function() {
+    t.done();
+  }).catch(t.step_func(function(e) {
+    assert_unreached('Error ' + e.name + ': ' + e.message +
+                     ' happened at step ' + atStep);
+  }));
+});
+
+</script>
+
