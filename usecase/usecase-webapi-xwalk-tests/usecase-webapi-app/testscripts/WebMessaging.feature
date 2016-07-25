@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Networking & Storage/WebMessaging Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/WebMessaging/index.html"
      And I fill in "sendcontent" with "hi"
      And I click element with id "b1" by js

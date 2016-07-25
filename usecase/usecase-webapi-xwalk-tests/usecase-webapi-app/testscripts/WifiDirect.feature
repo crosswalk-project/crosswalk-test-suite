@@ -2,6 +2,7 @@ Feature: Usecase WebAPI
  Scenario: Experimental API/WiFiDirect Test
     When device has WiFi Direct capability and WiFi is enabled
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/WifiDirect/index.html"
     Then I should see nearby WifiDirect devices that are available for connecting
      And I click on one of the devices with label "available"

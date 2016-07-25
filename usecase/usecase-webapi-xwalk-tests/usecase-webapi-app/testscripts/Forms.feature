@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Device & Hardware/Forms Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/Forms/index.html"
      And I go to frame "myiframe"
      And I fill in "myinput" with "12345"

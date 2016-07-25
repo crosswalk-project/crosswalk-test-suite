@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Others APIs/FileApiPersistent Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/FileApiPersistent/index.html"
      And I go to frame "resFrame"
      And I click "bt1"

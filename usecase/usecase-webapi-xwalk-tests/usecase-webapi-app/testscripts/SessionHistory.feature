@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Networking & Storage/SessionHistory Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/SessionHistory/index.html"
     Then I should see "10" in "sessionID" area
      And I click "sback"

@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Performance & Optimization/Selectors Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/Selectors/index.html"
      And I press "querySelector"
     Then I should see "d1" area in "green" color
