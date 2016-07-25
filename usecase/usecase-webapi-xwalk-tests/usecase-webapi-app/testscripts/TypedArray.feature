@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Performance & Optimization/TypedArray Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/TypedArray/index.html"
     Then I should see "0" in "00" area
     Then I should see "0" in "01" area

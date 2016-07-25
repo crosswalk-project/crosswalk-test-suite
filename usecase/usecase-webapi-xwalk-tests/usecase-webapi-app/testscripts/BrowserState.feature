@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Device & Hardware/BrowserState Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/BrowserState/index.html"
      And I open airplane mode
      And I wait 10 seconds

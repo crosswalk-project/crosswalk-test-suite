@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Networking & Storage/WebSocket Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/WebSocket/index.html"
      And I click "connect"
     Then I should see "Connecting......"
