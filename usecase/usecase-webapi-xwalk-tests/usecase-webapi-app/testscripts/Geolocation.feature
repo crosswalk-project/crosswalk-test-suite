@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Device & Hardware/Geolocation Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I open wifi
      And I open GPS
      And I go to "/samples/Geolocation/index.html"

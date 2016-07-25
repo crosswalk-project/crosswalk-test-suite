@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Experimental API/SIMD Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/SIMD/index.html"
      And I go to frame "simdframe"
      And I click "start"

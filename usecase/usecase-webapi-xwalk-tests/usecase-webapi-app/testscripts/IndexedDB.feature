@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Networking & Storage/IndexedDB Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/IndexedDB/index.html"
      And I fill in "txtName" with "name"
      And I fill in "txtEmail" with "lucy"

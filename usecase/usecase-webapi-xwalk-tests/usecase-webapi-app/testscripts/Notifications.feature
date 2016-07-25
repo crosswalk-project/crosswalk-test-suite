@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Device & Hardware/Notifications Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/Notifications/index.html"
      And I click "showNotification"
      And I wait 3 seconds
