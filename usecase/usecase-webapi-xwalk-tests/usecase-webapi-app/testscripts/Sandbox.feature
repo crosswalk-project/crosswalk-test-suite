@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Security/Sandbox Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/Sandbox/index.html"
     Then I should see "Filler Text" in "same" area
      And I go to frame "frame1"
