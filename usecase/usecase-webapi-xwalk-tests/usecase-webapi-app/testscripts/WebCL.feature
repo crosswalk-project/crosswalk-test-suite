@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Device & Hardware/WebCL Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/WebCL/index.html"
      And I wait 2 seconds
      And I go to frame "webclframe"

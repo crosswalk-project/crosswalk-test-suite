@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Multimedia & Graphics/WebRTC Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/WebRTC/index.html"
      And I click "startbutton"
     Then I should see "pc1 and pc2 are connected successfully, and can send message now!" in 5 seconds
