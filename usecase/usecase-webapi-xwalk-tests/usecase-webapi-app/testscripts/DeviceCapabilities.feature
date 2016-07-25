@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Experimental API/DeviceCapabilities Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/DeviceCapabilities/index.html"
      And I wait 3 seconds
     Then I verify value in "NumOfProcessors" is "int" type

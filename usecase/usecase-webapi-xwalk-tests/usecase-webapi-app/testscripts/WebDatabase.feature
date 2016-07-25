@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Networking & Storage/WebDatabase Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/WebDatabase/index.html"
      And I fill in element "name" by "id" with "lucy"
      And I fill in element "age" by "id" with "13"

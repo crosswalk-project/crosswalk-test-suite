@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Performance & Optimization/PerformanceTimeline Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/PerformanceTimeline/index.html"
      And I press "pc1_send"
      And I wait 20 seconds

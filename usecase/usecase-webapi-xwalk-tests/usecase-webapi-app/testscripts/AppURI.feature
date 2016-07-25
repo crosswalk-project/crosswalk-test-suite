@@ -1,6 +1,7 @@
 Feature: Usecase WebAPI
  Scenario: Runtime & Packaging/AppURI Test
     When launch "usecase-webapi-xwalk-tests"
+     And I wait 3 seconds
      And I go to "/samples/AppURI/index.html"
      And I click "getURLInfo"
      And I wait 2 seconds
