@@ -902,3 +902,43 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, computeHorizontalScrollOffset, computeHorizontalScrollRange, computeVerticalScrollOffset, computeVerticalScrollRange and computeVerticalScrollExtent methods
+
+
+### 88. The [XWalkViewSettingDomStorageEnabledAsync](setting/XWalkViewSettingDomStorageEnabledAsync.java) sample check XWalkView can enable/disable DOM storage API, include:
+
+* XWalkView can enable DOM storage API
+* XWalkView can disable DOM storage API
+
+This usecase covers following interface and methods:
+
+* XWalkSettings interface: setDomStorageEnabled, getDomStorageEnabled
+
+
+### 89. The [XWalkViewSettingSaveFormDataAsync](setting/XWalkViewSettingSaveFormDataAsync.java) sample check XWalkView can enable/disable form autocomplete and/or delete saved form data, include:
+
+* XWalkView can enable saveFormData
+* XWalkView can disable saveFormData
+
+This usecase covers following interface and methods:
+
+* XWalkSettings interface: setSaveFormData, getSaveFormData
+
+
+### 90. The [XWalkViewSettingJavaScriptEnabledAsync](setting/XWalkViewSettingJavaScriptEnabledAsync.java) sample check XWalkView can enable/disable JavaScript, include:
+
+* XWalkView can enable JavaScript
+* XWalkView can disable JavaScript
+
+This usecase covers following interface and methods:
+
+* XWalkSettings interface: setJavaScript, getJavaScript
+
+
+### 91. The [XWalkViewSettingJavaScriptCanOpenWindowsAutomaticallyAsync](setting/XWalkViewSettingJavaScriptCanOpenWindowsAutomaticallyAsync.java) sample check XWalkView can enable/disable JavaScriptCanOpenWindowsAutomatically, include:
+
+* XWalkView can enable JavaScriptCanOpenWindowsAutomatically
+* XWalkView can disable JavaScriptCanOpenWindowsAutomatically
+
+This usecase covers following interface and methods:
+
+* XWalkSettings interface: setJavaScriptCanOpenWindowsAutomatically, getJavaScriptCanOpenWindowsAutomatically
