@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Test converted from blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream/RTCPeerConnection-localDescription.html
+-->
+
+<meta charset=utf-8>
+<title>WebRTC Test: RTCPeerConnection localDescription</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-setLocalDescription-void-RTCSessionDescription-description-VoidFunction-successCallback-RTCPeerConnectionErrorCallback-failureCallback">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var t = async_test(document.title);
+
+var pc = null;
+var pc2 = null;
+var atStep = "Create offer at one";
+
+t.step(function() {
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null, null);
+  } else {
+    pc = new webkitRTCPeerConnection(null, null);
+  }
+  pc.createOffer()
+  .then(function(offer) {
+    atStep = 'Set local description at one';
+    pc.setLocalDescription(offer)
+  })
+  .then(function() {
+    if (typeof RTCPeerConnection != "undefined") {
+      pc2 = new RTCPeerConnection(null, null);
+    } else {
+      pc2 = new webkitRTCPeerConnection(null, null);
+    }
+    atStep = 'Set remote description at two';
+    return pc2.setRemoteDescription(pc.localDescription);
+  })
+  .then(function() {
+    atStep = 'Create answer at two';
+    pc2.createAnswer()
+  })
+  .then(function(answer) {
+    atStep = 'Set local description at two';
+    pc2.setLocalDescription(answer)
+  })
+  .then(function() {
+    t.done();
+  }).catch(t.step_func(function(e) {
+    assert_equals(pc.localDescription.type, "offer");
+    assert_equals(pc.localDescription.sdp, "local");
+    pc.close();
+    assert_equals(pc.localDescription.type, "offer");
+    assert_equals(pc.localDescription.sdp, "local");
+    assert_unreached('Error ' + e.name + ': ' + e.message +
+                     ' happened at step ' + atStep);
+  }));
+});
+
+</script>
+
