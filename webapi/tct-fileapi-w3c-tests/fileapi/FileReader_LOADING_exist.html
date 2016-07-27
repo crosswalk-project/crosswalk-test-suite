@@ -43,9 +43,8 @@ Authors:
   <body>
     <div id="log"></div>
     <script>
-        var fileReader = new FileReader();
         test(function() {
-            assert_true(fileReader && (typeof fileReader.LOADING != undefined), "FileReader.LOADING exists");
+            assert_own_property(FileReader, "LOADING");
         }, document.title);
     </script>
   </body>
