@@ -65,26 +65,24 @@ async_test(function(t) {
     gFirstConnection = new RTCPeerConnection(null);
     gFirstConnection.onicecandidate = onIceCandidateToFirst;
     gFirstConnection.addStream(localStream);
-    gFirstConnection.createOffer(onOfferCreated, fail);
+    gFirstConnection.createOffer()
+    .then(function(offer) {
+      gFirstConnection.setLocalDescription(offer);
+      receiveCall(offer);
+    })
   }
-
-  var onOfferCreated = t.step_func(function(offer) {
-    gFirstConnection.setLocalDescription(offer);
-    receiveCall(offer);
-  });
 
   function receiveCall(offer) {
     gSecondConnection = new RTCPeerConnection(null);
     gSecondConnection.onicecandidate = onIceCandidateToSecond;
     gSecondConnection.onaddstream = onRemoteStream;
     gSecondConnection.setRemoteDescription(offer);
-    gSecondConnection.createAnswer(onAnswerCreated, fail);
+    gSecondConnection.createAnswer()
+    .then(function(answer) {
+      gSecondConnection.setLocalDescription(answer);
+      gFirstConnection.setRemoteDescription(answer);
+    })
   }
-
-  var onAnswerCreated = t.step_func(function(answer) {
-    gSecondConnection.setLocalDescription(answer);
-    gFirstConnection.setRemoteDescription(answer);
-  });
 
   var onIceCandidateToFirst = t.step_func(function(event) {
     if(event.candidate) {

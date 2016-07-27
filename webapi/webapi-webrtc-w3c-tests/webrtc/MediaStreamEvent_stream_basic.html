@@ -44,13 +44,13 @@ var t = async_test("Check if the readonly attribute stream of MediaStreamEvent e
 
 var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
 var pc1;
+var atStep = 'Create offer';
 if (typeof RTCPeerConnection != "undefined") {
   pc1 = new RTCPeerConnection(configuration);
 } else {
   pc1 = new webkitRTCPeerConnection(configuration);
 }
 var pc2;
-var pc1_offer;
 var fake_audio;
 
 t.step(function () {
@@ -64,37 +64,39 @@ t.step(function () {
 function gotStream(stream) {
   pc1.addStream(stream);
   fake_audio = stream;
-  pc1.createOffer(requestSucceeded1, function () {});
-}
-
-function requestSucceeded1 (offer) {
-  pc1_offer = offer;
-  pc1.setLocalDescription(offer, requestSucceeded2, function () {});
-}
-
-
-function requestSucceeded2 () {
-  if (typeof RTCPeerConnection != "undefined") {
-    pc2 = new RTCPeerConnection(null, null);
-  } else {
-    pc2 = new webkitRTCPeerConnection(null, null);
-  }
-  pc2.addStream(fake_audio);
-  pc2.onaddstream = t.step_func(function (evt) {
-    assert_true("stream" in evt, "stream attribute in MediaStreamEvent");
-    assert_equals(Object.prototype.toString.call(evt.stream), "[object MediaStream]", "stream attribute of type");
-    assert_readonly(evt, "stream", "expect attribute stream cannot be changed but");
-    t.done();
-  });
-  pc2.setRemoteDescription(pc1_offer, requestSucceeded3, function () {});
-}
-
-function requestSucceeded3 () {
-  pc2.createAnswer(requestSucceeded4, function () {});
-}
-
-function requestSucceeded4 (answer) {
-  pc2.setLocalDescription(answer, function () {}, function () {});
+  pc1.createOffer()
+  .then(function(offer) {
+    atStep = 'Set local description at one';
+    return pc1.setLocalDescription(offer);
+  })
+  .then(function() {
+    if (typeof RTCPeerConnection != "undefined") {
+      pc2 = new RTCPeerConnection(null, null);
+    } else {
+      pc2 = new webkitRTCPeerConnection(null, null);
+    }
+    pc2.addStream(fake_audio);
+    pc2.onaddstream = t.step_func(function (evt) {
+      assert_true("stream" in evt, "stream attribute in MediaStreamEvent");
+      assert_equals(Object.prototype.toString.call(evt.stream), "[object MediaStream]", "stream attribute of type");
+      assert_readonly(evt, "stream", "expect attribute stream cannot be changed but");
+      t.done();
+    });
+    atStep = 'Set remote description at two';
+    return pc2.setRemoteDescription(pc1.localDescription);
+  })
+  .then(function() {
+    atStep = 'Create answer';
+    return pc2.createAnswer();
+  })
+  .then(function(answer) {
+    atStep = 'Set local description at two';
+    pc2.setLocalDescription(answer);
+  })
+  .catch(t.step_func(function(e) {
+    assert_unreached('Error ' + e.name + ': ' + e.message +
+                     ' happened at step ' + atStep);
+  }));
 }
 
 </script>

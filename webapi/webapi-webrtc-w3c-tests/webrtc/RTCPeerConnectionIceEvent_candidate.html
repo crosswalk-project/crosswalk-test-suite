@@ -58,19 +58,14 @@ Authors:
           assert_equals(Object.prototype.toString.call(eve.candidate), "[object RTCIceCandidate]", "the value of RTCPeerConnectionIceEvent.candidate");
           t.done();
         });
-        pc.createOffer(localDescCreated, logError);
+        pc.createOffer()
+        .then(function(offer) {
+          return pc.setLocalDescription(offer);
+        })
+        .catch(t.step_func(function(e) {
+          assert_unreached("Error message: {" + e.message + "}");
+        }));
       });
-
-      function localDescCreated(desc) {
-        pc.setLocalDescription(desc, function () {}, logError);
-      }
-
-      function logError (error) {
-        t.step(function () {
-          assert_unreached("Error message: {" + error.message + "}");
-        });
-        t.done();
-      }
 
     </script>
   </body>

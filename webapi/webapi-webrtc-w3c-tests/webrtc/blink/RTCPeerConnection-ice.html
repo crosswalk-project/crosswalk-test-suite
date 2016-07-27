@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<meta charset=utf-8>
+<title>WebRTC Test: the RTCPeerConnection Ice functionality</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcpeerconnection-interface">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var t = async_test(document.title);
+
+var pc = null;
+var iceCandidate = null;
+
+function onIceChange2() {
+  if (pc.iceConnectionState === "closed") {
+    t.step_func(function () {
+      t.done();
+    });
+  }
+}
+
+function addIceCandidateFailure() {
+  t.step(function () {
+    assert_unreached("addIceCandidateFailue was called");
+  });
+  t.done();
+}
+
+function onIceChange1() {
+  if (pc.iceConnectionState === "completed") {
+    iceCandidate = new RTCIceCandidate({candidate:"nano nano"});
+
+    pc.addIceCandidate(iceCandidate)
+    .then(function() {
+      pc.oniceconnectionstatechange = onIceChange2;
+      pc.close();
+    }).catch(addIceCandidateFailure);
+  }
+}
+
+t.step(function () {
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null, null);
+  } else {
+    pc = new webkitRTCPeerConnection(null, null);
+  }
+  pc.oniceconnectionstatechange = onIceChange1;
+});
+
+</script>
+

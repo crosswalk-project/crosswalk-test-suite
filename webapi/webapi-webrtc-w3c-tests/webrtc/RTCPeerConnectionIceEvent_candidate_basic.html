@@ -57,19 +57,14 @@ t.step(function () {
     assert_readonly(eve, "candidate", "expect attribute candidate cannot be changed but");
     t.done();
   });
-  pc.createOffer(localDescCreated, logError);
+  pc.createOffer()
+  .then(function(offer) {
+    return pc.setLocalDescription(offer);
+  })
+  .catch(t.step_func(function(e) {
+    assert_unreached("Error message: {" + e.message + "}");
+  }));
 });
 
-function localDescCreated(desc) {
-  pc.setLocalDescription(desc, function () {
-  }, logError);
-}
-
-function logError (error) {
-  t.step(function () {
-    assert_unreached("Error message: {" + error.message + "}");
-  });
-  t.done();
-}
 
 </script>
