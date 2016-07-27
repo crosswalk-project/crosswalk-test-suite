@@ -1,6 +1,10 @@
 This test suite comes from
 https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream
 from the blink integration, and then follow testharness redefine
+with modification:
+1. Modify promise-based versions of RTCPeerConnection methods:
+setLocalDescription, setRemoteDescription, addIceCandidate,
+createAnswer, createOffer.
 
 Use of this source code is governed by a BSD-style license:
 http://src.chromium.org/viewvc/chrome/trunk/src/LICENSE

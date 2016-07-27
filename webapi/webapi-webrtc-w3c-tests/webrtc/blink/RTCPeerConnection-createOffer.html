@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<meta charset=utf-8>
+<title>WebRTC Test: RTCPeerConnection createOffer</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-createOffer-void-RTCSessionDescriptionCallback-successCallback-RTCPeerConnectionErrorCallback-failureCallback-MediaConstraints-constraints">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var t = async_test(document.title);
+
+var pc;
+if (typeof RTCPeerConnection != "undefined") {
+  pc = new RTCPeerConnection(null, null);
+} else {
+  pc = new webkitRTCPeerConnection(null, null);
+}
+
+t.step(function () {
+  pc.createOffer()
+  .then(function(offer) {
+    sessionDescription = offer;
+    t.step(function () {
+      assert_equals(sessionDescription.type, "offer");
+    });
+    return pc.createOffer();
+  })
+  .then(function() {
+    t.done();
+  })
+  .catch();
+});
+
+</script>
+
