@@ -65,10 +65,12 @@ Authors:
       });
 
       t.step(function () {
-        assert_throws(new TypeError(), function () {
-          pc1.addIceCandidate("", function () {}, function () {});
-        },"the candidate parameter is malformed throw a exception");
-        t.done();
+        pc1.addIceCandidate("")
+        .catch(t.step_func(function(e) {
+          assert_throws(new TypeError(), e,
+            "the candidate parameter is malformed throw a exception");
+          t.done();
+        }));
       });
 
       t1.step(function () {

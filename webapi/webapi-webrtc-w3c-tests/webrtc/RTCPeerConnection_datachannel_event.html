@@ -46,8 +46,7 @@ Authors:
       var t = async_test("Check if the event of datachannel can fire at the RTCPeerConnection object");
       setup({timeout: 20000});
 
-      var pc1_offer;
-      var pc2_answer;
+      var atStep = 'Create offer';
 
       var pc1 = new RTCPeerConnection(null);
       var pc2 = new RTCPeerConnection(null);
@@ -69,68 +68,34 @@ Authors:
         }
       });
 
-      function requestSucceeded1 (offer) {
-        pc1_offer = offer;
-        pc1.setLocalDescription(offer, requestSucceeded2, requestFailed2);
-      }
-
-      function requestFailed1 () {
-        t.step(function () {
-          assert_unreached("requestFailed1 was called");
-        });
-        t.done();
-      }
-
-      function requestSucceeded2 () {
-        pc2.setRemoteDescription(pc1_offer, requestSucceeded3, requestFailed3);
-      }
-
-      function requestFailed2 () {
-        t.step(function () {
-          assert_unreached("requestFailed2 was called");
-        });
-        t.done();
-      }
-
-      function requestSucceeded3 () {
-        pc2.createAnswer(requestSucceeded4, requestFailed4);
-      }
-
-      function requestFailed3 () {
-        t.step(function () {
-          assert_unreached("requestFailed3 was called");
-        });
-        t.done();
-      }
-
-      function requestSucceeded4 (answer) {
-        pc2_answer = answer;
-        pc2.setLocalDescription(answer, requestSucceeded5, requestFailed5);
-      }
-
-      function requestFailed4 () {
-        t.step(function () {
-          assert_unreached("requestFailed4 was called");
-        });
-        t.done();
-      }
-
-      function requestSucceeded5 () {
-        pc1.setRemoteDescription(pc2_answer, function () {}, function () {
-          t.step(function () {
-            assert_unreached("setRemoteDescription request failed");
-          });
-          t.done();
-        });
-      }
-      function requestFailed5 () {
-        t.step(function () {
-          assert_unreached("requestFailed5 was called");
-        });
-        t.done();
-      }
-
-      pc1.createOffer(requestSucceeded1, requestFailed1);
+      pc1.createOffer()
+      .then(function(offer) {
+        atStep = 'Set local description at one';
+        return pc1.setLocalDescription(offer);
+      })
+      .then(function() {
+        atStep = 'Set remote description at two';
+        return pc2.setRemoteDescription(pc1.localDescription);
+      })
+      .then(function() {
+        atStep = 'Create answer';
+        return pc2.createAnswer();
+      })
+      .then(function(answer) {
+        atStep = 'Set local description at two';
+        return pc2.setLocalDescription(answer);
+      })
+      .then(function() {
+        atStep = 'Set remote description at first';
+        return pc1.setRemoteDescription(pc2.localDescription);
+      })
+      .then(function() {
+        atStep = 'Negotiation completed';
+      })
+      .catch(t.step_func(function(e) {
+        assert_unreached('Error ' + e.name + ': ' + e.message +
+                         ' happened at step ' + atStep);
+      }));
 
     </script>
   </body>

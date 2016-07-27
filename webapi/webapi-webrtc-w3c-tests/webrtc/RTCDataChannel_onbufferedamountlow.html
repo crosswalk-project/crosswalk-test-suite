@@ -74,26 +74,19 @@ async_test(function(t) {
     }
   });
 
-  localConnection.createOffer(function getDescription(desc) {
-    t.step(function() {
-      localConnection.setLocalDescription(desc);
-      remoteConnection.setRemoteDescription(desc);
-      remoteConnection.createAnswer(function getAnswer(answer) {
-        t.step(function() {
-          remoteConnection.setLocalDescription(answer);
-          localConnection.setRemoteDescription(answer);
-        });
-      }, function showAnswerError(error) {
-        t.step(function() {
-          assert_unreached(error.name + ":" + error.message);
-        });
-      });
-    });
-  }, function showConnectionError(error) {
-    t.step(function() {
-      assert_unreached(error.name + ":" + error.message);
-    });
-  });
+  localConnection.createOffer()
+  .then(function(offer) {
+    localConnection.setLocalDescription(offer);
+    remoteConnection.setRemoteDescription(offer);
+    return remoteConnection.createAnswer()
+  })
+  .then(function(answer) {
+    remoteConnection.setLocalDescription(answer);
+    localConnection.setRemoteDescription(answer);
+  })
+  .catch(t.step_func(function(e) {
+    assert_unreached(e.name + ': ' + e.message);
+  }));
 }, "Check that RTCDataChannel monotors with bufferedamountlow event.");
 
 </script>
