@@ -1,6 +1,7 @@
 package org.xwalk.embedded.api.asyncsample.setting;
 
 import org.xwalk.core.XWalkInitializer;
+import org.xwalk.core.XWalkSettings;
 import org.xwalk.core.XWalkView;
 import org.xwalk.embedded.api.asyncsample.R;
 
@@ -11,17 +12,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class XWalkViewSettingDomStorageEnabledAsync extends Activity implements XWalkInitializer.XWalkInitListener {
+public class XWalkViewSettingJavaScriptCanOpenWindowsAutomaticallyAsync extends Activity implements XWalkInitializer.XWalkInitListener {
 
     private XWalkInitializer mXWalkInitializer;
 
-    public final static String ENABLE_BT = "Enable DOM Storage";
-    public final static String DISABLE_BT = "Disable DOM Storage";
-    public final static String MESSAGE_TITLE = "DOM Storage Enabled: ";
+    public final static String ENABLE_BT = "Enable JavaScriptCanOpenWindowsAutomatically";
+    public final static String DISABLE_BT = "Disable JavaScriptCanOpenWindowsAutomatically";
+    public final static String MESSAGE_TITLE = "JavaScriptCanOpenWindowsAutomatically Enabled: ";
 
     private XWalkView mXWalkView;
     private TextView mMessage;
     private Button mButton;
+    private XWalkSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,43 +50,44 @@ public class XWalkViewSettingDomStorageEnabledAsync extends Activity implements 
 
     @Override
     public void onXWalkInitCompleted() {
-        setContentView(R.layout.activity_xwalk_view_setting_dom_storage_enable_async);
+        setContentView(R.layout.activity_xwalk_view_setting_javascript_open_windows_automatically_async);
 
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-                .append("Check if XWalkView can enable/disable DOM storage API.\n\n")
-                .append("Expected Result:\n\n")
-                .append("Test passes if Dom storage can be enabled/disabled");
+            .append("Check that XWalkView can enable/disable JavaScript open windows automatically.\n\n")
+            .append("Expected Result:\n\n")
+            .append("Test passes if XWalkView can enable/disable JavaScript open windows automatically during window.open().");
         new  AlertDialog.Builder(this)
-                .setTitle("Info")
-                .setMessage(mess.toString())
-                .setPositiveButton("confirm", null)
-                .show();
+                        .setTitle("Info")
+                        .setMessage(mess.toString())
+                        .setPositiveButton("confirm", null)
+                        .show();
 
         mXWalkView = (XWalkView) findViewById(R.id.xwalk_view);
         mMessage = (TextView) findViewById(R.id.message_tv);
         mButton = (Button) findViewById(R.id.switch_al);
-        boolean defaultStorage = mXWalkView.getSettings().getDomStorageEnabled();
-        if (defaultStorage) {
+        settings = mXWalkView.getSettings();
+        boolean defaultValue = settings.getJavaScriptCanOpenWindowsAutomatically();
+        if (defaultValue) {
             mButton.setText(DISABLE_BT);
         }else{
             mButton.setText(ENABLE_BT);
         }
-        mMessage.setText(MESSAGE_TITLE + defaultStorage + "(Default)");
-        mXWalkView.load("file:///android_asset/dom_storage_enable.html", null);
+        mMessage.setText(MESSAGE_TITLE + defaultValue + "(Default)");
+        mXWalkView.load("file:///android_asset/window_open_automatically.html", null);
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ENABLE_BT.equals(mButton.getText())) {
-                    mXWalkView.getSettings().setDomStorageEnabled(true);
+                    settings.setJavaScriptCanOpenWindowsAutomatically(true);
                     mButton.setText(DISABLE_BT);
                 } else {
-                    mXWalkView.getSettings().setDomStorageEnabled(false);
+                    settings.setJavaScriptCanOpenWindowsAutomatically(false);
                     mButton.setText(ENABLE_BT);
                 }
-                mMessage.setText(MESSAGE_TITLE + mXWalkView.getSettings().getDomStorageEnabled());
-                mXWalkView.load("file:///android_asset/dom_storage_enable.html", null);
+                mMessage.setText(MESSAGE_TITLE + settings.getJavaScriptCanOpenWindowsAutomatically());
+                mXWalkView.load("file:///android_asset/window_open_automatically.html", null);
 
             }
         });
