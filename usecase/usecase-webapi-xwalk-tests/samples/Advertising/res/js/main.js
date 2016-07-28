@@ -53,15 +53,15 @@ $(document).ready(function () {
         }
         ad.onfailed = function(msg) {
           $("#testDiv").text($("#testDiv").text() + "\n" + "Failed message: " + JSON.stringify(msg));
-          ad.destroy()
+          ad.destroy();
         }
         ad.onloaded = function() {
           $("#testDiv").text($("#testDiv").text() + "\n" + "Un-overlop advertising loaded");
         }
         $("#destoryUnover").click(function (){
-          $("#testDiv").text($("#testDiv").text() + "\n" + "Destory un-overlop advertising successfully")
-          ad.destroy()
-        })
+          $("#testDiv").text($("#testDiv").text() + "\n" + "Destory un-overlop advertising successfully");
+          ad.destroy();
+        });
       },
       function(err) {
         $("#testDiv").text($("#testDiv").text() + "\n" + "Error message: " + JSON.stringify(msg));
@@ -80,7 +80,7 @@ $(document).ready(function () {
     }).then(
       function(ad) {
         $("#testDiv").empty();
-        ad.show(true)
+        ad.show(true);
         $("#testDiv").text("Show overlop advertising");
         ad.onopened = function() {
           $("#testDiv").text($("#testDiv").text() + "\n" + "Fired onopen event");
@@ -95,9 +95,9 @@ $(document).ready(function () {
           $("#testDiv").text($("#testDiv").text() + "\n" + "Overlop advertising loaded");
         }
         $("#destoryOver").click(function (){
-          $("#testDiv").text($("#testDiv").text() + "\n" + "Destory overlop advertising successfully")
-          ad.destroy()
-        })
+          $("#testDiv").text($("#testDiv").text() + "\n" + "Destory overlop advertising successfully");
+          ad.destroy();
+        });
       },
       function(err) {
         $("#testDiv").text($("#testDiv").text() + "\n" + JSON.stringify(err));
@@ -113,10 +113,10 @@ $(document).ready(function () {
     }).then(
       function(ad) {
         $("#testDiv").empty();
-        $("#testDiv").text($("#testDiv").text() + "\n" + "Show interstitial advertising")
+        $("#testDiv").text($("#testDiv").text() + "\n" + "Show interstitial advertising");
         ad.onloaded = function() {
           $("#testDiv").text($("#testDiv").text() + "\n" + "Interstitial advertising loaded");
-          ad.show(true)
+          ad.show(true);
         }
       },
       function(err) {
