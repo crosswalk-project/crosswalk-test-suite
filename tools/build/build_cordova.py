@@ -166,7 +166,7 @@ def packCordova(
         elif BUILD_PARAMETERS.pkgarch == "arm64":
             pack_arch_tmp = "arm --xwalk64bit"
 
-    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s --minSdkVersion=16" % pack_arch_tmp
+    pack_cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pack_arch_tmp
 
     if not utils.doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
