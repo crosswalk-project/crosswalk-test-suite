@@ -63,6 +63,11 @@ app_name = "SharedModeLibraryDownload"
 pkg_name = "com.example.sharedModeLibraryDownload"
 current_path_tmp = os.getcwd()
 comm.create(app_name, pkg_name, current_path_tmp)
+comm.replaceUserString(
+        os.path.join(current_path_tmp, app_name),
+        'config.xml',
+        '</widget>',
+        '    <preference name="LoadUrlTimeoutValue" value="600000" />\n</widget>')
 
 menifest_path = os.path.join(current_path_tmp, app_name, "platforms", "android")
 comm.replaceUserString(
@@ -84,7 +89,3 @@ comm.build(app_name)
 comm.run(app_name)
 comm.checkBuildResult()
 comm.checkRunResult(pkg_name)
-
-
-
-
