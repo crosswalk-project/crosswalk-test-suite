@@ -115,9 +115,6 @@ for node in preferences:
 
 
 pack_arch_opt = ""
-#https://crosswalk-project.org/jira/browse/CTS-1831
-#Upgrade the value of minSdkVersion parameter from 14(default) to 16 
-min_sdk_version = "-- --minSdkVersion=16"
 if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgmode == "embedded":
     pack_arch_type = BUILD_PARAMETERS.pkgarch
     if BUILD_PARAMETERS.pkgarch == "x86":
@@ -129,11 +126,9 @@ if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgmode == "embedded":
     elif BUILD_PARAMETERS.pkgarch == "arm64":
         pack_arch_type = "armv7 --xwalk64bit"
     pack_arch_opt = "-- --gradleArg=-PcdvBuildArch=%s" % pack_arch_type
-    min_sdk_version = "--minSdkVersion=16"
 
-
-os.system("cordova build android %s %s" % (pack_arch_opt, min_sdk_version))
-os.system("cordova run android %s %s" % (pack_arch_opt, min_sdk_version))
+os.system("cordova build android %s" % pack_arch_opt)
+os.system("cordova run android %s" % pack_arch_opt)
 
 comm.checkApkExist("./platforms/android/build/outputs/apk/*.apk")
 comm.checkApkRun(pkg_name)
