@@ -254,7 +254,7 @@ def build(appname, isDebug, self, isCopy=False, isMultipleApk=True):
         cmd_mode = "--release"
         apk_name_mode = "release-unsigned"
 
-    cmd = "cordova build android %s -- --gradleArg=-PcdvBuildArch=%s --minSdkVersion=16" % (cmd_mode, pack_arch_tmp)
+    cmd = "cordova build android %s -- --gradleArg=-PcdvBuildArch=%s" % (cmd_mode, pack_arch_tmp)
 
     print cmd
     buildstatus = commands.getstatusoutput(cmd)
@@ -294,7 +294,7 @@ def checkApkExist(appname, self, isCopy=False, isMultipleApk=True, apk_name_mode
 def run(appname, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Run project %s ----------------> START" % appname
-    cmd = "cordova run android -- --minSdkVersion=16"
+    cmd = "cordova run android"
     print cmd
     runstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, runstatus[0])
