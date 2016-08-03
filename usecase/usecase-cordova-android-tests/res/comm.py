@@ -180,7 +180,7 @@ def removeWebviewPlugin():
 
 def build(appname, pkgarch="arm"):
     print "Build project %s ----------------> START" % appname
-    cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s --minSdkVersion=16" % pkgarch
+    cmd = "cordova build android -- --gradleArg=-PcdvBuildArch=%s" % pkgarch
     print cmd
     buildstatus = os.system(cmd)
     print "\nBuild project %s ----------------> OK\n" % appname
@@ -201,7 +201,7 @@ def checkApkRun(pkg_name):
 
 def run(app_name):
     print "Run project %s ----------------> START" % app_name
-    cmd = "cordova run android -- --minSdkVersion=16"
+    cmd = "cordova run android"
     print cmd
     os.system(cmd)
     print "\nRun project %s ----------------> OK\n" % app_name
