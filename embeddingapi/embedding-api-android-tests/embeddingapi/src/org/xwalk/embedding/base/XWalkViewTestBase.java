@@ -1568,4 +1568,376 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
+
+    protected void loadUrlSyncByContent(final XWalkView xWalkContent,
+            final TestHelperBridge contentsClient,
+            final String url) throws Exception {
+        CallbackHelper pageFinishedHelper = contentsClient.getOnPageFinishedHelper();
+        int currentCallCount = pageFinishedHelper.getCallCount();
+        loadUrlAsyncByContent(xWalkContent, url);
+
+        pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                TimeUnit.SECONDS);
+    }
+
+    protected void loadUrlAsyncByContent(final XWalkView xWalkContent,
+            final String url) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                xWalkContent.load(url, null);
+            }
+        });
+    }
+
+    protected String getTitleOnUiThreadByContent(final XWalkView xWalkContent) throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                String title = xWalkContent.getTitle();
+                return title;
+            }
+        });
+    }
+
+    protected void loadUrlSyncByContentAndExpectError(final XWalkView xWalkContent,
+            final TestHelperBridge contentsClient,
+            final String url) throws Exception {
+        CallbackHelper onPageFinishedHelper = contentsClient.getOnPageFinishedHelper();
+        CallbackHelper onReceivedErrorHelper = contentsClient.getOnReceivedErrorHelper();
+        int onErrorCallCount = onReceivedErrorHelper.getCallCount();
+        int onFinishedCallCount = onPageFinishedHelper.getCallCount();
+        loadUrlAsyncByContent(xWalkContent, url);
+
+        onReceivedErrorHelper.waitForCallback(onErrorCallCount, 1, WAIT_TIMEOUT_MS,
+                TimeUnit.MILLISECONDS);
+        onPageFinishedHelper.waitForCallback(onFinishedCallCount, 1, WAIT_TIMEOUT_MS,
+                TimeUnit.MILLISECONDS);
+    }
+
+    protected void setAllowFileAccess(final boolean value) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.getSettings().setAllowFileAccess(value);
+            }
+        });
+    }
+
+    protected void setAllowUniversalAccessFromFileURLs(final boolean value) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.getSettings().setAllowUniversalAccessFromFileURLs(value);
+            }
+        });
+    }
+
+    protected void setAllowFileAccessFromFileURLs(final boolean value) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.getSettings().setAllowFileAccessFromFileURLs(value);
+            }
+        });
+    }
+
+    protected void setAllowFileAccessOnUiThreadByXWalkView(
+            final boolean value, final XWalkView view) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                view.getSettings().setAllowFileAccess(value);
+            }
+        });
+    }
+
+    protected boolean getAllowFileAccessOnUiThreadByXWalkView(
+            final XWalkView view) throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return view.getSettings().getAllowFileAccess();
+            }
+        });
+    }
+
+    public class XWalkSettingsFileUrlAccessTestHelper extends XWalkSettingsTestHelper<Boolean> {
+        private static final String TEST_FILE = "file:///sdcard/device_files/hello_world.html";
+        private static final String ACCESS_GRANTED_TITLE = "Hello, World!";
+
+        public XWalkSettingsFileUrlAccessTestHelper(
+                XWalkView xWalkContent,
+                final TestHelperBridge helperBridge,
+                int startIndex) throws Throwable {
+            super(xWalkContent);
+            mView = xWalkContent;
+            mHelperBridge = helperBridge;
+            mIndex = startIndex;
+        }
+
+        @Override
+        protected Boolean getAlteredValue() {
+            return DISABLED;
+        }
+
+        @Override
+        protected Boolean getInitialValue() {
+            return ENABLED;
+        }
+
+        @Override
+        protected Boolean getCurrentValue() {
+            try {
+                return getAllowFileAccessOnUiThreadByXWalkView(mView);
+            } catch (Exception e) {
+                return true;
+            }
+        }
+
+        @Override
+        protected void setCurrentValue(Boolean value) {
+            try {
+                setAllowFileAccessOnUiThreadByXWalkView(value, mView);
+            } catch (Exception e) {
+            }
+        }
+
+        @Override
+        protected void doEnsureSettingHasValue(Boolean value) throws Throwable {
+            // Use query parameters to avoid hitting a cached page.
+            String fileUrl = TEST_FILE + "?id=" + mIndex;
+            mIndex += 2;
+            if (value == ENABLED) {
+                loadUrlSyncByContent(mView, mHelperBridge, fileUrl);
+                assertEquals(ACCESS_GRANTED_TITLE, getTitleOnUiThreadByContent(mView));
+            } else {
+                loadUrlSyncByContentAndExpectError(mView, mHelperBridge, fileUrl);
+            }
+        }
+
+        private int mIndex;
+        private XWalkView mView;
+        private TestHelperBridge mHelperBridge;
+    }
+
+    protected void setAllowUniversalAccessFromFileURLsOnUiThreadByXWalkView(
+            final boolean value, final XWalkView view) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                view.getSettings().setAllowUniversalAccessFromFileURLs(value);
+            }
+        });
+    }
+
+    protected boolean getAllowUniversalAccessFromFileURLsOnUiThreadByXWalkView(
+            final XWalkView view) throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return view.getSettings().getAllowUniversalAccessFromFileURLs();
+            }
+        });
+    }
+
+    public class XWalkSettingsUniversalAccessFromFilesTestHelper extends XWalkSettingsTestHelper<Boolean> {
+        private static final String TEST_CONTAINER_FILE =
+                "file:///sdcard/device_files/iframe_access.html";
+        private static final String TEST_FILE = "file:///sdcard/device_files/hello_world.html";
+        private static final String ACCESS_DENIED_TITLE = "Exception";
+
+        public XWalkSettingsUniversalAccessFromFilesTestHelper(
+                XWalkView xWalkContent,
+                final TestHelperBridge helperBridge) throws Throwable {
+            super(xWalkContent);
+            mView = xWalkContent;
+            mHelperBridge = helperBridge;
+
+            mIframeContainerUrl = TEST_CONTAINER_FILE;
+            mIframeUrl = TEST_FILE;
+            setAllowUniversalAccessFromFileURLsOnUiThreadByXWalkView(false, mView);
+            // If universal access is true, the value of file access doesn't
+            // matter. While if universal access is false, having file access
+            // enabled will allow file loading.
+            setAllowFileAccessFromFileURLsOnUiThreadByXWalkView(false, mView);
+        }
+
+        @Override
+        protected Boolean getAlteredValue() {
+            return ENABLED;
+        }
+
+        @Override
+        protected Boolean getInitialValue() {
+            return DISABLED;
+        }
+
+        @Override
+        protected Boolean getCurrentValue() {
+            try {
+                return getAllowUniversalAccessFromFileURLsOnUiThreadByXWalkView(mView);
+            } catch (Exception e) {
+                return true;
+            }
+        }
+
+        @Override
+        protected void setCurrentValue(Boolean value) {
+            try {
+                setAllowUniversalAccessFromFileURLsOnUiThreadByXWalkView(value, mView);
+            } catch (Exception e) {
+            }
+        }
+
+        @Override
+        protected void doEnsureSettingHasValue(Boolean value) throws Throwable {
+            loadUrlSyncByContent(mView, mHelperBridge, mIframeContainerUrl);
+            assertEquals(
+                    value == ENABLED ? mIframeUrl : ACCESS_DENIED_TITLE,
+                    getTitleOnUiThreadByContent(mView));
+        }
+
+        private final String mIframeContainerUrl;
+        private final String mIframeUrl;
+        private XWalkView mView;
+        private TestHelperBridge mHelperBridge;
+    }
+
+    protected void setAllowFileAccessFromFileURLsOnUiThreadByXWalkView(
+            final boolean value, final XWalkView view) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                view.getSettings().setAllowFileAccessFromFileURLs(value);
+            }
+        });
+    }
+
+    protected boolean getAllowFileAccessFromFileURLsOnUiThreadByXWalkView(
+            final XWalkView view) throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return view.getSettings().getAllowFileAccessFromFileURLs();
+            }
+        });
+    }
+
+    public class XWalkSettingsFileAccessFromFilesIframeTestHelper extends XWalkSettingsTestHelper<Boolean> {
+        private static final String TEST_CONTAINER_FILE =
+                "file:///sdcard/device_files/iframe_access.html";
+        private static final String TEST_FILE = "file:///sdcard/device_files/hello_world.html";
+        private static final String ACCESS_DENIED_TITLE = "Exception";
+
+        public XWalkSettingsFileAccessFromFilesIframeTestHelper(
+                XWalkView xWalkContent,
+                final TestHelperBridge helperBridge) throws Throwable {
+            super(xWalkContent);
+            mView = xWalkContent;
+            mHelperBridge = helperBridge;
+
+            mIframeContainerUrl = TEST_CONTAINER_FILE;
+            mIframeUrl = TEST_FILE;
+            setAllowUniversalAccessFromFileURLsOnUiThreadByXWalkView(false, mView);
+            setAllowFileAccessFromFileURLsOnUiThreadByXWalkView(false, mView);
+        }
+
+        @Override
+        protected Boolean getAlteredValue() {
+            return ENABLED;
+        }
+
+        @Override
+        protected Boolean getInitialValue() {
+            return DISABLED;
+        }
+
+        @Override
+        protected Boolean getCurrentValue() {
+            try {
+                return getAllowFileAccessFromFileURLsOnUiThreadByXWalkView(mView);
+            } catch (Exception e) {
+                return true;
+            }
+        }
+
+        @Override
+        protected void setCurrentValue(Boolean value) {
+            try {
+                setAllowFileAccessFromFileURLsOnUiThreadByXWalkView(value, mView);
+            } catch (Exception e) {
+            }
+        }
+
+        @Override
+        protected void doEnsureSettingHasValue(Boolean value) throws Throwable {
+            loadUrlSyncByContent(mView, mHelperBridge, mIframeContainerUrl);
+            assertEquals(
+                    value == ENABLED ? mIframeUrl : ACCESS_DENIED_TITLE,
+                    getTitleOnUiThreadByContent(mView));
+        }
+
+        private final String mIframeContainerUrl;
+        private final String mIframeUrl;
+        private XWalkView mView;
+        private TestHelperBridge mHelperBridge;
+    }
+
+    public class XWalkSettingsFileAccessFromFilesXhrTestHelper extends XWalkSettingsTestHelper<Boolean> {
+        private static final String TEST_FILE = "file:///sdcard/device_files/xhr_access.html";
+        private static final String ACCESS_GRANTED_TITLE = "Hello, World!";
+        private static final String ACCESS_DENIED_TITLE = "Exception";
+
+        public XWalkSettingsFileAccessFromFilesXhrTestHelper(
+                XWalkView xWalkContent,
+                final TestHelperBridge helperBridge) throws Throwable {
+            super(xWalkContent);
+            mView = xWalkContent;
+            mHelperBridge = helperBridge;
+
+            mXhrContainerUrl = TEST_FILE;
+            setAllowUniversalAccessFromFileURLsOnUiThreadByXWalkView(false, mView);
+            setAllowFileAccessFromFileURLsOnUiThreadByXWalkView(false, mView);
+        }
+
+        @Override
+        protected Boolean getAlteredValue() {
+            return ENABLED;
+        }
+
+        @Override
+        protected Boolean getInitialValue() {
+            return DISABLED;
+        }
+
+        @Override
+        protected Boolean getCurrentValue() {
+            try {
+                return getAllowFileAccessFromFileURLsOnUiThreadByXWalkView(mView);
+            } catch (Exception e) {
+                return true;
+            }
+        }
+
+        @Override
+        protected void setCurrentValue(Boolean value) {
+            try {
+                setAllowFileAccessFromFileURLsOnUiThreadByXWalkView(value, mView);
+            } catch (Exception e) {
+            }
+        }
+
+        @Override
+        protected void doEnsureSettingHasValue(Boolean value) throws Throwable {
+            loadUrlSyncByContent(mView, mHelperBridge, mXhrContainerUrl);
+            assertEquals(
+                    value == ENABLED ? ACCESS_GRANTED_TITLE : ACCESS_DENIED_TITLE,
+                    getTitleOnUiThreadByContent(mView));
+        }
+
+        private final String mXhrContainerUrl;
+        private XWalkView mView;
+        private TestHelperBridge mHelperBridge;
+    }
 }
