@@ -43,9 +43,8 @@ Authors:
   <body>
     <div id="log"></div>
     <script>
-        var fileReader = new FileReader();
         test(function() {
-            assert_true(fileReader && (typeof fileReader.EMPTY != undefined), "FileReader.EMPTY exists");
+            assert_own_property(FileReader, "EMPTY");
         }, document.title);
     </script>
   </body>
