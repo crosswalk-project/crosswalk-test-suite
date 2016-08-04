@@ -101,7 +101,7 @@ function error_MEDIA_ERR_SRC_NOT_SUPPORTED()
         media.src = 'a-video-that-is-unsupported';
         media.onerror = function(e) {
             assert_true(media.error.code === media.error.MEDIA_ERR_SRC_NOT_SUPPORTED,document.title);
-        }
+        };
     });
 }
 
@@ -244,7 +244,7 @@ function canPlayType_empty_string()
 {
     test( function() {
         getmedia();
-         assert_equals(media.canPlayType(""), '', "not return empty string if arguments is a empty string")
+         assert_equals(media.canPlayType(""), '', "not return empty string if arguments is a empty string");
          }
     );
 }
@@ -253,7 +253,7 @@ function canPlayType_null()
 {
     test( function() {
          getmedia();
-         assert_equals(media.canPlayType(null), '', "not return empty string if arguments is null")
+         assert_equals(media.canPlayType(null), '', "not return empty string if arguments is null");
          }
     );
 }
@@ -283,7 +283,7 @@ function media_event(event_name , parameter)
      {
         setTimeout(function () {
             media.pause();
-        },1000)
+        },1000);
      }
      else if(event_name == 'ended')
      {

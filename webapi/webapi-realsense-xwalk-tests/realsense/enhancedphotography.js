@@ -287,7 +287,7 @@ promise_test(function() {
       assert_unreached("unreached here when miss blob argument");
     })
     .catch(function(ex) {
-      assert_equals(ex.name, "TypeError")
+      assert_equals(ex.name, "TypeError");
     });
 }, "Check that xdmUtils.isXDM() should reject with TypeError exception");
 
@@ -297,7 +297,7 @@ promise_test(function() {
       assert_unreached("unreached here when blob is null");
   })
   .catch(function(ex) {
-      assert_equals(ex.name, "TypeError")
+      assert_equals(ex.name, "TypeError");
   });
 }, "Check that xdmUtils.isXDM(null) should reject with TypeError exception");
 
@@ -307,7 +307,7 @@ promise_test(function() {
       assert_unreached("unreached here when miss blob argument");
     })
     .catch(function(ex) {
-      assert_equals(ex.name, "TypeError")
+      assert_equals(ex.name, "TypeError");
     });
 }, "Check that xdmUtils.loadXDM() should reject with TypeError exception");
 
@@ -317,7 +317,7 @@ promise_test(function() {
       assert_unreached("unreached here when blob is null");
     })
     .catch(function(ex) {
-      assert_equals(ex.name, "TypeError")
+      assert_equals(ex.name, "TypeError");
     });
 }, "Check that xdmUtils.loadXDM(null) should reject with TypeError exception");
 
