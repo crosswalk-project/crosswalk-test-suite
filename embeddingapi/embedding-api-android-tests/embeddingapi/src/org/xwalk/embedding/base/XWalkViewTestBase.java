@@ -1529,4 +1529,43 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
+
+    protected void loadUrlSyncAndExpectError(final String url) throws Exception {
+        CallbackHelper onPageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+        CallbackHelper onReceivedErrorHelper = mTestHelperBridge.getOnReceivedErrorHelper();
+        int onErrorCallCount = onReceivedErrorHelper.getCallCount();
+        int onFinishedCallCount = onPageFinishedHelper.getCallCount();
+        loadUrlAsync(url);
+        onReceivedErrorHelper.waitForCallback(onErrorCallCount, 1, WAIT_TIMEOUT_MS,
+                TimeUnit.MILLISECONDS);
+        onPageFinishedHelper.waitForCallback(onFinishedCallCount, 1, WAIT_TIMEOUT_MS,
+                TimeUnit.MILLISECONDS);
+    }
+
+    protected void setCacheMode(final int value) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.getSettings().setCacheMode(value);
+            }
+        });
+    }
+
+    protected int getCacheMode() throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception{
+                return mXWalkView.getSettings().getCacheMode();
+            }
+        });
+    }
+
+    protected void setBlockNetworkLoads(final boolean value) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.getSettings().setBlockNetworkLoads(value);
+            }
+        });
+    }
 }
