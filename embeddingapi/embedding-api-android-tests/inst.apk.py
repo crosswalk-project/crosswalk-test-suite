@@ -34,6 +34,24 @@ def doCMD(cmd):
     return (cmd_return_code, output)
 
 
+def uninstResources():
+    action_status = True
+    cmd = "%s -s %s shell rm -r /sdcard/device_files" % (
+        ADB_CMD, PARAMETERS.device)
+    (return_code, output) = doCMD(cmd)
+    return action_status
+
+
+def instResources():
+    action_status = True
+    source_path = os.path.join(SCRIPT_DIR, "device_files")
+    if os.path.exists(source_path):
+        cmd = "%s -s %s push %s /sdcard/" % (
+            ADB_CMD, PARAMETERS.device,source_path)
+    (return_code, output) = doCMD(cmd)
+    return action_status
+
+
 def uninstPKGs():
     action_status = True
     for root, dirs, files in os.walk(SCRIPT_DIR):
@@ -48,6 +66,9 @@ def uninstPKGs():
                     if "Failure" in line:
                         action_status = False
                         break
+    if action_status:
+        uninstResources()
+
     return action_status
 
 
@@ -63,6 +84,9 @@ def instPKGs():
                     if "Failure" in line:
                         action_status = False
                         break
+    if action_status:
+        instResources()
+
     return action_status
 
 
