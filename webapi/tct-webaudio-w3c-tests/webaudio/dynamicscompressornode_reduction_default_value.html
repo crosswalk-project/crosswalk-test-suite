@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2012 Intel Corporation.
-
+Copyright (c) 2016 Intel Corporation.
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
-
 * Redistributions of works must retain the original copyright notice, this list
   of conditions and the following disclaimer.
 * Redistributions in binary form must reproduce the original copyright notice,
@@ -13,7 +11,6 @@ are permitted provided that the following conditions are met:
 * Neither the name of Intel Corporation nor the names of its contributors
   may be used to endorse or promote products derived from this work without
   specific prior written permission.
-
 THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
 AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -24,33 +21,22 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Authors:
-        nianx.gan <nianx.gan@intel.com>
-        chenglei.ren <chenglei.ren@intel.com>
-
 -->
 
-<html>
-  <head>
-    <title>WebAudio Test: dynamicscompressornode_reduction_type</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="https://webaudio.github.io/web-audio-api/#the-dynamicscompressornode-interface" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if DynamicsCompressorNode.reduction attribute is float type" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-    <script src="./support/webaudio.js"></script>
-  </head>
-  <body>
-    <div id=log></div>
-    <script type="text/javascript">
-        test(function () {
-            var context = new AudioContext();
-            var dynamicscompressornode = context.createDynamicsCompressor();
-            assert_true("reduction" in dynamicscompressornode, "reduction attribute exists in DynamicsCompressorNode interface");
-            assert_true(typeof dynamicscompressornode.reduction == "number", "Check if DynamicsCompressorNode.reduction attribute is float type");
-        }, document.title);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Web Audio: dynamicscompressornode_reduction_default_value</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Chenglei Ren" href="mailto:chenglei.ren@intel.com">
+<link rel="help" href="https://webaudio.github.io/web-audio-api/#the-dynamicscompressornode-interface">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="./support/webaudio.js"></script>
+<div id="log"></div>
+<script>
+    test(function () {
+        var context = new AudioContext();
+        var dynamicscompressornode = context.createDynamicsCompressor();
+        assert_true("reduction" in dynamicscompressornode, "reduction attribute exists in DynamicsCompressorNode interface");
+        assert_equals(dynamicscompressornode.reduction, 0, "reduction attribute has correct default value");
+    }, document.title);
+</script>
