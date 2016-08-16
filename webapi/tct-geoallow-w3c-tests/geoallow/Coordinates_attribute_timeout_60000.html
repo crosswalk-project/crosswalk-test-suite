@@ -54,13 +54,13 @@ Authors:
       function expectedsuccessCallback (position) {
         var coords = position.coords;
         t.step(function () {
-          assert_true(coords.accuracy == null || isNaN(coords.accuracy) || coords.accuracy >= 0, "should get Coordinates.accuracy");
-          assert_true(coords.altitudeAccuracy == null || isNaN(coords.altitudeAccuracy) || coords.altitudeAccuracy >= 0, "should get Coordinates.altitudeAccuracy");
-          assert_true(coords.altitude == null || isNaN(coords.altitude) || coords.altitude >= 0, "should get Coordinates.altitude");
-          assert_true(coords.heading == null || isNaN(coords.heading) || coords.heading >= 0, "should get Coordinates.heading");
-          assert_true(coords.latitude == null || isNaN(coords.latitude) || coords.latitude >= 0, "should get Coordinates.latitude");
-          assert_true(coords.longitude == null || isNaN(coords.longitude) || coords.longitude >= 0, "should get Coordinates.longitude");
-          assert_true(coords.speed == null || isNaN(coords.speed) || coords.speed >= 0, "should get Coordinates.speed");
+          assert_true(!isNaN(coords.accuracy) && coords.accuracy >= 0, "should get Coordinates.accuracy");
+          assert_true(!isNaN(coords.altitudeAccuracy) && coords.altitudeAccuracy >= 0, "should get Coordinates.altitudeAccuracy");
+          assert_true(!isNaN(coords.altitude) && coords.altitude >= 0, "should get Coordinates.altitude");
+          assert_true(!isNaN(coords.heading) && coords.heading >= 0, "should get Coordinates.heading");
+          assert_true(!isNaN(coords.latitude), "should get Coordinates.latitude");
+          assert_true(!isNaN(coords.longitude), "should get Coordinates.longitude");
+          assert_true(!isNaN(coords.speed) && coords.speed >= 0, "should get Coordinates.speed");
         });
         t.done();
       }
