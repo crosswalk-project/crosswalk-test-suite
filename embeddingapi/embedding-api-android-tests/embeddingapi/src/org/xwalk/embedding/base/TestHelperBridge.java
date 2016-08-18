@@ -133,6 +133,10 @@ public class TestHelperBridge {
         mOnPageStartedHelper.notifyCalled(url);
     }
 
+    public void onPageFinished(String url) {
+        mOnPageFinishedHelper.notifyCalled(url);
+    }
+
     public void onPageFinished(String url, LoadStatus status) {
         mLoadStatus = status;
         mOnPageFinishedHelper.notifyCalled(url);
