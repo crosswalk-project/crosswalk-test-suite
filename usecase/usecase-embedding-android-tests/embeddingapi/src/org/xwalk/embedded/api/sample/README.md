@@ -943,3 +943,12 @@ This usecase covers following interface and methods:
 
 * XWalkSettings interface: setJavaScriptCanOpenWindowsAutomatically, getJavaScriptCanOpenWindowsAutomatically
 
+### 92. The [XWalkViewSettingDatabaseEnabled](setting/XWalkViewSettingDatabaseEnabled.java) sample check XWalkView can enable/disable Database storage, include:
+
+* XWalkView can enable Database storage
+* XWalkView can disable Database storage
+
+This usecase covers following interface and methods:
+
+* XWalkSettings interface: setDatabaseEnabled, getDatabaseEnabled
+
