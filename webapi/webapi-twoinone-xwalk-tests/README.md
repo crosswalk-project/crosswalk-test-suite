@@ -1,4 +1,4 @@
-# RealSense Test Suite
+# TwoInOne Extension API Test Suite
 
 ## Introduction
 
