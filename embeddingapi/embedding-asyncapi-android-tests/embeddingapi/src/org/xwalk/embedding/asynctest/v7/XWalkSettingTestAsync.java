@@ -2,9 +2,12 @@ package org.xwalk.embedding.asynctest.v7;
 
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
+import java.util.concurrent.Callable;
 
 import org.xwalk.core.XWalkSettings;
 import org.xwalk.embedding.base.XWalkViewTestBase;
+import org.xwalk.embedding.base.XWalkViewTestBase.ViewPair;
+import org.xwalk.embedding.util.ImagePageGenerator;
 
 public class XWalkSettingTestAsync extends XWalkViewTestBase {
 
@@ -248,6 +251,77 @@ public class XWalkSettingTestAsync extends XWalkViewTestBase {
                             views.getView0(), views.getBridge0()),
                     new XWalkSettingsFileAccessFromFilesXhrTestHelper(
                             views.getView1(), views.getBridge1()));
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    // The test verifies that after changing the LoadsImagesAutomatically
+    // setting value from false to true previously skipped images are
+    // automatically loaded.
+    @SmallTest
+    public void testLoadsImagesAutomaticallyNoPageReload() {
+    	try {
+	    	ImagePageGenerator generator = new ImagePageGenerator(0, false);
+	        setLoadsImagesAutomatically(false);
+	        loadDataSync(null, generator.getPageSource(), "text/html", false);
+	        assertEquals(ImagePageGenerator.IMAGE_NOT_LOADED_STRING,
+	                getTitleOnUiThread());
+	        setLoadsImagesAutomatically(true);
+	        pollInstrumentationThread(new Callable<Boolean>() {
+	            @Override
+	            public Boolean call() throws Exception {
+	                return !ImagePageGenerator.IMAGE_NOT_LOADED_STRING.equals(
+	                        getTitleOnUiThread());
+	            }
+	        });
+	        assertEquals(ImagePageGenerator.IMAGE_LOADED_STRING, getTitleOnUiThread());
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    @SmallTest
+    public void testLoadsImagesAutomaticallyWithTwoViews() {
+    	try {
+	        ViewPair views = createViews();
+	        runPerViewSettingsTest(
+	                new XWalkSettingsLoadImagesAutomaticallyTestHelper(
+	                    views.getView0(), views.getBridge0(), new ImagePageGenerator(0, true)),
+	                new XWalkSettingsLoadImagesAutomaticallyTestHelper(
+	                    views.getView1(), views.getBridge1(), new ImagePageGenerator(1, true)));
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    @SmallTest
+    public void testBlockNetworkImagesWithTwoViews() {
+    	try {
+	        ViewPair views = createViews();
+	        runPerViewSettingsTest(
+	                new XWalkSettingsBlockNetworkImageHelper(
+	                        views.getView0(),
+	                        views.getBridge0(),
+	                        mWebServer,
+	                        new ImagePageGenerator(0, true)),
+	                new XWalkSettingsBlockNetworkImageHelper(
+	                        views.getView1(),
+	                        views.getBridge1(),
+	                        mWebServer,
+	                        new ImagePageGenerator(1, true)));
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
