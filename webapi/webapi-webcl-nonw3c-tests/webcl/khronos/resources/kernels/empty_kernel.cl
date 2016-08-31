@@ -1,3 +1,0 @@
-__kernel void empty()
-{
-}
