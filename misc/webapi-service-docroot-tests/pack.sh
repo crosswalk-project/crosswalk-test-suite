@@ -54,6 +54,8 @@ for list in $LIST;do
     list_dir=`find $SRC_ROOT/../.. -type d -name $list`
     if [ $pack_type == "cordova" ]; then
         python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode --docroot-only -d $BUILD_DEST/opt/$core_name -s $list_dir
+    elif [ $pack_type == "iot" ]; then
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch --docroot-only -d $BUILD_DEST/opt/$core_name -s $list_dir
     else
         python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch --docroot-only -d $BUILD_DEST/opt/$core_name -s $list_dir
     fi
