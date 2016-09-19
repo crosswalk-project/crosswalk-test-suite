@@ -34,18 +34,21 @@ def doCMD(cmd):
 
 
 def instPKGs():
-    global PARAMETERS
     action_status = True
-    cmd = "scp -r %s root@%s:/opt" % (PARAMETERS.testsuite, PARAMETERS.device)
-    (return_code, output) = doCMD(cmd)
-    for line in output:
-        if "Failure" in line:
-            action_status = False
-            break
 
     pwd = os.getcwd()
+    testsuite = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
+
+    if os.path.exists(os.path.join(pwd, testsuite)):
+        cmd = "scp -r %s %s:/opt" % (testsuite, PARAMETERS.device)
+        (return_code, output) = doCMD(cmd)
+        for line in output:
+            if "Failure" in line:
+                action_status = False
+                break
+    
     if os.path.exists(os.path.join(pwd, "sub-app")):
-        cmd = "scp -r sub-app root@%s:/opt/%s" % (PARAMETERS.device, PARAMETERS.testsuite)
+        cmd = "scp -r sub-app %s:/opt/%s" % (PARAMETERS.device, testsuite)
         (return_code, output) = doCMD(cmd)
         for line in output:
             if "Failure" in line:
@@ -54,16 +57,33 @@ def instPKGs():
     return action_status
 
 
+def uninstPKGs():
+    action_status = True
+
+    pwd = os.getcwd()
+    testsuite = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
+
+    cmd = 'ssh %s "rm -rf /opt/%s"' % (PARAMETERS.device, testsuite)
+    (return_code, output) = doCMD(cmd)
+    for line in output:
+        if "Failure" in line:
+            action_status = False
+            break
+
+    return action_status
+
+
 def main():
     try:
         usage = "usage: inst.py -i"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
-            "-s", dest="device", action="store", help="Specify IoT device IP")
+            "-s", dest="device", action="store", help="Specify IoT device user and IP: root@<IP addr>")
         opts_parser.add_option(
             "-i", dest="binstpkg", action="store_true", help="Install package")
         opts_parser.add_option(
-            "-t", dest="testsuite", action="store", help="Test suite name")
+            "-u", dest="buninstpkg", action="store_true", help="Uninstall package")        
+
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
     except Exception as e:
@@ -74,12 +94,13 @@ def main():
         print "IoT host device not specified."
         sys.exit(1)
 
-    if not PARAMETERS.testsuite:
-        print "Test suite name not specified"
+    if PARAMETERS.buninstpkg:
+        if not uninstPKGs():
+            sys.exit(1)
+    else:
+        if not instPKGs():
+            sys.exit(1)
 
-
-    if not instPKGs():
-        sys.exit(1)
 
 if __name__ == "__main__":
     main()
