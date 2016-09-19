@@ -45,6 +45,7 @@ import build_extension
 import build_deb
 import build_msi
 import build_ios
+import build_iot
 import varshop
 import utils
 import resource_only
@@ -65,7 +66,9 @@ PKG_TYPES = [
     "embeddingapi",
     "deb",
     "msi",
-    "ios"]
+    "ios",
+    "iot",
+    "iot-aio"]
 PKG_BLACK_LIST = []
 PACK_TYPES = ["ant", "gradle", "maven"]
 CORDOVA_PACK_TYPES = ["npm", "local"]
@@ -284,6 +287,9 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
             return False
     elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "ios"):
         if not build_ios.packIOS(build_json, app_src, app_dest, app_name):
+            return False
+    elif utils.checkContains(BUILD_PARAMETERS.pkgtype, "iot"):
+        if not build_iot.packIoT(build_json, app_src, app_dest, app_name):
             return False
     else:
         LOG.error("Got wrong pkg type: %s" % BUILD_PARAMETERS.pkgtype)
@@ -724,7 +730,8 @@ def main():
 
     LOG.info("+Building package ...")
     if BUILD_PARAMETERS.pkgtype == "apk-aio" or \
-       BUILD_PARAMETERS.pkgtype == "cordova-aio":
+       BUILD_PARAMETERS.pkgtype == "cordova-aio" or \
+       BUILD_PARAMETERS.pkgtype == "iot-aio":
         pkg_file_list = os.listdir(os.path.join(BUILD_ROOT, "pkg"))
         for i_file in pkg_file_list:
             if not utils.doCopy(
