@@ -35,22 +35,18 @@ def doCMD(cmd):
 
 def instPKGs():
     action_status = True
-
+    
     testsuite = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
     pwd = os.path.dirname(os.path.abspath(__file__))
+    docroot = os.path.join(pwd, "docroot")
 
-    pkg_app_dir = os.path.join(pwd, testsuite)
-    if os.path.exists(pkg_app_dir):
-        cmd = "scp -r %s %s:/opt" % (pkg_app_dir, PARAMETERS.device)
-        (return_code, output) = doCMD(cmd)
-        for line in output:
-            if "Failure" in line:
-                action_status = False
-                break
-    
-    sub_app_dir = os.path.join(pwd, "sub-app")
-    if os.path.exists(sub_app_dir):
-        cmd = "scp -r %s %s:/opt/%s" % (sub_app_dir, PARAMETERS.device, testsuite)
+    if not os.path.exists(docroot):
+        os.system("unzip -q %s -d %s" % (docroot, pwd))
+
+    uninstPKGs()
+
+    if os.path.exists(docroot):
+        cmd = "scp -r %s %s:/opt/%s" % (docroot, PARAMETERS.device, "docroot")
         (return_code, output) = doCMD(cmd)
         for line in output:
             if "Failure" in line:
@@ -62,9 +58,8 @@ def instPKGs():
 def uninstPKGs():
     action_status = True
 
-    testsuite = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
-
-    cmd = 'ssh %s "rm -rf /opt/%s"' % (PARAMETERS.device, testsuite)
+    docroot = "docroot"
+    cmd = 'ssh %s "rm -rf /opt/%s"' % (PARAMETERS.device, docroot)
     (return_code, output) = doCMD(cmd)
     for line in output:
         if "Failure" in line:
