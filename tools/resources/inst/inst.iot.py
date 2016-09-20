@@ -61,7 +61,7 @@ def instPKGs():
 
 def uninstPKGs():
     action_status = True
-    
+
     testsuite = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
 
     cmd = 'ssh %s "rm -rf /opt/%s"' % (PARAMETERS.device, testsuite)
