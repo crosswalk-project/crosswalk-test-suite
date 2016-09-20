@@ -95,7 +95,11 @@ if [ $? -ne 0 ];then
     exit 1
 fi
 rm -rf $BUILD_DEST/opt
-cp -ar $BUILD_ROOT/inst.py $BUILD_DEST/inst.py
+if [ $pack_type == "iot" ]; then
+    cp -ar $BUILD_ROOT/inst.iot.py $BUILD_DEST/inst.py     
+else
+    cp -ar $BUILD_ROOT/inst.py $BUILD_DEST/inst.py
+fi
 cd /tmp
 mkdir $path_flag
 cp -a $BUILD_DEST $path_flag/${name}
