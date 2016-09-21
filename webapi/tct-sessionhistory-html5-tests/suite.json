@@ -41,7 +41,7 @@
         }
       }
     },
-    "apk-aio, cordova-aio": {
+    "apk-aio, cordova-aio, iot-aio": {
       "blacklist": [],
       "copylist": {
         "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/html5-sessionhistory-app/testscripts/environment.py",
@@ -90,6 +90,35 @@
         "html5-sessionhistory-app": {
           "apk-common-opts": "--enable-remote-debugging",
           "apk-type": "MANIFEST",
+          "copylist": {
+            "../sessionhistory/bdd": "sessionhistory",
+            "../sessionhistory/support": "sessionhistory/support"
+          }
+        }
+      }
+    },
+    "iot": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "html5-sessionhistory-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "html5-sessionhistory-app/testscripts": "html5-sessionhistory-app/testscripts",
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "sessionhistory/w3c/cgi": "sessionhistory/w3c",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "copylist": {
+          "sessionhistory/support": "sessionhistory/bdd/support"
+        },
+        "hosted-app": "true"
+      },
+      "subapp-list": {
+        "html5-sessionhistory-app": {
           "copylist": {
             "../sessionhistory/bdd": "sessionhistory",
             "../sessionhistory/support": "sessionhistory/support"
