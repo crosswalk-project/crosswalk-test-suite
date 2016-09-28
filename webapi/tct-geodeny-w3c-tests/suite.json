@@ -40,7 +40,7 @@
         }
       }
     },
-    "apk-aio, cordova-aio": {
+    "apk-aio, cordova-aio, iot-aio": {
       "blacklist": [],
       "copylist": {
         "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-geodeny-app/testscripts/environment.py",
@@ -85,6 +85,34 @@
         "w3c-geodeny-app": {
           "apk-common-opts": "--enable-remote-debugging",
           "apk-type": "MANIFEST",
+          "copylist": {
+            "../geodeny/bdd": "geodeny/bdd",
+            "../geodeny/w3c/bdd": "geodeny/w3c/bdd",
+            "PACK-TOOL-ROOT/resources/testharness": "resources"
+          }
+        }
+      }
+    },
+    "iot": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-geodeny-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml",
+        "w3c-geodeny-app/testscripts": "w3c-geodeny-app/testscripts"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      },
+      "subapp-list": {
+        "w3c-geodeny-app": {
           "copylist": {
             "../geodeny/bdd": "geodeny/bdd",
             "../geodeny/w3c/bdd": "geodeny/w3c/bdd",

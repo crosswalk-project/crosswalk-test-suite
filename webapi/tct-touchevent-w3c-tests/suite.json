@@ -39,7 +39,7 @@
         }
       }
     },
-    "apk-aio, cordova-aio": {
+    "apk-aio, cordova-aio, iot-aio": {
       "blacklist": [],
       "copylist": {
         "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-touchevent-app/testscripts/environment.py",
@@ -82,6 +82,33 @@
         "w3c-touchevent-app": {
           "apk-common-opts": "--enable-remote-debugging",
           "apk-type": "MANIFEST",
+          "copylist": {
+            "../touchevent/bdd": "touchevent/bdd",
+            "PACK-TOOL-ROOT/resources/testharness": "resources"
+          }
+        }
+      }
+    },
+    "iot": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-touchevent-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml",
+        "w3c-touchevent-app/testscripts": "w3c-touchevent-app/testscripts"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      },
+      "subapp-list": {
+        "w3c-touchevent-app": {
           "copylist": {
             "../touchevent/bdd": "touchevent/bdd",
             "PACK-TOOL-ROOT/resources/testharness": "resources"

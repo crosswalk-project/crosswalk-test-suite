@@ -48,7 +48,7 @@
         }
       }
     },
-    "apk-aio, cordova-aio": {
+    "apk-aio, cordova-aio, iot-aio": {
       "blacklist": [],
       "copylist": {
         "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/html5-extra-app/testscripts/environment.py",
@@ -102,6 +102,42 @@
         "html5-extra-app": {
           "apk-common-opts": "--enable-remote-debugging",
           "apk-type": "MANIFEST",
+          "copylist": {
+            "../browsers/bdd": "browsers",
+            "../dom/bdd": "dom",
+            "../semantics/grouping-content/the-figcaption-element/bdd": "semantics/grouping-content/the-figcaption-element",
+            "../semantics/grouping-content/the-figure-element/bdd": "semantics/grouping-content/the-figure-element",
+            "../semantics/text-level-semantics/the-mark-element/bdd": "semantics/text-level-semantics/the-mark-element",
+            "../w3c/semantics/forms/the-textarea-element/bdd": "w3c/semantics/forms/the-textarea-element",
+            "../w3c/system-state-and-capabilities/the-navigator-object/bdd": "w3c/system-state-and-capabilities/the-navigator-object/bdd",
+            "../xhtml5/w3c/bdd": "xhtml5",
+            "PACK-TOOL-ROOT/resources/testharness": "resources"
+          }
+        }
+      }
+    },
+    "iot": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "html5-extra-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "html5-extra-app/data": "data",
+        "html5-extra-app/testscripts": "html5-extra-app/testscripts",
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      },
+      "subapp-list": {
+        "html5-extra-app": {
           "copylist": {
             "../browsers/bdd": "browsers",
             "../dom/bdd": "dom",

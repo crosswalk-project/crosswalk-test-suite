@@ -45,7 +45,7 @@
         }
       }
     },
-    "apk-aio, cordova-aio": {
+    "apk-aio, cordova-aio, iot-aio": {
       "blacklist": [],
       "copylist": {
         "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/css3-backgrounds-app/testscripts/environment.py",
@@ -97,6 +97,39 @@
         "css3-backgrounds-app": {
           "apk-common-opts": "--enable-remote-debugging",
           "apk-type": "MANIFEST",
+          "copylist": {
+            "../backgrounds/bdd": "backgrounds",
+            "../backgrounds/csswg/bdd": "backgrounds/csswg",
+            "../backgrounds/csswg/support": "backgrounds/csswg/support",
+            "../backgrounds/webkit/resources": "backgrounds/webkit/resources"
+          }
+        }
+      }
+    },
+    "iot": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "css3-backgrounds-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "css3-backgrounds-app/data": "data",
+        "css3-backgrounds-app/testscripts": "css3-backgrounds-app/testscripts",
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "backgrounds/csswg/support": "backgrounds/csswg/bdd/support",
+          "backgrounds/webkit/resources": "backgrounds/bdd/webkit/resources"
+        }
+      },
+      "subapp-list": {
+        "css3-backgrounds-app": {
           "copylist": {
             "../backgrounds/bdd": "backgrounds",
             "../backgrounds/csswg/bdd": "backgrounds/csswg",
