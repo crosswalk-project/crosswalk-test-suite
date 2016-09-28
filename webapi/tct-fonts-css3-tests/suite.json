@@ -42,7 +42,7 @@
         }
       }
     },
-    "apk-aio, cordova-aio": {
+    "apk-aio, cordova-aio, iot-aio": {
       "blacklist": [],
       "copylist": {
         "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/css3-fonts-app/testscripts/environment.py",
@@ -90,6 +90,36 @@
         "css3-fonts-app": {
           "apk-common-opts": "--enable-remote-debugging",
           "apk-type": "MANIFEST",
+          "copylist": {
+            "../fonts/csswg/bdd": "fonts/csswg",
+            "../fonts/csswg/support": "fonts/csswg/support"
+          }
+        }
+      }
+    },
+    "iot": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "css3-fonts-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "css3-fonts-app/data": "data",
+        "css3-fonts-app/testscripts": "css3-fonts-app/testscripts",
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+          "fonts/csswg/support": "fonts/csswg/bdd/support"
+        }
+      },
+      "subapp-list": {
+        "css3-fonts-app": {
           "copylist": {
             "../fonts/csswg/bdd": "fonts/csswg",
             "../fonts/csswg/support": "fonts/csswg/support"
