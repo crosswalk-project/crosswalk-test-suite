@@ -37,7 +37,7 @@
         }
       }
     },
-    "apk-aio, cordova-aio": {
+    "apk-aio, cordova-aio, iot-aio": {
       "blacklist": [],
       "copylist": {
         "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/html5-sandbox-app/testscripts/environment.py",
@@ -83,6 +83,31 @@
         "html5-sandbox-app": {
           "apk-common-opts": "--enable-remote-debugging",
           "apk-type": "MANIFEST",
+          "copylist": {
+            "../sandbox/w3c/bdd": "w3c",
+            "../sandbox/w3c/support": "w3c/support"
+          }
+        }
+      }
+    },
+    "iot": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "html5-sandbox-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/testharness": "resources",
+        "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+        "html5-sandbox-app/testscripts": "html5-sandbox-app/testscripts",
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "blacklist": [],
+        "hosted-app": "true"
+      },
+      "subapp-list": {
+        "html5-sandbox-app": {
           "copylist": {
             "../sandbox/w3c/bdd": "w3c",
             "../sandbox/w3c/support": "w3c/support"
