@@ -1,0 +1,28 @@
+{
+  "pkg-blacklist": [
+    "pack.py",
+    "testcase.xsl",
+    "testresult.xsl",
+    "tests.css",
+    "icon.png",
+    "suite.json",
+    "inst.*"
+  ],
+  "pkg-list": {
+    "iot": {
+      "blacklist": [],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/xsl": ".",
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+        }
+      }
+    }
+  },
+  "pkg-name": "sampleapp-iot-tests"
+}
