@@ -14,32 +14,19 @@
         "*"
       ],
       "copylist": {
-        "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-webstorage-app/testscripts/environment.py",
-        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
         "inst.apk.py": "inst.py",
         "tests.full.xml": "tests.full.xml",
-        "tests.xml": "tests.xml",
-        "w3c-webstorage-app/testscripts": "w3c-webstorage-app/testscripts"
+        "tests.xml": "tests.xml"
       },
       "pkg-app": {
         "apk-common-opts": "--enable-remote-debugging",
         "copylist": {
           "PACK-TOOL-ROOT/resources/testharness": "resources",
           "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-        },
-        "hosted-app": "true"
-      },
-      "subapp-list": {
-        "w3c-webstorage-app": {
-          "apk-common-opts": "--enable-remote-debugging",
-          "apk-type": "MANIFEST",
-          "copylist": {
-            "../webstorage/w3c/bdd": "webstorage/w3c"
-          }
         }
       }
     },
-    "apk-aio, cordova-aio": {
+    "apk-aio, cordova-aio, iot-aio": {
       "blacklist": [],
       "copylist": {
         "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-webstorage-app/testscripts/environment.py",
@@ -85,6 +72,23 @@
           "copylist": {
             "../webstorage/w3c/bdd": "webstorage/w3c"
           }
+        }
+      }
+    },
+    "iot": {
+      "blacklist": [
+        "*"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "tests.full.xml": "tests.full.xml",
+        "tests.xml": "tests.xml"
+      },
+      "pkg-app": {
+        "apk-common-opts": "--enable-remote-debugging",
+        "copylist": {
+          "PACK-TOOL-ROOT/resources/testharness": "resources",
+          "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
         }
       }
     }
