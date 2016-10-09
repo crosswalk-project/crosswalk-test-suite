@@ -66,7 +66,7 @@
         }
       }
     },
-    "apk-aio, cordova-aio": {
+    "apk-aio, cordova-aio, iot-aio": {
       "blacklist": [
         "*"
       ],
@@ -113,6 +113,48 @@
           "install-path": "."
         },
         "samples/WebAssembly/webassembly": {
+          "apk-type": "MANIFEST"
+        }
+      }
+    },
+    "iot": {
+      "blacklist": [
+        "*",
+        ".git"
+      ],
+      "copylist": {
+        "PACK-TOOL-ROOT/atip/tests/environment.py": "usecase-webapi-app/testscripts/environment.py",
+        "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+        "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+        "data": "data",
+        "res": "res",
+        "PACK-TOOL-ROOT/resources/inst/inst.iot.py": "inst.py",
+        "tests.iot.xml": "tests.xml",
+        "tests.auto.xml": "tests.auto.xml",
+        "tests.full.xml": "tests.full.xml",
+        "usecase-webapi-app": "usecase-webapi-app"
+      },
+      "subapp-list": {
+        ".": {
+          "app-name": "usecase-webapi-xwalk-tests",
+          "blacklist": [
+            "*",
+            ".git"
+          ],
+          "copylist": {
+            "PACK-TOOL-ROOT/bootstrap-fw": ".",
+            "icon.png": "icon.png",
+            "manifest.iot.json": "manifest.json",
+            "res": "res",
+            "samples": "samples",
+            "steps": "steps",
+            "tests.iot.xml": "tests.xml"
+          }
+        },
+        "samples/WebAssembly/webassembly": {
+          "apk-type": "MANIFEST"
+        },
+        "samples/Viewport/ViewportTest": {
           "apk-type": "MANIFEST"
         }
       }
