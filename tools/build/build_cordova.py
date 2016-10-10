@@ -94,7 +94,7 @@ def packCordova(
         utils.replaceUserString(
             project_root,
             'config.xml',
-            'id="org.xwalk.%s" version="0.0.1"' % app_name,
+            'id="org.xwalk.%s" version="1.0.0"' % app_name,
             'id="org.xwalk.%s" version="%s"' %
             (app_name, version_opt))
 
