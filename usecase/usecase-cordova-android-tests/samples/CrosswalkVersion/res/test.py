@@ -36,7 +36,7 @@ sys.path.append(os.getcwd())
 sys.path.append(os.path.realpath('..'))
 import comm
 from optparse import OptionParser
-PKG_MODES = ["shared", "embedded"]
+PKG_MODES = ["shared", "embedded", "lite"]
 PKG_ARCHS = ["x86", "arm", "x86_64", "arm64"]
 
 comm.setUp()
@@ -89,7 +89,7 @@ if comm.CROSSWALK_BRANCH == "stable" or comm.CROSSWALK_BRANCH == "beta":
 pkg_mode_tmp = "shared"
 apk_name_arch = "-"
 pack_arch_tmp = "arm"
-if BUILD_PARAMETERS.pkgmode == "embedded":
+if BUILD_PARAMETERS.pkgmode != "shared":
     pkg_mode_tmp = "core"
     apk_name_arch = "-armv7-"
     if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch != "arm":
