@@ -40,7 +40,7 @@ import xml.dom.minidom
 from optparse import OptionParser
 
 
-PKG_MODES = ["shared", "embedded"]
+PKG_MODES = ["shared", "embedded", "lite"]
 PKG_ARCH = ["x86", "x86_64", "arm", "arm64"]
 
 comm.setUp()
