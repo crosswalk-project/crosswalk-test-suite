@@ -8,16 +8,29 @@
           <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/HTMLInputElement_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_video" purpose="Check if the input will accept an video when capture set to acmcorder">
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_audio" purpose="Check if the capture audio to produce one audio file">
         <description>
-          <steps>
-            <pre_condition/>
-            <step order="1">
-              <step_desc>Click the button, allow microphone and camera access, and start to capture a video</step_desc>
-              <expected>There appears a video capture screen, there is a way to disable the audio record, and there is a way to stop the video capture.</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/capture_video-manual.html</test_script_entry>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_audio-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_fallback_file_upload" purpose="Check if input.capture fallback to file upload when the accept attribute value is set to a MIME type that has no associated capture control type">
+        <description>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_fallback_file_upload.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_image" purpose="Check if the capture image to produce one image file">
+        <description>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_image-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="auto" id="capture_reflect" purpose="Check if the input.capture is correct when set different capture value" subcase="5">
+        <description>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_reflect.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_video" purpose="Check if the capture video to produce one video file">
+        <description>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_video-manual.html</test_script_entry>
         </description>
       </testcase>
     </set>
