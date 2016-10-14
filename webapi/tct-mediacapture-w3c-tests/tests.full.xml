@@ -15,17 +15,57 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_video" priority="P2" purpose="Check if the input will accept an video when capture set to acmcorder" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_audio" priority="P1" purpose="Check if the capture audio to produce one audio file" status="approved" type="compliance">
         <description>
-          <pre_condition/>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Click the button, allow microphone and camera access, and start to capture a video</step_desc>
-              <expected>There appears a video capture screen, there is a way to disable the audio record, and there is a way to stop the video capture.</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/capture_video-manual.html</test_script_entry>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_audio-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="capture" element_type="attribute" interface="HTMLInputElement" section="Media" specification="HTML Media Capture"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html-media-capture-20120712/#the-capture-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_fallback_file_upload" priority="P1" purpose="Check if input.capture fallback to file upload when the accept attribute value is set to a MIME type that has no associated capture control type" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_fallback_file_upload.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="capture" element_type="attribute" interface="HTMLInputElement" section="Media" specification="HTML Media Capture"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html-media-capture-20120712/#the-capture-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_image" priority="P1" purpose="Check if the capture image to produce one image file" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_image-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="capture" element_type="attribute" interface="HTMLInputElement" section="Media" specification="HTML Media Capture"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html-media-capture-20120712/#the-capture-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="auto" id="capture_reflect" priority="P1" purpose="Check if the input.capture is correct when set different capture value" status="approved" type="compliance" subcase="5">
+        <description>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_reflect.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="capture" element_type="attribute" interface="HTMLInputElement" section="Media" specification="HTML Media Capture"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html-media-capture-20120712/#the-capture-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/HTML Media Capture" execution_type="manual" id="capture_video" priority="P1" purpose="Check if the capture video to produce one video file" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-mediacapture-w3c-tests/mediacapture/w3c/capture_video-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
