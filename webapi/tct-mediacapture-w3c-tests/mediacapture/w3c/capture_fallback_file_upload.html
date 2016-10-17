@@ -15,12 +15,12 @@
 
     <p>Test steps:</p>
     <ol>
-      <li>Download <a href='support/upload.txt'>upload.txt</a> to local.</li>
-      <li>Select the local upload.txt file to run the test.</li>
+      <li>Download <a href='support/upload.doc'>upload.doc</a> to local.</li>
+      <li>Select the local upload.doc file to run the test.</li>
     </ol>
 
     <form>
-      <input id='fileChooser' type='file' accept='text/plain' capture>
+      <input id='fileChooser' type='file' accept='application/msword' capture>
     </form>
 
     <div id='log'></div>
@@ -34,7 +34,7 @@
         test(function() {
           var fileList = document.querySelector('#fileChooser').files;
           assert_equals(fileList.length, 1, 'fileList length is 1');
-          assert_equals(fileList.item(0).name, 'upload.txt', 'file name string is "upload.txt"');
+          assert_equals(fileList.item(0).name, 'upload.doc', 'file name string is "upload.doc"');
         }, 'Check if input.capture fallback to file upload when the accept attribute value is set to a MIME type that has no associated capture control type');
 
         done();
