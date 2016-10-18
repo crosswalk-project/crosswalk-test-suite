@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta charset="utf-8">
+<title>Crosswalk_Ostro_OS_XT_Image_Build</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="author" title="Qiu Zhong" href="mailto:zhongx.qiu@intel.com">
+<body>
+  <p>
+    <strong>Precondition:</strong>
+  </p>
+  <p>Hardware</p>
+  <ol>
+    <li>RAM memory: >= 8GB</li>
+    <li>Disk: Make sure more than 50GB free space.</li>
+  </ol>
+
+  <p>Software</p>
+  <ol>
+    <li>Ubuntu Linux 14.04+, x86_64</li>
+    <li>GCC: 4.9+</li>
+    <li>The packages <strong>gawk chrpath texinfo</strong> are installed: <pre>sudo apt-get install gawk chrpath texinfo<pre></li>
+    <li><strong>(Optionally) </strong>Docker installed</li>
+    <li><strong>(Optionally) </strong>Add the current user to docker group:<pre>sudo gpasswd -a ${USER} docker</pre></li>
+  </ol>
+  <p>
+    <strong>Test steps:</strong>
+  </p>
+  <ol>
+    <p>
+      <li>Build Ostro OS XT image with Crosswalk:<br />
+        <pre>$ ./ostro-os-xt-xwalk-build.sh</pre>
+        <strong>Optionally, </strong>if you want to build the image with docker, comment the last line of ostro-os-xt-xwalk-build.sh:
+        <pre> # bitbake ostro-xt-image-noswupd</pre>
+        Add a new line:
+        <pre>docker/local-build.sh<br /></pre>
+        Then run the ostro-os-xt-xwalk-build.sh script.
+      </li>
+    </p>
+    <p>
+      <li>Check if the image works well</li>
+        <ol>
+          <li>Flash the image to a Joule device</li>
+          <li>Launch a Crosswalk hello world application on Joule device<pre>$ xwalk &lt;path/to/manifest&gt;</pre></li>
+        </ol>
+    </p>
+  </ol>
+  <p>
+    <strong>Expected Results</strong>
+  </p>
+  <ol>
+    <li>No error during the build.</li>
+    <li>Ostro OS XT image generated successfully at <pre>ostro-os-xt/build/tmp-glibc/deploy/images/&lt;CPU arch&gt;</pre></li>
+    <li>The Joule can boot normally.</li>
+    <li>The Crosswalk hello world application can launch normally.</li>
+  </ol>
+</body>
