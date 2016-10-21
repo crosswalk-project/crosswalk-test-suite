@@ -35,27 +35,36 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-promise_test(function(t) {
-  var url = "./support/sound_5.oga";
-  return new Promise(function(resolve) {
-    var request = new XMLHttpRequest();
-    request.open("GET", url, true);
-    request.responseType = "arraybuffer";
-    request.onload = function() {
-      resolve(request.response);
-    };
-    request.send();
-  })
-  .then(function(audioData) {
-    var context = new AudioContext();
-    return context.decodeAudioData(audioData);
-  })
-  .then(function(audio) {
-    assert_true(audio instanceof AudioBuffer);
-  })
-  .catch(function(ex) {
-    assert_unreached("unreached here, get anexpected exception: " + ex.message);
-  });
-}, "Check that decodeAudioData method returns a Promise");
+
+function test_proc(type){
+  promise_test(function(t) {
+    var url = "./support/sound_5." + type;
+    return new Promise(function(resolve) {
+      var request = new XMLHttpRequest();
+      request.open("GET", url, true);
+      request.responseType = "arraybuffer";
+      request.onload = function() {
+        resolve(request.response);
+      };
+      request.send();
+    })
+    .then(function(audioData) {
+      var context = new AudioContext();
+      return context.decodeAudioData(audioData);
+    })
+    .then(function(audio) {
+      assert_true(audio instanceof AudioBuffer);
+    })
+    .catch(function(ex) {
+      assert_unreached("unreached here, get anexpected exception: " + ex.message);
+    });
+  }, "Check that decode " + type + " data decodeAudioData method returns a Promise");
+}
+
+test_proc("oga");
+test_proc("mp3");
+test_proc("mp4");
+test_proc("wav");
+
 </script>
 
