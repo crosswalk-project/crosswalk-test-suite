@@ -1,0 +1,42 @@
+{{
+var ConvertIDLType2JavaScript = function (idlType) {
+  var type = idlType.idlType;
+  if (type === 'String' || type === 'DOMString' || type === 'ByteString' || type === 'USVString') {
+    type = 'string';
+  } 
+  else if (type === 'void') {
+    type = 'undefined';
+  }
+  else if (type === 'boolean') {
+    type = 'boolean';
+  }
+  else if (type === 'byte' || type === 'octet' || type === 'unsigned short' || type === 'long' || type === 'unsigned long' || type === 'long long' || type === 'DOMTimeStamp' || type === 'float' || type === 'double' || type === 'unrestricted float' || type === 'unrestricted double') {
+    type = 'number';
+  }
+  else if (type === 'object') {
+    type = 'function';
+  }
+  else {
+    type = 'object';
+  }
+  return type;
+};
+
+var GetAssignValue = function (idlType, value) {
+  var newValue;
+  var type = idlType.idlType;
+  if (type === 'String' || type === 'DOMString' || type === 'ByteString' || type === 'USVString') {
+    newValue = value + 'Assign';
+  } 
+  else if (type === 'boolean') {
+    newValue = !value;
+  }
+  else if (type === 'byte' || type === 'octet' || type === 'unsigned short' || type === 'long' || type === 'unsigned long' || type === 'long long' || type === 'DOMTimeStamp' || type === 'float' || type === 'double' || type === 'unrestricted float' || type === 'unrestricted double') {
+    newValue = value + 1;
+  }
+  else {
+    newValue = null;
+  }
+  return newValue;
+};
+}}
