@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="webapi-telephony-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="telephony" type="js">
+      <testcase purpose="Check if readonly Navigator.telephony exists and type of object" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="Navigator_telephony">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/Navigator_telephony.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="telephony" interface="Navigator" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#extensions-to-navigator-object</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly TelephonyManager.activeCall exists and type of object" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_activeCall">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="activeCall" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly TelephonyManager.calls exists and type of object" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_calls">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="calls" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly TelephonyManager.emergencyNumbers exists and type of string" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_emergencyNumbers">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="emergencyNumbers" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly TelephonyManager.serviceIds exists and type of string" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_serviceIds">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="serviceIds" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly TelephonyManager.defaultServiceId exists and type of string" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_defaultServiceId">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="defaultServiceId" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.changeDefaultService exists and type of function" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_changeDefaultService">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="changeDefaultService" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.dial exists and type of function" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_dial">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="dial" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.sendTones exists and type of function" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_sendTones">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="sendTones" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.startTone exists and type of function" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_startTone">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="startTone" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.stopTone exists and type of function" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_stopTone">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="stopTone" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.onincoming exists" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_onincoming">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onincoming" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.oncallschanged exists" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_oncallschanged">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="oncallschanged" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.onserviceadded exists" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_onserviceadded">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onserviceadded" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.onserviceremoved exists" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_onserviceremoved">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onserviceremoved" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TelephonyManager.onservicechanged exists" type="compliance" status="designed" component="WebAPI/Networking/Telephony" execution_type="auto" priority="P1" id="TelephonyManager_onservicechanged">
+        <description>
+          <test_script_entry>/opt/webapi-telephony-w3c-tests/telephony/TelephonyManager.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onservicechanged" interface="TelephonyManager" specification="Telephony" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-telephony-20130620/#telephonymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
