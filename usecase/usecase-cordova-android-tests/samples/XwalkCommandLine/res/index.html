@@ -31,20 +31,17 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>webgl_webrtc_disable_tests</title>
+<title>webgl_disable_tests</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="">
 <meta name="flags" content="">
-<meta name="assert" content="Check if can disable the WebGL and WebRTC API.">
+<meta name="assert" content="Check if can disable the WebGL API.">
 <body>
   <p>Disable WebGL:</p>
   <div id="test1" style="color:red">Fail</div>
   <canvas id="canvas"></canvas>
-  <p>Disable WebRTC:</p>
-  <div id="test2" style="color:red">Fail</div>
   <script>
       var t1 = document.getElementById('test1');
-      var t2 = document.getElementById('test2');
 
       try{
           var webgl = null;
@@ -58,20 +55,6 @@ Authors:
       } catch (e) {
           t1.innerHTML = "Pass";
           t1.style.color = "green";
-      }
-
-      try{
-          var pc = null;
-          window.RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
-          pc = new RTCPeerConnection({"iceServers":[]});
-
-          if (!pc) {
-              t2.innerHTML = "Pass";
-              t2.style.color = "green";
-          }
-      } catch (e) {
-          t2.innerHTML = "Pass";
-          t2.style.color = "green";
       }
   </script>
 </body>
