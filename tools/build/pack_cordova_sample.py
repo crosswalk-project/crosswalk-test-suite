@@ -448,7 +448,7 @@ def copyCordovaCliApk(app_name, orig_dir, apk_name_arch="armv7", apk_name_mode="
 
     return True
 
-def packGoogleApp(app_name=None):
+def packGoogleApp(app_name=None, cordova_android_ver):
     project_root = os.path.join(BUILD_ROOT, app_name)
     orig_dir = os.getcwd()
     buildstatus = commands.getstatusoutput("cca -v")
@@ -530,7 +530,7 @@ def packGoogleApp(app_name=None):
         '</widget>',
         '    <allow-navigation href="*" />\n</widget>')
 
-    add_cmd = "cca platform add android"
+    add_cmd = "cca platform add android@%s" % cordova_android_ver
     if not doCMD(add_cmd, DEFAULT_CMD_TIMEOUT * 2):
         os.chdir(orig_dir)
         return False
@@ -858,7 +858,7 @@ def packAPP(app_name=None):
         if not packMobileSpec(app_name):
             return False
     elif checkContains(app_name, "CIRC") or checkContains(app_name, "EH"):
-        if not packGoogleApp(app_name):
+        if not packGoogleApp(app_name, "6.0.0"):
             return False
     else:
         if not packSampleApp_cli(app_name):
