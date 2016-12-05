@@ -33,6 +33,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <link rel="help" href="https://w3c.github.io/accelerometer/">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="./resources/generic-sensor-tests.js"></script>
 <div id="log"></div>
 <h2>Precondition</h2>
 <ol>
@@ -42,10 +43,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </ol>
 <script>
 
-test(() => {
-  assert_throws('SecurityError', () => {
-    let sensor = new Accelerometer();
-  });
-}, "throw a 'SecurityError' when construct Accelerometer in an insecure context");
+runGenericSensorInsecureContext(Accelerometer);
 
 </script>
