@@ -102,7 +102,7 @@ $(document).ready(function () {
     getDataByKey(myDB.db, 'students',1);
   })
 
-/*
+
   //Web SQL Database
   var db = openDatabase('testDB', '1.0', 'Test DB', 1024);
   var msg;
@@ -124,5 +124,4 @@ $(document).ready(function () {
         })
      })
   })
-*/
 })
