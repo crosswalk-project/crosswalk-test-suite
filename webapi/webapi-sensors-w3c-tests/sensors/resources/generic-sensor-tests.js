@@ -122,6 +122,9 @@ function runGenericSensorBrowsingContext(sensorType) {
       win.close();
       sensor.stop();
     });
+    sensor.onerror = t.step_func_done(event => {
+      assert_unreached(event.error.name + ":" + event.error.message);
+    });
   }, "sensor readings can not be fired on the background tab");
 }
 
