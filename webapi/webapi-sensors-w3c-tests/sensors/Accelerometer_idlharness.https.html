@@ -124,6 +124,7 @@ dictionary AccelerometerReadingInit {
 </pre>
 
 <script>
+
 (function() {
   "use strict";
   var idl_array = new IdlArray();
@@ -132,11 +133,12 @@ dictionary AccelerometerReadingInit {
   idl_array.add_idls(document.getElementById('accelerometer-idl').textContent);
 
   idl_array.add_objects({
-    Accelerometer: ['new Accelerometer({includeGravity: false});'],
+    Accelerometer: ['new Accelerometer();'],
     AccelerometerReading: ['new AccelerometerReading({x: 0.5, y: 0.5, z: 0.5});']
   });
 
   idl_array.test();
 })();
+
 </script>
 

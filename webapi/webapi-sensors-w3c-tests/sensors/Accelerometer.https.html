@@ -27,37 +27,26 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Gyroscope Test: stop()</title>
+<title>Accelerometer Test</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Xiuqi Jiang" href="mailto:xiuqix.jiang@intel.com">
-<link rel="help" href="https://w3c.github.io/gyroscope/">
+<link rel="help" href="https://w3c.github.io/accelerometer/">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="./resources/generic-sensor-tests.js"></script>
 <div id="log"></div>
 <script>
 
-let sensor, stop_return;
+function verify_sensor_reading(reading) {
+  return reading.x != 0 ||
+         reading.y != 0 ||
+         reading.z != 0;
+}
 
-setup(() => {
-  sensor = new Gyroscope();
-  sensor.start();
-  stop_return = sensor.stop();
-});
+function arr_sensor_reading(reading) {
+  return new Array(reading.x, reading.y, reading.z);
+}
 
-test(() => {
-  assert_equals(sensor.state, "idle");
-}, "The sensor.state changes to 'idle' after sensor.stop()");
-
-test(() => {
-  assert_equals(sensor.reading, null);
-}, "the sensor.reading is null after executing stop() method");
-
-test(() => {
-  assert_throws("InvalidStateError", () => { sensor.stop(); }, "stop() twice");
-}, "throw an InvalidStateError exception when state is either idle or errored");
-
-test(() => {
-  assert_equals(stop_return, undefined);
-}, "the sensor.stop() returns undefined");
+runGenericSensorTests(Accelerometer, AccelerometerReading, verify_sensor_reading, arr_sensor_reading);
 
 </script>

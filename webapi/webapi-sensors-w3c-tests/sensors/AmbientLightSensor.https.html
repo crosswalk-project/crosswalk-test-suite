@@ -27,45 +27,24 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Gyroscope Test: start()</title>
+<title>AmbientLightSensor Test</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Xiuqi Jiang" href="mailto:xiuqix.jiang@intel.com">
-<link rel="help" href="https://w3c.github.io/gyroscope/">
+<link rel="help" href="https://w3c.github.io/ambient-light/">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="./resources/generic-sensor-tests.js"></script>
 <div id="log"></div>
 <script>
 
-let sensor, start_return;
+function verify_sensor_reading(reading) {
+  return reading.illuminance >= 0;
+}
 
-setup(() => {
-  sensor = new Gyroscope();
-});
+function arr_sensor_reading(reading) {
+  return new Array(reading.illuminance);
+}
 
-test(() => {
-  assert_equals(sensor.reading, null);
-}, "The default sensor.reading is 'null'");
-
-test(() => {
-  assert_equals(sensor.state, "idle");
-}, "The default sensor.state is 'idle'");
-
-test(() => {
-  start_return = sensor.start();
-  assert_equals(sensor.state, "activating");
-}, "The sensor.state changes to 'activating' after sensor.start()");
-
-//TODO: The permission is not ready.
-
-test(() => {
-  assert_equals(start_return, undefined);
-}, "the sensor.start() return undefined");
-
-test(() => {
-  assert_throws("InvalidStateError", () => { sensor.start(); }, "start() twice");
-  sensor.stop();
-}, "throw an InvalidStateError exception when state is neither idle nor errored");
-
-
+runGenericSensorTests(AmbientLightSensor, AmbientLightSensorReading, verify_sensor_reading, arr_sensor_reading);
 
 </script>

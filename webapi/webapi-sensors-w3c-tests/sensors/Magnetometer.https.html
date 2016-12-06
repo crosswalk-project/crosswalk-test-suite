@@ -27,32 +27,26 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>Accelerometer Test: onchange</title>
+<title>Magnetometer Test</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Xiuqi Jiang" href="mailto:xiuqix.jiang@intel.com">
-<link rel="help" href="https://w3c.github.io/accelerometer/">
+<link rel="help" href="https://w3c.github.io/magnetometer/">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="./resources/generic-sensor-tests.js"></script>
 <div id="log"></div>
 <script>
 
-async_test(t => {
-  let sensor = new Accelerometer();
-  sensor.start();
+function verify_sensor_reading(reading) {
+  return reading.x != 0 ||
+         reading.y != 0 ||
+         reading.z != 0;
+}
 
-  sensor.onchange = t.step_func_done(() => {
-    x = sensor.reading.x;
-    y = sensor.reading.y;
-    z = sensor.reading.z;
-    result = x.toString() + y.toString() + z.toString();
-    assert_not_equals(result, "000");
-    assert_equals(sensor.state, "activated");
-    sensor.stop();
-  });
+function arr_sensor_reading(reading) {
+  return new Array(reading.x, reading.y, reading.z);
+}
 
-  sensor.onerror = t.step_func_done(event => {
-    assert_unreached(event.error.name + ":" + event.error.message);
-  });
-}, "event change fired");
+runGenericSensorTests(Magnetometer, MagnetometerReading, verify_sensor_reading, arr_sensor_reading);
 
 </script>
