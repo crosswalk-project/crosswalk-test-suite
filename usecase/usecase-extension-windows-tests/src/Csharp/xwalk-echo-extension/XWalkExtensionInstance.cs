@@ -13,7 +13,15 @@ namespace xwalk
 
         public void HandleMessage(String message)
         {
-            native_.PostMessageToJS("From dll async:" + message);
+            if (string.Equals(message, "BinaryTest", StringComparison.OrdinalIgnoreCase))
+            {
+                byte[] bytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+                native_.PostBinaryMessageToJS(bytes, (ulong)bytes.Length);
+            }
+            else
+            {
+                native_.PostMessageToJS("From dll async:" + message);
+            }
         }
         public void HandleSyncMessage(String message)
         {
