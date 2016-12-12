@@ -43,11 +43,7 @@ function verify_sensor_reading(reading) {
          reading.z != 0;
 }
 
-function arr_sensor_reading(reading) {
-  return new Array(reading.x, reading.y, reading.z);
-}
-
 runSensorFrequency(Magnetometer);
-runGenericSensorTests(Magnetometer, MagnetometerReading, verify_sensor_reading, arr_sensor_reading);
+runGenericSensorTests(Magnetometer, MagnetometerReading, verify_sensor_reading);
 
 </script>

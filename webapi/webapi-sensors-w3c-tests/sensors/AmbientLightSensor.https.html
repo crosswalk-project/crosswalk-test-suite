@@ -41,10 +41,6 @@ function verify_sensor_reading(reading) {
   return reading.illuminance >= 0;
 }
 
-function arr_sensor_reading(reading) {
-  return new Array(reading.illuminance);
-}
-
-runGenericSensorTests(AmbientLightSensor, AmbientLightSensorReading, verify_sensor_reading, arr_sensor_reading);
+runGenericSensorTests(AmbientLightSensor, AmbientLightSensorReading, verify_sensor_reading);
 
 </script>
