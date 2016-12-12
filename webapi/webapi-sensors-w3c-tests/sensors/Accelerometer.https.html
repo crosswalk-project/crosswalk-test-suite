@@ -43,10 +43,6 @@ function verify_sensor_reading(reading) {
          reading.z != 0;
 }
 
-function arr_sensor_reading(reading) {
-  return new Array(reading.x, reading.y, reading.z);
-}
-
 async_test(t => {
   let sensor1 = new Accelerometer();
   let sensor2 = new Accelerometer({includeGravity: false});
@@ -63,6 +59,6 @@ async_test(t => {
 }, "Test that when construct Accelerometer with includeGravity that is set to false, the reading is different from the one with default Accelerometer..");
 
 runSensorFrequency(Accelerometer);
-runGenericSensorTests(Accelerometer, AccelerometerReading, verify_sensor_reading, arr_sensor_reading);
+runGenericSensorTests(Accelerometer, AccelerometerReading, verify_sensor_reading);
 
 </script>

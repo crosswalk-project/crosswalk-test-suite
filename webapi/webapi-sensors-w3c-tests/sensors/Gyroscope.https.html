@@ -43,11 +43,7 @@ function verify_sensor_reading(reading) {
          typeof(reading.z) == "number";
 }
 
-function arr_sensor_reading(reading) {
-  return new Array(reading.x, reading.y, reading.z);
-}
-
 runSensorFrequency(Gyroscope);
-runGenericSensorTests(Gyroscope, GyroscopeReading, verify_sensor_reading, arr_sensor_reading);
+runGenericSensorTests(Gyroscope, GyroscopeReading, verify_sensor_reading);
 
 </script>

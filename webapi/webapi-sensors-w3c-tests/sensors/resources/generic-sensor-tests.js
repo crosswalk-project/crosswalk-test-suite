@@ -1,4 +1,4 @@
-function runGenericSensorTests(sensorType, readingType, verifyReading, arrReading) {
+function runGenericSensorTests(sensorType, readingType, verifyReading) {
   async_test(t => {
     let sensor = new sensorType();
     sensor.start();
