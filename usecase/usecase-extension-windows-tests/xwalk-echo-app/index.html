@@ -45,9 +45,32 @@ function testAsyncEcho(){
     document.title = "Fail";
   }
 }
+
+function testAsyncBinary(){
+  var div = document.getElementById("div");
+  try {
+    var str = "BinaryTest";
+    var expected = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8]);
+    var msg = echo.echo(str, function(buf){
+      var uint8View = new Uint8Array(buf);
+      div.innerHTML = div.innerHTML + uint8View.toString() + "<br/>";
+      if (uint8View.toString() === expected.toString()) {
+        div.innerHTML = div.innerHTML + "Binary test <font color=green>passed</font>.<br/>";
+        document.title = "Pass";
+      } else {
+        div.innerHTML = div.innerHTML + "Binary test <font color=red>failed</font>.<br/>";
+        document.title = "Fail";
+      }
+    });
+  } catch(e) {
+    div.innerHTML = div.innerHTML + e + "<br/>";
+    document.title = "Fail";
+  }
+}
 </script>
 <button onclick="testSyncEcho()">Test Sync Echo</button>
-<button onclick="testAsyncEcho()">Test Async Echo</button><br/><br/>
+<button onclick="testAsyncEcho()">Test Async Echo</button>
+<button onclick="testAsyncBinary()">Test Binary</button><br/><br/>
 <div id="div"></div>
 </body>
 </html>
