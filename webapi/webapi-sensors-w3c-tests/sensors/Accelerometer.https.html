@@ -44,10 +44,8 @@ function verify_sensor_reading(reading) {
 }
 
 async_test(t => {
-  let sensor1 = new Accelerometer();
-  let sensor2 = new Accelerometer({includeGravity: false});
-  sensor1.start();
-  sensor2.start();
+  let sensor1 = new Accelerometer({includeGravity: false});
+  let sensor2 = new Accelerometer();
   sensor1.onactivate = t.step_func_done(() => {
     assert_not_equals(sensor1.reading, sensor2.reading);
     sensor1.stop();
@@ -59,6 +57,8 @@ async_test(t => {
   sensor2.onerror = t.step_func_done(event => {
     assert_unreached(event.error.name + ":" + event.error.message);
   });
+  sensor1.start();
+  sensor2.start();
 }, "Test that when construct Accelerometer with includeGravity that is set to false, the reading is different from the one with default Accelerometer.");
 
 runSensorFrequency(Accelerometer);

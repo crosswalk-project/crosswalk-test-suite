@@ -1,7 +1,6 @@
 function runGenericSensorTests(sensorType, readingType, verifyReading) {
   async_test(t => {
     let sensor = new sensorType();
-    sensor.start();
     sensor.onchange = t.step_func_done(() => {
       assert_true(verifyReading(sensor.reading));
       assert_equals(sensor.state, "activated");
@@ -10,13 +9,12 @@ function runGenericSensorTests(sensorType, readingType, verifyReading) {
     sensor.onerror = t.step_func_done(event => {
       assert_unreached(event.error.name + ":" + event.error.message);
     });
+    sensor.start();
   }, "event change fired");
 
   async_test(t => {
     let sensor1 = new sensorType();
     let sensor2 = new sensorType();
-    sensor1.start();
-    sensor2.start();
     sensor1.onactivate = t.step_func_done(() => {
       let cachedReading1 = sensor1.reading;
       let cached1 = cachedReading1;
@@ -39,11 +37,12 @@ function runGenericSensorTests(sensorType, readingType, verifyReading) {
     sensor2.onerror = t.step_func_done(event => {
       assert_unreached(event.error.name + ":" + event.error.message);
     });
+    sensor1.start();
+    sensor2.start();
   }, "Test that sensor reading is correct.");
 
   async_test(t => {
     let sensor = new sensorType();
-    sensor.start();
     let cachedReading1;
     let cachedTimeStamp1;
     sensor.onactivate = () => {
@@ -53,6 +52,7 @@ function runGenericSensorTests(sensorType, readingType, verifyReading) {
     sensor.onerror = t.step_func_done(event => {
       assert_unreached(event.error.name + ":" + event.error.message);
     });
+    sensor.start();
     t.step_timeout(() => {
       sensor.onchange = t.step_func_done(() => {
         let cachedReading2 = sensor.reading;
@@ -69,6 +69,9 @@ function runGenericSensorTests(sensorType, readingType, verifyReading) {
   test(() => {
     let sensor, start_return;
     sensor = new sensorType();
+    sensor.onerror = () => {
+      assert_unreached(event.error.name + ":" + event.error.message);
+    };
     //The default sensor.reading is 'null'
     assert_equals(sensor.reading, null);
     //The default sensor.state is 'idle'
@@ -87,6 +90,9 @@ function runGenericSensorTests(sensorType, readingType, verifyReading) {
   test(() => {
     let sensor, stop_return;
     sensor = new sensorType();
+    sensor.onerror = () => {
+      assert_unreached(event.error.name + ":" + event.error.message);
+    };
     sensor.start();
     stop_return = sensor.stop();
     //The sensor.state changes to 'idle' after sensor.stop()
@@ -110,7 +116,6 @@ function runGenericSensorBrowsingContext(sensorType) {
 
   async_test(t => {
     let sensor = new sensorType();
-    sensor.start();
     sensor.onactivate = t.step_func_done(() => {
       assert_not_equals(sensor.reading, null);
       let cachedReading = sensor.reading;
@@ -122,6 +127,7 @@ function runGenericSensorBrowsingContext(sensorType) {
     sensor.onerror = t.step_func_done(event => {
       assert_unreached(event.error.name + ":" + event.error.message);
     });
+    sensor.start();
   }, "sensor readings can not be fired on the background tab");
 }
 
@@ -154,7 +160,6 @@ function runSensorFrequency(sensorType) {
   async_test(t => {
     let fastSensor = new sensorType({frequency: 30});
     let slowSensor = new sensorType({frequency: 9});
-    slowSensor.start();
     let fastSensorNumber = 0;
     let slowSensorNumber = 0;
     fastSensor.onchange = () => {
@@ -177,11 +182,11 @@ function runSensorFrequency(sensorType) {
     slowSensor.onerror = t.step_func_done(event => {
       assert_unreached(event.error.name + ":" + event.error.message);
     });
+    slowSensor.start();
   }, "Test that the frequency hint is correct.");
 
   async_test(t => {
     let sensor = new sensorType({frequency: 600});
-    sensor.start();
     let number = 0;
     sensor.onchange = () => {
       number++;
@@ -189,6 +194,7 @@ function runSensorFrequency(sensorType) {
     sensor.onerror = t.step_func_done(event => {
       assert_unreached(event.error.name + ":" + event.error.message);
     });
+    sensor.start();
     t.step_timeout(() => {
       assert_less_than_equal(number, 60);
       sensor.stop();
