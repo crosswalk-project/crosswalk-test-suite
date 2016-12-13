@@ -36,6 +36,9 @@ function runGenericSensorTests(sensorType, readingType, verifyReading) {
     sensor1.onerror = t.step_func_done(event => {
       assert_unreached(event.error.name + ":" + event.error.message);
     });
+    sensor2.onerror = t.step_func_done(event => {
+      assert_unreached(event.error.name + ":" + event.error.message);
+    });
   }, "Test that sensor reading is correct.");
 
   async_test(t => {
