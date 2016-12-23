@@ -131,15 +131,15 @@ function runGenericSensorBrowsingContext(sensorType) {
   }, "sensor readings can not be fired on the background tab");
 }
 
-function runGenericSensorInsecureContext(sensorType, sensorName) {
+function runGenericSensorInsecureContext(sensorType) {
   test(() => {
     assert_throws('SecurityError', () => {
       let sensor = new sensorType();
     });
-  }, "throw a 'SecurityError' when construct " + sensorName + " in an insecure context");
+  }, "throw a 'SecurityError' when construct sensor in an insecure context");
 }
 
-function runGenericSensorOnerror(sensorType, sensorName) {
+function runGenericSensorOnerror(sensorType) {
   async_test(t => {
     let sensor = new sensorType();
     sensor.onactivate = t.step_func_done(assert_unreached);
@@ -149,7 +149,7 @@ function runGenericSensorOnerror(sensorType, sensorName) {
       assert_equals(event.error.name, 'NotFoundError');
     });
     sensor.start();
-  }, "Test that 'onerror' event is fired when " + sensorName + " sensor is not supported");
+  }, "Test that 'onerror' event is fired when sensor is not supported");
 }
 
 function runSensorFrequency(sensorType) {
