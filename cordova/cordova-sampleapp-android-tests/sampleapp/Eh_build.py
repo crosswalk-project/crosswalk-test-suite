@@ -41,7 +41,7 @@ class TestEhAppBuild(unittest.TestCase):
         comm.setUp()
         app_name = "Eh"
         sample_src_pref = "/tmp/crosswalk-demos/workshop-cca-eh"
-        comm.buildGoogleApp(app_name, sample_src_pref, self)
+        comm.buildGoogleApp(app_name, sample_src_pref, self, "6.0.0")
 
 if __name__ == '__main__':
     unittest.main()

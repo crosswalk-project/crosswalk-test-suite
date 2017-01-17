@@ -181,7 +181,7 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self, ext
         do_remove(glob.glob(os.path.join(project_root, "www")))
         do_copy(sourcecodepath, os.path.join(tool_path, appname, "www"))
 
-def buildGoogleApp(appname, sourcecodepath, self):
+def buildGoogleApp(appname, sourcecodepath, self, cordova_android_ver):
     os.chdir(tool_path)
     if os.path.exists(os.path.join(tool_path, appname)):
         print "Existing %s project, try to clean up..." % appname
@@ -209,7 +209,7 @@ def buildGoogleApp(appname, sourcecodepath, self):
     os.chdir(os.path.join(tool_path, appname))
 
     print "Add android platforms to this project --------------> START"
-    add_android_cmd = "cca platform add android"
+    add_android_cmd = "cca platform add android@%s" % cordova_android_ver
     addstatus = commands.getstatusoutput(add_android_cmd)
     self.assertEquals(0, addstatus[0])
 
