@@ -366,6 +366,9 @@ def buildPKGAPP(build_json=None):
         if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "manifest.json"),
                       os.path.join(BUILD_ROOT_SRC_PKG_APP, "manifest.json")):
             return False
+        if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "package.json"),
+                      os.path.join(BUILD_ROOT_SRC_PKG_APP, "package.json")):
+            return False
     if os.path.exists(os.path.join(BUILD_ROOT_SRC, "icon.png")):
         if not utils.doCopy(os.path.join(BUILD_ROOT_SRC, "icon.png"),
                       os.path.join(BUILD_ROOT_SRC_PKG_APP, "icon.png")):
