@@ -53,7 +53,7 @@ public class XWalkViewWithScrollChangedAsync extends Activity implements XWalkIn
                 .append("Verifies onTouchEvent work in XWalkView.\n\n")
                 .append("Expected Result:\n\n")
                 .append("Test passes if the the message\n\n" +
-                        "'onTouchEvent is invoked; Action is UP/DOWN/MOVE' ");
+                        "'onScrollChanged is invoked' and it's parameter list is shown after you scroll the page");
         new  AlertDialog.Builder(this)
                 .setTitle("Info")
                 .setMessage(mess.toString())
