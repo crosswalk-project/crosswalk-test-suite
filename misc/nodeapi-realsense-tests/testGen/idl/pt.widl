@@ -1,0 +1,365 @@
+////////////// Global config related //////////////
+dictionary InstanceOptions {
+    SkeletonRecognitionOptions skeleton;
+    TrackingOptions tracking;
+    LyingPoseRecognitionOptions lying;
+    PersonPoseRecognitionOptions pose;
+    FaceRecognitionOptions face;
+    GestureRecognitionOptions gesture;
+    ExpressionRecognitionOptions expression;
+};
+
+/////////// Skeletion Joint Recognition //////////////////
+//the mode with "rough" postfix means fewer skeleton points are detected.
+enum SkeletonArea {
+    "upper-body",
+    "upper-body-rough",
+    "full-body-rough",
+    "full-body"
+};
+
+dictionary SkeletonRecognitionOptions {
+    boolean enable = false;
+    long maxTrackedPerson = 1;
+    SkeletonArea trackingArea = "upper-body";
+};
+
+
+/////////// Tracking /////////////////
+enum DetectionMode {
+    "auto",
+    "close-range",
+    "mid-range",
+    "far-range",
+    "full-range"
+};
+
+dictionary TrackingOptions {
+    boolean enable = true;
+    boolean enableSegmentation = false;
+    boolean enableHeadPose = false;
+    boolean enableBlob = false;
+    boolean enablePersonOrientation = false;
+    boolean enableHeadBoundingBox = true;
+    boolean enableFaceLandmarks = false;
+    boolean enableDetectionFromFar = false;
+    long maxTrackedPerson = 1;
+    DetectionMode detectMode = "auto";
+};
+
+/////////////////// Lying Pose Recognition ////////////////////////
+//Person lying is isolated from normal person tracking result as the usage
+//is not clear and may perform state change interactive operations during tracking.
+enum LyingPoseRecognitionState {
+    "searching",
+    "classifing",
+};
+
+dictionary LyingPoseRecognitionOptions {
+    boolean enable = false;
+    long maxTrackedPerson = 1;
+};
+
+enum ClassificationResult {
+    "classified",
+    "need-different-view-point",
+    "not-classified"
+};
+
+interface LyingPoseInfo {
+    attribute PointCombinedInfo position;
+    attribute BoundingBox2DInfo boundingBox;
+    attribute ClassificationResult result;
+    attribute long confidence;
+};
+
+interface LyingPoseRecognition {
+    Promise<void> setRecognitionState(LyingPoseRecognitionState state);
+    Promise<LyingPoseRecognitionState> getRecognitionState();
+    Promise<long> getCandidatesCount();
+    Promise<LyingPoseInfo[]> getCandidatesData();
+};
+
+////////////////// Pose /////////////////////////////////
+dictionary PersonPoseRecognitionOptions {
+    boolean enable = false;
+    long maxTrackedPerson = 1;
+};
+
+/////////////////// Face Regocnition //////////////////
+enum FaceRecognitionPolicy {
+    "standard",
+    //"strict"
+};
+
+//Policy for how to register person to database
+enum FaceRegistrationPolicy {
+//    "automatic", //not support yet
+//    "manual-override", // not support yet
+      "manual-add"
+};
+
+dictionary FaceRecognitionOptions {
+    boolean enable = false;
+    FaceRecognitionPolicy policy = "standard";
+    boolean useMultiFrame = false; //is multiple frame recognization or single frame.
+};
+
+interface RecognitionInfo {
+    attribute long trackID; //track id
+    attribute long recognitionID; //recognition id
+    attribute long similarityScore;
+};
+
+//interface to manipulate recognition
+interface FaceRecognition {
+    Promise<sequence<long>> getRegisteredIDs();
+    Promise<void> clearDatabase();
+    Promise<ArrayBuffer> exportDatabase();
+    Promise<void> importDatabase(ArrayBuffer buf);
+    Promise<sequence<RecognitionInfo>> recognizeAll();
+
+    //API for specific person
+    Promise<long> registerPerson(long trackID); //return recognition ID.
+    Promise<void> unRegisterPerson(long recognitionID);
+    Promise<bool> isPersonRegistered(long recognitionID);
+    Promise<void> reinforceRegistration(long trackID, long recognitionID, FaceRegistrationPolicy policy);
+    Promise<FaceRecognitionInfo> recognize(long trackID);
+    //try to recognize a person indicated by trackID and if recognized, get the similarity score with the person indicated by recogID.
+    Promise<float> querySimilarityScoreByID(long trackID, long recognitionID);
+};
+
+//////////////// Gesture Recognition /////////////////
+
+enum GestureType {
+    "pointing"
+};
+
+dictionary GestureRecognitionOptions {
+    boolean enable = false;
+    long maxTrackedPerson = 1; //? there is no getMaxTrackedPerson
+    boolean enableAllGestures = false;
+    boolean disableAllGestures = false;
+    boolean enablePointing = true;
+};
+
+///////////////// Expression Recognition /////////////////
+enum Expression {
+    "neutral",
+    "happiness",
+    "sadness",
+    "surprise",
+    "fear",
+    "anger",
+    "disgust",
+    "contempt"
+};
+
+dictionary ExpressionRecognitionOptions {
+    boolean enable = false;
+    long maxTrackedPerson = 1;
+    boolean enableAllExpressions = false;
+    boolean disableAllExpressions = false;
+    boolean enableNeutral = true;
+    boolean enableHappy = true;
+    boolean enableSad = false;
+    boolean enableSurprise = false;
+    boolean enableFear = false;
+    boolean enableAnger = false;
+    boolean enableDisgust = false;
+    boolean enableContempt = false;
+};
+
+/////////////// The controller ////////////////
+
+interface PersonTracking {
+    Promise<void> startTrackingPerson(long trackID);
+    Promise<void> stopTrackingPerson(long trackID);
+};
+
+enum TrackingState {
+    "not-started",
+    "tracking",
+    "detecting",
+    "stopped"
+};
+
+[
+Constructor,
+Constructor(InstanceOptions options)
+//Constructor(InstanceOptions instanceOptions,CameraOptions cameraOptions)
+]
+interface Instance {
+    readonly attribute TrackingState state;
+
+    Promise<InstanceOptions> getInstanceOptions();
+//    Promise<CameraOptions> getCameraOptions();
+    Promise<void> setInstanceOptions(InstanceOptions instanceOptions);
+//    Promise<void> setCameraOptions(CameraOptions cameraOptions);
+
+    Promise<void> start();
+    Promise<void> stop();
+    Promise<void> pause();
+    Promise<void> resume();
+    Promise<void> reset();
+
+    readonly attribute FaceRecognition faceRecognition;
+    readonly attribute LyingPoseRecognition lyingPoseRecognition;
+    readonly attribute PersonTracking personTracking;
+
+    //Events
+    //For the persontracked event, the data is PersonTrackingResult
+    //attribute EventHandler onpersontracked;
+};
+
+////////////// Result ////////////////
+
+enum AccessOrder {
+    "access-order-by-id"
+};
+
+interface PersonInfo {
+    readonly attribute SkeletonInfo? skeletonInfo;
+    readonly attribute TrackingInfo? trackInfo;
+    readonly attribute GestureInfo? gestureInfo;
+    readonly attribute ExpressionInfoCollection? expressionInfo;
+    readonly attribute FaceLandmarkInfo? landmarkInfo;
+    readonly attribute PoseInfo? poseInfo;
+};
+
+interface PersonTrackingResult {
+    readonly attribute PersonInfo[] persons;//ordered by id by default
+};
+
+enum JointType {
+    "ankle-left",
+    "ankle-right",
+    "elbow-left",
+    "elbow-right",
+    "foot-left",
+    "foot-right",
+    "hand-left",
+    "hand-right",
+    "hand-tip-left",
+    "hand-tip-right",
+    "head",
+    "hip-left",
+    "hip-right",
+    "knee-left",
+    "knee-right",
+    "neck",
+    "shoulder-left",
+    "shoulder-right",
+    "spine-base",
+    "spine-mid",
+    "spine-shoulder",
+    "thumb-left",
+    "thumb-right",
+    "wrist-left",
+    "wrist-right"
+};
+
+interface SkeletonPointInfo {
+    readonly attribute JointType jointType;
+    readonly attribute Point3D worldCoordinate;
+    readonly attribute Point2D imageCoordinate;
+    readonly attribute long worldConfidence;
+    readonly attribute long imageConfidence;
+};
+
+interface SkeletonInfo {
+    readonly attribute SkeletonPointInfo[] skeletonJoints;
+};
+
+interface BoundingBox2DInfo {
+    readonly attribute Rect2D rect;
+    readonly attribute long confidence;
+};
+
+interface MaskInfo {
+    readonly attribute long width;
+    readonly attribute long height;
+    readonly attribute ArrayBuffer maskData;
+};
+
+interface PointCombinedInfo {
+    readonly attribute Point3D worldCoordinate;
+    readonly attribute Point2D imageCoordinate;
+    readonly attribute long worldConfidence;
+    readonly attribute long imageConfidence;
+};
+
+interface PoseEulerAngles {
+    readonly attribute float yaw;
+    readonly attribute float pitch;
+    readonly attribute float roll;
+};
+
+enum Orientation {
+    "frontal",
+    "45-degree-right",
+    "45-degree-left",
+    "profile-right",
+    "profile-left",
+    "rear"
+};
+
+interface OrientationInfo {
+    readonly attribute Orientation orientType;
+    readonly attribute long confidence;
+};
+
+interface TrackingInfo {
+    readonly attribute long id;
+    readonly attribute BoundingBox2DInfo boundingBox;
+    readonly attribute PointCombinedInfo center;
+    readonly attribute BoundingBox2DInfo? headBoundingBox;
+    readonly attribute MaskInfo? segmentationMask;
+    readonly attribute MaskInfo? blobMask;
+    readonly attribute PoseEulerAngles? headPose;
+    readonly attribute OrientationInfo? orient;
+};
+
+interface FaceLandmark {
+    readonly attribute Point3D imageCoordinate; //todo, use float Point3D
+    readonly attribute Point3D worldCoordinate; //todo, use float Point3D
+};
+
+interface FaceLandmarkInfo {
+    readonly attribute FaceLandmark[] landmarks;
+    readonly attribute long confidence;
+};
+
+interface PointingInfo {
+    readonly attribute Point3D worldOrigin;
+    readonly attribute Point3D worldDirection;
+    readonly attribute Point2D imageOrigin;
+    readonly attribute Point2D imageDirection;
+    readonly attribute long confidence;
+    readonly attribute long startTimeStamp;
+};
+
+interface GestureInfo {
+    readonly attribute boolean isPointing;
+    readonly attribute PointingInfo? thePointingInfo;
+};
+
+interface ExpressionInfo {
+    readonly attribute Expression type;
+    readonly attribute long confidence;
+};
+
+interface ExpressionInfoCollection {
+    readonly attribute ExpressionInfo[] infoCollection;
+};
+
+enum PositionType {
+    "lying-down",
+    "sitting",
+    "standing"
+};
+
+interface PoseInfo {
+    readonly attribute PositionType position;
+    readonly attribute long confidence;
+};

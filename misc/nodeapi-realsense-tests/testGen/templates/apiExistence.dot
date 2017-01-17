@@ -1,0 +1,62 @@
+"use strict"
+const assert = require('assert');
+var util = require('./util.js');
+var module = require('bindings')('realsense_pt');
+
+{{#def.typeConversion}}
+{{#def.map}}
+{{var info = getInfo(it.name);}}
+var instanceConfig = {};
+instanceConfig = {{=info.instanceConfig}};
+var cameraConfig = {{=info.cameraConfig}};
+var instance = util.getObj(module, "{{=it.name}}", instanceConfig, cameraConfig).instance;
+var obj = util.getObj(module, "{{=it.name}}", instanceConfig, cameraConfig).obj;
+describe('{{=it.name}} API Test', function () {
+
+  describe('API Existance', function() {
+    it('module.{{=it.name}} is exist', function() {
+      assert.ok(typeof(obj) !== 'undefined' )
+    });
+
+    it('module.{{=it.name}} type is correct', function() {
+      assert.equal(typeof(obj),'object');
+    });
+
+
+{{~ it.members :p:i}}
+
+{{? p.type === 'attribute'}}
+    it('module.{{=it.name}}() object has the attribute {{=p.name}}', function () {
+      assert.ok(obj.{{=p.name}} !== undefined );
+    });
+    it('module.{{=it.name}}() object has the {{=ConvertIDLType2JavaScript(p.idlType)}} attribute {{=p.name}}', function () {
+      assert.equal(typeof(obj.{{=p.name}}),'{{=ConvertIDLType2JavaScript(p.idlType)}}');
+    });
+{{? p.readonly === true}}
+    it('module.{{=it.name}}() object has the readonly attribute {{=p.name}}', function () {
+      assert.throws(() => {obj.{{=p.name}} = {{=GetAssignValue(p.idlType)}}});
+    });
+{{??}}
+    it('module.{{=it.name}}() object has the writable attribute {{=p.name}}', function () {
+      var tmp;
+      tmp = obj.{{=p.name}};
+      obj.{{=p.name}} = {{=GetAssignValue(p.idlType)}};
+      assert.notEqual(tmp, obj.{{=p.name}});
+    });
+{{?}}
+{{?}}
+
+
+{{? p.type === 'operation'}}
+
+    it('new module.{{=it.name}}() object has a method .{{=p.name}}', function () {
+      assert.equal(typeof(obj.{{=p.name}}), 'function');
+    });
+
+{{?}}
+
+{{~}}
+
+  });
+
+});

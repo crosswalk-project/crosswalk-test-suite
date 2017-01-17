@@ -1,0 +1,42 @@
+"use strict"
+{{#def.map}}
+{{var info = getInfo(it.name);}}
+const assert = require('assert');
+var module = require('./pt.js');
+var enum_group = [];
+{{~ it.values :p:i}}
+enum_group.push("{{=p}}")
+{{~}}
+enum_group.push('invalid');
+
+function _test(i) {
+  describe('check enum {{=it.name}}', function(){
+      it('checking member of {{=it.name}}: '+ enum_group[i], function(done) {
+        {{? !info}}
+        TODO:
+        {{?? info.ppConfig && info.ppConfig != ""}}
+        var cfg = {}
+        cfg['{{=info.pConfig}}']['{{=info.ppConfig}}'] = enum_group[i];
+        var instance = new module.{{=info.constructor}}(cfg);
+        instance.{{=info.getInstance}}().then(data => {
+          assert.equal(data.{{=info.ppConfig}}.{{=info.pConfig}}, enum_group[i]);
+          done();
+        });
+        {{?? info.pConfig && info.pConfig != ""}}
+        var cfg = {}
+        cfg['{{=info.pConfig}}'] = enum_group[i];
+        var instance = new module.{{=info.constructor}}(cfg);
+        instance.{{=info.getInstance}}().then(data => {
+          assert.equal(data.{{=info.pConfig}}, enum_group[i]);
+          done();
+        });
+        {{??}}
+        
+        {{?}}
+      });
+  });
+}
+
+for (var x in enum_group) {
+  _test(x);
+}

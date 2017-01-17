@@ -1,0 +1,52 @@
+{{
+  var LyingPoseInfo= [];
+  LyingPoseInfo['instanceConfig'] = '{\n
+ lying: {\n
+   enable: true,\n
+   maxTrackedPerson:1\n
+ }\n}';
+  LyingPoseInfo['cameraConfig'] = '{}';
+  LyingPoseInfo['instance'] = 'Instance';
+
+  var LyingPoseRecognition = [];
+  LyingPoseRecognition = LyingPoseInfo;
+
+  var RecognitionInfo = [];
+  RecognitionInfo = LyingPoseInfo;
+
+  var FaceRecognition = [];
+  FaceRecognition = LyingPoseInfo;
+
+  var PersonTracking = [];
+  PersonTracking = LyingPoseInfo;
+
+  var Instance = [];
+  Instance = LyingPoseInfo;
+
+  var PersonData = [];
+  PersonData = LyingPoseInfo;
+
+  var getInfo = function(name){
+    if (name == 'LyingPoseInfo'){
+      return LyingPoseInfo;
+    }
+    else if (name == 'LyingPoseRecognition'){
+      return LyingPoseRecognition;
+    }
+    else if (name == 'RecognitionInfo'){
+      return RecognitionInfo;
+    }
+    else if (name == 'FaceRecognition'){
+      return FaceRecognition;
+    }
+    else if (name == 'PersonTracking'){
+      return PersonTracking;
+    }
+    else if (name == 'Instance'){
+      return Instance;
+    }
+    else {
+      return null;
+    }
+  };
+}}
