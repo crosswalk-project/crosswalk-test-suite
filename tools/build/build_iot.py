@@ -36,19 +36,19 @@ import utils
 import varshop
 
 
-def newIoTManifest(manifest_path, app_name, index_file = 'index.html'):
+def newIoTPackageJSON(package_json_path, app_name, index_file = 'index.html'):
     '''
-    Generate the manifest JSON format file which only contains two fields:
+    Generate the package JSON format file which only contains two fields:
     {
         "name": "",
-        "start_url": ""
+        "main": ""
     }
     '''
     manifest = {}
     try:
-        with open(manifest_path, 'w') as fp:
+        with open(package_json_path, 'w') as fp:
             manifest['name'] = app_name
-            manifest['start_url'] = index_file
+            manifest['main'] = index_file
 
             json.dump(manifest, fp, indent = 4)
     except Exception:
@@ -57,15 +57,45 @@ def newIoTManifest(manifest_path, app_name, index_file = 'index.html'):
     return True
 
 
+def newIoTPackageJSONFromManifest(manifest_path, package_json_path):
+    '''
+    Generate a package.json from manifest.json and only keeps two fields:
+    {
+        "name": "",
+        "main": ""
+    }
+    '''
+    try:
+        with open(manifest_path) as fp:
+            data = json.load(fp, encoding = 'utf-8')
+
+        package_json = {}
+        package_json['name'] = data['name']
+        package_json['main'] = data['start_url']
+        with open(package_json_path, 'w') as f:
+            json.dump(package_json, f, indent = 4)
+    except Exception as e:
+        return False
+
+    return True
+
+
 def packIoT(build_json = None, app_src = None, app_dest = None, app_name = None):
     '''
-    Build IoT packages, simply compress the necessary files.
+    Build NW.js packages:
+    If the package.json not found, new one from the manifest.json.
+    Otherwise, skip it.
     '''
-    manifest_path = os.path.join(app_src, 'manifest.json')
 
-    if not os.path.exists(manifest_path):
-        if not newIoTManifest(manifest_path, app_name):
+    package_json_path = os.path.join(app_src, 'package.json')
+    manifest_json_path = os.path.join(app_src, 'manifest.json')
+
+    if not os.path.exists(package_json_path):
+        if not newIoTPackageJSON(package_json_path, app_name):
             return False
+
+    if os.path.exists(manifest_json_path):
+        os.remove(manifest_json_path)
 
     if "sub-app" in app_src:
         sub_app_name = os.path.basename(app_src)
