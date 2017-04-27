@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Liu,xin <xinx.liu@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>Vehicle Test: Vehicle_attributes</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html" />
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+test(function() {
+    var zone = new Zone;
+}, "Check if Zone can be constructor");
+
+[
+  ["const DOMString", "Front", "Front"],
+  ["const DOMString", "Middle", "Middle"],
+  ["const DOMString", "Right", "Right"],
+  ["const DOMString", "Left", "Left"],
+  ["const DOMString", "Rear", "Rear"],
+  ["const DOMString", "Center", "Center"],
+  ["const DOMString", "Hood", "Hood"],
+  ["const DOMString", "Trunk", "Trunk"],
+  ["const DOMString", "Fuel", "Fuel"],
+  ["attribute DOMString", "value"],
+  ["attribute Zone", "driver"],
+  ["attribute Zone", "passenger"],
+  ["boolean", "equals"],
+  ["boolean", "contains"],
+].forEach(function(attr) {
+  var type = attr[0];
+  var name = attr[1];
+
+  test(function() {
+    assert_true(name in zone);
+  }, "Check if Zone." + name + " exists");
+
+  switch(type) {
+  case "const DOMString":
+    test(function() {
+      assert_equals(zone[name], attr[2]);
+    }, "Check if Zone." + name + " const DOMString is " + attr[2]);
+    break;
+  default:
+    break;
+  }
+})
+
+
+</script>
